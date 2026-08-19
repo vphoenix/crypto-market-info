@@ -51,7 +51,7 @@ go run ./cmd/collector
 | `OKX_PERP_SYMBOLS` | `BTC-USDT-SWAP` | OKX USDT 线性永续 |
 | `FUNDING_ENABLED` | `true` | 是否采集永续资金费率 |
 
-端点也可通过 `BINANCE_SPOT_REST_URL`、`BINANCE_FUTURES_REST_URL`、`BINANCE_SPOT_WS_URL`、`BINANCE_FUTURES_WS_URL`、`OKX_REST_URL` 和 `OKX_WS_URL` 覆盖，便于代理、测试环境和区域域名切换。
+端点也可通过 `BINANCE_SPOT_REST_URL`、`BINANCE_FUTURES_REST_URL`、`BINANCE_SPOT_WS_URL`、`BINANCE_FUTURES_WS_URL`、`BINANCE_FUTURES_MARKET_WS_URL`、`OKX_REST_URL` 和 `OKX_WS_URL` 覆盖，便于代理、测试环境和区域域名切换。Binance Futures 深度默认使用 `/public/ws`，mark price 资金费率默认使用 `/market/ws`，不能混用。
 
 打印程序实际执行的完整 ClickHouse DDL：
 

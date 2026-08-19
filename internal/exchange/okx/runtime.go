@@ -95,7 +95,8 @@ func (r *Runtime) runConnection(ctx context.Context) error {
 		return err
 	}
 	defer conn.Close()
-	subscribe := map[string]any{"id": fmt.Sprintf("book-%d", r.Instrument.ID), "op": "subscribe", "args": []map[string]string{{"channel": "books", "instId": r.Instrument.ExchangeSymbol}}}
+	// Keep the client request ID alphanumeric; OKX rejects hyphenated IDs with code 60033.
+	subscribe := map[string]any{"id": fmt.Sprintf("book%d", r.Instrument.ID), "op": "subscribe", "args": []map[string]string{{"channel": "books", "instId": r.Instrument.ExchangeSymbol}}}
 	if err = conn.WriteJSON(subscribe); err != nil {
 		return err
 	}

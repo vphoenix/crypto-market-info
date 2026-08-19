@@ -37,6 +37,15 @@ func TestClickHouseDDLWriteReplayAndDayMeasurement(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	reused, err := client.RegisterInstruments(context.Background(), definitions)
+	if err != nil {
+		t.Fatalf("reuse registered instruments: %v", err)
+	}
+	for index := range instruments {
+		if reused[index].ID != instruments[index].ID || !reused[index].SameDefinition(instruments[index]) {
+			t.Fatalf("registered instrument %d was not reused: first=%+v second=%+v", index, instruments[index], reused[index])
+		}
+	}
 	day := time.Date(2026, 8, 18, 0, 0, 0, 0, time.UTC)
 	fundingTime := day.Add(123 * time.Millisecond)
 	estimate := model.FundingRate{InstrumentID: instruments[2].ID, HourTime: day, FundingTime: fundingTime, Rate: decimal.RequireFromString("0.0001")}

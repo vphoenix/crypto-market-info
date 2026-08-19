@@ -163,7 +163,7 @@ ClickHouse 的替换在后台合并时发生，不提供即时唯一约束。盘
 
 每个 UTC 整点为永续 instrument 生成至多一条逻辑记录。估算和实际值采用不同的数据通道：
 
-- Binance 估算费率订阅 Mark Price WebSocket，使用推送中的费率和下一结算时间；
+- Binance 估算费率订阅 Mark Price WebSocket，使用推送中的费率和下一结算时间；USDⓈ-M 深度使用 `/public/ws`，Mark Price 使用 `/market/ws`；
 - OKX 估算费率订阅公开 `funding-rate` WebSocket；
 - 每个交易所只建立一个资金费率 WebSocket runtime，在同一连接中订阅本项目配置的永续 instrument，不为每个 instrument 新建资金费率连接；
 - runtime 只在内存中保留按 `(instrument_id, funding_time)` 区分的最新推送。UTC 整点由 scheduler 读取最新有效值并写入估算版本；连接失效或没有可用推送时宁可缺失，不使用旧值伪造当前整点；

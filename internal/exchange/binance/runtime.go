@@ -80,9 +80,10 @@ func (r *Runtime) defaults() error {
 	}
 	if r.WSEndpoint == "" {
 		if r.Instrument.MarketType == model.MarketPerpetual {
-			r.WSEndpoint = "wss://fstream.binance.com/ws"
+			// Binance routes high-frequency USDⓈ-M depth streams through /public.
+			r.WSEndpoint = "wss://fstream.binance.com/public/ws"
 		} else {
-			r.WSEndpoint = "wss://stream.binance.com:9443/ws"
+			r.WSEndpoint = "wss://stream.binance.com:443/ws"
 		}
 	}
 	return nil

@@ -135,7 +135,7 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 		if len(binanceFundingInstruments) > 0 {
 			worker := &funding.ConfirmationWorker{Exchange: "Binance", Provider: binanceClient, Sink: store, QueueCapacity: queueCapacity, Logger: logger}
 			confirmationWorkers["Binance"] = worker
-			runtime := &binance.FundingRuntime{Instruments: binanceFundingInstruments, Estimates: estimates, Confirmations: worker, WSEndpoint: cfg.BinanceFuturesWS, Logger: logger}
+			runtime := &binance.FundingRuntime{Instruments: binanceFundingInstruments, Estimates: estimates, Confirmations: worker, WSEndpoint: cfg.BinanceMarketWS, Logger: logger}
 			components = append(components,
 				component{name: "Binance funding confirmation", run: worker.Run},
 				component{name: "Binance funding websocket", run: runtime.Run},

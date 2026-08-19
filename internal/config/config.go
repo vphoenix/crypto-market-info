@@ -19,7 +19,8 @@ type Config struct {
 	BinanceSpotREST     string
 	BinanceFuturesREST  string
 	BinanceSpotWS       string
-	BinanceFuturesWS    string
+	BinanceFuturesWS    string // USDⓈ-M high-frequency public streams such as diff depth.
+	BinanceMarketWS     string // USDⓈ-M regular market streams such as mark price.
 	OKXREST             string
 	OKXWS               string
 	FundingEnabled      bool
@@ -41,8 +42,9 @@ func Load() (Config, error) {
 		BinanceSpotSymbols: list("BINANCE_SPOT_SYMBOLS", "BTCUSDT"), BinancePerpSymbols: list("BINANCE_PERP_SYMBOLS", "BTCUSDT"),
 		OKXSpotSymbols: list("OKX_SPOT_SYMBOLS", "BTC-USDT"), OKXPerpSymbols: list("OKX_PERP_SYMBOLS", "BTC-USDT-SWAP"),
 		BinanceSpotREST: value("BINANCE_SPOT_REST_URL", "https://api.binance.com"), BinanceFuturesREST: value("BINANCE_FUTURES_REST_URL", "https://fapi.binance.com"),
-		BinanceSpotWS: value("BINANCE_SPOT_WS_URL", "wss://stream.binance.com:9443/ws"), BinanceFuturesWS: value("BINANCE_FUTURES_WS_URL", "wss://fstream.binance.com/ws"),
-		OKXREST: value("OKX_REST_URL", "https://www.okx.com"), OKXWS: value("OKX_WS_URL", "wss://ws.okx.com:8443/ws/v5/public"),
+		BinanceSpotWS: value("BINANCE_SPOT_WS_URL", "wss://stream.binance.com:443/ws"), BinanceFuturesWS: value("BINANCE_FUTURES_WS_URL", "wss://fstream.binance.com/public/ws"),
+		BinanceMarketWS: value("BINANCE_FUTURES_MARKET_WS_URL", "wss://fstream.binance.com/market/ws"),
+		OKXREST:         value("OKX_REST_URL", "https://www.okx.com"), OKXWS: value("OKX_WS_URL", "wss://ws.okx.com:8443/ws/v5/public"),
 		FundingEnabled: funding, MinuteQueueCapacity: queue,
 	}, nil
 }

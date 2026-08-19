@@ -17,10 +17,13 @@ contract_multiplier, price_tick_size, quantity_step_size, expiry_time FROM `+c.t
 	var out []model.Instrument
 	for rows.Next() {
 		var item model.Instrument
-		if err = rows.Scan(&item.ID, &item.Exchange, &item.MarketType, &item.ExchangeSymbol, &item.BaseAsset, &item.QuoteAsset, &item.SettleAsset,
+		// clickhouse-go cannot scan String directly into a named string type.
+		var marketType string
+		if err = rows.Scan(&item.ID, &item.Exchange, &marketType, &item.ExchangeSymbol, &item.BaseAsset, &item.QuoteAsset, &item.SettleAsset,
 			&item.ContractMultiplier, &item.PriceTickSize, &item.QuantityStepSize, &item.ExpiryTime); err != nil {
 			return nil, err
 		}
+		item.MarketType = model.MarketType(marketType)
 		if err = item.Validate(); err != nil {
 			return nil, fmt.Errorf("invalid stored instrument %d: %w", item.ID, err)
 		}

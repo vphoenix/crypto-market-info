@@ -58,3 +58,15 @@ func TestRuntimeBuffersDiffBeforeRESTSnapshot(t *testing.T) {
 	<-done
 	t.Fatalf("runtime did not bridge snapshot and buffered diff: view=%+v", book.View())
 }
+
+func TestPerpetualRuntimeDefaultsToPublicEndpoint(t *testing.T) {
+	instrument := testInstrument()
+	book, _ := orderbook.New(instrument.ID, 1000)
+	runtime := Runtime{Instrument: instrument, Book: book}
+	if err := runtime.defaults(); err != nil {
+		t.Fatal(err)
+	}
+	if runtime.WSEndpoint != "wss://fstream.binance.com/public/ws" {
+		t.Fatalf("endpoint=%q", runtime.WSEndpoint)
+	}
+}

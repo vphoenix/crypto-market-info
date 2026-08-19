@@ -105,3 +105,21 @@ func TestFundingRuntimeUsesOneConnectionForConfiguredInstruments(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+
+func TestFundingRuntimeDefaultsToMarketEndpoint(t *testing.T) {
+	instrument := testInstrument()
+	runtime := FundingRuntime{
+		Instruments: []model.Instrument{instrument},
+		Estimates:   estimateCapture{values: make(chan model.FundingEstimate, 1)},
+		Confirmations: confirmationCapture{values: make(chan struct {
+			instrument model.Instrument
+			target     time.Time
+		}, 1)},
+	}
+	if err := runtime.defaults(); err != nil {
+		t.Fatal(err)
+	}
+	if runtime.WSEndpoint != "wss://fstream.binance.com/market/ws" {
+		t.Fatalf("endpoint=%q", runtime.WSEndpoint)
+	}
+}

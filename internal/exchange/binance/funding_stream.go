@@ -113,7 +113,8 @@ func (r *FundingRuntime) defaults() error {
 		seen[instrument.ExchangeSymbol] = struct{}{}
 	}
 	if r.WSEndpoint == "" {
-		r.WSEndpoint = "wss://fstream.binance.com/ws"
+		// Binance routes mark price through /market; the legacy /ws only emits public streams.
+		r.WSEndpoint = "wss://fstream.binance.com/market/ws"
 	}
 	if r.Dialer == nil {
 		r.Dialer = websocket.DefaultDialer
