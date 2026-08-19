@@ -1,0 +1,29 @@
+services:
+  clickhouse:
+    image: clickhouse:26.3.17.56-jammy
+    container_name: crypto-market-info-clickhouse
+    restart: unless-stopped
+    environment:
+      CLICKHOUSE_DB: crypto_market_info
+      CLICKHOUSE_SKIP_USER_SETUP: "1"
+    ports:
+      - "127.0.0.1:8123:8123"
+      - "127.0.0.1:9000:9000"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    healthcheck:
+      test:
+        - CMD
+        - clickhouse-client
+        - --query
+        - SELECT 1
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  clickhouse_data:
