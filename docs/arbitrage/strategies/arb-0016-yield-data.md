@@ -12,6 +12,8 @@ ARB-0016 先采集各种单资产收益产品的公开收益率和产品规则�
 
 本设计只采集公开数据，不执行质押、申购、赎回、借贷、对冲或交易。永续资金费率不计入收益产品的 APY；永续和交割合约盘口继续由现有行情表独立采集。
 
+TRX 第一版采集器的程序结构、接口映射和写入流程见 [ARB-0016 TRX 收益采集实现设计](arb-0016-trx-yield-implementation.md)。
+
 ## 2. 表关系
 
 第一版只使用两张收益表：
@@ -42,11 +44,12 @@ yield_route 1 ---- N yield_observation
 | `product_name` | 产品名称 | `String` | 是 | 便于检查的产品名称。不能单独作为唯一键。 |
 | `yield_type` | 收益类型 | `String` | 是 | 第一版允许 `native_staking`、`liquid_staking`、`lending`、`fee_share`、`resource_rental`、`single_asset_incentive`、`stablecoin_savings`、`cex_earn`。 |
 | `deposit_asset_key` | 存入资产 | `String` | 是 | 精确到网络和合约的资产标识，不能只写可能跨链重复的币种符号。 |
+| `position_asset_key` | 收益持仓资产 | `String` | 是 | 存入后实际持有或锁定的资产。原生质押可与存入资产相同；LST、jToken、Vault 份额必须写对应网络和合约。 |
 | `redeem_asset_key` | 正常赎回资产 | `String` | 是 | 按产品正常退出路径最终得到的资产标识。 |
 | `network` | 所在网络 | `Nullable(String)` | 否 | 链上产品所在网络；纯 CEX 账内产品可以为空。 |
 | `contract_address` | 核心合约地址 | `Nullable(String)` | 否 | 链上产品的主合约地址；原生质押和纯 CEX 产品可以为空。 |
 | `price_exposure_asset` | 价格暴露币种 | `Nullable(String)` | 否 | 需要关联现有现货或合约行情进行价格对冲的经济资产，例如 `wstETH` 产品填写 `ETH`。按当前模型无需对冲的稳定币产品为空。 |
-| `income_source` | 收益来源 | `String` | 是 | `issuance`、`borrow_interest`、`protocol_fee`、`resource_rent`、`offchain_interest` 或 `subsidy`。只描述收入来自哪里，不代表安全判断。 |
+| `income_source` | 收益来源 | `String` | 是 | `issuance`、`borrow_interest`、`protocol_fee`、`resource_rent`、`offchain_interest`、`subsidy` 或 `combined`。只描述收入来自哪里，不代表安全判断。 |
 | `source_url` | 主数据源 | `String` | 是 | 官方 API、合约或产品页面。适配器可以在不改变路线身份的情况下更新访问地址。 |
 | `collection_enabled` | 是否采集 | `Boolean` | 是 | 是否仍按计划采集。产品关闭后保留历史行并设为 `0`。 |
 
@@ -73,14 +76,16 @@ yield_route 1 ---- N yield_observation
 | `tier_min_amount` | 档位起始金额 | `Decimal` | 是 | 本档适用的最小存入数量，单位为 `deposit_asset_key`；无分档产品为 `0`。 |
 | `tier_max_amount` | 档位结束金额 | `Nullable(Decimal)` | 否 | 本档适用的最大存入数量；没有上限或无分档产品为空。 |
 | `tier_mode` | 档位计息方式 | `String` | 是 | `none`、`marginal`、`whole_balance` 或 `unknown`。`marginal` 表示分段计息，`whole_balance` 表示按总余额选择整笔利率。 |
-| `reported_rate` | 来源公布利率 | `Nullable(Decimal)` | 否 | 数据源直接公布的利率。10% 保存为 `0.10`，不得使用二进制浮点数。来源暂时没有有效利率时可以为空。 |
-| `reported_rate_kind` | 公布利率类型 | `String` | 是 | `apr`、`apy` 或 `unknown`。不能把 APR 不加说明地写成 APY。 |
+| `rate` | 利率 | `Nullable(Decimal)` | 否 | 10% 保存为 `0.10`，不得使用二进制浮点数。来源暂时没有有效利率时可以为空。 |
+| `rate_kind` | 利率类型 | `String` | 是 | `apr`、`apy` 或 `unknown`。不能把 APR 不加说明地写成 APY。 |
+| `rate_origin` | 利率来源方式 | `String` | 是 | `reported` 表示来源直接公布；`derived` 表示适配器依据公开参数计算。 |
 | `rate_mode` | 利率变化方式 | `String` | 是 | `fixed`、`variable` 或 `unknown`。`variable` 只表示未来收入可能变化，不自动否决该路线。 |
 | `reward_asset_keys` | 奖励资产列表 | `Array(String)` | 是 | 收益实际以哪些资产发放。已知奖励资产时至少保存一个元素；来源没有说明时为空数组。资产标识规则与路线表相同。 |
-| `reward_component_rates` | 分项公布利率 | `Array(Nullable(Decimal))` | 是 | 与 `reward_asset_keys` 同下标对应的来源分项利率。来源只公布总利率时，对应元素为空。非空元素沿用 `reported_rate_kind` 的 APR/APY 口径。 |
+| `reward_component_rates` | 分项利率 | `Array(Nullable(Decimal))` | 是 | 与 `reward_asset_keys` 同下标对应。来源只公布总利率时，对应元素为空。非空元素沿用 `rate_kind` 的 APR/APY 口径。 |
 | `entry_fee_rate` | 进入费率 | `Nullable(Decimal)` | 否 | 按本金比例收取且规则确定的进入费用。 |
 | `exit_fee_rate` | 正常退出费率 | `Nullable(Decimal)` | 否 | 按本金比例收取且规则确定的正常退出费用。 |
 | `fixed_penalty_rate` | 固定罚金率 | `Nullable(Decimal)` | 否 | 提前退出等情况下事先确定的固定本金折损。没有则为 `0` 或空。 |
+| `performance_fee_rate` | 收益绩效费率 | `Nullable(Decimal)` | 否 | 按收益收取的固定比例，例如 10% 保存为 `0.10`。不得误写成本金退出费。 |
 | `entry_fee_amount` | 固定进入费用 | `Nullable(Decimal)` | 否 | 不按比例收取的固定进入费用。 |
 | `exit_fee_amount` | 固定退出费用 | `Nullable(Decimal)` | 否 | 不按比例收取的固定退出费用。 |
 | `fixed_fee_asset_key` | 固定费用币种 | `Nullable(String)` | 否 | `entry_fee_amount` 和 `exit_fee_amount` 的计价资产；没有固定金额费用时为空。 |
@@ -90,15 +95,15 @@ yield_route 1 ---- N yield_observation
 | `fixed_principal_loss_rate` | 固定本金损失率 | `Nullable(Decimal)` | 否 | `rule_principal_loss_mode=fixed` 时记录确定损失比例；其他情况为空。 |
 | `rule_eligibility` | 理论筛选结果 | `String` | 是 | `candidate`、`rejected` 或 `unknown`。`variable` 本金损失必须为 `rejected`。 |
 | `eligibility_reason` | 筛选原因 | `Nullable(String)` | 否 | 被拒绝或规则不明时记录简短原因，例如 `variable_slashing`、`path_dependent_loss`。 |
-| `exposure_ratio` | 本金价格暴露比例 | `Nullable(Decimal)` | 否 | 每 1 单位存入资产对应多少单位 `price_exposure_asset`。LST 等兑换率变化产品用于确定对冲数量；无需价格对冲时为空。 |
+| `exposure_ratio` | 本金价格暴露比例 | `Nullable(Decimal)` | 否 | 每 1 单位 `position_asset_key` 对应多少单位 `price_exposure_asset`。LST、jToken 等产品填写当前兑换率；无需价格对冲时为空。 |
 | `capacity` | 总额度 | `Nullable(Decimal)` | 否 | 产品或本档公布的总可用额度，单位为存入资产。 |
 | `remaining_capacity` | 剩余额度 | `Nullable(Decimal)` | 否 | 当前仍可申购的额度。来源不提供时为空。 |
 | `tvl` | 产品 TVL | `Nullable(Decimal)` | 否 | 来源公布的产品规模。必须同时遵守适配器定义的计价口径。 |
 | `availability` | 产品状态 | `String` | 是 | `available`、`paused`、`closed`、`unavailable` 或 `unknown`。即使暂时不可用也保留观测。 |
-| `block_height` | 区块高度 | `Nullable(UInt64)` | 否 | 链上数据必须填写；CEX 数据为空。 |
-| `block_hash` | 区块哈希 | `Nullable(String)` | 否 | 对可能重组的链必须填写。 |
-| `finality` | 最终性状态 | `Nullable(String)` | 否 | 链上数据记录 `unfinalized`、`safe`、`finalized` 等适配器统一值；CEX 数据为空。 |
-| `source_payload_hash` | 原始响应哈希 | `Nullable(String)` | 否 | 用于定位同一来源响应和审计解析变化；不在热表保存原始 JSON。 |
+| `block_height` | 区块高度 | `Nullable(UInt64)` | 否 | 单次链上读取填写精确位置；多次非原子链上读取只能填写文档明确说明的批次结束锚点；不返回区块位置的官方聚合 API 和 CEX 数据为空。 |
+| `block_hash` | 区块哈希 | `Nullable(String)` | 否 | 与 `block_height` 对应。不能用另一次无关请求的区块哈希冒充来源位置。 |
+| `finality` | 最终性状态 | `Nullable(String)` | 否 | 直接链上读取记录 `unfinalized`、`safe`、`finalized`；非原子批次的固化结束锚点记录 `finalized_anchor`；来源无法给出时为空。 |
+| `source_payload_hash` | 来源响应哈希 | `Nullable(String)` | 否 | 对本行使用的一个或多个完整原始响应按适配器固定顺序做 SHA-256；不在热表保存原始 JSON。 |
 
 数组必须满足：
 
@@ -106,7 +111,7 @@ yield_route 1 ---- N yield_observation
 length(reward_asset_keys) = length(reward_component_rates)
 ```
 
-来源只公布总 APR/APY、不公布分项时，仍保存已知的 `reward_asset_keys`，对应的 `reward_component_rates` 元素为空；`reported_rate` 保存总利率。来源连奖励资产都没有说明时，两个数组才都留空。
+来源只公布总 APR/APY、不公布分项时，仍保存已知的 `reward_asset_keys`，对应的 `reward_component_rates` 元素为空；`rate` 保存总利率。来源连奖励资产都没有说明时，两个数组才都留空。
 
 ## 5. 理论筛选规则
 
@@ -126,7 +131,7 @@ length(reward_asset_keys) = length(reward_component_rates)
 - 固定提前退出罚金：`fixed`，仍可作为候选；
 - 浮动借贷利率但没有规则内本金扣减：本金损失为 `none`，利率方式为 `variable`，仍可作为候选。
 
-固定费用不直接改写 `reported_rate`。查询端必须根据投入金额和持有时间计算净收益，避免把一次性费用错误地年化：
+固定费用不直接改写 `rate`。查询端必须根据投入金额和持有时间计算净收益，避免把一次性费用错误地年化：
 
 ```text
 持有期净收益
@@ -144,10 +149,10 @@ length(reward_asset_keys) = length(reward_component_rates)
 1. 所有时间统一为 UTC，所有金额和利率使用十进制定点数；
 2. 每次有效的计划采集都保存完整观测，即使数值与上一条相同；
 3. 产品暂停、额度耗尽或关闭时继续写入状态观测，不能把“没有变化”和“没有采到”混为一谈；
-4. 链上历史必须记录区块位置。未最终确认数据不得与最终数据混淆；
+4. 直接读取链节点或合约时必须记录区块位置。官方聚合 API 如果不返回区块位置，必须留空，不能拿另一次节点请求的区块号冒充其数据位置；
 5. CEX Earn 等来源通常无法完整补回历史，应从接入之日起持续采集，不得根据当前页面伪造过去 APY；
 6. LST、计息凭证等产品应优先保存可复算实际收益的 `exposure_ratio`，不能只保存页面展示的 APY；
-7. `reported_rate` 是来源事实，净收益、统一期限排名和对冲可行性由查询或分析层计算。
+7. `rate_origin=reported` 的 `rate` 是来源事实；`rate_origin=derived` 的 `rate` 必须只使用同批公开输入按适配器固定公式计算。净收益、统一期限排名和对冲可行性由查询或分析层计算。
 
 ## 7. 第一版不做的内容
 
