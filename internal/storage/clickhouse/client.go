@@ -8,6 +8,7 @@ import (
 
 	ch "github.com/ClickHouse/clickhouse-go/v2"
 	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
+	marketyield "github.com/vphoenix/crypto-market-info/internal/yield"
 )
 
 type Config struct {
@@ -31,6 +32,10 @@ type Client struct {
 	yieldLoaded  bool
 	yieldByKey   map[string]yieldRouteEntry
 	yieldMaxID   uint32
+	// yieldRouteInsert is a narrow fault-injection seam for the ambiguous case
+	// where ClickHouse commits a route batch but the client receives an error.
+	// Production always leaves it nil and uses insertYieldRoutes directly.
+	yieldRouteInsert func(context.Context, []marketyield.YieldRouteDefinition) error
 }
 
 func Open(ctx context.Context, cfg Config) (*Client, error) {

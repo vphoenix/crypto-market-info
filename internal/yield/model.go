@@ -95,10 +95,14 @@ func (r YieldRouteDefinition) Identity() string {
 
 func (r YieldRouteDefinition) SameDefinition(other YieldRouteDefinition) bool {
 	r.ID, other.ID = 0, 0
-	// Display names, source URLs, and collection_enabled are intentionally not
-	// versioned in the first implementation. Identity and economic semantics are.
+	// Display names, source URLs, and collection_enabled are mutable metadata.
+	// Identity and economic semantics must remain stable for a reused route ID.
 	return r.Identity() == other.Identity() && r.ProviderType == other.ProviderType && r.YieldType == other.YieldType &&
 		stringValue(r.PriceExposureAsset) == stringValue(other.PriceExposureAsset) && r.IncomeSource == other.IncomeSource
+}
+
+func (r YieldRouteDefinition) SameMetadata(other YieldRouteDefinition) bool {
+	return r.ProductName == other.ProductName && r.SourceURL == other.SourceURL && r.CollectionEnabled == other.CollectionEnabled
 }
 
 func (r YieldRouteDefinition) ValidateDefinition() error {
@@ -134,6 +138,7 @@ func (b *Batch) NormalizeAndValidate() error {
 		return fmt.Errorf("yield batch requires source, collected_at, and at least one item")
 	}
 	seen := make(map[string]struct{}, len(b.Items))
+	definitions := make(map[string]YieldRouteDefinition, len(b.Items))
 	for index := range b.Items {
 		item := &b.Items[index]
 		item.Route.ID = 0
@@ -145,13 +150,34 @@ func (b *Batch) NormalizeAndValidate() error {
 		if err := item.Route.ValidateDefinition(); err != nil {
 			return fmt.Errorf("item %d route: %w", index, err)
 		}
-		key := item.Route.Identity() + fmt.Sprintf("\x00%d", item.Observation.TierNo)
+		identity := item.Route.Identity()
+		if previous, ok := definitions[identity]; ok && (!item.Route.SameDefinition(previous) || !item.Route.SameMetadata(previous)) {
+			return fmt.Errorf("item %d route differs from another tier of the same identity", index)
+		}
+		definitions[identity] = item.Route
+		key := identity + fmt.Sprintf("\x00%d", item.Observation.TierNo)
 		if _, ok := seen[key]; ok {
 			return fmt.Errorf("item %d duplicates route identity and tier", index)
 		}
 		seen[key] = struct{}{}
 		if err := item.Observation.Validate(); err != nil {
 			return fmt.Errorf("item %d observation: %w", index, err)
+		}
+	}
+	return nil
+}
+
+// NormalizeAndValidateForLiveCollection applies the additional evidence rule
+// for batches produced by an automatic, real-time collector. The ordinary
+// NormalizeAndValidate path intentionally permits a nil payload hash so that
+// historical migrations and explicit manual imports remain possible.
+func (b *Batch) NormalizeAndValidateForLiveCollection() error {
+	if err := b.NormalizeAndValidate(); err != nil {
+		return err
+	}
+	for index := range b.Items {
+		if b.Items[index].Observation.SourcePayloadHash == nil {
+			return fmt.Errorf("item %d observation: source_payload_hash is required for live collection", index)
 		}
 	}
 	return nil
@@ -224,6 +250,9 @@ func (o YieldObservation) Validate() error {
 	if o.Finality != nil && o.BlockHeight == nil {
 		return fmt.Errorf("finality requires a block anchor")
 	}
+	if o.SourcePayloadHash != nil && !isLowerSHA256Hex(*o.SourcePayloadHash) {
+		return fmt.Errorf("source_payload_hash must be 64 lowercase hexadecimal characters")
+	}
 	return nil
 }
 
@@ -270,6 +299,17 @@ func stringValue(value *string) string {
 		return ""
 	}
 	return *value
+}
+func isLowerSHA256Hex(value string) bool {
+	if len(value) != sha256.Size*2 {
+		return false
+	}
+	for _, character := range value {
+		if (character < '0' || character > '9') && (character < 'a' || character > 'f') {
+			return false
+		}
+	}
+	return true
 }
 func oneOf(value string, allowed ...string) bool {
 	for _, candidate := range allowed {

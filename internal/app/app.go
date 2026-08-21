@@ -178,6 +178,10 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 		runner := &marketyield.Runner{Source: "tron-native-staking", Collector: collector, Sink: store, Interval: 6 * time.Hour, RetryInterval: 10 * time.Minute, Logger: logger}
 		components = append(components, component{name: "TRON staking yield", run: runner.Run})
 	}
+	return runComponents(ctx, components)
+}
+
+func runComponents(ctx context.Context, components []component) error {
 	runCtx, cancel := context.WithCancel(ctx)
 	defer cancel()
 	errors := make(chan error, len(components))

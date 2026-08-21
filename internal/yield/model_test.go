@@ -1,6 +1,7 @@
 package yield
 
 import (
+	"strings"
 	"testing"
 	"time"
 
@@ -29,5 +30,59 @@ func TestHashPayloadsFramesNamesAndLengths(t *testing.T) {
 	b := HashPayloads(Payload{Name: "ab", Body: []byte("c")})
 	if a == b || len(a) != 64 {
 		t.Fatalf("ambiguous hashes: %q %q", a, b)
+	}
+}
+
+func TestLiveBatchRequiresValidPayloadHashWhileImportMayOmitIt(t *testing.T) {
+	at := time.Now().UTC()
+	batch := validRunnerBatch(at)
+	batch.Items[0].Observation.SourcePayloadHash = nil
+	if err := batch.NormalizeAndValidate(); err != nil {
+		t.Fatalf("historical or manual import rejected: %v", err)
+	}
+	if err := batch.NormalizeAndValidateForLiveCollection(); err == nil {
+		t.Fatal("live batch without source_payload_hash was accepted")
+	}
+
+	for _, invalid := range []string{strings.Repeat("a", 63), strings.Repeat("A", 64), strings.Repeat("g", 64)} {
+		batch = validRunnerBatch(at)
+		batch.Items[0].Observation.SourcePayloadHash = &invalid
+		if err := batch.NormalizeAndValidateForLiveCollection(); err == nil {
+			t.Fatalf("invalid live hash %q was accepted", invalid)
+		}
+	}
+
+	batch = validRunnerBatch(at)
+	if err := batch.NormalizeAndValidateForLiveCollection(); err != nil {
+		t.Fatalf("valid live batch rejected: %v", err)
+	}
+}
+
+func TestBatchRequiresOneRouteDefinitionAcrossTiers(t *testing.T) {
+	at := time.Now().UTC()
+	consistent := validRunnerBatch(at)
+	secondTier := consistent.Items[0]
+	secondTier.Observation.TierNo = 2
+	consistent.Items = append(consistent.Items, secondTier)
+	if err := consistent.NormalizeAndValidate(); err != nil {
+		t.Fatalf("same route definition across tiers rejected: %v", err)
+	}
+
+	for name, change := range map[string]func(*YieldRouteDefinition){
+		"metadata": func(route *YieldRouteDefinition) { route.ProductName = "different name" },
+		"stable definition": func(route *YieldRouteDefinition) {
+			route.IncomeSource = "protocol_fee"
+		},
+	} {
+		t.Run(name, func(t *testing.T) {
+			batch := validRunnerBatch(at)
+			conflictingTier := batch.Items[0]
+			conflictingTier.Observation.TierNo = 2
+			change(&conflictingTier.Route)
+			batch.Items = append(batch.Items, conflictingTier)
+			if err := batch.NormalizeAndValidate(); err == nil {
+				t.Fatal("conflicting route definition across tiers was accepted")
+			}
+		})
 	}
 }

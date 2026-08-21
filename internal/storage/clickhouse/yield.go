@@ -55,7 +55,7 @@ func (c *Client) registerYieldRoutes(ctx context.Context, items []marketyield.Co
 	}
 	next := c.yieldMaxID
 	ids := make([]uint32, len(items))
-	newRoutes := make([]marketyield.YieldRouteDefinition, 0)
+	routesToWrite := make([]marketyield.YieldRouteDefinition, 0)
 	for index, item := range items {
 		definition := item.Route
 		definition.ID = 0
@@ -65,6 +65,13 @@ func (c *Client) registerYieldRoutes(ctx context.Context, items []marketyield.Co
 				return nil, fmt.Errorf("yield route %s conflicts with stored definition", definition.ProductCode)
 			}
 			ids[index] = stored.ID
+			if !definition.SameMetadata(stored.Definition) {
+				definition.ID = stored.ID
+				entryDefinition := definition
+				entryDefinition.ID = 0
+				working[key] = yieldRouteEntry{ID: stored.ID, Definition: entryDefinition}
+				routesToWrite = append(routesToWrite, definition)
+			}
 			continue
 		}
 		if next == math.MaxUint32 {
@@ -76,16 +83,23 @@ func (c *Client) registerYieldRoutes(ctx context.Context, items []marketyield.Co
 		entryDefinition := definition
 		entryDefinition.ID = 0
 		working[key] = yieldRouteEntry{ID: next, Definition: entryDefinition}
-		newRoutes = append(newRoutes, definition)
+		routesToWrite = append(routesToWrite, definition)
 	}
-	if len(newRoutes) > 0 {
-		if err := c.retryWrite(ctx, func(writeCtx context.Context) error { return c.insertYieldRoutes(writeCtx, newRoutes) }); err != nil {
+	if len(routesToWrite) > 0 {
+		if err := c.retryWrite(ctx, func(writeCtx context.Context) error { return c.writeYieldRoutes(writeCtx, routesToWrite) }); err != nil {
 			c.yieldLoaded = false
 			return nil, fmt.Errorf("register yield routes: %w", err)
 		}
 	}
 	c.yieldByKey, c.yieldMaxID, c.yieldLoaded = working, next, true
 	return ids, nil
+}
+
+func (c *Client) writeYieldRoutes(ctx context.Context, routes []marketyield.YieldRouteDefinition) error {
+	if c.yieldRouteInsert != nil {
+		return c.yieldRouteInsert(ctx, routes)
+	}
+	return c.insertYieldRoutes(ctx, routes)
 }
 
 func (c *Client) loadYieldRoutesLocked(ctx context.Context) error {

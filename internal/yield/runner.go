@@ -51,7 +51,7 @@ func (r *Runner) Run(ctx context.Context) error {
 				wait = retry
 				continue
 			}
-			if err = batch.NormalizeAndValidate(); err != nil {
+			if err = batch.NormalizeAndValidateForLiveCollection(); err != nil {
 				logger.Error("yield collection failed", "source", r.Source, "stage", "validate", "duration", now().Sub(started), "error", err)
 				wait = retry
 				continue

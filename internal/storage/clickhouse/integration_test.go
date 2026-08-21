@@ -62,6 +62,33 @@ func TestClickHouseYieldTablesRouteReuseAndBatchWrites(t *testing.T) {
 			t.Fatalf("concurrent yield write: %v", writeErr)
 		}
 	}
+	var originalRouteID uint32
+	if err = client.conn.QueryRow(context.Background(), `SELECT yield_route_id FROM `+client.table("yield_route")+` FINAL WHERE provider='JustLend' AND product_code='justlend-000'`).Scan(&originalRouteID); err != nil {
+		t.Fatal(err)
+	}
+	updatedBatch := justLendBatch
+	updatedBatch.Items = append([]marketyield.CollectedYield(nil), justLendBatch.Items...)
+	updatedBatch.Items[0].Route.ProductName = "Updated JustLend name"
+	updatedBatch.Items[0].Route.SourceURL = "https://example.invalid/updated"
+	updatedBatch.Items[0].Route.CollectionEnabled = false
+	if err = client.WriteYieldBatch(context.Background(), updatedBatch); err != nil {
+		t.Fatalf("update route metadata: %v", err)
+	}
+	var updatedRouteID uint32
+	var productName, sourceURL string
+	var collectionEnabled bool
+	if err = client.conn.QueryRow(context.Background(), `SELECT yield_route_id,product_name,source_url,collection_enabled FROM `+client.table("yield_route")+` FINAL WHERE yield_route_id=?`, originalRouteID).Scan(&updatedRouteID, &productName, &sourceURL, &collectionEnabled); err != nil {
+		t.Fatal(err)
+	}
+	if updatedRouteID != originalRouteID || productName != "Updated JustLend name" || sourceURL != "https://example.invalid/updated" || collectionEnabled {
+		t.Fatalf("route metadata was not replaced under the same id: id=%d name=%q url=%q enabled=%v", updatedRouteID, productName, sourceURL, collectionEnabled)
+	}
+	conflictingBatch := updatedBatch
+	conflictingBatch.Items = append([]marketyield.CollectedYield(nil), updatedBatch.Items...)
+	conflictingBatch.Items[0].Route.IncomeSource = "protocol_fee"
+	if err = client.WriteYieldBatch(context.Background(), conflictingBatch); err == nil {
+		t.Fatal("stable route definition conflict was accepted")
+	}
 	client.yieldMu.Lock()
 	client.yieldLoaded = false
 	client.yieldByKey = nil
@@ -86,6 +113,40 @@ func TestClickHouseYieldTablesRouteReuseAndBatchWrites(t *testing.T) {
 	}
 	if !nullComponent {
 		t.Fatal("nullable reward component did not round-trip as NULL")
+	}
+
+	// Simulate the ambiguous client outcome exactly: ClickHouse accepts the
+	// route insert, then the transport reports a timeout to the caller. The next
+	// write must discard the old registry state, reload FINAL, and reuse that ID.
+	ambiguousBatch := integrationYieldBatch("Ambiguous", "ambiguous", 1, yieldAt.Add(2*time.Hour))
+	previousAttempts := client.maxAttempts
+	client.maxAttempts = 1
+	client.yieldRouteInsert = func(writeCtx context.Context, routes []marketyield.YieldRouteDefinition) error {
+		if insertErr := client.insertYieldRoutes(writeCtx, routes); insertErr != nil {
+			return insertErr
+		}
+		return context.DeadlineExceeded
+	}
+	if err = client.WriteYieldBatch(context.Background(), ambiguousBatch); err == nil {
+		t.Fatal("simulated post-commit timeout was not returned")
+	}
+	client.yieldRouteInsert = nil
+	client.maxAttempts = previousAttempts
+	client.yieldMu.Lock()
+	loadedAfterTimeout := client.yieldLoaded
+	client.yieldMu.Unlock()
+	if loadedAfterTimeout {
+		t.Fatal("registry remained trusted after an ambiguous route write")
+	}
+	if err = client.WriteYieldBatch(context.Background(), ambiguousBatch); err != nil {
+		t.Fatalf("FINAL reload after ambiguous route write: %v", err)
+	}
+	var ambiguousRows, ambiguousIDs uint64
+	if err = client.conn.QueryRow(context.Background(), `SELECT count(),uniqExact(yield_route_id) FROM `+client.table("yield_route")+` FINAL WHERE provider='Ambiguous'`).Scan(&ambiguousRows, &ambiguousIDs); err != nil {
+		t.Fatal(err)
+	}
+	if ambiguousRows != 1 || ambiguousIDs != 1 {
+		t.Fatalf("ambiguous route was duplicated after FINAL reload: rows=%d ids=%d", ambiguousRows, ambiguousIDs)
 	}
 }
 
@@ -202,7 +263,8 @@ func integrationYieldBatch(provider, prefix string, count int, at time.Time) mar
 	for index := 0; index < count; index++ {
 		code := fmt.Sprintf("%s-%03d", prefix, index)
 		route := marketyield.YieldRouteDefinition{ProviderType: "native", Provider: provider, ProductCode: code, ProductName: code, YieldType: "native_staking", DepositAssetKey: "tron:mainnet:native:TRX", PositionAssetKey: "tron:mainnet:native:TRX", RedeemAssetKey: "tron:mainnet:native:TRX", IncomeSource: "issuance", SourceURL: "https://example.invalid", CollectionEnabled: true}
-		observation := marketyield.YieldObservation{ObservationTime: at, CollectedAt: at, TierNo: 1, TierMinAmount: decimal.Zero, TierMode: "none", Rate: &rate, RateKind: "apr", RateOrigin: "derived", RateMode: "variable", RewardAssetKeys: []string{"tron:mainnet:native:TRX"}, RewardComponentRates: []*decimal.Decimal{&rate}, RulePrincipalLossMode: "none", RuleEligibility: "candidate", Availability: "available"}
+		hash := marketyield.HashPayloads(marketyield.Payload{Name: code, Body: []byte("integration payload")})
+		observation := marketyield.YieldObservation{ObservationTime: at, CollectedAt: at, TierNo: 1, TierMinAmount: decimal.Zero, TierMode: "none", Rate: &rate, RateKind: "apr", RateOrigin: "derived", RateMode: "variable", RewardAssetKeys: []string{"tron:mainnet:native:TRX"}, RewardComponentRates: []*decimal.Decimal{&rate}, RulePrincipalLossMode: "none", RuleEligibility: "candidate", Availability: "available", SourcePayloadHash: &hash}
 		items = append(items, marketyield.CollectedYield{Route: route, Observation: observation})
 	}
 	return marketyield.Batch{Source: prefix, CollectedAt: at, Items: items}
