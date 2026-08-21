@@ -420,15 +420,6 @@ TRON_HTTP_URL=https://api.trongrid.io
 
 ClickHouse 集成测试验证建表、路线复用、四条 JustLend 批量写入和 127 条 TRON 批量写入，不启动真实网络请求。真实接口只做手工 smoke test，避免 CI 依赖第三方服务。
 
-截至 2026-08-21，上述四项代码和自动化测试差距已经补齐：
-
-1. writer 会在 `product_name`、`source_url` 或 `collection_enabled` 变化时复用原 `yield_route_id`，写入替换行并更新内存 registry；稳定定义冲突仍会在写观测前报错；
-2. 普通数据库写入路径仍允许 `source_payload_hash=NULL`，供历史迁移或明确的人工导入使用；实时 Runner 使用更严格的校验，要求每条观测都带 64 个小写十六进制字符的 SHA-256；
-3. ClickHouse 集成测试通过最小写入注入点真实执行“服务端已提交路线、客户端收到超时”，随后验证 writer 丢弃不确定的内存状态、从 `FINAL` 重载并复用已提交的 ID；该测试仍按项目惯例需要设置 `CLICKHOUSE_INTEGRATION=1`；
-4. Runner 单元测试覆盖 collector 首次失败后恢复；应用组件测试覆盖收益来源连续失败时，同进程的其他长期运行组件仍持续推进。
-
-真实第三方接口仍只做手工 smoke test；自动化测试不依赖 JustLend、TronGrid 或其他公网服务。
-
 ## 9. 实现顺序和完成标准
 
 按下面顺序实现，减少同时改动的范围：
