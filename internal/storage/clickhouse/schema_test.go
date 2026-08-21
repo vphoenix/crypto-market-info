@@ -10,11 +10,11 @@ func TestSchemaContainsCompleteWideBookAndRequiredEngines(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(statements) != 6 {
+	if len(statements) != 8 {
 		t.Fatalf("statements=%d", len(statements))
 	}
 	all := strings.Join(statements, "\n")
-	for _, required := range []string{"bid_price_01 Int64", "bid_qty_50 UInt64", "ask_price_50 Int64", "ask_qty_50 UInt64", "ReplacingMergeTree(is_actual)", "funding_time DateTime64(3, 'UTC')", "MODIFY COLUMN funding_time DateTime64(3, 'UTC')", "FINAL"} {
+	for _, required := range []string{"bid_price_01 Int64", "bid_qty_50 UInt64", "ask_price_50 Int64", "ask_qty_50 UInt64", "ReplacingMergeTree(is_actual)", "funding_time DateTime64(3, 'UTC')", "MODIFY COLUMN funding_time DateTime64(3, 'UTC')", "yield_route", "yield_observation", "reward_lengths", "FINAL"} {
 		if required == "FINAL" {
 			continue
 		}

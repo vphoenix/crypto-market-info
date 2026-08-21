@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/vphoenix/crypto-market-info/internal/config"
+	"github.com/vphoenix/crypto-market-info/internal/exchange"
 	"github.com/vphoenix/crypto-market-info/internal/exchange/binance"
 	"github.com/vphoenix/crypto-market-info/internal/exchange/okx"
 	"github.com/vphoenix/crypto-market-info/internal/funding"
@@ -15,6 +16,9 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/orderbook"
 	"github.com/vphoenix/crypto-market-info/internal/sampler"
 	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
+	marketyield "github.com/vphoenix/crypto-market-info/internal/yield"
+	"github.com/vphoenix/crypto-market-info/internal/yield/justlend"
+	"github.com/vphoenix/crypto-market-info/internal/yield/tron"
 )
 
 type component struct {
@@ -39,6 +43,9 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 	binanceClient.FuturesBaseURL = cfg.BinanceFuturesREST
 	okxClient := okx.NewClient()
 	okxClient.BaseURL = cfg.OKXREST
+	// OKX counts connection attempts across public websocket channels. Sharing one
+	// gate prevents book and funding runtimes from creating a reconnect burst.
+	okxConnectGate := exchange.NewRequestGate(500 * time.Millisecond)
 	type target struct {
 		definition model.Instrument
 		ws         string
@@ -73,7 +80,7 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 	if err = load("OKX", model.MarketPerpetual, cfg.OKXPerpSymbols, cfg.OKXWS, okxClient.Instruments); err != nil {
 		return err
 	}
-	if len(targets) == 0 {
+	if len(targets) == 0 && !cfg.JustLendYieldEnabled && !cfg.TRONStakingYieldEnabled {
 		return fmt.Errorf("no instruments are configured")
 	}
 	definitions := make([]model.Instrument, len(targets))
@@ -108,7 +115,7 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 				binanceFundingInstruments = append(binanceFundingInstruments, instrument)
 			}
 		} else {
-			runtime := &okx.Runtime{Instrument: instrument, Book: book, WSEndpoint: target.ws, Logger: logger}
+			runtime := &okx.Runtime{Instrument: instrument, Book: book, WSEndpoint: target.ws, ConnectGate: okxConnectGate, Logger: logger}
 			components = append(components, component{name: "okx " + instrument.ExchangeSymbol, run: runtime.Run})
 			if cfg.FundingEnabled && instrument.MarketType == model.MarketPerpetual {
 				fundingInstruments = append(fundingInstruments, instrument)
@@ -116,11 +123,13 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 			}
 		}
 	}
-	sampleEngine, err := sampler.NewEngine(sampleSources, store, cfg.MinuteQueueCapacity, logger)
-	if err != nil {
-		return err
+	if len(sampleSources) > 0 {
+		sampleEngine, sampleErr := sampler.NewEngine(sampleSources, store, cfg.MinuteQueueCapacity, logger)
+		if sampleErr != nil {
+			return sampleErr
+		}
+		components = append(components, component{name: "second sampler", run: sampleEngine.Run})
 	}
-	components = append(components, component{name: "second sampler", run: sampleEngine.Run})
 	if len(fundingInstruments) > 0 {
 		estimates := funding.NewEstimateStore()
 		scheduler := &funding.Scheduler{Instruments: fundingInstruments, Estimates: estimates, Sink: store, Logger: logger}
@@ -144,7 +153,7 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 		if len(okxFundingInstruments) > 0 {
 			worker := &funding.ConfirmationWorker{Exchange: "OKX", Provider: okxClient, Sink: store, QueueCapacity: queueCapacity, Logger: logger}
 			confirmationWorkers["OKX"] = worker
-			runtime := &okx.FundingRuntime{Instruments: okxFundingInstruments, Estimates: estimates, Confirmations: worker, WSEndpoint: cfg.OKXWS, Logger: logger}
+			runtime := &okx.FundingRuntime{Instruments: okxFundingInstruments, Estimates: estimates, Confirmations: worker, WSEndpoint: cfg.OKXWS, ConnectGate: okxConnectGate, Logger: logger}
 			components = append(components,
 				component{name: "OKX funding confirmation", run: worker.Run},
 				component{name: "OKX funding websocket", run: runtime.Run},
@@ -153,6 +162,21 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 		if err = funding.ScheduleStartupBackfill(ctx, pending, registered, confirmationWorkers); err != nil {
 			return err
 		}
+	}
+	if cfg.JustLendYieldEnabled || cfg.TRONStakingYieldEnabled {
+		if err = store.InitYieldRegistry(ctx); err != nil {
+			return err
+		}
+	}
+	if cfg.JustLendYieldEnabled {
+		collector := &justlend.Collector{Client: justlend.NewClient(cfg.JustLendBaseURL)}
+		runner := &marketyield.Runner{Source: "justlend", Collector: collector, Sink: store, Interval: time.Hour, RetryInterval: 10 * time.Minute, Logger: logger}
+		components = append(components, component{name: "JustLend yield", run: runner.Run})
+	}
+	if cfg.TRONStakingYieldEnabled {
+		collector := &tron.Collector{Client: tron.NewClient(cfg.TRONHTTPURL)}
+		runner := &marketyield.Runner{Source: "tron-native-staking", Collector: collector, Sink: store, Interval: 6 * time.Hour, RetryInterval: 10 * time.Minute, Logger: logger}
+		components = append(components, component{name: "TRON staking yield", run: runner.Run})
 	}
 	runCtx, cancel := context.WithCancel(ctx)
 	defer cancel()

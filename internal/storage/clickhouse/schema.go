@@ -80,6 +80,68 @@ PARTITION BY toYYYYMM(hour_time)
 ORDER BY (instrument_id, hour_time)`, db),
 		fmt.Sprintf(`ALTER TABLE %s.funding_rate_hourly
     MODIFY COLUMN funding_time DateTime64(3, 'UTC')`, db),
+		fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s.yield_route
+(
+    yield_route_id UInt32,
+    provider_type LowCardinality(String),
+    provider LowCardinality(String),
+    product_code String,
+    product_name String,
+    yield_type LowCardinality(String),
+    deposit_asset_key String,
+    position_asset_key String,
+    redeem_asset_key String,
+    network Nullable(String),
+    contract_address Nullable(String),
+    price_exposure_asset Nullable(String),
+    income_source LowCardinality(String),
+    source_url String,
+    collection_enabled Bool
+)
+ENGINE = ReplacingMergeTree
+ORDER BY yield_route_id`, db),
+		fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s.yield_observation
+(
+    yield_route_id UInt32,
+    observation_time DateTime64(3, 'UTC'),
+    collected_at DateTime64(3, 'UTC'),
+    tier_no UInt16,
+    tier_min_amount Decimal(38, 18),
+    tier_max_amount Nullable(Decimal(38, 18)),
+    tier_mode LowCardinality(String),
+    rate Nullable(Decimal(38, 18)),
+    rate_kind LowCardinality(String),
+    rate_origin LowCardinality(String),
+    rate_mode LowCardinality(String),
+    reward_asset_keys Array(String),
+    reward_component_rates Array(Nullable(Decimal(38, 18))),
+    entry_fee_rate Nullable(Decimal(38, 18)),
+    exit_fee_rate Nullable(Decimal(38, 18)),
+    fixed_penalty_rate Nullable(Decimal(38, 18)),
+    performance_fee_rate Nullable(Decimal(38, 18)),
+    entry_fee_amount Nullable(Decimal(38, 18)),
+    exit_fee_amount Nullable(Decimal(38, 18)),
+    fixed_fee_asset_key Nullable(String),
+    lock_seconds UInt64,
+    unbonding_seconds UInt64,
+    rule_principal_loss_mode LowCardinality(String),
+    fixed_principal_loss_rate Nullable(Decimal(38, 18)),
+    rule_eligibility LowCardinality(String),
+    eligibility_reason Nullable(String),
+    exposure_ratio Nullable(Decimal(38, 18)),
+    capacity Nullable(Decimal(38, 18)),
+    remaining_capacity Nullable(Decimal(38, 18)),
+    tvl Nullable(Decimal(38, 18)),
+    availability LowCardinality(String),
+    block_height Nullable(UInt64),
+    block_hash Nullable(String),
+    finality Nullable(String),
+    source_payload_hash Nullable(String),
+    CONSTRAINT reward_lengths CHECK length(reward_asset_keys) = length(reward_component_rates)
+)
+ENGINE = ReplacingMergeTree
+PARTITION BY toYYYYMM(observation_time)
+ORDER BY (yield_route_id, observation_time, tier_no)`, db),
 	}, nil
 }
 

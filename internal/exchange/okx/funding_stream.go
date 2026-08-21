@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
+	"github.com/vphoenix/crypto-market-info/internal/exchange"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 )
 
@@ -80,16 +81,18 @@ func ParseFundingUpdates(payload []byte, instruments map[string]model.Instrument
 }
 
 type FundingRuntime struct {
-	Instruments    []model.Instrument
-	Estimates      FundingEstimateSink
-	Confirmations  FundingConfirmationScheduler
-	WSEndpoint     string
-	Dialer         *websocket.Dialer
-	PingInterval   time.Duration
-	SilenceTimeout time.Duration
-	ReconnectBase  time.Duration
-	ReconnectMax   time.Duration
-	Logger         *slog.Logger
+	Instruments     []model.Instrument
+	Estimates       FundingEstimateSink
+	Confirmations   FundingConfirmationScheduler
+	WSEndpoint      string
+	Dialer          *websocket.Dialer
+	PingInterval    time.Duration
+	SilenceTimeout  time.Duration
+	ReconnectBase   time.Duration
+	ReconnectMax    time.Duration
+	ConnectGate     exchange.WaitGate
+	ReconnectJitter func(time.Duration) time.Duration
+	Logger          *slog.Logger
 }
 
 func (r *FundingRuntime) Run(ctx context.Context) error {
@@ -104,7 +107,7 @@ func (r *FundingRuntime) Run(ctx context.Context) error {
 		}
 		r.Estimates.MarkUnavailable(r.instrumentIDs())
 		r.Logger.Error("OKX funding websocket disconnected", "error", err)
-		if !waitFunding(ctx, delay) {
+		if !exchange.Wait(ctx, r.ReconnectJitter(delay)) {
 			return nil
 		}
 		delay *= 2
@@ -155,6 +158,12 @@ func (r *FundingRuntime) defaults() error {
 	if r.ReconnectMax <= 0 {
 		r.ReconnectMax = 30 * time.Second
 	}
+	if r.ConnectGate == nil {
+		r.ConnectGate = exchange.NewRequestGate(500 * time.Millisecond)
+	}
+	if r.ReconnectJitter == nil {
+		r.ReconnectJitter = exchange.AddJitter
+	}
 	if r.Logger == nil {
 		r.Logger = slog.Default()
 	}
@@ -162,6 +171,9 @@ func (r *FundingRuntime) defaults() error {
 }
 
 func (r *FundingRuntime) runConnection(ctx context.Context) error {
+	if err := r.ConnectGate.Wait(ctx); err != nil {
+		return err
+	}
 	conn, response, err := r.Dialer.DialContext(ctx, r.WSEndpoint, http.Header{})
 	if err != nil {
 		if response != nil {
@@ -251,15 +263,4 @@ func (r *FundingRuntime) handlePayload(ctx context.Context, payload []byte, inst
 		}
 	}
 	return nil
-}
-
-func waitFunding(ctx context.Context, delay time.Duration) bool {
-	timer := time.NewTimer(delay)
-	defer timer.Stop()
-	select {
-	case <-ctx.Done():
-		return false
-	case <-timer.C:
-		return true
-	}
 }

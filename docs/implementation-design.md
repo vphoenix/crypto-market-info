@@ -1,12 +1,16 @@
 # 行情采集程序设计
 
-本文说明第一版程序如何实现 [市场数据存储数据字典](market-data-storage.md)。目标是复用 `crypto-arb-observer` 已验证的 Binance、OKX 接口代码，用尽量少的新组件完成公开行情采集、标准化、每秒采样、ClickHouse 存储和盘口回放。
+本文说明盘口和资金费率分支如何实现 [市场数据存储数据字典](market-data-storage.md)。目标是复用 `crypto-arb-observer` 已验证的 Binance、OKX 接口代码，用尽量少的新组件完成公开行情采集、标准化、每秒采样、ClickHouse 存储和盘口回放。
 
 本文是编程边界和实现顺序，不重复定义表字段；表结构与字段语义以数据字典为准。
 
-## 1. 第一版范围
+整个 `collector` 进程还包含 JustLend 和 TRON 收益分支。三类分支的组合、启动顺序、失败边界及未来其他数据的扩展原则见[系统总体架构](architecture.md)；收益分支细节见 [ARB-0016 TRX 收益采集实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)。
 
-第一版只实现：
+完整套利机会定义及 ARB-0002、ARB-0016、ARB-0022 来源资料见[套利机会与策略资料](arbitrage/README.md)。这些资料用于解释数据用途，不自动扩大本设计的第一版实现范围。
+
+## 1. 本文范围
+
+本文详细说明：
 
 - Binance 和 OKX；
 - 现货、Binance USDT-M 永续和 OKX USDT 线性永续的前 50 档 L2 盘口；
@@ -14,7 +18,7 @@
 - 每分钟完整盘口、分钟内秒级差量；
 - 从 ClickHouse 查询并恢复任意有效秒的盘口。
 
-第一版不实现：
+本文不说明：
 
 - 套利机会计算和自动下单；
 - Redis、消息队列和跨进程实时状态；
@@ -24,25 +28,20 @@
 
 ## 2. 程序结构
 
-采集程序采用单进程：
+采集程序采用单进程，盘口和资金费率是其中两个分支：
 
 ```text
-Binance / OKX REST 与 WebSocket
-              ↓
-         交易所适配器
-              ↓
-      标准化的整数 tick / lot
-              ↓
-       进程内本地 L2 盘口
-              ↓
-          每秒采样器
-              ↓
-       当前分钟内存缓冲
-              ↓
-        ClickHouse 批量写入
+collector
+├─ Binance / OKX 盘口
+│  └─ 适配器 → 标准化 tick/lot → 本地 L2
+│     → 每秒采样 → 分钟缓冲 → ClickHouse
+├─ Binance / OKX 资金费率
+│  └─ WebSocket 估算 + REST 实际确认 → ClickHouse
+└─ 收益 Runner
+   └─ 见 ARB-0016 TRX 收益采集实现设计
 ```
 
-Redis 不参与任何环节。最新盘口只存在于采集进程内存；数据库只保存已经结束的分钟和整点资金费率，不承担实时消息传递。
+Redis 不参与任何环节。最新盘口只存在于采集进程内存；数据库保存已经结束的分钟、整点资金费率和低频收益快照，不承担实时消息传递。
 
 建议的最小目录如下：
 
@@ -53,11 +52,13 @@ internal/exchange/binance/     Binance REST、WebSocket 和序列规则
 internal/exchange/okx/         OKX REST、WebSocket 和序列规则
 internal/orderbook/            本地 L2 状态、排序和前 50 档输出
 internal/sampler/              每秒采样、分钟缓冲和差量计算
+internal/funding/              资金费率调度和实际值确认
+internal/yield/                收益模型、Runner、JustLend 和 TRON 采集器
 internal/storage/clickhouse/   表初始化、批量写入和查询
 internal/replay/               分钟快照加差量回放
 ```
 
-暂不拆分多个可执行程序，也不为未来可能增加的数据库或交易所预先建立插件系统。
+暂不拆分多个可执行程序，也不为未来可能增加的数据库、交易所或数据类别预先建立插件系统。新增数据先实现一个真实来源；语义与现有表不同就建立自己的定类型模型和表，不建立通用 JSON 大表。
 
 ## 3. 旧项目代码复用
 
@@ -120,6 +121,14 @@ snapshot or update
 任何增量盘口队列都禁止使用“丢掉旧消息、只保留最新消息”的策略。队列满意味着连续性已经不可信，应失效并重建盘口。
 
 本地盘口不能只保留 50 档，否则边缘价位删除后无法补入原第 51 档。内部保留交易所快照支持的较深范围：Binance 使用 1000 档快照，OKX `books` 使用 400 档；每秒采样时才截取前 50 档。
+
+### 请求限频与重连
+
+- 通用 HTTP 客户端收到 `429` 或 `418` 后不做短间隔重试，而是读取 `Retry-After` 并启动交易所客户端级共享冷却；响应头缺失或无效时采用保守的 1 分钟冷却。同一客户端上的 metadata、盘口快照和资金费率请求都必须等待该冷却结束；
+- `500/502/503/504` 仍允许有限次数重试，但指数退避加入最多 25% 的正向随机抖动；
+- 所有 Binance 盘口 runtime 共用其客户端上的快照门控。无论首次启动还是断线重建，相邻 1000 档 REST 快照请求都至少间隔 1 秒；
+- 所有 OKX 盘口 runtime 与资金费率 runtime 共用一个 WebSocket 建连门控，相邻拨号至少间隔 500 毫秒；
+- Binance 盘口及 OKX 盘口、资金费率 WebSocket 的重连退避加入最多 25% 的正向随机抖动，避免网络恢复后保持同步。
 
 ## 5. 每秒采样和分钟缓冲
 
@@ -189,6 +198,8 @@ ClickHouse 的替换在后台合并时发生，不提供即时唯一约束。盘
 
 ## 9. 失败处理
 
+环境变量无法解析等配置加载错误、ClickHouse 初始化或交易所 metadata 启动失败会阻止整个进程启动。当前收益端点字符串不在启动阶段探测或验证；URL 格式、网络、解析或写入问题由收益 Runner 作为单轮失败记录并重试。进入运行状态后，盘口 runtime 负责短暂断线、序列断档和重新同步。任何组件意外返回不能内部恢复的错误时，主进程会取消其他组件并退出，长期运行应由外部进程守护器负责重启。完整边界和健康判断见[系统总体架构](architecture.md)。
+
 只保留影响数据正确性的状态：
 
 - `connecting`：尚未得到有效快照；
@@ -202,13 +213,15 @@ ClickHouse 的替换在后台合并时发生，不提供即时唯一约束。盘
 
 按以下顺序开发，每一步保持可测试：
 
-1. 建立 Go module、公共 model 和 ClickHouse 四张表；
+1. 建立 Go module、公共行情 model 和四张行情/资金费率表；
 2. 迁移 Binance、OKX metadata parser，写入 `instrument`；
 3. 泛化永续 L2 collector，接入进程内盘口；
 4. 补齐 Binance Spot 和 OKX Spot 前 50 档；
 5. 实现每秒采样、分钟缓冲和 ClickHouse 批量写入；
 6. 实现盘口查询与回放；
 7. 接入估算资金费率 WebSocket、延迟串行的实际费率 REST 确认和毫秒结算时间。
+
+收益两表、JustLend 和 TRON Runner 的实现顺序及完成标准单独记录在 [ARB-0016 TRX 收益采集实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)，两部分当前共同组成一个采集进程和六张核心表。
 
 第一版完成必须通过：
 

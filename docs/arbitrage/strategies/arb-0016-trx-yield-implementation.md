@@ -155,12 +155,12 @@ ORDER BY (yield_route_id, observation_time, tier_no);
 
 两个 Runner 共用同一个 ClickHouse yield writer。writer 在 schema 初始化后用 `FINAL` 一次加载已有路线，建立 identity ↔ ID 内存索引和当前最大 ID；路线登记由同一个 mutex 串行执行，并在锁内再次查内存索引。身份完全相同则复用 ID，否则使用当前最大 ID 加一，`0` 保留为无效值。这样无需数据库序列，也不会因 JustLend 与 TRON 同时首次写入而撞号。
 
-第一版不更新已有路线的显示名称；核心定义与已有行冲突时直接报错，避免为简单的展示变化设计版本系统。新路线用一个 ClickHouse batch 插入；插入失败时丢弃本次尚未提交的内存索引变化，并在下次分配 ID 前从 `FINAL` 重新加载，处理“服务端已写入但客户端收到超时”的情况。
+稳定定义与已有行冲突时直接报错。`product_name`、`source_url` 或 `collection_enabled` 变化时，writer 复用原 `yield_route_id` 并插入该 ID 的新版本，再更新内存 registry；查询用 `FINAL` 取得当前元数据，旧观测仍关联原 ID。新路线和元数据更新都使用 ClickHouse batch；插入失败时丢弃本次尚未提交的内存索引变化，并在下次登记前从 `FINAL` 重新加载，处理“服务端已写入但客户端收到超时”的情况。不增加单独的路线版本表。
 
 写入顺序固定为：
 
 1. 在不需要数据库 ID 的情况下校验整批路线定义和观测，包括枚举、十进制范围、时间、数组长度和必填字段；
-2. 在 route registry mutex 内登记本批次路线并取得 ID；
+2. 在 route registry mutex 内登记本批次路线并取得 ID；同一路线的可更新元数据变化时先写入新版本；
 3. 赋 ID 后再次校验 observation 与 route identity 的对应关系；
 4. 用一个 ClickHouse batch 写入全部 `yield_observation`；
 5. 写入失败时复用内存中的原批次重试，不能重新生成时间。
@@ -283,7 +283,7 @@ V2 的 `exposure_ratio=NULL` 是第一版已知限制：官方聚合接口没有
 6. 再次调用同一个 header-only `getblock`，取得批次结束时的固化区块头；
 7. 再次调用 `GET /wallet/getnextmaintenancetime`，要求 `num` 与第 1 步相同；不同表示 FullNode 采集期间跨过维护边界，整批丢弃。
 
-brokerage 不在 witness 列表里，因此确实需要 127 次轻量请求，但仍然只有一个循环和一个解析器。请求串行执行并共用 200 毫秒最小间隔，每 6 小时约用半分钟；不为这点流量增加 worker pool。
+brokerage 不在 witness 列表里，因此确实需要 127 次轻量请求，但仍然只有一个循环和一个解析器。请求串行执行并共用 500 毫秒最小间隔；仅限频等待就约 65 秒，加上网络耗时后通常超过 1 分钟。每 6 小时才运行一次，不为这点流量增加 worker pool。
 
 一次成功的原生质押快照必须恰好包含 127 名、127 个 brokerage、所需链参数和相同的维护周期。任意一项失败则整批不写，10 分钟后由 Runner 重试；不拿上一轮佣金或票数冒充当前值。这样同一个 `observation_time` 下的 127 行天然代表完整排名快照。
 
@@ -389,15 +389,15 @@ TRON_STAKING_YIELD_ENABLED=false
 TRON_HTTP_URL=https://api.trongrid.io
 ```
 
-采集间隔和失败重试先使用代码默认值，不增加更多环境变量。URL 可配置是为了测试和切换兼容节点。两个开关默认关闭，完成测试后由部署配置明确开启。
+采集间隔和失败重试先使用代码默认值，不增加更多环境变量。URL 可配置是为了测试和切换兼容节点。两个开关默认关闭，完成测试后由部署配置明确开启。当前配置加载器只解析开关等定类型值，不在启动阶段验证或探测收益 URL；格式错误或不可达 URL 会在首次采集时成为单轮错误并进入重试。
 
-`app.Run` 在 ClickHouse schema 初始化后装配启用的 Runner。收益 Runner 内部吞掉单轮网络/解析/写入错误并记录日志，只有配置无效或 `context` 取消才结束；因此 JustLend 或 TronGrid 短时不可用不会关闭 Binance/OKX 盘口采集。
+`app.Run` 在 ClickHouse schema 初始化后装配启用的 Runner。收益 Runner 内部处理单轮 URL、网络、解析或写入错误并记录日志，随后等待重试；`context` 取消时结束。因此 JustLend 或 TronGrid 短时不可用不会关闭 Binance/OKX 盘口采集。
 
 ## 8. 校验、日志和测试
 
 日志只记录 `source`、endpoint、采集阶段、耗时、路线数和错误，不记录完整大响应。解析失败的响应最多记录截断后的 512 字节，沿用现有 HTTP 工具的限制。
 
-最低单元测试：
+下面是实现设计要求的最低自动化测试清单，不表示当前代码已经覆盖每一项：
 
 1. JustLend V1/V2 成功码不同，HTTP 200 业务错误不能写库；
 2. sTRX、jTRX、jsTRX、V2 Vault 的产品地址、底层资产地址、symbol 和 decimals 必须一起匹配；
@@ -411,12 +411,21 @@ TRON_HTTP_URL=https://api.trongrid.io
 10. 使用官方奖励示例验证 APR 公式的中间结果；
 11. 127 个 brokerage 中任意一个失败、两次下一维护时间不同或固化 anchor 无效时不产生残缺批次；专门覆盖 FullNode 已越过维护点而 SolidityNode 在批次中从上一周期追到当前周期的失败用例；
 12. 相同路线身份在重试和重启后复用 ID，新 SR 地址得到新 ID；
-13. JustLend 与 TRON 并发登记新路线时 ID 不重复，路由插入超时后会从 `FINAL` 重载；
-14. 非法 observation 不会先写入 route；observation batch 重试保持原 `observation_time` 和 `collected_at`；
-15. 查询 `FINAL` 后同一 `(yield_route_id, observation_time, tier_no)` 只有一个逻辑版本；
-16. Runner 单轮失败不会退出，也不会影响现有盘口组件；待写批次成功补写后会按是否过期决定立即采集。
+13. JustLend 与 TRON 并发登记新路线时 ID 不重复；真实模拟“服务端已写入、客户端收到超时”后会从 `FINAL` 重载；
+14. 同一路线的 `product_name`、`source_url`、`collection_enabled` 变化时复用 ID 并更新当前元数据，稳定定义冲突仍被拒绝；
+15. 实时 collector 缺少 `source_payload_hash` 时拒绝整批，历史或人工导入路径仍可显式保留空值；
+16. 非法 observation 不会先写入 route；observation batch 重试保持原 `observation_time` 和 `collected_at`；
+17. 查询 `FINAL` 后同一 `(yield_route_id, observation_time, tier_no)` 只有一个逻辑版本；
+18. Runner 的采集失败和写入失败都不会退出；待写批次成功补写后会按是否过期决定立即采集；收益来源连续失败不会影响同进程盘口组件。
 
-ClickHouse 集成测试只需验证建表、路线复用、四条 JustLend 批量写入和 127 条 TRON 批量写入，不启动真实网络请求。真实接口只做一个手工 smoke test，避免 CI 依赖第三方服务。
+ClickHouse 集成测试验证建表、路线复用、四条 JustLend 批量写入和 127 条 TRON 批量写入，不启动真实网络请求。真实接口只做手工 smoke test，避免 CI 依赖第三方服务。
+
+截至 2026-08-21，当前实现已覆盖主要解析、计算、批量写入和 writer 写失败后的原批次重试，但还有以下已知代码/测试差距；文档在此记录目标语义，不把它们写成已经完成：
+
+1. writer 尚未写回同一 ID 的可更新路线元数据，数据库会保留首次写入的 `product_name`、`source_url` 和 `collection_enabled`；
+2. JustLend 与 TRON collector 当前都会填写 `source_payload_hash`，但公共 model 尚未对所有实时 collector 强制非空；
+3. 路线登记集成测试只通过手工清空内存 registry 验证重载，没有真实模拟“服务端提交成功、客户端超时”；
+4. Runner 自动化测试覆盖写入失败重试，尚未单独覆盖 collector 失败后恢复，也没有进程级测试证明收益来源连续失败时盘口仍持续运行。
 
 ## 9. 实现顺序和完成标准
 

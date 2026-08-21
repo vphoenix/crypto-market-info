@@ -31,7 +31,19 @@ yield_route 1 ---- N yield_observation
 
 表名：`yield_route`
 
-用途：保存收益产品的稳定身份和资产路径。同一产品的利率、额度、费用、锁仓期或罚没规则发生变化时，继续使用原 `yield_route_id` 并写入新的观测；交易场所、产品代码、所在网络、核心合约或存入/赎回资产发生变化时，分配新的 `yield_route_id`。
+用途：保存收益产品的稳定身份、资产路径和当前采集元数据。同一产品的利率、额度、费用、锁仓期或罚没规则发生变化时，继续使用原 `yield_route_id` 并写入新的观测；交易场所、产品代码、所在网络、核心合约或存入/赎回资产发生变化时，分配新的 `yield_route_id`。
+
+路线身份固定为：
+
+```text
+(provider, product_code, network, contract_address,
+ deposit_asset_key, position_asset_key, redeem_asset_key)
+```
+
+路线字段分为两类：
+
+- 稳定定义：身份字段以及 `provider_type`、`yield_type`、`price_exposure_asset` 和 `income_source`。同一身份下稳定定义冲突时拒绝写入；如果产品确实改变了这些经济语义，适配器必须用新的产品代码、合约或资产路径形成新身份和新 ID。
+- 可更新元数据：`product_name`、`source_url`、`collection_enabled`。这些值变化时复用原 `yield_route_id`，向 `ReplacingMergeTree` 写入该 ID 的新版本，查询使用 `FINAL` 取得当前值，历史观测仍关联同一个 ID。
 
 主键：`yield_route_id`
 
@@ -41,7 +53,7 @@ yield_route 1 ---- N yield_observation
 | `provider_type` | 提供者类型 | `String` | 是 | `native`、`cex` 或 `protocol`。DEX 上的借贷、质押等归为 `protocol`。 |
 | `provider` | 提供者 | `String` | 是 | 例如 `TRON`、`Aave`、`JustLend`、`Binance`。 |
 | `product_code` | 产品代码 | `String` | 是 | 数据源中的稳定产品代码；没有官方代码时使用适配器定义且不可复用的代码。 |
-| `product_name` | 产品名称 | `String` | 是 | 便于检查的产品名称。不能单独作为唯一键。 |
+| `product_name` | 产品名称 | `String` | 是 | 当前用于检查的显示名称。不能单独作为唯一键；名称变化时更新同一路线。 |
 | `yield_type` | 收益类型 | `String` | 是 | 第一版允许 `native_staking`、`liquid_staking`、`lending`、`fee_share`、`resource_rental`、`single_asset_incentive`、`stablecoin_savings`、`cex_earn`。 |
 | `deposit_asset_key` | 存入资产 | `String` | 是 | 精确到网络和合约的资产标识，不能只写可能跨链重复的币种符号。 |
 | `position_asset_key` | 收益持仓资产 | `String` | 是 | 存入后实际持有或锁定的资产。原生质押可与存入资产相同；LST、jToken、Vault 份额必须写对应网络和合约。 |
@@ -50,8 +62,8 @@ yield_route 1 ---- N yield_observation
 | `contract_address` | 核心合约地址 | `Nullable(String)` | 否 | 链上产品的主合约地址；原生质押和纯 CEX 产品可以为空。 |
 | `price_exposure_asset` | 价格暴露币种 | `Nullable(String)` | 否 | 需要关联现有现货或合约行情进行价格对冲的经济资产，例如 `wstETH` 产品填写 `ETH`。按当前模型无需对冲的稳定币产品为空。 |
 | `income_source` | 收益来源 | `String` | 是 | `issuance`、`borrow_interest`、`protocol_fee`、`resource_rent`、`offchain_interest`、`subsidy` 或 `combined`。只描述收入来自哪里，不代表安全判断。 |
-| `source_url` | 主数据源 | `String` | 是 | 官方 API、合约或产品页面。适配器可以在不改变路线身份的情况下更新访问地址。 |
-| `collection_enabled` | 是否采集 | `Boolean` | 是 | 是否仍按计划采集。产品关闭后保留历史行并设为 `0`。 |
+| `source_url` | 主数据源 | `String` | 是 | 当前官方 API、合约或产品页面。访问地址变化时更新同一路线，不分配新 ID。 |
+| `collection_enabled` | 是否继续采集 | `Boolean` | 是 | `1` 表示适配器仍计划采集该路线；`0` 表示路线已从采集计划退役。产品临时暂停或关闭首先写入 `availability` 状态；确定不再轮询后才把本字段更新为 `0`，历史行和观测不删除。 |
 
 ### 3.1 资产标识
 
@@ -103,7 +115,7 @@ yield_route 1 ---- N yield_observation
 | `block_height` | 区块高度 | `Nullable(UInt64)` | 否 | 单次链上读取填写精确位置；多次非原子链上读取只能填写文档明确说明的批次结束锚点；不返回区块位置的官方聚合 API 和 CEX 数据为空。 |
 | `block_hash` | 区块哈希 | `Nullable(String)` | 否 | 与 `block_height` 对应。不能用另一次无关请求的区块哈希冒充来源位置。 |
 | `finality` | 最终性状态 | `Nullable(String)` | 否 | 直接链上读取记录 `unfinalized`、`safe`、`finalized`；非原子批次的固化结束锚点记录 `finalized_anchor`；来源无法给出时为空。 |
-| `source_payload_hash` | 来源响应哈希 | `Nullable(String)` | 否 | 对本行使用的一个或多个完整原始响应按适配器固定顺序做 SHA-256；不在热表保存原始 JSON。 |
+| `source_payload_hash` | 来源响应哈希 | `Nullable(String)` | 否 | 对本行使用的一个或多个完整原始响应按适配器固定顺序做 SHA-256。物理上允许为空只为兼容历史或人工导入；实时 collector 生成的每条观测必须填写 64 个小写十六进制字符。不在热表保存原始 JSON。 |
 
 数组必须满足：
 
@@ -112,6 +124,8 @@ length(reward_asset_keys) = length(reward_component_rates)
 ```
 
 来源只公布总 APR/APY、不公布分项时，仍保存已知的 `reward_asset_keys`，对应的 `reward_component_rates` 元素为空；`rate` 保存总利率。来源连奖励资产都没有说明时，两个数组才都留空。
+
+`source_payload_hash` 用来判断两条观测是否基于相同原始输入，并在解析规则有疑问时核对采集证据。它不能还原原始响应，也不参与路线身份、观测唯一键、写入去重、候选筛选或收益排名。需要完整复查原文时仍应另行保留冷存档；第一版不为此增加原始 JSON 热表。
 
 ## 5. 理论筛选规则
 
@@ -153,6 +167,7 @@ length(reward_asset_keys) = length(reward_component_rates)
 5. CEX Earn 等来源通常无法完整补回历史，应从接入之日起持续采集，不得根据当前页面伪造过去 APY；
 6. LST、计息凭证等产品应优先保存可复算实际收益的 `exposure_ratio`，不能只保存页面展示的 APY；
 7. `rate_origin=reported` 的 `rate` 是来源事实；`rate_origin=derived` 的 `rate` 必须只使用同批公开输入按适配器固定公式计算。净收益、统一期限排名和对冲可行性由查询或分析层计算。
+8. 实时 collector 的每条观测都必须填写 `source_payload_hash`；只有历史迁移或明确标记的人工导入可以为空。
 
 ## 7. 第一版不做的内容
 

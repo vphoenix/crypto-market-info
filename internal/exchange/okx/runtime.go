@@ -10,21 +10,24 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
+	"github.com/vphoenix/crypto-market-info/internal/exchange"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 	"github.com/vphoenix/crypto-market-info/internal/orderbook"
 )
 
 type Runtime struct {
-	Instrument     model.Instrument
-	Book           *orderbook.Book
-	WSEndpoint     string
-	Dialer         *websocket.Dialer
-	QueueCapacity  int
-	PingInterval   time.Duration
-	SilenceTimeout time.Duration
-	ReconnectBase  time.Duration
-	ReconnectMax   time.Duration
-	Logger         *slog.Logger
+	Instrument      model.Instrument
+	Book            *orderbook.Book
+	WSEndpoint      string
+	Dialer          *websocket.Dialer
+	QueueCapacity   int
+	PingInterval    time.Duration
+	SilenceTimeout  time.Duration
+	ReconnectBase   time.Duration
+	ReconnectMax    time.Duration
+	ConnectGate     exchange.WaitGate
+	ReconnectJitter func(time.Duration) time.Duration
+	Logger          *slog.Logger
 }
 
 func (r *Runtime) Run(ctx context.Context) error {
@@ -39,12 +42,8 @@ func (r *Runtime) Run(ctx context.Context) error {
 		}
 		r.Book.MarkInvalid(err.Error())
 		r.Logger.Error("OKX book connection invalidated", "instrument_id", r.Instrument.ID, "symbol", r.Instrument.ExchangeSymbol, "error", err)
-		timer := time.NewTimer(delay)
-		select {
-		case <-ctx.Done():
-			timer.Stop()
+		if !exchange.Wait(ctx, r.ReconnectJitter(delay)) {
 			return nil
-		case <-timer.C:
 		}
 		delay *= 2
 		if delay > r.ReconnectMax {
@@ -79,6 +78,12 @@ func (r *Runtime) defaults() error {
 	if r.ReconnectMax <= 0 {
 		r.ReconnectMax = 30 * time.Second
 	}
+	if r.ConnectGate == nil {
+		r.ConnectGate = exchange.NewRequestGate(500 * time.Millisecond)
+	}
+	if r.ReconnectJitter == nil {
+		r.ReconnectJitter = exchange.AddJitter
+	}
 	if r.Logger == nil {
 		r.Logger = slog.Default()
 	}
@@ -87,6 +92,9 @@ func (r *Runtime) defaults() error {
 
 func (r *Runtime) runConnection(ctx context.Context) error {
 	r.Book.MarkResyncing("connecting OKX websocket")
+	if err := r.ConnectGate.Wait(ctx); err != nil {
+		return err
+	}
 	conn, response, err := r.Dialer.DialContext(ctx, r.WSEndpoint, http.Header{})
 	if err != nil {
 		if response != nil {

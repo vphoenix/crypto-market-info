@@ -11,20 +11,24 @@ import (
 )
 
 type Config struct {
-	ClickHouse          chstore.Config
-	BinanceSpotSymbols  []string
-	BinancePerpSymbols  []string
-	OKXSpotSymbols      []string
-	OKXPerpSymbols      []string
-	BinanceSpotREST     string
-	BinanceFuturesREST  string
-	BinanceSpotWS       string
-	BinanceFuturesWS    string // USDⓈ-M high-frequency public streams such as diff depth.
-	BinanceMarketWS     string // USDⓈ-M regular market streams such as mark price.
-	OKXREST             string
-	OKXWS               string
-	FundingEnabled      bool
-	MinuteQueueCapacity int
+	ClickHouse              chstore.Config
+	BinanceSpotSymbols      []string
+	BinancePerpSymbols      []string
+	OKXSpotSymbols          []string
+	OKXPerpSymbols          []string
+	BinanceSpotREST         string
+	BinanceFuturesREST      string
+	BinanceSpotWS           string
+	BinanceFuturesWS        string // USDⓈ-M high-frequency public streams such as diff depth.
+	BinanceMarketWS         string // USDⓈ-M regular market streams such as mark price.
+	OKXREST                 string
+	OKXWS                   string
+	FundingEnabled          bool
+	JustLendYieldEnabled    bool
+	JustLendBaseURL         string
+	TRONStakingYieldEnabled bool
+	TRONHTTPURL             string
+	MinuteQueueCapacity     int
 }
 
 func Load() (Config, error) {
@@ -37,6 +41,14 @@ func Load() (Config, error) {
 	if err != nil {
 		return Config{}, err
 	}
+	justLendYield, err := boolean("JUSTLEND_YIELD_ENABLED", false)
+	if err != nil {
+		return Config{}, err
+	}
+	tronYield, err := boolean("TRON_STAKING_YIELD_ENABLED", false)
+	if err != nil {
+		return Config{}, err
+	}
 	return Config{
 		ClickHouse:         chstore.Config{Addresses: addresses, Database: value("CLICKHOUSE_DATABASE", "crypto_market_info"), Username: value("CLICKHOUSE_USERNAME", "default"), Password: os.Getenv("CLICKHOUSE_PASSWORD"), DialTimeout: 5 * time.Second, WriteTimeout: 10 * time.Second, MaxAttempts: 3, RetryDelay: 250 * time.Millisecond},
 		BinanceSpotSymbols: list("BINANCE_SPOT_SYMBOLS", "BTCUSDT"), BinancePerpSymbols: list("BINANCE_PERP_SYMBOLS", "BTCUSDT"),
@@ -45,7 +57,8 @@ func Load() (Config, error) {
 		BinanceSpotWS: value("BINANCE_SPOT_WS_URL", "wss://stream.binance.com:443/ws"), BinanceFuturesWS: value("BINANCE_FUTURES_WS_URL", "wss://fstream.binance.com/public/ws"),
 		BinanceMarketWS: value("BINANCE_FUTURES_MARKET_WS_URL", "wss://fstream.binance.com/market/ws"),
 		OKXREST:         value("OKX_REST_URL", "https://www.okx.com"), OKXWS: value("OKX_WS_URL", "wss://ws.okx.com:8443/ws/v5/public"),
-		FundingEnabled: funding, MinuteQueueCapacity: queue,
+		FundingEnabled: funding, JustLendYieldEnabled: justLendYield, JustLendBaseURL: value("JUSTLEND_BASE_URL", "https://openapi.just.network"),
+		TRONStakingYieldEnabled: tronYield, TRONHTTPURL: value("TRON_HTTP_URL", "https://api.trongrid.io"), MinuteQueueCapacity: queue,
 	}, nil
 }
 

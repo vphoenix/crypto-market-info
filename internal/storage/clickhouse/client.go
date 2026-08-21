@@ -3,6 +3,7 @@ package clickhouse
 import (
 	"context"
 	"fmt"
+	"sync"
 	"time"
 
 	ch "github.com/ClickHouse/clickhouse-go/v2"
@@ -26,6 +27,10 @@ type Client struct {
 	writeTimeout time.Duration
 	maxAttempts  int
 	retryDelay   time.Duration
+	yieldMu      sync.Mutex
+	yieldLoaded  bool
+	yieldByKey   map[string]yieldRouteEntry
+	yieldMaxID   uint32
 }
 
 func Open(ctx context.Context, cfg Config) (*Client, error) {

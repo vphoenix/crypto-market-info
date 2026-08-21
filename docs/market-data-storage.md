@@ -1,10 +1,12 @@
 # 市场数据存储数据字典
 
-本数据字典定义当前阶段的四个核心表：交易标的表 `instrument`、分钟完整盘口表 `order_book_minute`、分钟内秒级差量表 `order_book_second_delta` 和整点资金费率表 `funding_rate_hourly`。
+本数据字典定义当前阶段的六个核心表：交易标的表 `instrument`、分钟完整盘口表 `order_book_minute`、分钟内秒级差量表 `order_book_second_delta`、整点资金费率表 `funding_rate_hourly`、收益路线表 `yield_route` 和收益观测表 `yield_observation`。
+
+这些表在整个采集进程中的位置及以后增加其他数据时的扩展原则见[系统总体架构](architecture.md)。
 
 所有时间均为 UTC。盘口快照和差量中的价格、数量均为整数：价格使用 `price_tick`，数量使用 `qty_lot`；不得使用字符串价格或二进制浮点数。用于定义换算单位的元数据使用十进制定点数 `Decimal`。
 
-`instrument_id` 是交易流的唯一标识，必须区分交易所、市场类型、标的、结算币种及合约版本。例如，Binance 现货 `BTCUSDT`、Binance U 本位永续 `BTCUSDT`、OKX 现货 `BTC-USDT` 和 OKX 永续 `BTC-USDT-SWAP` 必须使用不同的 `instrument_id`。其定义保存在 `instrument` 表中，不在三个事实表中重复保存。
+`instrument_id` 是交易流的唯一标识，必须区分交易所、市场类型、标的、结算币种及合约版本。例如，Binance 现货 `BTCUSDT`、Binance U 本位永续 `BTCUSDT`、OKX 现货 `BTC-USDT` 和 OKX 永续 `BTC-USDT-SWAP` 必须使用不同的 `instrument_id`。其定义保存在 `instrument` 表中，不在各事实表中重复保存。
 
 ## 1. 交易标的表
 
@@ -176,7 +178,17 @@ length(ask_change_prices) = length(ask_change_qtys)
 
 本表不保存资金费率上下限、结算标记价格、结算状态、资金费间隔或分别独立的估算/实际费率字段。需要研究资金费规则边界、指数结算或标记价格偏差时，应另建低频规则或指数数据表，不扩充本表。
 
-## 5. 盘口恢复关系
+## 5. 收益路线与收益观测
+
+表名：`yield_route`、`yield_observation`
+
+两表为一对多关系：`yield_route` 保存收益产品及资产路径的稳定定义，`yield_observation` 通过 `yield_route_id` 保存该路线在某个 UTC 时刻、某个额度档位的完整收益快照。路线主键为 `yield_route_id`；观测逻辑键为 `(yield_route_id, observation_time, tier_no)`，并按 `observation_time` 的月份分区。
+
+收益数据量较低，每次有效采集直接保存完整快照，不使用盘口的分钟锚点和秒级差量编码。时间统一使用 UTC，利率、金额、费用、额度和兑换比例均使用 `Decimal`，不得经过二进制浮点数。
+
+收益路线和观测独立于盘口及资金费率表：收益率中不合并永续资金费率，也不重复保存做空市场深度。完整字段字典和筛选语义见 [ARB-0016 收益数据采集设计](arbitrage/strategies/arb-0016-yield-data.md)；TRX 的 JustLend 与原生质押采集、区块锚点和写入规则见 [ARB-0016 TRX 收益采集实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)。
+
+## 6. 盘口恢复关系
 
 查询某交易流在某分钟内第 `n` 秒（`0 ≤ n ≤ 59`）的盘口时：
 
