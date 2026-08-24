@@ -54,6 +54,7 @@ go run ./cmd/collector
 | `OKX_SPOT_SYMBOLS` | `BTC-USDT` | OKX 现货 |
 | `OKX_PERP_SYMBOLS` | `BTC-USDT-SWAP` | OKX USDT 线性永续 |
 | `FUNDING_ENABLED` | `true` | 是否采集永续资金费率 |
+| `MINUTE_QUEUE_CAPACITY` | `512` | 等待写入 ClickHouse 的分钟盘口批次数；队列满时丢弃新完成的分钟并记录错误 |
 | `JUSTLEND_YIELD_ENABLED` | `false` | 是否每小时采集四条 JustLend TRX 收益路线 |
 | `JUSTLEND_BASE_URL` | `https://openapi.just.network` | JustLend 公开 API 地址 |
 | `TRON_STAKING_YIELD_ENABLED` | `false` | 是否每 6 小时采集 TRON 前 127 名 SR 收益 |
@@ -89,7 +90,7 @@ go run ./cmd/collector \
 
 ```bash
 go test ./...
-CLICKHOUSE_INTEGRATION=1 go test ./internal/storage/clickhouse -run TestClickHouseDDLWriteReplayAndDayMeasurement -v
+CLICKHOUSE_INTEGRATION=1 go test ./internal/storage/clickhouse -v
 ```
 
 采集进程不使用 Redis、消息队列或套利计算组件。网络断开、序列断档、解析失败或增量队列溢出时，对应盘口立即失效，重新同步成功前不会被秒级采样器保存。

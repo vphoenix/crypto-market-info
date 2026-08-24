@@ -63,6 +63,19 @@ func TestClientRejectsInvalidV2TimestampAndTrailingJSON(t *testing.T) {
 	})
 }
 
+func TestClientRejectsMissingBusinessCode(t *testing.T) {
+	for name, overrides := range map[string]map[string]string{
+		"V1": {"/lend/strx": `{"data":{"stakeInfo":{}}}`},
+		"V2": {"/v2/index/vault/list": `{"timestamp":1000,"data":{"allVaults":{"list":[]}}}`},
+	} {
+		t.Run(name, func(t *testing.T) {
+			if _, err := fixtureClient(t, overrides, "").Fetch(context.Background()); err == nil {
+				t.Fatal("missing business code accepted")
+			}
+		})
+	}
+}
+
 func fixtureClient(t *testing.T, overrides map[string]string, v2 string) *Client {
 	t.Helper()
 	responses := map[string]string{"/lend/strx": `{"code":0,"data":{"stakeInfo":{}}}`, "/lend/jtoken": `{"code":0,"data":{"tokenList":[]}}`, "/mining/apy": `{"code":0,"data":{}}`, "/v2/index/vault/list": `{"code":200,"timestamp":1000,"data":{"allVaults":{"list":[]}}}`}

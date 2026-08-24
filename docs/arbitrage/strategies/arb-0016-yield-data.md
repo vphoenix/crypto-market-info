@@ -97,7 +97,7 @@ yield_route 1 ---- N yield_observation
 | `entry_fee_rate` | 进入费率 | `Nullable(Decimal)` | 否 | 按本金比例收取且规则确定的进入费用。 |
 | `exit_fee_rate` | 正常退出费率 | `Nullable(Decimal)` | 否 | 按本金比例收取且规则确定的正常退出费用。 |
 | `fixed_penalty_rate` | 固定罚金率 | `Nullable(Decimal)` | 否 | 提前退出等情况下事先确定的固定本金折损。没有则为 `0` 或空。 |
-| `performance_fee_rate` | 收益绩效费率 | `Nullable(Decimal)` | 否 | 按收益收取的固定比例，例如 10% 保存为 `0.10`。不得误写成本金退出费。 |
+| `performance_fee_rate` | 收益绩效费率 | `Nullable(Decimal)` | 否 | 按收益收取的固定比例，例如 10% 保存为 `0.10`。不得误写成本金退出费。该字段只记录费率规则，不表示来源公布的 `rate` 一定是扣费前或扣费后口径。 |
 | `entry_fee_amount` | 固定进入费用 | `Nullable(Decimal)` | 否 | 不按比例收取的固定进入费用。 |
 | `exit_fee_amount` | 固定退出费用 | `Nullable(Decimal)` | 否 | 不按比例收取的固定退出费用。 |
 | `fixed_fee_asset_key` | 固定费用币种 | `Nullable(String)` | 否 | `entry_fee_amount` 和 `exit_fee_amount` 的计价资产；没有固定金额费用时为空。 |
@@ -150,18 +150,21 @@ length(reward_asset_keys) = length(reward_component_rates)
 ```text
 持有期净收益
 = 持有期利息和奖励
+- 绩效费（仅当来源明确说明公布利率尚未扣除该费用时）
 - 进入费用
 - 正常退出费用
 - 适用的固定罚金
 - 固定本金折损
 ```
 
+如果来源没有说明公布的 APR/APY 是否已经扣除绩效费，系统只分别保存来源利率和绩效费率，不擅自相减，也不输出确定的净 APR/APY。这样可以避免把已经扣过的费用重复扣除。
+
 永续资金费率不进入该公式。本表也不保存“当前做空资金费率”或把它合并成净 APY。
 
 ## 6. 历史采集规则
 
 1. 所有时间统一为 UTC，所有金额和利率使用十进制定点数；
-2. 每次有效的计划采集都保存完整观测，即使数值与上一条相同；
+2. 每个不同的数据源逻辑快照都保存完整观测。相同 `(yield_route_id, observation_time, tier_no)` 表示同一产品、同一来源时刻和同一额度档位，重复采集时允许由 `ReplacingMergeTree FINAL` 合并为一个逻辑版本；
 3. 产品暂停、额度耗尽或关闭时继续写入状态观测，不能把“没有变化”和“没有采到”混为一谈；
 4. 直接读取链节点或合约时必须记录区块位置。官方聚合 API 如果不返回区块位置，必须留空，不能拿另一次节点请求的区块号冒充其数据位置；
 5. CEX Earn 等来源通常无法完整补回历史，应从接入之日起持续采集，不得根据当前页面伪造过去 APY；

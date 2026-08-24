@@ -37,7 +37,7 @@ func Load() (Config, error) {
 	if err != nil {
 		return Config{}, err
 	}
-	queue, err := integer("MINUTE_QUEUE_CAPACITY", 128)
+	queue, err := integer("MINUTE_QUEUE_CAPACITY", 512)
 	if err != nil {
 		return Config{}, err
 	}

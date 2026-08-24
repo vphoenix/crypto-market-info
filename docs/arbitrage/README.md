@@ -10,6 +10,7 @@
 | [`strategies/arb-0002-perp-funding-rate.md`](strategies/arb-0002-perp-funding-rate.md) | 跨平台永续资金费率错位套利 | ARB-0002 的策略、计算和风险参考 |
 | [`strategies/arb-0002-settlement-window-collection.md`](strategies/arb-0002-settlement-window-collection.md) | ARB-0002 结算窗口采集规则 | 旧项目的专项窗口采集方案参考 |
 | [`strategies/arb-0016-yield-data.md`](strategies/arb-0016-yield-data.md) | 可对冲本金的收益数据采集 | ARB-0016 的两表数据模型、理论筛选和历史采集规则 |
+| [`strategies/arb-0016-trx-yield-implementation.md`](strategies/arb-0016-trx-yield-implementation.md) | TRX 收益采集实现设计 | JustLend 与 TRON 原生质押的采集、校验和写入规则 |
 | [`strategies/arb-0022-spot-cross-cex.md`](strategies/arb-0022-spot-cross-cex.md) | 跨 CEX 同币种现货盘口价差套利 | ARB-0022 的策略和数据需求参考 |
 | [`legacy/arb-0002-settlement-window-implementation-plan.md`](legacy/arb-0002-settlement-window-implementation-plan.md) | 旧项目的 ARB-0002 窗口实现说明 | 仅用于理解可复用旧代码，不是本项目实现规范 |
 

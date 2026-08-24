@@ -89,24 +89,24 @@ func (c *Client) Fetch(ctx context.Context) (Snapshot, error) {
 		raw[index] = payload
 	}
 	var strx struct {
-		Code    int      `json:"code"`
+		Code    *int     `json:"code"`
 		Message string   `json:"message"`
 		Data    STRXData `json:"data"`
 	}
 	var tokens struct {
-		Code    int    `json:"code"`
+		Code    *int   `json:"code"`
 		Message string `json:"message"`
 		Data    struct {
 			TokenList []JToken `json:"tokenList"`
 		} `json:"data"`
 	}
 	var mining struct {
-		Code    int                          `json:"code"`
+		Code    *int                         `json:"code"`
 		Message string                       `json:"message"`
 		Data    map[string]map[string]string `json:"data"`
 	}
 	var vaults struct {
-		Code      int          `json:"code"`
+		Code      *int         `json:"code"`
 		Message   string       `json:"message"`
 		Timestamp stringNumber `json:"timestamp"`
 		Data      struct {
@@ -120,17 +120,29 @@ func (c *Client) Fetch(ctx context.Context) (Snapshot, error) {
 			return Snapshot{}, fmt.Errorf("decode %s: %w", paths[index], err)
 		}
 	}
-	if strx.Code != 0 {
-		return Snapshot{}, fmt.Errorf("%s business code %d: %s", paths[0], strx.Code, strx.Message)
+	if strx.Code == nil {
+		return Snapshot{}, fmt.Errorf("%s missing business code", paths[0])
 	}
-	if tokens.Code != 0 {
-		return Snapshot{}, fmt.Errorf("%s business code %d: %s", paths[1], tokens.Code, tokens.Message)
+	if *strx.Code != 0 {
+		return Snapshot{}, fmt.Errorf("%s business code %d: %s", paths[0], *strx.Code, strx.Message)
 	}
-	if mining.Code != 0 {
-		return Snapshot{}, fmt.Errorf("%s business code %d: %s", paths[2], mining.Code, mining.Message)
+	if tokens.Code == nil {
+		return Snapshot{}, fmt.Errorf("%s missing business code", paths[1])
 	}
-	if vaults.Code != 200 {
-		return Snapshot{}, fmt.Errorf("%s business code %d: %s", paths[3], vaults.Code, vaults.Message)
+	if *tokens.Code != 0 {
+		return Snapshot{}, fmt.Errorf("%s business code %d: %s", paths[1], *tokens.Code, tokens.Message)
+	}
+	if mining.Code == nil {
+		return Snapshot{}, fmt.Errorf("%s missing business code", paths[2])
+	}
+	if *mining.Code != 0 {
+		return Snapshot{}, fmt.Errorf("%s business code %d: %s", paths[2], *mining.Code, mining.Message)
+	}
+	if vaults.Code == nil {
+		return Snapshot{}, fmt.Errorf("%s missing business code", paths[3])
+	}
+	if *vaults.Code != 200 {
+		return Snapshot{}, fmt.Errorf("%s business code %d: %s", paths[3], *vaults.Code, vaults.Message)
 	}
 	if tokens.Data.TokenList == nil {
 		return Snapshot{}, fmt.Errorf("%s missing tokenList", paths[1])

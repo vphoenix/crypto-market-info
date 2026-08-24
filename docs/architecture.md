@@ -103,10 +103,10 @@ yield_route 1 ── N yield_observation
 
 短暂缺口必须如实保留，不能用上一批数据填成当前有效值。
 
-下面的命令可直接检查当前六张表、各盘口的最近一分钟、资金费率以及两个收益来源的最近完整批次。默认数据库名不是 `crypto_market_info` 时替换 `--database` 参数：
+下面的命令可直接检查当前六张表、各盘口的最近一分钟、资金费率以及两个收益来源的最近完整批次。盘口查询会列出 `instrument` 表中历史登记过的全部交易对；该表不保存启用状态，因此判断是否过期时，只检查当前 `BINANCE_SPOT_SYMBOLS`、`BINANCE_PERP_SYMBOLS`、`OKX_SPOT_SYMBOLS` 和 `OKX_PERP_SYMBOLS` 配置中启用的交易对，已经停采的历史行只供识别旧数据。默认数据库名不是 `crypto_market_info` 时替换 `--database` 参数：
 
 ```bash
-clickhouse-client --database crypto_market_info --multiquery <<'SQL'
+docker compose exec -T clickhouse clickhouse-client --database crypto_market_info --multiquery <<'SQL'
 SELECT count() AS core_tables_found
 FROM system.tables
 WHERE database = currentDatabase()
