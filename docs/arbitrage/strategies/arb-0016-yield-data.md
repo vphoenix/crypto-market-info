@@ -12,7 +12,10 @@ ARB-0016 先采集各种单资产收益产品的公开收益率和产品规则�
 
 本设计只采集公开数据，不执行质押、申购、赎回、借贷、对冲或交易。永续资金费率不计入收益产品的 APY；永续和交割合约盘口继续由现有行情表独立采集。
 
-TRX 第一版采集器的程序结构、接口映射和写入流程见 [ARB-0016 TRX 收益采集实现设计](arb-0016-trx-yield-implementation.md)。
+具体采集器的程序结构、接口映射和写入流程见：
+
+- [ARB-0016 TRX 收益采集实现设计](arb-0016-trx-yield-implementation.md)；
+- [ARB-0016 SOL 收益采集第一阶段实现设计](arb-0016-sol-yield-phase-1.md)。
 
 ## 2. 表关系
 
@@ -102,7 +105,7 @@ yield_route 1 ---- N yield_observation
 | `exit_fee_amount` | 固定退出费用 | `Nullable(Decimal)` | 否 | 不按比例收取的固定退出费用。 |
 | `fixed_fee_asset_key` | 固定费用币种 | `Nullable(String)` | 否 | `entry_fee_amount` 和 `exit_fee_amount` 的计价资产；没有固定金额费用时为空。 |
 | `lock_seconds` | 锁仓秒数 | `UInt64` | 是 | 申购后不能退出的确定时间；没有锁仓为 `0`。 |
-| `unbonding_seconds` | 解质押等待秒数 | `UInt64` | 是 | 发起正常退出后等待本金可用的确定时间；没有等待为 `0`。 |
+| `unbonding_seconds` | 解质押等待秒数 | `Nullable(UInt64)` | 否 | 发起正常退出后等待本金可用的时间；没有等待为 `0`，来源给出固定等待时填写正整数，存在等待但受 epoch 或全网 stake 变化影响而无法预先确定固定秒数时为空。 |
 | `rule_principal_loss_mode` | 规则内本金损失方式 | `String` | 是 | `none`、`fixed`、`variable` 或 `unknown`。只描述协议正常规则，不描述黑客攻击、交易所倒闭或跨链桥失效。 |
 | `fixed_principal_loss_rate` | 固定本金损失率 | `Nullable(Decimal)` | 否 | `rule_principal_loss_mode=fixed` 时记录确定损失比例；其他情况为空。 |
 | `rule_eligibility` | 理论筛选结果 | `String` | 是 | `candidate`、`rejected` 或 `unknown`。`variable` 本金损失必须为 `rejected`。 |

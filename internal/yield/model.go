@@ -54,7 +54,7 @@ type YieldObservation struct {
 	ExitFeeAmount          *decimal.Decimal
 	FixedFeeAssetKey       *string
 	LockSeconds            uint64
-	UnbondingSeconds       uint64
+	UnbondingSeconds       *uint64
 	RulePrincipalLossMode  string
 	FixedPrincipalLossRate *decimal.Decimal
 	RuleEligibility        string
@@ -152,12 +152,12 @@ func (b *Batch) NormalizeAndValidate() error {
 		}
 		identity := item.Route.Identity()
 		if previous, ok := definitions[identity]; ok && (!item.Route.SameDefinition(previous) || !item.Route.SameMetadata(previous)) {
-			return fmt.Errorf("item %d route differs from another tier of the same identity", index)
+			return fmt.Errorf("item %d route differs from another observation of the same identity", index)
 		}
 		definitions[identity] = item.Route
-		key := identity + fmt.Sprintf("\x00%d", item.Observation.TierNo)
+		key := identity + fmt.Sprintf("\x00%d\x00%d", item.Observation.ObservationTime.UnixMilli(), item.Observation.TierNo)
 		if _, ok := seen[key]; ok {
-			return fmt.Errorf("item %d duplicates route identity and tier", index)
+			return fmt.Errorf("item %d duplicates route identity, observation time, and tier", index)
 		}
 		seen[key] = struct{}{}
 		if err := item.Observation.Validate(); err != nil {

@@ -35,7 +35,7 @@ func TestCollectorBuildsFourRoutesAndDerivedComponents(t *testing.T) {
 		t.Fatalf("jtrx=%+v", jtrx)
 	}
 	combo := batch.Items[byCode["strx-jstrx"]].Observation
-	if combo.Rate.String() != "0.07" || combo.ExposureRatio.String() != "3" || combo.TVL.String() != "30" || combo.UnbondingSeconds != 14*86400 {
+	if combo.Rate.String() != "0.07" || combo.ExposureRatio.String() != "3" || combo.TVL.String() != "30" || combo.UnbondingSeconds == nil || *combo.UnbondingSeconds != 14*86400 {
 		t.Fatalf("combo=%+v", combo)
 	}
 	vault := batch.Items[byCode["trx-v2-vault"]].Observation

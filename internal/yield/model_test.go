@@ -86,3 +86,20 @@ func TestBatchRequiresOneRouteDefinitionAcrossTiers(t *testing.T) {
 		})
 	}
 }
+
+func TestBatchAllowsRouteHistoryButRejectsSameTimeAndTier(t *testing.T) {
+	at := time.Now().UTC()
+	batch := validRunnerBatch(at)
+	history := batch.Items[0]
+	history.Observation.ObservationTime = at.Add(-time.Hour)
+	batch.Items = append(batch.Items, history)
+	if err := batch.NormalizeAndValidate(); err != nil {
+		t.Fatalf("different history points rejected: %v", err)
+	}
+
+	duplicate := validRunnerBatch(at)
+	duplicate.Items = append(duplicate.Items, duplicate.Items[0])
+	if err := duplicate.NormalizeAndValidate(); err == nil {
+		t.Fatal("same route, observation time, and tier accepted")
+	}
+}

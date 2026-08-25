@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS yield_observation
     exit_fee_amount Nullable(Decimal(38, 18)),
     fixed_fee_asset_key Nullable(String),
     lock_seconds UInt64,
-    unbonding_seconds UInt64,
+    unbonding_seconds Nullable(UInt64),
     rule_principal_loss_mode LowCardinality(String),
     fixed_principal_loss_rate Nullable(Decimal(38, 18)),
     rule_eligibility LowCardinality(String),
@@ -259,7 +259,7 @@ tron:mainnet:trc20:TXDk8mbtRbXeYuMNS83CfKPaYYT8XWv9Hz
 
 只检查 jTRX 和 jsTRX 对应的 mining 内层对象；其中除 `USDD` 外出现任何奖励 key（即使值为 0）都视为接口语义变化并让整轮失败，避免 Go 解码器忽略新奖励币后少算收益。其他市场的奖励种类不影响本批次。
 
-sTRX 和组合路线的 `unbonding_seconds` 固定为 `14 × 86400`；jTRX、V2 Vault 为 0。jTRX/jsTRX 的 `cash` 是当前赎回流动性，不是申购剩余额度，不能写入 `remaining_capacity`。第一版四条路线的 `capacity` 和 `remaining_capacity` 均留空。
+sTRX 和组合路线的 `unbonding_seconds` 固定为 `14 × 86400`；jTRX、V2 Vault 为 0，均以非空值写入。字段本身为 `Nullable(UInt64)`，只是为了允许 SOL 等存在等待但无法预先确定固定秒数的路线写 `NULL`，不改变 TRX 原值。jTRX/jsTRX 的 `cash` 是当前赎回流动性，不是申购剩余额度，不能写入 `remaining_capacity`。第一版四条路线的 `capacity` 和 `remaining_capacity` 均留空。
 
 V2 的 `performanceFee` 是百分数 0–100，写入前除以 100，例如 `"10.00"` 写成 `0.10`。来源公布的 Vault `apy` 原样保存，采集器不自行再次扣除绩效费；是否已净额化由以后分析时依据届时官方定义处理。第一版不另抓 V2 mining，因此该 `rate` 只代表 Vault 列表接口公布的 APY，不声称包含接口之外的全部激励。
 

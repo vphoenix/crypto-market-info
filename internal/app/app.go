@@ -17,7 +17,11 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/sampler"
 	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
 	marketyield "github.com/vphoenix/crypto-market-info/internal/yield"
+	"github.com/vphoenix/crypto-market-info/internal/yield/jito"
 	"github.com/vphoenix/crypto-market-info/internal/yield/justlend"
+	"github.com/vphoenix/crypto-market-info/internal/yield/marinade"
+	"github.com/vphoenix/crypto-market-info/internal/yield/solana"
+	"github.com/vphoenix/crypto-market-info/internal/yield/solvalidator"
 	"github.com/vphoenix/crypto-market-info/internal/yield/tron"
 )
 
@@ -80,7 +84,7 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 	if err = load("OKX", model.MarketPerpetual, cfg.OKXPerpSymbols, cfg.OKXWS, okxClient.Instruments); err != nil {
 		return err
 	}
-	if len(targets) == 0 && !cfg.JustLendYieldEnabled && !cfg.TRONStakingYieldEnabled {
+	if len(targets) == 0 && !cfg.JustLendYieldEnabled && !cfg.TRONStakingYieldEnabled && !cfg.SOLYieldEnabled {
 		return fmt.Errorf("no instruments are configured")
 	}
 	definitions := make([]model.Instrument, len(targets))
@@ -163,7 +167,7 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 			return err
 		}
 	}
-	if cfg.JustLendYieldEnabled || cfg.TRONStakingYieldEnabled {
+	if cfg.JustLendYieldEnabled || cfg.TRONStakingYieldEnabled || cfg.SOLYieldEnabled {
 		if err = store.InitYieldRegistry(ctx); err != nil {
 			return err
 		}
@@ -177,6 +181,31 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 		collector := &tron.Collector{Client: tron.NewClient(cfg.TRONHTTPURL)}
 		runner := &marketyield.Runner{Source: "tron-native-staking", Collector: collector, Sink: store, Interval: 6 * time.Hour, RetryInterval: 10 * time.Minute, Logger: logger}
 		components = append(components, component{name: "TRON staking yield", run: runner.Run})
+	}
+	if cfg.SOLYieldEnabled {
+		rpcClient := solana.NewClient(cfg.SolanaRPCURL)
+		poolReader := &solana.Reader{Client: rpcClient}
+		solCollectors := []struct {
+			name, source string
+			collector    marketyield.Collector
+		}{
+			{name: "bSOL yield", source: "solana-stakepool-bsol", collector: &solana.BSOLCollector{Reader: poolReader}},
+			{name: "JitoSOL yield", source: "jitosol", collector: jito.NewCollector(cfg.JitoSOLBaseURL, poolReader)},
+			{name: "mSOL yield", source: "marinade-msol", collector: marinade.NewMSOLCollector(cfg.MarinadeAPYBaseURL, rpcClient)},
+			{name: "Marinade Native yield", source: "marinade-native", collector: marinade.NewNativeCollector(cfg.MarinadeAPYBaseURL)},
+		}
+		for _, item := range solCollectors {
+			runner := &marketyield.Runner{Source: item.source, Collector: item.collector, Sink: store, Interval: 6 * time.Hour, RetryInterval: 10 * time.Minute, Logger: logger}
+			components = append(components, component{name: item.name, run: runner.Run})
+		}
+		for _, voteAccount := range cfg.SOLValidatorVoteAccounts {
+			collector, collectorErr := solvalidator.NewCollector(cfg.MarinadeValidatorsBaseURL, voteAccount)
+			if collectorErr != nil {
+				return collectorErr
+			}
+			runner := &marketyield.Runner{Source: "solana-validator:" + voteAccount, Collector: collector, Sink: store, Interval: 6 * time.Hour, RetryInterval: 10 * time.Minute, Logger: logger}
+			components = append(components, component{name: "SOL validator " + voteAccount, run: runner.Run})
+		}
 	}
 	return runComponents(ctx, components)
 }

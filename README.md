@@ -6,7 +6,7 @@
 
 - Binance、OKX 现货及永续合约 L2 盘口；
 - Binance、OKX 永续资金费率；
-- JustLend TRX 收益和 TRON 原生质押收益。
+- JustLend TRX 收益、TRON 原生质押，以及 SOL 第一阶段收益。
 
 以后还可能增加其他 CEX、DEX、收益协议、链状态、桥和二层流通状态、借贷费率、指数价格、手续费或 gas 等公开数据。当前六张表不是最终边界；不同语义的数据应建立自己的定类型模型和表，不能全部塞入盘口或收益表。
 
@@ -59,12 +59,26 @@ go run ./cmd/collector
 | `JUSTLEND_BASE_URL` | `https://openapi.just.network` | JustLend 公开 API 地址 |
 | `TRON_STAKING_YIELD_ENABLED` | `false` | 是否每 6 小时采集 TRON 前 127 名 SR 收益 |
 | `TRON_HTTP_URL` | `https://api.trongrid.io` | TRON 公开 HTTP 节点地址 |
+| `SOL_YIELD_ENABLED` | `false` | 是否每 6 小时采集 bSOL、JitoSOL、mSOL、Marinade Native 及配置的验证者收益 |
+| `SOLANA_RPC_URL` | `https://api.mainnet.solana.com` | Solana mainnet finalized RPC 地址 |
+| `SOL_VALIDATOR_VOTE_ACCOUNTS` | `-` | 逗号分隔的原生质押 vote account 白名单；`-` 表示不采集验证者 |
+| `JITO_SOL_BASE_URL` | `https://kobe.mainnet.jito.network` | JitoSOL 官方公开 API 地址 |
+| `MARINADE_APY_BASE_URL` | `https://apy.marinade.finance` | mSOL 与 Marinade Native 官方 APY API 地址 |
+| `MARINADE_VALIDATORS_BASE_URL` | `https://validators-api.marinade.finance` | 原生验证者历史 API 地址 |
 
 同时启用当前两类 TRX 收益：
 
 ```bash
 JUSTLEND_YIELD_ENABLED=true \
 TRON_STAKING_YIELD_ENABLED=true \
+go run ./cmd/collector
+```
+
+启用 SOL 第一阶段；如需原生验证者历史，再填写 vote account 白名单：
+
+```bash
+SOL_YIELD_ENABLED=true \
+SOL_VALIDATOR_VOTE_ACCOUNTS=CcaHc2L43ZWjwCHART3oZoJvHLAe9hzT2DJNUpBzoTN1 \
 go run ./cmd/collector
 ```
 
@@ -97,7 +111,7 @@ CLICKHOUSE_INTEGRATION=1 go test ./internal/storage/clickhouse -v
 
 永续资金费率的估算值来自 Binance/OKX 各一条公共 WebSocket 连接；实际结算值在目标结算后第 2、5、15、60 分钟由各交易所独立的串行 REST worker 确认，相邻请求至少间隔 1 秒。WebSocket 推送过期时该整点留空，不回退到逐 instrument REST 轮询。
 
-JustLend 和 TRON 收益使用独立 Runner 与 ClickHouse writer。收益单轮失败只形成明确缺口并按规则重试，不会用旧利率冒充当前数据，也不会把永续资金费率加入收益率。
+JustLend、TRON 和 SOL 收益使用独立 Runner 与 ClickHouse writer。收益单轮失败只形成明确缺口并按规则重试，不会用旧利率冒充当前数据，也不会把永续资金费率加入收益率。
 
 ## 数据存储模型
 
@@ -126,4 +140,5 @@ JustLend 和 TRON 收益使用独立 Runner 与 ClickHouse writer。收益单轮
 - [套利机会与策略资料](docs/arbitrage/README.md)：`ARB-0001` 至 `ARB-0022` 机会库，以及 ARB-0002、ARB-0016、ARB-0022 的详细文档。
 - [ARB-0016 收益数据采集设计](docs/arbitrage/strategies/arb-0016-yield-data.md)：通用收益两表、字段含义和理论筛选规则。
 - [ARB-0016 TRX 收益采集实现设计](docs/arbitrage/strategies/arb-0016-trx-yield-implementation.md)：JustLend 与 TRON 原生质押的采集和写入细节。
+- [ARB-0016 SOL 收益采集第一阶段实现设计](docs/arbitrage/strategies/arb-0016-sol-yield-phase-1.md)：bSOL、JitoSOL、mSOL、验证者白名单和 Marinade Native 的采集细节。
 - [开发协作说明](AGENTS.md)：项目目标、数据不变量、实现和验证要求。

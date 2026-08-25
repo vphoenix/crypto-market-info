@@ -123,7 +123,7 @@ ORDER BY yield_route_id`, db),
     exit_fee_amount Nullable(Decimal(38, 18)),
     fixed_fee_asset_key Nullable(String),
     lock_seconds UInt64,
-    unbonding_seconds UInt64,
+    unbonding_seconds Nullable(UInt64),
     rule_principal_loss_mode LowCardinality(String),
     fixed_principal_loss_rate Nullable(Decimal(38, 18)),
     rule_eligibility LowCardinality(String),
@@ -142,6 +142,8 @@ ORDER BY yield_route_id`, db),
 ENGINE = ReplacingMergeTree
 PARTITION BY toYYYYMM(observation_time)
 ORDER BY (yield_route_id, observation_time, tier_no)`, db),
+		fmt.Sprintf(`ALTER TABLE %s.yield_observation
+    MODIFY COLUMN unbonding_seconds Nullable(UInt64)`, db),
 	}, nil
 }
 

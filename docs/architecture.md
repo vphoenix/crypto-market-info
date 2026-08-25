@@ -9,7 +9,8 @@
 - Binance、OKX 现货及永续 L2 盘口；
 - Binance、OKX 永续资金费率；
 - JustLend TRX 收益产品；
-- TRON 原生质押收益。
+- TRON 原生质押收益；
+- SOL 的 bSOL、JitoSOL、mSOL、配置白名单验证者和 Marinade Native 收益。
 
 项目以后还可能增加其他 CEX、DEX、收益协议、链状态、桥和二层流通状态、借贷费率、指数或标记价格、手续费及 gas 等公开数据。当前六张表不是最终边界，但新数据不能为了省表而被硬塞进语义不相符的旧表。
 
@@ -209,4 +210,5 @@ SQL
 - [市场数据存储数据字典](market-data-storage.md)：当前六张表及编码不变量。
 - [ARB-0016 收益数据采集设计](arbitrage/strategies/arb-0016-yield-data.md)：通用收益模型和理论筛选。
 - [ARB-0016 TRX 收益采集实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)：JustLend 与 TRON 采集细节。
+- [ARB-0016 SOL 收益采集第一阶段实现设计](arbitrage/strategies/arb-0016-sol-yield-phase-1.md)：SOL 第一阶段五类 Runner、来源校验和历史写入细节。
 - [套利机会与策略资料](arbitrage/README.md)：数据为何采集，不参与采集进程运行。

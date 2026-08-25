@@ -112,8 +112,15 @@ func route(code, name, kind, income, contract, position string) marketyield.Yiel
 }
 
 func baseObservation(at time.Time, rate *decimal.Decimal, origin string, rewardKeys []string, components []*decimal.Decimal, exposure, tvl *decimal.Decimal, loss, eligibility string, reason *string, unbonding uint64, hash *string) marketyield.YieldObservation {
+	var unbondingSeconds *uint64
+	if unbonding > 0 {
+		unbondingSeconds = &unbonding
+	} else {
+		zero := uint64(0)
+		unbondingSeconds = &zero
+	}
 	return marketyield.YieldObservation{ObservationTime: at, CollectedAt: at, TierNo: 1, TierMinAmount: decimal.Zero, TierMode: "none", Rate: rate, RateKind: "apy", RateOrigin: origin, RateMode: "variable",
-		RewardAssetKeys: rewardKeys, RewardComponentRates: components, UnbondingSeconds: unbonding, RulePrincipalLossMode: loss, RuleEligibility: eligibility,
+		RewardAssetKeys: rewardKeys, RewardComponentRates: components, UnbondingSeconds: unbondingSeconds, RulePrincipalLossMode: loss, RuleEligibility: eligibility,
 		EligibilityReason: reason, ExposureRatio: exposure, TVL: tvl, Availability: "available", SourcePayloadHash: hash}
 }
 

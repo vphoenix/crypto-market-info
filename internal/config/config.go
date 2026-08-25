@@ -8,27 +8,34 @@ import (
 	"time"
 
 	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
+	"github.com/vphoenix/crypto-market-info/internal/yield/solana"
 )
 
 type Config struct {
-	ClickHouse              chstore.Config
-	BinanceSpotSymbols      []string
-	BinancePerpSymbols      []string
-	OKXSpotSymbols          []string
-	OKXPerpSymbols          []string
-	BinanceSpotREST         string
-	BinanceFuturesREST      string
-	BinanceSpotWS           string
-	BinanceFuturesWS        string // USDⓈ-M high-frequency public streams such as diff depth.
-	BinanceMarketWS         string // USDⓈ-M regular market streams such as mark price.
-	OKXREST                 string
-	OKXWS                   string
-	FundingEnabled          bool
-	JustLendYieldEnabled    bool
-	JustLendBaseURL         string
-	TRONStakingYieldEnabled bool
-	TRONHTTPURL             string
-	MinuteQueueCapacity     int
+	ClickHouse                chstore.Config
+	BinanceSpotSymbols        []string
+	BinancePerpSymbols        []string
+	OKXSpotSymbols            []string
+	OKXPerpSymbols            []string
+	BinanceSpotREST           string
+	BinanceFuturesREST        string
+	BinanceSpotWS             string
+	BinanceFuturesWS          string // USDⓈ-M high-frequency public streams such as diff depth.
+	BinanceMarketWS           string // USDⓈ-M regular market streams such as mark price.
+	OKXREST                   string
+	OKXWS                     string
+	FundingEnabled            bool
+	JustLendYieldEnabled      bool
+	JustLendBaseURL           string
+	TRONStakingYieldEnabled   bool
+	TRONHTTPURL               string
+	SOLYieldEnabled           bool
+	SolanaRPCURL              string
+	SOLValidatorVoteAccounts  []string
+	JitoSOLBaseURL            string
+	MarinadeAPYBaseURL        string
+	MarinadeValidatorsBaseURL string
+	MinuteQueueCapacity       int
 }
 
 func Load() (Config, error) {
@@ -49,6 +56,21 @@ func Load() (Config, error) {
 	if err != nil {
 		return Config{}, err
 	}
+	solYield, err := boolean("SOL_YIELD_ENABLED", false)
+	if err != nil {
+		return Config{}, err
+	}
+	voteAccounts := list("SOL_VALIDATOR_VOTE_ACCOUNTS", "-")
+	seenVotes := make(map[string]struct{}, len(voteAccounts))
+	for _, vote := range voteAccounts {
+		if _, err = solana.DecodePubkey(vote); err != nil {
+			return Config{}, fmt.Errorf("SOL_VALIDATOR_VOTE_ACCOUNTS contains invalid vote account %q: %w", vote, err)
+		}
+		if _, exists := seenVotes[vote]; exists {
+			return Config{}, fmt.Errorf("SOL_VALIDATOR_VOTE_ACCOUNTS contains duplicate %q", vote)
+		}
+		seenVotes[vote] = struct{}{}
+	}
 	return Config{
 		ClickHouse:         chstore.Config{Addresses: addresses, Database: value("CLICKHOUSE_DATABASE", "crypto_market_info"), Username: value("CLICKHOUSE_USERNAME", "default"), Password: os.Getenv("CLICKHOUSE_PASSWORD"), DialTimeout: 5 * time.Second, WriteTimeout: 10 * time.Second, MaxAttempts: 3, RetryDelay: 250 * time.Millisecond},
 		BinanceSpotSymbols: list("BINANCE_SPOT_SYMBOLS", "BTCUSDT"), BinancePerpSymbols: list("BINANCE_PERP_SYMBOLS", "BTCUSDT"),
@@ -58,7 +80,10 @@ func Load() (Config, error) {
 		BinanceMarketWS: value("BINANCE_FUTURES_MARKET_WS_URL", "wss://fstream.binance.com/market/ws"),
 		OKXREST:         value("OKX_REST_URL", "https://www.okx.com"), OKXWS: value("OKX_WS_URL", "wss://ws.okx.com:8443/ws/v5/public"),
 		FundingEnabled: funding, JustLendYieldEnabled: justLendYield, JustLendBaseURL: value("JUSTLEND_BASE_URL", "https://openapi.just.network"),
-		TRONStakingYieldEnabled: tronYield, TRONHTTPURL: value("TRON_HTTP_URL", "https://api.trongrid.io"), MinuteQueueCapacity: queue,
+		TRONStakingYieldEnabled: tronYield, TRONHTTPURL: value("TRON_HTTP_URL", "https://api.trongrid.io"),
+		SOLYieldEnabled: solYield, SolanaRPCURL: value("SOLANA_RPC_URL", "https://api.mainnet.solana.com"), SOLValidatorVoteAccounts: voteAccounts,
+		JitoSOLBaseURL: value("JITO_SOL_BASE_URL", "https://kobe.mainnet.jito.network"), MarinadeAPYBaseURL: value("MARINADE_APY_BASE_URL", "https://apy.marinade.finance"),
+		MarinadeValidatorsBaseURL: value("MARINADE_VALIDATORS_BASE_URL", "https://validators-api.marinade.finance"), MinuteQueueCapacity: queue,
 	}, nil
 }
 
