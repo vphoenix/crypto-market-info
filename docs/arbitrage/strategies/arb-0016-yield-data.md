@@ -15,7 +15,8 @@ ARB-0016 先采集各种单资产收益产品的公开收益率和产品规则�
 具体采集器的程序结构、接口映射和写入流程见：
 
 - [ARB-0016 TRX 收益采集实现设计](arb-0016-trx-yield-implementation.md)；
-- [ARB-0016 SOL 收益采集第一阶段实现设计](arb-0016-sol-yield-phase-1.md)。
+- [ARB-0016 SOL 收益采集第一阶段实现设计](arb-0016-sol-yield-phase-1.md)；
+- [ARB-0016 SOL 收益采集第二阶段实现设计](arb-0016-sol-yield-phase-2.md)。
 
 ## 2. 表关系
 
