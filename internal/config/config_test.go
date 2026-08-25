@@ -13,11 +13,13 @@ func TestLoadYieldConfiguration(t *testing.T) {
 	t.Setenv("JITO_SOL_BASE_URL", "https://jito.test")
 	t.Setenv("MARINADE_APY_BASE_URL", "https://apy.test")
 	t.Setenv("MARINADE_VALIDATORS_BASE_URL", "https://validators.test")
+	t.Setenv("KAMINO_BASE_URL", "https://kamino.test")
+	t.Setenv("SAVE_BASE_URL", "https://save.test")
 	cfg, err := Load()
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !cfg.JustLendYieldEnabled || cfg.JustLendBaseURL != "https://justlend.test" || !cfg.TRONStakingYieldEnabled || cfg.TRONHTTPURL != "https://tron.test" || !cfg.SOLYieldEnabled || cfg.SolanaRPCURL != "https://solana.test" || len(cfg.SOLValidatorVoteAccounts) != 1 || cfg.JitoSOLBaseURL != "https://jito.test" || cfg.MarinadeAPYBaseURL != "https://apy.test" || cfg.MarinadeValidatorsBaseURL != "https://validators.test" {
+	if !cfg.JustLendYieldEnabled || cfg.JustLendBaseURL != "https://justlend.test" || !cfg.TRONStakingYieldEnabled || cfg.TRONHTTPURL != "https://tron.test" || !cfg.SOLYieldEnabled || cfg.SolanaRPCURL != "https://solana.test" || len(cfg.SOLValidatorVoteAccounts) != 1 || cfg.JitoSOLBaseURL != "https://jito.test" || cfg.MarinadeAPYBaseURL != "https://apy.test" || cfg.MarinadeValidatorsBaseURL != "https://validators.test" || cfg.KaminoBaseURL != "https://kamino.test" || cfg.SaveBaseURL != "https://save.test" {
 		t.Fatalf("yield config=%+v", cfg)
 	}
 }

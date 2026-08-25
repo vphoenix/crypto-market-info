@@ -16,6 +16,10 @@ import (
 )
 
 func stakePoolFixture(t *testing.T, mint string) []byte {
+	return stakePoolFixtureVariant(t, mint, false)
+}
+
+func stakePoolFixtureVariant(t *testing.T, mint string, allOptionalFields bool) []byte {
 	t.Helper()
 	mintKey, err := DecodePubkey(mint)
 	if err != nil {
@@ -33,23 +37,40 @@ func stakePoolFixture(t *testing.T, mint string) []byte {
 		data = append(data, encoded[:]...)
 	}
 	fee := func(denominator, numerator uint64) { put64(denominator); put64(numerator) }
+	optionalPubkey := func() {
+		if allOptionalFields {
+			data = append(data, 1)
+			data = append(data, make([]byte, 32)...)
+			return
+		}
+		data = append(data, 0)
+	}
+	futureFee := func() {
+		if allOptionalFields {
+			data = append(data, 1)
+			fee(1000, 1)
+			return
+		}
+		data = append(data, 0)
+	}
 	put64(100_044)
 	put64(100_000)
 	put64(9)
 	data = append(data, make([]byte, 8+8+32)...)
 	fee(10, 1)
-	data = append(data, 0)    // next epoch fee
-	data = append(data, 0, 0) // preferred validators
+	futureFee()      // next epoch fee
+	optionalPubkey() // preferred deposit validator
+	optionalPubkey() // preferred withdraw validator
 	fee(1000, 2)
 	fee(1000, 3)
-	data = append(data, 0) // next withdrawal fee
+	futureFee()            // next withdrawal fee
 	data = append(data, 0) // referral
-	data = append(data, 0) // SOL deposit authority
+	optionalPubkey()       // SOL deposit authority
 	fee(1000, 4)
 	data = append(data, 0) // SOL referral
-	data = append(data, 0) // SOL withdrawal authority
+	optionalPubkey()       // SOL withdrawal authority
 	fee(1000, 5)
-	data = append(data, 0) // next SOL withdrawal fee
+	futureFee() // next SOL withdrawal fee
 	put64(100_000)
 	put64(100_000)
 	data = append(data, make([]byte, 611-len(data))...)
@@ -65,6 +86,9 @@ func TestParseStakePoolStrictlyReadsRequiredFields(t *testing.T) {
 	if state.TotalLamports != 100_044 || state.PoolTokenSupply != 100_000 || state.LastUpdateEpoch != 9 || state.EpochFee.Numerator != 1 || state.StakeWithdrawalFee.Numerator != 3 || state.SOLDepositFee.Numerator != 4 {
 		t.Fatalf("state=%+v", state)
 	}
+	if _, err = ParseStakePool(stakePoolFixtureVariant(t, BSOLMintAddress, true)); err != nil {
+		t.Fatalf("maximum-length Borsh prefix rejected: %v", err)
+	}
 	for name, data := range map[string][]byte{"truncated": fixture[:len(fixture)-1], "trailing": append(append([]byte(nil), fixture...), 0), "wrong type": append([]byte{2}, fixture[1:]...)} {
 		t.Run(name, func(t *testing.T) {
 			if _, err := ParseStakePool(data); err == nil {
@@ -75,7 +99,7 @@ func TestParseStakePoolStrictlyReadsRequiredFields(t *testing.T) {
 	badPadding := append([]byte(nil), fixture...)
 	badPadding[len(badPadding)-1] = 1
 	if _, err := ParseStakePool(badPadding); err != nil {
-		t.Fatalf("unused fixed-account tail rejected: %v", err)
+		t.Fatalf("unused preallocated tail rejected: %v", err)
 	}
 	badFee := append([]byte(nil), fixture...)
 	// epoch_fee begins after account header, totals and Lockup.
@@ -90,6 +114,11 @@ func TestParseStakePoolStrictlyReadsRequiredFields(t *testing.T) {
 	binary.LittleEndian.PutUint64(zeroDenominator[offset+8:offset+16], 1)
 	if _, err := ParseStakePool(zeroDenominator); err == nil {
 		t.Fatal("nonzero fee numerator with zero denominator accepted")
+	}
+	badTag := append([]byte(nil), fixture...)
+	badTag[offset+16] = 3
+	if _, err := ParseStakePool(badTag); err == nil {
+		t.Fatal("invalid FutureEpoch tag accepted")
 	}
 }
 
@@ -117,7 +146,7 @@ func TestReaderChecksOwnerMintEpochAndFinalizedAnchor(t *testing.T) {
 	}))
 	defer server.Close()
 	reader := &Reader{Client: NewClient(server.URL)}
-	snapshot, err := reader.Read(context.Background(), PoolConfig{Address: BSOLPoolAddress, Mint: BSOLMintAddress})
+	snapshot, err := reader.Read(context.Background(), PoolConfig{Program: StakePoolProgram, Address: BSOLPoolAddress, Mint: BSOLMintAddress})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -125,17 +154,20 @@ func TestReaderChecksOwnerMintEpochAndFinalizedAnchor(t *testing.T) {
 		t.Fatalf("snapshot=%+v", snapshot)
 	}
 	owner = "wrong-owner"
-	if _, err = reader.Read(context.Background(), PoolConfig{Address: BSOLPoolAddress, Mint: BSOLMintAddress}); err == nil || !strings.Contains(err.Error(), "owner") {
+	if _, err = reader.Read(context.Background(), PoolConfig{Program: StakePoolProgram, Address: BSOLPoolAddress, Mint: BSOLMintAddress}); err == nil || !strings.Contains(err.Error(), "owner") {
 		t.Fatalf("wrong owner error=%v", err)
 	}
 	owner = StakePoolProgram
 	epoch = 10
-	if _, err = reader.Read(context.Background(), PoolConfig{Address: BSOLPoolAddress, Mint: BSOLMintAddress}); err == nil || !strings.Contains(err.Error(), "last update epoch") {
+	if _, err = reader.Read(context.Background(), PoolConfig{Program: StakePoolProgram, Address: BSOLPoolAddress, Mint: BSOLMintAddress}); err == nil || !strings.Contains(err.Error(), "last update epoch") {
 		t.Fatalf("stale epoch error=%v", err)
 	}
 	epoch = 9
-	if _, err = reader.Read(context.Background(), PoolConfig{Address: BSOLPoolAddress, Mint: JitoMintAddress}); err == nil || !strings.Contains(err.Error(), "mint") {
+	if _, err = reader.Read(context.Background(), PoolConfig{Program: StakePoolProgram, Address: BSOLPoolAddress, Mint: JitoMintAddress}); err == nil || !strings.Contains(err.Error(), "mint") {
 		t.Fatalf("wrong mint error=%v", err)
+	}
+	if _, err = reader.Read(context.Background(), PoolConfig{Program: "not-a-program", Address: BSOLPoolAddress, Mint: BSOLMintAddress}); err == nil || !strings.Contains(err.Error(), "program") {
+		t.Fatalf("invalid program error=%v", err)
 	}
 }
 
@@ -161,9 +193,57 @@ func TestBSOLCollectorUsesDecimalMathAndChainEvidence(t *testing.T) {
 	}
 }
 
+func TestStakePoolProductsKeepFixedIdentities(t *testing.T) {
+	tests := []struct {
+		name, program, address, mint, provider, productCode, productName, positionAsset string
+		product                                                                         StakePoolProduct
+	}{
+		{name: "bSOL", product: BSOLProduct, program: "SPoo1Ku8WFXoNDMHPsrGSTSG1Y47rzgn41SLUNakuHy", address: "stk9ApL5HeVAwPLr3TLhDXdZS8ptVu7zp6ov8HFDuMi", mint: "bSo13r4TkiE4KumL71LsHTPpL2euBYLFx6h9HP3piy1", provider: "BlazeStake", productCode: "bsol", productName: "BlazeStake bSOL", positionAsset: "solana:mainnet:spl:bSo13r4TkiE4KumL71LsHTPpL2euBYLFx6h9HP3piy1"},
+		{name: "laineSOL", product: LaineSOLProduct, program: "SPoo1Ku8WFXoNDMHPsrGSTSG1Y47rzgn41SLUNakuHy", address: "2qyEeSAWKfU18AFthrF7JA8z8ZCi1yt76Tqs917vwQTV", mint: "LAinEtNLgpmCP9Rvsf5Hn8W6EhNiKLZQti1xfWMLy6X", provider: "Laine", productCode: "lainesol", productName: "Laine laineSOL", positionAsset: "solana:mainnet:spl:LAinEtNLgpmCP9Rvsf5Hn8W6EhNiKLZQti1xfWMLy6X"},
+		{name: "JupSOL", product: JupSOLProduct, program: "SPMBzsVUuoHA4Jm6KunbsotaahvVikZs1JyTW6iJvbn", address: "8VpRhuxa7sUUepdY3kQiTmX9rS5vx4WgaXiAnXq4KCtr", mint: "jupSoLaHXQiZZTSfEWMTRRgpnyFm8f6sZdosWBjx93v", provider: "Jupiter", productCode: "jupsol", productName: "Jupiter JupSOL", positionAsset: "solana:mainnet:spl:jupSoLaHXQiZZTSfEWMTRRgpnyFm8f6sZdosWBjx93v"},
+		{name: "hSOL", product: HSOLProduct, program: "SP12tWFxD9oJsVWNavTTBZvMbA6gkAmxtVgxdqvyvhY", address: "3wK2g8ZdzAH8FJ7PKr2RcvGh7V9VYson5hrVsJM5Lmws", mint: "he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A", provider: "Helius", productCode: "hsol", productName: "Helius hSOL", positionAsset: "solana:mainnet:spl:he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A"},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			product := test.product
+			if product.Program != test.program || product.Address != test.address || product.Mint != test.mint || product.Provider != test.provider || product.ProductCode != test.productCode || product.ProductName != test.productName || product.PositionAssetKey != test.positionAsset {
+				t.Fatalf("fixed product=%+v", product)
+			}
+			reader := &capturingPoolReader{snapshot: PoolSnapshot{State: mustPoolState(t), BlockHeight: 70, BlockHash: "hash77", BlockTime: 1787500000,
+				Payloads: []marketyield.Payload{{Name: "a", Body: []byte("one")}}}}
+			collector := &StakePoolCollector{Reader: reader, Product: product, Now: func() time.Time { return time.Unix(1787500100, 0).UTC() }}
+			batch, err := collector.Collect(context.Background())
+			if err != nil {
+				t.Fatal(err)
+			}
+			expectedConfig := PoolConfig{Program: test.program, Address: test.address, Mint: test.mint}
+			if reader.config != expectedConfig || batch.Source != "solana-stakepool-"+test.productCode || len(batch.Items) != 1 {
+				t.Fatalf("config=%+v batch=%+v", reader.config, batch)
+			}
+			item := batch.Items[0]
+			if item.Route.Provider != test.provider || item.Route.ProductCode != test.productCode || item.Route.ProductName != test.productName || item.Route.PositionAssetKey != test.positionAsset || item.Route.ContractAddress == nil || *item.Route.ContractAddress != test.address {
+				t.Fatalf("route=%+v", item.Route)
+			}
+			if err = batch.NormalizeAndValidateForLiveCollection(); err != nil {
+				t.Fatal(err)
+			}
+		})
+	}
+}
+
 type fakePoolReader struct {
 	snapshot PoolSnapshot
 	err      error
+}
+
+type capturingPoolReader struct {
+	config   PoolConfig
+	snapshot PoolSnapshot
+}
+
+func (f *capturingPoolReader) Read(_ context.Context, config PoolConfig) (PoolSnapshot, error) {
+	f.config = config
+	return f.snapshot, nil
 }
 
 func (f fakePoolReader) Read(context.Context, PoolConfig) (PoolSnapshot, error) {

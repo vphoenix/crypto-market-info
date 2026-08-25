@@ -42,7 +42,7 @@ func TestCollectorValidatesIdentityAndJoinsHistoryByExactDate(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if reader.calls != 1 || reader.config.Address != solana.JitoPoolAddress || reader.config.Mint != solana.JitoMintAddress {
+	if reader.calls != 1 || reader.config.Program != solana.StakePoolProgram || reader.config.Address != solana.JitoPoolAddress || reader.config.Mint != solana.JitoMintAddress {
 		t.Fatalf("identity config=%+v", reader.config)
 	}
 	if len(batch.Items) != 2 {

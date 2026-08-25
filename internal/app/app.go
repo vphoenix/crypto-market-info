@@ -19,7 +19,9 @@ import (
 	marketyield "github.com/vphoenix/crypto-market-info/internal/yield"
 	"github.com/vphoenix/crypto-market-info/internal/yield/jito"
 	"github.com/vphoenix/crypto-market-info/internal/yield/justlend"
+	"github.com/vphoenix/crypto-market-info/internal/yield/kamino"
 	"github.com/vphoenix/crypto-market-info/internal/yield/marinade"
+	"github.com/vphoenix/crypto-market-info/internal/yield/save"
 	"github.com/vphoenix/crypto-market-info/internal/yield/solana"
 	"github.com/vphoenix/crypto-market-info/internal/yield/solvalidator"
 	"github.com/vphoenix/crypto-market-info/internal/yield/tron"
@@ -28,6 +30,11 @@ import (
 type component struct {
 	name string
 	run  func(context.Context) error
+}
+
+type yieldCollectorSpec struct {
+	name, source string
+	collector    marketyield.Collector
 }
 
 func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
@@ -185,16 +192,7 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 	if cfg.SOLYieldEnabled {
 		rpcClient := solana.NewClient(cfg.SolanaRPCURL)
 		poolReader := &solana.Reader{Client: rpcClient}
-		solCollectors := []struct {
-			name, source string
-			collector    marketyield.Collector
-		}{
-			{name: "bSOL yield", source: "solana-stakepool-bsol", collector: &solana.BSOLCollector{Reader: poolReader}},
-			{name: "JitoSOL yield", source: "jitosol", collector: jito.NewCollector(cfg.JitoSOLBaseURL, poolReader)},
-			{name: "mSOL yield", source: "marinade-msol", collector: marinade.NewMSOLCollector(cfg.MarinadeAPYBaseURL, rpcClient)},
-			{name: "Marinade Native yield", source: "marinade-native", collector: marinade.NewNativeCollector(cfg.MarinadeAPYBaseURL)},
-		}
-		for _, item := range solCollectors {
+		for _, item := range solYieldCollectors(cfg, rpcClient, poolReader) {
 			runner := &marketyield.Runner{Source: item.source, Collector: item.collector, Sink: store, Interval: 6 * time.Hour, RetryInterval: 10 * time.Minute, Logger: logger}
 			components = append(components, component{name: item.name, run: runner.Run})
 		}
@@ -208,6 +206,20 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 		}
 	}
 	return runComponents(ctx, components)
+}
+
+func solYieldCollectors(cfg config.Config, rpcClient *solana.Client, poolReader *solana.Reader) []yieldCollectorSpec {
+	return []yieldCollectorSpec{
+		{name: "bSOL yield", source: "solana-stakepool-bsol", collector: &solana.BSOLCollector{Reader: poolReader}},
+		{name: "laineSOL yield", source: "solana-stakepool-lainesol", collector: &solana.StakePoolCollector{Reader: poolReader, Product: solana.LaineSOLProduct}},
+		{name: "JupSOL yield", source: "solana-stakepool-jupsol", collector: &solana.StakePoolCollector{Reader: poolReader, Product: solana.JupSOLProduct}},
+		{name: "hSOL yield", source: "solana-stakepool-hsol", collector: &solana.StakePoolCollector{Reader: poolReader, Product: solana.HSOLProduct}},
+		{name: "JitoSOL yield", source: "jitosol", collector: jito.NewCollector(cfg.JitoSOLBaseURL, poolReader)},
+		{name: "mSOL yield", source: "marinade-msol", collector: marinade.NewMSOLCollector(cfg.MarinadeAPYBaseURL, rpcClient)},
+		{name: "Marinade Native yield", source: "marinade-native", collector: marinade.NewNativeCollector(cfg.MarinadeAPYBaseURL)},
+		{name: "Kamino Main SOL yield", source: "kamino-main-sol", collector: kamino.NewCollector(cfg.KaminoBaseURL, rpcClient)},
+		{name: "Save Main SOL yield", source: "save-main-sol", collector: save.NewCollector(cfg.SaveBaseURL, rpcClient)},
+	}
 }
 
 func runComponents(ctx context.Context, components []component) error {

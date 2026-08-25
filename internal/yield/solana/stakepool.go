@@ -27,6 +27,7 @@ type StakePoolState struct {
 }
 
 type PoolConfig struct {
+	Program string
 	Address string
 	Mint    string
 }
@@ -60,6 +61,9 @@ func (r *Reader) Read(ctx context.Context, config PoolConfig) (PoolSnapshot, err
 	if r == nil || r.Client == nil {
 		return PoolSnapshot{}, fmt.Errorf("stake pool reader is not configured")
 	}
+	if _, err := DecodePubkey(config.Program); err != nil {
+		return PoolSnapshot{}, fmt.Errorf("stake pool program: %w", err)
+	}
 	expectedMint, err := DecodePubkey(config.Mint)
 	if err != nil {
 		return PoolSnapshot{}, fmt.Errorf("pool mint: %w", err)
@@ -68,7 +72,7 @@ func (r *Reader) Read(ctx context.Context, config PoolConfig) (PoolSnapshot, err
 	if err != nil {
 		return PoolSnapshot{}, err
 	}
-	if account.Owner != StakePoolProgram {
+	if account.Owner != config.Program {
 		return PoolSnapshot{}, fmt.Errorf("stake pool owner %q does not match program", account.Owner)
 	}
 	state, err := ParseStakePool(account.Data)
@@ -93,21 +97,12 @@ func (r *Reader) Read(ctx context.Context, config PoolConfig) (PoolSnapshot, err
 	if state.TotalLamports == 0 || state.PoolTokenSupply == 0 || state.LastEpochTotalLamports == 0 || state.LastEpochPoolTokenSupply == 0 {
 		return PoolSnapshot{}, fmt.Errorf("stake pool has zero current or previous totals")
 	}
-	var block blockResult
-	blockPayload, err := r.Client.call(ctx, "getBlock", []any{account.Slot, map[string]any{"transactionDetails": "none", "rewards": false, "commitment": "finalized"}}, &block)
+	block, err := r.Client.Block(ctx, account.Slot)
 	if err != nil {
 		return PoolSnapshot{}, err
 	}
-	height, err := parseUint(block.BlockHeight, "block height")
-	if err != nil || block.Blockhash == "" {
-		return PoolSnapshot{}, fmt.Errorf("block anchor is incomplete")
-	}
-	blockTime, err := block.BlockTime.Int64()
-	if err != nil || blockTime <= 0 {
-		return PoolSnapshot{}, fmt.Errorf("block time is invalid")
-	}
-	return PoolSnapshot{State: state, Slot: account.Slot, BlockHeight: height, BlockHash: block.Blockhash, BlockTime: blockTime,
-		Payloads: []marketyield.Payload{{Name: "getAccountInfo", Body: account.Payload}, {Name: "getEpochInfo", Body: epochPayload}, {Name: "getBlock", Body: blockPayload}}}, nil
+	return PoolSnapshot{State: state, Slot: account.Slot, BlockHeight: block.Height, BlockHash: block.Hash, BlockTime: block.Time,
+		Payloads: []marketyield.Payload{{Name: "getAccountInfo", Body: account.Payload}, {Name: "getEpochInfo", Body: epochPayload}, {Name: "getBlock", Body: block.Payload}}}, nil
 }
 
 type borshReader struct {
@@ -116,10 +111,9 @@ type borshReader struct {
 }
 
 func ParseStakePool(data []byte) (StakePoolState, error) {
-	// Stake Pool accounts are allocated with Borsh's maximum packed size. The
-	// actual serialization is variable-length because it contains Option and
-	// FutureEpoch fields. The program deserializes this prefix unchecked; bytes
-	// after it may contain stale data when a later serialization becomes shorter.
+	// The account is allocated at the 611-byte maximum packed size. Option and
+	// FutureEpoch fields make the serialized prefix variable-length. The program
+	// writes that prefix without clearing the unused preallocated tail.
 	if len(data) != 611 {
 		return StakePoolState{}, fmt.Errorf("stake pool account length %d is not 611", len(data))
 	}

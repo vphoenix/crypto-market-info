@@ -9,8 +9,10 @@ import (
 	"testing"
 	"time"
 
+	"github.com/vphoenix/crypto-market-info/internal/config"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 	marketyield "github.com/vphoenix/crypto-market-info/internal/yield"
+	"github.com/vphoenix/crypto-market-info/internal/yield/solana"
 )
 
 type failingYieldCollector struct {
@@ -91,5 +93,26 @@ func TestFailingYieldSourceDoesNotStopOtherComponent(t *testing.T) {
 	cancel()
 	if err := <-finished; err != nil {
 		t.Fatal(err)
+	}
+}
+
+func TestSOLYieldCollectorsRegisterSecondPhaseAsSeparateSources(t *testing.T) {
+	rpc := solana.NewClient("https://solana.test")
+	reader := &solana.Reader{Client: rpc}
+	specs := solYieldCollectors(config.Config{JitoSOLBaseURL: "https://jito.test", MarinadeAPYBaseURL: "https://marinade.test", KaminoBaseURL: "https://kamino.test", SaveBaseURL: "https://save.test"}, rpc, reader)
+	if len(specs) != 9 {
+		t.Fatalf("fixed SOL collectors=%d", len(specs))
+	}
+	seen := make(map[string]int, len(specs))
+	for _, spec := range specs {
+		seen[spec.source]++
+		if spec.collector == nil {
+			t.Fatalf("source %q has nil collector", spec.source)
+		}
+	}
+	for _, source := range []string{"solana-stakepool-lainesol", "solana-stakepool-jupsol", "solana-stakepool-hsol", "kamino-main-sol", "save-main-sol"} {
+		if seen[source] != 1 {
+			t.Fatalf("source %q registered %d times", source, seen[source])
+		}
 	}
 }

@@ -35,6 +35,8 @@ type Config struct {
 	JitoSOLBaseURL            string
 	MarinadeAPYBaseURL        string
 	MarinadeValidatorsBaseURL string
+	KaminoBaseURL             string
+	SaveBaseURL               string
 	MinuteQueueCapacity       int
 }
 
@@ -83,7 +85,8 @@ func Load() (Config, error) {
 		TRONStakingYieldEnabled: tronYield, TRONHTTPURL: value("TRON_HTTP_URL", "https://api.trongrid.io"),
 		SOLYieldEnabled: solYield, SolanaRPCURL: value("SOLANA_RPC_URL", "https://api.mainnet.solana.com"), SOLValidatorVoteAccounts: voteAccounts,
 		JitoSOLBaseURL: value("JITO_SOL_BASE_URL", "https://kobe.mainnet.jito.network"), MarinadeAPYBaseURL: value("MARINADE_APY_BASE_URL", "https://apy.marinade.finance"),
-		MarinadeValidatorsBaseURL: value("MARINADE_VALIDATORS_BASE_URL", "https://validators-api.marinade.finance"), MinuteQueueCapacity: queue,
+		MarinadeValidatorsBaseURL: value("MARINADE_VALIDATORS_BASE_URL", "https://validators-api.marinade.finance"), KaminoBaseURL: value("KAMINO_BASE_URL", "https://api.kamino.finance"),
+		SaveBaseURL: value("SAVE_BASE_URL", "https://api.solend.fi"), MinuteQueueCapacity: queue,
 	}, nil
 }
 

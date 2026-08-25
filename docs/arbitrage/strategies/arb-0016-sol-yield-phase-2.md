@@ -107,7 +107,9 @@ WSOL 与原生 SOL 的标准 wrap/unwrap 是确定的 1:1 路径，不经过桥�
 
 Sanctum 文档说明上述 `SPMB...`、`SP12...` 与原始 `SPoo...` 当前运行相同的 Stake Pool 程序代码，但以后可能分叉。因此 Reader 只解析当前相同的 Borsh 字段顺序，同时必须对每个产品校验配置中指定的唯一 program；不能只建立一个宽泛白名单后接受任意 owner。未来任一部署改变字段、长度上限或 owner 时，该路线应停止写入，而不是继续按旧布局产生错误 APY。
 
-这里不能继续沿用第一阶段代码中的 `len(data) == 611`。2026-08-26 对 finalized 账户的只读核验结果为：bSOL 599、JitoSOL 597、laineSOL 604、JupSOL 600、hSOL 596 字节。Borsh 中的 `Option` 和 `FutureEpoch` 使实例序列化长度变化；611 是当前已知布局的最大 packed size，不是每个账户的固定长度。
+2026-08-26 对 finalized 账户重新核验后，bSOL、JitoSOL、laineSOL、JupSOL、hSOL 的账户物理长度（RPC `space` 和解码后的 data）均为 611 字节。此前记录的 599、597、604、600、596 不是账户长度，而是现有解析器分别消费完已知 Borsh 字段后的 offset。Borsh 中的 `Option` 和 `FutureEpoch` 使有效序列化前缀长度变化，剩余部分是最大 packed size 预分配出的尾部。
+
+官方 Stake Pool processor 使用 unchecked Borsh 读取，并以 `borsh::to_writer(&mut account_data[..], ...)` 只覆盖新序列化前缀，不保证在字段由 `Some` 变为 `None` 后清零剩余预分配字节。因此解析器必须严格解析和校验已知前缀，但不能要求未使用尾部全为 0，也不能把尾部非零本身判为未来字段。
 
 资产键：
 
@@ -161,15 +163,14 @@ account.Owner == config.Program
 
 `Program`、`Address`、`Mint` 为空或不是合法 pubkey 时立即失败。产品配置全部写在代码常量中，不从环境变量加载。现有 bSOL 和 JitoSOL 校验调用也补上原始 `StakePoolProgram`，保持行为不变。
 
-`ParseStakePool` 同步做一个必要修正：
+`ParseStakePool` 保留并明确以下边界：
 
-- 删除 `len(data) == 611` 的固定长度条件；
-- 长度大于当前已知最大 packed size 611 时拒绝，避免静默接受未来新增字段；
-- 长度不足时继续由现有逐字段 bounds check 拒绝；
-- 成功读完当前已知布局的最后两个字段后，必须满足 `reader.offset == len(data)`；这样既接受不同 `Option`/`FutureEpoch` 组合产生的真实变长实例，也不会静默忽略未来追加字段；
-- account type、固定 owner、固定 pool mint、epoch 和数值校验仍然全部保留。
+- 账户物理长度必须恰好是当前部署的 611 字节，截断或超过该长度都拒绝；
+- 严格解析当前已知 Borsh 前缀，所有 `Option` / `FutureEpoch` tag、逐字段 bounds、account type 和数值均按现有布局校验；
+- 读完当前已知最后字段后，允许任意内容的剩余预分配尾部，不把它当作新字段解析；
+- 固定 owner、固定 pool mint 和当前 epoch 校验仍然全部保留。
 
-这个修正也是第二阶段的实现前置条件，并应同步更正第一阶段文档。否则不但三条新 LST 会失败，当前 bSOL 与 JitoSOL identity check 也会因真实账户不是 611 字节而失败。
+如果任一固定部署以后改变 owner、物理长度或使已知前缀无法按当前布局解析，该路线停止写入。不能为了继续采集而放宽 program、长度、tag 或字段边界。
 
 新增一个固定产品的 `StakePoolCollector`，把现有 `BSOLCollector` 的计算和字段映射搬进去。bSOL 也切换为这个 collector，但必须保持原路线身份、字段口径和 Runner source 不变。这样新增三条 LST 只增加三组常量和三个 Runner，不复制计算代码。
 
@@ -456,7 +457,7 @@ docs/arbitrage/strategies/arb-0016-sol-yield-phase-1.md
 
 至少覆盖：
 
-1. Stake Pool Reader 按每个 `PoolConfig.Program` 校验 owner；596、597、599、600、604 字节的有效 fixture 能解析，截断数据、超过 611 字节、错误 program、pool mint 和 epoch 都拒绝；
+1. Stake Pool Reader 按每个 `PoolConfig.Program` 校验 owner；611 字节 fixture 中不同长度的有效 Borsh 前缀以及非零预分配尾部能解析，截断、超过 611 字节、非法 tag、错误 program、pool mint 和 epoch 都拒绝；
 2. bSOL 路线身份和数值在通用化前后不变；JitoSOL 仍只有 Jito 专用写入者；
 3. laineSOL、JupSOL、hSOL 的 program、pool、mint、资产键和路线字段固定正确；
 4. LST 的 APR、兑换率、TVL和三种费用只走整数/Decimal 路径；

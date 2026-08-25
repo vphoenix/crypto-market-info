@@ -160,7 +160,7 @@ last_epoch_total_lamports
 必须校验：
 
 - account owner 是固定 SPL Stake Pool program；
-- account type 是 `StakePool`；`Option`/`FutureEpoch` 使实际 Borsh 实例长度变化，账户必须非空且不超过当前已知最大 packed size 611 字节，逐字段解析不得越界，读完当前已知最后字段后必须恰好消费全部账户数据；不能把 611 误当成每个池的固定长度，也不能忽略尾部未知字段；
+- account type 是 `StakePool`；账户物理长度必须恰好是当前部署的 611 字节，`Option`/`FutureEpoch` 使其中的有效 Borsh 前缀长度变化；逐字段解析不得越界且所有 tag 必须合法，读完当前已知最后字段后允许任意内容的剩余预分配尾部。官方 unchecked 读取和前缀写回不保证清零该尾部，因此不能把尾部非零当作新字段或错误；
 - pool mint 与固定产品配置一致；
 - `last_update_epoch == getEpochInfo.epoch`；
 - 当前和上一个 epoch 的 lamports、token supply 都大于 0；
@@ -465,7 +465,7 @@ internal/yield/solvalidator/ # validators API 和单 vote-account collector
 
 单元测试使用固定 fixture 和 `httptest.Server`，不在自动测试中依赖外网。至少覆盖：
 
-1. SPL Stake Pool Borsh 的真实变长实例正常解析；错误 owner/type/mint、空账户、超过 611 字节、状态截断、尾部未知字段、陈旧 epoch、非法 fee 全部失败；
+1. SPL Stake Pool 的 611 字节账户中，不同长度的有效 Borsh 前缀和非零预分配尾部正常解析；错误 owner/type/mint、截断或超过 611 字节、非法 tag、陈旧 epoch、非法 fee 全部失败；
 2. bSOL 兑换率、TVL、182.625 近似 APR 和三种费用全部走 Decimal，finalized block 锚点正确；
 3. generic 产品列表不写 JitoSOL，mSOL 不经过 SPL parser；
 4. Jito 三组时间顺序不同仍按时间求交集；缺数组、重复点、过期、未来点和超过 128 点整批失败；

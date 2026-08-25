@@ -57,7 +57,7 @@ func (c *Collector) Collect(ctx context.Context) (marketyield.Batch, error) {
 	if now == nil {
 		now = time.Now
 	}
-	if _, err := c.Reader.Read(ctx, solana.PoolConfig{Address: solana.JitoPoolAddress, Mint: solana.JitoMintAddress}); err != nil {
+	if _, err := c.Reader.Read(ctx, solana.PoolConfig{Program: solana.StakePoolProgram, Address: solana.JitoPoolAddress, Mint: solana.JitoMintAddress}); err != nil {
 		return marketyield.Batch{}, fmt.Errorf("JitoSOL identity: %w", err)
 	}
 	statsBody, err := exchange.Get(ctx, c.HTTPClient, c.BaseURL+"/api/v1/stake_pool_stats", c.Retry)

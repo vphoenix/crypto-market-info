@@ -15,20 +15,33 @@ import (
 )
 
 const (
-	MainnetRPCURL    = "https://api.mainnet.solana.com"
-	StakePoolProgram = "SPoo1Ku8WFXoNDMHPsrGSTSG1Y47rzgn41SLUNakuHy"
-	SPLTokenProgram  = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
-	BSOLPoolAddress  = "stk9ApL5HeVAwPLr3TLhDXdZS8ptVu7zp6ov8HFDuMi"
-	BSOLMintAddress  = "bSo13r4TkiE4KumL71LsHTPpL2euBYLFx6h9HP3piy1"
-	JitoPoolAddress  = "Jito4APyf642JPZPx3hGc6WWJ8zPKtRbRs4P815Awbb"
-	JitoMintAddress  = "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn"
-	MarinadeProgram  = "MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD"
-	MarinadeState    = "8szGkuLTAux9XMgZ2vtY39jVSowEcpBfFfD8hXSEqdGC"
-	MSOLMintAddress  = "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So"
-	SOLAsset         = "solana:mainnet:native:SOL"
-	BSOLAsset        = "solana:mainnet:spl:" + BSOLMintAddress
-	JitoSOLAsset     = "solana:mainnet:spl:" + JitoMintAddress
-	MSOLAsset        = "solana:mainnet:spl:" + MSOLMintAddress
+	MainnetRPCURL                = "https://api.mainnet.solana.com"
+	StakePoolProgram             = "SPoo1Ku8WFXoNDMHPsrGSTSG1Y47rzgn41SLUNakuHy"
+	SanctumStakePoolProgram      = "SP12tWFxD9oJsVWNavTTBZvMbA6gkAmxtVgxdqvyvhY"
+	SanctumMultiStakePoolProgram = "SPMBzsVUuoHA4Jm6KunbsotaahvVikZs1JyTW6iJvbn"
+	SPLTokenProgram              = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+	BSOLPoolAddress              = "stk9ApL5HeVAwPLr3TLhDXdZS8ptVu7zp6ov8HFDuMi"
+	BSOLMintAddress              = "bSo13r4TkiE4KumL71LsHTPpL2euBYLFx6h9HP3piy1"
+	JitoPoolAddress              = "Jito4APyf642JPZPx3hGc6WWJ8zPKtRbRs4P815Awbb"
+	JitoMintAddress              = "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn"
+	LaineSOLPoolAddress          = "2qyEeSAWKfU18AFthrF7JA8z8ZCi1yt76Tqs917vwQTV"
+	LaineSOLMintAddress          = "LAinEtNLgpmCP9Rvsf5Hn8W6EhNiKLZQti1xfWMLy6X"
+	JupSOLPoolAddress            = "8VpRhuxa7sUUepdY3kQiTmX9rS5vx4WgaXiAnXq4KCtr"
+	JupSOLMintAddress            = "jupSoLaHXQiZZTSfEWMTRRgpnyFm8f6sZdosWBjx93v"
+	HSOLPoolAddress              = "3wK2g8ZdzAH8FJ7PKr2RcvGh7V9VYson5hrVsJM5Lmws"
+	HSOLMintAddress              = "he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A"
+	MarinadeProgram              = "MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD"
+	MarinadeState                = "8szGkuLTAux9XMgZ2vtY39jVSowEcpBfFfD8hXSEqdGC"
+	MSOLMintAddress              = "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So"
+	SOLAsset                     = "solana:mainnet:native:SOL"
+	WSOLMintAddress              = "So11111111111111111111111111111111111111112"
+	WSOLAsset                    = "solana:mainnet:spl:" + WSOLMintAddress
+	BSOLAsset                    = "solana:mainnet:spl:" + BSOLMintAddress
+	JitoSOLAsset                 = "solana:mainnet:spl:" + JitoMintAddress
+	MSOLAsset                    = "solana:mainnet:spl:" + MSOLMintAddress
+	LaineSOLAsset                = "solana:mainnet:spl:" + LaineSOLMintAddress
+	JupSOLAsset                  = "solana:mainnet:spl:" + JupSOLMintAddress
+	HSOLAsset                    = "solana:mainnet:spl:" + HSOLMintAddress
 )
 
 type Client struct {
@@ -42,8 +55,8 @@ func NewClient(baseURL string) *Client {
 		baseURL = MainnetRPCURL
 	}
 	retry := exchange.DefaultHTTPRetryConfig()
-	// bSOL, JitoSOL, and mSOL share one client and start concurrently. A small
-	// gate keeps their low-frequency public RPC calls serialized.
+	// All low-frequency Solana yield collectors share one client and start
+	// concurrently. A small gate keeps their public RPC calls serialized.
 	retry.Cooldown = exchange.NewRequestGate(250 * time.Millisecond)
 	return &Client{BaseURL: strings.TrimRight(baseURL, "/"), HTTPClient: &http.Client{Timeout: 20 * time.Second}, Retry: retry}
 }
@@ -116,6 +129,13 @@ type Account struct {
 	Payload    []byte
 }
 
+type BlockAnchor struct {
+	Height  uint64
+	Hash    string
+	Time    int64
+	Payload []byte
+}
+
 func (c *Client) AccountInfo(ctx context.Context, address string) (Account, error) {
 	if _, err := DecodePubkey(address); err != nil {
 		return Account{}, fmt.Errorf("invalid account address: %w", err)
@@ -144,6 +164,23 @@ func (c *Client) AccountInfo(ctx context.Context, address string) (Account, erro
 		return Account{}, err
 	}
 	return Account{Slot: slot, Owner: result.Value.Owner, Data: data, Executable: result.Value.Executable, Payload: payload}, nil
+}
+
+func (c *Client) Block(ctx context.Context, slot uint64) (BlockAnchor, error) {
+	var block blockResult
+	payload, err := c.call(ctx, "getBlock", []any{slot, map[string]any{"transactionDetails": "none", "rewards": false, "commitment": "finalized"}}, &block)
+	if err != nil {
+		return BlockAnchor{}, err
+	}
+	height, err := parseUint(block.BlockHeight, "block height")
+	if err != nil || block.Blockhash == "" {
+		return BlockAnchor{}, fmt.Errorf("block anchor is incomplete")
+	}
+	blockTime, err := block.BlockTime.Int64()
+	if err != nil || blockTime <= 0 {
+		return BlockAnchor{}, fmt.Errorf("block time is invalid")
+	}
+	return BlockAnchor{Height: height, Hash: block.Blockhash, Time: blockTime, Payload: payload}, nil
 }
 
 func (c *Client) ValidateMSOLIdentity(ctx context.Context) error {

@@ -59,12 +59,14 @@ go run ./cmd/collector
 | `JUSTLEND_BASE_URL` | `https://openapi.just.network` | JustLend 公开 API 地址 |
 | `TRON_STAKING_YIELD_ENABLED` | `false` | 是否每 6 小时采集 TRON 前 127 名 SR 收益 |
 | `TRON_HTTP_URL` | `https://api.trongrid.io` | TRON 公开 HTTP 节点地址 |
-| `SOL_YIELD_ENABLED` | `false` | 是否每 6 小时采集 bSOL、JitoSOL、mSOL、Marinade Native 及配置的验证者收益 |
+| `SOL_YIELD_ENABLED` | `false` | 是否每 6 小时采集固定 SOL 收益路线（含 LST、原生质押、Kamino 与 Save）及配置的验证者收益 |
 | `SOLANA_RPC_URL` | `https://api.mainnet.solana.com` | Solana mainnet finalized RPC 地址 |
 | `SOL_VALIDATOR_VOTE_ACCOUNTS` | `-` | 逗号分隔的原生质押 vote account 白名单；`-` 表示不采集验证者 |
 | `JITO_SOL_BASE_URL` | `https://kobe.mainnet.jito.network` | JitoSOL 官方公开 API 地址 |
 | `MARINADE_APY_BASE_URL` | `https://apy.marinade.finance` | mSOL 与 Marinade Native 官方 APY API 地址 |
 | `MARINADE_VALIDATORS_BASE_URL` | `https://validators-api.marinade.finance` | 原生验证者历史 API 地址 |
+| `KAMINO_BASE_URL` | `https://api.kamino.finance` | Kamino Main SOL 历史指标 API 地址 |
+| `SAVE_BASE_URL` | `https://api.solend.fi` | Save Main SOL 当前与历史利率 API 地址 |
 
 同时启用当前两类 TRX 收益：
 
@@ -74,7 +76,7 @@ TRON_STAKING_YIELD_ENABLED=true \
 go run ./cmd/collector
 ```
 
-启用 SOL 第一阶段；如需原生验证者历史，再填写 vote account 白名单：
+启用 SOL 第一、第二阶段全部固定路线；如需原生验证者历史，再填写 vote account 白名单：
 
 ```bash
 SOL_YIELD_ENABLED=true \
