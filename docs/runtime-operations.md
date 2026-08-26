@@ -1,15 +1,15 @@
 # 当前部署与运行说明
 
-最近核实：2026-08-26（Asia/Shanghai）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
+最近核实：2026-08-27（Asia/Shanghai）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
 
 ## 1. 实际使用的本机服务
 
 | 服务 | 实际运行方式 | 连接与用途 |
 |---|---|---|
 | ClickHouse | 宿主机原生二进制，`--daemon` 启动并带 ClickHouse watchdog；核实版本 `26.8.1.1825` | HTTP `127.0.0.1:8123`；native `127.0.0.1:9000`；数据库 `crypto_market_info` |
-| collector | 编译后的单个二进制，由外层 Bash `while true` 循环守护 | 连接上述 native 端口，采集盘口、资金费率及 TRX/SOL 收益；没有独立 HTTP 服务端口 |
+| collector | 编译后的单个二进制，由外层 Bash `while true` 循环守护 | 连接上述 native 端口，采集盘口、资金费率及 TRX/SOL/AVAX 收益；没有独立 HTTP 服务端口 |
 
-这两项是本项目的运行依赖，不使用 Redis、PostgreSQL、消息队列或其他项目的服务。当前 collector 二进制核实来自提交 `6e75253db0b74d3bd93d9a99ac16178c4a3e59d9`，包含 SOL 第二阶段。
+这两项是本项目的运行依赖，不使用 Redis、PostgreSQL、消息队列或其他项目的服务。当前 collector 二进制由当前工作区构建，包含 SOL 第二阶段及 AVAX 第一阶段；工作区改动尚未提交，因此构建元数据标记为 `dirty`。
 
 仓库的 [compose.yaml](../compose.yaml) 只是可选的独立开发环境，固定镜像为 `clickhouse:26.3.17.56-jammy`，与当前原生服务不是同一个实例。核实时 `docker compose ps -a` 为空，但原生 ClickHouse 正常响应。两套环境默认占用相同端口，不能直接同时启动，也不能混用数据目录。
 
@@ -44,7 +44,7 @@ ClickHouse 的实际启动参数（将进程中的相对二进制路径展开为
   --tcp_port=9000
 ```
 
-采集器当前守护循环的等价命令如下。它展示循环内容；若用于恢复，需要自行保持该外层 Shell 存活，不能把一次前台执行当成开机自启服务：
+采集器当前守护循环的等价命令如下。实际运行时由 `setsid -f` 启动，使该循环脱离启动终端；若用于恢复，同样需要让外层 Shell 持续存活，不能把一次前台执行当成开机自启服务：
 
 ```bash
 bash -c 'while true; do
@@ -58,6 +58,7 @@ bash -c 'while true; do
       TRON_STAKING_YIELD_ENABLED=true \
       SOL_YIELD_ENABLED=true \
       SOL_VALIDATOR_VOTE_ACCOUNTS=- \
+      AVAX_YIELD_ENABLED=true \
       /home/ubuntu/.local/share/crypto-market-info-collector/collector \
       >> /home/ubuntu/.local/share/crypto-market-info-collector/logs/collector.log 2>&1
   sleep 30
@@ -78,6 +79,7 @@ collector 退出后，外层循环等待 30 秒再启动。仅退出 collector �
 | TRON 原生质押 | 前 127 名 SR | 每 6 小时 |
 | SOL 固定收益 | 下表九条路线，各自独立 Runner | 每 6 小时 |
 | SOL 单验证者原生质押 | 未启用：`SOL_VALIDATOR_VOTE_ACCOUNTS=-`；这不影响 Marinade Native | 配置白名单后才采集 |
+| AVAX 第一阶段 | OKX AVAX 公开出借 APR、Aave V3/V4 WAVAX 基础存款历史 APY | 每小时 |
 
 收益 Runner 启动即首采，失败后等待 10 分钟重试；数据库写入失败会重试原批次，不会用旧利率伪造新时间的观测。历史接口会重复抓取短历史窗口，逻辑去重由现有收益表完成。
 

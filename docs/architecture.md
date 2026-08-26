@@ -11,7 +11,8 @@
 - JustLend TRX 收益产品；
 - TRON 原生质押收益；
 - SOL 的 bSOL、JitoSOL、mSOL、laineSOL、JupSOL、hSOL、配置白名单验证者和 Marinade Native 收益；
-- Kamino Main SOL、Save Main SOL 的基础存款收益。
+- Kamino Main SOL、Save Main SOL 的基础存款收益；
+- AVAX 的 OKX 公开出借 APR、Aave V3/V4 WAVAX 基础存款历史 APY（默认关闭，是否已部署以运行说明为准）。
 
 项目以后还可能增加其他 CEX、DEX、收益协议、链状态、桥和二层流通状态、借贷费率、指数或标记价格、手续费及 gas 等公开数据。当前六张表不是最终边界，但新数据不能为了省表而被硬塞进语义不相符的旧表。
 
@@ -38,11 +39,15 @@ cmd/collector：配置、启动顺序、生命周期
 ├─ TRON 原生质押
 │  └─ client → collector → 每 6 小时 Runner → yield writer
 │
-└─ SOL 收益（每条路线独立、每 6 小时 Runner → yield writer）
-   ├─ 通用 Stake Pool：bSOL、laineSOL、JupSOL、hSOL
-   ├─ 专用 API 与身份校验：JitoSOL、mSOL
-   ├─ 原生质押 API：Marinade Native、白名单验证者（可选）
-   └─ 借贷 API 与身份校验：Kamino Main SOL、Save Main SOL
+├─ SOL 收益（每条路线独立、每 6 小时 Runner → yield writer）
+│  ├─ 通用 Stake Pool：bSOL、laineSOL、JupSOL、hSOL
+│  ├─ 专用 API 与身份校验：JitoSOL、mSOL
+│  ├─ 原生质押 API：Marinade Native、白名单验证者（可选）
+│  └─ 借贷 API 与身份校验：Kamino Main SOL、Save Main SOL
+│
+└─ AVAX 收益（每个来源独立、每小时 Runner → yield writer）
+   ├─ OKX AVAX：公共出借历史，串行分页
+   └─ Aave V3/V4 WAVAX：分别校验市场身份与固定 LAST_WEEK 曲线
 ```
 
 所有分支共用 ClickHouse Client、schema 初始化、HTTP 重试工具和结构化日志。
@@ -108,6 +113,7 @@ yield_route 1 ── N yield_observation
 - JustLend 最近一次完整批次包含四条固定路线；
 - TRON 原生质押最近一次成功批次在同一观测时间恰好包含 127 条；
 - 启用 SOL 时，九条固定路线各自有最近成功采集；白名单验证者仅在配置非空时检查，不能要求它们与九条固定路线同批完成；
+- 启用 AVAX 时，三条固定路线分别每小时成功采集，最新来源时间不得旧于 6 小时；没有历史区块锚点的官方 API 行保持区块字段为空；
 - 实时收益观测都有 payload hash；直接链上行有区块锚点，API 历史行不能伪造锚点；
 - 日志中没有持续重复的启动失败、写入失败或无法恢复的序列断档。
 
@@ -227,6 +233,8 @@ LIMIT 1 BY r.provider, r.product_code;
 
 与运行说明中的九条固定路线逐一核对；从未成功写入的路线不会出现在查询结果中，缺行也算异常。JustLend 正常每小时采一次，TRON 和 SOL 每 6 小时采一次；超过对应间隔并持续重试失败时检查日志。判断历史 API 是否仍在被采集要看 `batch_collected_at`，不能只看可能按天或 epoch 更新的 `latest_observation_time`；后者的新鲜度由各 collector 按自己的来源规则校验。
 
+AVAX 默认不启用；启用后按[第一阶段验收查询](arbitrage/strategies/arb-0016-avax-yield-phase-1.md#9-测试与完成标准)核对 OKX、Aave V3、Aave V4 三行。它们各自重抓近期窗口、不插值补缺、不回填当前费用或状态；成功写入时间超过 2 小时应检查日志。来源失败只影响自己的 Runner，写入失败仍重试原批次。
+
 `missing_payload_hashes` 应为 `0`。bSOL、laineSOL、JupSOL、hSOL 每轮各一条且有 `finalized` 锚点；Save 当前点有 `finalized_anchor`，历史点无锚点；JitoSOL、mSOL、Marinade Native、验证者和 Kamino 的 API 历史点无锚点是预期行为。历史窗口每轮重取，查询使用 `FINAL`，观测条数不应作为固定常量；日志中的 `routes` 字段实际计数为批次观测条数，不是去重后的产品数。
 
 ## 7. 增加其他数据时
@@ -250,4 +258,5 @@ LIMIT 1 BY r.provider, r.product_code;
 - [ARB-0016 TRX 收益采集实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)：JustLend 与 TRON 采集细节。
 - [ARB-0016 SOL 收益采集第一阶段实现设计](arbitrage/strategies/arb-0016-sol-yield-phase-1.md)：SOL 第一阶段五类 Runner、来源校验和历史写入细节。
 - [ARB-0016 SOL 收益采集第二阶段实现设计](arbitrage/strategies/arb-0016-sol-yield-phase-2.md)：新增三条 LST 和两条借贷路线，沿用相同 Runner 与收益两表。
+- [ARB-0016 AVAX 收益采集第一阶段实现设计](arbitrage/strategies/arb-0016-avax-yield-phase-1.md)：三个独立历史来源、严格利率单位、分页完整性及重试写入。
 - [套利机会与策略资料](arbitrage/README.md)：数据为何采集，不参与采集进程运行。

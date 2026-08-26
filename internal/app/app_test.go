@@ -12,6 +12,8 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/config"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 	marketyield "github.com/vphoenix/crypto-market-info/internal/yield"
+	"github.com/vphoenix/crypto-market-info/internal/yield/aave"
+	"github.com/vphoenix/crypto-market-info/internal/yield/okxearn"
 	"github.com/vphoenix/crypto-market-info/internal/yield/solana"
 )
 
@@ -114,5 +116,30 @@ func TestSOLYieldCollectorsRegisterSecondPhaseAsSeparateSources(t *testing.T) {
 		if seen[source] != 1 {
 			t.Fatalf("source %q registered %d times", source, seen[source])
 		}
+	}
+}
+
+func TestAVAXOnlyEnablesRegistryAndThreeIndependentCollectors(t *testing.T) {
+	if yieldEnabled(config.Config{}) || !yieldEnabled(config.Config{AVAXYieldEnabled: true}) {
+		t.Fatal("AVAX-only configuration must enable the same yield startup/registry path")
+	}
+	specs := avaxYieldCollectors(config.Config{AVAXYieldEnabled: true, OKXREST: "https://okx.test"})
+	if len(specs) != 3 {
+		t.Fatalf("AVAX collector count=%d", len(specs))
+	}
+	for i, source := range []string{"okx-avax-flexible", "aave-v3-avax", "aave-v4-avax"} {
+		if specs[i].source != source || specs[i].name == "" || specs[i].collector == nil {
+			t.Fatalf("AVAX source[%d]=%+v", i, specs[i])
+		}
+	}
+	okxCollector := specs[0].collector.(*okxearn.Collector)
+	v3 := specs[1].collector.(*aave.V3Collector)
+	v4 := specs[2].collector.(*aave.V4Collector)
+	if okxCollector.BaseURL != "https://okx.test" || v3.Endpoint != aave.DefaultV3Endpoint || v4.Endpoint != aave.DefaultV4Endpoint ||
+		okxCollector.Retry.Cooldown == v3.Retry.Cooldown || v3.Retry.Cooldown == v4.Retry.Cooldown || okxCollector.Retry.Cooldown == v4.Retry.Cooldown {
+		t.Fatal("wrong AVAX endpoints or shared source cooldown gates")
+	}
+	if okxCollector.HTTPClient.Timeout != 20*time.Second || v3.HTTPClient.Timeout != 20*time.Second || v4.HTTPClient.Timeout != 20*time.Second {
+		t.Fatal("AVAX HTTP timeouts must be 20s")
 	}
 }

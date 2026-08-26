@@ -16,7 +16,8 @@ ARB-0016 先采集各种单资产收益产品的公开收益率和产品规则�
 
 - [ARB-0016 TRX 收益采集实现设计](arb-0016-trx-yield-implementation.md)；
 - [ARB-0016 SOL 收益采集第一阶段实现设计](arb-0016-sol-yield-phase-1.md)；
-- [ARB-0016 SOL 收益采集第二阶段实现设计](arb-0016-sol-yield-phase-2.md)。
+- [ARB-0016 SOL 收益采集第二阶段实现设计](arb-0016-sol-yield-phase-2.md)；
+- [ARB-0016 AVAX 收益采集第一阶段实现设计](arb-0016-avax-yield-phase-1.md)（已实现，未部署）：OKX、Aave V3/V4 的固定近期历史曲线。
 
 ## 2. 表关系
 
@@ -106,7 +107,7 @@ yield_route 1 ---- N yield_observation
 | `exit_fee_amount` | 固定退出费用 | `Nullable(Decimal)` | 否 | 不按比例收取的固定退出费用。 |
 | `fixed_fee_asset_key` | 固定费用币种 | `Nullable(String)` | 否 | `entry_fee_amount` 和 `exit_fee_amount` 的计价资产；没有固定金额费用时为空。 |
 | `lock_seconds` | 锁仓秒数 | `UInt64` | 是 | 申购后不能退出的确定时间；没有锁仓为 `0`。 |
-| `unbonding_seconds` | 解质押等待秒数 | `Nullable(UInt64)` | 否 | 发起正常退出后等待本金可用的时间；没有等待为 `0`，来源给出固定等待时填写正整数，存在等待但受 epoch 或全网 stake 变化影响而无法预先确定固定秒数时为空。 |
+| `unbonding_seconds` | 解质押等待秒数 | `Nullable(UInt64)` | 否 | 发起正常退出后等待本金可用的时间；确认没有等待为 `0`，来源给出固定等待时填写正整数，等待信息未知或无法预先确定固定秒数时为空。不能将历史接口未提供等待信息解释为立即可退出。 |
 | `rule_principal_loss_mode` | 规则内本金损失方式 | `String` | 是 | `none`、`fixed`、`variable` 或 `unknown`。只描述协议正常规则，不描述黑客攻击、交易所倒闭或跨链桥失效。 |
 | `fixed_principal_loss_rate` | 固定本金损失率 | `Nullable(Decimal)` | 否 | `rule_principal_loss_mode=fixed` 时记录确定损失比例；其他情况为空。 |
 | `rule_eligibility` | 理论筛选结果 | `String` | 是 | `candidate`、`rejected` 或 `unknown`。`variable` 本金损失必须为 `rejected`。 |
@@ -175,6 +176,8 @@ length(reward_asset_keys) = length(reward_component_rates)
 6. LST、计息凭证等产品应优先保存可复算实际收益的 `exposure_ratio`，不能只保存页面展示的 APY；
 7. `rate_origin=reported` 的 `rate` 是来源事实；`rate_origin=derived` 的 `rate` 必须只使用同批公开输入按适配器固定公式计算。净收益、统一期限排名和对冲可行性由查询或分析层计算。
 8. 实时 collector 的每条观测都必须填写 `source_payload_hash`；只有历史迁移或明确标记的人工导入可以为空。
+
+Aave 等来源返回的历史 `date + avgRate` 可按专项设计保存为来源统计曲线：`observation_time` 是来源日期标签，不能解释为当时的即时利率或已实现收益。同一路线固定一种来源和历史窗口，不与当前快照或不同聚合窗口混写，不用金额档位区分统计口径；历史未给出的费用、额度、状态和退出信息保持未知，不用当前值回填。AVAX 第一阶段采用此规则，不新增表或改变观测唯一键。
 
 ## 7. 第一版不做的内容
 

@@ -17,10 +17,12 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/sampler"
 	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
 	marketyield "github.com/vphoenix/crypto-market-info/internal/yield"
+	"github.com/vphoenix/crypto-market-info/internal/yield/aave"
 	"github.com/vphoenix/crypto-market-info/internal/yield/jito"
 	"github.com/vphoenix/crypto-market-info/internal/yield/justlend"
 	"github.com/vphoenix/crypto-market-info/internal/yield/kamino"
 	"github.com/vphoenix/crypto-market-info/internal/yield/marinade"
+	"github.com/vphoenix/crypto-market-info/internal/yield/okxearn"
 	"github.com/vphoenix/crypto-market-info/internal/yield/save"
 	"github.com/vphoenix/crypto-market-info/internal/yield/solana"
 	"github.com/vphoenix/crypto-market-info/internal/yield/solvalidator"
@@ -91,7 +93,7 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 	if err = load("OKX", model.MarketPerpetual, cfg.OKXPerpSymbols, cfg.OKXWS, okxClient.Instruments); err != nil {
 		return err
 	}
-	if len(targets) == 0 && !cfg.JustLendYieldEnabled && !cfg.TRONStakingYieldEnabled && !cfg.SOLYieldEnabled {
+	if len(targets) == 0 && !yieldEnabled(cfg) {
 		return fmt.Errorf("no instruments are configured")
 	}
 	definitions := make([]model.Instrument, len(targets))
@@ -174,7 +176,7 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 			return err
 		}
 	}
-	if cfg.JustLendYieldEnabled || cfg.TRONStakingYieldEnabled || cfg.SOLYieldEnabled {
+	if yieldEnabled(cfg) {
 		if err = store.InitYieldRegistry(ctx); err != nil {
 			return err
 		}
@@ -205,7 +207,25 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 			components = append(components, component{name: "SOL validator " + voteAccount, run: runner.Run})
 		}
 	}
+	if cfg.AVAXYieldEnabled {
+		for _, item := range avaxYieldCollectors(cfg) {
+			runner := &marketyield.Runner{Source: item.source, Collector: item.collector, Sink: store, Interval: time.Hour, RetryInterval: 10 * time.Minute, Logger: logger}
+			components = append(components, component{name: item.name, run: runner.Run})
+		}
+	}
 	return runComponents(ctx, components)
+}
+
+func yieldEnabled(cfg config.Config) bool {
+	return cfg.JustLendYieldEnabled || cfg.TRONStakingYieldEnabled || cfg.SOLYieldEnabled || cfg.AVAXYieldEnabled
+}
+
+func avaxYieldCollectors(cfg config.Config) []yieldCollectorSpec {
+	return []yieldCollectorSpec{
+		{name: "OKX AVAX earn yield", source: "okx-avax-flexible", collector: okxearn.NewCollector(cfg.OKXREST)},
+		{name: "Aave V3 AVAX yield", source: "aave-v3-avax", collector: aave.NewV3Collector("")},
+		{name: "Aave V4 AVAX yield", source: "aave-v4-avax", collector: aave.NewV4Collector("")},
+	}
 }
 
 func solYieldCollectors(cfg config.Config, rpcClient *solana.Client, poolReader *solana.Reader) []yieldCollectorSpec {

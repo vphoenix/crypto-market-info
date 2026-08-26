@@ -5,6 +5,7 @@ import (
 	"errors"
 	"io"
 	"log/slog"
+	"reflect"
 	"sync"
 	"testing"
 	"time"
@@ -44,8 +45,21 @@ func (c *runnerCollector) Collect(context.Context) (Batch, error) {
 type runnerSink struct {
 	mu      sync.Mutex
 	calls   int
-	batches []Batch
+	batches []runnerBatchSnapshot
 	done    chan struct{}
+}
+
+type runnerBatchSnapshot struct {
+	source      string
+	collectedAt time.Time
+	items       []runnerItemSnapshot
+}
+
+type runnerItemSnapshot struct {
+	routeIdentity   string
+	observationTime time.Time
+	tier            uint16
+	payloadHash     string
 }
 
 type successfulRunnerSink struct {
@@ -61,7 +75,17 @@ func (s *runnerSink) WriteYieldBatch(_ context.Context, batch Batch) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	s.calls++
-	s.batches = append(s.batches, batch)
+	// Capture values now, not Batch's aliased slice/pointers: a mutation before
+	// retry must not silently change the first recorded evidence as well.
+	snapshot := runnerBatchSnapshot{source: batch.Source, collectedAt: batch.CollectedAt}
+	for _, item := range batch.Items {
+		hash := ""
+		if item.Observation.SourcePayloadHash != nil {
+			hash = *item.Observation.SourcePayloadHash
+		}
+		snapshot.items = append(snapshot.items, runnerItemSnapshot{routeIdentity: item.Route.Identity(), observationTime: item.Observation.ObservationTime, tier: item.Observation.TierNo, payloadHash: hash})
+	}
+	s.batches = append(s.batches, snapshot)
 	if s.calls == 1 {
 		return errors.New("temporary")
 	}
@@ -94,7 +118,7 @@ func TestRunnerRetriesSameValidatedBatchWithoutRecollecting(t *testing.T) {
 	if calls != 1 {
 		t.Fatalf("collector calls=%d", calls)
 	}
-	if len(sink.batches) != 2 || !sink.batches[0].CollectedAt.Equal(sink.batches[1].CollectedAt) {
+	if len(sink.batches) != 2 || !reflect.DeepEqual(sink.batches[0], sink.batches[1]) {
 		t.Fatal("runner regenerated pending batch")
 	}
 }

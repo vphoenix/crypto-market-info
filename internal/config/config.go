@@ -30,6 +30,7 @@ type Config struct {
 	TRONStakingYieldEnabled   bool
 	TRONHTTPURL               string
 	SOLYieldEnabled           bool
+	AVAXYieldEnabled          bool
 	SolanaRPCURL              string
 	SOLValidatorVoteAccounts  []string
 	JitoSOLBaseURL            string
@@ -62,6 +63,10 @@ func Load() (Config, error) {
 	if err != nil {
 		return Config{}, err
 	}
+	avaxYield, err := boolean("AVAX_YIELD_ENABLED", false)
+	if err != nil {
+		return Config{}, err
+	}
 	voteAccounts := list("SOL_VALIDATOR_VOTE_ACCOUNTS", "-")
 	seenVotes := make(map[string]struct{}, len(voteAccounts))
 	for _, vote := range voteAccounts {
@@ -84,7 +89,8 @@ func Load() (Config, error) {
 		FundingEnabled: funding, JustLendYieldEnabled: justLendYield, JustLendBaseURL: value("JUSTLEND_BASE_URL", "https://openapi.just.network"),
 		TRONStakingYieldEnabled: tronYield, TRONHTTPURL: value("TRON_HTTP_URL", "https://api.trongrid.io"),
 		SOLYieldEnabled: solYield, SolanaRPCURL: value("SOLANA_RPC_URL", "https://api.mainnet.solana.com"), SOLValidatorVoteAccounts: voteAccounts,
-		JitoSOLBaseURL: value("JITO_SOL_BASE_URL", "https://kobe.mainnet.jito.network"), MarinadeAPYBaseURL: value("MARINADE_APY_BASE_URL", "https://apy.marinade.finance"),
+		AVAXYieldEnabled: avaxYield,
+		JitoSOLBaseURL:   value("JITO_SOL_BASE_URL", "https://kobe.mainnet.jito.network"), MarinadeAPYBaseURL: value("MARINADE_APY_BASE_URL", "https://apy.marinade.finance"),
 		MarinadeValidatorsBaseURL: value("MARINADE_VALIDATORS_BASE_URL", "https://validators-api.marinade.finance"), KaminoBaseURL: value("KAMINO_BASE_URL", "https://api.kamino.finance"),
 		SaveBaseURL: value("SAVE_BASE_URL", "https://api.solend.fi"), MinuteQueueCapacity: queue,
 	}, nil

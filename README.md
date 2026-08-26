@@ -6,7 +6,8 @@
 
 - Binance、OKX 现货及永续合约 L2 盘口；
 - Binance、OKX 永续资金费率；
-- JustLend TRX 收益、TRON 原生质押，以及 SOL 第一、第二阶段收益（LST、原生质押、Kamino 和 Save）。
+- JustLend TRX 收益、TRON 原生质押，以及 SOL 第一、第二阶段收益（LST、原生质押、Kamino 和 Save）；
+- AVAX 第一阶段：OKX 公开出借 APR、Aave V3/V4 WAVAX 基础存款历史 APY。
 
 以后还可能增加其他 CEX、DEX、收益协议、链状态、桥和二层流通状态、借贷费率、指数价格、手续费或 gas 等公开数据。当前六张表不是最终边界；不同语义的数据应建立自己的定类型模型和表，不能全部塞入盘口或收益表。
 
@@ -64,6 +65,7 @@ go run ./cmd/collector
 | `TRON_STAKING_YIELD_ENABLED` | `false` | 是否每 6 小时采集 TRON 前 127 名 SR 收益 |
 | `TRON_HTTP_URL` | `https://api.trongrid.io` | TRON 公开 HTTP 节点地址 |
 | `SOL_YIELD_ENABLED` | `false` | 是否每 6 小时采集固定 SOL 收益路线（含 LST、原生质押、Kamino 与 Save）及配置的验证者收益 |
+| `AVAX_YIELD_ENABLED` | `false` | 是否每小时采集 OKX AVAX、Aave V3/V4 WAVAX 三条近期历史利率；OKX 复用 `OKX_REST_URL` |
 | `SOLANA_RPC_URL` | `https://api.mainnet.solana.com` | Solana mainnet finalized RPC 地址 |
 | `SOL_VALIDATOR_VOTE_ACCOUNTS` | `-` | 逗号分隔的原生质押 vote account 白名单；`-` 表示不采集验证者 |
 | `JITO_SOL_BASE_URL` | `https://kobe.mainnet.jito.network` | JitoSOL 官方公开 API 地址 |
@@ -87,6 +89,18 @@ SOL_YIELD_ENABLED=true \
 SOL_VALIDATOR_VOTE_ACCOUNTS=CcaHc2L43ZWjwCHART3oZoJvHLAe9hzT2DJNUpBzoTN1 \
 go run ./cmd/collector
 ```
+
+仅在独立开发库运行 AVAX 第一阶段（不启用盘口）：
+
+```bash
+CLICKHOUSE_DATABASE=avax_yield_dev \
+BINANCE_SPOT_SYMBOLS=- BINANCE_PERP_SYMBOLS=- \
+OKX_SPOT_SYMBOLS=- OKX_PERP_SYMBOLS=- \
+AVAX_YIELD_ENABLED=true \
+go run ./cmd/collector
+```
+
+三个来源各自每小时抓近期历史，启动时即补入窗口；失败按 10 分钟重试。不需要新建专项表或 API key；没有历史费用、额度、退出状态的信息保持未知。固定 `LAST_WEEK` 来源平均 APY 不与当前快照混写，永续资金费率不计入收益。
 
 端点也可通过 `BINANCE_SPOT_REST_URL`、`BINANCE_FUTURES_REST_URL`、`BINANCE_SPOT_WS_URL`、`BINANCE_FUTURES_WS_URL`、`BINANCE_FUTURES_MARKET_WS_URL`、`OKX_REST_URL` 和 `OKX_WS_URL` 覆盖，便于代理、测试环境和区域域名切换。Binance Futures 深度默认使用 `/public/ws`，mark price 资金费率默认使用 `/market/ws`，不能混用。
 
@@ -117,7 +131,7 @@ CLICKHOUSE_INTEGRATION=1 go test ./internal/storage/clickhouse -v
 
 永续资金费率的估算值来自 Binance/OKX 各一条公共 WebSocket 连接；实际结算值在目标结算后第 2、5、15、60 分钟由各交易所独立的串行 REST worker 确认，相邻请求至少间隔 1 秒。WebSocket 推送过期时该整点留空，不回退到逐 instrument REST 轮询。
 
-JustLend、TRON 和 SOL 收益使用独立 Runner 与 ClickHouse writer。收益单轮失败只形成明确缺口并按规则重试，不会用旧利率冒充当前数据，也不会把永续资金费率加入收益率。
+JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer。收益单轮失败只形成明确缺口并按规则重试，不会用旧利率冒充当前数据，也不会把永续资金费率加入收益率。
 
 ## 数据存储模型
 
@@ -149,4 +163,5 @@ JustLend、TRON 和 SOL 收益使用独立 Runner 与 ClickHouse writer。收益
 - [ARB-0016 TRX 收益采集实现设计](docs/arbitrage/strategies/arb-0016-trx-yield-implementation.md)：JustLend 与 TRON 原生质押的采集和写入细节。
 - [ARB-0016 SOL 收益采集第一阶段实现设计](docs/arbitrage/strategies/arb-0016-sol-yield-phase-1.md)：bSOL、JitoSOL、mSOL、验证者白名单和 Marinade Native 的采集细节。
 - [ARB-0016 SOL 收益采集第二阶段实现设计](docs/arbitrage/strategies/arb-0016-sol-yield-phase-2.md)：laineSOL、JupSOL、hSOL、Kamino Main SOL 和 Save Main SOL 的采集细节。
+- [ARB-0016 AVAX 收益采集第一阶段实现设计](docs/arbitrage/strategies/arb-0016-avax-yield-phase-1.md)：OKX、Aave V3/V4 的固定历史窗口、单位换算、分页和两表写入。
 - [开发协作说明](AGENTS.md)：项目目标、数据不变量、实现和验证要求。

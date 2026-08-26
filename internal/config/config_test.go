@@ -1,6 +1,9 @@
 package config
 
-import "testing"
+import (
+	"os"
+	"testing"
+)
 
 func TestLoadYieldConfiguration(t *testing.T) {
 	t.Setenv("JUSTLEND_YIELD_ENABLED", "true")
@@ -39,5 +42,25 @@ func TestLoadRejectsInvalidYieldBoolean(t *testing.T) {
 	t.Setenv("JUSTLEND_YIELD_ENABLED", "sometimes")
 	if _, err := Load(); err == nil {
 		t.Fatal("invalid yield boolean accepted")
+	}
+}
+
+func TestAVAXYieldConfigurationIsOptIn(t *testing.T) {
+	t.Setenv("AVAX_YIELD_ENABLED", "")
+	if err := os.Unsetenv("AVAX_YIELD_ENABLED"); err != nil {
+		t.Fatal(err)
+	}
+	cfg, err := Load()
+	if err != nil || cfg.AVAXYieldEnabled {
+		t.Fatalf("AVAX must default disabled: enabled=%t err=%v", cfg.AVAXYieldEnabled, err)
+	}
+	t.Setenv("AVAX_YIELD_ENABLED", "true")
+	cfg, err = Load()
+	if err != nil || !cfg.AVAXYieldEnabled {
+		t.Fatalf("AVAX opt-in failed: enabled=%t err=%v", cfg.AVAXYieldEnabled, err)
+	}
+	t.Setenv("AVAX_YIELD_ENABLED", "sometimes")
+	if _, err = Load(); err == nil {
+		t.Fatal("invalid AVAX boolean accepted")
 	}
 }
