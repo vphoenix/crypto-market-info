@@ -10,7 +10,8 @@
 - Binance、OKX 永续资金费率；
 - JustLend TRX 收益产品；
 - TRON 原生质押收益；
-- SOL 的 bSOL、JitoSOL、mSOL、配置白名单验证者和 Marinade Native 收益。
+- SOL 的 bSOL、JitoSOL、mSOL、laineSOL、JupSOL、hSOL、配置白名单验证者和 Marinade Native 收益；
+- Kamino Main SOL、Save Main SOL 的基础存款收益。
 
 项目以后还可能增加其他 CEX、DEX、收益协议、链状态、桥和二层流通状态、借贷费率、指数或标记价格、手续费及 gas 等公开数据。当前六张表不是最终边界，但新数据不能为了省表而被硬塞进语义不相符的旧表。
 
@@ -18,7 +19,7 @@
 
 ## 2. 当前运行结构
 
-当前只使用一个 `collector` 进程和一个 ClickHouse 数据库：
+当前只使用一个 `collector` 进程和一个 ClickHouse 数据库。宿主机原生服务的路径、Shell 守护方式和实际启用配置见[当前部署与运行说明](runtime-operations.md)；下面描述程序内部结构，不表示使用 Docker 部署：
 
 ```text
 cmd/collector：配置、启动顺序、生命周期
@@ -34,8 +35,14 @@ cmd/collector：配置、启动顺序、生命周期
 ├─ JustLend 收益
 │  └─ client → collector → 每小时 Runner → yield writer
 │
-└─ TRON 原生质押
-   └─ client → collector → 每 6 小时 Runner → yield writer
+├─ TRON 原生质押
+│  └─ client → collector → 每 6 小时 Runner → yield writer
+│
+└─ SOL 收益（每条路线独立、每 6 小时 Runner → yield writer）
+   ├─ 通用 Stake Pool：bSOL、laineSOL、JupSOL、hSOL
+   ├─ 专用 API 与身份校验：JitoSOL、mSOL
+   ├─ 原生质押 API：Marinade Native、白名单验证者（可选）
+   └─ 借贷 API 与身份校验：Kamino Main SOL、Save Main SOL
 ```
 
 所有分支共用 ClickHouse Client、schema 初始化、HTTP 重试工具和结构化日志。
@@ -100,14 +107,17 @@ yield_route 1 ── N yield_observation
 - 资金费率最新时间符合该合约结算周期，估算值和实际值没有混淆；
 - JustLend 最近一次完整批次包含四条固定路线；
 - TRON 原生质押最近一次成功批次在同一观测时间恰好包含 127 条；
+- 启用 SOL 时，九条固定路线各自有最近成功采集；白名单验证者仅在配置非空时检查，不能要求它们与九条固定路线同批完成；
+- 实时收益观测都有 payload hash；直接链上行有区块锚点，API 历史行不能伪造锚点；
 - 日志中没有持续重复的启动失败、写入失败或无法恢复的序列断档。
 
 短暂缺口必须如实保留，不能用上一批数据填成当前有效值。
 
-下面的命令可直接检查当前六张表、各盘口的最近一分钟、资金费率以及两个收益来源的最近完整批次。盘口查询会列出 `instrument` 表中历史登记过的全部交易对；该表不保存启用状态，因此判断是否过期时，只检查当前 `BINANCE_SPOT_SYMBOLS`、`BINANCE_PERP_SYMBOLS`、`OKX_SPOT_SYMBOLS` 和 `OKX_PERP_SYMBOLS` 配置中启用的交易对，已经停采的历史行只供识别旧数据。默认数据库名不是 `crypto_market_info` 时替换 `--database` 参数：
+先按[运行说明中的只读检查](runtime-operations.md#4-只读检查)连接 `crypto_market_info`，再执行下面的 SQL，检查六张表、各盘口的最近一分钟、资金费率及收益的最近批次。不要仅凭 `docker compose ps` 判断数据库状态。
 
-```bash
-docker compose exec -T clickhouse clickhouse-client --database crypto_market_info --multiquery <<'SQL'
+盘口查询会列出 `instrument` 表中历史登记过的全部交易对；该表不保存启用状态，因此判断是否过期时，只检查当前 `BINANCE_SPOT_SYMBOLS`、`BINANCE_PERP_SYMBOLS`、`OKX_SPOT_SYMBOLS` 和 `OKX_PERP_SYMBOLS` 配置中启用的交易对，已经停采的历史行只供识别旧数据。
+
+```sql
 SELECT count() AS core_tables_found
 FROM system.tables
 WHERE database = currentDatabase()
@@ -187,10 +197,37 @@ INNER JOIN
 GROUP BY r.provider, o.collected_at
 ORDER BY r.provider, o.collected_at DESC
 LIMIT 1 BY r.provider;
-SQL
 ```
 
 正常情况下 `core_tables_found` 为 `6`；持续运行并恢复稳定后的完整盘口分钟 `valid_seconds` 应为 `60`；最近收益批次的 `route_count` 应分别为 JustLend `4`、TRON `127`，两个实时 collector 的 `missing_payload_hashes` 都应为 `0`。收益批次按同一轮统一的 `collected_at` 分组，而不是按 `observation_time` 分组，因为 JustLend V2 可以使用来源时间、其余路线使用采集时间；TRON 完整批次的 `distinct_observation_times` 仍应为 `1`。查询只判断数据是否持续形成，不替代对收益规则、协议安全或二层退出能力的人工审查。
+
+SOL 按路线查看最近成功批次，而不是要求一个统一批次或固定历史条数：
+
+```sql
+SELECT
+    r.provider,
+    r.product_code,
+    o.collected_at AS batch_collected_at,
+    max(o.observation_time) AS latest_observation_time,
+    count() AS observation_rows,
+    countIf(isNull(o.source_payload_hash)) AS missing_payload_hashes,
+    countIf(isNotNull(o.block_height) AND isNotNull(o.block_hash)
+        AND isNotNull(o.finality)) AS anchored_rows
+FROM yield_observation AS o FINAL
+INNER JOIN
+(
+    SELECT yield_route_id, provider, product_code
+    FROM yield_route FINAL
+    WHERE network = 'solana-mainnet'
+) AS r USING (yield_route_id)
+GROUP BY r.provider, r.product_code, o.collected_at
+ORDER BY r.provider, r.product_code, o.collected_at DESC
+LIMIT 1 BY r.provider, r.product_code;
+```
+
+与运行说明中的九条固定路线逐一核对；从未成功写入的路线不会出现在查询结果中，缺行也算异常。JustLend 正常每小时采一次，TRON 和 SOL 每 6 小时采一次；超过对应间隔并持续重试失败时检查日志。判断历史 API 是否仍在被采集要看 `batch_collected_at`，不能只看可能按天或 epoch 更新的 `latest_observation_time`；后者的新鲜度由各 collector 按自己的来源规则校验。
+
+`missing_payload_hashes` 应为 `0`。bSOL、laineSOL、JupSOL、hSOL 每轮各一条且有 `finalized` 锚点；Save 当前点有 `finalized_anchor`，历史点无锚点；JitoSOL、mSOL、Marinade Native、验证者和 Kamino 的 API 历史点无锚点是预期行为。历史窗口每轮重取，查询使用 `FINAL`，观测条数不应作为固定常量；日志中的 `routes` 字段实际计数为批次观测条数，不是去重后的产品数。
 
 ## 7. 增加其他数据时
 
@@ -206,9 +243,11 @@ SQL
 
 ## 8. 文档分工
 
+- [当前部署与运行说明](runtime-operations.md)：宿主机服务、路径、启用配置、连接和维护方式。
 - [行情采集程序设计](implementation-design.md)：盘口和资金费率的具体实现。
 - [市场数据存储数据字典](market-data-storage.md)：当前六张表及编码不变量。
 - [ARB-0016 收益数据采集设计](arbitrage/strategies/arb-0016-yield-data.md)：通用收益模型和理论筛选。
 - [ARB-0016 TRX 收益采集实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)：JustLend 与 TRON 采集细节。
 - [ARB-0016 SOL 收益采集第一阶段实现设计](arbitrage/strategies/arb-0016-sol-yield-phase-1.md)：SOL 第一阶段五类 Runner、来源校验和历史写入细节。
+- [ARB-0016 SOL 收益采集第二阶段实现设计](arbitrage/strategies/arb-0016-sol-yield-phase-2.md)：新增三条 LST 和两条借贷路线，沿用相同 Runner 与收益两表。
 - [套利机会与策略资料](arbitrage/README.md)：数据为何采集，不参与采集进程运行。

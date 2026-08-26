@@ -6,7 +6,7 @@
 
 - Binance、OKX 现货及永续合约 L2 盘口；
 - Binance、OKX 永续资金费率；
-- JustLend TRX 收益、TRON 原生质押，以及 SOL 第一阶段收益。
+- JustLend TRX 收益、TRON 原生质押，以及 SOL 第一、第二阶段收益（LST、原生质押、Kamino 和 Save）。
 
 以后还可能增加其他 CEX、DEX、收益协议、链状态、桥和二层流通状态、借贷费率、指数价格、手续费或 gas 等公开数据。当前六张表不是最终边界；不同语义的数据应建立自己的定类型模型和表，不能全部塞入盘口或收益表。
 
@@ -14,14 +14,18 @@
 
 整体组件关系、启动顺序、失败边界和未来扩展原则见[系统总体架构](docs/architecture.md)。套利机会定义和已迁入的 `ARB-xxxx` 策略资料见[套利机会与策略资料](docs/arbitrage/README.md)。这些资料用于说明数据需求，不会自动启用交易执行。
 
-## 本地开发环境
+## 当前机器的运行方式
 
-需要 Go、Docker 和 Docker Compose。ClickHouse 使用项目固定的官方 LTS 镜像，不需要在主机安装独立服务。
+当前长期采集使用**宿主机原生 ClickHouse + 编译后的 collector + Shell 循环守护**，不是 Docker Compose。实际路径、启用的数据源、检查命令和重启注意事项见[当前部署与运行说明](docs/runtime-operations.md)。`docker compose ps` 为空不代表数据库未运行；在这台机器上不要直接执行下面的开发环境启动命令。
 
-启动 ClickHouse：
+## 可选的本地开发环境
+
+以下是另一套独立开发环境，需要 Go、Docker 和 Docker Compose。它使用 `compose.yaml` 固定的 ClickHouse 镜像，并不描述上面的长期运行服务。
+
+仅在没有现有数据库占用 `8123`、`9000` 端口、且确实需要独立开发数据库时启动：
 
 ```bash
-docker compose up -d
+docker compose up -d clickhouse
 ```
 
 检查服务和版本：
@@ -31,11 +35,11 @@ docker compose ps
 docker compose exec clickhouse clickhouse-client --query "SELECT version()"
 ```
 
-本地数据库名为 `crypto_market_info`，HTTP 和 native 端口分别为 `127.0.0.1:8123`、`127.0.0.1:9000`。无密码访问只用于本机开发，端口不得绑定到公网地址。数据保存在 Docker volume 中，执行 `docker compose down` 不会删除数据。
+这套 Compose 环境的数据库名为 `crypto_market_info`，HTTP 和 native 端口分别为 `127.0.0.1:8123`、`127.0.0.1:9000`。无密码访问只用于本机开发，端口不得绑定到公网地址。其数据保存在 Docker volume 中，与当前宿主机数据库的数据目录不同；`docker compose down` 不删除 volume，但 `down -v` 会删除开发数据。
 
-## 运行采集程序
+## 开发时运行采集程序
 
-程序只使用公开 REST/WebSocket 接口，不需要交易所 API key。默认采集 Binance 与 OKX 的 BTC/USDT 现货和 USDT 线性永续；收益采集默认关闭，需要明确启用：
+以下 `go run` 示例用于开发调试，不是当前机器的守护启动方式；不要在已有采集器运行时再向同一个数据库启动一份。程序只使用公开 REST/WebSocket 接口，不需要交易所 API key。默认采集 Binance 与 OKX 的 BTC/USDT 现货和 USDT 线性永续；收益采集默认关闭，需要明确启用：
 
 ```bash
 go run ./cmd/collector
@@ -136,6 +140,7 @@ JustLend、TRON 和 SOL 收益使用独立 Runner 与 ClickHouse writer。收益
 
 ## 文档
 
+- [当前部署与运行说明](docs/runtime-operations.md)：实际运行服务、路径、配置、上游接口、只读检查和维护注意事项。
 - [系统总体架构](docs/architecture.md)：盘口、资金费率和收益三类采集分支、启动和失败边界、健康判断及未来数据扩展原则。
 - [市场数据与存储设计](docs/market-data-storage.md)：当前六张核心表的完整数据字典。
 - [行情采集程序设计](docs/implementation-design.md)：旧代码复用、采集流程、ClickHouse 写入和实现顺序。
@@ -143,4 +148,5 @@ JustLend、TRON 和 SOL 收益使用独立 Runner 与 ClickHouse writer。收益
 - [ARB-0016 收益数据采集设计](docs/arbitrage/strategies/arb-0016-yield-data.md)：通用收益两表、字段含义和理论筛选规则。
 - [ARB-0016 TRX 收益采集实现设计](docs/arbitrage/strategies/arb-0016-trx-yield-implementation.md)：JustLend 与 TRON 原生质押的采集和写入细节。
 - [ARB-0016 SOL 收益采集第一阶段实现设计](docs/arbitrage/strategies/arb-0016-sol-yield-phase-1.md)：bSOL、JitoSOL、mSOL、验证者白名单和 Marinade Native 的采集细节。
+- [ARB-0016 SOL 收益采集第二阶段实现设计](docs/arbitrage/strategies/arb-0016-sol-yield-phase-2.md)：laineSOL、JupSOL、hSOL、Kamino Main SOL 和 Save Main SOL 的采集细节。
 - [开发协作说明](AGENTS.md)：项目目标、数据不变量、实现和验证要求。

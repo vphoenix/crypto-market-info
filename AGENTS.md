@@ -43,7 +43,7 @@
 - 查询端负责把一分钟快照和对应差量恢复为任意秒的盘口。
 - 新数据只有在身份、时间、完整性和查询语义与现有模型一致时才能复用现有表；否则新增专项模型、表和不变量，不使用通用 JSON 大表。
 
-整体组件关系以 [docs/architecture.md](docs/architecture.md) 为准；当前数据模型以 [docs/market-data-storage.md](docs/market-data-storage.md) 为准。
+整体组件关系以 [docs/architecture.md](docs/architecture.md) 为准；当前数据模型以 [docs/market-data-storage.md](docs/market-data-storage.md) 为准；实际服务、路径和状态检查见 [docs/runtime-operations.md](docs/runtime-operations.md)，不要把可选 Compose 开发环境当作当前部署。
 
 ## 不可违反的数据不变量
 

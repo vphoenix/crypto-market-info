@@ -4,7 +4,7 @@
 
 本文是编程边界和实现顺序，不重复定义表字段；表结构与字段语义以数据字典为准。
 
-整个 `collector` 进程还包含 JustLend 和 TRON 收益分支。三类分支的组合、启动顺序、失败边界及未来其他数据的扩展原则见[系统总体架构](architecture.md)；收益分支细节见 [ARB-0016 TRX 收益采集实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)。
+整个 `collector` 进程还包含 JustLend、TRON 和 SOL 收益分支。盘口、资金费率和收益三类分支的组合、启动顺序、失败边界及未来其他数据的扩展原则见[系统总体架构](architecture.md)；实际运行服务见[当前部署与运行说明](runtime-operations.md)。收益分支细节见 [TRX 实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)、[SOL 第一阶段](arbitrage/strategies/arb-0016-sol-yield-phase-1.md)和[SOL 第二阶段](arbitrage/strategies/arb-0016-sol-yield-phase-2.md)。
 
 完整套利机会定义及 ARB-0002、ARB-0016、ARB-0022 来源资料见[套利机会与策略资料](arbitrage/README.md)。这些资料用于解释数据用途，不自动扩大本设计的第一版实现范围。
 
@@ -38,7 +38,7 @@ collector
 ├─ Binance / OKX 资金费率
 │  └─ WebSocket 估算 + REST 实际确认 → ClickHouse
 └─ 收益 Runner
-   └─ 见 ARB-0016 TRX 收益采集实现设计
+   └─ 见 ARB-0016 TRX 与 SOL 收益采集实现设计
 ```
 
 Redis 不参与任何环节。最新盘口只存在于采集进程内存；数据库保存已经结束的分钟、整点资金费率和低频收益快照，不承担实时消息传递。
@@ -53,7 +53,7 @@ internal/exchange/okx/         OKX REST、WebSocket 和序列规则
 internal/orderbook/            本地 L2 状态、排序和前 50 档输出
 internal/sampler/              每秒采样、分钟缓冲和差量计算
 internal/funding/              资金费率调度和实际值确认
-internal/yield/                收益模型、Runner、JustLend 和 TRON 采集器
+internal/yield/                收益模型、Runner、JustLend、TRON 和 SOL 采集器
 internal/storage/clickhouse/   表初始化、批量写入和查询
 internal/replay/               分钟快照加差量回放
 ```
@@ -221,7 +221,7 @@ ClickHouse 的替换在后台合并时发生，不提供即时唯一约束。盘
 6. 实现盘口查询与回放；
 7. 接入估算资金费率 WebSocket、延迟串行的实际费率 REST 确认和毫秒结算时间。
 
-收益两表、JustLend 和 TRON Runner 的实现顺序及完成标准单独记录在 [ARB-0016 TRX 收益采集实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)，两部分当前共同组成一个采集进程和六张核心表。
+收益两表及 JustLend、TRON Runner 的实现顺序和完成标准见 [TRX 实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)；SOL 扩展见[第一阶段](arbitrage/strategies/arb-0016-sol-yield-phase-1.md)和[第二阶段](arbitrage/strategies/arb-0016-sol-yield-phase-2.md)。这些分支共用一个采集进程和六张核心表。
 
 第一版完成必须通过：
 
