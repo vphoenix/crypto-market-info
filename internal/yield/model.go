@@ -34,40 +34,42 @@ type YieldRouteDefinition struct {
 }
 
 type YieldObservation struct {
-	ObservationTime        time.Time
-	CollectedAt            time.Time
-	TierNo                 uint16
-	TierMinAmount          decimal.Decimal
-	TierMaxAmount          *decimal.Decimal
-	TierMode               string
-	Rate                   *decimal.Decimal
-	RateKind               string
-	RateOrigin             string
-	RateMode               string
-	RewardAssetKeys        []string
-	RewardComponentRates   []*decimal.Decimal
-	EntryFeeRate           *decimal.Decimal
-	ExitFeeRate            *decimal.Decimal
-	FixedPenaltyRate       *decimal.Decimal
-	PerformanceFeeRate     *decimal.Decimal
-	EntryFeeAmount         *decimal.Decimal
-	ExitFeeAmount          *decimal.Decimal
-	FixedFeeAssetKey       *string
-	LockSeconds            uint64
-	UnbondingSeconds       *uint64
-	RulePrincipalLossMode  string
-	FixedPrincipalLossRate *decimal.Decimal
-	RuleEligibility        string
-	EligibilityReason      *string
-	ExposureRatio          *decimal.Decimal
-	Capacity               *decimal.Decimal
-	RemainingCapacity      *decimal.Decimal
-	TVL                    *decimal.Decimal
-	Availability           string
-	BlockHeight            *uint64
-	BlockHash              *string
-	Finality               *string
-	SourcePayloadHash      *string
+	ObservationTime         time.Time
+	CollectedAt             time.Time
+	TierNo                  uint16
+	TierMinAmount           decimal.Decimal
+	TierMaxAmount           *decimal.Decimal
+	TierMode                string
+	Rate                    *decimal.Decimal
+	RateKind                string
+	RateOrigin              string
+	RateMode                string
+	RewardAssetKeys         []string
+	RewardComponentRates    []*decimal.Decimal
+	EntryFeeRate            *decimal.Decimal
+	ExitFeeRate             *decimal.Decimal
+	FixedPenaltyRate        *decimal.Decimal
+	PerformanceFeeRate      *decimal.Decimal
+	EntryFeeAmount          *decimal.Decimal
+	ExitFeeAmount           *decimal.Decimal
+	FixedFeeAssetKey        *string
+	LockSeconds             uint64
+	UnbondingSeconds        *uint64
+	RedemptionWindowSeconds *uint64
+	RulePrincipalLossMode   string
+	FixedPrincipalLossRate  *decimal.Decimal
+	RuleEligibility         string
+	EligibilityReason       *string
+	ExposureRatio           *decimal.Decimal
+	Capacity                *decimal.Decimal
+	RemainingCapacity       *decimal.Decimal
+	TVL                     *decimal.Decimal
+	PoolCash                *decimal.Decimal
+	Availability            string
+	BlockHeight             *uint64
+	BlockHash               *string
+	Finality                *string
+	SourcePayloadHash       *string
 }
 
 type CollectedYield struct {
@@ -219,6 +221,9 @@ func (o YieldObservation) Validate() error {
 	}
 	if o.ExposureRatio != nil && !o.ExposureRatio.IsPositive() {
 		return fmt.Errorf("exposure_ratio must be positive")
+	}
+	if o.PoolCash != nil && (o.PoolCash.IsNegative() || o.PoolCash.GreaterThanOrEqual(decimal.New(1, 20)) || !o.PoolCash.Equal(o.PoolCash.Truncate(18))) {
+		return fmt.Errorf("pool_cash must fit non-negative Decimal(38,18)")
 	}
 	if o.FixedFeeAssetKey != nil && strings.TrimSpace(*o.FixedFeeAssetKey) == "" {
 		return fmt.Errorf("fixed_fee_asset_key cannot be empty")

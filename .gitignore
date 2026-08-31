@@ -1,0 +1,4 @@
+# Local ClickHouse runtime artifacts generated when the server is started from
+# this workspace. The production data and configuration live under ~/.local.
+/access/
+/preprocessed_configs/

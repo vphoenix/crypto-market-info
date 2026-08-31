@@ -7,7 +7,8 @@
 - Binance、OKX 现货及永续合约 L2 盘口；
 - Binance、OKX 永续资金费率；
 - JustLend TRX 收益、TRON 原生质押，以及 SOL 第一、第二阶段收益（LST、原生质押、Kamino 和 Save）；
-- AVAX 第一阶段：OKX 公开出借 APR、Aave V3/V4 WAVAX 基础存款历史 APY。
+- AVAX 第一阶段：OKX 公开出借 APR、Aave V3/V4 WAVAX 基础存款历史 APY；
+- AVAX 第二阶段：BENQI sAVAX、Ankr ankrAVAX 兑换率，以及 BENQI AVAX 基础借贷 APR、同块现金和退出规则（已部署；实际运行状态见运行说明）。
 
 以后还可能增加其他 CEX、DEX、收益协议、链状态、桥和二层流通状态、借贷费率、指数价格、手续费或 gas 等公开数据。当前六张表不是最终边界；不同语义的数据应建立自己的定类型模型和表，不能全部塞入盘口或收益表。
 
@@ -17,7 +18,7 @@
 
 ## 当前机器的运行方式
 
-当前长期采集使用**宿主机原生 ClickHouse + 编译后的 collector + Shell 循环守护**，不是 Docker Compose。实际路径、启用的数据源、检查命令和重启注意事项见[当前部署与运行说明](docs/runtime-operations.md)。`docker compose ps` 为空不代表数据库未运行；在这台机器上不要直接执行下面的开发环境启动命令。
+当前长期采集使用**宿主机原生 ClickHouse + 编译后的 collector + 用户级 systemd 开机服务**，不是 Docker Compose。`ubuntu` 用户已启用 linger，因此机器启动后无需登录就会拉起数据库和采集器。实际路径、启用的数据源、检查命令和重启注意事项见[当前部署与运行说明](docs/runtime-operations.md)。`docker compose ps` 为空不代表数据库未运行；在这台机器上不要直接执行下面的开发环境启动命令。
 
 ## 可选的本地开发环境
 
@@ -65,7 +66,8 @@ go run ./cmd/collector
 | `TRON_STAKING_YIELD_ENABLED` | `false` | 是否每 6 小时采集 TRON 前 127 名 SR 收益 |
 | `TRON_HTTP_URL` | `https://api.trongrid.io` | TRON 公开 HTTP 节点地址 |
 | `SOL_YIELD_ENABLED` | `false` | 是否每 6 小时采集固定 SOL 收益路线（含 LST、原生质押、Kamino 与 Save）及配置的验证者收益 |
-| `AVAX_YIELD_ENABLED` | `false` | 是否每小时采集 OKX AVAX、Aave V3/V4 WAVAX 三条近期历史利率；OKX 复用 `OKX_REST_URL` |
+| `AVAX_YIELD_ENABLED` | `false` | 是否每小时采集 AVAX 第一、第二阶段共六条路线；OKX 复用 `OKX_REST_URL` |
+| `AVALANCHE_RPC_URL` | `https://api.avax.network/ext/bc/C/rpc` | 第二阶段共用的 Avalanche C-chain 主网 RPC；必须支持 finalized 和按 block hash 读取 |
 | `SOLANA_RPC_URL` | `https://api.mainnet.solana.com` | Solana mainnet finalized RPC 地址 |
 | `SOL_VALIDATOR_VOTE_ACCOUNTS` | `-` | 逗号分隔的原生质押 vote account 白名单；`-` 表示不采集验证者 |
 | `JITO_SOL_BASE_URL` | `https://kobe.mainnet.jito.network` | JitoSOL 官方公开 API 地址 |
@@ -90,7 +92,7 @@ SOL_VALIDATOR_VOTE_ACCOUNTS=CcaHc2L43ZWjwCHART3oZoJvHLAe9hzT2DJNUpBzoTN1 \
 go run ./cmd/collector
 ```
 
-仅在独立开发库运行 AVAX 第一阶段（不启用盘口）：
+仅在独立开发库运行 AVAX 第一、第二阶段（不启用盘口）：
 
 ```bash
 CLICKHOUSE_DATABASE=avax_yield_dev \
@@ -100,7 +102,9 @@ AVAX_YIELD_ENABLED=true \
 go run ./cmd/collector
 ```
 
-三个来源各自每小时抓近期历史，启动时即补入窗口；失败按 10 分钟重试。不需要新建专项表或 API key；没有历史费用、额度、退出状态的信息保持未知。固定 `LAST_WEEK` 来源平均 APY 不与当前快照混写，永续资金费率不计入收益。
+六条路线各自每小时采集，启动即首采，失败按 10 分钟重试。第一阶段重抓近期历史窗口；第二阶段读取 finalized 同块快照，从启动日起积累历史。两种 LST 的利率暂为 NULL，收益以后按兑换率历史计算；BENQI 借贷直接保存基础 APR。固定 `LAST_WEEK` 来源平均 APY 不与当前快照混写，永续资金费率不计入收益。
+
+仍使用两张收益表，不需要 API key。新版启动时会为旧观测表幂等增加 `pool_cash`、`redemption_window_seconds` 两列，旧数据保留 NULL；请勿用上述开发命令向生产库启动第二份采集器。
 
 端点也可通过 `BINANCE_SPOT_REST_URL`、`BINANCE_FUTURES_REST_URL`、`BINANCE_SPOT_WS_URL`、`BINANCE_FUTURES_WS_URL`、`BINANCE_FUTURES_MARKET_WS_URL`、`OKX_REST_URL` 和 `OKX_WS_URL` 覆盖，便于代理、测试环境和区域域名切换。Binance Futures 深度默认使用 `/public/ws`，mark price 资金费率默认使用 `/market/ws`，不能混用。
 
@@ -164,4 +168,5 @@ JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer�
 - [ARB-0016 SOL 收益采集第一阶段实现设计](docs/arbitrage/strategies/arb-0016-sol-yield-phase-1.md)：bSOL、JitoSOL、mSOL、验证者白名单和 Marinade Native 的采集细节。
 - [ARB-0016 SOL 收益采集第二阶段实现设计](docs/arbitrage/strategies/arb-0016-sol-yield-phase-2.md)：laineSOL、JupSOL、hSOL、Kamino Main SOL 和 Save Main SOL 的采集细节。
 - [ARB-0016 AVAX 收益采集第一阶段实现设计](docs/arbitrage/strategies/arb-0016-avax-yield-phase-1.md)：OKX、Aave V3/V4 的固定历史窗口、单位换算、分页和两表写入。
+- [ARB-0016 AVAX 收益采集第二阶段实现设计](docs/arbitrage/strategies/arb-0016-avax-yield-phase-2.md)：BENQI、Ankr 的同块快照、兑换率、基础 APR、现金与旧表兼容迁移。
 - [开发协作说明](AGENTS.md)：项目目标、数据不变量、实现和验证要求。

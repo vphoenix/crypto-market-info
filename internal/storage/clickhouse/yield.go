@@ -153,13 +153,13 @@ func (c *Client) insertYieldRoutes(ctx context.Context, routes []marketyield.Yie
 }
 
 func (c *Client) insertYieldObservations(ctx context.Context, items []marketyield.CollectedYield, ids []uint32) error {
-	batch, err := c.conn.PrepareBatch(ctx, `INSERT INTO `+c.table("yield_observation")+` (yield_route_id,observation_time,collected_at,tier_no,tier_min_amount,tier_max_amount,tier_mode,rate,rate_kind,rate_origin,rate_mode,reward_asset_keys,reward_component_rates,entry_fee_rate,exit_fee_rate,fixed_penalty_rate,performance_fee_rate,entry_fee_amount,exit_fee_amount,fixed_fee_asset_key,lock_seconds,unbonding_seconds,rule_principal_loss_mode,fixed_principal_loss_rate,rule_eligibility,eligibility_reason,exposure_ratio,capacity,remaining_capacity,tvl,availability,block_height,block_hash,finality,source_payload_hash)`)
+	batch, err := c.conn.PrepareBatch(ctx, `INSERT INTO `+c.table("yield_observation")+` (yield_route_id,observation_time,collected_at,tier_no,tier_min_amount,tier_max_amount,tier_mode,rate,rate_kind,rate_origin,rate_mode,reward_asset_keys,reward_component_rates,entry_fee_rate,exit_fee_rate,fixed_penalty_rate,performance_fee_rate,entry_fee_amount,exit_fee_amount,fixed_fee_asset_key,lock_seconds,unbonding_seconds,redemption_window_seconds,rule_principal_loss_mode,fixed_principal_loss_rate,rule_eligibility,eligibility_reason,exposure_ratio,capacity,remaining_capacity,tvl,pool_cash,availability,block_height,block_hash,finality,source_payload_hash)`)
 	if err != nil {
 		return err
 	}
 	for index, item := range items {
 		o := item.Observation
-		if err = batch.Append(ids[index], o.ObservationTime.UTC(), o.CollectedAt.UTC(), o.TierNo, o.TierMinAmount, o.TierMaxAmount, o.TierMode, o.Rate, o.RateKind, o.RateOrigin, o.RateMode, o.RewardAssetKeys, o.RewardComponentRates, o.EntryFeeRate, o.ExitFeeRate, o.FixedPenaltyRate, o.PerformanceFeeRate, o.EntryFeeAmount, o.ExitFeeAmount, o.FixedFeeAssetKey, o.LockSeconds, o.UnbondingSeconds, o.RulePrincipalLossMode, o.FixedPrincipalLossRate, o.RuleEligibility, o.EligibilityReason, o.ExposureRatio, o.Capacity, o.RemainingCapacity, o.TVL, o.Availability, o.BlockHeight, o.BlockHash, o.Finality, o.SourcePayloadHash); err != nil {
+		if err = batch.Append(ids[index], o.ObservationTime.UTC(), o.CollectedAt.UTC(), o.TierNo, o.TierMinAmount, o.TierMaxAmount, o.TierMode, o.Rate, o.RateKind, o.RateOrigin, o.RateMode, o.RewardAssetKeys, o.RewardComponentRates, o.EntryFeeRate, o.ExitFeeRate, o.FixedPenaltyRate, o.PerformanceFeeRate, o.EntryFeeAmount, o.ExitFeeAmount, o.FixedFeeAssetKey, o.LockSeconds, o.UnbondingSeconds, o.RedemptionWindowSeconds, o.RulePrincipalLossMode, o.FixedPrincipalLossRate, o.RuleEligibility, o.EligibilityReason, o.ExposureRatio, o.Capacity, o.RemainingCapacity, o.TVL, o.PoolCash, o.Availability, o.BlockHeight, o.BlockHash, o.Finality, o.SourcePayloadHash); err != nil {
 			return err
 		}
 	}

@@ -186,9 +186,18 @@ length(ask_change_prices) = length(ask_change_qtys)
 
 收益数据量较低，每次有效采集直接保存完整快照，不使用盘口的分钟锚点和秒级差量编码。时间统一使用 UTC，利率、金额、费用、额度和兑换比例均使用 `Decimal`，不得经过二进制浮点数。
 
-收益路线和观测独立于盘口及资金费率表：收益率中不合并永续资金费率，也不重复保存做空市场深度。`unbonding_seconds` 为 `Nullable(UInt64)`：`0` 表示确认没有等待，正整数表示固定等待秒数，`NULL` 表示等待信息未知或无法预先确定固定秒数。完整字段字典和筛选语义见 [ARB-0016 收益数据采集设计](arbitrage/strategies/arb-0016-yield-data.md)；TRX 的 JustLend 与原生质押采集、区块锚点和写入规则见 [ARB-0016 TRX 收益采集实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)；SOL 第一阶段的 bSOL、JitoSOL、mSOL、验证者白名单和 Marinade Native 见 [ARB-0016 SOL 收益采集第一阶段实现设计](arbitrage/strategies/arb-0016-sol-yield-phase-1.md)。
+收益路线和观测独立于盘口及资金费率表：收益率中不合并永续资金费率，也不重复保存做空市场深度。`unbonding_seconds` 为 `Nullable(UInt64)`：`0` 表示明确没有制度性等待，正整数表示协议规定的固定等待秒数，`NULL` 表示等待信息未知或无法预先确定固定秒数；该字段不保证流动性充足或实际即时到账。完整字段字典和筛选语义见 [ARB-0016 收益数据采集设计](arbitrage/strategies/arb-0016-yield-data.md)；TRX 的 JustLend 与原生质押采集、区块锚点和写入规则见 [ARB-0016 TRX 收益采集实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)；SOL 第一阶段的 bSOL、JitoSOL、mSOL、验证者白名单和 Marinade Native 见 [ARB-0016 SOL 收益采集第一阶段实现设计](arbitrage/strategies/arb-0016-sol-yield-phase-1.md)。
 
 [AVAX 第一阶段实现](arbitrage/strategies/arb-0016-avax-yield-phase-1.md)复用这两张表保存 OKX、Aave V3/V4 的固定来源历史曲线，不修改 DDL。Aave 历史日期标签对应来源平均 APY，不能当即时利率；同一路线不混写当前快照或其他聚合窗口。历史没有给出的费用、额度及状态保留未知，不用当前值填充。
+
+[AVAX 第二阶段实现](arbitrage/strategies/arb-0016-avax-yield-phase-2.md)在同一 `yield_observation` 表增加以下两列。模型、DDL、writer 和旧表幂等迁移已实现，并已迁移生产库：
+
+| 字段 | 物理类型 | 语义 |
+|---|---|---|
+| `pool_cash` | `Nullable(Decimal(38,18))` | 指定池合约的底层现金余额，单位 `redeem_asset_key`；不代表保证可立即赎回金额，也不复用 `remaining_capacity`。 |
+| `redemption_window_seconds` | `Nullable(UInt64)` | 完成退出等待后的有限申领窗口长度；正数表示有限窗口，0 表示实读零长度、没有可用窗口，未知/不适用时 NULL；0 不是无限期。 |
+
+两列都是同一路线、同一区块的观测属性，不增加第三张表。新版 `InitSchema` 同时包含建表定义及旧表的 `ADD COLUMN IF NOT EXISTS` 迁移；writer 使用显式列名，不依赖新旧表的物理列顺序。旧数据和旧 collector 默认 NULL，不回填，不改变逻辑键或分区。第二阶段读取固定 finalized block hash 的合约状态，`finality=finalized`，不是把无区块的页面/APY 或多个 latest 读数拼在同一锚点上。
 
 ## 6. 盘口恢复关系
 

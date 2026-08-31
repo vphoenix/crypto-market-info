@@ -1,0 +1,33 @@
+[Unit]
+Description=Crypto Market Info Collector
+Documentation=file:///home/ubuntu/crypto-market-info/docs/runtime-operations.md
+After=network-online.target crypto-market-info-clickhouse.service
+Wants=network-online.target crypto-market-info-clickhouse.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/home/ubuntu/crypto-market-info
+Environment=HOME=/home/ubuntu
+Environment=BINANCE_SPOT_SYMBOLS=BTCUSDT
+Environment=BINANCE_PERP_SYMBOLS=BTCUSDT
+Environment=OKX_SPOT_SYMBOLS=BTC-USDT
+Environment=OKX_PERP_SYMBOLS=BTC-USDT-SWAP
+Environment=BINANCE_SPOT_REST_URL=https://data-api.binance.vision
+Environment=FUNDING_ENABLED=true
+Environment=JUSTLEND_YIELD_ENABLED=true
+Environment=TRON_STAKING_YIELD_ENABLED=true
+Environment=SOL_YIELD_ENABLED=true
+Environment=SOL_VALIDATOR_VOTE_ACCOUNTS=-
+Environment=AVAX_YIELD_ENABLED=true
+ExecStartPre=/usr/bin/curl --connect-timeout 2 --max-time 5 --fail --silent --show-error --output /dev/null http://127.0.0.1:8123/ping
+ExecStart=/home/ubuntu/.local/share/crypto-market-info-collector/collector
+Restart=always
+RestartSec=30s
+KillSignal=SIGTERM
+TimeoutStopSec=60s
+StandardOutput=append:/home/ubuntu/.local/share/crypto-market-info-collector/logs/collector.log
+StandardError=append:/home/ubuntu/.local/share/crypto-market-info-collector/logs/collector.log
+
+[Install]
+WantedBy=default.target

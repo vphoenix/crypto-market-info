@@ -13,7 +13,8 @@
 | [`strategies/arb-0016-trx-yield-implementation.md`](strategies/arb-0016-trx-yield-implementation.md) | TRX 收益采集实现设计 | JustLend 与 TRON 原生质押的采集、校验和写入规则 |
 | [`strategies/arb-0016-sol-yield-phase-1.md`](strategies/arb-0016-sol-yield-phase-1.md) | SOL 收益采集第一阶段实现设计 | 通用 Stake Pool、JitoSOL、mSOL、原生验证者与 Marinade Native |
 | [`strategies/arb-0016-sol-yield-phase-2.md`](strategies/arb-0016-sol-yield-phase-2.md) | SOL 收益采集第二阶段实现设计 | laineSOL、JupSOL、hSOL、Kamino SOL 与 Save SOL |
-| [`strategies/arb-0016-avax-yield-phase-1.md`](strategies/arb-0016-avax-yield-phase-1.md) | AVAX 收益采集第一阶段（已实现，未部署） | OKX、Aave V3/V4 的近期历史利率、校验与两表写入 |
+| [`strategies/arb-0016-avax-yield-phase-1.md`](strategies/arb-0016-avax-yield-phase-1.md) | AVAX 收益采集第一阶段（已实现） | OKX、Aave V3/V4 的近期历史利率、校验与两表写入；运行状态见运行说明 |
+| [`strategies/arb-0016-avax-yield-phase-2.md`](strategies/arb-0016-avax-yield-phase-2.md) | AVAX 收益采集第二阶段（已部署） | BENQI sAVAX、Ankr ankrAVAX、BENQI AVAX 借贷；同块兑换率、基础 APR、池内现金和退出窗口 |
 | [`strategies/arb-0022-spot-cross-cex.md`](strategies/arb-0022-spot-cross-cex.md) | 跨 CEX 同币种现货盘口价差套利 | ARB-0022 的策略和数据需求参考 |
 | [`legacy/arb-0002-settlement-window-implementation-plan.md`](legacy/arb-0002-settlement-window-implementation-plan.md) | 旧项目的 ARB-0002 窗口实现说明 | 仅用于理解可复用旧代码，不是本项目实现规范 |
 

@@ -17,7 +17,8 @@ ARB-0016 先采集各种单资产收益产品的公开收益率和产品规则�
 - [ARB-0016 TRX 收益采集实现设计](arb-0016-trx-yield-implementation.md)；
 - [ARB-0016 SOL 收益采集第一阶段实现设计](arb-0016-sol-yield-phase-1.md)；
 - [ARB-0016 SOL 收益采集第二阶段实现设计](arb-0016-sol-yield-phase-2.md)；
-- [ARB-0016 AVAX 收益采集第一阶段实现设计](arb-0016-avax-yield-phase-1.md)（已实现，未部署）：OKX、Aave V3/V4 的固定近期历史曲线。
+- [ARB-0016 AVAX 收益采集第一阶段实现设计](arb-0016-avax-yield-phase-1.md)（已实现）：OKX、Aave V3/V4 的固定近期历史曲线；运行状态见[运行说明](../../runtime-operations.md)；
+- [ARB-0016 AVAX 收益采集第二阶段实现设计](arb-0016-avax-yield-phase-2.md)（已部署）：BENQI sAVAX、Ankr ankrAVAX、BENQI AVAX 借贷的同块观测。
 
 ## 2. 表关系
 
@@ -84,6 +85,8 @@ yield_route 1 ---- N yield_observation
 
 唯一键：`(yield_route_id, observation_time, tier_no)`
 
+下表的 `pool_cash`、`redemption_window_seconds` 是 AVAX 第二阶段新增的两列，模型、写入和幂等迁移已实现，且生产库已迁移。仍然只有两张收益表。
+
 | 字段名 | 中文名称 | 逻辑类型 | 必填 | 说明 |
 |---|---|---:|:---:|---|
 | `yield_route_id` | 收益路线 ID | `UInt32` | 是 | 关联 `yield_route.yield_route_id`。 |
@@ -107,7 +110,8 @@ yield_route 1 ---- N yield_observation
 | `exit_fee_amount` | 固定退出费用 | `Nullable(Decimal)` | 否 | 不按比例收取的固定退出费用。 |
 | `fixed_fee_asset_key` | 固定费用币种 | `Nullable(String)` | 否 | `entry_fee_amount` 和 `exit_fee_amount` 的计价资产；没有固定金额费用时为空。 |
 | `lock_seconds` | 锁仓秒数 | `UInt64` | 是 | 申购后不能退出的确定时间；没有锁仓为 `0`。 |
-| `unbonding_seconds` | 解质押等待秒数 | `Nullable(UInt64)` | 否 | 发起正常退出后等待本金可用的时间；确认没有等待为 `0`，来源给出固定等待时填写正整数，等待信息未知或无法预先确定固定秒数时为空。不能将历史接口未提供等待信息解释为立即可退出。 |
+| `unbonding_seconds` | 解质押等待秒数 | `Nullable(UInt64)` | 否 | 发起正常退出后协议规定的固定等待时间；明确没有制度性等待为 `0`，来源给出固定等待时填写正整数，等待信息未知或无法预先确定固定秒数时为空。它不是实际到账保证；流动性、执行和申领条件另行检查。不能将历史接口未提供等待信息解释为立即可退出。 |
+| `redemption_window_seconds` | 赎回申领窗口 | `Nullable(UInt64)` | 否 | 完成退出等待后，协议规定的有限申领窗口长度；正数表示有限窗口，`0` 表示实读零长度、没有可用申领窗口，不是无限期。未采、不适用或无法确认时为空。不能加到 `unbonding_seconds` 当作额外固定等待。 |
 | `rule_principal_loss_mode` | 规则内本金损失方式 | `String` | 是 | `none`、`fixed`、`variable` 或 `unknown`。只描述协议正常规则，不描述黑客攻击、交易所倒闭或跨链桥失效。 |
 | `fixed_principal_loss_rate` | 固定本金损失率 | `Nullable(Decimal)` | 否 | `rule_principal_loss_mode=fixed` 时记录确定损失比例；其他情况为空。 |
 | `rule_eligibility` | 理论筛选结果 | `String` | 是 | `candidate`、`rejected` 或 `unknown`。`variable` 本金损失必须为 `rejected`。 |
@@ -115,6 +119,7 @@ yield_route 1 ---- N yield_observation
 | `exposure_ratio` | 本金价格暴露比例 | `Nullable(Decimal)` | 否 | 每 1 单位 `position_asset_key` 对应多少单位 `price_exposure_asset`。LST、jToken 等产品填写当前兑换率；无需价格对冲时为空。 |
 | `capacity` | 总额度 | `Nullable(Decimal)` | 否 | 产品或本档公布的总可用额度，单位为存入资产。 |
 | `remaining_capacity` | 剩余额度 | `Nullable(Decimal)` | 否 | 当前仍可申购的额度。来源不提供时为空。 |
+| `pool_cash` | 池内现金余额 | `Nullable(Decimal)` | 否 | 适配器明确指定的池合约底层现金余额，单位为 `redeem_asset_key`；`0` 是实读无现金，空值表示未采或不适用。不是保证可立即赎回量、TVL 或剩余申购额度；余额可能另有用途或已被其他退出请求占用。 |
 | `tvl` | 产品 TVL | `Nullable(Decimal)` | 否 | 来源公布的产品规模。必须同时遵守适配器定义的计价口径。 |
 | `availability` | 产品状态 | `String` | 是 | `available`、`paused`、`closed`、`unavailable` 或 `unknown`。即使暂时不可用也保留观测。 |
 | `block_height` | 区块高度 | `Nullable(UInt64)` | 否 | 单次链上读取填写精确位置；多次非原子链上读取只能填写文档明确说明的批次结束锚点；不返回区块位置的官方聚合 API 和 CEX 数据为空。 |

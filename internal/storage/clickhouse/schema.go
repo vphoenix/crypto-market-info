@@ -124,6 +124,7 @@ ORDER BY yield_route_id`, db),
     fixed_fee_asset_key Nullable(String),
     lock_seconds UInt64,
     unbonding_seconds Nullable(UInt64),
+    redemption_window_seconds Nullable(UInt64),
     rule_principal_loss_mode LowCardinality(String),
     fixed_principal_loss_rate Nullable(Decimal(38, 18)),
     rule_eligibility LowCardinality(String),
@@ -132,6 +133,7 @@ ORDER BY yield_route_id`, db),
     capacity Nullable(Decimal(38, 18)),
     remaining_capacity Nullable(Decimal(38, 18)),
     tvl Nullable(Decimal(38, 18)),
+    pool_cash Nullable(Decimal(38, 18)),
     availability LowCardinality(String),
     block_height Nullable(UInt64),
     block_hash Nullable(String),
@@ -144,6 +146,9 @@ PARTITION BY toYYYYMM(observation_time)
 ORDER BY (yield_route_id, observation_time, tier_no)`, db),
 		fmt.Sprintf(`ALTER TABLE %s.yield_observation
     MODIFY COLUMN unbonding_seconds Nullable(UInt64)`, db),
+		fmt.Sprintf(`ALTER TABLE %s.yield_observation
+    ADD COLUMN IF NOT EXISTS pool_cash Nullable(Decimal(38, 18)),
+    ADD COLUMN IF NOT EXISTS redemption_window_seconds Nullable(UInt64)`, db),
 	}, nil
 }
 

@@ -1,0 +1,23 @@
+[Unit]
+Description=Crypto Market Info ClickHouse
+Documentation=file:///home/ubuntu/crypto-market-info/docs/runtime-operations.md
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Environment=HOME=/home/ubuntu
+RuntimeDirectory=crypto-market-info-clickhouse
+RuntimeDirectoryMode=0750
+ExecStart=/home/ubuntu/.local/share/crypto-market-info-clickhouse-bin/clickhouse server --log-file=/home/ubuntu/.local/share/crypto-market-info-clickhouse-logs/server.log --errorlog-file=/home/ubuntu/.local/share/crypto-market-info-clickhouse-logs/error.log --pid-file=%t/crypto-market-info-clickhouse/clickhouse.pid -- --path=/home/ubuntu/.local/share/crypto-market-info-clickhouse-data/ --listen_host=127.0.0.1 --http_port=8123 --tcp_port=9000
+ExecStartPost=/bin/sh -c 'until /usr/bin/curl --connect-timeout 1 --max-time 2 --fail --silent --output /dev/null http://127.0.0.1:8123/ping; do /usr/bin/sleep 1; done'
+Restart=always
+RestartSec=5s
+KillSignal=SIGTERM
+TimeoutStartSec=90s
+TimeoutStopSec=90s
+LimitNOFILE=262144
+
+[Install]
+WantedBy=default.target

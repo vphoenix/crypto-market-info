@@ -18,6 +18,9 @@ import (
 	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
 	marketyield "github.com/vphoenix/crypto-market-info/internal/yield"
 	"github.com/vphoenix/crypto-market-info/internal/yield/aave"
+	"github.com/vphoenix/crypto-market-info/internal/yield/ankr"
+	"github.com/vphoenix/crypto-market-info/internal/yield/avalanche"
+	"github.com/vphoenix/crypto-market-info/internal/yield/benqi"
 	"github.com/vphoenix/crypto-market-info/internal/yield/jito"
 	"github.com/vphoenix/crypto-market-info/internal/yield/justlend"
 	"github.com/vphoenix/crypto-market-info/internal/yield/kamino"
@@ -221,10 +224,14 @@ func yieldEnabled(cfg config.Config) bool {
 }
 
 func avaxYieldCollectors(cfg config.Config) []yieldCollectorSpec {
+	rpc := avalanche.NewClient(cfg.AvalancheRPCURL)
 	return []yieldCollectorSpec{
 		{name: "OKX AVAX earn yield", source: "okx-avax-flexible", collector: okxearn.NewCollector(cfg.OKXREST)},
 		{name: "Aave V3 AVAX yield", source: "aave-v3-avax", collector: aave.NewV3Collector("")},
 		{name: "Aave V4 AVAX yield", source: "aave-v4-avax", collector: aave.NewV4Collector("")},
+		{name: "BENQI sAVAX yield", source: "benqi-savax", collector: benqi.NewStakingCollector(rpc)},
+		{name: "Ankr ankrAVAX yield", source: "ankr-ankravax", collector: ankr.NewCollector(rpc)},
+		{name: "BENQI AVAX lending yield", source: "benqi-avax-lending", collector: benqi.NewLendingCollector(rpc)},
 	}
 }
 

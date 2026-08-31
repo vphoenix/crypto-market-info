@@ -1,7 +1,11 @@
 package config
 
 import (
+	"net/http"
+	"net/http/httptest"
 	"os"
+	"strings"
+	"sync/atomic"
 	"testing"
 )
 
@@ -46,13 +50,15 @@ func TestLoadRejectsInvalidYieldBoolean(t *testing.T) {
 }
 
 func TestAVAXYieldConfigurationIsOptIn(t *testing.T) {
-	t.Setenv("AVAX_YIELD_ENABLED", "")
-	if err := os.Unsetenv("AVAX_YIELD_ENABLED"); err != nil {
-		t.Fatal(err)
+	for _, key := range []string{"AVAX_YIELD_ENABLED", "AVALANCHE_RPC_URL"} {
+		t.Setenv(key, "")
+		if err := os.Unsetenv(key); err != nil {
+			t.Fatal(err)
+		}
 	}
 	cfg, err := Load()
-	if err != nil || cfg.AVAXYieldEnabled {
-		t.Fatalf("AVAX must default disabled: enabled=%t err=%v", cfg.AVAXYieldEnabled, err)
+	if err != nil || cfg.AVAXYieldEnabled || cfg.AvalancheRPCURL != "https://api.avax.network/ext/bc/C/rpc" {
+		t.Fatalf("AVAX defaults: enabled=%t rpc=%q err=%v", cfg.AVAXYieldEnabled, cfg.AvalancheRPCURL, err)
 	}
 	t.Setenv("AVAX_YIELD_ENABLED", "true")
 	cfg, err = Load()
@@ -62,5 +68,25 @@ func TestAVAXYieldConfigurationIsOptIn(t *testing.T) {
 	t.Setenv("AVAX_YIELD_ENABLED", "sometimes")
 	if _, err = Load(); err == nil {
 		t.Fatal("invalid AVAX boolean accepted")
+	}
+}
+
+func TestAvalancheRPCConfigurationDoesNotProbeOrBlockStartup(t *testing.T) {
+	var requests atomic.Int32
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		requests.Add(1)
+		http.Error(w, "RPC is unavailable", http.StatusServiceUnavailable)
+	}))
+	defer server.Close()
+	t.Setenv("AVAX_YIELD_ENABLED", "true")
+	for _, endpoint := range []string{"  " + server.URL + "/ext/bc/C/rpc  ", "://invalid-rpc-url"} {
+		t.Setenv("AVALANCHE_RPC_URL", endpoint)
+		cfg, err := Load()
+		if err != nil || !cfg.AVAXYieldEnabled || cfg.AvalancheRPCURL != strings.TrimSpace(endpoint) {
+			t.Fatalf("RPC override must be loaded without probing: endpoint=%q err=%v", endpoint, err)
+		}
+	}
+	if requests.Load() != 0 {
+		t.Fatalf("configuration performed %d RPC startup probes", requests.Load())
 	}
 }

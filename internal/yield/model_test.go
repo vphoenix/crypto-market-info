@@ -103,3 +103,55 @@ func TestBatchAllowsRouteHistoryButRejectsSameTimeAndTier(t *testing.T) {
 		t.Fatal("same route, observation time, and tier accepted")
 	}
 }
+
+func TestYieldObservationPreservesOptionalPoolCashAndRedemptionWindow(t *testing.T) {
+	at := time.Date(2026, 8, 27, 0, 0, 0, 0, time.UTC)
+	for _, test := range []struct {
+		name   string
+		cash   *decimal.Decimal
+		window *uint64
+	}{
+		{name: "legacy NULL fields"},
+		{name: "observed zero", cash: Ptr(decimal.Zero), window: Ptr(uint64(0))},
+		{name: "positive cash above TVL", cash: Ptr(decimal.RequireFromString("2.123456789012345678")), window: Ptr(uint64(172800))},
+		{name: "cash upper bound", cash: Ptr(decimal.RequireFromString("99999999999999999999.999999999999999999"))},
+		{name: "one wei", cash: Ptr(decimal.RequireFromString("0.000000000000000001"))},
+		{name: "maximum uint64 window", window: Ptr(^uint64(0))},
+	} {
+		t.Run(test.name, func(t *testing.T) {
+			batch := validRunnerBatch(at)
+			batch.Items[0].Observation.PoolCash = test.cash
+			batch.Items[0].Observation.RedemptionWindowSeconds = test.window
+			batch.Items[0].Observation.TVL = Ptr(decimal.NewFromInt(1))
+			if err := batch.NormalizeAndValidateForLiveCollection(); err != nil {
+				t.Fatalf("valid optional fields rejected: %v", err)
+			}
+			got := batch.Items[0].Observation
+			if (got.PoolCash == nil) != (test.cash == nil) || (test.cash != nil && !got.PoolCash.Equal(*test.cash)) {
+				t.Fatalf("pool cash changed: got=%v want=%v", got.PoolCash, test.cash)
+			}
+			if (got.RedemptionWindowSeconds == nil) != (test.window == nil) ||
+				(test.window != nil && *got.RedemptionWindowSeconds != *test.window) {
+				t.Fatalf("redemption window changed: got=%v want=%v", got.RedemptionWindowSeconds, test.window)
+			}
+		})
+	}
+}
+
+func TestYieldObservationRejectsPoolCashOutsideExactDecimalRange(t *testing.T) {
+	for _, invalid := range []string{
+		"-0.000000000000000001",
+		"100000000000000000000",
+		"100000000000000000001",
+		"0.0000000000000000001",
+		"1.0000000000000000001",
+	} {
+		t.Run(invalid, func(t *testing.T) {
+			batch := validRunnerBatch(time.Date(2026, 8, 27, 0, 0, 0, 0, time.UTC))
+			batch.Items[0].Observation.PoolCash = Ptr(decimal.RequireFromString(invalid))
+			if err := batch.NormalizeAndValidateForLiveCollection(); err == nil || !strings.Contains(err.Error(), "pool_cash") {
+				t.Fatalf("invalid pool cash %s: err=%v", invalid, err)
+			}
+		})
+	}
+}
