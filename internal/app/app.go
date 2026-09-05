@@ -10,6 +10,7 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/config"
 	"github.com/vphoenix/crypto-market-info/internal/exchange"
 	"github.com/vphoenix/crypto-market-info/internal/exchange/binance"
+	"github.com/vphoenix/crypto-market-info/internal/exchange/bybit"
 	"github.com/vphoenix/crypto-market-info/internal/exchange/okx"
 	"github.com/vphoenix/crypto-market-info/internal/funding"
 	"github.com/vphoenix/crypto-market-info/internal/model"
@@ -59,9 +60,16 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 	binanceClient.FuturesBaseURL = cfg.BinanceFuturesREST
 	okxClient := okx.NewClient()
 	okxClient.BaseURL = cfg.OKXREST
+	bybitClient := bybit.NewClient()
+	bybitClient.BaseURL = cfg.BybitREST
+	bybitClient.Logger = logger
 	// OKX counts connection attempts across public websocket channels. Sharing one
 	// gate prevents book and funding runtimes from creating a reconnect burst.
 	okxConnectGate := exchange.NewRequestGate(500 * time.Millisecond)
+	bybitConnectGate := exchange.NewRequestGate(time.Second)
+	if connections := bybitWebsocketConnections(cfg.BybitPerpSymbols, cfg.FundingEnabled); connections > 1000 {
+		return fmt.Errorf("Bybit linear websocket connection budget exceeded: %d > 1000", connections)
+	}
 	type target struct {
 		definition model.Instrument
 		ws         string
@@ -96,6 +104,9 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 	if err = load("OKX", model.MarketPerpetual, cfg.OKXPerpSymbols, cfg.OKXWS, okxClient.Instruments); err != nil {
 		return err
 	}
+	if err = load("Bybit", model.MarketPerpetual, cfg.BybitPerpSymbols, cfg.BybitWS, bybitClient.Instruments); err != nil {
+		return err
+	}
 	if len(targets) == 0 && !yieldEnabled(cfg) {
 		return fmt.Errorf("no instruments are configured")
 	}
@@ -112,10 +123,11 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 	fundingInstruments := make([]model.Instrument, 0, len(targets))
 	binanceFundingInstruments := make([]model.Instrument, 0, len(targets))
 	okxFundingInstruments := make([]model.Instrument, 0, len(targets))
+	bybitFundingInstruments := make([]model.Instrument, 0, len(targets))
 	for index, target := range targets {
 		instrument := registered[index]
 		retained := 400
-		if instrument.Exchange == "Binance" {
+		if instrument.Exchange == "Binance" || instrument.Exchange == "Bybit" {
 			retained = 1000
 		}
 		book, bookErr := orderbook.New(instrument.ID, retained)
@@ -123,20 +135,30 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 			return bookErr
 		}
 		sampleSources = append(sampleSources, sampler.Source{InstrumentID: instrument.ID, Book: book})
-		if instrument.Exchange == "Binance" {
+		switch instrument.Exchange {
+		case "Binance":
 			runtime := &binance.Runtime{Instrument: instrument, Book: book, Client: binanceClient, WSEndpoint: target.ws, Logger: logger}
 			components = append(components, component{name: "binance " + instrument.ExchangeSymbol, run: runtime.Run})
 			if cfg.FundingEnabled && instrument.MarketType == model.MarketPerpetual {
 				fundingInstruments = append(fundingInstruments, instrument)
 				binanceFundingInstruments = append(binanceFundingInstruments, instrument)
 			}
-		} else {
+		case "OKX":
 			runtime := &okx.Runtime{Instrument: instrument, Book: book, WSEndpoint: target.ws, ConnectGate: okxConnectGate, Logger: logger}
 			components = append(components, component{name: "okx " + instrument.ExchangeSymbol, run: runtime.Run})
 			if cfg.FundingEnabled && instrument.MarketType == model.MarketPerpetual {
 				fundingInstruments = append(fundingInstruments, instrument)
 				okxFundingInstruments = append(okxFundingInstruments, instrument)
 			}
+		case "Bybit":
+			runtime := &bybit.Runtime{Instrument: instrument, Book: book, WSEndpoint: target.ws, ConnectGate: bybitConnectGate, Logger: logger}
+			components = append(components, component{name: "bybit " + instrument.ExchangeSymbol, run: runtime.Run})
+			if cfg.FundingEnabled && instrument.MarketType == model.MarketPerpetual {
+				fundingInstruments = append(fundingInstruments, instrument)
+				bybitFundingInstruments = append(bybitFundingInstruments, instrument)
+			}
+		default:
+			return fmt.Errorf("unsupported registered exchange %q", instrument.Exchange)
 		}
 	}
 	if len(sampleSources) > 0 {
@@ -156,7 +178,7 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 			return fmt.Errorf("load pending funding confirmations: %w", loadErr)
 		}
 		queueCapacity := max(4096, len(pending)+1)
-		confirmationWorkers := make(map[string]funding.ConfirmationScheduler, 2)
+		confirmationWorkers := make(map[string]funding.ConfirmationScheduler, 3)
 		if len(binanceFundingInstruments) > 0 {
 			worker := &funding.ConfirmationWorker{Exchange: "Binance", Provider: binanceClient, Sink: store, QueueCapacity: queueCapacity, Logger: logger}
 			confirmationWorkers["Binance"] = worker
@@ -175,7 +197,21 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 				component{name: "OKX funding websocket", run: runtime.Run},
 			)
 		}
-		if err = funding.ScheduleStartupBackfill(ctx, pending, registered, confirmationWorkers); err != nil {
+		if len(bybitFundingInstruments) > 0 {
+			worker := &funding.ConfirmationWorker{Exchange: "Bybit", Provider: bybitClient, Sink: store, QueueCapacity: queueCapacity, Logger: logger}
+			confirmationWorkers["Bybit"] = worker
+			runtime := &bybit.FundingRuntime{Instruments: bybitFundingInstruments, Estimates: estimates, Confirmations: worker, WSEndpoint: cfg.BybitWS, ConnectGate: bybitConnectGate, Logger: logger}
+			components = append(components,
+				component{name: "Bybit funding confirmation", run: worker.Run},
+				component{name: "Bybit funding websocket", run: runtime.Run},
+			)
+		}
+		storedInstruments, loadErr := store.Instruments(ctx)
+		if loadErr != nil {
+			return fmt.Errorf("load instruments for funding backfill: %w", loadErr)
+		}
+		backfillInstruments := startupBackfillInstruments(fundingInstruments, storedInstruments)
+		if err = funding.ScheduleStartupBackfill(ctx, pending, backfillInstruments, confirmationWorkers); err != nil {
 			return err
 		}
 	}
@@ -295,4 +331,59 @@ func selectSymbols(exchange string, available []model.Instrument, symbols []stri
 		out = append(out, item)
 	}
 	return out, nil
+}
+
+func bybitWebsocketConnections(symbols []string, fundingEnabled bool) int {
+	connections := len(symbols)
+	if fundingEnabled && len(symbols) > 0 {
+		connections++
+	}
+	return connections
+}
+
+type fundingRoute struct {
+	exchange string
+	market   model.MarketType
+	symbol   string
+}
+
+func startupBackfillInstruments(current, stored []model.Instrument) []model.Instrument {
+	currentRoutes := make(map[fundingRoute]model.Instrument, len(current))
+	result := make([]model.Instrument, 0, len(current)+len(stored))
+	seenIDs := make(map[uint32]struct{}, len(current)+len(stored))
+	for _, instrument := range current {
+		if instrument.ID == 0 || instrument.MarketType != model.MarketPerpetual {
+			continue
+		}
+		route := fundingRoute{exchange: instrument.Exchange, market: instrument.MarketType, symbol: instrument.ExchangeSymbol}
+		currentRoutes[route] = instrument
+		result = append(result, instrument)
+		seenIDs[instrument.ID] = struct{}{}
+	}
+	for _, instrument := range stored {
+		if instrument.ID == 0 || instrument.MarketType != model.MarketPerpetual {
+			continue
+		}
+		if _, exists := seenIDs[instrument.ID]; exists {
+			continue
+		}
+		route := fundingRoute{exchange: instrument.Exchange, market: instrument.MarketType, symbol: instrument.ExchangeSymbol}
+		active, exists := currentRoutes[route]
+		if !exists || !sameFundingAssets(active, instrument) {
+			continue
+		}
+		result = append(result, instrument)
+		seenIDs[instrument.ID] = struct{}{}
+	}
+	return result
+}
+
+func sameFundingAssets(left, right model.Instrument) bool {
+	if left.BaseAsset != right.BaseAsset || left.QuoteAsset != right.QuoteAsset {
+		return false
+	}
+	if left.SettleAsset == nil || right.SettleAsset == nil {
+		return left.SettleAsset == nil && right.SettleAsset == nil
+	}
+	return *left.SettleAsset == *right.SettleAsset
 }

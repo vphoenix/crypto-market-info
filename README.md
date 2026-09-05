@@ -4,8 +4,8 @@
 
 当前已经实现：
 
-- Binance、OKX 现货及永续合约 L2 盘口；
-- Binance、OKX 永续资金费率；
+- Binance、OKX 现货及永续合约 L2 盘口，以及 Bybit USDT 线性永续 L2 盘口；
+- Binance、OKX 和 Bybit 永续资金费率；
 - JustLend TRX 收益、TRON 原生质押，以及 SOL 第一、第二阶段收益（LST、原生质押、Kamino 和 Save）；
 - AVAX 第一阶段：OKX 公开出借 APR、Aave V3/V4 WAVAX 基础存款历史 APY；
 - AVAX 第二阶段：BENQI sAVAX、Ankr ankrAVAX 兑换率，以及 BENQI AVAX 基础借贷 APR、同块现金和退出规则（已部署；实际运行状态见运行说明）。
@@ -41,11 +41,23 @@ docker compose exec clickhouse clickhouse-client --query "SELECT version()"
 
 ## 开发时运行采集程序
 
-以下 `go run` 示例用于开发调试，不是当前机器的守护启动方式；不要在已有采集器运行时再向同一个数据库启动一份。程序只使用公开 REST/WebSocket 接口，不需要交易所 API key。默认采集 Binance 与 OKX 的 BTC/USDT 现货和 USDT 线性永续；收益采集默认关闭，需要明确启用：
+以下 `go run` 示例用于开发调试，不是当前机器的守护启动方式；不要在已有采集器运行时再向同一个数据库启动一份。程序只使用公开 REST/WebSocket 接口，不需要交易所 API key。默认采集 Binance 与 OKX 的 BTC/USDT 现货和 USDT 线性永续；Bybit 和收益采集默认关闭，需要明确启用：
 
 ```bash
 go run ./cmd/collector
 ```
+
+只在独立开发库启用一个 Bybit USDT 线性永续流：
+
+```bash
+CLICKHOUSE_DATABASE=bybit_market_dev \
+BINANCE_SPOT_SYMBOLS=- BINANCE_PERP_SYMBOLS=- \
+OKX_SPOT_SYMBOLS=- OKX_PERP_SYMBOLS=- \
+BYBIT_PERP_SYMBOLS=BTCUSDT \
+go run ./cmd/collector
+```
+
+Bybit 进入生产前还必须按专项设计跨过一个资金费结算边界，并对真实 `orderbook.1000` 长时记录相邻 `u` 差值；当前逐一连续校验是 fail-closed 的待实盘验证假设。
 
 常用环境变量：
 
@@ -59,6 +71,7 @@ go run ./cmd/collector
 | `BINANCE_PERP_SYMBOLS` | `BTCUSDT` | Binance USDT-M 永续 |
 | `OKX_SPOT_SYMBOLS` | `BTC-USDT` | OKX 现货 |
 | `OKX_PERP_SYMBOLS` | `BTC-USDT-SWAP` | OKX USDT 线性永续 |
+| `BYBIT_PERP_SYMBOLS` | `-` | Bybit USDT 线性永续；逗号分隔，设为 `-` 可禁用 |
 | `FUNDING_ENABLED` | `true` | 是否采集永续资金费率 |
 | `MINUTE_QUEUE_CAPACITY` | `512` | 等待写入 ClickHouse 的分钟盘口批次数；队列满时丢弃新完成的分钟并记录错误 |
 | `JUSTLEND_YIELD_ENABLED` | `false` | 是否每小时采集四条 JustLend TRX 收益路线 |
@@ -98,6 +111,7 @@ go run ./cmd/collector
 CLICKHOUSE_DATABASE=avax_yield_dev \
 BINANCE_SPOT_SYMBOLS=- BINANCE_PERP_SYMBOLS=- \
 OKX_SPOT_SYMBOLS=- OKX_PERP_SYMBOLS=- \
+BYBIT_PERP_SYMBOLS=- \
 AVAX_YIELD_ENABLED=true \
 go run ./cmd/collector
 ```
@@ -106,9 +120,9 @@ go run ./cmd/collector
 
 仍使用两张收益表，不需要 API key。新版启动时会为旧观测表幂等增加 `pool_cash`、`redemption_window_seconds` 两列，旧数据保留 NULL；请勿用上述开发命令向生产库启动第二份采集器。
 
-端点也可通过 `BINANCE_SPOT_REST_URL`、`BINANCE_FUTURES_REST_URL`、`BINANCE_SPOT_WS_URL`、`BINANCE_FUTURES_WS_URL`、`BINANCE_FUTURES_MARKET_WS_URL`、`OKX_REST_URL` 和 `OKX_WS_URL` 覆盖，便于代理、测试环境和区域域名切换。Binance Futures 深度默认使用 `/public/ws`，mark price 资金费率默认使用 `/market/ws`，不能混用。
+端点也可通过 `BINANCE_SPOT_REST_URL`、`BINANCE_FUTURES_REST_URL`、`BINANCE_SPOT_WS_URL`、`BINANCE_FUTURES_WS_URL`、`BINANCE_FUTURES_MARKET_WS_URL`、`OKX_REST_URL`、`OKX_WS_URL`、`BYBIT_REST_URL` 和 `BYBIT_WS_URL` 覆盖，便于代理、测试环境和区域域名切换。Binance Futures 深度默认使用 `/public/ws`，mark price 资金费率默认使用 `/market/ws`，不能混用。
 
-盘口启动和重连受进程内共享门控保护：Binance 1000 档 REST 快照相邻请求至少间隔 1 秒，OKX 盘口与资金费率 WebSocket 相邻建连至少间隔 500 毫秒。REST 返回 `429` 或 `418` 时，同一交易所客户端会遵守 `Retry-After` 并暂停全部后续请求，不进行快速重试。
+盘口启动和重连受进程内共享门控保护：Binance 1000 档 REST 快照相邻请求至少间隔 1 秒，OKX 盘口与资金费率 WebSocket 相邻建连至少间隔 500 毫秒，所有 Bybit 盘口与资金费率连接相邻拨号至少间隔 1 秒。REST 返回 `429` 或 `418` 时，同一交易所客户端会遵守 `Retry-After` 并暂停全部后续请求；Bybit 仅在 HTTP `403` 响应体明确包含 `access too frequent` 时等待至少 10 分钟，地区或权限封锁类 403 直接报错；响应体 `retCode=10006` 也会按响应头或保守退避更新同一个请求门控。限流期间不进行快速重试，metadata 启动会在当前进程内等待后继续，而不是依赖 systemd 30 秒重启形成请求风暴。
 
 打印程序实际执行的完整 ClickHouse DDL：
 
@@ -133,7 +147,7 @@ CLICKHOUSE_INTEGRATION=1 go test ./internal/storage/clickhouse -v
 
 采集进程不使用 Redis、消息队列或套利计算组件。网络断开、序列断档、解析失败或增量队列溢出时，对应盘口立即失效，重新同步成功前不会被秒级采样器保存。
 
-永续资金费率的估算值来自 Binance/OKX 各一条公共 WebSocket 连接；实际结算值在目标结算后第 2、5、15、60 分钟由各交易所独立的串行 REST worker 确认，相邻请求至少间隔 1 秒。WebSocket 推送过期时该整点留空，不回退到逐 instrument REST 轮询。
+永续资金费率的估算值来自 Binance、OKX，以及启用时的 Bybit 各一条公共 WebSocket 连接；实际结算值在目标结算后第 2、5、15、60 分钟由各交易所独立的串行 REST worker 确认，相邻请求至少间隔 1 秒。WebSocket 推送过期时该整点留空，不回退到逐 instrument REST 轮询。
 
 JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer。收益单轮失败只形成明确缺口并按规则重试，不会用旧利率冒充当前数据，也不会把永续资金费率加入收益率。
 
@@ -145,7 +159,7 @@ JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer�
 2. 第 1 至 59 秒仅写入相对上一个有效采样状态发生变化的价格和数量；
 3. 查询任意秒时，以该分钟快照为起点回放最多 59 秒差量。
 
-所有价格和数量以整数 tick / lot 保存；时间统一为 UTC。详见 [市场数据与存储设计](docs/market-data-storage.md)。
+所有价格和数量以整数 tick / lot 保存；时间统一为 UTC。新登记的永续合约还会把交易所发布的产品版本字段纳入 instrument 定义。部署包含该迁移的版本时，既有 Binance、OKX 永续会取得新 `instrument_id`，旧事实仍保留在旧 ID 下；启动补查会为语义兼容的旧版本继续确认最近 24 小时实际资金费率。详见 [市场数据与存储设计](docs/market-data-storage.md)。
 
 ### 为什么盘口采用两张数据表
 
@@ -162,6 +176,7 @@ JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer�
 - [系统总体架构](docs/architecture.md)：盘口、资金费率和收益三类采集分支、启动和失败边界、健康判断及未来数据扩展原则。
 - [市场数据与存储设计](docs/market-data-storage.md)：当前六张核心表的完整数据字典。
 - [行情采集程序设计](docs/implementation-design.md)：旧代码复用、采集流程、ClickHouse 写入和实现顺序。
+- [Bybit USDT 线性永续采集设计](docs/bybit-usdt-perpetual-market-data.md)：产品筛选、1000 档序列、稀疏 ticker、限流和版本迁移的精确定义。
 - [套利机会与策略资料](docs/arbitrage/README.md)：`ARB-0001` 至 `ARB-0022` 机会库，以及 ARB-0002、ARB-0016、ARB-0022 的详细文档。
 - [ARB-0016 收益数据采集设计](docs/arbitrage/strategies/arb-0016-yield-data.md)：通用收益两表、字段含义和理论筛选规则。
 - [ARB-0016 TRX 收益采集实现设计](docs/arbitrage/strategies/arb-0016-trx-yield-implementation.md)：JustLend 与 TRON 原生质押的采集和写入细节。

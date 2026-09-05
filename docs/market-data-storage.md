@@ -6,7 +6,7 @@
 
 所有时间均为 UTC。盘口快照和差量中的价格、数量均为整数：价格使用 `price_tick`，数量使用 `qty_lot`；不得使用字符串价格或二进制浮点数。用于定义换算单位的元数据使用十进制定点数 `Decimal`。
 
-`instrument_id` 是交易流的唯一标识，必须区分交易所、市场类型、标的、结算币种及合约版本。例如，Binance 现货 `BTCUSDT`、Binance U 本位永续 `BTCUSDT`、OKX 现货 `BTC-USDT` 和 OKX 永续 `BTC-USDT-SWAP` 必须使用不同的 `instrument_id`。其定义保存在 `instrument` 表中，不在各事实表中重复保存。
+`instrument_id` 是交易流的唯一标识，必须区分交易所、市场类型、标的、结算币种及合约版本。例如，Binance 现货 `BTCUSDT`、Binance U 本位永续 `BTCUSDT`、OKX 永续 `BTC-USDT-SWAP` 和 Bybit 线性永续 `BTCUSDT` 必须使用不同的 `instrument_id`。其定义保存在 `instrument` 表中，不在各事实表中重复保存。
 
 ## 1. 交易标的表
 
@@ -19,9 +19,10 @@
 | 字段名 | 中文名称 | 逻辑类型 | 必填 | 说明 |
 |---|---|---:|:---:|---|
 | `instrument_id` | 交易标的 ID | `UInt32` | 是 | 交易流的唯一标识。交易所产品定义、结算方式或合约版本发生变化时，分配新的 ID。 |
-| `exchange` | 交易所 | `String` | 是 | 交易场所，例如 `Binance`、`OKX`。 |
+| `exchange` | 交易所 | `String` | 是 | 交易场所，例如 `Binance`、`OKX`、`Bybit`。 |
 | `market_type` | 市场类型 | `String` | 是 | 当前取值为 `spot`（现货）、`perpetual`（永续）或 `delivery`（交割合约）。 |
 | `exchange_symbol` | 交易所产品代码 | `String` | 是 | 交易所原始产品代码，例如 `BTCUSDT`、`BTC-USDT-SWAP`。 |
+| `venue_contract_version` | 场内合约版本 | `String` | 新登记衍生品是 | 标识同一交易所代码背后的具体合约实例。Binance 永续使用 `onboardDate`，OKX 永续使用 `listTime`，Bybit 永续使用 `symbolId:launchTime`；现货及迁移前历史行可为空。该字段变化必须分配新 `instrument_id`。 |
 | `base_asset` | 基础币种 | `String` | 是 | 被交易的资产，例如 BTC/USDT 中的 BTC。 |
 | `quote_asset` | 报价币种 | `String` | 是 | 表示价格使用什么资产计价，例如 BTC/USDT 中的 USDT。 |
 | `settle_asset` | 结算币种 | `Nullable(String)` | 否 | 保证金、盈亏和资金费使用的资产。现货为空；USDT 本位合约通常为 USDT；币本位合约可能与报价币种不同。 |
@@ -32,7 +33,7 @@
 
 `quote_asset` 与 `settle_asset` 表达不同含义。例如，BTC 币本位合约可以使用 USD 报价，但使用 BTC 作为保证金和盈亏结算资产，因此其 `quote_asset` 为 USD、`settle_asset` 为 BTC。
 
-本表不维护启用状态、创建时间、更新时间或生效区间。若上述交易定义发生变化，应创建新的 `instrument_id`，避免用新规则解释旧行情。
+本表不维护启用状态、创建时间、更新时间或生效区间。若上述交易定义发生变化，应创建新的 `instrument_id`，避免用新规则解释旧行情。`venue_contract_version` 通过幂等 `ADD COLUMN IF NOT EXISTS ... DEFAULT ''` 兼容旧表；旧行的空字符串只代表迁移前未知版本，不能用于登记新的衍生品定义。首次部署该迁移时，现有 Binance、OKX 永续会以有版本的新定义取得新 ID，旧盘口和资金费率仍留在旧 ID 下，不覆盖也不重写。
 
 ## 2. 分钟完整盘口表
 
@@ -172,7 +173,7 @@ length(ask_change_prices) = length(ask_change_qtys)
 6. 取得实际值后，使用交易所返回的精确 `funding_time`，以相同 `(instrument_id, hour_time)` 写入实际版本并设置 `is_actual = 1`；
 7. 已保存的实际值不得被后续估算值覆盖；
 8. 按照“一时间点只保留一个费率”的规则，结算整点不同时保存针对下一结算周期的新估算值。
-9. 进程启动时只扫描最近 24 小时内 `funding_time` 已到的记录；同一 `(instrument_id, funding_time)` 只要存在实际版本就不补查，否则去重后交给对应交易所的同一个串行 worker。错过多个历史重试时点时只立即查询一次，不形成启动请求突发。
+9. 进程启动时只扫描最近 24 小时内 `funding_time` 已到的记录；同一 `(instrument_id, funding_time)` 只要存在实际版本就不补查，否则去重后交给对应交易所的同一个串行 worker。错过多个历史重试时点时只立即查询一次，不形成启动请求突发。发生合约版本字段迁移后，补查集合还包含与当前启用流在交易所、市场、代码及资产身份上兼容的旧 `instrument_id`，但实时盘口和估算资金费率只写当前版本 ID。
 
 `hour_time` 是本表的整点逻辑键，继续保持秒和毫秒为 0；`funding_time` 是交易所定义的实际或目标结算时刻，不得为了匹配 `hour_time` 而截断。当前不记录 REST 请求时间或取得实际值的时间，因为它们不参与套利分析。
 

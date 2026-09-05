@@ -1,6 +1,6 @@
 # 行情采集程序设计
 
-本文说明盘口和资金费率分支如何实现 [市场数据存储数据字典](market-data-storage.md)。目标是复用 `crypto-arb-observer` 已验证的 Binance、OKX 接口代码，用尽量少的新组件完成公开行情采集、标准化、每秒采样、ClickHouse 存储和盘口回放。
+本文说明盘口和资金费率分支如何实现 [市场数据存储数据字典](market-data-storage.md)。目标是复用 `crypto-arb-observer` 已验证的 Binance、OKX 接口代码，并按同一标准模型接入 Bybit，完成公开行情采集、标准化、每秒采样、ClickHouse 存储和盘口回放。Bybit 的协议细节以 [Bybit USDT 线性永续采集设计](bybit-usdt-perpetual-market-data.md) 为准。
 
 本文是编程边界和实现顺序，不重复定义表字段；表结构与字段语义以数据字典为准。
 
@@ -12,8 +12,8 @@
 
 本文详细说明：
 
-- Binance 和 OKX；
-- 现货、Binance USDT-M 永续和 OKX USDT 线性永续的前 50 档 L2 盘口；
+- Binance、OKX 和 Bybit；
+- 现货、Binance USDT-M 永续、OKX USDT 线性永续和 Bybit USDT 线性永续的前 50 档 L2 盘口；
 - 永续合约整点资金费率；
 - 每分钟完整盘口、分钟内秒级差量；
 - 从 ClickHouse 查询并恢复任意有效秒的盘口。
@@ -32,10 +32,10 @@
 
 ```text
 collector
-├─ Binance / OKX 盘口
+├─ Binance / OKX / Bybit 盘口
 │  └─ 适配器 → 标准化 tick/lot → 本地 L2
 │     → 每秒采样 → 分钟缓冲 → ClickHouse
-├─ Binance / OKX 资金费率
+├─ Binance / OKX / Bybit 资金费率
 │  └─ WebSocket 估算 + REST 实际确认 → ClickHouse
 └─ 收益 Runner
    └─ 见 ARB-0016 TRX 与 SOL 收益采集实现设计
@@ -50,6 +50,7 @@ cmd/collector/                 程序入口、配置装配和优雅退出
 internal/model/                与交易所无关的 instrument、盘口和资金费率类型
 internal/exchange/binance/     Binance REST、WebSocket 和序列规则
 internal/exchange/okx/         OKX REST、WebSocket 和序列规则
+internal/exchange/bybit/       Bybit REST、WebSocket、序列和稀疏 ticker 状态
 internal/orderbook/            本地 L2 状态、排序和前 50 档输出
 internal/sampler/              每秒采样、分钟缓冲和差量计算
 internal/funding/              资金费率调度和实际值确认
@@ -90,7 +91,7 @@ internal/replay/               分钟快照加差量回放
 
 ## 4. 交易所适配
 
-适配器只负责协议差异，不做套利分析。两个交易所最终都向本地盘口提交以下信息：
+适配器只负责协议差异，不做套利分析。三个交易所最终都向本地盘口提交以下信息：
 
 ```text
 instrument_id
@@ -118,17 +119,27 @@ snapshot or update
 - 使用 `prevSeqId/seqId` 检查连续性；断档后标为无效并重新订阅或重新取得快照；
 - 不使用旧项目的 `books5`，因为它不能满足前 50 档采集。
 
+### Bybit
+
+- metadata 只接受 `category=linear` 返回中 `contractType=LinearPerpetual`、`status=Trading`、`quoteCoin=USDT`、`settleCoin=USDT` 且非 pre-listing 的产品；分页必须完整并拒绝重复 cursor 或重复 eligible symbol；
+- `symbolId:launchTime` 组成 `venue_contract_version`，tick size、quantity step 和资金费间隔都严格解析；缺失时不能把该代码登记为当前合约；
+- 盘口订阅 `orderbook.1000.{symbol}`，snapshot 完整覆盖本地状态，delta 数量是绝对值且零数量删除。接受 delta 的条件是 `u == last_u + 1`；`seq` 不得回退，但允许跳跃；断档、队列溢出、解析错误或 snapshot 前 delta 都立即失效并重连；
+- 资金费率使用公共 `tickers.{symbol}`。delta 可能只携带部分字段，因此按 symbol 维护缓存；snapshot 必须清空旧缓存，delta 缺失字段沿用缓存，显式 null 或时间倒退令连接失败，缓存尚未形成完整费率状态时不得发布估算值；
+- 每个深度 instrument 使用一条 WebSocket 连接，资金费率共用一条连接；订阅必须收到匹配成功 ack。服务端在 ack 前推送的数据只进入有界 pre-ack 缓存，不能修改盘口或估算；成功 ack 后按接收顺序回放，资金费率多批订阅按批独立激活。失败、超时、断线或缓存溢出丢弃缓存并保持状态不可用；JSON ping/pong 和静默超时都纳入重连判定。
+
 任何增量盘口队列都禁止使用“丢掉旧消息、只保留最新消息”的策略。队列满意味着连续性已经不可信，应失效并重建盘口。
 
-本地盘口不能只保留 50 档，否则边缘价位删除后无法补入原第 51 档。内部保留交易所快照支持的较深范围：Binance 使用 1000 档快照，OKX `books` 使用 400 档；每秒采样时才截取前 50 档。
+本地盘口不能只保留 50 档，否则边缘价位删除后无法补入原第 51 档。内部保留交易所快照支持的较深范围：Binance 和 Bybit 使用 1000 档，OKX `books` 使用 400 档；每秒采样时才截取前 50 档。
 
 ### 请求限频与重连
 
 - 通用 HTTP 客户端收到 `429` 或 `418` 后不做短间隔重试，而是读取 `Retry-After` 并启动交易所客户端级共享冷却；响应头缺失或无效时采用保守的 1 分钟冷却。同一客户端上的 metadata、盘口快照和资金费率请求都必须等待该冷却结束；
+- 限流返回定类型错误并保留状态码、来源码、消息和可重试时间。Bybit 仅将响应体明确包含 `access too frequent` 的 HTTP `403` 识别为限频并使用至少 10 分钟冷却，地区或权限封锁类 403 直接失败；HTTP `429` 或响应体 `retCode=10006` 优先读取 `Retry-After`、`X-Bapi-Limit-Reset-Timestamp`，否则采用保守冷却；metadata 分页在当前进程内等待共享 gate 后继续，不能快速退出交给 30 秒级外部重启循环；
 - `500/502/503/504` 仍允许有限次数重试，但指数退避加入最多 25% 的正向随机抖动；
 - 所有 Binance 盘口 runtime 共用其客户端上的快照门控。无论首次启动还是断线重建，相邻 1000 档 REST 快照请求都至少间隔 1 秒；
 - 所有 OKX 盘口 runtime 与资金费率 runtime 共用一个 WebSocket 建连门控，相邻拨号至少间隔 500 毫秒；
-- Binance 盘口及 OKX 盘口、资金费率 WebSocket 的重连退避加入最多 25% 的正向随机抖动，避免网络恢复后保持同步。
+- 所有 Bybit 盘口 runtime 与单个资金费率 runtime 共用一个 WebSocket 建连门控，相邻拨号至少间隔 1 秒；应用启动前计算 Bybit 连接预算，每个启用 symbol 一个盘口连接，启用 funding 时再加一个连接，超过 1000 时拒绝启动；
+- Binance 盘口及 OKX、Bybit 盘口和资金费率 WebSocket 的重连退避加入最多 25% 的正向随机抖动，避免网络恢复后保持同步。
 
 ## 5. 每秒采样和分钟缓冲
 
@@ -164,6 +175,8 @@ ClickHouse 的替换在后台合并时发生，不提供即时唯一约束。盘
 
 第一版只有一个采集进程可以登记 instrument。启动时读取已有定义：存在完全相同的定义就复用其 ID，否则用当前最大 ID 加一并插入新行。第一条 ID 从 `1` 开始，`0` 保留为无效值；不为尚未需要的多写入者分配机制增加额外服务。
 
+`instrument` 通过幂等迁移增加 `venue_contract_version String DEFAULT ''`。新登记的衍生品必须提供非空版本：Binance 使用 `onboardDate`，OKX 使用 `listTime`，Bybit 使用 `symbolId:launchTime`；现货和迁移前旧行可以为空。首次部署后既有 Binance、OKX 永续会取得新 ID，旧事实不重写，实时流只写新 ID。
+
 一分钟结束后先批量写入该分钟的差量，成功后再写分钟完整盘口。分钟完整盘口是查询可见标志：如果写差量后进程退出，只会暂时留下不可查询的孤立差量；重试相同确定性数据即可。禁止逐条写入 WebSocket 消息或逐秒执行一次数据库 INSERT。
 
 第一版不额外建设写入 WAL、Kafka 或 Redis 缓冲。数据库暂时不可用时，在进程内有限重试；超过限制后记录错误并丢弃尚未提交的分钟，不阻塞交易所接收循环。
@@ -174,11 +187,12 @@ ClickHouse 的替换在后台合并时发生，不提供即时唯一约束。盘
 
 - Binance 估算费率订阅 Mark Price WebSocket，使用推送中的费率和下一结算时间；USDⓈ-M 深度使用 `/public/ws`，Mark Price 使用 `/market/ws`；
 - OKX 估算费率订阅公开 `funding-rate` WebSocket；
+- Bybit 估算费率订阅公共 ticker WebSocket，按 symbol 合并稀疏 snapshot/delta，仅在费率、下一结算时间和正的资金费间隔都完整时更新内存；
 - 每个交易所只建立一个资金费率 WebSocket runtime，在同一连接中订阅本项目配置的永续 instrument，不为每个 instrument 新建资金费率连接；
 - runtime 只在内存中保留按 `(instrument_id, funding_time)` 区分的最新推送。UTC 整点由 scheduler 读取最新有效值并写入估算版本；连接失效或没有可用推送时宁可缺失，不使用旧值伪造当前整点；
 - 结算整点必须保留结算前针对该 `funding_time` 的最后估算值，避免 WebSocket 切换到下一周期后写错目标结算时间。
 
-实际结算值继续使用 Binance funding history 和 OKX funding history REST 接口。scheduler 根据 WebSocket 给出的目标 `funding_time` 建立待确认任务，不在整点请求，也不再每分钟遍历全部 instrument：
+实际结算值使用 Binance、OKX 和 Bybit funding history REST 接口。scheduler 根据 WebSocket 给出的目标 `funding_time` 建立待确认任务，不在整点请求，也不再每分钟遍历全部 instrument：
 
 1. 首次请求时间为 `funding_time + 2 分钟`；
 2. 每个交易所一个串行 REST worker，请求间隔至少 1 秒；
@@ -186,7 +200,7 @@ ClickHouse 的替换在后台合并时发生，不提供即时唯一约束。盘
 4. 实际响应按目标 `funding_time` 匹配，不再要求响应时间必须等于代码推导出的 UTC 整点；
 5. 取得实际值后，以相同 `(instrument_id, hour_time)` 写入 `is_actual=1` 的版本；已有实际值时不再写估算版本。
 
-第一版不为待确认任务增加 Redis、Kafka 或新数据库表。请求队列保存在进程内；进程启动时使用 `FINAL` 检查最近 24 小时内 `funding_time` 已到且仍没有任何实际版本的结算点，按 `(instrument_id, funding_time)` 去重后交给对应交易所的现有串行 worker 低频补查。已经错过的多个重试时点只立即补查一次，不集中追赶发出多个请求；后续仍按尚未错过的第 5、15、60 分钟时点执行。OKX 历史费率请求使用 `limit=100`，确保每小时结算时单次响应仍能覆盖这个 24 小时窗口。资金费率上下限、标记价格、结算状态和 REST 取得时间不进入本表。
+第一版不为待确认任务增加 Redis、Kafka 或新数据库表。请求队列保存在进程内；进程启动时使用 `FINAL` 检查最近 24 小时内 `funding_time` 已到且仍没有任何实际版本的结算点，按 `(instrument_id, funding_time)` 去重后交给对应交易所的现有串行 worker 低频补查。合约版本迁移时还纳入与当前启用流的交易所、市场、代码和资产身份兼容的旧 ID；实时估算流不回写旧 ID。已经错过的多个重试时点只立即补查一次，不集中追赶发出多个请求；后续仍按尚未错过的第 5、15、60 分钟时点执行。OKX 历史费率请求使用 `limit=100`，确保每小时结算时单次响应仍能覆盖这个 24 小时窗口。Bybit 使用 `endTime=target+1ms&limit=1` 并严格匹配响应的 symbol 和毫秒结算时间。资金费率上下限、标记价格、结算状态和 REST 取得时间不进入本表。
 
 ## 8. 查询和回放
 
@@ -198,7 +212,7 @@ ClickHouse 的替换在后台合并时发生，不提供即时唯一约束。盘
 
 ## 9. 失败处理
 
-环境变量无法解析等配置加载错误、ClickHouse 初始化或交易所 metadata 启动失败会阻止整个进程启动。当前收益端点字符串不在启动阶段探测或验证；URL 格式、网络、解析或写入问题由收益 Runner 作为单轮失败记录并重试。进入运行状态后，盘口 runtime 负责短暂断线、序列断档和重新同步。任何组件意外返回不能内部恢复的错误时，主进程会取消其他组件并退出，长期运行应由外部进程守护器负责重启。完整边界和健康判断见[系统总体架构](architecture.md)。
+环境变量无法解析等配置加载错误、ClickHouse 初始化或交易所 metadata 启动失败会阻止整个进程启动；已识别的 Bybit metadata 限流例外会在当前进程内按共享 gate 等待并继续分页。当前收益端点字符串不在启动阶段探测或验证；URL 格式、网络、解析或写入问题由收益 Runner 作为单轮失败记录并重试。进入运行状态后，盘口 runtime 负责短暂断线、序列断档和重新同步。任何组件意外返回不能内部恢复的错误时，主进程会取消其他组件并退出，长期运行应由外部进程守护器负责重启。完整边界和健康判断见[系统总体架构](architecture.md)。
 
 只保留影响数据正确性的状态：
 
@@ -229,7 +243,8 @@ ClickHouse 的替换在后台合并时发生，不提供即时唯一约束。盘
 - 同秒同价格多次更新只保存最终绝对数量；
 - 数量为零能删除价格；
 - 无变化秒和无效秒可以区分；
-- Binance、OKX 序列断档后不会产生看似有效的盘口；
+- Binance、OKX、Bybit 序列断档后不会产生看似有效的盘口；
+- Bybit snapshot/delta、1000 档保留、稀疏 ticker 缓存、ack 前有界缓存和多批独立激活均通过确定性测试；
 - 实际资金费率不会被估算值覆盖；
 - 估算费率不调用 REST，实际费率请求不会在整点并发突发；
 - 实际费率 REST 首次请求晚于结算时间，且同一交易所请求严格串行；

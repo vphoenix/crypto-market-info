@@ -9,13 +9,17 @@ import (
 )
 
 func TestParseSwapMetadataAndContractMultiplier(t *testing.T) {
-	payload := []byte(`{"code":"0","msg":"","data":[{"instType":"SWAP","instId":"BTC-USDT-SWAP","state":"live","baseCcy":"","quoteCcy":"","settleCcy":"USDT","ctType":"linear","ctVal":"0.01","ctMult":"1","ctValCcy":"BTC","tickSz":"0.1","lotSz":"1"}]}`)
+	payload := []byte(`{"code":"0","msg":"","data":[{"instType":"SWAP","instId":"BTC-USDT-SWAP","state":"live","baseCcy":"","quoteCcy":"","settleCcy":"USDT","ctType":"linear","ctVal":"0.01","ctMult":"1","ctValCcy":"BTC","tickSz":"0.1","lotSz":"1","listTime":"1597026383085"}]}`)
 	got, err := ParseInstruments(payload, model.MarketPerpetual)
 	if err != nil || len(got) != 1 {
 		t.Fatalf("got=%+v err=%v", got, err)
 	}
-	if !got[0].ContractMultiplier.Equal(decimal.RequireFromString("0.01")) {
+	if !got[0].ContractMultiplier.Equal(decimal.RequireFromString("0.01")) || got[0].VenueContractVersion != "1597026383085" {
 		t.Fatalf("multiplier=%s", got[0].ContractMultiplier)
+	}
+	missingVersion := []byte(`{"code":"0","msg":"","data":[{"instType":"SWAP","instId":"BTC-USDT-SWAP","state":"live","settleCcy":"USDT","ctType":"linear"}]}`)
+	if _, err := ParseInstruments(missingVersion, model.MarketPerpetual); err == nil {
+		t.Fatal("missing listTime was accepted")
 	}
 }
 
@@ -74,5 +78,5 @@ func TestOKXMaintenanceSequenceResetIsNotIgnoredAsStale(t *testing.T) {
 
 func okxInstrument() model.Instrument {
 	settle := "USDT"
-	return model.Instrument{ID: 2, Exchange: "OKX", MarketType: model.MarketPerpetual, ExchangeSymbol: "BTC-USDT-SWAP", BaseAsset: "BTC", QuoteAsset: "USDT", SettleAsset: &settle, ContractMultiplier: decimal.RequireFromString("0.01"), PriceTickSize: decimal.RequireFromString("0.1"), QuantityStepSize: decimal.NewFromInt(1)}
+	return model.Instrument{ID: 2, Exchange: "OKX", MarketType: model.MarketPerpetual, ExchangeSymbol: "BTC-USDT-SWAP", VenueContractVersion: "1597026383085", BaseAsset: "BTC", QuoteAsset: "USDT", SettleAsset: &settle, ContractMultiplier: decimal.RequireFromString("0.01"), PriceTickSize: decimal.RequireFromString("0.1"), QuantityStepSize: decimal.NewFromInt(1)}
 }

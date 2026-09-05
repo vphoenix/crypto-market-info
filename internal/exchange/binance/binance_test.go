@@ -10,17 +10,21 @@ import (
 )
 
 func TestParseExchangeInfoStrict(t *testing.T) {
-	payload := []byte(`{"symbols":[{"symbol":"BTCUSDT","status":"TRADING","contractType":"PERPETUAL","baseAsset":"BTC","quoteAsset":"USDT","marginAsset":"USDT","filters":[{"filterType":"PRICE_FILTER","tickSize":"0.10"},{"filterType":"LOT_SIZE","stepSize":"0.001"}]}]}`)
+	payload := []byte(`{"symbols":[{"symbol":"BTCUSDT","status":"TRADING","contractType":"PERPETUAL","baseAsset":"BTC","quoteAsset":"USDT","marginAsset":"USDT","onboardDate":1585526400000,"filters":[{"filterType":"PRICE_FILTER","tickSize":"0.10"},{"filterType":"LOT_SIZE","stepSize":"0.001"}]}]}`)
 	got, err := ParseExchangeInfo(payload, model.MarketPerpetual)
 	if err != nil || len(got) != 1 {
 		t.Fatalf("got=%+v err=%v", got, err)
 	}
-	if !got[0].PriceTickSize.Equal(decimal.RequireFromString("0.10")) {
+	if !got[0].PriceTickSize.Equal(decimal.RequireFromString("0.10")) || got[0].VenueContractVersion != "1585526400000" {
 		t.Fatal("tick size was not parsed exactly")
 	}
-	bad := []byte(`{"symbols":[{"symbol":"BTCUSDT","status":"TRADING","contractType":"PERPETUAL","baseAsset":"BTC","quoteAsset":"USDT","marginAsset":"USDT","filters":[{"filterType":"PRICE_FILTER","tickSize":"bad"},{"filterType":"LOT_SIZE","stepSize":"0.001"}]}]}`)
+	bad := []byte(`{"symbols":[{"symbol":"BTCUSDT","status":"TRADING","contractType":"PERPETUAL","baseAsset":"BTC","quoteAsset":"USDT","marginAsset":"USDT","onboardDate":1585526400000,"filters":[{"filterType":"PRICE_FILTER","tickSize":"bad"},{"filterType":"LOT_SIZE","stepSize":"0.001"}]}]}`)
 	if _, err := ParseExchangeInfo(bad, model.MarketPerpetual); err == nil {
 		t.Fatal("invalid decimal was silently accepted")
+	}
+	missingVersion := []byte(`{"symbols":[{"symbol":"BTCUSDT","status":"TRADING","contractType":"PERPETUAL","baseAsset":"BTC","quoteAsset":"USDT","marginAsset":"USDT","filters":[]}]}`)
+	if _, err := ParseExchangeInfo(missingVersion, model.MarketPerpetual); err == nil {
+		t.Fatal("missing onboardDate was accepted")
 	}
 }
 
@@ -54,5 +58,5 @@ func TestParseDepthRejectsNonDivisible(t *testing.T) {
 
 func testInstrument() model.Instrument {
 	settle := "USDT"
-	return model.Instrument{ID: 1, Exchange: "Binance", MarketType: model.MarketPerpetual, ExchangeSymbol: "BTCUSDT", BaseAsset: "BTC", QuoteAsset: "USDT", SettleAsset: &settle, ContractMultiplier: decimal.NewFromInt(1), PriceTickSize: decimal.RequireFromString("0.1"), QuantityStepSize: decimal.RequireFromString("0.001")}
+	return model.Instrument{ID: 1, Exchange: "Binance", MarketType: model.MarketPerpetual, ExchangeSymbol: "BTCUSDT", VenueContractVersion: "1585526400000", BaseAsset: "BTC", QuoteAsset: "USDT", SettleAsset: &settle, ContractMultiplier: decimal.NewFromInt(1), PriceTickSize: decimal.RequireFromString("0.1"), QuantityStepSize: decimal.RequireFromString("0.001")}
 }

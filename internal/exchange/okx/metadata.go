@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"strings"
 
 	"github.com/shopspring/decimal"
@@ -17,18 +18,19 @@ type instrumentsEnvelope struct {
 }
 
 type instrumentWire struct {
-	InstType  string `json:"instType"`
-	InstID    string `json:"instId"`
-	State     string `json:"state"`
-	BaseCcy   string `json:"baseCcy"`
-	QuoteCcy  string `json:"quoteCcy"`
-	SettleCcy string `json:"settleCcy"`
-	CtType    string `json:"ctType"`
-	CtVal     string `json:"ctVal"`
-	CtMult    string `json:"ctMult"`
-	CtValCcy  string `json:"ctValCcy"`
-	TickSz    string `json:"tickSz"`
-	LotSz     string `json:"lotSz"`
+	InstType  string  `json:"instType"`
+	InstID    string  `json:"instId"`
+	State     string  `json:"state"`
+	BaseCcy   string  `json:"baseCcy"`
+	QuoteCcy  string  `json:"quoteCcy"`
+	SettleCcy string  `json:"settleCcy"`
+	CtType    string  `json:"ctType"`
+	CtVal     string  `json:"ctVal"`
+	CtMult    string  `json:"ctMult"`
+	CtValCcy  string  `json:"ctValCcy"`
+	TickSz    string  `json:"tickSz"`
+	LotSz     string  `json:"lotSz"`
+	ListTime  *string `json:"listTime"`
 }
 
 func ParseInstruments(payload []byte, marketType model.MarketType) ([]model.Instrument, error) {
@@ -108,6 +110,13 @@ func mapInstrument(wire instrumentWire, marketType model.MarketType) (model.Inst
 	instrument := model.Instrument{Exchange: "OKX", MarketType: marketType, ExchangeSymbol: wire.InstID, BaseAsset: base, QuoteAsset: quote,
 		ContractMultiplier: decimal.NewFromInt(1), PriceTickSize: tick, QuantityStepSize: step}
 	if marketType == model.MarketPerpetual {
+		if wire.ListTime == nil {
+			return model.Instrument{}, fmt.Errorf("OKX %s listTime must be a positive integer string", wire.InstID)
+		}
+		listTime, parseErr := strconv.ParseInt(*wire.ListTime, 10, 64)
+		if parseErr != nil || listTime <= 0 {
+			return model.Instrument{}, fmt.Errorf("OKX %s listTime must be a positive integer string", wire.InstID)
+		}
 		if wire.CtValCcy != base {
 			return model.Instrument{}, fmt.Errorf("OKX %s contract value currency %q is not base asset %q", wire.InstID, wire.CtValCcy, base)
 		}
@@ -120,6 +129,7 @@ func mapInstrument(wire instrumentWire, marketType model.MarketType) (model.Inst
 			return model.Instrument{}, fmt.Errorf("OKX %s: %w", wire.InstID, err)
 		}
 		instrument.ContractMultiplier = ctVal.Mul(ctMult)
+		instrument.VenueContractVersion = strconv.FormatInt(listTime, 10)
 		settle := wire.SettleCcy
 		instrument.SettleAsset = &settle
 	}

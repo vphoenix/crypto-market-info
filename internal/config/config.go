@@ -17,6 +17,7 @@ type Config struct {
 	BinancePerpSymbols        []string
 	OKXSpotSymbols            []string
 	OKXPerpSymbols            []string
+	BybitPerpSymbols          []string
 	BinanceSpotREST           string
 	BinanceFuturesREST        string
 	BinanceSpotWS             string
@@ -24,6 +25,8 @@ type Config struct {
 	BinanceMarketWS           string // USDⓈ-M regular market streams such as mark price.
 	OKXREST                   string
 	OKXWS                     string
+	BybitREST                 string
+	BybitWS                   string
 	FundingEnabled            bool
 	JustLendYieldEnabled      bool
 	JustLendBaseURL           string
@@ -83,10 +86,12 @@ func Load() (Config, error) {
 		ClickHouse:         chstore.Config{Addresses: addresses, Database: value("CLICKHOUSE_DATABASE", "crypto_market_info"), Username: value("CLICKHOUSE_USERNAME", "default"), Password: os.Getenv("CLICKHOUSE_PASSWORD"), DialTimeout: 5 * time.Second, WriteTimeout: 10 * time.Second, MaxAttempts: 3, RetryDelay: 250 * time.Millisecond},
 		BinanceSpotSymbols: list("BINANCE_SPOT_SYMBOLS", "BTCUSDT"), BinancePerpSymbols: list("BINANCE_PERP_SYMBOLS", "BTCUSDT"),
 		OKXSpotSymbols: list("OKX_SPOT_SYMBOLS", "BTC-USDT"), OKXPerpSymbols: list("OKX_PERP_SYMBOLS", "BTC-USDT-SWAP"),
-		BinanceSpotREST: value("BINANCE_SPOT_REST_URL", "https://api.binance.com"), BinanceFuturesREST: value("BINANCE_FUTURES_REST_URL", "https://fapi.binance.com"),
+		BybitPerpSymbols: list("BYBIT_PERP_SYMBOLS", "-"),
+		BinanceSpotREST:  value("BINANCE_SPOT_REST_URL", "https://api.binance.com"), BinanceFuturesREST: value("BINANCE_FUTURES_REST_URL", "https://fapi.binance.com"),
 		BinanceSpotWS: value("BINANCE_SPOT_WS_URL", "wss://stream.binance.com:443/ws"), BinanceFuturesWS: value("BINANCE_FUTURES_WS_URL", "wss://fstream.binance.com/public/ws"),
 		BinanceMarketWS: value("BINANCE_FUTURES_MARKET_WS_URL", "wss://fstream.binance.com/market/ws"),
 		OKXREST:         value("OKX_REST_URL", "https://www.okx.com"), OKXWS: value("OKX_WS_URL", "wss://ws.okx.com:8443/ws/v5/public"),
+		BybitREST: value("BYBIT_REST_URL", "https://api.bybit.com"), BybitWS: value("BYBIT_WS_URL", "wss://stream.bybit.com/v5/public/linear"),
 		FundingEnabled: funding, JustLendYieldEnabled: justLendYield, JustLendBaseURL: value("JUSTLEND_BASE_URL", "https://openapi.just.network"),
 		TRONStakingYieldEnabled: tronYield, TRONHTTPURL: value("TRON_HTTP_URL", "https://api.trongrid.io"),
 		SOLYieldEnabled: solYield, SolanaRPCURL: value("SOLANA_RPC_URL", "https://api.mainnet.solana.com"), SOLValidatorVoteAccounts: voteAccounts,

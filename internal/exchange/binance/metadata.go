@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"strings"
 
 	"github.com/shopspring/decimal"
@@ -21,6 +22,7 @@ type symbolInfo struct {
 	BaseAsset    string                       `json:"baseAsset"`
 	QuoteAsset   string                       `json:"quoteAsset"`
 	MarginAsset  string                       `json:"marginAsset"`
+	OnboardDate  *int64                       `json:"onboardDate"`
 	Filters      []map[string]json.RawMessage `json:"filters"`
 }
 
@@ -88,8 +90,12 @@ func parseSymbol(symbol symbolInfo, marketType model.MarketType) (model.Instrume
 	instrument := model.Instrument{Exchange: "Binance", MarketType: marketType, ExchangeSymbol: symbol.Symbol,
 		BaseAsset: symbol.BaseAsset, QuoteAsset: symbol.QuoteAsset, ContractMultiplier: decimal.NewFromInt(1), PriceTickSize: tick, QuantityStepSize: step}
 	if marketType == model.MarketPerpetual {
+		if symbol.OnboardDate == nil || *symbol.OnboardDate <= 0 {
+			return model.Instrument{}, fmt.Errorf("Binance %s onboardDate must be a positive integer", symbol.Symbol)
+		}
 		settle := symbol.MarginAsset
 		instrument.SettleAsset = &settle
+		instrument.VenueContractVersion = strconv.FormatInt(*symbol.OnboardDate, 10)
 	}
 	if err := instrument.ValidateDefinition(); err != nil {
 		return model.Instrument{}, fmt.Errorf("Binance %s: %w", symbol.Symbol, err)

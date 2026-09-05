@@ -8,7 +8,7 @@ import (
 )
 
 func (c *Client) Instruments(ctx context.Context) ([]model.Instrument, error) {
-	rows, err := c.conn.Query(ctx, `SELECT instrument_id, exchange, market_type, exchange_symbol, base_asset, quote_asset, settle_asset,
+	rows, err := c.conn.Query(ctx, `SELECT instrument_id, exchange, market_type, exchange_symbol, venue_contract_version, base_asset, quote_asset, settle_asset,
 contract_multiplier, price_tick_size, quantity_step_size, expiry_time FROM `+c.table("instrument")+` FINAL ORDER BY instrument_id`)
 	if err != nil {
 		return nil, err
@@ -19,7 +19,7 @@ contract_multiplier, price_tick_size, quantity_step_size, expiry_time FROM `+c.t
 		var item model.Instrument
 		// clickhouse-go cannot scan String directly into a named string type.
 		var marketType string
-		if err = rows.Scan(&item.ID, &item.Exchange, &marketType, &item.ExchangeSymbol, &item.BaseAsset, &item.QuoteAsset, &item.SettleAsset,
+		if err = rows.Scan(&item.ID, &item.Exchange, &marketType, &item.ExchangeSymbol, &item.VenueContractVersion, &item.BaseAsset, &item.QuoteAsset, &item.SettleAsset,
 			&item.ContractMultiplier, &item.PriceTickSize, &item.QuantityStepSize, &item.ExpiryTime); err != nil {
 			return nil, err
 		}
@@ -48,6 +48,9 @@ func (c *Client) RegisterInstruments(ctx context.Context, definitions []model.In
 		definition.ID = 0
 		if err = definition.ValidateDefinition(); err != nil {
 			return nil, err
+		}
+		if definition.MarketType != model.MarketSpot && definition.VenueContractVersion == "" {
+			return nil, fmt.Errorf("new derivative instrument %s %s requires venue_contract_version", definition.Exchange, definition.ExchangeSymbol)
 		}
 		found := false
 		for _, stored := range existing {
@@ -78,10 +81,10 @@ func (c *Client) RegisterInstruments(ctx context.Context, definitions []model.In
 }
 
 func (c *Client) insertInstrument(ctx context.Context, item model.Instrument) error {
-	query := `INSERT INTO ` + c.table("instrument") + ` (instrument_id, exchange, market_type, exchange_symbol, base_asset, quote_asset, settle_asset,
-contract_multiplier, price_tick_size, quantity_step_size, expiry_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+	query := `INSERT INTO ` + c.table("instrument") + ` (instrument_id, exchange, market_type, exchange_symbol, venue_contract_version, base_asset, quote_asset, settle_asset,
+contract_multiplier, price_tick_size, quantity_step_size, expiry_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 	return c.retryWrite(ctx, func(writeCtx context.Context) error {
 		return c.conn.Exec(writeCtx, query, item.ID, item.Exchange, string(item.MarketType), item.ExchangeSymbol,
-			item.BaseAsset, item.QuoteAsset, item.SettleAsset, item.ContractMultiplier, item.PriceTickSize, item.QuantityStepSize, item.ExpiryTime)
+			item.VenueContractVersion, item.BaseAsset, item.QuoteAsset, item.SettleAsset, item.ContractMultiplier, item.PriceTickSize, item.QuantityStepSize, item.ExpiryTime)
 	})
 }

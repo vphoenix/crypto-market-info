@@ -31,6 +31,28 @@ func TestLoadYieldConfiguration(t *testing.T) {
 	}
 }
 
+func TestBybitConfigurationIsOptIn(t *testing.T) {
+	for _, key := range []string{"BYBIT_PERP_SYMBOLS", "BYBIT_REST_URL", "BYBIT_WS_URL"} {
+		if err := os.Unsetenv(key); err != nil {
+			t.Fatal(err)
+		}
+	}
+	cfg, err := Load()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(cfg.BybitPerpSymbols) != 0 || cfg.BybitREST != "https://api.bybit.com" || cfg.BybitWS != "wss://stream.bybit.com/v5/public/linear" {
+		t.Fatalf("Bybit defaults=%+v", cfg)
+	}
+	t.Setenv("BYBIT_PERP_SYMBOLS", "BTCUSDT,ETHUSDT")
+	t.Setenv("BYBIT_REST_URL", "https://bybit.test")
+	t.Setenv("BYBIT_WS_URL", "wss://bybit.test/v5/public/linear")
+	cfg, err = Load()
+	if err != nil || len(cfg.BybitPerpSymbols) != 2 || cfg.BybitPerpSymbols[1] != "ETHUSDT" || cfg.BybitREST != "https://bybit.test" || cfg.BybitWS != "wss://bybit.test/v5/public/linear" {
+		t.Fatalf("Bybit overrides=%+v err=%v", cfg, err)
+	}
+}
+
 func TestLoadRejectsInvalidOrDuplicateSOLVoteAccounts(t *testing.T) {
 	t.Setenv("SOL_VALIDATOR_VOTE_ACCOUNTS", "bad")
 	if _, err := Load(); err == nil {

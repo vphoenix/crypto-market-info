@@ -31,6 +31,7 @@ func SchemaStatements(database string) ([]string, error) {
     exchange String,
     market_type LowCardinality(String),
     exchange_symbol String,
+    venue_contract_version String,
     base_asset LowCardinality(String),
     quote_asset LowCardinality(String),
     settle_asset Nullable(String),
@@ -41,6 +42,8 @@ func SchemaStatements(database string) ([]string, error) {
 )
 ENGINE = ReplacingMergeTree
 ORDER BY instrument_id`, db),
+		fmt.Sprintf(`ALTER TABLE %s.instrument
+    ADD COLUMN IF NOT EXISTS venue_contract_version String DEFAULT '' AFTER exchange_symbol`, db),
 		fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s.order_book_minute
 (
     id UInt64,

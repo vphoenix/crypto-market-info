@@ -57,6 +57,36 @@ func TestSelectSymbolsIsExactOrderedAndRejectsMissing(t *testing.T) {
 	}
 }
 
+func TestStartupBackfillIncludesCompatibleHistoricalVersionsOnly(t *testing.T) {
+	settle := "USDT"
+	current := model.Instrument{ID: 10, Exchange: "Bybit", MarketType: model.MarketPerpetual, ExchangeSymbol: "BTCUSDT", VenueContractVersion: "5:200", BaseAsset: "BTC", QuoteAsset: "USDT", SettleAsset: &settle}
+	legacy := current
+	legacy.ID = 2
+	legacy.VenueContractVersion = ""
+	oldVersion := current
+	oldVersion.ID = 7
+	oldVersion.VenueContractVersion = "4:100"
+	wrongAssets := legacy
+	wrongAssets.ID = 3
+	wrongAssets.BaseAsset = "WBTC"
+	disabledRoute := legacy
+	disabledRoute.ID = 4
+	disabledRoute.ExchangeSymbol = "ETHUSDT"
+	got := startupBackfillInstruments([]model.Instrument{current}, []model.Instrument{legacy, wrongAssets, disabledRoute, current, oldVersion})
+	if len(got) != 3 || got[0].ID != current.ID || got[1].ID != legacy.ID || got[2].ID != oldVersion.ID {
+		t.Fatalf("backfill instruments=%+v", got)
+	}
+}
+
+func TestBybitWebsocketConnectionBudget(t *testing.T) {
+	if got := bybitWebsocketConnections([]string{"BTCUSDT"}, true); got != 2 {
+		t.Fatalf("connections=%d", got)
+	}
+	if got := bybitWebsocketConnections(nil, true); got != 0 {
+		t.Fatalf("disabled Bybit connections=%d", got)
+	}
+}
+
 func TestFailingYieldSourceDoesNotStopOtherComponent(t *testing.T) {
 	collector := &failingYieldCollector{}
 	runner := &marketyield.Runner{Source: "failing-yield", Collector: collector, Sink: unusedYieldSink{}, Interval: time.Hour, RetryInterval: time.Millisecond, Logger: slog.New(slog.NewTextHandler(io.Discard, nil))}

@@ -31,16 +31,17 @@ func (f *fakeSink) snapshot() []model.FundingRate {
 func fundingInstrument(id uint32, exchange string) model.Instrument {
 	settle := "USDT"
 	return model.Instrument{
-		ID:                 id,
-		Exchange:           exchange,
-		MarketType:         model.MarketPerpetual,
-		ExchangeSymbol:     "BTC-USDT-SWAP",
-		BaseAsset:          "BTC",
-		QuoteAsset:         "USDT",
-		SettleAsset:        &settle,
-		ContractMultiplier: decimal.NewFromInt(1),
-		PriceTickSize:      decimal.RequireFromString("0.1"),
-		QuantityStepSize:   decimal.RequireFromString("0.001"),
+		ID:                   id,
+		Exchange:             exchange,
+		MarketType:           model.MarketPerpetual,
+		ExchangeSymbol:       "BTC-USDT-SWAP",
+		VenueContractVersion: "1",
+		BaseAsset:            "BTC",
+		QuoteAsset:           "USDT",
+		SettleAsset:          &settle,
+		ContractMultiplier:   decimal.NewFromInt(1),
+		PriceTickSize:        decimal.RequireFromString("0.1"),
+		QuantityStepSize:     decimal.RequireFromString("0.001"),
 	}
 }
 

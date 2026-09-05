@@ -6,8 +6,8 @@
 
 项目持续采集可公开验证的市场、利率和链上规则数据，为套利研究、历史回放和人工风险审查提供输入。当前已经实现：
 
-- Binance、OKX 现货及永续 L2 盘口；
-- Binance、OKX 永续资金费率；
+- Binance、OKX 现货及永续 L2 盘口，以及 Bybit USDT 线性永续 L2 盘口；
+- Binance、OKX 和 Bybit 永续资金费率；
 - JustLend TRX 收益产品；
 - TRON 原生质押收益；
 - SOL 的 bSOL、JitoSOL、mSOL、laineSOL、JupSOL、hSOL、配置白名单验证者和 Marinade Native 收益；
@@ -25,11 +25,11 @@
 ```text
 cmd/collector：配置、启动顺序、生命周期
 │
-├─ Binance / OKX 盘口
+├─ Binance / OKX / Bybit 盘口
 │  └─ 适配器 → 标准化 tick/lot → 本地 L2 → 每秒采样
 │     → 分钟缓冲 → order_book writer
 │
-├─ Binance / OKX 资金费率
+├─ Binance / OKX / Bybit 资金费率
 │  └─ WebSocket 估算 + REST 实际确认
 │     → scheduler / 串行 worker → funding writer
 │
@@ -90,7 +90,7 @@ internal/replay/               盘口恢复
 6. 并发运行各组件，直到收到退出信号或某个组件发生不能在内部恢复的错误；
 7. 取消公共 context，等待组件退出并关闭 ClickHouse 连接。
 
-环境变量无法解析等加载错误、ClickHouse 初始化失败或交易所 metadata 启动失败会阻止整个进程启动。当前收益 URL 只作为字符串加载，不在启动阶段探测或验证；URL 格式错误、无法连接、响应解析失败或写入失败都会表现为对应收益 Runner 的单轮失败并按间隔重试，不会停止盘口。盘口短暂断线由对应 runtime 失效并重建。任何组件意外返回不能在内部恢复的错误时，`app.Run` 会取消其余组件，因此长期运行仍应由操作系统或简单进程守护器负责重启。
+环境变量无法解析等加载错误、ClickHouse 初始化失败或不可恢复的交易所 metadata 错误会阻止整个进程启动。Bybit metadata 遇到 HTTP `429`、响应体 `retCode=10006`，或响应体明确包含 `access too frequent` 的 HTTP `403` 时，会在当前进程内按共享 REST gate 等待后继续分页，避免外部 30 秒重启形成请求风暴；地区或权限封锁类 403 则立即失败。当前收益 URL 只作为字符串加载，不在启动阶段探测或验证；URL 格式错误、无法连接、响应解析失败或写入失败都会表现为对应收益 Runner 的单轮失败并按间隔重试，不会停止盘口。盘口短暂断线由对应 runtime 失效并重建。任何组件意外返回不能在内部恢复的错误时，`app.Run` 会取消其余组件，因此长期运行仍应由操作系统或简单进程守护器负责重启。
 
 ## 5. 数据库关系
 
@@ -123,7 +123,7 @@ yield_route 1 ── N yield_observation
 
 先按[运行说明中的只读检查](runtime-operations.md#4-只读检查)连接 `crypto_market_info`，再执行下面的 SQL，检查六张表、各盘口的最近一分钟、资金费率及收益的最近批次。不要仅凭 `docker compose ps` 判断数据库状态。
 
-盘口查询会列出 `instrument` 表中历史登记过的全部交易对；该表不保存启用状态，因此判断是否过期时，只检查当前 `BINANCE_SPOT_SYMBOLS`、`BINANCE_PERP_SYMBOLS`、`OKX_SPOT_SYMBOLS` 和 `OKX_PERP_SYMBOLS` 配置中启用的交易对，已经停采的历史行只供识别旧数据。
+`instrument` 会保留同一交易所代码的历史合约版本。下面的健康查询按 `(exchange, market_type, exchange_symbol)` 选择最大 `instrument_id`，即最近登记的版本；再由操作人员只检查当前 `BINANCE_SPOT_SYMBOLS`、`BINANCE_PERP_SYMBOLS`、`OKX_SPOT_SYMBOLS`、`OKX_PERP_SYMBOLS` 和 `BYBIT_PERP_SYMBOLS` 配置中启用的交易对。已经停采或迁移前的历史行只供识别旧数据，不应因其时间不再前进而报错。
 
 ```sql
 SELECT count() AS core_tables_found
@@ -143,12 +143,28 @@ SELECT
     i.exchange,
     i.market_type,
     i.exchange_symbol,
+    i.venue_contract_version,
     b.latest_minute,
     b.valid_seconds
 FROM
 (
-    SELECT instrument_id, exchange, market_type, exchange_symbol
-    FROM instrument FINAL
+    SELECT
+        exchange,
+        market_type,
+        exchange_symbol,
+        max(registered_id) AS instrument_id,
+        argMax(venue_contract_version, registered_id) AS venue_contract_version
+    FROM
+    (
+        SELECT
+            instrument_id AS registered_id,
+            exchange,
+            market_type,
+            exchange_symbol,
+            venue_contract_version
+        FROM instrument FINAL
+    )
+    GROUP BY exchange, market_type, exchange_symbol
 ) AS i
 LEFT JOIN
 (
@@ -164,13 +180,29 @@ ORDER BY i.instrument_id;
 SELECT
     i.exchange,
     i.exchange_symbol,
+    i.venue_contract_version,
     f.latest_hour,
     f.funding_time,
     f.is_actual
 FROM
 (
-    SELECT instrument_id, exchange, exchange_symbol
-    FROM instrument FINAL
+    SELECT
+        exchange,
+        exchange_symbol,
+        max(registered_id) AS instrument_id,
+        argMax(venue_contract_version, registered_id) AS venue_contract_version
+    FROM
+    (
+        SELECT
+            instrument_id AS registered_id,
+            exchange,
+            market_type,
+            exchange_symbol,
+            venue_contract_version
+        FROM instrument FINAL
+    )
+    WHERE market_type = 'perpetual'
+    GROUP BY exchange, exchange_symbol
 ) AS i
 INNER JOIN
 (
@@ -257,6 +289,7 @@ AVAX 默认不启用；启用后按[第一阶段验收查询](arbitrage/strategi
 
 - [当前部署与运行说明](runtime-operations.md)：宿主机服务、路径、启用配置、连接和维护方式。
 - [行情采集程序设计](implementation-design.md)：盘口和资金费率的具体实现。
+- [Bybit USDT 线性永续采集设计](bybit-usdt-perpetual-market-data.md)：Bybit 产品身份、盘口序列、资金费率和限流细节。
 - [市场数据存储数据字典](market-data-storage.md)：当前六张表及编码不变量。
 - [ARB-0016 收益数据采集设计](arbitrage/strategies/arb-0016-yield-data.md)：通用收益模型和理论筛选。
 - [ARB-0016 TRX 收益采集实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)：JustLend 与 TRON 采集细节。

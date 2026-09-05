@@ -2,6 +2,7 @@ package exchange
 
 import (
 	"context"
+	"errors"
 	"net/http"
 	"net/http/httptest"
 	"sync/atomic"
@@ -23,6 +24,11 @@ func TestRateLimitResponseStartsSharedCooldownWithoutRetry(t *testing.T) {
 			cfg := DefaultHTTPRetryConfig()
 			if _, err := Get(context.Background(), server.Client(), server.URL, cfg); err == nil {
 				t.Fatal("rate-limit response unexpectedly succeeded")
+			} else {
+				var limited *RateLimitError
+				if !errors.As(err, &limited) || limited.StatusCode != status || limited.RetryAt.IsZero() {
+					t.Fatalf("rate-limit error=%T %+v", err, err)
+				}
 			}
 			if got := requests.Load(); got != 1 {
 				t.Fatalf("rate-limit response was retried: requests=%d", got)
@@ -37,6 +43,43 @@ func TestRateLimitResponseStartsSharedCooldownWithoutRetry(t *testing.T) {
 				t.Fatalf("shared cooldown allowed another request: requests=%d", got)
 			}
 		})
+	}
+}
+
+func TestRateLimitStatusUsesIndependentMinimumCooldown(t *testing.T) {
+	var requests atomic.Int32
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		requests.Add(1)
+		w.Header().Set("Retry-After", "0")
+		w.WriteHeader(http.StatusForbidden)
+	}))
+	defer server.Close()
+	cfg := DefaultHTTPRetryConfig()
+	cfg.RateLimitStatuses[http.StatusForbidden] = 50 * time.Millisecond
+	_, err := Get(context.Background(), server.Client(), server.URL, cfg)
+	var limited *RateLimitError
+	if !errors.As(err, &limited) || time.Until(limited.RetryAt) < 30*time.Millisecond {
+		t.Fatalf("403 rate-limit error=%v retry_at=%v", err, limited)
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Millisecond)
+	defer cancel()
+	if _, err = Get(ctx, server.Client(), server.URL, cfg); !errors.Is(err, context.DeadlineExceeded) {
+		t.Fatalf("request during status-specific cooldown error=%v", err)
+	}
+	if requests.Load() != 1 {
+		t.Fatalf("cooldown allowed %d requests", requests.Load())
+	}
+}
+
+func TestGetResponsePreservesStatusAndHeaders(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Set("X-Test", "present")
+		_, _ = w.Write([]byte("ok"))
+	}))
+	defer server.Close()
+	response, err := GetResponse(context.Background(), server.Client(), server.URL, DefaultHTTPRetryConfig())
+	if err != nil || response.StatusCode != http.StatusOK || response.Header.Get("X-Test") != "present" || string(response.Payload) != "ok" {
+		t.Fatalf("response=%+v err=%v", response, err)
 	}
 }
 

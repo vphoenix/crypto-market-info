@@ -19,17 +19,18 @@ const (
 )
 
 type Instrument struct {
-	ID                 uint32
-	Exchange           string
-	MarketType         MarketType
-	ExchangeSymbol     string
-	BaseAsset          string
-	QuoteAsset         string
-	SettleAsset        *string
-	ContractMultiplier decimal.Decimal
-	PriceTickSize      decimal.Decimal
-	QuantityStepSize   decimal.Decimal
-	ExpiryTime         *time.Time
+	ID                   uint32
+	Exchange             string
+	MarketType           MarketType
+	ExchangeSymbol       string
+	VenueContractVersion string
+	BaseAsset            string
+	QuoteAsset           string
+	SettleAsset          *string
+	ContractMultiplier   decimal.Decimal
+	PriceTickSize        decimal.Decimal
+	QuantityStepSize     decimal.Decimal
+	ExpiryTime           *time.Time
 }
 
 func (i Instrument) Validate() error {
@@ -47,6 +48,9 @@ func (i Instrument) ValidateDefinition() error {
 		if value == "" || strings.TrimSpace(value) != value {
 			return fmt.Errorf("%s must be an exact non-empty string", name)
 		}
+	}
+	if i.VenueContractVersion != "" && strings.TrimSpace(i.VenueContractVersion) != i.VenueContractVersion {
+		return fmt.Errorf("venue_contract_version must be an exact string")
 	}
 	switch i.MarketType {
 	case MarketSpot, MarketPerpetual, MarketDelivery:
@@ -84,7 +88,7 @@ func (i Instrument) SameDefinition(other Instrument) bool {
 	expiryEqual := (i.ExpiryTime == nil && other.ExpiryTime == nil) ||
 		(i.ExpiryTime != nil && other.ExpiryTime != nil && i.ExpiryTime.UTC().Equal(other.ExpiryTime.UTC()))
 	return i.Exchange == other.Exchange && i.MarketType == other.MarketType &&
-		i.ExchangeSymbol == other.ExchangeSymbol && i.BaseAsset == other.BaseAsset &&
+		i.ExchangeSymbol == other.ExchangeSymbol && i.VenueContractVersion == other.VenueContractVersion && i.BaseAsset == other.BaseAsset &&
 		i.QuoteAsset == other.QuoteAsset && settleEqual && expiryEqual &&
 		i.ContractMultiplier.Equal(other.ContractMultiplier) &&
 		i.PriceTickSize.Equal(other.PriceTickSize) &&

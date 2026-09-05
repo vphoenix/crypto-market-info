@@ -20,7 +20,7 @@ Bybit 接入后保存的数据与 Binance、OKX 永续一致：
 1. `category=linear` 还包含 USDC 合约和 USDT 交割合约，必须继续按响应字段筛选；
 2. 订单簿由同一 WebSocket 内的 `snapshot` 和 `delta` 组成，`u=1` 或新的 `snapshot` 都要求无条件覆盖本地盘口；
 3. ticker 的 `delta` 会省略未变化字段，不能把缺失的 `fundingRate` 或 `nextFundingTime` 当作空值；
-4. REST 即使返回 HTTP 2xx，也必须继续检查 `retCode`；Bybit 的 HTTP 403 限频语义还要求扩展通用 HTTP 冷却配置。
+4. REST 即使返回 HTTP 2xx，也必须继续检查 `retCode`；Bybit 的 HTTP 403 既可能是访问过频，也可能是地区或权限封锁，必须结合响应体分类。
 5. Bybit 提供 `symbolId` 和 `launchTime`，现有 instrument 定义却没有显式合约版本字段；若同 symbol、同规格下架后重上，旧逻辑会错误复用历史 ID；
 6. metadata 启动限频不能只靠进程内 gate 后退出，否则 systemd 30 秒重启会绕过 Bybit 要求的 10 分钟冷却。
 
@@ -53,7 +53,7 @@ Bybit 接入后保存的数据与 Binance、OKX 永续一致：
 - [REST Orderbook](https://bybit-exchange.github.io/docs/v5/market/orderbook)：REST 的 `u` 顺序产生并与 1000 档 WebSocket 的 `u` 对应，可用于验收和排障核验。
 - [Ticker](https://bybit-exchange.github.io/docs/v5/websocket/public/ticker)：衍生品 ticker 每 100 ms 推送，`delta` 中未出现的字段表示未变化。
 - [Funding Rate History](https://bybit-exchange.github.io/docs/v5/market/history-fund-rate)：历史接口返回 `fundingRate` 和毫秒级 `fundingRateTimestamp`，不同 symbol 可以有不同结算间隔。
-- [限频规则](https://bybit-exchange.github.io/docs/v5/rate-limit)与[错误码](https://bybit-exchange.github.io/docs/v5/error)：HTTP 403 可能表示 IP 访问过频，需停止 HTTP 请求至少 10 分钟；JSON `retCode=10006` 和 HTTP 429 也表示限频。
+- [限频规则](https://bybit-exchange.github.io/docs/v5/rate-limit)与[错误码](https://bybit-exchange.github.io/docs/v5/error)：HTTP 403 且响应明确包含 `access too frequent` 时表示 IP 访问过频，需停止 HTTP 请求至少 10 分钟；403 也可能是地区限制，不能只按状态码判定。JSON `retCode=10006` 和 HTTP 429 也表示限频。
 
 ## Instrument 发现和标准化
 
@@ -196,6 +196,7 @@ orderbook.1000.{symbol}
 - 每 20 秒发送 `{"op":"ping"}`；
 - 任意合法数据或 `pong` 都刷新读超时，默认 silence timeout 为 45 秒；
 - `success=true, op=subscribe` 才表示订阅成功；`success=false`、未知控制响应或失败 topic 都令连接失败；
+- 服务端可能在成功订阅响应之前先发送首个 snapshot。确认前的数据只进入独立的有界 pre-ack 缓存，不得修改 `Book`；收到匹配的成功确认后按接收顺序回放。订阅失败、确认超时、断线或缓存溢出都丢弃缓存并保持盘口 invalid；
 - `success=true, op=ping, ret_msg=pong` 只作为心跳响应，不进入数据 parser；
 - 使用有界更新队列，满队列不能丢消息后继续产生“有效”盘口。
 
@@ -209,7 +210,7 @@ orderbook.1000.{symbol}
 tickers.{symbol}
 ```
 
-订阅 topic 按请求分批，使每个 `args` JSON 数组不超过官方的 21,000 字符限制；所有批次必须收到成功响应，任一失败都重建整条连接。
+订阅 topic 按请求分批，使每个 `args` JSON 数组不超过官方的 21,000 字符限制。服务端可能在某批成功响应之前先推送该批 topic 的 ticker；确认前的数据按所属批次进入有界 pre-ack 缓存，不得修改 ticker 状态或发布估算。每批收到匹配的成功响应后立即激活该批 topic，并按接收顺序回放该批缓存；已确认批次不等待其他批次，尚未确认批次继续缓存。全部批次确认后才取消订阅超时。所有批次最终都必须成功；任一失败、确认超时、断线或缓存溢出都丢弃全部未回放缓存、把所有 Bybit estimate 标为 unavailable 并重建整条连接。
 
 映射为现有 `FundingEstimate`：
 
@@ -268,18 +269,18 @@ IsActual   = true
 - 非零 `retCode` 返回包含 code、message 和 endpoint 的错误，不把空 `result` 当作“没有数据”；
 - `retCode=10006` 读取 `X-Bapi-Limit-Reset-Timestamp`，按其毫秒时间戳触发客户端共享冷却并返回错误；响应头缺失、非法或不晚于当前时间时使用 1 分钟 fallback；
 - HTTP 429 使用已有 `Retry-After`/fallback 冷却；
-- HTTP 403 对 Bybit 按官方 IP 限频要求触发至少 10 分钟共享冷却，且本次调用立即失败，不做短间隔重试。
+- HTTP 403 只有在响应体可辨认为 `access too frequent` 时，才按官方 IP 限频要求触发至少 10 分钟共享冷却并返回 typed rate-limit error；地区限制、权限封锁或其他 403 保持普通 HTTP 错误并立即 fail fast，不能进入 metadata 无限等待。
 
 这需要对 `internal/exchange/http.go` 做两项向后兼容的小扩展：
 
 1. 增加返回 payload、status 和响应头的 `GetResponse`（名称可按实现调整），现有 `Get` 继续包装它并保持原签名；Bybit 用响应头处理 HTTP 2xx 下的 `retCode=10006`；
-2. 让 `HTTPRetryConfig` 可配置“哪些 HTTP 状态属于限频”，并支持按状态设置独立 fallback。默认仍为 Binance 当前使用的 429/418 和既有 1 分钟 fallback；Bybit client 额外加入 403，并只把 403 的 fallback 设为 10 分钟。实现可以使用 `map[status]duration` 或等价策略，但不能用单一字段把 Bybit 的 429 fallback 也意外改成 10 分钟。
+2. 让 `HTTPRetryConfig` 可配置“哪些 HTTP 状态属于限频”，并支持按状态设置独立 fallback。默认仍为 Binance 当前使用的 429/418 和既有 1 分钟 fallback。Bybit 不能把 403 直接加入这个按状态分类的集合，而是在适配器层检查响应体：只有 `access too frequent` 使用独立的 10 分钟冷却，不能用单一字段把 Bybit 的 429 fallback 也意外改成 10 分钟。
 
-不能把 403 加入全局默认，否则会改变其他数据源的鉴权/权限错误语义。
+不能把 403 加入全局默认或 Bybit client 的纯状态码集合，否则既会改变其他数据源的鉴权/权限错误语义，也会把 Bybit 的地区封锁误判为可等待恢复的限流。
 
 Bybit metadata 和资金费率历史调用共用同一 REST 冷却 gate。metadata 的启动请求可保留有限 5xx 重试；实际资金费率 provider 仍为单次请求。
 
-HTTP 403、429 和 body `retCode=10006` 都返回同一种可由 `errors.As` 检查的 typed rate-limit error，并携带绝对 `RetryAt`；通用 HTTP 层遇到它立即返回，不把限频计入 `MaxAttempts` 内做短间隔重试。metadata 分页加载遇到该错误时，不退出进程，而是在同一进程内 context-aware 等待共享 gate 后只重试当前页；已取得的前页不能先注册，只有完整分页成功后才原子进入选择/注册。这样 10 分钟冷却不会被 systemd 的 30 秒重启周期绕过。等待期间若进程收到取消信号，应立即退出。永久地区性 403 可能使启动一直停在每次至少间隔 10 分钟的重试中，但不会形成重启风暴，日志必须保留具体 403 响应供运维识别。
+可辨认的访问过频 403、HTTP 429 和 body `retCode=10006` 都返回同一种可由 `errors.As` 检查的 typed rate-limit error，并携带绝对 `RetryAt`；通用 HTTP 层遇到它立即返回，不把限频计入 `MaxAttempts` 内做短间隔重试。metadata 分页加载遇到该错误时，不退出进程，而是在同一进程内 context-aware 等待共享 gate 后只重试当前页；已取得的前页不能先注册，只有完整分页成功后才原子进入选择/注册。这样 10 分钟冷却不会被 systemd 的 30 秒重启周期绕过。等待期间若进程收到取消信号，应立即退出。地区性或其他无法辨认为访问过频的 403 则只请求一次、保留响应并 fail fast，要求运维提供合法可用入口，不能持续等待并伪装成暂时限流。
 
 实际资金费率 provider 遇到限频仍把 typed error 返回给公共 worker；后续任务请求在进入 HTTP 前先等待同一个 gate，因此不会在冷却期继续访问。非限频的永久 4xx、解析错误或用尽 5xx 重试仍沿用当前 fail-fast/worker 重试语义。
 
@@ -396,6 +397,7 @@ README.md
 - 任意新 snapshot 和 `u=1` snapshot 都完整覆盖旧状态；
 - `seq` 可以跳号但不能回退；
 - 队列溢出、silence timeout、订阅失败使盘口 invalid，重连 snapshot 前采样无效；
+- ack 前 snapshot/delta 不修改盘口，成功 ack 后按接收顺序回放；订阅失败、确认超时和 pre-ack 缓存溢出均丢弃缓存并保持 invalid；
 - 多 runtime 同时启动/重连时，共享 gate 满足 1 秒间隔；
 - snapshot 加全部 delta 可以精确恢复每一秒的前 50 档，无变化秒与无效秒可区分。
 
@@ -410,9 +412,10 @@ README.md
 - 1、4、8 小时结算间隔都由 `nextFundingTime` 正确调度；
 - 结算边界后 ticker 切到下一目标时，整点仍选择结算前针对当前目标的最后估算；
 - 断线后全部 Bybit estimate 不可用，重连拿到完整状态后恢复；
+- ack 前 ticker 不修改状态或发布 estimate；多批订阅按批次独立激活和回放，未确认批次不会阻塞已确认批次；失败、超时和 pre-ack 缓存溢出后全部 estimate 保持不可用；
 - 历史接口只接受正确 category/symbol 下的精确 `fundingRateTimestamp`，上一条、下一条或其他 symbol 不能误记；
-- 非零 `retCode`、HTTP 403/429、空数组和非法十进制分别按设计处理；
-- metadata 首次 403、随后成功时在同一进程等待至少 RetryAt 后重试当前页；等待可被 context 取消，且完整分页前不暴露部分结果；
+- 非零 `retCode`、访问过频 403、其他 403、HTTP 429、空数组和非法十进制分别按设计处理；
+- metadata 首次返回 `access too frequent` 403、随后成功时在同一进程等待至少 RetryAt 后重试当前页；等待可被 context 取消，且完整分页前不暴露部分结果；地区封锁 403 必须只请求一次并 fail fast；
 - `retCode=10006` 的 reset header 和 1 分钟 fallback 都生成 typed rate-limit error；
 - 启动补查能路由到 `confirmationWorkers["Bybit"]`，重复任务仍只查询一次。
 

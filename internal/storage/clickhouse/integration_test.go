@@ -184,6 +184,17 @@ func TestClickHouseDDLWriteReplayAndDayMeasurement(t *testing.T) {
 			t.Fatalf("registered instrument %d was not reused: first=%+v second=%+v", index, instruments[index], reused[index])
 		}
 	}
+	changedVersion := definitions[2]
+	changedVersion.VenueContractVersion = "2"
+	versioned, err := client.RegisterInstruments(context.Background(), []model.Instrument{changedVersion})
+	if err != nil || len(versioned) != 1 || versioned[0].ID == instruments[2].ID {
+		t.Fatalf("changed venue version was not allocated a new ID: first=%+v changed=%+v err=%v", instruments[2], versioned, err)
+	}
+	legacyDefinition := definitions[2]
+	legacyDefinition.VenueContractVersion = ""
+	if _, err = client.RegisterInstruments(context.Background(), []model.Instrument{legacyDefinition}); err == nil {
+		t.Fatal("new derivative without venue_contract_version was registered")
+	}
 	day := time.Date(2026, 8, 18, 0, 0, 0, 0, time.UTC)
 	fundingTime := day.Add(123 * time.Millisecond)
 	estimate := model.FundingRate{InstrumentID: instruments[2].ID, HourTime: day, FundingTime: fundingTime, Rate: decimal.RequireFromString("0.0001")}
@@ -257,6 +268,85 @@ func TestClickHouseDDLWriteReplayAndDayMeasurement(t *testing.T) {
 	t.Logf("representative one-day compressed bytes=%d; 100 minute replays=%s", compressed, elapsed)
 }
 
+func TestClickHouseInstrumentVersionMigratesLegacyTableIdempotently(t *testing.T) {
+	if os.Getenv("CLICKHOUSE_INTEGRATION") != "1" {
+		t.Skip("set CLICKHOUSE_INTEGRATION=1 to run ClickHouse migration tests")
+	}
+	database := fmt.Sprintf("crypto_market_info_instrument_migration_it_%d", time.Now().UnixNano())
+	client, err := Open(context.Background(), Config{Addresses: []string{envOr("CLICKHOUSE_TEST_ADDR", "127.0.0.1:9000")}, Database: database, Username: "default", WriteTimeout: 15 * time.Second, MaxAttempts: 2})
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() {
+		_ = client.Close()
+		admin, openErr := ch.Open(&ch.Options{Addr: []string{envOr("CLICKHOUSE_TEST_ADDR", "127.0.0.1:9000")}, Auth: ch.Auth{Database: "default", Username: "default"}})
+		if openErr == nil {
+			_ = admin.Exec(context.Background(), "DROP DATABASE IF EXISTS `"+database+"` SYNC")
+			_ = admin.Close()
+		}
+	}()
+	legacyDDL := `CREATE TABLE ` + client.table("instrument") + `
+(
+    instrument_id UInt32,
+    exchange String,
+    market_type LowCardinality(String),
+    exchange_symbol String,
+    base_asset LowCardinality(String),
+    quote_asset LowCardinality(String),
+    settle_asset Nullable(String),
+    contract_multiplier Decimal(38, 18),
+    price_tick_size Decimal(38, 18),
+    quantity_step_size Decimal(38, 18),
+    expiry_time Nullable(DateTime('UTC'))
+)
+ENGINE = ReplacingMergeTree
+ORDER BY instrument_id`
+	if err = client.conn.Exec(context.Background(), legacyDDL); err != nil {
+		t.Fatal(err)
+	}
+	legacy := perpDefinition("LEGACYUSDT")
+	legacy.ID = 1
+	legacy.VenueContractVersion = ""
+	if err = client.conn.Exec(context.Background(), `INSERT INTO `+client.table("instrument")+` (instrument_id,exchange,market_type,exchange_symbol,base_asset,quote_asset,settle_asset,contract_multiplier,price_tick_size,quantity_step_size,expiry_time) VALUES (?,?,?,?,?,?,?,?,?,?,?)`,
+		legacy.ID, legacy.Exchange, string(legacy.MarketType), legacy.ExchangeSymbol, legacy.BaseAsset, legacy.QuoteAsset, legacy.SettleAsset, legacy.ContractMultiplier, legacy.PriceTickSize, legacy.QuantityStepSize, legacy.ExpiryTime); err != nil {
+		t.Fatal(err)
+	}
+	if err = client.InitSchema(context.Background()); err != nil {
+		t.Fatalf("first InitSchema migration: %v", err)
+	}
+	if err = client.InitSchema(context.Background()); err != nil {
+		t.Fatalf("second InitSchema migration: %v", err)
+	}
+	var versionColumns uint64
+	if err = client.conn.QueryRow(context.Background(), `SELECT count() FROM system.columns WHERE database=? AND table='instrument' AND name='venue_contract_version'`, database).Scan(&versionColumns); err != nil {
+		t.Fatal(err)
+	}
+	if versionColumns != 1 {
+		t.Fatalf("venue_contract_version columns=%d", versionColumns)
+	}
+	stored, err := client.Instruments(context.Background())
+	if err != nil || len(stored) != 1 || stored[0].ID != legacy.ID || stored[0].VenueContractVersion != "" {
+		t.Fatalf("migrated legacy instruments=%+v err=%v", stored, err)
+	}
+	missingVersion := legacy
+	missingVersion.ID = 0
+	if _, err = client.RegisterInstruments(context.Background(), []model.Instrument{missingVersion}); err == nil {
+		t.Fatal("new derivative without venue_contract_version was registered after migration")
+	}
+	firstVersion := missingVersion
+	firstVersion.VenueContractVersion = "5:1585526400000"
+	registeredFirst, err := client.RegisterInstruments(context.Background(), []model.Instrument{firstVersion})
+	if err != nil || len(registeredFirst) != 1 || registeredFirst[0].ID == legacy.ID {
+		t.Fatalf("first explicit version=%+v err=%v", registeredFirst, err)
+	}
+	secondVersion := firstVersion
+	secondVersion.VenueContractVersion = "6:1785526400000"
+	registeredSecond, err := client.RegisterInstruments(context.Background(), []model.Instrument{secondVersion})
+	if err != nil || len(registeredSecond) != 1 || registeredSecond[0].ID == registeredFirst[0].ID {
+		t.Fatalf("second explicit version=%+v first=%+v err=%v", registeredSecond, registeredFirst, err)
+	}
+}
+
 func integrationYieldBatch(provider, prefix string, count int, at time.Time) marketyield.Batch {
 	rate := decimal.RequireFromString("0.05")
 	items := make([]marketyield.CollectedYield, 0, count)
@@ -291,7 +381,7 @@ func spotDefinition(symbol string) model.Instrument {
 }
 func perpDefinition(symbol string) model.Instrument {
 	settle := "USDT"
-	return model.Instrument{Exchange: "Test", MarketType: model.MarketPerpetual, ExchangeSymbol: symbol, BaseAsset: symbol, QuoteAsset: "USDT", SettleAsset: &settle, ContractMultiplier: decimal.NewFromInt(1), PriceTickSize: decimal.RequireFromString("0.1"), QuantityStepSize: decimal.RequireFromString("0.001")}
+	return model.Instrument{Exchange: "Test", MarketType: model.MarketPerpetual, ExchangeSymbol: symbol, VenueContractVersion: "1", BaseAsset: symbol, QuoteAsset: "USDT", SettleAsset: &settle, ContractMultiplier: decimal.NewFromInt(1), PriceTickSize: decimal.RequireFromString("0.1"), QuantityStepSize: decimal.RequireFromString("0.001")}
 }
 func envOr(key, fallback string) string {
 	if value := os.Getenv(key); value != "" {
