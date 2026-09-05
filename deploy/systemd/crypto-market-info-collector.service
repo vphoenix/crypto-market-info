@@ -9,9 +9,9 @@ StartLimitIntervalSec=0
 Type=simple
 WorkingDirectory=/home/ubuntu/crypto-market-info
 Environment=HOME=/home/ubuntu
-Environment=BINANCE_SPOT_SYMBOLS=BTCUSDT
+Environment=BINANCE_SPOT_SYMBOLS=BTCUSDT,USDCUSDT
 Environment=BINANCE_PERP_SYMBOLS=BTCUSDT
-Environment=OKX_SPOT_SYMBOLS=BTC-USDT
+Environment=OKX_SPOT_SYMBOLS=BTC-USDT,USDC-USDT
 Environment=OKX_PERP_SYMBOLS=BTC-USDT-SWAP
 Environment=BYBIT_PERP_SYMBOLS=BTCUSDT
 Environment=BINANCE_SPOT_REST_URL=https://data-api.binance.vision

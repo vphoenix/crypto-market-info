@@ -1,6 +1,6 @@
 # 当前部署与运行说明
 
-最近核实：2026-09-01（Asia/Shanghai）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
+最近核实：2026-09-05（Asia/Shanghai）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
 
 ## 1. 实际使用的本机服务
 
@@ -14,6 +14,8 @@
 AVAX 第二阶段已于 2026-08-27 部署。collector unit 保持 `AVAX_YIELD_ENABLED=true`，新增 BENQI sAVAX、Ankr ankrAVAX、BENQI AVAX 借贷三条 Runner；启动时已对生产 `yield_observation` 幂等补齐两列，并成功写入三条首批同区块观测。
 
 Bybit USDT 线性永续已于 2026-09-05 部署，collector unit 设置 `BYBIT_PERP_SYMBOLS=BTCUSDT`。启动时已幂等增加 `instrument.venue_contract_version`：迁移前 Binance、OKX 永续 ID 2、4 保留，新版本分别登记为 ID 5、6，Bybit `BTCUSDT` 登记为 ID 7。首个完整生产分钟的五个当前行情流均有 60 个有效秒；Bybit 公共 ticker 实测产生了指向下一结算时刻的完整资金费率估算。
+
+Binance、OKX 的 USDC/USDT 现货盘口已于 2026-09-05 部署，collector unit 分别追加 `USDCUSDT` 和 `USDC-USDT`。启动后登记为 instrument ID 8、9；首个完整生产分钟 `2026-09-05 14:43 UTC` 两条流均有 60 个有效秒。
 
 仓库的 [compose.yaml](../compose.yaml) 只是可选的独立开发环境，固定镜像为 `clickhouse:26.3.17.56-jammy`，与当前原生服务不是同一个实例。核实时 `docker compose ps -a` 为空，但原生 ClickHouse 正常响应。两套环境默认占用相同端口，不能直接同时启动，也不能混用数据目录。
 
@@ -59,7 +61,7 @@ ClickHouse unit 以前台模式运行数据库并在启动阶段轮询 `/ping`�
 
 | 分支 | 当前启用范围 | 采集频率 |
 |---|---|---|
-| Binance、OKX 盘口 | 各自的 BTC/USDT 现货及 USDT 线性永续，共四个交易流 | 每秒采样，结束的分钟批量写入 |
+| Binance、OKX 盘口 | 各自的 BTC/USDT、USDC/USDT 现货及 BTC/USDT 线性永续，共六个交易流 | 每秒采样，结束的分钟批量写入 |
 | 永续资金费率 | 上述两个永续合约 | 公共 WebSocket 估算；REST 确认实际结算值 |
 | Bybit USDT 线性永续 | `BTCUSDT`，已部署启用 | 每秒盘口采样；公共 ticker 估算并由 REST 确认实际资金费率 |
 | JustLend | 四条固定 TRX 路线 | 每小时 |
