@@ -1,0 +1,18 @@
+[Unit]
+Description=Crypto Market Info Desktop Status Indicator
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/ubuntu/crypto-market-info/tools/desktop-status/crypto_market_status.py --interval 30
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=5
+Nice=10
+CPUQuota=5%
+MemoryMax=128M
+Environment=PYTHONDONTWRITEBYTECODE=1
+
+[Install]
+WantedBy=graphical-session.target
