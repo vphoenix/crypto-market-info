@@ -1,6 +1,7 @@
 package orderbook
 
 import (
+	"container/heap"
 	"fmt"
 	"sort"
 	"sync"
@@ -274,9 +275,27 @@ func trim(side map[int64]uint64, bids bool, limit int) bool {
 }
 
 func sorted(side map[int64]uint64, bids bool, limit int) []model.Level {
-	prices := make([]int64, 0, len(side))
-	for price := range side {
-		prices = append(prices, price)
+	if limit <= 0 || len(side) == 0 {
+		return nil
+	}
+	prices := make([]int64, 0, min(limit, len(side)))
+	if limit >= len(side) {
+		for price := range side {
+			prices = append(prices, price)
+		}
+	} else {
+		selected := &priceHeap{bids: bids, prices: prices}
+		for price := range side {
+			if selected.Len() < limit {
+				heap.Push(selected, price)
+				continue
+			}
+			if (bids && price > selected.prices[0]) || (!bids && price < selected.prices[0]) {
+				selected.prices[0] = price
+				heap.Fix(selected, 0)
+			}
+		}
+		prices = selected.prices
 	}
 	sort.Slice(prices, func(i, j int) bool {
 		if bids {
@@ -284,12 +303,32 @@ func sorted(side map[int64]uint64, bids bool, limit int) []model.Level {
 		}
 		return prices[i] < prices[j]
 	})
-	if len(prices) > limit {
-		prices = prices[:limit]
-	}
 	levels := make([]model.Level, len(prices))
 	for index, price := range prices {
 		levels[index] = model.Level{PriceTick: price, QtyLot: side[price]}
 	}
 	return levels
+}
+
+// priceHeap keeps the worst selected price at index zero so scanning a deep
+// retained book only stores the requested top N candidates.
+type priceHeap struct {
+	bids   bool
+	prices []int64
+}
+
+func (h priceHeap) Len() int { return len(h.prices) }
+func (h priceHeap) Less(i, j int) bool {
+	if h.bids {
+		return h.prices[i] < h.prices[j]
+	}
+	return h.prices[i] > h.prices[j]
+}
+func (h priceHeap) Swap(i, j int)   { h.prices[i], h.prices[j] = h.prices[j], h.prices[i] }
+func (h *priceHeap) Push(value any) { h.prices = append(h.prices, value.(int64)) }
+func (h *priceHeap) Pop() any {
+	last := len(h.prices) - 1
+	value := h.prices[last]
+	h.prices = h.prices[:last]
+	return value
 }

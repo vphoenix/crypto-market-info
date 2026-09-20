@@ -362,7 +362,7 @@ func integrationYieldBatch(provider, prefix string, count int, at time.Time) mar
 
 func measuredBatch(instrumentID uint32, minute time.Time, active bool) model.MinuteBatch {
 	id, _ := model.MinuteID(instrumentID, minute)
-	book := model.MinuteBook{ID: id, InstrumentID: instrumentID, MinuteTime: minute, ValidBitmap: (uint64(1) << 60) - 1}
+	book := model.MinuteBook{ID: id, InstrumentID: instrumentID, MinuteTime: minute, ValidBitmap: (uint64(1) << 60) - 1, StoredDepth: model.BookDepth}
 	book.Bids[0] = model.Level{PriceTick: 100, QtyLot: 1}
 	book.Bids[1] = model.Level{PriceTick: 99, QtyLot: 2}
 	book.Asks[0] = model.Level{PriceTick: 101, QtyLot: 3}

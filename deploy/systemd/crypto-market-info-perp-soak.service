@@ -1,0 +1,38 @@
+[Unit]
+Description=Crypto Market Info Common Perpetual Universe Soak
+Documentation=file:///home/ubuntu/crypto-market-info/docs/runtime-operations.md
+After=network-online.target crypto-market-info-clickhouse.service
+Wants=network-online.target crypto-market-info-clickhouse.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/home/ubuntu/crypto-market-info
+Environment=CLICKHOUSE_DATABASE=crypto_market_info_perp_soak
+Environment=BINANCE_SPOT_SYMBOLS=-
+Environment=OKX_SPOT_SYMBOLS=-
+Environment=BINANCE_PERP_SYMBOLS=auto
+Environment=OKX_PERP_SYMBOLS=auto
+Environment=BYBIT_PERP_SYMBOLS=auto
+Environment=PERP_ASSET_ALIASES_FILE=/home/ubuntu/crypto-market-info/config/perpetual-asset-aliases.json
+Environment=BYBIT_PERP_MAX_INSTRUMENTS=700
+Environment=PERP_MAX_TOTAL_INSTRUMENTS=2000
+Environment=MARKET_DATA_MAX_SAMPLE_SOURCES=2100
+Environment=FUNDING_ENABLED=true
+Environment=JUSTLEND_YIELD_ENABLED=false
+Environment=TRON_STAKING_YIELD_ENABLED=false
+Environment=SOL_YIELD_ENABLED=false
+Environment=AVAX_YIELD_ENABLED=false
+LimitNOFILE=65536
+MemoryMax=6G
+ExecStartPre=/usr/bin/curl --connect-timeout 2 --max-time 5 --fail --silent --show-error --output /dev/null http://127.0.0.1:8123/ping
+ExecStart=/home/ubuntu/.local/share/crypto-market-info-perp-soak/collector
+Restart=on-failure
+RestartSec=30s
+KillSignal=SIGTERM
+TimeoutStopSec=60s
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

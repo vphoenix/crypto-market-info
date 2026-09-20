@@ -15,9 +15,10 @@ type WaitGate interface {
 // configured minimum interval. Cooldown can also push every caller's next start
 // time forward after an exchange returns a rate-limit response.
 type RequestGate struct {
-	mu       sync.Mutex
-	interval time.Duration
-	next     time.Time
+	mu            sync.Mutex
+	interval      time.Duration
+	next          time.Time
+	cooldownUntil time.Time
 }
 
 func NewRequestGate(interval time.Duration) *RequestGate {
@@ -41,17 +42,25 @@ func (g *RequestGate) Wait(ctx context.Context) error {
 		g.next = ready.Add(g.interval)
 	}
 	g.mu.Unlock()
-	delay := time.Until(ready)
-	if delay <= 0 {
-		return nil
-	}
-	timer := time.NewTimer(delay)
-	defer timer.Stop()
-	select {
-	case <-ctx.Done():
-		return ctx.Err()
-	case <-timer.C:
-		return nil
+	for {
+		if !Wait(ctx, time.Until(ready)) {
+			return ctx.Err()
+		}
+		g.mu.Lock()
+		if !g.cooldownUntil.After(time.Now()) {
+			g.mu.Unlock()
+			return ctx.Err()
+		}
+		// A rate limit received after this caller reserved a slot also applies
+		// to this caller. Reserve a fresh, paced slot beyond the cooldown.
+		ready = g.cooldownUntil
+		if g.next.After(ready) {
+			ready = g.next
+		}
+		if g.interval > 0 {
+			g.next = ready.Add(g.interval)
+		}
+		g.mu.Unlock()
 	}
 }
 
@@ -61,6 +70,9 @@ func (g *RequestGate) Cooldown(delay time.Duration) {
 	}
 	until := time.Now().Add(delay)
 	g.mu.Lock()
+	if until.After(g.cooldownUntil) {
+		g.cooldownUntil = until
+	}
 	if until.After(g.next) {
 		g.next = until
 	}

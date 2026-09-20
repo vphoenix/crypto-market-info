@@ -94,6 +94,9 @@ func (r *Runtime) runConnection(ctx context.Context) error {
 	r.Book.MarkResyncing("connecting Binance websocket")
 	stream := strings.ToLower(r.Instrument.ExchangeSymbol) + "@depth@100ms"
 	endpoint := strings.TrimRight(r.WSEndpoint, "/") + "/" + stream
+	if err := r.Client.waitWebsocket(ctx); err != nil {
+		return err
+	}
 	conn, response, err := r.Dialer.DialContext(ctx, endpoint, http.Header{})
 	if err != nil {
 		if response != nil {
@@ -106,6 +109,15 @@ func (r *Runtime) runConnection(ctx context.Context) error {
 	readerErrors := make(chan error, 1)
 	readCtx, cancel := context.WithCancel(ctx)
 	defer cancel()
+	stop := context.AfterFunc(readCtx, func() { _ = conn.Close() })
+	defer stop()
+	writer := newSocketWriter(readCtx, conn, 250*time.Millisecond)
+	go writer.run()
+	conn.SetPingHandler(func(payload string) error {
+		_ = conn.SetReadDeadline(time.Now().Add(r.SilenceTimeout))
+		return writer.pong(payload)
+	})
+	conn.SetCloseHandler(func(code int, text string) error { return &websocket.CloseError{Code: code, Text: text} })
 	go r.readLoop(readCtx, conn, updates, readerErrors)
 	snapshot, err := r.Client.DepthSnapshot(ctx, r.Instrument)
 	if err != nil {
@@ -123,6 +135,8 @@ func (r *Runtime) runConnection(ctx context.Context) error {
 			if err == nil {
 				err = fmt.Errorf("Binance websocket reader stopped")
 			}
+			return err
+		case err = <-writer.errors:
 			return err
 		case update := <-updates:
 			if err = collector.Push(update); err != nil {

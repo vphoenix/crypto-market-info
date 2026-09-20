@@ -4,6 +4,8 @@
 
 本文是编程边界和实现顺序，不重复定义表字段；表结构与字段语义以数据字典为准。
 
+永续目录选择、精确版本别名、共享连接和吞吐预算以[共有交易对自动采集设计](perpetual-common-universe.md)为准：`internal/universe` 对任意数量 venue 统一执行 `>=2`，app 通过 venue registry 装配盘口和资金费率。
+
 整个 `collector` 进程还包含 JustLend、TRON 和 SOL 收益分支。盘口、资金费率和收益三类分支的组合、启动顺序、失败边界及未来其他数据的扩展原则见[系统总体架构](architecture.md)；实际运行服务见[当前部署与运行说明](runtime-operations.md)。收益分支细节见 [TRX 实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)、[SOL 第一阶段](arbitrage/strategies/arb-0016-sol-yield-phase-1.md)和[SOL 第二阶段](arbitrage/strategies/arb-0016-sol-yield-phase-2.md)。
 
 完整套利机会定义及 ARB-0002、ARB-0016、ARB-0022 来源资料见[套利机会与策略资料](arbitrage/README.md)。这些资料用于解释数据用途，不自动扩大本设计的第一版实现范围。
@@ -13,7 +15,7 @@
 本文详细说明：
 
 - Binance、OKX 和 Bybit；
-- 现货、Binance USDT-M 永续、OKX USDT 线性永续和 Bybit USDT 线性永续的前 50 档 L2 盘口；
+- 现货、Binance USDT-M 永续、OKX USDT 线性永续和 Bybit USDT 线性永续的前 10 档 L2 盘口；
 - 永续合约整点资金费率；
 - 每分钟完整盘口、分钟内秒级差量；
 - 从 ClickHouse 查询并恢复任意有效秒的盘口。
@@ -48,10 +50,12 @@ Redis 不参与任何环节。最新盘口只存在于采集进程内存；数�
 ```text
 cmd/collector/                 程序入口、配置装配和优雅退出
 internal/model/                与交易所无关的 instrument、盘口和资金费率类型
+internal/universe/             规范化交易对、版本别名字典和至少两家共有选择
+internal/exchange/wsstream/    OKX/Bybit 共享有界 transport、订阅确认和重同步
 internal/exchange/binance/     Binance REST、WebSocket 和序列规则
 internal/exchange/okx/         OKX REST、WebSocket 和序列规则
 internal/exchange/bybit/       Bybit REST、WebSocket、序列和稀疏 ticker 状态
-internal/orderbook/            本地 L2 状态、排序和前 50 档输出
+internal/orderbook/            本地 L2 状态、排序和前 10 档输出
 internal/sampler/              每秒采样、分钟缓冲和差量计算
 internal/funding/              资金费率调度和实际值确认
 internal/yield/                收益模型、Runner、JustLend、TRON 和 SOL 采集器
@@ -73,7 +77,7 @@ internal/replay/               分钟快照加差量回放
 
 ### 3.2 保留核心逻辑后改名泛化
 
-- `perp_book_model.go`：保留价格键更新、数量为零删除、排序和锁盘检查；移除 Redis 字段，只有采样输出截取前 50 档；
+- `perp_book_model.go`：保留价格键更新、数量为零删除、排序和锁盘检查；移除 Redis 字段，只有采样输出截取前 10 档；
 - `perp_book_collector.go`：保留本地 L2 状态和失效处理，名称从 `PerpBook` 泛化为 `OrderBook`；
 - `providers_binance_perp_book*.go`：保留 REST 快照、diff 缓冲、`U/u/pu` 连续性和断档后重新快照；
 - `providers_okx_perp_book*.go`：保留 `snapshot/update`、`prevSeqId/seqId` 连续性和重新订阅；
@@ -117,7 +121,7 @@ snapshot or update
 - metadata：复用旧 Spot、Swap instruments 的响应结构和字段映射，改用严格解析；
 - Spot 和 Swap 都使用增量 `books`，共用泛化后的 `snapshot/update` collector；
 - 使用 `prevSeqId/seqId` 检查连续性；断档后标为无效并重新订阅或重新取得快照；
-- 不使用旧项目的 `books5`，因为它不能满足前 50 档采集。
+- 不使用旧项目的 `books5`，因为它不能满足前 10 档采集。
 
 ### Bybit
 
@@ -125,11 +129,11 @@ snapshot or update
 - `symbolId:launchTime` 组成 `venue_contract_version`，tick size、quantity step 和资金费间隔都严格解析；缺失时不能把该代码登记为当前合约；
 - 盘口订阅 `orderbook.1000.{symbol}`，snapshot 完整覆盖本地状态，delta 数量是绝对值且零数量删除。接受 delta 的条件是 `u == last_u + 1`；`seq` 不得回退，但允许跳跃；断档、队列溢出、解析错误或 snapshot 前 delta 都立即失效并重连；
 - 资金费率使用公共 `tickers.{symbol}`。delta 可能只携带部分字段，因此按 symbol 维护缓存；snapshot 必须清空旧缓存，delta 缺失字段沿用缓存，显式 null 或时间倒退令连接失败，缓存尚未形成完整费率状态时不得发布估算值；
-- 每个深度 instrument 使用一条 WebSocket 连接，资金费率共用一条连接；订阅必须收到匹配成功 ack。服务端在 ack 前推送的数据只进入有界 pre-ack 缓存，不能修改盘口或估算；成功 ack 后按接收顺序回放，资金费率多批订阅按批独立激活。失败、超时、断线或缓存溢出丢弃缓存并保持状态不可用；JSON ping/pong 和静默超时都纳入重连判定。
+- 盘口按最多 20 个 topic 分片，资金费率共用一条连接；订阅必须收到匹配成功 ack。服务端在 ack 前推送的数据只进入有界 pre-ack 缓存，不能修改盘口或估算；成功 ack 后按接收顺序回放，资金费率多批订阅按批独立激活。失败、超时、断线或缓存溢出丢弃缓存并保持状态不可用；连接级读超时和心跳失败触发重连，单个 funding topic 静默只使该估算 unavailable，不重连整家。单盘口断档先受控取消订阅、等待 ACK、重新订阅、等待 ACK 和 snapshot，失败才重建整片连接。
 
 任何增量盘口队列都禁止使用“丢掉旧消息、只保留最新消息”的策略。队列满意味着连续性已经不可信，应失效并重建盘口。
 
-本地盘口不能只保留 50 档，否则边缘价位删除后无法补入原第 51 档。内部保留交易所快照支持的较深范围：Binance 和 Bybit 使用 1000 档，OKX `books` 使用 400 档；每秒采样时才截取前 50 档。
+本地盘口不能只保留 10 档，否则边缘价位删除后无法补入原第 11 档。内部保留交易所快照支持的较深范围：Binance 和 Bybit 使用 1000 档，OKX `books` 使用 400 档；每秒采样时才截取前 10 档。
 
 ### 请求限频与重连
 
@@ -138,23 +142,26 @@ snapshot or update
 - `500/502/503/504` 仍允许有限次数重试，但指数退避加入最多 25% 的正向随机抖动；
 - 所有 Binance 盘口 runtime 共用其客户端上的快照门控。无论首次启动还是断线重建，相邻 1000 档 REST 快照请求都至少间隔 1 秒；
 - 所有 OKX 盘口 runtime 与资金费率 runtime 共用一个 WebSocket 建连门控，相邻拨号至少间隔 500 毫秒；
-- 所有 Bybit 盘口 runtime 与单个资金费率 runtime 共用一个 WebSocket 建连门控，相邻拨号至少间隔 1 秒；应用启动前计算 Bybit 连接预算，每个启用 symbol 一个盘口连接，启用 funding 时再加一个连接，超过 1000 时拒绝启动；
+- 所有 Bybit 盘口 shard 与单个资金费率 runtime 共用一个 WebSocket 建连门控，相邻拨号至少间隔 1 秒；连接数为 `ceil(最终instrument数/topicsPerConnection)+funding连接数`，并纳入总连接、FD、事件 slot 和采样容量预算；
+- Binance 永续盘口及资金费率共用至少 1 秒建连 gate；初始 1000 档 REST 快照公平串行排队，仅在实际请求可发出时为一个 target 开启临时 diff buffer；
+- Binance 每连接 200 个盘口 topics 与单控制请求字节预算分开计算：book/funding 订阅整条 JSON 不超过 4,000 字节、逐批 ACK，避免实盘发现的 4,096 字节截断；
+- 所有连接的订阅、取消订阅与心跳经过串行 writer，控制消息至少间隔 250 毫秒；OKX 控制订阅另限制在滚动一小时 400 次以内；
 - Binance 盘口及 OKX、Bybit 盘口和资金费率 WebSocket 的重连退避加入最多 25% 的正向随机抖动，避免网络恢复后保持同步。
 
 ## 5. 每秒采样和分钟缓冲
 
-采样器按 UTC 秒边界读取每个 instrument 的本地盘口，输出排序后的买卖各前 50 档。
+采样器按 UTC 秒边界读取每个 instrument 的本地盘口，输出排序后的买卖各前 10 档。
 
 每个 instrument 只保留一个当前分钟缓冲：
 
-1. 第 0 秒保存完整的前 50 档；
-2. 第 1 至 59 秒，将本秒前 50 档与上一个已保存的有效状态按价格比较；
+1. 第 0 秒保存完整的前 10 档；
+2. 第 1 至 59 秒，将本秒前 10 档与上一个已保存的有效状态按价格比较；
 3. 新增或数量变化保存新的绝对 `qty_lot`；
-4. 从前 50 档移出的价格保存数量 `0`；
+4. 从前 10 档移出的价格保存数量 `0`；
 5. 有效但没有变化的秒只设置 `valid_bitmap`，不生成差量行；
 6. 无效秒不生成差量行，并将对应有效位保持为 `0`；
 7. 盘口恢复有效后，首个有效秒的差量必须相对上一个已保存的有效状态计算，使回放不依赖无效秒；
-8. 分钟结束后将完整盘口和全部差量作为一个批次交给数据库 writer，然后释放该分钟缓冲。
+8. 分钟结束后把所有具有有效第 0 秒起点的 instrument 批次封入一个不可变 `CompletedMinute`；即使没有有效批次也发送一个空 envelope，明确该分钟已收齐。
 
 若第 0 秒没有有效完整盘口，该分钟没有恢复起点，整分钟不写盘口数据；等待下一分钟重新建立起点。程序不得用第 1 秒或更晚的盘口冒充第 0 秒快照。
 
@@ -177,9 +184,9 @@ ClickHouse 的替换在后台合并时发生，不提供即时唯一约束。盘
 
 `instrument` 通过幂等迁移增加 `venue_contract_version String DEFAULT ''`。新登记的衍生品必须提供非空版本：Binance 使用 `onboardDate`，OKX 使用 `listTime`，Bybit 使用 `symbolId:launchTime`；现货和迁移前旧行可以为空。首次部署后既有 Binance、OKX 永续会取得新 ID，旧事实不重写，实时流只写新 ID。
 
-一分钟结束后先批量写入该分钟的差量，成功后再写分钟完整盘口。分钟完整盘口是查询可见标志：如果写差量后进程退出，只会暂时留下不可查询的孤立差量；重试相同确定性数据即可。禁止逐条写入 WebSocket 消息或逐秒执行一次数据库 INSERT。
+writer 将完整分钟按最多 100 个 instrument 分块，每块先批量写入差量，成功后再写分钟完整盘口。分钟完整盘口是查询可见标志：如果写差量后进程退出，只会暂时留下不可查询的孤立差量；重试相同确定性数据即可。禁止逐条写入 WebSocket 消息或逐秒执行一次数据库 INSERT。
 
-第一版不额外建设写入 WAL、Kafka 或 Redis 缓冲。数据库暂时不可用时，在进程内有限重试；超过限制后记录错误并丢弃尚未提交的分钟，不阻塞交易所接收循环。
+第一版不额外建设写入 WAL、Kafka 或 Redis 缓冲。数据库暂时不可用时，在进程内有限重试；队列满、45 秒积压或写入失败成为终止错误，失效的未完成分钟不再写出。每秒采样必须在下一秒前完成，分钟写入验收 p99 小于 30 秒。
 
 ## 7. 资金费率
 
@@ -190,6 +197,7 @@ ClickHouse 的替换在后台合并时发生，不提供即时唯一约束。盘
 - Bybit 估算费率订阅公共 ticker WebSocket，按 symbol 合并稀疏 snapshot/delta，仅在费率、下一结算时间和正的资金费间隔都完整时更新内存；
 - 每个交易所只建立一个资金费率 WebSocket runtime，在同一连接中订阅本项目配置的永续 instrument，不为每个 instrument 新建资金费率连接；
 - runtime 只在内存中保留按 `(instrument_id, funding_time)` 区分的最新推送。UTC 整点由 scheduler 读取最新有效值并写入估算版本；连接失效或没有可用推送时宁可缺失，不使用旧值伪造当前整点；
+- 单 funding topic 静默只失效自己的估算；Bybit 字段缓存可保留用于后续真实 delta 合成，但只由真实消息源时间恢复，不以 ping/pong 或本地当前时间复活；
 - 结算整点必须保留结算前针对该 `funding_time` 的最后估算值，避免 WebSocket 切换到下一周期后写错目标结算时间。
 
 实际结算值使用 Binance、OKX 和 Bybit funding history REST 接口。scheduler 根据 WebSocket 给出的目标 `funding_time` 建立待确认任务，不在整点请求，也不再每分钟遍历全部 instrument：
@@ -204,9 +212,9 @@ ClickHouse 的替换在后台合并时发生，不提供即时唯一约束。盘
 
 ## 8. 查询和回放
 
-查询接口第一版只需要一个核心能力：输入 `instrument_id` 和 UTC 时间，返回该秒的前 50 档盘口或“该秒无效”。
+查询接口输入 `instrument_id` 和 UTC 时间，返回该秒已保存深度的盘口及 `StoredDepth`（新数据 10，旧数据 50），或“该秒无效”。
 
-实现顺序严格按照数据字典：读取分钟完整盘口、检查 `valid_bitmap`、读取目标秒之前的差量、按价格应用绝对数量、删除数量为零的价格、重新排序并截取前 50 档。
+实现顺序严格按照数据字典：读取含 `stored_depth` 的完整分钟起点（保留旧 50 档列）、检查 `valid_bitmap`、读取目标秒之前的差量、按价格应用绝对数量、删除数量为零的价格、重新排序并返回本分钟已保存深度。旧快照不能先截成 10 档再应用旧差量。兼容迁移与零填充规则见存储文档。
 
 不建设独立查询服务。先以 Go 包和测试提供该能力；确有外部调用需求时再增加 HTTP 接口。
 
@@ -230,7 +238,7 @@ ClickHouse 的替换在后台合并时发生，不提供即时唯一约束。盘
 1. 建立 Go module、公共行情 model 和四张行情/资金费率表；
 2. 迁移 Binance、OKX metadata parser，写入 `instrument`；
 3. 泛化永续 L2 collector，接入进程内盘口；
-4. 补齐 Binance Spot 和 OKX Spot 前 50 档；
+4. 补齐 Binance Spot 和 OKX Spot 前 10 档；
 5. 实现每秒采样、分钟缓冲和 ClickHouse 批量写入；
 6. 实现盘口查询与回放；
 7. 接入估算资金费率 WebSocket、延迟串行的实际费率 REST 确认和毫秒结算时间。

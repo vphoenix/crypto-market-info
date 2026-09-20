@@ -8,7 +8,7 @@
 
 Bybit 接入后保存的数据与 Binance、OKX 永续一致：
 
-- 每秒前 50 档标准化订单簿；
+- 每秒前 10 档标准化订单簿；
 - 每分钟第 0 秒完整快照及分钟内秒级差量；
 - 每个 UTC 小时的最新有效资金费率估算；
 - 到达结算时间后由历史接口确认的实际资金费率。
@@ -29,7 +29,7 @@ Bybit 接入后保存的数据与 Binance、OKX 永续一致：
 ### 本次包含
 
 - 发现并登记已配置的 Bybit USDT 线性永续 instrument；
-- 采集 `orderbook.1000.{symbol}`，在内存保留 1000 档并向现有 sampler 提供前 50 档；
+- 采集 `orderbook.1000.{symbol}`，在内存保留 1000 档并向现有 sampler 提供前 10 档；
 - 采集 `tickers.{symbol}` 中的估算资金费率和下一结算时间；
 - 调用资金费率历史接口确认实际结算值；
 - 接入现有的启动补查、失效标记、重连、采样、存储和回放流程；
@@ -40,7 +40,7 @@ Bybit 接入后保存的数据与 Binance、OKX 永续一致：
 - Kraken Derivatives；
 - Bybit 现货、USDC 永续、反向永续、交割合约和 pre-market 合约；
 - 私有 API、API key、账户数据或交易执行；
-- RPI 订单。Bybit 标准公开订单簿明确不包含 RPI，本项目保存的是该公开订单簿的前 50 档；
+- RPI 订单。Bybit 标准公开订单簿明确不包含 RPI，本项目保存的是该公开订单簿的前 10 档；
 - 合并或重构 Binance、OKX 适配器；
 - 新表、新消息队列或新的资金费率调度模型；`instrument` 会增加一个版本身份列，但盘口和资金费率事实表不变。
 
@@ -154,9 +154,9 @@ venue_contract_version String
 orderbook.1000.{symbol}
 ```
 
-选择 1000 档而不是 50 档，是因为项目不能只保留输出的 50 档：最佳价位被删除后，需要更深的本地状态补入前 50。1000 档是 Bybit 官方支持的最深标准频道，每 200 ms 推送，仍明显快于当前每秒采样目标；相较 200 档，它给高 churn 盘口更大的本地缓冲，内存增加可控，而且 Bybit REST 盘口的 `u` 明确对应 1000 档 WebSocket，便于实盘验收和排障时交叉核验。内存 `Book` 的 `retainedDepth` 对 Bybit 固定为 1000，落库仍只有前 50 档；REST 只用于人工核验，不进入实时重同步链路。
+使用 1000 档维护本地盘口，以便最佳价位被删除后由更深状态补入前 10。该标准频道每 200 ms 推送，快于每秒采样目标，并保留较大的本地缓冲；Bybit REST 盘口的 `u` 对应 1000 档 WebSocket，便于实盘验收和排障时交叉核验。内存 `Book` 的 `retainedDepth` 对 Bybit 固定为 1000，新数据落库只有前 10 档并写 `stored_depth=10`，历史 50 档按旧深度回放；REST 只用于人工核验，不进入实时重同步链路。
 
-第一阶段沿用现有“一 instrument 一条盘口连接”的故障隔离方式，不把多个盘口合并到共享连接。盘口连接与单条资金费率连接共用一个 Bybit 建连门控，相邻建连至少间隔 1 秒，并保留带随机抖动的指数退避。这样即使同时启动或网络恢复，也不会接近官方的 500 次/5 分钟建连限制。
+共有交易对扩容后，盘口使用每片最多 20 个 topic 的共享连接；每个 instrument 保留独立序列、generation 和 Book，单 target 断档按取消订阅 ACK、重新订阅 ACK、snapshot 顺序恢复，无法归属的解析错误或共享队列溢出使整片失效。盘口连接与单条资金费率连接共用一个 Bybit 建连门控，相邻建连至少间隔 1 秒，并保留带随机抖动的指数退避。完整规则见[共有交易对设计](perpetual-common-universe.md#8-全量盘口连接与限频)。
 
 ### 消息映射
 
@@ -229,6 +229,7 @@ Bybit ticker 同时有 snapshot 和 delta，delta 会省略没有变化的字段
 - 只有缓存同时具有合法的 `fundingRate`、`nextFundingTime` 和 `fundingIntervalHour` 时，才生成新估算；
 - metadata 的 `fundingInterval` 必须是可被 60 整除的正整数分钟，ticker 的 `fundingIntervalHour` 必须是正整数小时；本阶段不把 interval 加入公共 `Instrument`，也不在两个端点间保存隐式共享状态。实际调度唯一信任每条状态给出的 `nextFundingTime`；
 - 只有该 symbol 已收到完整 snapshot 且缓存仍完整有效时，每一条合法 ticker 才使用当前消息的 `ts` 生成估算，即使该 delta 完全没有 funding 字段；这表示“Bybit 在该次 ticker 状态下仍维持这个值”，并防止公共 2 分钟 freshness 窗口把长期未变化的费率误判为陈旧；
+- 单个 ticker topic 长期静默时只把该 instrument 的估算标为 unavailable，不重连整条 funding 连接；保留已建立 snapshot 的字段缓存以接续真实 delta。ping/pong 只维护连接读超时，不能更新估算源时间或使其重新可用。实际断线、ACK 失败及共享队列溢出仍使整连接估算失效并清空缓存；
 - 同一 `(instrument_id, funding_time)` 的旧 source time 会被现有 `EstimateStore` 忽略；
 - 连接断开时，对该连接覆盖的全部 instrument 调用 `MarkUnavailable`。
 
@@ -290,21 +291,21 @@ Bybit metadata 和资金费率历史调用共用同一 REST 冷却 gate。metada
 
 | 环境变量 | 默认值 | 含义 |
 |---|---|---|
-| `BYBIT_PERP_SYMBOLS` | `-` | 逗号分隔、精确大小写的 USDT 线性永续 symbol；默认不启用，避免部署升级后自动增加流量 |
+| `BYBIT_PERP_SYMBOLS` | `-` | `auto`、`-` 或逗号分隔的精确 symbol；显式空字符串非法；共有集合资格仍统一校验 |
 | `BYBIT_REST_URL` | `https://api.bybit.com` | 公共 REST 根地址 |
 | `BYBIT_WS_URL` | `wss://stream.bybit.com/v5/public/linear` | 盘口和 ticker 公共 WebSocket 根地址 |
 
-`internal/app/app.go` 当前使用 `if Binance { ... } else { OKX ... }`，加入第三个交易所后必须改为显式 `switch instrument.Exchange`，未知交易所直接报错，不能让它落入 OKX 分支。
+`internal/app` 的 perpetual venue registry 显式提供各交易所的 metadata、BookManager、资金费率 runtime 和预算适配；未知交易所直接报错，不能让它落入其他交易所分支。公共选择器不含固定三家参数。
 
 装配层还需：
 
 - 调用 Bybit metadata 并将选中的 instrument 加入统一注册列表；
 - Bybit `Book` 的 retained depth 设为 1000；
-- 为每个 Bybit instrument 创建盘口 runtime；
-- 建立 `bybitFundingInstruments`、Bybit 确认 worker 和单条 ticker runtime；
+- 为最终 Bybit instrument 集合创建一个分片 BookManager；
+- 从同一最终集合建立 Bybit 确认 worker 和单条 ticker runtime；
 - 把 `confirmationWorkers["Bybit"]` 注册给现有启动补查；
 - Bybit 盘口与 ticker runtime 共用同一个 1 秒建连 gate；
-- 启动时计算本进程的 linear WebSocket 连接预算：`盘口 instrument 数 +（启用资金费率时为 1）` 不得超过官方的 1000 条上限，超过则启动失败并要求后续改为多 topic 盘口连接；该校验不能感知同一 IP 上的其他进程，部署仍应只运行一个 collector；
+- 启动时计算本进程的 linear WebSocket 连接预算：`ceil(最终盘口 instrument 数 / 每片 topic 数) +（启用资金费率时为 1）` 不得超过 1000，并检查全 venue 总预算；该校验不能感知同一 IP 上的其他进程，独立验收进程须另外计入 IP 总连接；
 - 除 typed rate-limit error 按上一节在同一进程等待外，metadata 失败或配置 symbol 不存在时沿用当前 fail-fast 启动语义。
 
 ## 保持不变的公共逻辑
@@ -315,7 +316,7 @@ Bybit metadata 和资金费率历史调用共用同一 REST 冷却 gate。metada
 - `price_tick` / `qty_lot` 定点整数表示；
 - 每秒采样和 `valid_bitmap`；
 - 分钟第 0 秒快照、第 1 至 59 秒相对上一有效状态的价格键差量；
-- 前 50 档落库、分钟批量写入及回放查询；
+- 前 10 档落库、分钟批量写入及回放查询；
 - `instrument_id` 注册及已纳入 instrument 定义的合约规格变化处理；
 - 每小时估算值写入、实际值版本优先；
 - 每交易所一个串行资金费率确认 worker；
@@ -389,7 +390,7 @@ README.md
 
 ### 订单簿
 
-- snapshot 最多建立 1000 档本地状态，sampler 只读前 50；低流动性侧允许少于 1000 档但至少有一档；
+- snapshot 最多建立 1000 档本地状态，sampler 只读前 10；低流动性侧允许少于 1000 档但至少有一档；
 - delta 插入、更新、数量 0 删除均正确；
 - 同一消息同价位重复、tick/lot 不整除、symbol/topic 不匹配失败；
 - delta 在 snapshot 前失败；
@@ -399,7 +400,7 @@ README.md
 - 队列溢出、silence timeout、订阅失败使盘口 invalid，重连 snapshot 前采样无效；
 - ack 前 snapshot/delta 不修改盘口，成功 ack 后按接收顺序回放；订阅失败、确认超时和 pre-ack 缓存溢出均丢弃缓存并保持 invalid；
 - 多 runtime 同时启动/重连时，共享 gate 满足 1 秒间隔；
-- snapshot 加全部 delta 可以精确恢复每一秒的前 50 档，无变化秒与无效秒可区分。
+- snapshot 加全部 delta 可以精确恢复每一秒的前 10 档，无变化秒与无效秒可区分。
 
 ### 资金费率
 
@@ -425,8 +426,8 @@ README.md
 - `go test -race -buildvcs=false ./...`；
 - `go vet -buildvcs=false ./...`；
 - 使用本地 HTTP/WebSocket fixture 完成故障注入，不让单元测试依赖真实 Bybit；
-- 开发环境只启用一个 Bybit symbol，至少运行跨过一个完整资金费率结算点；
-- 检查完整有效分钟的 `valid_bitmap` 为 60 个有效秒，随机回放秒与采集 fixture 的前 50 档一致；
+- 开发环境先只启用一个 Bybit symbol，并在另一家启用其共有永续以满足 universe 条件，至少运行跨过一个完整资金费率结算点；
+- 检查完整有效分钟的 `valid_bitmap` 为 60 个有效秒，随机回放秒与采集 fixture 的前 10 档一致；
 - 人工制造 `u` 跳号，确认重同步期间没有看似有效的盘口；对真实 1000 档流做长时 soak，记录所有相邻 `u` 差值并验证连续性假设；
 - 确认结算小时最终出现 `is_actual=1` 且不会被后续估算覆盖；
 - 分别选择代表性的活跃和非活跃 Bybit 永续，记录 24 小时压缩占用、写入错误、重连次数和 100 次随机秒回放耗时，与现有 Binance/OKX 同量级比较。

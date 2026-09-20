@@ -8,14 +8,8 @@ import (
 	"time"
 
 	"github.com/vphoenix/crypto-market-info/internal/config"
-	"github.com/vphoenix/crypto-market-info/internal/exchange"
-	"github.com/vphoenix/crypto-market-info/internal/exchange/binance"
-	"github.com/vphoenix/crypto-market-info/internal/exchange/bybit"
-	"github.com/vphoenix/crypto-market-info/internal/exchange/okx"
 	"github.com/vphoenix/crypto-market-info/internal/funding"
 	"github.com/vphoenix/crypto-market-info/internal/model"
-	"github.com/vphoenix/crypto-market-info/internal/orderbook"
-	"github.com/vphoenix/crypto-market-info/internal/sampler"
 	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
 	marketyield "github.com/vphoenix/crypto-market-info/internal/yield"
 	"github.com/vphoenix/crypto-market-info/internal/yield/aave"
@@ -47,6 +41,11 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 	if logger == nil {
 		logger = slog.Default()
 	}
+	clients := newVenueClients(cfg, logger)
+	discovery, err := discoverPerpetual(ctx, cfg, clients)
+	if err != nil {
+		return err
+	}
 	store, err := chstore.Open(ctx, cfg.ClickHouse)
 	if err != nil {
 		return err
@@ -55,119 +54,12 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 	if err = store.InitSchema(ctx); err != nil {
 		return err
 	}
-	binanceClient := binance.NewClient()
-	binanceClient.SpotBaseURL = cfg.BinanceSpotREST
-	binanceClient.FuturesBaseURL = cfg.BinanceFuturesREST
-	okxClient := okx.NewClient()
-	okxClient.BaseURL = cfg.OKXREST
-	bybitClient := bybit.NewClient()
-	bybitClient.BaseURL = cfg.BybitREST
-	bybitClient.Logger = logger
-	// OKX counts connection attempts across public websocket channels. Sharing one
-	// gate prevents book and funding runtimes from creating a reconnect burst.
-	okxConnectGate := exchange.NewRequestGate(500 * time.Millisecond)
-	bybitConnectGate := exchange.NewRequestGate(time.Second)
-	if connections := bybitWebsocketConnections(cfg.BybitPerpSymbols, cfg.FundingEnabled); connections > 1000 {
-		return fmt.Errorf("Bybit linear websocket connection budget exceeded: %d > 1000", connections)
-	}
-	type target struct {
-		definition model.Instrument
-		ws         string
-	}
-	var targets []target
-	load := func(exchangeName string, market model.MarketType, symbols []string, ws string, fetch func(context.Context, model.MarketType) ([]model.Instrument, error)) error {
-		if len(symbols) == 0 {
-			return nil
-		}
-		available, fetchErr := fetch(ctx, market)
-		if fetchErr != nil {
-			return fetchErr
-		}
-		selected, selectErr := selectSymbols(exchangeName, available, symbols)
-		if selectErr != nil {
-			return selectErr
-		}
-		for _, item := range selected {
-			targets = append(targets, target{definition: item, ws: ws})
-		}
-		return nil
-	}
-	if err = load("Binance", model.MarketSpot, cfg.BinanceSpotSymbols, cfg.BinanceSpotWS, binanceClient.Instruments); err != nil {
-		return err
-	}
-	if err = load("Binance", model.MarketPerpetual, cfg.BinancePerpSymbols, cfg.BinanceFuturesWS, binanceClient.Instruments); err != nil {
-		return err
-	}
-	if err = load("OKX", model.MarketSpot, cfg.OKXSpotSymbols, cfg.OKXWS, okxClient.Instruments); err != nil {
-		return err
-	}
-	if err = load("OKX", model.MarketPerpetual, cfg.OKXPerpSymbols, cfg.OKXWS, okxClient.Instruments); err != nil {
-		return err
-	}
-	if err = load("Bybit", model.MarketPerpetual, cfg.BybitPerpSymbols, cfg.BybitWS, bybitClient.Instruments); err != nil {
-		return err
-	}
-	if len(targets) == 0 && !yieldEnabled(cfg) {
-		return fmt.Errorf("no instruments are configured")
-	}
-	definitions := make([]model.Instrument, len(targets))
-	for index := range targets {
-		definitions[index] = targets[index].definition
-	}
-	registered, err := store.RegisterInstruments(ctx, definitions)
+	markets, err := prepareMarkets(ctx, cfg, store, clients, discovery, logger)
 	if err != nil {
 		return err
 	}
-	var components []component
-	sampleSources := make([]sampler.Source, 0, len(targets))
-	fundingInstruments := make([]model.Instrument, 0, len(targets))
-	binanceFundingInstruments := make([]model.Instrument, 0, len(targets))
-	okxFundingInstruments := make([]model.Instrument, 0, len(targets))
-	bybitFundingInstruments := make([]model.Instrument, 0, len(targets))
-	for index, target := range targets {
-		instrument := registered[index]
-		retained := 400
-		if instrument.Exchange == "Binance" || instrument.Exchange == "Bybit" {
-			retained = 1000
-		}
-		book, bookErr := orderbook.New(instrument.ID, retained)
-		if bookErr != nil {
-			return bookErr
-		}
-		sampleSources = append(sampleSources, sampler.Source{InstrumentID: instrument.ID, Book: book})
-		switch instrument.Exchange {
-		case "Binance":
-			runtime := &binance.Runtime{Instrument: instrument, Book: book, Client: binanceClient, WSEndpoint: target.ws, Logger: logger}
-			components = append(components, component{name: "binance " + instrument.ExchangeSymbol, run: runtime.Run})
-			if cfg.FundingEnabled && instrument.MarketType == model.MarketPerpetual {
-				fundingInstruments = append(fundingInstruments, instrument)
-				binanceFundingInstruments = append(binanceFundingInstruments, instrument)
-			}
-		case "OKX":
-			runtime := &okx.Runtime{Instrument: instrument, Book: book, WSEndpoint: target.ws, ConnectGate: okxConnectGate, Logger: logger}
-			components = append(components, component{name: "okx " + instrument.ExchangeSymbol, run: runtime.Run})
-			if cfg.FundingEnabled && instrument.MarketType == model.MarketPerpetual {
-				fundingInstruments = append(fundingInstruments, instrument)
-				okxFundingInstruments = append(okxFundingInstruments, instrument)
-			}
-		case "Bybit":
-			runtime := &bybit.Runtime{Instrument: instrument, Book: book, WSEndpoint: target.ws, ConnectGate: bybitConnectGate, Logger: logger}
-			components = append(components, component{name: "bybit " + instrument.ExchangeSymbol, run: runtime.Run})
-			if cfg.FundingEnabled && instrument.MarketType == model.MarketPerpetual {
-				fundingInstruments = append(fundingInstruments, instrument)
-				bybitFundingInstruments = append(bybitFundingInstruments, instrument)
-			}
-		default:
-			return fmt.Errorf("unsupported registered exchange %q", instrument.Exchange)
-		}
-	}
-	if len(sampleSources) > 0 {
-		sampleEngine, sampleErr := sampler.NewEngine(sampleSources, store, cfg.MinuteQueueCapacity, logger)
-		if sampleErr != nil {
-			return sampleErr
-		}
-		components = append(components, component{name: "second sampler", run: sampleEngine.Run})
-	}
+	components := markets.components
+	fundingInstruments := markets.fundingInstruments
 	if len(fundingInstruments) > 0 {
 		estimates := funding.NewEstimateStore()
 		scheduler := &funding.Scheduler{Instruments: fundingInstruments, Estimates: estimates, Sink: store, Logger: logger}
@@ -178,33 +70,24 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 			return fmt.Errorf("load pending funding confirmations: %w", loadErr)
 		}
 		queueCapacity := max(4096, len(pending)+1)
-		confirmationWorkers := make(map[string]funding.ConfirmationScheduler, 3)
-		if len(binanceFundingInstruments) > 0 {
-			worker := &funding.ConfirmationWorker{Exchange: "Binance", Provider: binanceClient, Sink: store, QueueCapacity: queueCapacity, Logger: logger}
-			confirmationWorkers["Binance"] = worker
-			runtime := &binance.FundingRuntime{Instruments: binanceFundingInstruments, Estimates: estimates, Confirmations: worker, WSEndpoint: cfg.BinanceMarketWS, Logger: logger}
-			components = append(components,
-				component{name: "Binance funding confirmation", run: worker.Run},
-				component{name: "Binance funding websocket", run: runtime.Run},
-			)
+		confirmationWorkers := make(map[string]funding.ConfirmationScheduler, len(cfg.PerpetualSelection.Venues))
+		specs, err := venueSpecs(cfg, clients)
+		if err != nil {
+			return err
 		}
-		if len(okxFundingInstruments) > 0 {
-			worker := &funding.ConfirmationWorker{Exchange: "OKX", Provider: okxClient, Sink: store, QueueCapacity: queueCapacity, Logger: logger}
-			confirmationWorkers["OKX"] = worker
-			runtime := &okx.FundingRuntime{Instruments: okxFundingInstruments, Estimates: estimates, Confirmations: worker, WSEndpoint: cfg.OKXWS, ConnectGate: okxConnectGate, Logger: logger}
-			components = append(components,
-				component{name: "OKX funding confirmation", run: worker.Run},
-				component{name: "OKX funding websocket", run: runtime.Run},
-			)
-		}
-		if len(bybitFundingInstruments) > 0 {
-			worker := &funding.ConfirmationWorker{Exchange: "Bybit", Provider: bybitClient, Sink: store, QueueCapacity: queueCapacity, Logger: logger}
-			confirmationWorkers["Bybit"] = worker
-			runtime := &bybit.FundingRuntime{Instruments: bybitFundingInstruments, Estimates: estimates, Confirmations: worker, WSEndpoint: cfg.BybitWS, ConnectGate: bybitConnectGate, Logger: logger}
-			components = append(components,
-				component{name: "Bybit funding confirmation", run: worker.Run},
-				component{name: "Bybit funding websocket", run: runtime.Run},
-			)
+		for _, spec := range specs {
+			instruments := markets.byVenue[spec.selection.Venue]
+			if len(instruments) == 0 {
+				continue
+			}
+			worker := &funding.ConfirmationWorker{Exchange: spec.selection.Venue, Provider: spec.provider, Sink: store, QueueCapacity: queueCapacity, Logger: logger}
+			confirmationWorkers[spec.selection.Venue] = worker
+			runtime, err := spec.buildFunding(instruments, estimates, worker, logger)
+			if err != nil {
+				return err
+			}
+			components = append(components, component{name: spec.selection.Venue + " funding confirmation", run: worker.Run}, component{name: spec.selection.Venue + " funding websocket", run: runtime.run})
+			markets.health[spec.selection.Venue+" funding"] = runtime.health
 		}
 		storedInstruments, loadErr := store.Instruments(ctx)
 		if loadErr != nil {
@@ -251,6 +134,9 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 			runner := &marketyield.Runner{Source: item.source, Collector: item.collector, Sink: store, Interval: time.Hour, RetryInterval: 10 * time.Minute, Logger: logger}
 			components = append(components, component{name: item.name, run: runner.Run})
 		}
+	}
+	if err = commitPerpetualRun(ctx, store, discovery, markets, logger); err != nil {
+		return err
 	}
 	return runComponents(ctx, components)
 }
@@ -331,14 +217,6 @@ func selectSymbols(exchange string, available []model.Instrument, symbols []stri
 		out = append(out, item)
 	}
 	return out, nil
-}
-
-func bybitWebsocketConnections(symbols []string, fundingEnabled bool) int {
-	connections := len(symbols)
-	if fundingEnabled && len(symbols) > 0 {
-		connections++
-	}
-	return connections
 }
 
 type fundingRoute struct {

@@ -15,9 +15,9 @@ func SchemaStatements(database string) ([]string, error) {
 		return nil, fmt.Errorf("invalid ClickHouse database identifier %q", database)
 	}
 	db := "`" + database + "`"
-	minuteColumns := make([]string, 0, model.BookDepth*4)
+	minuteColumns := make([]string, 0, model.LegacyBookDepth*4)
 	for _, side := range []string{"bid", "ask"} {
-		for level := 1; level <= model.BookDepth; level++ {
+		for level := 1; level <= model.LegacyBookDepth; level++ {
 			minuteColumns = append(minuteColumns,
 				fmt.Sprintf("    %s_price_%02d Int64", side, level),
 				fmt.Sprintf("    %s_qty_%02d UInt64", side, level))
@@ -44,17 +44,58 @@ ENGINE = ReplacingMergeTree
 ORDER BY instrument_id`, db),
 		fmt.Sprintf(`ALTER TABLE %s.instrument
     ADD COLUMN IF NOT EXISTS venue_contract_version String DEFAULT '' AFTER exchange_symbol`, db),
+		fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s.instrument_canonical_mapping
+(
+    instrument_id UInt32,
+    mapping_revision FixedString(64),
+    canonical_market_key String,
+    canonical_base_asset String,
+    canonical_quote_asset String,
+    canonical_settle_asset String,
+    canonical_base_units_per_venue_base_unit Decimal(38,18),
+    mapping_kind LowCardinality(String),
+    recorded_at DateTime64(3, 'UTC')
+)
+ENGINE = ReplacingMergeTree
+ORDER BY (instrument_id, mapping_revision)`, db),
+		fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s.perpetual_universe_member
+(
+    run_id UUID,
+    instrument_id UInt32,
+    canonical_market_key String
+)
+ENGINE = ReplacingMergeTree
+ORDER BY (run_id, instrument_id)`, db),
+		fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s.perpetual_universe_run
+(
+    run_id UUID,
+    selection_revision FixedString(64),
+    mapping_revision FixedString(64),
+    started_at DateTime64(3, 'UTC'),
+    selection_config_json String,
+    enabled_venues Array(String),
+    canonical_include Array(String),
+    canonical_exclude Array(String),
+    canonical_group_count UInt32,
+    instrument_count UInt32
+)
+ENGINE = ReplacingMergeTree
+ORDER BY run_id`, db),
 		fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s.order_book_minute
 (
     id UInt64,
     instrument_id UInt32,
     minute_time DateTime('UTC'),
     valid_bitmap UInt64,
+    stored_depth UInt8 DEFAULT 50,
 %s
 )
 ENGINE = ReplacingMergeTree
 PARTITION BY toYYYYMM(minute_time)
 ORDER BY (instrument_id, minute_time)`, db, strings.Join(minuteColumns, ",\n")),
+		// The default must remain 50: existing parts and old collectors omit it.
+		fmt.Sprintf(`ALTER TABLE %s.order_book_minute
+    ADD COLUMN IF NOT EXISTS stored_depth UInt8 DEFAULT 50 AFTER valid_bitmap`, db),
 		fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s.order_book_second_delta
 (
     minute_id UInt64,
@@ -156,9 +197,9 @@ ORDER BY (yield_route_id, observation_time, tier_no)`, db),
 }
 
 func MinuteColumns() []string {
-	columns := []string{"id", "instrument_id", "minute_time", "valid_bitmap"}
+	columns := []string{"id", "instrument_id", "minute_time", "valid_bitmap", "stored_depth"}
 	for _, side := range []string{"bid", "ask"} {
-		for level := 1; level <= model.BookDepth; level++ {
+		for level := 1; level <= model.LegacyBookDepth; level++ {
 			columns = append(columns, fmt.Sprintf("%s_price_%02d", side, level), fmt.Sprintf("%s_qty_%02d", side, level))
 		}
 	}

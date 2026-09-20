@@ -3,6 +3,7 @@ package okx
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -10,6 +11,7 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
+	"github.com/vphoenix/crypto-market-info/internal/exchange"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 )
 
@@ -18,6 +20,91 @@ type estimateCapture struct{ values chan model.FundingEstimate }
 func (c estimateCapture) Put(value model.FundingEstimate) error {
 	c.values <- value
 	return nil
+}
+
+func TestFundingBatchesTwentyArgsAndWaitsForEachACK(t *testing.T) {
+	instruments := make([]model.Instrument, 21)
+	for i := range instruments {
+		instruments[i] = okxInstrument()
+		instruments[i].ID = uint32(i + 1)
+		instruments[i].ExchangeSymbol = fmt.Sprintf("A%02d-USDT-SWAP", i)
+	}
+	estimates := estimateCapture{values: make(chan model.FundingEstimate, 1)}
+	confirmations := confirmationCapture{values: make(chan struct {
+		instrument model.Instrument
+		target     time.Time
+	}, 1)}
+	upgrader := websocket.Upgrader{}
+	observed := make(chan []int, 1)
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		conn, err := upgrader.Upgrade(w, r, nil)
+		if err != nil {
+			return
+		}
+		defer conn.Close()
+		counts := make([]int, 0, 2)
+		for batch := 0; batch < 2; batch++ {
+			var request struct {
+				ID   string              `json:"id"`
+				Args []map[string]string `json:"args"`
+			}
+			if err := conn.ReadJSON(&request); err != nil {
+				return
+			}
+			counts = append(counts, len(request.Args))
+			if batch == 0 {
+				symbol := request.Args[len(request.Args)-1]["instId"]
+				_ = conn.WriteMessage(websocket.TextMessage, []byte(fmt.Sprintf(`{"arg":{"channel":"funding-rate","instId":%q},"data":[{"instId":%q,"instType":"SWAP","fundingRate":"0.1","fundingTime":"1787097600123","ts":"1787097599000"}]}`, symbol, symbol)))
+			}
+			for i, arg := range request.Args {
+				if batch == 0 && i == len(request.Args)-1 {
+					time.Sleep(10 * time.Millisecond)
+					if len(estimates.values) != 0 {
+						t.Error("funding became visible before its own ACK")
+					}
+				}
+				_ = conn.WriteJSON(map[string]any{"id": request.ID, "event": "subscribe", "arg": arg})
+			}
+		}
+		observed <- counts
+		for {
+			if _, _, err := conn.ReadMessage(); err != nil {
+				return
+			}
+		}
+	}))
+	defer server.Close()
+	runtime := FundingRuntime{Instruments: instruments, Estimates: estimates, Confirmations: confirmations, WSEndpoint: "ws" + strings.TrimPrefix(server.URL, "http"), ConnectGate: exchange.NewRequestGate(0), PingInterval: time.Hour}
+	if err := runtime.Validate(); err != nil {
+		t.Fatal(err)
+	}
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	done := make(chan error, 1)
+	go func() { done <- runtime.runConnection(ctx) }()
+	select {
+	case counts := <-observed:
+		if len(counts) != 2 || counts[0] != 20 || counts[1] != 1 {
+			t.Fatal(counts)
+		}
+	case <-time.After(2 * time.Second):
+		t.Fatal("funding did not subscribe two batches")
+	}
+	select {
+	case estimate := <-estimates.values:
+		if estimate.InstrumentID != 20 {
+			t.Fatal(estimate.InstrumentID)
+		}
+	case <-time.After(time.Second):
+		t.Fatal("funding did not replay acknowledged target")
+	}
+	cancel()
+	if err := <-done; err != nil {
+		t.Fatal(err)
+	}
+	if runtime.HealthSnapshot().ReadyInstruments != 0 {
+		t.Fatal("stopped funding kept ready estimates")
+	}
 }
 
 func (c estimateCapture) MarkUnavailable(_ []uint32) {}

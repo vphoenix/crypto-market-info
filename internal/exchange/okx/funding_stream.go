@@ -6,12 +6,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"log/slog"
-	"net/http"
 	"strconv"
+	"sync"
 	"time"
 
 	"github.com/gorilla/websocket"
 	"github.com/vphoenix/crypto-market-info/internal/exchange"
+	"github.com/vphoenix/crypto-market-info/internal/exchange/wsstream"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 )
 
@@ -55,7 +56,7 @@ func ParseFundingUpdates(payload []byte, instruments map[string]model.Instrument
 			row.InstID = envelope.Arg.InstID
 		}
 		instrument, exists := instruments[row.InstID]
-		if !exists || instrument.MarketType != model.MarketPerpetual || (row.InstType != "" && row.InstType != "SWAP") {
+		if !exists || row.InstID != envelope.Arg.InstID || instrument.MarketType != model.MarketPerpetual || (row.InstType != "" && row.InstType != "SWAP") {
 			return nil, nil, fmt.Errorf("OKX funding websocket has unexpected instrument %q", row.InstID)
 		}
 		fundingMS, err := strconv.ParseInt(row.FundingTime, 10, 64)
@@ -81,22 +82,48 @@ func ParseFundingUpdates(payload []byte, instruments map[string]model.Instrument
 }
 
 type FundingRuntime struct {
-	Instruments     []model.Instrument
-	Estimates       FundingEstimateSink
-	Confirmations   FundingConfirmationScheduler
-	WSEndpoint      string
-	Dialer          *websocket.Dialer
-	PingInterval    time.Duration
-	SilenceTimeout  time.Duration
-	ReconnectBase   time.Duration
-	ReconnectMax    time.Duration
-	ConnectGate     exchange.WaitGate
-	ReconnectJitter func(time.Duration) time.Duration
-	Logger          *slog.Logger
+	Instruments                       []model.Instrument
+	Estimates                         FundingEstimateSink
+	Confirmations                     FundingConfirmationScheduler
+	WSEndpoint                        string
+	Dialer                            *websocket.Dialer
+	PingInterval                      time.Duration
+	SilenceTimeout                    time.Duration
+	ReconnectBase                     time.Duration
+	ReconnectMax                      time.Duration
+	ConnectGate                       exchange.WaitGate
+	ReconnectJitter                   func(time.Duration) time.Duration
+	Logger                            *slog.Logger
+	QueueCapacity, PreAckCapacity     int
+	SubscribeTimeout, ControlInterval time.Duration
+	stats                             wsstream.Statistics
+	healthMu                          sync.Mutex
+	available                         map[uint32]time.Time
+}
+
+// Validate performs local dependency validation without starting any workers.
+func (r *FundingRuntime) Validate() error {
+	if err := r.defaults(); err != nil {
+		return err
+	}
+	return validateWSEndpoint(r.WSEndpoint)
+}
+
+func (r *FundingRuntime) HealthSnapshot() BookHealthSnapshot {
+	r.healthMu.Lock()
+	defer r.healthMu.Unlock()
+	h := BookHealthSnapshot{ExpectedInstruments: len(r.Instruments), ReadyInstruments: len(r.available), InvalidInstruments: len(r.Instruments) - len(r.available), ConnectedShards: int(r.stats.Connected.Load()), Reconnects: r.stats.Reconnects.Load(), QueuePeak: r.stats.QueuePeak.Load(), QueueOverflows: r.stats.QueueOverflows.Load()}
+	h.StaleTargets = r.stats.StaleTargets.Load()
+	for _, ts := range r.available {
+		if h.OldestSourceTime.IsZero() || ts.Before(h.OldestSourceTime) {
+			h.OldestSourceTime = ts
+		}
+	}
+	return h
 }
 
 func (r *FundingRuntime) Run(ctx context.Context) error {
-	if err := r.defaults(); err != nil {
+	if err := r.Validate(); err != nil {
 		return err
 	}
 	delay := r.ReconnectBase
@@ -106,6 +133,7 @@ func (r *FundingRuntime) Run(ctx context.Context) error {
 			return nil
 		}
 		r.Estimates.MarkUnavailable(r.instrumentIDs())
+		r.stats.Reconnects.Add(1)
 		r.Logger.Error("OKX funding websocket disconnected", "error", err)
 		if !exchange.Wait(ctx, r.ReconnectJitter(delay)) {
 			return nil
@@ -131,20 +159,31 @@ func (r *FundingRuntime) defaults() error {
 		return fmt.Errorf("OKX funding runtime requires instruments, estimates and confirmations")
 	}
 	seen := make(map[string]struct{}, len(r.Instruments))
+	seenIDs := make(map[uint32]bool, len(r.Instruments))
 	for _, instrument := range r.Instruments {
 		if err := instrument.Validate(); err != nil || instrument.Exchange != "OKX" || instrument.MarketType != model.MarketPerpetual {
 			return fmt.Errorf("OKX funding runtime received an invalid instrument")
 		}
-		if _, exists := seen[instrument.ExchangeSymbol]; exists {
+		if _, exists := seen[instrument.ExchangeSymbol]; exists || seenIDs[instrument.ID] {
 			return fmt.Errorf("OKX funding runtime has duplicate symbol %q", instrument.ExchangeSymbol)
 		}
 		seen[instrument.ExchangeSymbol] = struct{}{}
+		seenIDs[instrument.ID] = true
 	}
 	if r.WSEndpoint == "" {
 		r.WSEndpoint = "wss://ws.okx.com:8443/ws/v5/public"
 	}
 	if r.Dialer == nil {
 		r.Dialer = websocket.DefaultDialer
+	}
+	if r.QueueCapacity <= 0 {
+		r.QueueCapacity = 4096
+	}
+	if r.PreAckCapacity <= 0 {
+		r.PreAckCapacity = r.QueueCapacity
+	}
+	if r.SubscribeTimeout <= 0 {
+		r.SubscribeTimeout = 10 * time.Second
 	}
 	if r.PingInterval <= 0 {
 		r.PingInterval = 20 * time.Second
@@ -171,68 +210,45 @@ func (r *FundingRuntime) defaults() error {
 }
 
 func (r *FundingRuntime) runConnection(ctx context.Context) error {
-	if err := r.ConnectGate.Wait(ctx); err != nil {
-		return err
-	}
-	conn, response, err := r.Dialer.DialContext(ctx, r.WSEndpoint, http.Header{})
-	if err != nil {
-		if response != nil {
-			return fmt.Errorf("OKX funding websocket handshake %s: %w", response.Status, err)
-		}
-		return err
-	}
-	defer conn.Close()
 	instruments := make(map[string]model.Instrument, len(r.Instruments))
-	args := make([]map[string]string, 0, len(r.Instruments))
 	for _, instrument := range r.Instruments {
 		instruments[instrument.ExchangeSymbol] = instrument
-		args = append(args, map[string]string{"channel": "funding-rate", "instId": instrument.ExchangeSymbol})
 	}
-	if err = conn.WriteJSON(map[string]any{"id": "funding", "op": "subscribe", "args": args}); err != nil {
-		return err
-	}
-	_ = conn.SetReadDeadline(time.Now().Add(r.SilenceTimeout))
-	ticker := time.NewTicker(r.PingInterval)
-	defer ticker.Stop()
-	type readResult struct {
-		payload []byte
-		err     error
-	}
-	reads := make(chan readResult, 1)
-	go func() {
-		for {
-			_, payload, readErr := conn.ReadMessage()
-			select {
-			case reads <- readResult{payload: payload, err: readErr}:
-			case <-ctx.Done():
-				return
-			}
-			if readErr != nil {
-				return
-			}
+	targets := make([]*wsstream.Target, 0, len(r.Instruments))
+	for _, instrument := range r.Instruments {
+		unavailable := func(string) {
+			r.Estimates.MarkUnavailable([]uint32{instrument.ID})
+			r.healthMu.Lock()
+			delete(r.available, instrument.ID)
+			r.healthMu.Unlock()
 		}
-	}()
-	for {
-		select {
-		case <-ctx.Done():
-			return nil
-		case <-ticker.C:
-			if err = conn.SetWriteDeadline(time.Now().Add(5 * time.Second)); err != nil {
-				return err
+		target := &wsstream.Target{Topic: instrument.ExchangeSymbol, Reset: unavailable, Invalidate: unavailable}
+		target.Apply = func(payload []byte, _ bool) (bool, error) {
+			estimates, matched, err := ParseFundingUpdates(payload, instruments)
+			if err != nil {
+				return false, err
 			}
-			if err = conn.WriteMessage(websocket.TextMessage, []byte("ping")); err != nil {
-				return err
+			for i, estimate := range estimates {
+				if err := r.Estimates.Put(estimate); err != nil {
+					return false, err
+				}
+				if err := r.Confirmations.Schedule(ctx, matched[i], estimate.FundingTime); err != nil {
+					return false, err
+				}
+				r.healthMu.Lock()
+				if r.available == nil {
+					r.available = make(map[uint32]time.Time)
+				}
+				r.available[estimate.InstrumentID] = estimate.SourceTime
+				r.healthMu.Unlock()
 			}
-		case result := <-reads:
-			if result.err != nil {
-				return result.err
-			}
-			_ = conn.SetReadDeadline(time.Now().Add(r.SilenceTimeout))
-			if err = r.handlePayload(ctx, result.payload, instruments); err != nil {
-				return err
-			}
+			return true, nil
 		}
+		targets = append(targets, target)
 	}
+	return wsstream.RunConnection(ctx, wsstream.Config{Endpoint: r.WSEndpoint, Dialer: r.Dialer, ConnectGate: r.ConnectGate, Protocol: streamProtocol{channel: "funding-rate"}, Targets: targets, BatchSize: 20, QueueCapacity: r.QueueCapacity, PreAckCapacity: r.PreAckCapacity, AckPerTopic: true, ControlInterval: r.ControlInterval, MaxControlsPerHour: 400, PingInterval: r.PingInterval, SilenceTimeout: r.SilenceTimeout, SubscribeTimeout: r.SubscribeTimeout, Stats: &r.stats,
+		StaleTargetOnly: true, OnStale: func(topic string) { r.Logger.Warn("OKX funding topic stale; estimate unavailable", "topic", topic) },
+	})
 }
 
 func (r *FundingRuntime) handlePayload(ctx context.Context, payload []byte, instruments map[string]model.Instrument) error {

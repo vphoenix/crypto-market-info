@@ -6,14 +6,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"log/slog"
-	"net/http"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/gorilla/websocket"
 	"github.com/shopspring/decimal"
 	"github.com/vphoenix/crypto-market-info/internal/exchange"
+	"github.com/vphoenix/crypto-market-info/internal/exchange/wsstream"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 )
 
@@ -190,10 +191,35 @@ type FundingRuntime struct {
 	ConnectGate      exchange.WaitGate
 	ReconnectJitter  func(time.Duration) time.Duration
 	Logger           *slog.Logger
+	ControlInterval  time.Duration
+	stats            wsstream.Statistics
+	healthMu         sync.Mutex
+	available        map[uint32]time.Time
+}
+
+// Validate performs local dependency validation without starting any workers.
+func (r *FundingRuntime) Validate() error {
+	if err := r.defaults(); err != nil {
+		return err
+	}
+	return validateWSEndpoint(r.WSEndpoint)
+}
+
+func (r *FundingRuntime) HealthSnapshot() BookHealthSnapshot {
+	r.healthMu.Lock()
+	defer r.healthMu.Unlock()
+	h := BookHealthSnapshot{ExpectedInstruments: len(r.Instruments), ReadyInstruments: len(r.available), InvalidInstruments: len(r.Instruments) - len(r.available), ConnectedShards: int(r.stats.Connected.Load()), Reconnects: r.stats.Reconnects.Load(), QueuePeak: r.stats.QueuePeak.Load(), QueueOverflows: r.stats.QueueOverflows.Load()}
+	h.StaleTargets = r.stats.StaleTargets.Load()
+	for _, ts := range r.available {
+		if h.OldestSourceTime.IsZero() || ts.Before(h.OldestSourceTime) {
+			h.OldestSourceTime = ts
+		}
+	}
+	return h
 }
 
 func (r *FundingRuntime) Run(ctx context.Context) error {
-	if err := r.defaults(); err != nil {
+	if err := r.Validate(); err != nil {
 		return err
 	}
 	delay := r.ReconnectBase
@@ -203,6 +229,7 @@ func (r *FundingRuntime) Run(ctx context.Context) error {
 			return nil
 		}
 		r.Logger.Error("Bybit funding websocket disconnected", "error", err)
+		r.stats.Reconnects.Add(1)
 		if !exchange.Wait(ctx, r.ReconnectJitter(delay)) {
 			return nil
 		}
@@ -227,14 +254,21 @@ func (r *FundingRuntime) defaults() error {
 		return fmt.Errorf("Bybit funding runtime requires instruments, estimates and confirmations")
 	}
 	seen := make(map[string]struct{}, len(r.Instruments))
+	seenIDs := make(map[uint32]bool, len(r.Instruments))
+	var topics []string
 	for _, instrument := range r.Instruments {
 		if err := instrument.Validate(); err != nil || instrument.Exchange != "Bybit" || instrument.MarketType != model.MarketPerpetual {
 			return fmt.Errorf("Bybit funding runtime received an invalid instrument")
 		}
-		if _, exists := seen[instrument.ExchangeSymbol]; exists {
+		if _, exists := seen[instrument.ExchangeSymbol]; exists || seenIDs[instrument.ID] {
 			return fmt.Errorf("Bybit funding runtime has duplicate symbol %q", instrument.ExchangeSymbol)
 		}
 		seen[instrument.ExchangeSymbol] = struct{}{}
+		seenIDs[instrument.ID] = true
+		topics = append(topics, "tickers."+instrument.ExchangeSymbol)
+	}
+	if _, err := tickerSubscriptionBatches(topics, tickerArgsLimit); err != nil {
+		return err
 	}
 	if r.WSEndpoint == "" {
 		r.WSEndpoint = defaultWSEndpoint
@@ -276,20 +310,6 @@ func (r *FundingRuntime) defaults() error {
 }
 
 func (r *FundingRuntime) runConnection(ctx context.Context) error {
-	instrumentIDs := r.instrumentIDs()
-	r.Estimates.MarkUnavailable(instrumentIDs)
-	defer r.Estimates.MarkUnavailable(instrumentIDs)
-	if err := r.ConnectGate.Wait(ctx); err != nil {
-		return err
-	}
-	conn, response, err := r.Dialer.DialContext(ctx, r.WSEndpoint, http.Header{})
-	if err != nil {
-		if response != nil {
-			return fmt.Errorf("Bybit funding websocket handshake %s: %w", response.Status, err)
-		}
-		return err
-	}
-	defer conn.Close()
 	instruments := make(map[string]model.Instrument, len(r.Instruments))
 	topics := make([]string, 0, len(r.Instruments))
 	for _, instrument := range r.Instruments {
@@ -300,132 +320,65 @@ func (r *FundingRuntime) runConnection(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-	pending := make(map[string][]string, len(batches))
-	topicBatch := make(map[string]string, len(topics))
-	for index, batch := range batches {
-		reqID := fmt.Sprintf("funding%d", index+1)
-		pending[reqID] = batch
-		for _, topic := range batch {
-			topicBatch[topic] = reqID
-		}
-		if err = conn.WriteJSON(map[string]any{"req_id": reqID, "op": "subscribe", "args": batch}); err != nil {
-			return err
-		}
-	}
-	messages := make(chan []byte, r.QueueCapacity)
-	readerErrors := make(chan error, 1)
-	terminal := &connectionTerminal{}
-	readCtx, cancel := context.WithCancel(ctx)
-	defer cancel()
-	go r.readFundingLoop(readCtx, conn, messages, readerErrors, terminal, instrumentIDs)
-	ticker := time.NewTicker(r.PingInterval)
-	defer ticker.Stop()
-	subscriptionTimer := time.NewTimer(r.SubscribeTimeout)
-	defer subscriptionTimer.Stop()
-	subscriptionTimeout := subscriptionTimer.C
-	subscribed := make(map[string]struct{}, len(topics))
-	preAck := make(map[string][][]byte, len(batches))
-	preAckCount := 0
 	cache := newTickerCache()
-	applyTicker := func(payload []byte) error {
-		update, instrument, parseErr := ParseTickerUpdate(payload, instruments)
-		if parseErr != nil {
-			return parseErr
+	targets := make([]*wsstream.Target, 0, len(r.Instruments))
+	for _, instrument := range r.Instruments {
+		unavailable := func(string) {
+			r.Estimates.MarkUnavailable([]uint32{instrument.ID})
+			r.healthMu.Lock()
+			delete(r.available, instrument.ID)
+			r.healthMu.Unlock()
 		}
-		estimate, complete, applyErr := cache.Apply(update, instrument)
-		if applyErr != nil || !complete {
-			return applyErr
-		}
-		if putErr := r.Estimates.Put(estimate); putErr != nil {
-			return putErr
-		}
-		return r.Confirmations.Schedule(ctx, instrument, estimate.FundingTime)
-	}
-	fail := func(failure error) error {
-		return terminal.fail(failure, func(error) { r.Estimates.MarkUnavailable(instrumentIDs) })
-	}
-	for {
-		select {
-		case <-ctx.Done():
-			return nil
-		case err = <-readerErrors:
-			if terminalErr := terminal.current(); terminalErr != nil {
-				return terminalErr
-			}
-			return terminal.fail(err, func(error) { r.Estimates.MarkUnavailable(instrumentIDs) })
-		case payload := <-messages:
-			err = terminal.withActive(func() error {
-				var identity struct {
-					Topic string `json:"topic"`
-					Op    string `json:"op"`
-				}
-				if unmarshalErr := json.Unmarshal(payload, &identity); unmarshalErr != nil {
-					return fmt.Errorf("Bybit funding websocket JSON: %w", unmarshalErr)
-				}
-				if identity.Topic == "" {
-					var control websocketControl
-					if unmarshalErr := json.Unmarshal(payload, &control); unmarshalErr != nil {
-						return unmarshalErr
-					}
-					if control.Op == "ping" {
-						_, controlErr := parseWebsocketControl(payload, "")
-						return controlErr
-					}
-					batch, exists := pending[control.ReqID]
-					if !exists {
-						return fmt.Errorf("Bybit funding websocket unexpected subscription req_id=%q", control.ReqID)
-					}
-					if _, controlErr := parseWebsocketControl(payload, control.ReqID); controlErr != nil {
-						return controlErr
-					}
-					delete(pending, control.ReqID)
-					for _, topic := range batch {
-						subscribed[topic] = struct{}{}
-					}
-					for _, buffered := range preAck[control.ReqID] {
-						if applyErr := applyTicker(buffered); applyErr != nil {
-							return applyErr
-						}
-						preAckCount--
-					}
-					delete(preAck, control.ReqID)
-					if len(pending) == 0 {
-						subscriptionTimer.Stop()
-						subscriptionTimeout = nil
-					}
-					return nil
-				}
-				reqID, expected := topicBatch[identity.Topic]
-				if !expected {
-					return fmt.Errorf("Bybit funding websocket unexpected topic %q", identity.Topic)
-				}
-				if _, active := subscribed[identity.Topic]; !active {
-					if _, stillPending := pending[reqID]; !stillPending {
-						return fmt.Errorf("Bybit funding websocket topic %q has inconsistent subscription state", identity.Topic)
-					}
-					if preAckCount >= r.PreAckCapacity {
-						return fmt.Errorf("Bybit funding pre-ack buffer overflow")
-					}
-					preAck[reqID] = append(preAck[reqID], append([]byte(nil), payload...))
-					preAckCount++
-					return nil
-				}
-				return applyTicker(payload)
-			})
+		target := &wsstream.Target{Topic: "tickers." + instrument.ExchangeSymbol, Reset: unavailable, Invalidate: unavailable}
+		target.Apply = func(payload []byte, _ bool) (bool, error) {
+			update, matched, err := ParseTickerUpdate(payload, instruments)
 			if err != nil {
-				return fail(err)
+				return false, err
 			}
-		case <-ticker.C:
-			if err = conn.SetWriteDeadline(time.Now().Add(5 * time.Second)); err != nil {
-				return err
+			estimate, complete, err := cache.Apply(update, matched)
+			if err != nil || !complete {
+				return false, err
 			}
-			if err = conn.WriteJSON(map[string]string{"op": "ping"}); err != nil {
-				return err
+			if err := r.Estimates.Put(estimate); err != nil {
+				return false, err
 			}
-		case <-subscriptionTimeout:
-			return fail(fmt.Errorf("Bybit funding websocket subscription acknowledgements timed out"))
+			if err := r.Confirmations.Schedule(ctx, matched, estimate.FundingTime); err != nil {
+				return false, err
+			}
+			r.healthMu.Lock()
+			if r.available == nil {
+				r.available = make(map[uint32]time.Time)
+			}
+			r.available[estimate.InstrumentID] = estimate.SourceTime
+			r.healthMu.Unlock()
+			return true, nil
 		}
+		targets = append(targets, target)
 	}
+	return wsstream.RunConnection(ctx, wsstream.Config{Endpoint: r.WSEndpoint, Dialer: r.Dialer, ConnectGate: r.ConnectGate, Protocol: tickerStreamProtocol{}, Targets: targets, Batches: batches, QueueCapacity: r.QueueCapacity, PreAckCapacity: r.PreAckCapacity, RequireAckID: true, ControlInterval: r.ControlInterval, PingInterval: r.PingInterval, SilenceTimeout: r.SilenceTimeout, SubscribeTimeout: r.SubscribeTimeout, Stats: &r.stats,
+		StaleTargetOnly: true, OnStale: func(topic string) { r.Logger.Warn("Bybit funding topic stale; estimate unavailable", "topic", topic) },
+	})
+}
+
+type tickerStreamProtocol struct{ streamProtocol }
+
+func (p tickerStreamProtocol) Decode(payload []byte) (wsstream.Message, error) {
+	var envelope struct {
+		Topic string `json:"topic"`
+		Data  struct {
+			Symbol string `json:"symbol"`
+		} `json:"data"`
+	}
+	if err := json.Unmarshal(payload, &envelope); err != nil {
+		return wsstream.Message{}, fmt.Errorf("Bybit funding websocket JSON: %w", err)
+	}
+	if envelope.Topic == "" {
+		return p.streamProtocol.Decode(payload)
+	}
+	if envelope.Data.Symbol == "" || envelope.Topic != "tickers."+envelope.Data.Symbol {
+		return wsstream.Message{}, fmt.Errorf("Bybit funding websocket topic/symbol mismatch")
+	}
+	return wsstream.Message{Topic: envelope.Topic}, nil
 }
 
 func (r *FundingRuntime) readFundingLoop(ctx context.Context, conn *websocket.Conn, messages chan<- []byte, errors chan<- error, terminal *connectionTerminal, instrumentIDs []uint32) {

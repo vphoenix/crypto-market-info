@@ -22,6 +22,10 @@ type HTTPRetryConfig struct {
 	Cooldown          *RequestGate
 	RateLimitFallback time.Duration
 	Jitter            func(time.Duration) time.Duration
+	// BeforeRequest runs after cooldown and immediately before each HTTP send.
+	// Callers may arm a bounded websocket bridge here, without buffering during
+	// a rate-limit cooldown. An error aborts the request before it is sent.
+	BeforeRequest func(context.Context) error
 }
 
 func DefaultHTTPRetryConfig() HTTPRetryConfig {
@@ -103,6 +107,11 @@ func doHTTP(ctx context.Context, client *http.Client, method, rawURL string, bod
 		}
 		if method == http.MethodPost {
 			req.Header.Set("Content-Type", "application/json")
+		}
+		if cfg.BeforeRequest != nil {
+			if err := cfg.BeforeRequest(ctx); err != nil {
+				return HTTPResponse{}, err
+			}
 		}
 		response, err := client.Do(req)
 		if err != nil {

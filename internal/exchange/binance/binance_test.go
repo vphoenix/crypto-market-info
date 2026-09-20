@@ -56,6 +56,28 @@ func TestParseDepthRejectsNonDivisible(t *testing.T) {
 	}
 }
 
+func TestFuturesBridgeEndingAtSnapshotBoundary(t *testing.T) {
+	book, _ := orderbook.New(1, 1000)
+	collector, _ := NewCollector(book, true)
+	now := time.Now().UTC()
+	if err := collector.ApplySnapshot(model.BookSnapshot{InstrumentID: 1, SourceTime: now, Sequence: 100, Bids: []model.Level{{PriceTick: 100, QtyLot: 7}}, Asks: []model.Level{{PriceTick: 101, QtyLot: 1}}}); err != nil {
+		t.Fatal(err)
+	}
+	if err := collector.Push(DepthUpdate{FirstUpdateID: 99, FinalUpdateID: 100, PreviousUpdateID: 98, SourceTime: now, Bids: []model.Level{{PriceTick: 100, QtyLot: 3}}}); err != nil {
+		t.Fatal(err)
+	}
+	if !collector.firstAccepted {
+		t.Fatal("equal-ID bridge not accepted")
+	}
+	snapshot, _ := book.Snapshot(50)
+	if snapshot.Bids[0].QtyLot != 7 {
+		t.Fatal("equal-ID event overwrote authoritative snapshot")
+	}
+	if err := collector.Push(DepthUpdate{FirstUpdateID: 101, FinalUpdateID: 102, PreviousUpdateID: 100, SourceTime: now}); err != nil {
+		t.Fatal(err)
+	}
+}
+
 func testInstrument() model.Instrument {
 	settle := "USDT"
 	return model.Instrument{ID: 1, Exchange: "Binance", MarketType: model.MarketPerpetual, ExchangeSymbol: "BTCUSDT", VenueContractVersion: "1585526400000", BaseAsset: "BTC", QuoteAsset: "USDT", SettleAsset: &settle, ContractMultiplier: decimal.NewFromInt(1), PriceTickSize: decimal.RequireFromString("0.1"), QuantityStepSize: decimal.RequireFromString("0.001")}

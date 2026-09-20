@@ -13,21 +13,54 @@ import (
 )
 
 func (c *Client) WriteMinute(ctx context.Context, batch model.MinuteBatch) error {
-	if err := validateBatch(batch); err != nil {
-		return err
+	return c.WriteCompletedMinute(ctx, model.CompletedMinute{MinuteTime: batch.Minute.MinuteTime, Batches: []model.MinuteBatch{batch}})
+}
+
+const MinuteWriteBatchInstruments = 100
+
+// WriteCompletedMinute validates the entire envelope before its first insert.
+// Each chunk's deltas become durable before its minute visibility rows appear.
+func (c *Client) WriteCompletedMinute(ctx context.Context, completed model.CompletedMinute) error {
+	if completed.MinuteTime.IsZero() || !completed.MinuteTime.Equal(completed.MinuteTime.UTC().Truncate(time.Minute)) {
+		return fmt.Errorf("completed minute requires an exact UTC minute")
 	}
-	if len(batch.Deltas) > 0 {
-		if err := c.retryWrite(ctx, func(writeCtx context.Context) error { return c.insertDeltas(writeCtx, batch.Deltas) }); err != nil {
-			return fmt.Errorf("write second deltas: %w", err)
+	for index, batch := range completed.Batches {
+		if !batch.Minute.MinuteTime.Equal(completed.MinuteTime) || (index > 0 && completed.Batches[index-1].Minute.InstrumentID >= batch.Minute.InstrumentID) {
+			return fmt.Errorf("completed minute batches must share a minute and have sorted unique instrument IDs")
+		}
+		if err := validateBatch(batch); err != nil {
+			return fmt.Errorf("instrument %d: %w", batch.Minute.InstrumentID, err)
 		}
 	}
-	if err := c.retryWrite(ctx, func(writeCtx context.Context) error { return c.insertMinute(writeCtx, batch.Minute) }); err != nil {
-		return fmt.Errorf("write minute visibility row: %w", err)
+	for offset := 0; offset < len(completed.Batches); offset += MinuteWriteBatchInstruments {
+		chunk := completed.Batches[offset:min(offset+MinuteWriteBatchInstruments, len(completed.Batches))]
+		var deltas []model.BookDelta
+		minutes := make([]model.MinuteBook, 0, len(chunk))
+		for _, item := range chunk {
+			deltas = append(deltas, item.Deltas...)
+			minutes = append(minutes, item.Minute)
+		}
+		if err := c.retryWrite(ctx, func(writeCtx context.Context) error {
+			if len(deltas) > 0 {
+				if err := c.insertDeltas(writeCtx, deltas); err != nil {
+					return fmt.Errorf("write second deltas: %w", err)
+				}
+			}
+			if err := c.insertMinutes(writeCtx, minutes); err != nil {
+				return fmt.Errorf("write minute visibility rows: %w", err)
+			}
+			return nil
+		}); err != nil {
+			return fmt.Errorf("completed minute chunk %d: %w", offset/MinuteWriteBatchInstruments, err)
+		}
 	}
 	return nil
 }
 
 func validateBatch(batch model.MinuteBatch) error {
+	if err := batch.Minute.ValidateDepth(); err != nil {
+		return err
+	}
 	wantID, err := model.MinuteID(batch.Minute.InstrumentID, batch.Minute.MinuteTime)
 	if err != nil {
 		return err
@@ -38,6 +71,9 @@ func validateBatch(batch model.MinuteBatch) error {
 	if batch.Minute.ValidBitmap&1 == 0 {
 		return fmt.Errorf("minute batch has no valid second-zero anchor")
 	}
+	if batch.Minute.ValidBitmap>>60 != 0 {
+		return fmt.Errorf("minute valid bitmap exceeds 60 seconds")
+	}
 	bids, err := unpadded(batch.Minute.Bids)
 	if err != nil {
 		return fmt.Errorf("minute bids: %w", err)
@@ -46,10 +82,17 @@ func validateBatch(batch model.MinuteBatch) error {
 	if err != nil {
 		return fmt.Errorf("minute asks: %w", err)
 	}
-	if err = (model.BookSnapshot{InstrumentID: batch.Minute.InstrumentID, SourceTime: batch.Minute.MinuteTime, Bids: bids, Asks: asks}).Validate(model.BookDepth); err != nil {
+	if err = (model.BookSnapshot{InstrumentID: batch.Minute.InstrumentID, SourceTime: batch.Minute.MinuteTime, Bids: bids, Asks: asks}).Validate(int(batch.Minute.StoredDepth)); err != nil {
 		return fmt.Errorf("minute snapshot: %w", err)
 	}
 	lastSecond := uint8(0)
+	bidPrices, askPrices := make(map[int64]struct{}, len(bids)), make(map[int64]struct{}, len(asks))
+	for _, level := range bids {
+		bidPrices[level.PriceTick] = struct{}{}
+	}
+	for _, level := range asks {
+		askPrices[level.PriceTick] = struct{}{}
+	}
 	for _, delta := range batch.Deltas {
 		if delta.MinuteID != batch.Minute.ID || delta.SecondOffset == 0 || delta.SecondOffset > 59 {
 			return fmt.Errorf("invalid delta identity/second")
@@ -70,8 +113,23 @@ func validateBatch(batch model.MinuteBatch) error {
 		if err = validateDeltaSide(delta.AskChangePrice, "ask"); err != nil {
 			return err
 		}
+		applyPriceKeys(bidPrices, delta.BidChangePrice, delta.BidChangeQty)
+		applyPriceKeys(askPrices, delta.AskChangePrice, delta.AskChangeQty)
+		if len(bidPrices) > int(batch.Minute.StoredDepth) || len(askPrices) > int(batch.Minute.StoredDepth) {
+			return fmt.Errorf("second %d exceeds stored depth %d", delta.SecondOffset, batch.Minute.StoredDepth)
+		}
 	}
 	return nil
+}
+
+func applyPriceKeys(side map[int64]struct{}, prices []int64, quantities []uint64) {
+	for index, price := range prices {
+		if quantities[index] == 0 {
+			delete(side, price)
+		} else {
+			side[price] = struct{}{}
+		}
+	}
 }
 
 func validateDeltaSide(prices []int64, side string) error {
@@ -88,8 +146,8 @@ func validateDeltaSide(prices []int64, side string) error {
 	return nil
 }
 
-func unpadded(levels [model.BookDepth]model.Level) ([]model.Level, error) {
-	out := make([]model.Level, 0, model.BookDepth)
+func unpadded(levels [model.LegacyBookDepth]model.Level) ([]model.Level, error) {
+	out := make([]model.Level, 0, model.LegacyBookDepth)
 	padding := false
 	for index, level := range levels {
 		if level.PriceTick == 0 && level.QtyLot == 0 {
@@ -112,6 +170,7 @@ func (c *Client) insertDeltas(ctx context.Context, deltas []model.BookDelta) err
 	if err != nil {
 		return err
 	}
+	defer batch.Abort()
 	for _, delta := range deltas {
 		if err = batch.Append(delta.MinuteID, delta.SecondOffset, delta.BidChangePrice, delta.BidChangeQty, delta.AskChangePrice, delta.AskChangeQty); err != nil {
 			return err
@@ -121,20 +180,27 @@ func (c *Client) insertDeltas(ctx context.Context, deltas []model.BookDelta) err
 }
 
 func (c *Client) insertMinute(ctx context.Context, minute model.MinuteBook) error {
+	return c.insertMinutes(ctx, []model.MinuteBook{minute})
+}
+
+func (c *Client) insertMinutes(ctx context.Context, minutes []model.MinuteBook) error {
 	columns := MinuteColumns()
 	batch, err := c.conn.PrepareBatch(ctx, `INSERT INTO `+c.table("order_book_minute")+` (`+strings.Join(columns, ",")+`)`)
 	if err != nil {
 		return err
 	}
-	values := make([]any, 0, len(columns))
-	values = append(values, minute.ID, minute.InstrumentID, minute.MinuteTime.UTC(), minute.ValidBitmap)
-	for _, side := range [][model.BookDepth]model.Level{minute.Bids, minute.Asks} {
-		for _, level := range side {
-			values = append(values, level.PriceTick, level.QtyLot)
+	defer batch.Abort()
+	for _, minute := range minutes {
+		values := make([]any, 0, len(columns))
+		values = append(values, minute.ID, minute.InstrumentID, minute.MinuteTime.UTC(), minute.ValidBitmap, minute.StoredDepth)
+		for _, side := range [][model.LegacyBookDepth]model.Level{minute.Bids, minute.Asks} {
+			for _, level := range side {
+				values = append(values, level.PriceTick, level.QtyLot)
+			}
 		}
-	}
-	if err = batch.Append(values...); err != nil {
-		return err
+		if err = batch.Append(values...); err != nil {
+			return err
+		}
 	}
 	return batch.Send()
 }

@@ -10,7 +10,7 @@ func TestSchemaContainsCompleteWideBookAndRequiredEngines(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(statements) != 11 {
+	if len(statements) != 15 {
 		t.Fatalf("statements=%d", len(statements))
 	}
 	all := strings.Join(statements, "\n")
@@ -22,7 +22,7 @@ func TestSchemaContainsCompleteWideBookAndRequiredEngines(t *testing.T) {
 			t.Fatalf("DDL missing %q", required)
 		}
 	}
-	if len(MinuteColumns()) != 204 {
+	if len(MinuteColumns()) != 205 {
 		t.Fatalf("minute columns=%d", len(MinuteColumns()))
 	}
 	if _, err := SchemaStatements("bad-name"); err == nil {

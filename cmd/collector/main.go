@@ -20,6 +20,8 @@ import (
 
 func main() {
 	printDDL := flag.Bool("print-ddl", false, "print concrete ClickHouse DDL and exit")
+	printUniverse := flag.Bool("print-perp-universe", false, "fetch public catalogs and print validated perpetual universe without database or websocket connections")
+	printCatalogs := flag.Bool("print-perp-catalogs", false, "print complete eligible public catalogs for alias maintenance without database or websocket connections")
 	replayInstrument := flag.Uint("replay-instrument", 0, "instrument_id to replay")
 	replayTime := flag.String("replay-time", "", "UTC RFC3339 second to replay")
 	flag.Parse()
@@ -37,6 +39,18 @@ func main() {
 	}
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
+	if *printCatalogs {
+		if err = app.PrintPerpetualCatalogs(ctx, cfg, os.Stdout, slog.Default()); err != nil {
+			fatal(err)
+		}
+		return
+	}
+	if *printUniverse {
+		if err = app.PrintPerpetualUniverse(ctx, cfg, os.Stdout, slog.Default()); err != nil {
+			fatal(err)
+		}
+		return
+	}
 	if *replayInstrument != 0 || *replayTime != "" {
 		if *replayInstrument == 0 || *replayTime == "" {
 			fatal(fmt.Errorf("replay requires both -replay-instrument and -replay-time"))

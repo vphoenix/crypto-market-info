@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/vphoenix/crypto-market-info/internal/exchange"
@@ -13,9 +14,21 @@ import (
 )
 
 type Client struct {
-	HTTP    *http.Client
-	BaseURL string
-	Retry   exchange.HTTPRetryConfig
+	HTTP          *http.Client
+	BaseURL       string
+	Retry         exchange.HTTPRetryConfig
+	WSConnectGate exchange.WaitGate
+	wsGateMu      sync.Mutex
+}
+
+// WebsocketConnectGate is shared by all book and funding connections of this client.
+func (c *Client) WebsocketConnectGate() exchange.WaitGate {
+	c.wsGateMu.Lock()
+	defer c.wsGateMu.Unlock()
+	if c.WSConnectGate == nil {
+		c.WSConnectGate = exchange.NewRequestGate(500 * time.Millisecond)
+	}
+	return c.WSConnectGate
 }
 
 func NewClient() *Client {

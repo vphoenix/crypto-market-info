@@ -8,6 +8,9 @@ import (
 )
 
 func AtSecond(minute model.MinuteBook, deltas []model.BookDelta, second uint8) (model.BookSnapshot, bool, error) {
+	if err := minute.ValidateDepth(); err != nil {
+		return model.BookSnapshot{}, false, err
+	}
 	if second > 59 {
 		return model.BookSnapshot{}, false, fmt.Errorf("second offset must be between 0 and 59")
 	}
@@ -35,13 +38,19 @@ func AtSecond(minute model.MinuteBook, deltas []model.BookDelta, second uint8) (
 		}
 		apply(bids, delta.BidChangePrice, delta.BidChangeQty)
 		apply(asks, delta.AskChangePrice, delta.AskChangeQty)
+		if len(bids) > int(minute.StoredDepth) || len(asks) > int(minute.StoredDepth) {
+			return model.BookSnapshot{}, false, fmt.Errorf("second %d exceeds stored depth %d", delta.SecondOffset, minute.StoredDepth)
+		}
 	}
-	snapshot := model.BookSnapshot{InstrumentID: minute.InstrumentID, Bids: top(bids, true), Asks: top(asks, false)}
+	if len(bids) > int(minute.StoredDepth) || len(asks) > int(minute.StoredDepth) {
+		return model.BookSnapshot{}, false, fmt.Errorf("replayed book exceeds stored depth %d", minute.StoredDepth)
+	}
+	snapshot := model.BookSnapshot{InstrumentID: minute.InstrumentID, StoredDepth: minute.StoredDepth, Bids: top(bids, true), Asks: top(asks, false)}
 	return snapshot, true, nil
 }
 
-func fixedSide(levels [model.BookDepth]model.Level) map[int64]uint64 {
-	out := make(map[int64]uint64, model.BookDepth)
+func fixedSide(levels [model.LegacyBookDepth]model.Level) map[int64]uint64 {
+	out := make(map[int64]uint64, model.LegacyBookDepth)
 	for _, level := range levels {
 		if level.PriceTick != 0 {
 			out[level.PriceTick] = level.QtyLot
@@ -71,9 +80,6 @@ func top(side map[int64]uint64, bids bool) []model.Level {
 		}
 		return prices[i] < prices[j]
 	})
-	if len(prices) > model.BookDepth {
-		prices = prices[:model.BookDepth]
-	}
 	out := make([]model.Level, len(prices))
 	for index, price := range prices {
 		out[index] = model.Level{PriceTick: price, QtyLot: side[price]}

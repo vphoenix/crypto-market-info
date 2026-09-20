@@ -8,7 +8,12 @@ import (
 	"github.com/shopspring/decimal"
 )
 
-const BookDepth = 50
+const (
+	// BookDepth is the number of levels sampled per side for new minutes.
+	BookDepth = 10
+	// LegacyBookDepth preserves the complete anchors needed to replay old data.
+	LegacyBookDepth = 50
+)
 
 type MarketType string
 
@@ -104,8 +109,10 @@ type BookSnapshot struct {
 	InstrumentID uint32
 	SourceTime   time.Time
 	Sequence     int64
-	Bids         []Level
-	Asks         []Level
+	// StoredDepth is set on historical replay; live exchange snapshots leave it zero.
+	StoredDepth uint8
+	Bids        []Level
+	Asks        []Level
 }
 
 func (s BookSnapshot) Validate(depth int) error {
@@ -159,8 +166,23 @@ type MinuteBook struct {
 	InstrumentID uint32
 	MinuteTime   time.Time
 	ValidBitmap  uint64
-	Bids         [BookDepth]Level
-	Asks         [BookDepth]Level
+	StoredDepth  uint8
+	Bids         [LegacyBookDepth]Level
+	Asks         [LegacyBookDepth]Level
+}
+
+// ValidateDepth rejects ambiguous encodings and nonzero levels outside the
+// recorded depth. Short books are still padded with zeroes within that depth.
+func (m MinuteBook) ValidateDepth() error {
+	if m.StoredDepth != BookDepth && m.StoredDepth != LegacyBookDepth {
+		return fmt.Errorf("unsupported stored book depth %d", m.StoredDepth)
+	}
+	for index := int(m.StoredDepth); index < LegacyBookDepth; index++ {
+		if m.Bids[index] != (Level{}) || m.Asks[index] != (Level{}) {
+			return fmt.Errorf("nonzero level %d exceeds stored depth %d", index+1, m.StoredDepth)
+		}
+	}
+	return nil
 }
 
 type MinuteBatch struct {

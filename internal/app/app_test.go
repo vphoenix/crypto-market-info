@@ -78,15 +78,6 @@ func TestStartupBackfillIncludesCompatibleHistoricalVersionsOnly(t *testing.T) {
 	}
 }
 
-func TestBybitWebsocketConnectionBudget(t *testing.T) {
-	if got := bybitWebsocketConnections([]string{"BTCUSDT"}, true); got != 2 {
-		t.Fatalf("connections=%d", got)
-	}
-	if got := bybitWebsocketConnections(nil, true); got != 0 {
-		t.Fatalf("disabled Bybit connections=%d", got)
-	}
-}
-
 func TestFailingYieldSourceDoesNotStopOtherComponent(t *testing.T) {
 	collector := &failingYieldCollector{}
 	runner := &marketyield.Runner{Source: "failing-yield", Collector: collector, Sink: unusedYieldSink{}, Interval: time.Hour, RetryInterval: time.Millisecond, Logger: slog.New(slog.NewTextHandler(io.Discard, nil))}

@@ -1,6 +1,6 @@
 # 市场数据存储数据字典
 
-本数据字典定义当前阶段的六个核心表：交易标的表 `instrument`、分钟完整盘口表 `order_book_minute`、分钟内秒级差量表 `order_book_second_delta`、整点资金费率表 `funding_rate_hourly`、收益路线表 `yield_route` 和收益观测表 `yield_observation`。
+本数据字典定义当前阶段的六个市场与收益核心表：交易标的表 `instrument`、分钟完整盘口表 `order_book_minute`、分钟内秒级差量表 `order_book_second_delta`、整点资金费率表 `funding_rate_hourly`、收益路线表 `yield_route` 和收益观测表 `yield_observation`；另定义三个永续共有交易对元数据表 `instrument_canonical_mapping`、`perpetual_universe_run` 和 `perpetual_universe_member`。
 
 这些表在整个采集进程中的位置及以后增加其他数据时的扩展原则见[系统总体架构](architecture.md)。
 
@@ -35,11 +35,13 @@
 
 本表不维护启用状态、创建时间、更新时间或生效区间。若上述交易定义发生变化，应创建新的 `instrument_id`，避免用新规则解释旧行情。`venue_contract_version` 通过幂等 `ADD COLUMN IF NOT EXISTS ... DEFAULT ''` 兼容旧表；旧行的空字符串只代表迁移前未知版本，不能用于登记新的衍生品定义。首次部署该迁移时，现有 Binance、OKX 永续会以有版本的新定义取得新 ID，旧盘口和资金费率仍留在旧 ID 下，不覆盖也不重写。
 
+注册器先完整校验一批全部定义，再为所有新定义执行一次 batch insert；调用内的重试复用已分配 ID。相同完整定义复用历史 ID；历史 tick、lot 或乘数改变，即使场内上市版本不变，也仍分配新 ID。同一注册批次不能为同一 `(exchange, market_type, exchange_symbol, venue_contract_version)` 提交两种不同定义，这表示当前 catalog 自相矛盾；这项检查不禁止历史定义并存。
+
 ## 2. 分钟完整盘口表
 
 表名：`order_book_minute`
 
-用途：保存每个交易流在每分钟第 0 秒的买卖各 50 档完整盘口。该记录是恢复本分钟内任意秒盘口的起点。
+用途：保存每个交易流在每分钟第 0 秒的完整盘口。新采集保存买卖各 10 档；旧历史保存买卖各 50 档，由 `stored_depth` 标明。该记录是恢复本分钟内任意秒盘口的起点。
 
 唯一键：`(instrument_id, minute_time)`
 
@@ -49,6 +51,11 @@
 | `instrument_id` | 交易流 ID | `UInt32` | 是 | 唯一标识交易所、市场类型、标的、结算币种及合约版本。 |
 | `minute_time` | 分钟时间 | `DateTime` | 是 | UTC 分钟起始时间，秒和毫秒固定为 0。 |
 | `valid_bitmap` | 秒有效位图 | `UInt64` | 是 | 低 60 位分别代表本分钟第 0 至 59 秒是否有有效盘口。位值为 `1` 表示有效，`0` 表示无效或缺失。 |
+| `stored_depth` | 保存档数上限（每侧） | `UInt8` | 是 | 仅支持 `10` 或 `50`。新 writer 显式写 `10`；列默认值固定为 `50`，用于旧 part 与旧 collector。实际挂单不足此深度时仍以零补齐。 |
+
+兼容迁移执行 `ADD COLUMN IF NOT EXISTS stored_depth UInt8 DEFAULT 50 AFTER valid_bitmap`。物理快照继续保留每侧 50 档的价格和数量列，新数据的第 11 至 50 档必须全部为零；压缩后主要新增占用来自前 10 档及其差量。不删除列、不重写旧 part、不改变 instrument 或分钟唯一键。新建库也采用同样结构和默认值，避免旧 writer 回退运行时被误标为 10 档。
+
+回放必须先加载完整的历史起点及差量，再按本分钟实际保存深度返回，并在输出 `BookSnapshot.StoredDepth` 中标明上限。不能只读旧起点的前 10 档：未发生数量变化的旧第 11 档也可能因前档删除进入前 10。尚未迁移的旧表可只读回放，缺少该列时按 50 解释；新查询不会为此执行 DDL。新分钟在 UTC 分钟边界建立 10 档独立起点，不与旧分钟共用差量链。回滚只能在新分钟开始新起点，不能重写已存在分钟为另一深度。
 
 分钟 ID 的生成公式固定为：
 
@@ -71,7 +78,7 @@ id = (unix_minute << 32) | instrument_id
 | `bid_price_50` | 买 50 价 | `Int64` | 是 | 第五十高买价，保存为 `price_tick`。 |
 | `bid_qty_50` | 买 50 量 | `UInt64` | 是 | 买 50 价对应的数量，保存为 `qty_lot`。 |
 
-买盘的有效价格必须满足：
+买盘非零有效价格必须严格递减（新数据到第 10 档，旧数据最多到第 50 档）：
 
 ```text
 bid_price_01 > bid_price_02 > …… > bid_price_50
@@ -89,13 +96,13 @@ bid_price_01 > bid_price_02 > …… > bid_price_50
 | `ask_price_50` | 卖 50 价 | `Int64` | 是 | 第五十低卖价，保存为 `price_tick`。 |
 | `ask_qty_50` | 卖 50 量 | `UInt64` | 是 | 卖 50 价对应的数量，保存为 `qty_lot`。 |
 
-卖盘的有效价格必须满足：
+卖盘非零有效价格必须严格递增（新数据到第 10 档，旧数据最多到第 50 档）：
 
 ```text
 ask_price_01 < ask_price_02 < …… < ask_price_50
 ```
 
-如果某一侧不足 50 档，从第一个缺失档开始，该档及后续档位的价格和数量一律为 `0`。
+如果某一侧不足 `stored_depth` 档，从第一个缺失档开始，该档及后续物理档位的价格和数量一律为 `0`。`stored_depth=10` 时第 11 至 50 档强制为零；writer 拒绝深度不受支持、超出深度的非零快照或差量恢复后超过该深度的状态。
 
 `price_tick` 以交易流定义的最小价格单位换算：
 
@@ -141,7 +148,7 @@ length(ask_change_prices) = length(ask_change_qtys)
 
 数量保存的是更新后的绝对值，而不是与前一秒相比的增减值。例如某价格的数量从 `1.2` 变为 `1.5`，差量中保存 `1.5` 对应的 `qty_lot`，不保存 `+0.3`。
 
-若某个价格从保存的前 50 档状态中移除，写入其价格和数量 `0`。该价格即使仍存在于交易所更深的盘口中，也视为从本系统保存的前 50 档状态中删除。
+若某个价格从保存的前 `stored_depth` 档状态中移除，写入其价格和数量 `0`。该价格即使仍存在于交易所更深的盘口中，也视为从本系统保存的状态中删除。新数据先截取每侧 10 档再计算差量，不能通过截短旧 50 档差量数组得到 10 档差量。
 
 若某一秒有效但盘口没有变化，不写差量行；其有效性由分钟完整盘口表的 `valid_bitmap` 对应位表示。若某一秒无效或缺失，同样不写差量行，但 `valid_bitmap` 对应位必须为 `0`。
 
@@ -208,6 +215,66 @@ length(ask_change_prices) = length(ask_change_qtys)
 2. 检查 `valid_bitmap` 的第 `n` 位，若为 `0` 则该秒盘口无效；
 3. 读取同一 `minute_id` 且 `second_offset ≤ n` 的全部差量；
 4. 按 `second_offset` 从小到大应用差量：数量为 `0` 则删除该价格，数量大于 `0` 则新增或覆盖该价格的数量；
-5. 买盘按价格从高到低、卖盘按价格从低到高排序，各取前 50 档。
+5. 买盘按价格从高到低、卖盘按价格从低到高排序，返回本分钟保存的全部深度（新 10 档、旧 50 档）；返回 `StoredDepth`，稀疏盘口可以少于此上限，超出上限则报错。
 
 分钟完整盘口和差量表之间不跨分钟依赖；下一分钟第 0 秒的完整盘口是新的独立恢复起点。
+
+## 7. 整分钟完成屏障与批量写入
+
+采样器在每个 UTC 分钟切换时发送一个不可变的 `CompletedMinute{MinuteTime, Batches}`。`Batches` 按 instrument ID 排序，只包含第 0 秒有有效 anchor 的交易流；即使没有有效 anchor，也发送一个空 envelope，明确该分钟已收齐。一次全部来源的采样超过下一秒边界时，采样器终止并丢弃当前未完成分钟。
+
+完成分钟的 channel 最多缓存 2 个 envelope；`MINUTE_QUEUE_CAPACITY` 的计量单位是已入队和 writer 正在处理但尚未完成的 instrument batch，空 envelope 按 1 计。未配置时使用 `max(512, 2 × sample_sources)`，显式容量不足两个完整分钟时拒绝启动。queue 满、最老未写完分钟达到 45 秒或写入重试失败均终止采集，不静默丢弃后继续运行。
+
+writer 在第一条 insert 前校验整个 envelope，再按最多 100 个 instrument 分块，不跨分钟拼块。每块先批量写入全部 `order_book_second_delta`，再批量写入对应 `order_book_minute` 可见行。后者成功前，该块的新分钟不具备恢复入口。部分失败时重试完全相同的块；两表使用既有逻辑键和 `ReplacingMergeTree`，查询使用 `FINAL`，因此重复写入不改变回放结果。空 envelope 不写事实表。该机制不承诺跨表事务。
+
+## 8. 规范化交易对映射历史
+
+表名：`instrument_canonical_mapping`；逻辑键：`(instrument_id, mapping_revision)`；引擎：`ReplacingMergeTree`，按逻辑键排序。
+
+| 字段 | 类型 | 含义 |
+|---|---|---|
+| `instrument_id` | `UInt32` | 已登记的场内 USDT 线性永续交易流。 |
+| `mapping_revision` | `FixedString(64)` | 映射算法版本和严格字典规范化 JSON 的 SHA-256 小写十六进制摘要。 |
+| `canonical_market_key` | `String` | `<canonical_base_asset>-USDT-PERP`，用于跨交易所分组。 |
+| `canonical_base_asset` | `String` | 满足 `[A-Z0-9][A-Z0-9._]{0,31}` 的规范化基础资产。 |
+| `canonical_quote_asset` / `canonical_settle_asset` | `String` | 本版均为 `USDT`。 |
+| `canonical_base_units_per_venue_base_unit` | `Decimal(38,18)` | 1 个场内 BaseAsset 单位对应的 canonical base 数量，严格大于 0。 |
+| `mapping_kind` | `LowCardinality(String)` | `identity` 或 `alias`；identity 必须保持原始 base，且 factor 为 1。 |
+| `recorded_at` | `DateTime64(3, 'UTC')` | 该 revision 行首次准备写入的时间，重试保持不变。 |
+
+异名字典按 `(exchange, market_type, exchange_symbol, venue_contract_version)` 精确匹配，不支持通配版本。它不覆盖原始 instrument 字段和盘口数值。查询跨交易所数量和价格时必须使用：
+
+```text
+raw_price = price_tick × price_tick_size
+raw_size = qty_lot × quantity_step_size
+canonical_base_quantity = raw_size × contract_multiplier × canonical_base_units_per_venue_base_unit
+canonical_price = raw_price ÷ canonical_base_units_per_venue_base_unit
+```
+
+每次启动为历史已登记的全部 USDT 永续及本次新入选 instrument 写入当前 revision。writer 先读取既有 `(instrument_id, mapping_revision)`：语义一致时保留原行，不一致时失败；同一次写入的重试复用原始行及时间。错误 alias 删除后，新 revision 下对应的 identity mapping 仍可解释不再入选的历史 instrument。
+
+映射查询必须指定当前或历史 `run_id`，或者显式 `mapping_revision`；`recorded_at` 不能决定权威解释。字典 A → B → A 回滚时，当前 run 引用 A，早于 B 的 A 行仍是正确解释。精确 canonical JSON、hash 前缀和选择规则见[永续共有交易对设计](perpetual-common-universe.md)。
+
+## 9. 每次启动的 universe 快照
+
+`perpetual_universe_run` 保存一份启动计划，逻辑键为 `run_id`；`perpetual_universe_member` 保存成员，逻辑键为 `(run_id, instrument_id)`。两表均为 `ReplacingMergeTree`，按各自逻辑键排序。
+
+| run 字段 | 类型 | 含义 |
+|---|---|---|
+| `run_id` | `UUID` | 每次非 dry-run 启动生成的新 ID，写入重试复用。 |
+| `selection_revision` / `mapping_revision` | `FixedString(64)` | 此次选择和解释使用的精确 revision。 |
+| `started_at` | `DateTime64(3, 'UTC')` | 本次启动计划时间，重试不变。 |
+| `selection_config_json` | `String` | 参与选择的规范化配置；venue 是稳定排序的任意长度数组，包含模式、include/exclude 与容量，不包含凭据。 |
+| `enabled_venues` | `Array(String)` | 稳定排序的启用交易所。 |
+| `canonical_include` / `canonical_exclude` | `Array(String)` | 稳定排序的规范化交易对选择条件。 |
+| `canonical_group_count` / `instrument_count` | `UInt32` | 最终规范化组数及场内 instrument 总数。 |
+
+member 只有 `run_id UUID`、`instrument_id UInt32`、`canonical_market_key String` 三列。每个 canonical group 至少属于两个不同 venue，同一个 group 不得重复同一 venue。
+
+启动先登记 instrument、写 mapping，再无网络副作用地构造和校验所有 runtime。其后先批量写全部 member，最后写 run 行作为可见提交标记，成功后才启动网络采集。没有 run 行的孤立 member 一律忽略；重试已有 run ID 必须保持整个 run 及 membership 完全一致。
+
+当前健康检查的 expected instruments 来自进程当前 run 的 member，不取全部历史 mapping 的并集，也不按数据库最近写入时间猜测当前进程。该快照只在启动时生成，metadata 或配置变化要到下次启动才重新选择。
+
+`perp-check` 通过只读连接按 run 成员统计。盘口范围从 `started_at` 之后第一个完整 UTC 分钟开始，到查询时刻或同库下一次已提交 run 开始之前的完整分钟结束；旧 run 被后续 run 替代时只输出历史范围并标记 pending，不能把后续进程的数据累计为旧 run 的运行时长。差量活跃度只统计存在分钟可见标记的 delta，排除孤立差量；随机回放使用固定 seed 对有效秒做无放回 reservoir sampling，每个有效秒入选机会相同。
+
+资金费率按小时桶统计，当前 run 的初始小时可能包含原有行，不能证明其插入进程；旧 run 的最后一个不完整小时也不计入。验收同时报告估算/实际行数并检查小时数量、陈旧状态和 24 小时窗口内是否出现实际确认。`system.parts` 的压缩空间属于整个数据库，不是单次 run 的增量。`passed_checks` 只表示这些数据库和回放检查通过，`full_soak_verified` 始终为 false；重叠进程、连续运行、CPU/内存/网络、限速响应和采样/写入 deadline 仍须独立运行证据，不能从事实表没有 `run_id` 的数据推断。

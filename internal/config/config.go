@@ -8,6 +8,7 @@ import (
 	"time"
 
 	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
+	"github.com/vphoenix/crypto-market-info/internal/universe"
 	"github.com/vphoenix/crypto-market-info/internal/yield/solana"
 )
 
@@ -43,6 +44,12 @@ type Config struct {
 	KaminoBaseURL             string
 	SaveBaseURL               string
 	MinuteQueueCapacity       int
+	PerpetualSelection        universe.SelectionConfig
+	PerpAssetAliasesFile      string
+	PerpMaxTotalInstruments   int
+	PerpMaxTotalWSConnections int
+	PerpMaxBufferedEvents     int
+	MaxSampleSources          int
 }
 
 func Load() (Config, error) {
@@ -51,7 +58,7 @@ func Load() (Config, error) {
 	if err != nil {
 		return Config{}, err
 	}
-	queue, err := integer("MINUTE_QUEUE_CAPACITY", 512)
+	queue, err := integer("MINUTE_QUEUE_CAPACITY", 0)
 	if err != nil {
 		return Config{}, err
 	}
@@ -82,7 +89,7 @@ func Load() (Config, error) {
 		}
 		seenVotes[vote] = struct{}{}
 	}
-	return Config{
+	cfg := Config{
 		ClickHouse:         chstore.Config{Addresses: addresses, Database: value("CLICKHOUSE_DATABASE", "crypto_market_info"), Username: value("CLICKHOUSE_USERNAME", "default"), Password: os.Getenv("CLICKHOUSE_PASSWORD"), DialTimeout: 5 * time.Second, WriteTimeout: 10 * time.Second, MaxAttempts: 3, RetryDelay: 250 * time.Millisecond},
 		BinanceSpotSymbols: list("BINANCE_SPOT_SYMBOLS", "BTCUSDT"), BinancePerpSymbols: list("BINANCE_PERP_SYMBOLS", "BTCUSDT"),
 		OKXSpotSymbols: list("OKX_SPOT_SYMBOLS", "BTC-USDT"), OKXPerpSymbols: list("OKX_PERP_SYMBOLS", "BTC-USDT-SWAP"),
@@ -99,7 +106,81 @@ func Load() (Config, error) {
 		JitoSOLBaseURL: value("JITO_SOL_BASE_URL", "https://kobe.mainnet.jito.network"), MarinadeAPYBaseURL: value("MARINADE_APY_BASE_URL", "https://apy.marinade.finance"),
 		MarinadeValidatorsBaseURL: value("MARINADE_VALIDATORS_BASE_URL", "https://validators-api.marinade.finance"), KaminoBaseURL: value("KAMINO_BASE_URL", "https://api.kamino.finance"),
 		SaveBaseURL: value("SAVE_BASE_URL", "https://api.solend.fi"), MinuteQueueCapacity: queue,
-	}, nil
+	}
+	if err = loadPerpetualConfig(&cfg); err != nil {
+		return Config{}, err
+	}
+	return cfg, nil
+}
+
+func loadPerpetualConfig(cfg *Config) error {
+	for _, item := range []struct {
+		venue, prefix, fallback string
+		topics                  int
+		legacy                  *[]string
+	}{
+		{"Binance", "BINANCE", "BTCUSDT", 200, &cfg.BinancePerpSymbols},
+		{"OKX", "OKX", "BTC-USDT-SWAP", 20, &cfg.OKXPerpSymbols},
+		{"Bybit", "BYBIT", "-", 20, &cfg.BybitPerpSymbols},
+	} {
+		v, err := universe.ParseVenueSelection(item.venue, value(item.prefix+"_PERP_SYMBOLS", item.fallback))
+		if err != nil {
+			return err
+		}
+		v.Exclude, err = universe.ParseList(value(item.prefix+"_PERP_EXCLUDE_SYMBOLS", ""))
+		if err != nil {
+			return err
+		}
+		v.TopicsPerConnection, err = integer(item.prefix+"_PERP_BOOK_TOPICS_PER_CONNECTION", item.topics)
+		if err != nil {
+			return err
+		}
+		if v.TopicsPerConnection > item.topics {
+			return fmt.Errorf("%s topics per connection exceeds hard limit %d", item.venue, item.topics)
+		}
+		v.MaxInstruments, err = integer(item.prefix+"_PERP_MAX_INSTRUMENTS", 500)
+		if err != nil {
+			return err
+		}
+		*item.legacy = append([]string(nil), v.Include...)
+		cfg.PerpetualSelection.Venues = append(cfg.PerpetualSelection.Venues, v)
+	}
+	var err error
+	cfg.PerpetualSelection.Include, err = universe.ParseList(value("PERP_UNIVERSE_INCLUDE", ""))
+	if err != nil {
+		return err
+	}
+	cfg.PerpetualSelection.Exclude, err = universe.ParseList(value("PERP_UNIVERSE_EXCLUDE", ""))
+	if err != nil {
+		return err
+	}
+	cfg.PerpetualSelection, err = universe.NormalizeConfig(cfg.PerpetualSelection)
+	if err != nil {
+		return err
+	}
+	cfg.PerpAssetAliasesFile = value("PERP_ASSET_ALIASES_FILE", "config/perpetual-asset-aliases.json")
+	if cfg.PerpAssetAliasesFile == "" || cfg.PerpAssetAliasesFile == "-" {
+		return fmt.Errorf("PERP_ASSET_ALIASES_FILE must name a readable dictionary")
+	}
+	for _, item := range []struct {
+		key      string
+		fallback int
+		out      *int
+	}{
+		{"PERP_MAX_TOTAL_INSTRUMENTS", 1000, &cfg.PerpMaxTotalInstruments},
+		{"PERP_MAX_TOTAL_WS_CONNECTIONS", 128, &cfg.PerpMaxTotalWSConnections},
+		{"PERP_MAX_TOTAL_BUFFERED_EVENTS", 1000000, &cfg.PerpMaxBufferedEvents},
+		{"MARKET_DATA_MAX_SAMPLE_SOURCES", 1100, &cfg.MaxSampleSources},
+	} {
+		*item.out, err = integer(item.key, item.fallback)
+		if err != nil {
+			return err
+		}
+	}
+	if value("MINUTE_WRITE_BATCH_INSTRUMENTS", "100") != "100" {
+		return fmt.Errorf("MINUTE_WRITE_BATCH_INSTRUMENTS is fixed at 100 in this version")
+	}
+	return nil
 }
 
 func value(key, fallback string) string {

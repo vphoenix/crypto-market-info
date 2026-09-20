@@ -42,6 +42,12 @@ func (c *Collector) Push(update DepthUpdate) error {
 		return fmt.Errorf("Binance collector is awaiting snapshot")
 	}
 	if update.FinalUpdateID <= c.lastUpdateID {
+		// Futures explicitly allows the first bridge event to end exactly at
+		// snapshot.lastUpdateId. The snapshot already includes its quantities,
+		// but it establishes the pu boundary for the following event.
+		if c.futures && !c.firstAccepted && update.FinalUpdateID == c.lastUpdateID && update.FirstUpdateID <= c.lastUpdateID {
+			c.firstAccepted = true
+		}
 		return nil
 	}
 	if !c.firstAccepted {

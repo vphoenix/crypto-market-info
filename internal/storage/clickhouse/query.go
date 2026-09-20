@@ -8,6 +8,7 @@ import (
 	"strings"
 	"time"
 
+	ch "github.com/ClickHouse/clickhouse-go/v2"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 	"github.com/vphoenix/crypto-market-info/internal/replay"
 )
@@ -19,17 +20,28 @@ func (c *Client) LoadMinute(ctx context.Context, instrumentID uint32, minuteTime
 	columns := MinuteColumns()
 	query := `SELECT ` + strings.Join(columns, ",") + ` FROM ` + c.table("order_book_minute") + ` FINAL WHERE instrument_id=? AND minute_time=? LIMIT 1`
 	dest := make([]any, 0, len(columns))
-	dest = append(dest, &minute.ID, &minute.InstrumentID, &minute.MinuteTime, &minute.ValidBitmap)
-	for index := 0; index < model.BookDepth; index++ {
+	dest = append(dest, &minute.ID, &minute.InstrumentID, &minute.MinuteTime, &minute.ValidBitmap, &minute.StoredDepth)
+	for index := 0; index < model.LegacyBookDepth; index++ {
 		dest = append(dest, &minute.Bids[index].PriceTick, &minute.Bids[index].QtyLot)
 	}
-	for index := 0; index < model.BookDepth; index++ {
+	for index := 0; index < model.LegacyBookDepth; index++ {
 		dest = append(dest, &minute.Asks[index].PriceTick, &minute.Asks[index].QtyLot)
 	}
-	if err := c.conn.QueryRow(ctx, query, instrumentID, minuteTime.UTC().Truncate(time.Minute)).Scan(dest...); err != nil {
+	err := c.conn.QueryRow(ctx, query, instrumentID, minuteTime.UTC().Truncate(time.Minute)).Scan(dest...)
+	// Read-only replay must also work against an old database before its
+	// collector has run the additive stored_depth migration.
+	var exception *ch.Exception
+	if errors.As(err, &exception) && exception.Code == 47 && strings.Contains(exception.Message, "stored_depth") {
+		query = strings.Replace(query, ",stored_depth,", ",toUInt8(50) AS stored_depth,", 1)
+		err = c.conn.QueryRow(ctx, query, instrumentID, minuteTime.UTC().Truncate(time.Minute)).Scan(dest...)
+	}
+	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
 			return model.MinuteBook{}, ErrNotFound
 		}
+		return model.MinuteBook{}, err
+	}
+	if err := minute.ValidateDepth(); err != nil {
 		return model.MinuteBook{}, err
 	}
 	return minute, nil

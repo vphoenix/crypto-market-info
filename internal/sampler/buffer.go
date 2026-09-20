@@ -78,7 +78,7 @@ func (b *MinuteBuffer) Batch() (model.MinuteBatch, bool) {
 	if b == nil || !b.anchored {
 		return model.MinuteBatch{}, false
 	}
-	minute := model.MinuteBook{ID: b.minuteID, InstrumentID: b.instrumentID, MinuteTime: b.minuteTime, ValidBitmap: b.valid}
+	minute := model.MinuteBook{ID: b.minuteID, InstrumentID: b.instrumentID, MinuteTime: b.minuteTime, ValidBitmap: b.valid, StoredDepth: model.BookDepth}
 	copy(minute.Bids[:], b.initial.Bids)
 	copy(minute.Asks[:], b.initial.Asks)
 	deltas := make([]model.BookDelta, len(b.deltas))

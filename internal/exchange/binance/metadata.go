@@ -49,7 +49,7 @@ func ParseExchangeInfo(payload []byte, marketType model.MarketType) ([]model.Ins
 		if symbol.Status != "TRADING" {
 			continue
 		}
-		if marketType == model.MarketPerpetual && (symbol.ContractType != "PERPETUAL" || symbol.MarginAsset != "USDT") {
+		if marketType == model.MarketPerpetual && (symbol.ContractType != "PERPETUAL" || symbol.MarginAsset != "USDT" || symbol.QuoteAsset != "USDT") {
 			continue
 		}
 		instrument, err := parseSymbol(symbol, marketType)

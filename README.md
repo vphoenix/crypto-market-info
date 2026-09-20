@@ -47,17 +47,17 @@ docker compose exec clickhouse clickhouse-client --query "SELECT version()"
 go run ./cmd/collector
 ```
 
-只在独立开发库启用一个 Bybit USDT 线性永续流：
+在独立开发库启用 Binance 与 Bybit 共有的 BTC USDT 线性永续（永续模式至少启用两家）：
 
 ```bash
 CLICKHOUSE_DATABASE=bybit_market_dev \
-BINANCE_SPOT_SYMBOLS=- BINANCE_PERP_SYMBOLS=- \
+BINANCE_SPOT_SYMBOLS=- BINANCE_PERP_SYMBOLS=BTCUSDT \
 OKX_SPOT_SYMBOLS=- OKX_PERP_SYMBOLS=- \
 BYBIT_PERP_SYMBOLS=BTCUSDT \
 go run ./cmd/collector
 ```
 
-Bybit 进入生产前还必须按专项设计跨过一个资金费结算边界，并对真实 `orderbook.1000` 长时记录相邻 `u` 差值；当前逐一连续校验是 fail-closed 的待实盘验证假设。
+Bybit BTC 显式模式已部署；后续全量扩容仍须按[共有永续设计](docs/perpetual-common-universe.md#134-实盘验收)进行独立库 24 小时验收，核实资金费结算边界、真实序列连续性、吞吐和回放。当前部署与验收状态见[运行说明](docs/runtime-operations.md#6-三家共有永续全量验收)。
 
 常用环境变量：
 
@@ -68,12 +68,21 @@ Bybit 进入生产前还必须按专项设计跨过一个资金费结算边界�
 | `CLICKHOUSE_USERNAME` | `default` | 用户名 |
 | `CLICKHOUSE_PASSWORD` | 空 | 密码；不要写入仓库 |
 | `BINANCE_SPOT_SYMBOLS` | `BTCUSDT` | 逗号分隔；设为 `-` 可禁用 |
-| `BINANCE_PERP_SYMBOLS` | `BTCUSDT` | Binance USDT-M 永续 |
+| `BINANCE_PERP_SYMBOLS` | `BTCUSDT` | `auto`、`-` 或精确原始 symbol 列表；显式空值非法 |
 | `OKX_SPOT_SYMBOLS` | `BTC-USDT` | OKX 现货 |
-| `OKX_PERP_SYMBOLS` | `BTC-USDT-SWAP` | OKX USDT 线性永续 |
-| `BYBIT_PERP_SYMBOLS` | `-` | Bybit USDT 线性永续；逗号分隔，设为 `-` 可禁用 |
+| `OKX_PERP_SYMBOLS` | `BTC-USDT-SWAP` | `auto`、`-` 或精确原始 symbol 列表；显式空值非法 |
+| `BYBIT_PERP_SYMBOLS` | `-` | `auto`、`-` 或精确原始 symbol 列表；显式空值非法 |
+| `PERP_ASSET_ALIASES_FILE` | `config/perpetual-asset-aliases.json` | 精确合约版本别名字典；单位因子和匹配依据见同目录 Markdown |
+| `PERP_UNIVERSE_INCLUDE` / `PERP_UNIVERSE_EXCLUDE` | 空 | 规范化交易对列表，例如 `BTC-USDT-PERP,PEPE-USDT-PERP`；同名冲突失败 |
+| `*_PERP_EXCLUDE_SYMBOLS` | 空 | 各交易所原始 symbol 排除列表；`*` 为 `BINANCE`、`OKX`、`BYBIT` |
+| `*_PERP_BOOK_TOPICS_PER_CONNECTION` | `200` / `20` / `20` | Binance / OKX / Bybit 盘口分片大小，也是第一版硬上限 |
+| `*_PERP_MAX_INSTRUMENTS` | `500` | 单交易所容量保护；扩容须实测验收 |
+| `PERP_MAX_TOTAL_INSTRUMENTS` | `1000` | 总永续 instrument 容量保护，不会静默截断 |
+| `PERP_MAX_TOTAL_WS_CONNECTIONS` | `128` | 含现货和资金费率的总连接预算 |
+| `PERP_MAX_TOTAL_BUFFERED_EVENTS` | `1000000` | 有界消息队列、确认前缓存与快照桥接的总 slot 预算 |
+| `MARKET_DATA_MAX_SAMPLE_SOURCES` | `1100` | 现货加永续的总采样源预算 |
 | `FUNDING_ENABLED` | `true` | 是否采集永续资金费率 |
-| `MINUTE_QUEUE_CAPACITY` | `512` | 等待写入 ClickHouse 的分钟盘口批次数；队列满时丢弃新完成的分钟并记录错误 |
+| `MINUTE_QUEUE_CAPACITY` | 自动 `max(512, 2×采样源数)` | 排队及正在写入的 instrument 分钟批次数；不足两个完整分钟、队列满或 45 秒积压均明确失败 |
 | `JUSTLEND_YIELD_ENABLED` | `false` | 是否每小时采集四条 JustLend TRX 收益路线 |
 | `JUSTLEND_BASE_URL` | `https://openapi.just.network` | JustLend 公开 API 地址 |
 | `TRON_STAKING_YIELD_ENABLED` | `false` | 是否每 6 小时采集 TRON 前 127 名 SR 收益 |
@@ -88,6 +97,15 @@ Bybit 进入生产前还必须按专项设计跨过一个资金费结算边界�
 | `MARINADE_VALIDATORS_BASE_URL` | `https://validators-api.marinade.finance` | 原生验证者历史 API 地址 |
 | `KAMINO_BASE_URL` | `https://api.kamino.finance` | Kamino Main SOL 历史指标 API 地址 |
 | `SAVE_BASE_URL` | `https://api.solend.fi` | Save Main SOL 当前与历史利率 API 地址 |
+
+永续统一按“至少两家已启用交易所共有”选择；盘口与启用的资金费率使用同一集合。异名字典仅在重启时生效，原始 tick/lot 不改写。部署前运行只读目录检查：
+
+```bash
+BINANCE_PERP_SYMBOLS=auto OKX_PERP_SYMBOLS=auto BYBIT_PERP_SYMBOLS=auto \
+go run ./cmd/collector -print-perp-universe
+```
+
+该命令访问完整公共 metadata，但不连接数据库或 WebSocket。容量不足时退出非零，并列出实际数量；应先在独立验收库按[扩容设计](docs/perpetual-common-universe.md)实测再提高显式容量。`-print-perp-catalogs` 只输出原始合格目录，用于维护尚未映射的资产名称。
 
 同时启用当前两类 TRX 收益：
 
@@ -130,7 +148,7 @@ go run ./cmd/collector
 go run ./cmd/collector -print-ddl
 ```
 
-回放某个 UTC 秒的前 50 档盘口：
+回放某个 UTC 秒保存的盘口（新数据每侧 10 档，旧历史每侧 50 档；输出 `StoredDepth`）：
 
 ```bash
 go run ./cmd/collector \
@@ -153,9 +171,9 @@ JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer�
 
 ## 数据存储模型
 
-每个交易流按秒维护前 50 档买盘和前 50 档卖盘，但不把每秒的完整盘口重复写入数据库：
+每个交易流对新数据按秒保存前 10 档买盘和前 10 档卖盘，使用分钟快照和秒级差量编码：
 
-1. 每分钟第 0 秒写入一次完整的 50 档盘口快照；
+1. 每分钟第 0 秒写入一次完整的 10 档盘口快照，并标记 `stored_depth=10`；
 2. 第 1 至 59 秒仅写入相对上一个有效采样状态发生变化的价格和数量；
 3. 查询任意秒时，以该分钟快照为起点回放最多 59 秒差量。
 
@@ -164,9 +182,9 @@ JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer�
 ### 为什么盘口采用两张数据表
 
 - `order_book_minute` 保存每分钟第 0 秒的完整盘口，是恢复该分钟任意秒盘口的确定起点。
-- `order_book_second_delta` 只保存分钟内价格和数量的变化，避免把 60 份完整的 50 档盘口重复写入磁盘。
+- `order_book_second_delta` 只保存分钟内价格和数量的变化，避免把 60 份完整的 10 档盘口重复写入磁盘。
 
-两张表配合后，查询任意秒只需读取一个分钟完整盘口并回放至多 59 秒差量；既保留精确盘口，又避免按秒重复存储完整盘口。
+两张表配合后，查询任意秒只需读取一个分钟完整盘口并回放至多 59 秒差量；既保留精确盘口，又避免按秒重复存储完整盘口。旧 50 档历史保留，回放按分钟 `stored_depth` 返回全部已保存深度；迁移只增加深度标记，不重写历史。交易所接收与内存保留仍为 Binance/Bybit 1000 档、OKX 400 档。
 
 收益数据使用 `yield_route` 保存稳定产品身份，使用 `yield_observation` 保存每次完整利率快照。收益量较低，不采用盘口的分钟快照和秒级差量编码。
 
@@ -174,9 +192,10 @@ JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer�
 
 - [当前部署与运行说明](docs/runtime-operations.md)：实际运行服务、路径、配置、上游接口、只读检查和维护注意事项。
 - [系统总体架构](docs/architecture.md)：盘口、资金费率和收益三类采集分支、启动和失败边界、健康判断及未来数据扩展原则。
-- [市场数据与存储设计](docs/market-data-storage.md)：当前六张核心表的完整数据字典。
+- [市场数据与存储设计](docs/market-data-storage.md)：六张核心表及三张共有集合元数据表的数据字典。
 - [行情采集程序设计](docs/implementation-design.md)：旧代码复用、采集流程、ClickHouse 写入和实现顺序。
 - [Bybit USDT 线性永续采集设计](docs/bybit-usdt-perpetual-market-data.md)：产品筛选、1000 档序列、稀疏 ticker、限流和版本迁移的精确定义。
+- [USDT 线性永续共有交易对自动采集设计](docs/perpetual-common-universe.md)：启动时自动发现任意至少两家共有的永续交易对、异名字典、分片订阅和容量保护。
 - [套利机会与策略资料](docs/arbitrage/README.md)：`ARB-0001` 至 `ARB-0022` 机会库，以及 ARB-0002、ARB-0016、ARB-0022 的详细文档。
 - [ARB-0016 收益数据采集设计](docs/arbitrage/strategies/arb-0016-yield-data.md)：通用收益两表、字段含义和理论筛选规则。
 - [ARB-0016 TRX 收益采集实现设计](docs/arbitrage/strategies/arb-0016-trx-yield-implementation.md)：JustLend 与 TRON 原生质押的采集和写入细节。

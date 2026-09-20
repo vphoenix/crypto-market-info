@@ -28,6 +28,8 @@ type Client struct {
 	writeTimeout time.Duration
 	maxAttempts  int
 	retryDelay   time.Duration
+	instrumentMu sync.Mutex
+	metadataMu   sync.Mutex
 	yieldMu      sync.Mutex
 	yieldLoaded  bool
 	yieldByKey   map[string]yieldRouteEntry

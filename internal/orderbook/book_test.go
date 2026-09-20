@@ -1,6 +1,7 @@
 package orderbook
 
 import (
+	"reflect"
 	"testing"
 	"time"
 
@@ -29,6 +30,25 @@ func TestBookFinalUpdateDeleteAndGapInvalidation(t *testing.T) {
 	book.MarkInvalid("sequence gap")
 	if _, valid := book.Snapshot(50); valid {
 		t.Fatal("invalid book produced a sample")
+	}
+}
+
+func TestSortedSelectsExactTopWithoutSortingRetainedTail(t *testing.T) {
+	side := make(map[int64]uint64, 1000)
+	for price := int64(1); price <= 1000; price++ {
+		side[price] = uint64(price * 2)
+	}
+	wantBids := make([]model.Level, 10)
+	wantAsks := make([]model.Level, 10)
+	for index := range 10 {
+		wantBids[index] = model.Level{PriceTick: int64(1000 - index), QtyLot: uint64((1000 - index) * 2)}
+		wantAsks[index] = model.Level{PriceTick: int64(index + 1), QtyLot: uint64((index + 1) * 2)}
+	}
+	if got := sorted(side, true, 10); !reflect.DeepEqual(got, wantBids) {
+		t.Fatalf("bids=%+v", got)
+	}
+	if got := sorted(side, false, 10); !reflect.DeepEqual(got, wantAsks) {
+		t.Fatalf("asks=%+v", got)
 	}
 }
 

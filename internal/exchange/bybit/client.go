@@ -11,6 +11,7 @@ import (
 	"net/url"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/vphoenix/crypto-market-info/internal/exchange"
@@ -29,6 +30,18 @@ type Client struct {
 	BodyRateLimitFallback time.Duration
 	ForbiddenCooldown     time.Duration
 	Logger                *slog.Logger
+	WSConnectGate         exchange.WaitGate
+	wsGateMu              sync.Mutex
+}
+
+// WebsocketConnectGate is shared by all book and funding connections of this client.
+func (c *Client) WebsocketConnectGate() exchange.WaitGate {
+	c.wsGateMu.Lock()
+	defer c.wsGateMu.Unlock()
+	if c.WSConnectGate == nil {
+		c.WSConnectGate = exchange.NewRequestGate(time.Second)
+	}
+	return c.WSConnectGate
 }
 
 type apiEnvelope struct {
