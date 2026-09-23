@@ -1,12 +1,14 @@
-# ARB-0002 结算窗口采集实现说明
+# [来源项目存档] ARB-0002 结算窗口采集实现说明
 
-> 历史实现说明：本文件记录 `crypto-arb-observer` 的 Redis/PostgreSQL 窗口采集实现，仅用于评估旧代码复用，不是本项目的实现计划。
+> [!CAUTION]
+> **来源项目历史快照，不是 `crypto-market-info` 的当前实现说明。**
+> 本文于 2026-08-20 从 `crypto-arb-observer` 迁入。除明确标注 `crypto-market-info` 的迁移说明外，正文中的“本项目”“当前项目”“当前”“已实现”“默认配置”“生产环境”“代码位置”和测试状态，均指迁移当时的 `crypto-arb-observer`。本文记录其 Redis/PostgreSQL 窗口采集实现，仅用于评估旧代码复用，不自动构成本项目已经实现的功能或实施计划。`crypto-market-info` 的当前边界、数据模型和运行状态以 [`implementation-design.md`](../../implementation-design.md)、[`market-data-storage.md`](../../market-data-storage.md)、[`runtime-operations.md`](../../runtime-operations.md)、实际代码及部署配置为准。
 
-状态：代码已按确认的采集规则完成改造；尚未做真实交易所窗口或Production验收。
+来源项目迁移时状态：代码已按确认的采集规则完成改造；尚未做真实交易所窗口或Production验收。
 
 业务主源：[ARB-0002结算窗口数据采集规则](../strategies/arb-0002-settlement-window-collection.md)
 
-当前状态以来源项目的 `crypto-arb-observer/docs/ai/current-state.md` 为准；该文件未迁入本项目。
+当前状态以来源项目的 `crypto-arb-observer/docs/ai/current-state.md` 为准；该文件未迁入 `crypto-market-info`。
 
 本文记录代码怎样实现业务主源，不新增业务规则。本文不涉及机会事件生命周期、下单、账户、API Key、发布流程或Production部署。
 

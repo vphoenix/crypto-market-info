@@ -5,6 +5,8 @@
 当前已经实现：
 
 - Binance、OKX 现货及永续合约 L2 盘口，以及 Bybit USDT 线性永续 L2 盘口；
+- Ethereum Uniswap v3＋Sky 协议兑换状态、56档闭环报价及日志/回执（默认关闭；[采集与判断说明](docs/dex-arbitrage-implementation.md)）；
+- Deribit BTC/ETH 币本位与 USDC 期权、同到期期货的每秒10档、元数据与指数（默认关闭；[使用说明](docs/arbitrage/strategies/arb-0009-options-live.md)）；
 - Binance、OKX 和 Bybit 永续资金费率；
 - JustLend TRX 收益、TRON 原生质押，以及 SOL 第一、第二阶段收益（LST、原生质押、Kamino 和 Save）；
 - AVAX 第一阶段：OKX 公开出借 APR、Aave V3/V4 WAVAX 基础存款历史 APY；
@@ -82,6 +84,12 @@ Bybit BTC 显式模式已部署；后续全量扩容仍须按[共有永续设计
 | `PERP_MAX_TOTAL_BUFFERED_EVENTS` | `1000000` | 有界消息队列、确认前缓存与快照桥接的总 slot 预算 |
 | `MARKET_DATA_MAX_SAMPLE_SOURCES` | `1100` | 现货加永续的总采样源预算 |
 | `FUNDING_ENABLED` | `true` | 是否采集永续资金费率 |
+| `DEX_ENABLED` | `false` | 在现有collector内启用Ethereum DEX实验分支 |
+| `DEX_ETH_RPC_URL` | `https://ethereum-rpc.publicnode.com` | 只读Ethereum RPC，URL凭据不进入证据 |
+| `DEX_EVIDENCE_DIR` | `var/dex-evidence` | 持久化原始响应的内容寻址gzip目录 |
+| `OPTIONS_ENABLED` | `false` | 在现有collector内启用Deribit期权任务 |
+| `OPTIONS_SYMBOLS` | `auto` | 启动时固定选择四族共24个期权及4个期货；也可填完整C/P及同到期期货symbol清单，最多32个 |
+| `DERIBIT_REST_URL` / `DERIBIT_WS_URL` | `https://www.deribit.com` / `wss://www.deribit.com/ws/api/v2` | 无认证公共行情地址 |
 | `MINUTE_QUEUE_CAPACITY` | 自动 `max(512, 2×采样源数)` | 排队及正在写入的 instrument 分钟批次数；不足两个完整分钟、队列满或 45 秒积压均明确失败 |
 | `JUSTLEND_YIELD_ENABLED` | `false` | 是否每小时采集四条 JustLend TRX 收益路线 |
 | `JUSTLEND_BASE_URL` | `https://openapi.just.network` | JustLend 公开 API 地址 |
@@ -189,6 +197,8 @@ JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer�
 收益数据使用 `yield_route` 保存稳定产品身份，使用 `yield_observation` 保存每次完整利率快照。收益量较低，不采用盘口的分钟快照和秒级差量编码。
 
 ## 文档
+
+- [Ethereum DEX 采集与判断](docs/dex-arbitrage-implementation.md)：五表、固定路线、只读报告及成本情景。
 
 - [当前部署与运行说明](docs/runtime-operations.md)：实际运行服务、路径、配置、上游接口、只读检查和维护注意事项。
 - [系统总体架构](docs/architecture.md)：盘口、资金费率和收益三类采集分支、启动和失败边界、健康判断及未来数据扩展原则。

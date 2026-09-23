@@ -1,19 +1,25 @@
 # 当前部署与运行说明
 
-最近核实：2026-09-21（Asia/Shanghai）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
+最近核实：2026-09-23（Asia/Shanghai）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
 
 ## 1. 实际使用的本机服务
 
 | 服务 | 实际运行方式 | 连接与用途 |
 |---|---|---|
 | ClickHouse | 用户级 systemd unit `crypto-market-info-clickhouse.service`；宿主机原生二进制以前台模式运行并带 ClickHouse watchdog；核实版本 `26.8.1.1825` | HTTP `127.0.0.1:8123`；native `127.0.0.1:9000`；数据库 `crypto_market_info` |
-| collector | 用户级 systemd unit `crypto-market-info-collector.service`；直接运行编译后的单个二进制 | 依赖 ClickHouse 健康后启动，采集盘口、资金费率及 TRX/SOL/AVAX 收益；没有独立 HTTP 服务端口 |
+| collector | 用户级 systemd unit `crypto-market-info-collector.service`；直接运行编译后的单个二进制 | 依赖 ClickHouse 健康后启动，采集盘口、资金费率、TRX/SOL/AVAX 收益及 Ethereum DEX 链上数据；没有独立 HTTP 服务端口 |
 | 全量永续验收 collector | 用户级 systemd unit `crypto-market-info-perp-soak.service`；独立二进制与数据库 | `crypto_market_info_perp_soak`；仅三家共有 USDT 永续盘口和资金费率，不重复采集现货与收益 |
 | 桌面状态指示器 | 图形会话用户级 systemd unit `crypto-market-info-status-indicator.service`；Python/Gtk AppIndicator | 每 30 秒只读检查生产 unit、五路盘口及最新收益写入；不访问交易所、不写数据库 |
 
 本项目不使用 Redis、PostgreSQL、消息队列或其他项目的服务。生产 collector 保持 BTC 显式列表及现有收益配置，尚未切换自动全量；新版本先在独立验收服务运行。具体构建版本用下文 `go version -m` 查询，不以当前仓库 HEAD 推断正在运行的二进制版本。
 
 AVAX 第二阶段已于 2026-08-27 部署。collector unit 保持 `AVAX_YIELD_ENABLED=true`，新增 BENQI sAVAX、Ankr ankrAVAX、BENQI AVAX 借贷三条 Runner；启动时已对生产 `yield_observation` 幂等补齐两列，并成功写入三条首批同区块观测。
+
+2026-09-21 已在现有collector启用 Deribit 期权采集，unit 设置 `OPTIONS_ENABLED=true`、`OPTIONS_SYMBOLS=auto`，没有新增期权专用服务。当前run `5ec3ced8-4d3a-44e9-bf1f-62386d0c505b` 自动固定选择24个期权、4个同到期期货及四个指数。启动过渡分钟如实保留无效锚点；下一完整分钟 `2026-09-20T19:28:00Z` 的28个盘口和四个指数均为60/60有效秒，批次hash为 `ace2270262f3a7bdec6524cd70bcaea13abf9b7d3a5064c102e43531c1a2a779`。详情见[期权实时采集说明](arbitrage/strategies/arb-0009-options-live.md)。
+
+2026-09-22 已在同一个生产 collector 启用 Ethereum DEX 采集，unit 设置 `DEX_ENABLED=true`、`DEX_ETH_RPC_URL=https://ethereum-rpc.publicnode.com`，证据写入持久目录。部署后二进制 SHA-256 为 `cf49b0795aad53a8b5ae00f623d66f867836aac07154761c8c13097f61aaf7a4`。验收区间 `26027452` 至 `26027477` 共26个连续高度无缺口，其中25个区块达到58/58完整报价；`26027460` 因一次RPC/Sky状态读取不完整保留为 `partial/unknown`，后续区块自动恢复。首份24高度机会报告没有毛正窗口。DEX分支不包含钱包、签名或交易发送。
+
+2026-09-23 排查发现 DEX 公共 RPC 的响应读取超时集中出现在最终性校验阶段，旧版在校验失败后额外等待5秒，并在下一轮立即重复昂贵的校验。现版将 RPC 响应读取超时、截断与超过16 MiB分别记录；最终性校验把 `finalized`、`safe` 和原 checkpoint 合为一个 RPC 批次，每轮最多校验20个高度、最多占用6秒，失败后30秒再重试。实时新区块采集与补采、最终性、日志和回执维护现已独立运行，维护任务不会在调度上阻塞实时轮询；共享 RPC 仍可能使实时请求变慢。实时请求失败后按正常2秒轮询间隔重试。Binance 实际资金费率历史中部分 `fundingTime` 比计划整点晚数毫秒，现版查询并匹配整点后1秒内唯一的来源记录，保留其原始毫秒时间，启动补查窗口扩大到72小时；重试耗尽而来源尚无记录时会明确告警。2026-09-23 12:39 CST重启时，OKX启动元数据请求超时曾导致整个collector首次启动失败，此类启动缺口只能补回区块元数据，不能补回当时的实时报价。现已将DEX与CEX等其他来源拆成独立启动和重试分支，并分别使用数据库连接；CEX元数据超时不会停止已运行的DEX分支。12:52 CST重启验收时，DEX先于CEX元数据初始化完成写入新区块。当前生产二进制 SHA-256 为 `bbf1bf5666d9ce3e154e8cd21e127bdc7299d584ae5d796fb6851fb7e256eca7`。更新未增加外部域名。
 
 Bybit USDT 线性永续已于 2026-09-05 部署，collector unit 设置 `BYBIT_PERP_SYMBOLS=BTCUSDT`。启动时已幂等增加 `instrument.venue_contract_version`：迁移前 Binance、OKX 永续 ID 2、4 保留，新版本分别登记为 ID 5、6，Bybit `BTCUSDT` 登记为 ID 7。首个完整生产分钟的五个当前行情流均有 60 个有效秒；Bybit 公共 ticker 实测产生了指向下一结算时刻的完整资金费率估算。
 
@@ -33,6 +39,7 @@ Bybit USDT 线性永续已于 2026-09-05 部署，collector unit 设置 `BYBIT_P
 | ClickHouse PID 文件 | `/run/user/1000/crypto-market-info-clickhouse/clickhouse.pid`（由 systemd 运行目录创建，重启后重建） |
 | collector 二进制 | `/home/ubuntu/.local/share/crypto-market-info-collector/collector` |
 | collector 日志 | `/home/ubuntu/.local/share/crypto-market-info-collector/logs/collector.log` |
+| DEX 原始证据 | `/home/ubuntu/.local/share/crypto-market-info-dex/evidence/` |
 | 全量验收二进制 | `/home/ubuntu/.local/share/crypto-market-info-perp-soak/collector` |
 | 全量验收日志 | `journalctl --user -u crypto-market-info-perp-soak.service` |
 | 桌面指示器程序 | `/home/ubuntu/crypto-market-info/tools/desktop-status/crypto_market_status.py` |
@@ -67,6 +74,8 @@ ClickHouse unit 以前台模式运行数据库并在启动阶段轮询 `/ping`�
 | Binance、OKX 盘口 | 各自的 BTC/USDT 现货及 BTC/USDT 线性永续，共四个交易流 | 每秒采样，结束的分钟批量写入 |
 | 永续资金费率 | 上述两个永续合约 | 公共 WebSocket 估算；REST 确认实际结算值 |
 | Bybit USDT 线性永续 | `BTCUSDT`，已部署启用 | 每秒盘口采样；公共 ticker 估算并由 REST 确认实际资金费率 |
+| Deribit 期权 | BTC/ETH币本位和USDC线性四族；自动固定24个C/P期权、4个同到期期货及四个指数 | 每秒前10档与指数；元数据每30分钟复核，重连时提前复核 |
+| Ethereum DEX | 主网4个策略池、2个成本参考池及Sky相关状态；每块固定58条状态报价 | 每2秒检查新区块；按区块hash采集并跟踪最终性 |
 | JustLend | 四条固定 TRX 路线 | 每小时 |
 | TRON 原生质押 | 前 127 名 SR | 每 6 小时 |
 | SOL 固定收益 | 下表九条路线，各自独立 Runner | 每 6 小时 |
@@ -103,6 +112,7 @@ SOL 的九条固定路线及对应日志 `source`：
 | Jito | `https://kobe.mainnet.jito.network` |
 | Marinade | `https://apy.marinade.finance`；验证者接口 `https://validators-api.marinade.finance` 目前因白名单为空未调用 |
 | Kamino / Save | `https://api.kamino.finance` / `https://api.solend.fi` |
+| Ethereum RPC | `https://ethereum-rpc.publicnode.com`；仅使用公开只读 JSON-RPC 方法 |
 
 这些接口只用于读取公开数据，不涉及钱包、签名、账户操作或下单；收益不混入永续资金费率。
 
@@ -150,7 +160,7 @@ pgrep -af '^/home/ubuntu/\.local/share/crypto-market-info-collector/collector$'
   --host 127.0.0.1 --port 9000 --database crypto_market_info
 ```
 
-自动 universe 版本连接后执行[架构文档的健康检查 SQL](architecture.md#6-运行状态判断)，使用当前进程启动日志的 `run_id` 核实当前成员；不能用全部已登记 instrument 猜测正在采集的范围。当前生产仍是旧版 BTC 显式模式、六张核心表，盘口用下列只读查询检查；其他收益检查仍适用架构文档。进程存在或 `/ping` 成功都不能单独证明各来源在正常采集。
+自动 universe 版本连接后执行[架构文档的健康检查 SQL](architecture.md#6-运行状态判断)，使用当前进程启动日志的 `run_id` 核实当前成员；不能用全部已登记 instrument 猜测正在采集的范围。当前生产盘口仍是 BTC 显式模式，并同时启用期权、收益和DEX专项表；盘口用下列只读查询检查，其他来源按各自专项表核验。进程存在或 `/ping` 成功都不能单独证明各来源在正常采集。
 
 ```sql
 SELECT i.exchange, i.market_type, i.exchange_symbol,
@@ -195,6 +205,7 @@ go version -m /home/ubuntu/.local/share/crypto-market-info-collector/collector
 - 单个来源失败先查日志和最近成功批次，不随意重启 ClickHouse。原生数据库的数据目录与 Docker volume 完全独立；不要清理数据目录、执行 `docker compose down -v` 或停掉其他项目的服务来排障。
 - 2026-08-26 核实时，SOL 第一、第二阶段九条固定路线均已有成功写入。日志同时显示 Binance 实际资金费率 REST 曾返回 HTTP `451`（来源的地区限制）；这表示相应数据可能有缺口，不能将 SOL 成功写入概括为全部数据源无故障。保持缺口并按来源错误排查，不绕过地区限制。
 - collector 日志目前继续追加到单个文件，尚未配置独立日志轮转；systemd journal 只记录 unit 启停和未重定向的控制进程输出。
+- DEX上线69个区块时，gzip证据为2,101个文件、逻辑大小39,251,056字节、磁盘分配约43 MiB。按该短样本线性外推约4.1 GB和21.9万个文件/日，仅用于容量预警，不是24小时实测。上线时根分区尚余约695 GiB、约6,600万inode；在建立实测保留/归档策略前持续监控两项余量，不能让证据写满磁盘。
 
 ### 10 档版本的上线与回退
 
@@ -263,3 +274,11 @@ go run ./cmd/perp-check \
 ```
 
 快速阶段检查可改为 `-min-duration 0`。JSON 的 `pending` 表示时长、写入或代表样本尚不足，`failed` 表示执行或不变量错误，`passed_checks` 只表示该命令的数据库与回放检查通过；退出码依次为 2、1、0。命令不建库、不写表、不访问交易所，但会执行查询，不应高频轮询。`system.parts` 空间是该独立库所有活跃物理 part 的实际压缩占用（包含之前失败 run 和 metadata），不是严格的单次 run 新增量；24 小时空间增长应记录两次同口径读数相减，不能把启动前几分钟线性外推当作实测日占用。
+
+## Ethereum DEX 实验分支（2026-09-22）
+
+已完成代码与 `crypto_market_info` 内五张 `dex_*` 表的创建，并于2026-09-22 01:44:23 +08:00在现有生产collector启用。unit只增加 `DEX_ENABLED=true`、`DEX_ETH_RPC_URL=https://ethereum-rpc.publicnode.com`、`DEX_EVIDENCE_DIR=/home/ubuntu/.local/share/crypto-market-info-dex/evidence`，保持同库单writer。应用配置默认值仍为关闭，只有部署unit显式开启。证据目录必须持久可写并与数据库共同备份。不要把有限 `dex-check --sample-block` 研究命令当作持续采集。
+
+建表命令、查询、成本情景及验收记录见 [DEX 实现说明](dex-arbitrage-implementation.md)。`dex-check`数据库连接启用服务端readonly；可选成本RPC补报只保存报告文件。DEX RPC失败单独退避，不取消CEX、收益或期权分支；既有finalized区块hash出现冲突时仅暂停DEX并记录错误，排查来源后通过现有collector生命周期恢复。
+
+部署验收时连续高度 `26027452..26027477` 已落库，25/26区块为完整58/58报价，最近完整区块的58条状态全为 `ok`；完整区块单次采集耗时约3.9至7.3秒。继续观察到69个连续区块时服务仍为零重启，早期区块已由 `head` 追加修订为 `safe`，证明最终性重检链路在运行；当时Ethereum的 `finalized` 锚点尚未推进到本次启动后的高度。五路生产CEX盘口同期写到最新完整分钟且各有60个有效秒。首份只读报告位于 `var/dex-reports/initial-live/`，使用 `--include-head` 仅为启动验收；日常机会结论继续使用默认finalized口径。

@@ -132,6 +132,19 @@ func TestConfirmationWorkerDefaultsMatchDesign(t *testing.T) {
 	}
 }
 
+func TestValidateActualPreservesNearSettlementSourceTime(t *testing.T) {
+	target := time.UnixMilli(1787097600000).UTC()
+	instrument := fundingInstrument(1, "Binance")
+	rate := model.FundingRate{InstrumentID: instrument.ID, HourTime: target, FundingTime: target.Add(4 * time.Millisecond), Rate: decimal.RequireFromString("0.0001"), IsActual: true}
+	if err := validateActual(rate, instrument, target); err != nil {
+		t.Fatal(err)
+	}
+	rate.FundingTime = target.Add(time.Second)
+	if err := validateActual(rate, instrument, target); err == nil {
+		t.Fatal("a rate outside the settlement window was accepted")
+	}
+}
+
 func TestInitialConfirmationAttemptCatchesUpOnceWithoutBurstingPastRetries(t *testing.T) {
 	target := time.UnixMilli(1787097600123).UTC()
 	delays := []time.Duration{2 * time.Minute, 5 * time.Minute, 15 * time.Minute, 60 * time.Minute}

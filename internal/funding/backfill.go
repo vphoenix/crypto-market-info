@@ -8,7 +8,9 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/model"
 )
 
-const StartupBackfillWindow = 24 * time.Hour
+// Recover transiently unavailable settlements on restart without scanning
+// unbounded history or changing the configured trading universe.
+const StartupBackfillWindow = 72 * time.Hour
 
 type ConfirmationScheduler interface {
 	Schedule(context.Context, model.Instrument, time.Time) error

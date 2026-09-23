@@ -18,9 +18,11 @@ const (
 type MarketType string
 
 const (
-	MarketSpot      MarketType = "spot"
-	MarketPerpetual MarketType = "perpetual"
-	MarketDelivery  MarketType = "delivery"
+	MarketSpot        MarketType = "spot"
+	MarketPerpetual   MarketType = "perpetual"
+	MarketDelivery    MarketType = "delivery"
+	MarketOption      MarketType = "option"
+	MarketOptionCombo MarketType = "option_combo"
 )
 
 type Instrument struct {
@@ -58,7 +60,7 @@ func (i Instrument) ValidateDefinition() error {
 		return fmt.Errorf("venue_contract_version must be an exact string")
 	}
 	switch i.MarketType {
-	case MarketSpot, MarketPerpetual, MarketDelivery:
+	case MarketSpot, MarketPerpetual, MarketDelivery, MarketOption, MarketOptionCombo:
 	default:
 		return fmt.Errorf("unsupported market_type %q", i.MarketType)
 	}
@@ -69,8 +71,14 @@ func (i Instrument) ValidateDefinition() error {
 	} else if i.SettleAsset == nil || *i.SettleAsset == "" || strings.TrimSpace(*i.SettleAsset) != *i.SettleAsset {
 		return fmt.Errorf("derivative instrument requires an exact settle_asset")
 	}
-	if i.MarketType != MarketDelivery && i.ExpiryTime != nil {
-		return fmt.Errorf("only delivery instruments may have expiry_time")
+	if i.MarketType != MarketDelivery && i.MarketType != MarketOption && i.ExpiryTime != nil {
+		return fmt.Errorf("only delivery and option instruments may have expiry_time")
+	}
+	if i.MarketType == MarketOption && (i.ExpiryTime == nil || i.ExpiryTime.IsZero() || i.VenueContractVersion == "") {
+		return fmt.Errorf("option requires expiry and contract version")
+	}
+	if i.MarketType == MarketOptionCombo && i.VenueContractVersion == "" {
+		return fmt.Errorf("option combo requires contract version")
 	}
 	for name, value := range map[string]decimal.Decimal{
 		"contract_multiplier": i.ContractMultiplier,

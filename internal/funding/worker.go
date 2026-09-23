@@ -178,6 +178,9 @@ func (w *ConfirmationWorker) Run(ctx context.Context) error {
 			}
 			task.attempt++
 			if task.attempt >= len(w.RetryDelays) {
+				if err == nil && !found {
+					w.Logger.Warn("actual funding confirmation unavailable after retries", "exchange", w.Exchange, "instrument_id", task.instrument.ID, "funding_time", task.target, "attempts", task.attempt)
+				}
 				delete(active, key)
 				finished[key] = time.Now().UTC()
 				continue
@@ -242,7 +245,7 @@ func validateActual(rate model.FundingRate, instrument model.Instrument, target 
 	if err := rate.Validate(); err != nil {
 		return err
 	}
-	if !rate.IsActual || rate.InstrumentID != instrument.ID || rate.FundingTime.UnixMilli() != target.UnixMilli() {
+	if !rate.IsActual || rate.InstrumentID != instrument.ID || rate.FundingTime.Before(target) || !rate.FundingTime.Before(target.Add(time.Second)) {
 		return fmt.Errorf("actual funding response does not match confirmation task")
 	}
 	wantHour := target.UTC().Truncate(time.Hour)

@@ -1,11 +1,13 @@
-# ARB-0002 跨平台永续资金费率错位套利
+# [来源项目存档] ARB-0002 跨平台永续资金费率错位套利
 
-> 迁移说明：本文件来自 `crypto-arb-observer`。文中的 Redis、PostgreSQL、服务名、代码路径和“已实现”状态均描述来源项目，不是 `crypto-market-info` 的实现规范；本项目以 [`../../market-data-storage.md`](../../market-data-storage.md) 和 [`../../implementation-design.md`](../../implementation-design.md) 为准。
+> [!CAUTION]
+> **来源项目历史快照，不是 `crypto-market-info` 的当前实现说明。**
+> 本文于 2026-08-20 从 `crypto-arb-observer` 迁入。除明确标注 `crypto-market-info` 的迁移说明外，正文中的“本项目”“当前项目”“当前”“已实现”“默认配置”“生产环境”“代码位置”和测试状态，均指迁移当时的 `crypto-arb-observer`。本文仅作为策略和旧代码复用参考，不自动构成本项目已经实现的功能或实施计划。`crypto-market-info` 的当前边界、数据模型和运行状态以 [`implementation-design.md`](../../implementation-design.md)、[`market-data-storage.md`](../../market-data-storage.md)、[`runtime-operations.md`](../../runtime-operations.md)、实际代码及部署配置为准。
 
-状态：funding scanner、固定结算窗口采集和PostgreSQL replay/CLI代码已实现。固定窗口采集已通过相关普通/race测试，但尚未完成真实交易所窗口或Production验收。
-证据等级：E1 -> E2 验证中
-范围：只读数据抓取、funding 错位观察和复盘记录
-不包含：下单、账户余额、API Key、保证金调仓、实盘风控
+来源项目迁移时状态：funding scanner、固定结算窗口采集和PostgreSQL replay/CLI代码已实现。固定窗口采集已通过相关普通/race测试，但尚未完成真实交易所窗口或Production验收。
+来源项目迁移时证据等级：E1 -> E2 验证中
+来源项目范围：只读数据抓取、funding 错位观察和复盘记录
+来源项目不包含：下单、账户余额、API Key、保证金调仓、实盘风控
 
 > [!IMPORTANT]
 > ARB-0002结算窗口、T-5深度选择和135点正式采样的业务规则，只以[ARB-0002结算窗口数据采集规则](arb-0002-settlement-window-collection.md)为准。本文的candidate/active只描述`arb-opportunity`机会生命周期，不是结算窗口采集状态。
@@ -51,7 +53,7 @@
 
 ## 1. 背景和目标
 
-`ARB-0002` 的机会来源是同一标的在不同永续合约平台上的资金费率错位。当前项目仍处于验证阶段，因此本设计只做以下事情：
+`ARB-0002` 的机会来源是同一标的在不同永续合约平台上的资金费率错位。来源项目在迁移时仍处于验证阶段，因此本设计只做以下事情：
 
 1. 抓取 Binance / OKX 等平台的 USDT 永续合约元数据。
 2. 抓取当前或下一期 funding rate、mark price、index price 和下一次结算时间。
@@ -67,7 +69,7 @@
 - 每次机会都有数据时间、成本假设、无效原因和复盘快照。
 - 即使没有 active opportunity，也有低频 scan summary 能证明扫描范围、最大错位和失败原因。
 
-## 2. 与当前架构的关系
+## 2. 与来源项目迁移时架构的关系
 
 保持现有观察框架：
 

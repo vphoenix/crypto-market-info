@@ -1,0 +1,273 @@
+{
+  "version": "ethereum-sky-v3-1",
+  "chain_id": 1,
+  "verified_block": "0xc3b27cbcb38d3d655bb02ed715a3e50f4df8f1066809f268d84bd70caf47cc15",
+  "addresses": {
+    "USDC": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "DAI": "0x6b175474e89094c44da98b954eedeac495271d0f",
+    "USDS": "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+    "USDT": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    "WETH": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "factory": "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+    "quoter": "0x61ffe014ba17989e743c5f6cb21bf9697530b21e",
+    "psm": "0xf6e72db5454dd049d0788e411b06cfaf16853042",
+    "converter": "0x3225737a9bbb6473cb4a45b7244aca2befdb276a",
+    "wrapper": "0xa188eec8f81263234da3622a406892f3d630f98c",
+    "pocket": "0x37305b1cd40574e4c5ce33f8e8306be057fd7341",
+    "daiJoin": "0x9759a6ac90977b93b58547b4a71c78317f391a28",
+    "usdsJoin": "0x3c0f895007ca717aa01c8693e59df1e8c3777feb",
+    "vat": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b",
+    "impl_a0b869": "0x43506849d7c04f9138d1a2050bbf3a0c054402dd",
+    "impl_dc035d": "0x1923dfee706a8e78157416c29cbccfde7cdf4102"
+  },
+  "pools": [
+    {
+      "id": "dai_usdc_100",
+      "address": "0x5777d92f208679db4b9778590fa3cab3ac9e2168",
+      "token0": "DAI",
+      "token1": "USDC",
+      "fee": 100
+    },
+    {
+      "id": "dai_usdc_500",
+      "address": "0x6c6bc977e13df9b0de53b251522280bb72383700",
+      "token0": "DAI",
+      "token1": "USDC",
+      "fee": 500
+    },
+    {
+      "id": "usdc_usds_3000",
+      "address": "0xa66a2770bc0e0c65b63b5a3bb4560e90f95d6146",
+      "token0": "USDC",
+      "token1": "USDS",
+      "fee": 3000
+    },
+    {
+      "id": "dai_usds_3000",
+      "address": "0xe9f1e2ef814f5686c30ce6fb7103d0f780836c67",
+      "token0": "DAI",
+      "token1": "USDS",
+      "fee": 3000
+    },
+    {
+      "id": "usdc_usdt_100",
+      "address": "0x3416cf6c708da44db2624d63ea0aaef7113527c6",
+      "token0": "USDC",
+      "token1": "USDT",
+      "fee": 100
+    },
+    {
+      "id": "usdc_weth_500",
+      "address": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+      "token0": "USDC",
+      "token1": "WETH",
+      "fee": 500
+    }
+  ],
+  "code_pins": [
+    {
+      "name": "USDC",
+      "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "sha256": "0xc1bcd4dc4f30c4dcf6c9fe462abeaf2efefc065dcb4dec74996e471f1ce219b4"
+    },
+    {
+      "name": "DAI",
+      "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+      "sha256": "0x5ce810033426a017721777f241665c27bdd4663ca8a1c27558b4b372a1731f4e"
+    },
+    {
+      "name": "USDS",
+      "address": "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+      "sha256": "0x87f759ee86d841d865919cac7da1b11e497c2a3268214cbf5e98f2be312be401"
+    },
+    {
+      "name": "USDT",
+      "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "sha256": "0x6d967f98f2f3843065688dc2065248e3686b56fc0b6ddfa82007df016148becb"
+    },
+    {
+      "name": "WETH",
+      "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "sha256": "0x5566bf50796faf93c9b6f6adacd3b32c70bfe16b48ffc59db6cd144cbdc89739"
+    },
+    {
+      "name": "factory",
+      "address": "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+      "sha256": "0xfd5e0ec0633afeb92b2f6b6cac36e13a9732bd1914f8158a78f127d51d54a572"
+    },
+    {
+      "name": "quoter",
+      "address": "0x61ffe014ba17989e743c5f6cb21bf9697530b21e",
+      "sha256": "0xc2797888d8316e5070ceb951465277a225d3707b4dab40c94cf61e330c5e6b85"
+    },
+    {
+      "name": "psm",
+      "address": "0xf6e72db5454dd049d0788e411b06cfaf16853042",
+      "sha256": "0xe78d62a4fed10c6616708fb59ed1371d345c5e9c59ced6dfe30be3ba7720201f"
+    },
+    {
+      "name": "converter",
+      "address": "0x3225737a9bbb6473cb4a45b7244aca2befdb276a",
+      "sha256": "0xa478bf9d12ae5e9132a1977e06a409ea39d2efc5588008e1738f8b70916fa8b8"
+    },
+    {
+      "name": "wrapper",
+      "address": "0xa188eec8f81263234da3622a406892f3d630f98c",
+      "sha256": "0x677710bb0e029416a148372917ac031ed72f48381a32bd24fa1f9f6ab46a385f"
+    },
+    {
+      "name": "daiJoin",
+      "address": "0x9759a6ac90977b93b58547b4a71c78317f391a28",
+      "sha256": "0x200a5516a3b647461ff1a8e6804a16e5447a6fea4877c9c97a92926ab096fd4f"
+    },
+    {
+      "name": "usdsJoin",
+      "address": "0x3c0f895007ca717aa01c8693e59df1e8c3777feb",
+      "sha256": "0x7c4855a3669b6e1093704c90f6fe6ac45437a3e54930c5da03cbf7fa6d9d2b02"
+    },
+    {
+      "name": "vat",
+      "address": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b",
+      "sha256": "0xa9893414fa5d7bc5ce336ed0c97a55420c6349ff96b7e4005e3aaecece131f0c"
+    },
+    {
+      "name": "impl_a0b869",
+      "address": "0x43506849d7c04f9138d1a2050bbf3a0c054402dd",
+      "sha256": "0x21a831a7cff1a353b295490f43a66e48e55d1c76c60cd89b24138efd8e8b7c8a"
+    },
+    {
+      "name": "impl_dc035d",
+      "address": "0x1923dfee706a8e78157416c29cbccfde7cdf4102",
+      "sha256": "0xd3837f4e193760983e45eb8770a6592dbbdd5dad70335131ec7036d252d1c72b"
+    },
+    {
+      "name": "dai_usdc_100",
+      "address": "0x5777d92f208679db4b9778590fa3cab3ac9e2168",
+      "sha256": "0x1223b8593c97362c15a503bbd01415fc5bba2aa6ee5bddfe564945e931b68bf9"
+    },
+    {
+      "name": "dai_usdc_500",
+      "address": "0x6c6bc977e13df9b0de53b251522280bb72383700",
+      "sha256": "0xf58d925196168eed3f1331e166b595df5a5a6895af134abf5131606d36dccb39"
+    },
+    {
+      "name": "usdc_usds_3000",
+      "address": "0xa66a2770bc0e0c65b63b5a3bb4560e90f95d6146",
+      "sha256": "0xfbf89fca64633f640f65b370d373d707834f55f7d39e7dc7074529859fedd103"
+    },
+    {
+      "name": "dai_usds_3000",
+      "address": "0xe9f1e2ef814f5686c30ce6fb7103d0f780836c67",
+      "sha256": "0x07e7802795a22a886b7547e88177bfd8d0b7fa214a2ce25ea5a90a605bee38d5"
+    },
+    {
+      "name": "usdc_usdt_100",
+      "address": "0x3416cf6c708da44db2624d63ea0aaef7113527c6",
+      "sha256": "0xc2d47732ac007189e6652f3a7f54641ec5d39fc73509a4f27fb7f77914883b27"
+    },
+    {
+      "name": "usdc_weth_500",
+      "address": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+      "sha256": "0x92ba07e5b9a121271e3cb6ff1984114eab00dd64f05bd5701682da1a0f3d6afb"
+    }
+  ],
+  "storage_pins": [
+    {
+      "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "slot": "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3",
+      "expected": "0x00000000000000000000000043506849d7c04f9138d1a2050bbf3a0c054402dd"
+    },
+    {
+      "address": "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+      "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+      "expected": "0x0000000000000000000000001923dfee706a8e78157416c29cbccfde7cdf4102"
+    }
+  ],
+  "decimals": {
+    "USDC": 6,
+    "DAI": 18,
+    "USDS": 18,
+    "USDT": 6,
+    "WETH": 18
+  },
+  "amounts_usdc": [
+    "1000",
+    "10000",
+    "50000",
+    "100000",
+    "250000",
+    "500000",
+    "1000000"
+  ],
+  "selectors": {
+    "daiJoin()": "0xc11645bc",
+    "usdsJoin()": "0xfa1e2e86",
+    "dai()": "0xf4b9fa75",
+    "usds()": "0x4cf282fb",
+    "gem()": "0x7bd2bea7",
+    "vat()": "0x36569e77",
+    "ilk()": "0xc5ce281e",
+    "pocket()": "0xcccef9e2",
+    "to18ConversionFactor()": "0x4010f777",
+    "tin()": "0x568d4b6f",
+    "tout()": "0xfae036d5",
+    "buf()": "0x15232515",
+    "rush()": "0xcbf0bfac",
+    "gush()": "0x881eb14e",
+    "cut()": "0xe6fd604c",
+    "HALTED()": "0x678d7732",
+    "psm()": "0x04bda262",
+    "dec()": "0xb3bcfa82",
+    "live()": "0x957aa58c",
+    "decimals()": "0x313ce567",
+    "balanceOf(address)": "0x70a08231",
+    "allowance(address,address)": "0xdd62ed3e",
+    "wards(address)": "0xbf353dbb",
+    "bud(address)": "0x4fce7a2a",
+    "daiToUsds(address,uint256)": "0xf2c07aae",
+    "usdsToDai(address,uint256)": "0x68f30150",
+    "sellGem(address,uint256)": "0x95991276",
+    "buyGem(address,uint256)": "0x8d7ef9bb",
+    "fill()": "0xd9c55ce1",
+    "trim()": "0x40d9c0e3",
+    "chug()": "0x9b652df6",
+    "getPool(address,address,uint24)": "0x1698ee82",
+    "slot0()": "0x3850c7bd",
+    "liquidity()": "0x1a686502",
+    "tickBitmap(int16)": "0x5339c296",
+    "ticks(int24)": "0xf30dba93",
+    "token0()": "0x0dfe1681",
+    "token1()": "0xd21220a7",
+    "fee()": "0xddca3f43",
+    "tickSpacing()": "0xd0c93a7c",
+    "quoteExactInputSingle((address,address,uint256,uint24,uint160))": "0xc6a5026a",
+    "quoteExactOutputSingle((address,address,uint256,uint24,uint160))": "0xbd21704a",
+    "deprecated()": "0x0e136b19",
+    "upgradedAddress()": "0x26976e3f"
+  },
+  "events": {
+    "0x23889db6b244d239344deac88ec7781d810b3873fe323939d1ce0e8ac9564235": "DaiToUsds",
+    "0x9c7bd3b60b7e46fc1d7a38d88b7dd4be0e028b80b706848fc3c065eabc8e6a9b": "UsdsToDai",
+    "0xef75f5a47cc9a929968796ceb84f19e7541617b4577f2c228ea95200e1572081": "SellGem",
+    "0x085d06ecf4c34b237767a31c0888e121d89546a77f186f1987c6b8715e1a8caa": "BuyGem",
+    "0x1293e04cd381a7d781bab7dbc1f14f587c30b893b53af97e704717cc02a10254": "Fill",
+    "0xc73c16902381a37c21b07e127e3d0c092955b9fedb2b23e7e9b91ca527545ae6": "Trim",
+    "0xbaf40fa9da797753c7837b8bae01a8ee6009597a3de9665c6fdf70e870664993": "Chug",
+    "0xe986e40cc8c151830d4f61050f4fb2e4add8567caad2d5f5496f9158e91fe4c7": "File",
+    "0x8fef588b5fc1afbf5b2f06c1a435d513f208da2e6704c3d8f0e0ec91167066ba": "File",
+    "0x6ffc0fabf0709270e42087e84a3bfc36041d3b281266d04ae1962185092fb244": "Kiss",
+    "0x12fdafd291eb287a54e3416070923d22aa5072f5ee04c4fb8361615e7508a37c": "Diss",
+    "0xdd0e34038ac38b2a1ce960229778ac48a8719bc900b6c4f8d0475c6e8b385a60": "Rely",
+    "0x184450df2e323acec0ed3b5c7531b81f9b4cdef7914dfd4c0a4317416bb5251b": "Deny",
+    "0x783cca1c0412dd0d695e784568c96da2e9c22ff989357a2e8b1d9b2b4e6b7118": "PoolCreated",
+    "0x98636036cb66a9c19a37435efc1e90142190214e8abeb821bdba3f2990dd4c95": "Initialize",
+    "0xc42079f94a6350d7e6235f29174924f928cc2ac818eb64fed8004e115fbcca67": "Swap",
+    "0x7a53080ba414158be7ec69b987b5fb7d07dee101fe85488f0853ae16239d0bde": "Mint",
+    "0x0c396cd989a39f4459b5fa1aed6a9a8dcdbc45908acfd67e028cd568da98982c": "Burn",
+    "0x70935338e69775456a85ddef226c395fb668b63fa0115f5f20610b388e6ca9c0": "Collect",
+    "0xbdbdb71d7860376ba52b25a5028beea23581364a40522f6bcfb86bb1f2dca633": "Flash",
+    "0x973d8d92bb299f4af6ce49b52a8adb85ae46b9f214c4c4fc06ac77401237b133": "SetFeeProtocol",
+    "0x596b573906218d3411850b26a6b437d6c4522fdb43d2d2386263f86d50b8b151": "CollectProtocol",
+    "0xac49e518f90a358f652e4400164f05a5d8f7e35e7747279bc3a93dbf584e125a": "IncreaseObservationCardinalityNext"
+  }
+}

@@ -19,7 +19,9 @@ import (
 )
 
 func main() {
+	initDEX := flag.Bool("init-dex-schema", false, "create the five DEX tables only and exit; does not start any collector")
 	printDDL := flag.Bool("print-ddl", false, "print concrete ClickHouse DDL and exit")
+	printOptions := flag.Bool("print-options-plan", false, "fetch public Deribit metadata and print fixed C/P/future selection without database or websocket connections")
 	printUniverse := flag.Bool("print-perp-universe", false, "fetch public catalogs and print validated perpetual universe without database or websocket connections")
 	printCatalogs := flag.Bool("print-perp-catalogs", false, "print complete eligible public catalogs for alias maintenance without database or websocket connections")
 	replayInstrument := flag.Uint("replay-instrument", 0, "instrument_id to replay")
@@ -34,11 +36,34 @@ func main() {
 		if schemaErr != nil {
 			fatal(schemaErr)
 		}
+		dexDDL, dexErr := chstore.DEXSchemaStatements(cfg.ClickHouse.Database)
+		if dexErr != nil {
+			fatal(dexErr)
+		}
+		statements = append(statements, dexDDL...)
 		fmt.Println(strings.Join(statements, ";\n\n") + ";")
 		return
 	}
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
+	if *initDEX {
+		store, e := chstore.Open(ctx, cfg.ClickHouse)
+		if e != nil {
+			fatal(e)
+		}
+		defer store.Close()
+		if e = store.InitDEXSchema(ctx); e != nil {
+			fatal(e)
+		}
+		fmt.Println("DEX schema ready: 5 tables in " + cfg.ClickHouse.Database)
+		return
+	}
+	if *printOptions {
+		if err = app.PrintOptionsPlan(ctx, cfg, os.Stdout); err != nil {
+			fatal(err)
+		}
+		return
+	}
 	if *printCatalogs {
 		if err = app.PrintPerpetualCatalogs(ctx, cfg, os.Stdout, slog.Default()); err != nil {
 			fatal(err)

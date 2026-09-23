@@ -129,6 +129,95 @@ func TestFailingYieldSourceDoesNotStopOtherComponent(t *testing.T) {
 	}
 }
 
+func TestDEXStartsWhileCEXDiscoveryIsBlocked(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	cexStarted := make(chan struct{})
+	dexStarted := make(chan struct{})
+	done := make(chan error, 1)
+	logger := slog.New(slog.NewTextHandler(io.Discard, nil))
+	go func() {
+		done <- runIndependentSources(ctx, logger, time.Millisecond,
+			component{name: "Ethereum DEX", run: func(ctx context.Context) error {
+				close(dexStarted)
+				<-ctx.Done()
+				return nil
+			}},
+			component{name: "CEX and other sources", run: func(ctx context.Context) error {
+				close(cexStarted)
+				<-ctx.Done() // A stalled startup discovery request.
+				return nil
+			}},
+		)
+	}()
+	select {
+	case <-cexStarted:
+	case <-time.After(time.Second):
+		t.Fatal("CEX startup did not begin")
+	}
+	select {
+	case <-dexStarted:
+	case <-time.After(time.Second):
+		t.Fatal("CEX startup blocked DEX")
+	}
+	cancel()
+	select {
+	case err := <-done:
+		if err != nil {
+			t.Fatal(err)
+		}
+	case <-time.After(time.Second):
+		t.Fatal("source groups did not stop")
+	}
+}
+
+func TestCEXStartupFailureRetriesWithoutRestartingDEX(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	dexStarted := make(chan struct{})
+	cexRetried := make(chan struct{})
+	var dexRuns, cexRuns atomic.Int32
+	done := make(chan error, 1)
+	logger := slog.New(slog.NewTextHandler(io.Discard, nil))
+	go func() {
+		done <- runIndependentSources(ctx, logger, time.Millisecond,
+			component{name: "Ethereum DEX", run: func(ctx context.Context) error {
+				dexRuns.Add(1)
+				close(dexStarted)
+				<-ctx.Done()
+				return nil
+			}},
+			component{name: "CEX and other sources", run: func(ctx context.Context) error {
+				if cexRuns.Add(1) == 1 {
+					return errors.New("OKX startup timeout")
+				}
+				close(cexRetried)
+				<-ctx.Done()
+				return nil
+			}},
+		)
+	}()
+	for _, started := range []<-chan struct{}{dexStarted, cexRetried} {
+		select {
+		case <-started:
+		case <-time.After(time.Second):
+			t.Fatal("source group did not start or retry")
+		}
+	}
+	if dexRuns.Load() != 1 || cexRuns.Load() != 2 {
+		t.Fatalf("DEX runs=%d, CEX attempts=%d", dexRuns.Load(), cexRuns.Load())
+	}
+	cancel()
+	select {
+	case err := <-done:
+		if err != nil {
+			t.Fatal(err)
+		}
+	case <-time.After(time.Second):
+		t.Fatal("source groups did not stop")
+	}
+}
+
 func TestSOLYieldCollectorsRegisterSecondPhaseAsSeparateSources(t *testing.T) {
 	rpc := solana.NewClient("https://solana.test")
 	reader := &solana.Reader{Client: rpc}

@@ -7,12 +7,17 @@ import (
 	"strings"
 	"time"
 
+	"github.com/vphoenix/crypto-market-info/internal/optionslive"
 	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
 	"github.com/vphoenix/crypto-market-info/internal/universe"
 	"github.com/vphoenix/crypto-market-info/internal/yield/solana"
 )
 
 type Config struct {
+	DEXEnabled                bool
+	DEXRPCURL                 string
+	DEXEvidenceDir            string
+	Options                   optionslive.Config
 	ClickHouse                chstore.Config
 	BinanceSpotSymbols        []string
 	BinancePerpSymbols        []string
@@ -110,6 +115,29 @@ func Load() (Config, error) {
 	if err = loadPerpetualConfig(&cfg); err != nil {
 		return Config{}, err
 	}
+	cfg.Options.Enabled, err = boolean("OPTIONS_ENABLED", false)
+	if err != nil {
+		return Config{}, err
+	}
+	cfg.Options.RESTURL = value("DERIBIT_REST_URL", "https://www.deribit.com")
+	cfg.Options.WSURL = value("DERIBIT_WS_URL", "wss://www.deribit.com/ws/api/v2")
+	if raw := value("OPTIONS_SYMBOLS", "auto"); raw != "auto" {
+		cfg.Options.Symbols = strings.Split(raw, ",")
+		for n := range cfg.Options.Symbols {
+			cfg.Options.Symbols[n] = strings.TrimSpace(cfg.Options.Symbols[n])
+		}
+	}
+	if cfg.Options.Enabled {
+		if err = cfg.Options.Validate(); err != nil {
+			return Config{}, err
+		}
+	}
+	cfg.DEXEnabled, err = boolean("DEX_ENABLED", false)
+	if err != nil {
+		return Config{}, err
+	}
+	cfg.DEXRPCURL = value("DEX_ETH_RPC_URL", "https://ethereum-rpc.publicnode.com")
+	cfg.DEXEvidenceDir = value("DEX_EVIDENCE_DIR", "var/dex-evidence")
 	return cfg, nil
 }
 

@@ -52,7 +52,7 @@ func prepareMarkets(ctx context.Context, cfg config.Config, store *chstore.Clien
 	for _, s := range d.Selected {
 		definitions = append(definitions, s.Instrument)
 	}
-	if len(definitions) == 0 && !yieldEnabled(cfg) {
+	if len(definitions) == 0 && !yieldEnabled(cfg) && !cfg.Options.Enabled {
 		return m, fmt.Errorf("no instruments or yield collectors configured")
 	}
 	registered, err := store.RegisterInstruments(ctx, definitions)

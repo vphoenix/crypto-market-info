@@ -4,6 +4,7 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"strconv"
 	"sync/atomic"
 	"testing"
 	"time"
@@ -11,16 +12,41 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/model"
 )
 
-func TestFundingHistoryMatchesExactMillisecondTarget(t *testing.T) {
+func TestFundingHistoryMatchesSmallSourceTimestampOffset(t *testing.T) {
 	instrument := testInstrument()
 	target := time.UnixMilli(1787097600123).UTC()
-	payload := []byte(`[{"symbol":"BTCUSDT","fundingRate":"-0.0001","fundingTime":1787097600123}]`)
+	payload := []byte(`[{"symbol":"BTCUSDT","fundingRate":"-0.0001","fundingTime":1787097600127}]`)
 	actual, found, err := ParseFundingHistory(payload, instrument, target)
-	if err != nil || !found || !actual.IsActual || actual.FundingTime.UnixMilli() != target.UnixMilli() {
+	if err != nil || !found || !actual.IsActual || actual.FundingTime.UnixMilli() != target.UnixMilli()+4 || actual.HourTime != target.Truncate(time.Hour) {
 		t.Fatalf("actual=%+v found=%v err=%v", actual, found, err)
 	}
-	if _, found, err = ParseFundingHistory(payload, instrument, target.Add(time.Millisecond)); err != nil || found {
-		t.Fatalf("millisecond-mismatched response found=%v err=%v", found, err)
+	if _, found, err = ParseFundingHistory(payload, instrument, target.Add(5*time.Millisecond)); err != nil || found {
+		t.Fatalf("earlier source row matched: found=%v err=%v", found, err)
+	}
+	if _, found, err = ParseFundingHistory([]byte(`[{"symbol":"BTCUSDT","fundingRate":"-0.0001","fundingTime":1787097601123}]`), instrument, target); err != nil || found {
+		t.Fatalf("later settlement matched: found=%v err=%v", found, err)
+	}
+	if _, found, err = ParseFundingHistory([]byte(`[{"symbol":"BTCUSDT","fundingRate":"-0.0001","fundingTime":1787097600123},{"symbol":"BTCUSDT","fundingRate":"-0.0002","fundingTime":1787097600127}]`), instrument, target); err == nil || found {
+		t.Fatalf("ambiguous settlement accepted: found=%v err=%v", found, err)
+	}
+}
+
+func TestActualFundingRequestIncludesDelayedSourceMillisecond(t *testing.T) {
+	target := time.UnixMilli(1787097600000).UTC()
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		q := r.URL.Query()
+		if q.Get("startTime") != strconv.FormatInt(target.UnixMilli(), 10) || q.Get("endTime") != strconv.FormatInt(target.UnixMilli()+999, 10) {
+			t.Errorf("wrong funding window: %s", r.URL.RawQuery)
+		}
+		w.Write([]byte(`[{"symbol":"BTCUSDT","fundingRate":"0.0001","fundingTime":1787097600004}]`))
+	}))
+	defer server.Close()
+	client := NewClient()
+	client.FuturesBaseURL = server.URL
+	client.HTTP = server.Client()
+	rate, found, err := client.ActualFundingRate(context.Background(), testInstrument(), target)
+	if err != nil || !found || rate.FundingTime.UnixMilli() != target.UnixMilli()+4 || rate.Rate.String() != "0.0001" {
+		t.Fatalf("rate=%+v found=%v err=%v", rate, found, err)
 	}
 }
 

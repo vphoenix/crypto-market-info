@@ -14,6 +14,11 @@ Environment=BINANCE_PERP_SYMBOLS=BTCUSDT
 Environment=OKX_SPOT_SYMBOLS=BTC-USDT
 Environment=OKX_PERP_SYMBOLS=BTC-USDT-SWAP
 Environment=BYBIT_PERP_SYMBOLS=BTCUSDT
+Environment=OPTIONS_ENABLED=true
+Environment=OPTIONS_SYMBOLS=auto
+Environment=DEX_ENABLED=true
+Environment=DEX_ETH_RPC_URL=https://ethereum-rpc.publicnode.com
+Environment=DEX_EVIDENCE_DIR=/home/ubuntu/.local/share/crypto-market-info-dex/evidence
 Environment=BINANCE_SPOT_REST_URL=https://data-api.binance.vision
 Environment=FUNDING_ENABLED=true
 Environment=JUSTLEND_YIELD_ENABLED=true

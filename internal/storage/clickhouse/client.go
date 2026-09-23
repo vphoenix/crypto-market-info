@@ -29,6 +29,7 @@ type Client struct {
 	maxAttempts  int
 	retryDelay   time.Duration
 	instrumentMu sync.Mutex
+	derivativeMu sync.Mutex
 	metadataMu   sync.Mutex
 	yieldMu      sync.Mutex
 	yieldLoaded  bool
@@ -38,6 +39,8 @@ type Client struct {
 	// where ClickHouse commits a route batch but the client receives an error.
 	// Production always leaves it nil and uses insertYieldRoutes directly.
 	yieldRouteInsert func(context.Context, []marketyield.YieldRouteDefinition) error
+	// Test-only ambiguous-insert seam; production leaves this nil.
+	derivativeAfterInsert func(string) error
 }
 
 func Open(ctx context.Context, cfg Config) (*Client, error) {

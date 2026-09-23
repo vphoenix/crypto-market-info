@@ -1,12 +1,14 @@
-# ARB-0002 结算窗口数据采集规则
+# [来源项目存档] ARB-0002 结算窗口数据采集规则
 
-> 迁移说明：本文件来自 `crypto-arb-observer`，完整保留其 T-5 至 T+2 专项窗口方案。本项目当前采用持续秒级盘口采样，并未因迁入本文而切换为该窗口方案；当前实现以 [`../../implementation-design.md`](../../implementation-design.md) 为准。
+> [!CAUTION]
+> **来源项目历史快照，不是 `crypto-market-info` 的当前实现说明。**
+> 本文于 2026-08-20 从 `crypto-arb-observer` 迁入。除明确标注 `crypto-market-info` 的迁移说明外，正文中的“本项目”“当前项目”“当前”“已实现”“默认配置”“生产环境”“代码位置”和测试状态，均指迁移当时的 `crypto-arb-observer`。本文仅作为策略和旧代码复用参考，不自动构成本项目已经实现的功能或实施计划。`crypto-market-info` 当前采用持续秒级盘口采样，并未因迁入本文而切换为 T-5 至 T+2 专项窗口方案；当前边界、数据模型和运行状态以 [`implementation-design.md`](../../implementation-design.md)、[`market-data-storage.md`](../../market-data-storage.md)、[`runtime-operations.md`](../../runtime-operations.md)、实际代码及部署配置为准。
 
-状态：用户已确认的目标业务规则
+来源项目迁移时状态：用户已确认的目标业务规则
 
-范围：Binance与OKX同名USDT永续合约的funding结算窗口数据采集、top1/top100选择和窗口间状态
+来源项目范围：Binance与OKX同名USDT永续合约的funding结算窗口数据采集、top1/top100选择和窗口间状态
 
-不包含：机会事件生命周期、下单、账户、仓位、API Key和实盘风控
+来源项目不包含：机会事件生命周期、下单、账户、仓位、API Key和实盘风控
 
 本文是来源项目 ARB-0002 结算窗口数据采集的业务主源。涉及来源项目的结算窗口、T-5预热、top1/top100选择和135点正式采样时，以本文为准。其实现状态应以 `crypto-arb-observer/docs/ai/current-state.md` 和来源项目实际代码为准。
 

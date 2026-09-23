@@ -6,16 +6,21 @@
 
 | 路径 | 内容 | 在本项目中的作用 |
 |---|---|---|
-| [`opportunities/opportunity-library.md`](opportunities/opportunity-library.md) | `ARB-0001` 至 `ARB-0022` 的完整机会库 | 判断各种套利需要采集哪些市场数据 |
-| [`strategies/arb-0002-perp-funding-rate.md`](strategies/arb-0002-perp-funding-rate.md) | 跨平台永续资金费率错位套利 | ARB-0002 的策略、计算和风险参考 |
+| [`../dex-arbitrage-mvp-design.md`](../dex-arbitrage-mvp-design.md) | Ethereum协议兑换套利最小设计（待实现） | 同块金额报价、Sky规则、5张专项表与机会判断CLI；不含交易执行 |
+| [`opportunities/opportunity-library.md`](opportunities/opportunity-library.md) | 来源项目迁移时的 `ARB-0001` 至 `ARB-0022` 机会库 | 判断各种套利需要采集哪些市场数据 |
+| [`strategies/arb-0002-perp-funding-rate.md`](strategies/arb-0002-perp-funding-rate.md) | 来源项目的跨平台永续资金费率错位套利设计 | ARB-0002 的策略、计算和风险参考 |
 | [`strategies/arb-0002-settlement-window-collection.md`](strategies/arb-0002-settlement-window-collection.md) | ARB-0002 结算窗口采集规则 | 旧项目的专项窗口采集方案参考 |
+| [`strategies/arb-0009-options-collection-design.md`](strategies/arb-0009-options-collection-design.md) | Deribit 期权采集简化设计 R4（已实现） | 现有机器、固定C/P及期货清单、每秒10档与必要元数据，保存历史供以后分析 |
+| [`strategies/arb-0009-options-live.md`](strategies/arb-0009-options-live.md) | 期权实时采集与查询 | 配置、固定28流自动选择、真实REST/WS到数据库验证；现有常驻服务尚未启用 |
+| [`strategies/arb-0009-options-phase-1.md`](strategies/arb-0009-options-phase-1.md) | 期权离线基础实现记录（已完成，保留） | 协议解析、精确规格/规则、10档模型、分钟写入/回放及测试；剩余工作以R4为准 |
+| [`legacy/arb-0009-options-collection-design-r3.md`](legacy/arb-0009-options-collection-design-r3.md) | 期权原R3设计审核存档 | 仅用于核验历史审核；原四阶段部署和全量前置要求已由R4取代 |
 | [`strategies/arb-0016-yield-data.md`](strategies/arb-0016-yield-data.md) | 可对冲本金的收益数据采集 | ARB-0016 的两表数据模型、理论筛选和历史采集规则 |
 | [`strategies/arb-0016-trx-yield-implementation.md`](strategies/arb-0016-trx-yield-implementation.md) | TRX 收益采集实现设计 | JustLend 与 TRON 原生质押的采集、校验和写入规则 |
 | [`strategies/arb-0016-sol-yield-phase-1.md`](strategies/arb-0016-sol-yield-phase-1.md) | SOL 收益采集第一阶段实现设计 | 通用 Stake Pool、JitoSOL、mSOL、原生验证者与 Marinade Native |
 | [`strategies/arb-0016-sol-yield-phase-2.md`](strategies/arb-0016-sol-yield-phase-2.md) | SOL 收益采集第二阶段实现设计 | laineSOL、JupSOL、hSOL、Kamino SOL 与 Save SOL |
 | [`strategies/arb-0016-avax-yield-phase-1.md`](strategies/arb-0016-avax-yield-phase-1.md) | AVAX 收益采集第一阶段（已实现） | OKX、Aave V3/V4 的近期历史利率、校验与两表写入；运行状态见运行说明 |
 | [`strategies/arb-0016-avax-yield-phase-2.md`](strategies/arb-0016-avax-yield-phase-2.md) | AVAX 收益采集第二阶段（已部署） | BENQI sAVAX、Ankr ankrAVAX、BENQI AVAX 借贷；同块兑换率、基础 APR、池内现金和退出窗口 |
-| [`strategies/arb-0022-spot-cross-cex.md`](strategies/arb-0022-spot-cross-cex.md) | 跨 CEX 同币种现货盘口价差套利 | ARB-0022 的策略和数据需求参考 |
+| [`strategies/arb-0022-spot-cross-cex.md`](strategies/arb-0022-spot-cross-cex.md) | 来源项目的跨 CEX 同币种现货盘口价差套利设计 | ARB-0022 的策略和数据需求参考 |
 | [`legacy/arb-0002-settlement-window-implementation-plan.md`](legacy/arb-0002-settlement-window-implementation-plan.md) | 旧项目的 ARB-0002 窗口实现说明 | 仅用于理解可复用旧代码，不是本项目实现规范 |
 
 ## 使用边界

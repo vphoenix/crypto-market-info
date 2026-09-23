@@ -278,3 +278,86 @@ member 只有 `run_id UUID`、`instrument_id UInt32`、`canonical_market_key Str
 `perp-check` 通过只读连接按 run 成员统计。盘口范围从 `started_at` 之后第一个完整 UTC 分钟开始，到查询时刻或同库下一次已提交 run 开始之前的完整分钟结束；旧 run 被后续 run 替代时只输出历史范围并标记 pending，不能把后续进程的数据累计为旧 run 的运行时长。差量活跃度只统计存在分钟可见标记的 delta，排除孤立差量；随机回放使用固定 seed 对有效秒做无放回 reservoir sampling，每个有效秒入选机会相同。
 
 资金费率按小时桶统计，当前 run 的初始小时可能包含原有行，不能证明其插入进程；旧 run 的最后一个不完整小时也不计入。验收同时报告估算/实际行数并检查小时数量、陈旧状态和 24 小时窗口内是否出现实际确认。`system.parts` 的压缩空间属于整个数据库，不是单次 run 的增量。`passed_checks` 只表示这些数据库和回放检查通过，`full_soak_verified` 始终为 false；重叠进程、连续运行、CPU/内存/网络、限速响应和采样/写入 deadline 仍须独立运行证据，不能从事实表没有 `run_id` 的数据推断。
+
+## 10. 期权采集
+
+2026-09-21 已按 [ARB-0009 R4 设计](arbitrage/strategies/arb-0009-options-collection-design.md) 实现现有机器上的固定合约清单采集：Deribit BTC/ETH币本位、USDC线性期权及同到期期货，保存10档与必要元数据供以后分析。[离线基础](arbitrage/strategies/arb-0009-options-phase-1.md) 与[实时实现](arbitrage/strategies/arb-0009-options-live.md)共享规格、规则与盘口事实表，使用各自提交表。真实公共来源已在临时库完成验证，现有常驻采集服务尚未启用这些表。
+
+- 已扩展 `instrument` 的类型与版本校验，并实现定类型经济规格、组合腿和交易规则。实时run/成员、所选元数据复核证据与状态、指数观测及分钟发布见10.3；完整结算/费用/保证金规则、原生combo和全链BBO按需扩展。行权价币种、权利金币、结算币、native amount 和合约张数不能混用。
+- 经济/编码规格保持不可变；下单tick、分段tick、最小量与增量放入独立 `derivative_trading_rule`，逐秒引用当时规则。该链路 `contract_multiplier=1` 表示保留native amount，USD名义和combo必须经专项换算，不能直接套第8节USDT永续的基础币换算公式。
+- 已提供 `derivative_book_minute`、`derivative_book_second_delta`、`derivative_book_quality_minute` 的显式建表与离线读写接口。新数据仍只保存每秒前10档，`stored_depth=10`；允许已知空边/空书，combo允许零价和负价，因此不复用现有正价/双边盘口的校验语义。
+- 新分钟起点用等长typed价格/数量数组，各侧长度0–10，真实数量大于0；价格0可为真实combo档位，只有差量数量0表示删除。没有有效第0秒锚点的分钟不生成可回放盘口，但保留独立质量记录。
+- 每秒质量按分钟60槽保存；所选合约BBO可直接从L2提取，无需先建全链quote表。真实源时间、接收时间、采样截止、连接代次、缺失原因与盘口状态分开表达。
+- 实时分钟需关联本次run及不可变 `batch_id`，先写数据后发布提交标记；跨表部分写入不可见，重试复用原内容与身份。当前 `derivative_book_foundation_commit` 仍只接受离线来源，不能冒充实时提交。所选指数和低频元数据使用定类型字段，不进入资金费率或收益表。
+- 低频实时来源按本次请求范围核验完整性，保存来源时间/采集时间、URL和payload hash；规则区分生效与知悉时间，失败不刷新历史事实。盘口的 `delta_bitmap` 标明应存在差量的秒，提交后缺行必须返回incomplete，不能解释成无变化。
+- 现有10档/旧50档历史的编码、物理列和回放路径保持本字典第2–3节语义；不得先截旧50档起点再应用旧差量。
+
+### 10.1 已实现的离线基础表（显式初始化）
+
+`DerivativeSchemaStatements`/`InitDerivativeSchema` 提供以下六表；原 `InitSchema` 不调用它们，app仅在期权任务启用时通过 `InitOptionsLiveSchema` 初始化。均为 `ReplacingMergeTree`，以下是实际代码的逻辑键和数据口径。热路径没有JSON、字符串价格或二进制浮点数。
+
+| 表 | 排序/去重键 | 实际字段与约束 |
+| --- | --- | --- |
+| `derivative_contract_spec` | `instrument_id` | 源ID、创建时间、经济定义hash、normalization_version、linear/reversed、native amount种类与币种、Decimal(38,18) contract_size、index、结算语义ID、Nullable期权类型/strike/strike_currency、等长组合腿ID/有符号比例/Decimal换算系数数组、首次证据hash。与instrument经济版本一起不可变；本阶段不单独建option和combo子表 |
+| `derivative_trading_rule` | `trading_rule_id FixedString(64)` | instrument、Decimal tick/min amount/step、等长分段阈值/tick数组、observed_at/known_from/effective_from、明确first_observed或published口径、来源URL与payload hash；时间DateTime64(6,UTC)；规则变化新增ID |
+| `derivative_book_minute` | `(instrument_id,minute_time,batch_id)` | id、encoding_version=1、stored_depth=10、signed、valid_bitmap、delta_bitmap、四个买卖price Int64/qty UInt64数组，每侧0–10档；价0不是填充；按月分区 |
+| `derivative_book_second_delta` | `(minute_id,second_offset,batch_id)` | 秒1–59，买卖各price Int64与qty UInt64等长数组，qty=0删除；按minute_id内分钟推导月份分区 |
+| `derivative_book_quality_minute` | `(instrument_id,minute_time,batch_id)` | signed、整份该instrument分钟内容hash；sampled/stream_valid/replay_valid/market_known/market_open位图；所有时间、epoch、序号、交易规则、市场状态依据、原因和实际档数按60槽保存；时间统一Nullable DateTime64(6,UTC)，UUID/hash未知为NULL；按月分区 |
+| `derivative_book_foundation_commit` | `(run_id,minute_time)` | batch_id、origin仅fixture/synthetic、evidence_hash、prepared_at、完整instrument_ids与member_hashes数组、anchor_count与delta_count；按月分区；最后写以发布离线分钟 |
+
+质量原因的UInt8编码由 `model.DerivativeReason` 定义：0=有效、1=未就绪、2=断线、3=断序、4=解析错误、5=元数据未知、6=采样迟滞、7=缺锚点、8=资源超限、9=时钟异常、10=明确关闭或已到期；市场状态依据0=未知、1=生命周期接纳时间、2=目录发布时间。market_known=0时market_open不能当作明确关闭。当前实时实现使用依据2，不宣称具有独立生命周期频道的实时确认。
+
+分钟内容摘要包含锚点、全部差量和60槽质量，使用确定性二进制编码；nil和空价量数组等价，时间按UTC值编码。batch摘要再包括run、分钟、origin、证据hash、准备时间和有序成员摘要；重试不得修改这些字段。读取完整成员再校验各行存在性、delta_bitmap与内容摘要，失效秒和缺锚点返回明确质量，提交后缺数据返回incomplete。离线提交标记只证明指定离线批次完整，不能证明实际采集已运行。
+
+每批最多448个instrument，预校验后每100个instrument分块写入差量、快照、质量，全部成功后写提交标记；进程内互斥，但不声称支持多writer。离线期权时间不改写成查询时间。真实原始数值按1e-8编码，source_contract_size不再重复乘到native amount。
+
+### 10.2 第一阶段离线测量
+
+2026-09-21 的整日10档合成测试通过：单流1440分钟的快照、差量、质量及提交标记合计，活跃输入为2,282,784压缩字节，静默输入为1,121,074压缩字节。最终查询代码在相同整日样本上抽取100个分钟，完整单成员批次读取与回放P95分别为31.49 ms、31.54 ms。测量口径、分表占用及测试记录见[离线实现记录](arbitrage/strategies/arb-0009-options-phase-1.md#整日合成容量与查询测量)。这些是离线合成结果；真实活跃/冷门交易流的日量与查询测量在接入后随持续采集记录，不再设置七天运行准入要求。
+
+### 10.3 实时新增四表
+
+`InitOptionsLiveSchema` 显式初始化原六表与以下四表。期权关闭时不执行这些DDL；新表同为 `ReplacingMergeTree`，不是JSON大表。
+
+| 表 | 排序/去重键 | 实际字段与约束 |
+| --- | --- | --- |
+| `options_live_run` | `run_id UUID` | `run_hash FixedString(64)`、UTC微秒起始时间、REST/WS URL、选择方法；有序等长成员instrument ID/原始symbol/经济定义hash/index ID数组、唯一有序index ID集合；选择参考symbol、Int64买卖价格tick、源/接收时间、hash等长数组。一个run最多32个合约、4个指数，校验C/P及同到期期货配对 |
+| `options_metadata_observation` | `(run_id,attempt_id,instrument_id)`，按观测月分区 | scope、symbol、URL、UTC微秒requested/observed时间、payload hash、status、definition hash、rule ID、state、active、scope_complete及UInt32 raw/accepted/excluded计数、row_hash。相同响应的成员共享attempt UUID，成功scope满足raw=accepted+excluded；request/parse_error不能伪造完整计数，missing/definition_changed来自完整scope但不能携带当前有效规则或状态 |
+| `options_index_minute` | `(index_id,minute_time,batch_id)`，按分钟月分区 | row_hash与固定60槽：`prices Array(Nullable(Decimal(38,18)))`、source/received UTC微秒Nullable时间数组、UUID epoch数组、UInt8 state数组。采样时间由minute+槽位推导 |
+| `options_live_minute_commit` | `(run_id,minute_time)`，按分钟月分区 | batch_id/run_hash、UTC微秒prepared_at、有序instrument_ids/member_hashes、UInt32 anchor_count/delta_count、index_ids/index_hashes。整个分钟的数据写成功后才发布；内容不同的同键重试拒绝 |
+
+指数state为0=缺失、1=本秒收到、2=沿用此前观测、3=断线、4=无效。1/2必须有正价格、真实源/接收时间与非零epoch；其他状态价格和时间均为NULL，不能拿断线前价格冒充当前值。held只表示健康连接上暂未变化，不改写原始源时间；指数失效与盘口有效性独立。
+
+元数据响应没有独立来源时间时，`observed_at` 明确采用完整响应解析后的采集时间；所有实时scope保留URL、请求窗口、hash和解析计数。规则和证据写入成功后才经有序入口发布，质量行中的rule/state发布时间不能早于观测，也不能晚于对应采样秒。当前规则引用必须能在本run的成功元数据行中核验，读取也会检查；缺证据、缺指数或缺盘口行返回incomplete。
+
+实时批次ID绑定run hash、有序完整成员和指数摘要，使用不同于离线信封的身份域。读取 `LoadOptionsMinute` 只认实时提交表，核对持久化run/规格、完整成员、规则及元数据证据后逐秒回放；`LoadDerivativeBookEnvelope`仍只认fixture/synthetic离线提交表。已存在的历史50档使用原回放路径。
+
+秒入口的256条/16MiB上限、时钟异常或持续写入失败会结束当前run并重试，尚未完成/提交的分钟形成缺口。逐秒冻结迟于T+250ms则保存无效质量；缺第0秒锚点时该分钟不可回放。停止最多45秒排空完整分钟，末尾不完整分钟不提交。实际短窗口容量与查询测量见[实时记录](arbitrage/strategies/arb-0009-options-live.md)。
+
+## 11. Ethereum DEX 协议兑换实验（2026-09-22）
+
+本次新增五张专项表，DDL 入口为 `DEXSchemaStatements` / `InitDEXSchema`；`collector --init-dex-schema` 只建表并退出。当前 `crypto_market_info` 已实际建表，DEX 持续采集默认关闭。完整范围、使用方法与验收记录见 [DEX 实现说明](dex-arbitrage-implementation.md)。原盘口、期权、资金费率和收益模型不改。
+
+通用列：`chain_id UInt64`、`block_number UInt64`、`block_hash/manifest_hash/batch_id/payload_hash FixedString(32)`、`block_time DateTime64(6,'UTC')`。地址使用 `FixedString(20)`；原子金额、费用用 `UInt256`，未知数量为 `Nullable(UInt256)`，应用通过 `big.Int` 读写，不经浮点。所有表按 `toYYYYMM(block_time)` 分区，不设自动删除 TTL。
+
+| 表 | 额外字段及语义 | 引擎、排序/去重键 |
+| --- | --- | --- |
+| `dex_block` | parent_hash、base_fee_wei、fee_recipient；received_at/available_at UTC微秒时间；capture_mode、canonical、finality、revision；log/receipt/quote三项coverage；expected_quotes/actual_quotes/log_count/receipt_count、三项成员SHA-256、committed | `ReplacingMergeTree(revision)`；chain+manifest+height+hash |
+| `dex_sky_state` | module_id；tin/tout/buf/dai_cash/usdc_pocket_cash/pocket_allowance；vat_live/dai_join_live/dai_join_ward/usds_join_ward；identity_ok/state_complete/reason | `ReplacingMergeTree`；chain+manifest+height+hash+batch+module |
+| `dex_route_quote` | quote_id、quote_role、route_id、quote_mode、token_in/out、requested_amount_raw；amount_in/out_raw、dust_dai/usds；v3_input/output_token、v3_input/output_raw、sqrt_price_after_x96、ticks_crossed、quoter_gas_estimate；status/reason/available_at | `ReplacingMergeTree`；chain+manifest+height+hash+batch+quote_id |
+| `dex_log` | tx_hash、tx_index、log_index、emitter、topics Array(FixedString(32))、ABI data String（二进制）、event_type、removed | `ReplacingMergeTree`；chain+manifest+height+hash+batch+tx+log_index |
+| `dex_tx_receipt` | tx_hash/index、sender/recipient、has_recipient、tx_type、value_raw、input_selector Nullable(FixedString(4))、calldata_hash、status、gas_used、effective_gas_price、receipt_log_count、receipt_hash、available_at | `ReplacingMergeTree(available_at)`；chain+height+hash+tx |
+
+`capture_mode` 为 `live`（当时新块）、`backfill`（补头/日志，不补历史金额报价）、`research`（显式历史样本，不能计入实时完整覆盖或确认新窗口）。`finality` 为 head/safe/finalized/orphaned；三项覆盖为 missing/partial/complete。空日志请求成功是 complete 且 count=0，请求失败是 missing，绝不混用。quote status 为 ok/unknown，unknown 必须有具体原因，缺少任一必要值不得填成零。
+
+`quote_id` 是 batch、role、route、输入输出币、模式及请求原子金额的确定性摘要。每批固定56条策略金额观测和2条参考观测，失败档也保存 unknown。quote成员摘要按quote_id排序，日志按log_index排序，回执按tx_hash排序，再对定类型序列计算SHA-256；真实读回测试检查UInt256、NULL、时间及摘要完全一致。
+
+写入顺序为 Sky/quotes/logs/receipts，再写 dex_block 的 committed 标记；进程内写入失败保留同一不可变批次重试，未提交事实不可见。查询**先对每个block逻辑键 argMax(tuple(...),revision)，再筛canonical/committed/finality**；不能先筛旧canonical行。报价只按最新完成行选择的batch读取，并校验成员数和成员摘要。finality/重组版本保留原batch、成员、received_at与available_at，孤块事实保留而统计排除。
+
+已经提交但缺失的日志另行补采：先写日志事实，再追加coverage完成revision，保留原quote成员与可见时间；补采的原始证据记录真实获取时间。相同hash的每条日志使用确定性定类型日志响应作为payload证据，完整RPC信封由该区块的proof引用；不能因RPC id或请求时间变化而改变同一日志事实。日志补写同样保留不可变pending直到完成。回执独立batch按available_at去重，补齐目标交易集合后更新receipt coverage/count/members，不让已完成块占住补采窗口。这些是补采完成版本；纯finality版本不重新生成数据。
+
+原始RPC响应及manifest按SHA-256寻址写入 `DEX_EVIDENCE_DIR/<hash前2位>/<hash>.json.gz`，临时文件、fsync、原子rename完成后才提交表引用；calldata证据保存原始字节（该文件不一定是JSON）。RPC证据保存脱敏source_id（主机名）与UTC获取时间，不保存RPC URL的用户名、路径或查询凭据。事实行及manifest在库内均有hash，原始body在文件中；不使用通用JSON业务大表。证据目录与ClickHouse数据共同备份，不能独立清理引用文件。
+
+报告连接使用服务端 `readonly=1`，不执行数据库引导或DDL。成本补报只写报告目录的证据与JSON/CSV，不修改生产事实。参考1 WETH卖出价格不参与可执行gas成本计算；成本必须用同hash、实际gas数量的USDC→WETH exact-output，Quoter内部gas不作为交易总gas。
+
+日规模存储/查询验收见[容量记录](../research/2026-09-22-dex-implementation/validation.md#日规模合成容量)：真实样本衍生的两份7,200块合成数据分别占40,849,739及34,423,988压缩列字节，另列查询耗时；不包含gzip证据、marks和真实行情变化的额外熵，不当作实采日量。

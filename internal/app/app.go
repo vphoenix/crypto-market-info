@@ -10,6 +10,7 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/config"
 	"github.com/vphoenix/crypto-market-info/internal/funding"
 	"github.com/vphoenix/crypto-market-info/internal/model"
+	"github.com/vphoenix/crypto-market-info/internal/optionslive"
 	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
 	marketyield "github.com/vphoenix/crypto-market-info/internal/yield"
 	"github.com/vphoenix/crypto-market-info/internal/yield/aave"
@@ -41,6 +42,51 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 	if logger == nil {
 		logger = slog.Default()
 	}
+	if cfg.DEXEnabled {
+		return runIndependentSources(ctx, logger, 10*time.Second,
+			component{name: "Ethereum DEX", run: func(ctx context.Context) error {
+				store, err := chstore.Open(ctx, cfg.ClickHouse)
+				if err != nil {
+					return err
+				}
+				defer store.Close()
+				return runDEX(ctx, cfg, store, logger)
+			}},
+			component{name: "CEX and other sources", run: func(ctx context.Context) error {
+				return runMarketSources(ctx, cfg, logger)
+			}},
+		)
+	}
+	return runMarketSources(ctx, cfg, logger)
+}
+
+// Each source group owns its connection and startup lifecycle. A CEX catalog
+// timeout must not cancel DEX live sampling or force a process-wide restart.
+func runIndependentSources(ctx context.Context, logger *slog.Logger, retry time.Duration, groups ...component) error {
+	var wait sync.WaitGroup
+	for _, group := range groups {
+		group := group
+		wait.Add(1)
+		go func() {
+			defer wait.Done()
+			for ctx.Err() == nil {
+				err := group.run(ctx)
+				if ctx.Err() != nil {
+					return
+				}
+				logger.Error("collector source group retrying", "group", group.name, "error", err)
+				if !dexDelay(ctx, retry) {
+					return
+				}
+			}
+		}()
+	}
+	<-ctx.Done()
+	wait.Wait()
+	return nil
+}
+
+func runMarketSources(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 	clients := newVenueClients(cfg, logger)
 	discovery, err := discoverPerpetual(ctx, cfg, clients)
 	if err != nil {
@@ -59,6 +105,11 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 		return err
 	}
 	components := markets.components
+	if cfg.Options.Enabled {
+		components = append(components, component{name: "Deribit options", run: func(ctx context.Context) error {
+			return optionslive.Run(ctx, cfg.Options, store, logger)
+		}})
+	}
 	fundingInstruments := markets.fundingInstruments
 	if len(fundingInstruments) > 0 {
 		estimates := funding.NewEstimateStore()
