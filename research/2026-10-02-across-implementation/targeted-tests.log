@@ -1,0 +1,3 @@
+ok  	github.com/vphoenix/crypto-market-info/internal/across	0.237s
+ok  	github.com/vphoenix/crypto-market-info/internal/storage/clickhouse	0.009s
+?   	github.com/vphoenix/crypto-market-info/cmd/across-data	[no test files]

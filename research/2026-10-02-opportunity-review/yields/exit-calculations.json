@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "collected_at_utc": "2026-10-01T17:33:29.378757+00:00",
+    "url": "https://api-v2.pendle.finance/core/v2/sdk/1/convert?receiver=0x000000000000000000000000000000000000dEaD&slippage=0.0001&tokensIn=0xdc035d45d973e3ec169d2276ddab16f1e407384f&tokensOut=0xdac17f958d2ee523a2206206994597c13d831ec7&amountsIn=1005500000000000000000000&enableAggregator=true",
+    "read_only": true,
+    "role": "current_exit_reference_only_not_future_exit_guarantee",
+    "http_status": 200,
+    "sha256": "b13b6a7a7ce2d8ff863bb4d605213ded4774f2024288d19edf371e13e4226eed"
+  },
+  "usds_in": "1005500",
+  "usdt_out_expected": "1005906.071258",
+  "usdt_out_min": "1005805.48065",
+  "expected_usdt_per_usds": "1.00040385008254599701640974639482844356041770263550472401790",
+  "min_usdt_per_usds": "1.00030380969666832421680755842864246643460964694181999005470",
+  "expected_haircut_bps": "-4.03850082545997016409746394828443560417702635504724017900000",
+  "min_haircut_bps": "-3.03809696668324216807558428642466434609646941819990054700000",
+  "gas_included": false,
+  "role": "current_exit_quote_reference_only; future price/capacity not guaranteed"
+}

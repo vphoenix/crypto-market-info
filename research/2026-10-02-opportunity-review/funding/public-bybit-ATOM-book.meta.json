@@ -1,0 +1,8 @@
+{
+  "url": "https://api.bybit.com/v5/market/orderbook?category=linear&symbol=ATOMUSDT&limit=10",
+  "requested_at_utc": "2026-10-01T17:36:34.320683+00:00",
+  "received_at_utc": "2026-10-01T17:36:35.943815+00:00",
+  "http_status": 200,
+  "error": null,
+  "sha256": "3fdb892ee71c16e0dd490bcd17fff464c073f5508c447c4cc02c0b1c6957beee"
+}

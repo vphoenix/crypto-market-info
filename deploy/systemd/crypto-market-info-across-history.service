@@ -1,0 +1,22 @@
+[Unit]
+Description=Across fixed 30-day history research backfill (2026-09-02 to 2026-10-02)
+After=network-online.target crypto-market-info-clickhouse.service
+Wants=network-online.target crypto-market-info-clickhouse.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/crypto-market-info
+ExecStart=%h/crypto-market-info/var/across/bin/across-data backfill --database crypto_market_info_across_history --evidence var/across/history-evidence --chain 8453 --from-block 50783591 --to-block 52079591 --rpc-min-interval 500ms
+ExecStart=%h/crypto-market-info/var/across/bin/across-data backfill --database crypto_market_info_across_history --evidence var/across/history-evidence --chain 42161 --from-block 500994686 --to-block 511000892 --rpc-min-interval 500ms
+TimeoutStartSec=infinity
+TimeoutStopSec=30
+RemainAfterExit=yes
+Restart=on-failure
+RestartSec=60
+KillSignal=SIGTERM
+UMask=0077
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

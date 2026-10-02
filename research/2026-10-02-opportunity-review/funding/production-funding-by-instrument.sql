@@ -1,0 +1,1 @@
+SELECT instrument_id,count() AS rows,countIf(is_actual) AS actual_rows,minIf(funding_time,is_actual) AS first_actual,maxIf(funding_time,is_actual) AS latest_actual,max(hour_time) AS latest_hour FROM crypto_market_info.funding_rate_hourly FINAL GROUP BY instrument_id ORDER BY instrument_id

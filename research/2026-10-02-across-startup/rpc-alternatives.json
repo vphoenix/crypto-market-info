@@ -1,0 +1,995 @@
+{
+  "observed_at_utc": "2026-10-02T14:08:35.713661+00:00",
+  "nature": "Read-only public chain/state probes, EIP-1898 requireCanonical primary, block-number diagnostic only; no credentials or transactions",
+  "providers": [
+    {
+      "observed_at_utc": "2026-10-02T14:06:56.489317+00:00",
+      "endpoint": "https://arbitrum-one-rpc.publicnode.com",
+      "provider_reference": "https://arbitrum.publicnode.com/",
+      "user_agent": "crypto-market-info/1.0",
+      "nature": "read-only public JSON-RPC; no credentials or transactions",
+      "spoke_pool": "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+      "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+      "cases": [
+        {
+          "name": "recent_failed_hash",
+          "hash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+          "header_verified": true,
+          "block_number": 510995400,
+          "storage_eip1898_available": false,
+          "implementation_code_eip1898_available": false,
+          "matches_current_allowlisted_implementation": false,
+          "matches_archived_current_runtime_bytecode": false,
+          "height_parameter_diagnostic": {
+            "storage_available": false,
+            "code_nonempty": false,
+            "changes_collector_anchor_rule": false
+          },
+          "usable_for_requested_identity_reads": false
+        },
+        {
+          "name": "frozen_30_day_start",
+          "hash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+          "expected_number": 500994686,
+          "header_verified": true,
+          "block_number": 500994686,
+          "storage_eip1898_available": false,
+          "implementation_code_eip1898_available": false,
+          "matches_current_allowlisted_implementation": false,
+          "matches_archived_current_runtime_bytecode": false,
+          "height_parameter_diagnostic": {
+            "storage_available": false,
+            "code_nonempty": false,
+            "changes_collector_anchor_rule": false
+          },
+          "usable_for_requested_identity_reads": false
+        }
+      ],
+      "requests": [
+        {
+          "requested_at_utc": "2026-10-02T14:06:56.489336+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "method": "eth_chainId",
+              "params": []
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 2,
+              "method": "eth_getBlockByHash",
+              "params": [
+                "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                false
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 3,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                {
+                  "blockHash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                  "requireCanonical": true
+                }
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 4,
+              "method": "eth_getBlockByHash",
+              "params": [
+                "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                false
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 5,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                {
+                  "blockHash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                  "requireCanonical": true
+                }
+              ]
+            }
+          ],
+          "request_sha256": "9d18b2549e1b679fb3dda6c6f6e3d8f1fc125aa1ffd472a55a645d03ce8d12b3",
+          "http_status": 200,
+          "raw_response_sha256": "547b07b21d1e0b1e607b73ac4f9e2ae39a5b4f3b1288bee7fbf1018ec92767e3",
+          "responses": [
+            {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "result": "0xa4b1"
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 2,
+              "result": {
+                "number": "0x1e752bc8",
+                "hash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                "parentHash": "0xb34f3945ea3818e0310ee06d4168a14cd585f2f146174ba0f2e90cb13ef44940",
+                "timestamp": "0x6abfaf18",
+                "stateRoot": "0x18137d4adf07c03b53b6483f81179e2327c8670a73eea5d5194f8560e3651271"
+              },
+              "header_other_fields_omitted": true
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 3,
+              "error": {
+                "code": -32000,
+                "message": "historical state 18137d4adf07c03b53b6483f81179e2327c8670a73eea5d5194f8560e3651271 is not available"
+              }
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 4,
+              "result": {
+                "number": "0x1ddc927e",
+                "hash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                "parentHash": "0x31cbbbafafa967f3b55e3225f5e6ace26fdcb717bfa8202eb5e47c4089a2cb1f",
+                "timestamp": "0x6a9827c5",
+                "stateRoot": "0xdddd73c4c827faaa48e772dd7d964f6bd49f91f72fd9aebb74058f2b9992897f"
+              },
+              "header_other_fields_omitted": true
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 5,
+              "error": {
+                "code": -32000,
+                "message": "historical state dddd73c4c827faaa48e772dd7d964f6bd49f91f72fd9aebb74058f2b9992897f is not available"
+              }
+            }
+          ],
+          "elapsed_ms": 841
+        },
+        {
+          "requested_at_utc": "2026-10-02T14:06:57.330849+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 6,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                {
+                  "blockHash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                  "requireCanonical": true
+                }
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 8,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                "0x1e752bc8"
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 9,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                "0x1e752bc8"
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 7,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                {
+                  "blockHash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                  "requireCanonical": true
+                }
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 10,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                "0x1ddc927e"
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 11,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                "0x1ddc927e"
+              ]
+            }
+          ],
+          "request_sha256": "993012387e43ac7b890c2b31fdfc815ec4ace6c229ea4b1626f2b620e3f3f635",
+          "http_status": 200,
+          "raw_response_sha256": "0da274af0d9e6a56e49edfe2e39094b3dcce8e98d29f359b3a57b583ad13e772",
+          "responses": [
+            {
+              "error": {
+                "code": -32000,
+                "message": "historical state 18137d4adf07c03b53b6483f81179e2327c8670a73eea5d5194f8560e3651271 is not available"
+              },
+              "id": 6,
+              "jsonrpc": "2.0"
+            },
+            {
+              "jsonrpc": "2.0",
+              "error": {
+                "code": -32602,
+                "message": "Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode"
+              },
+              "id": 8
+            },
+            {
+              "error": {
+                "code": -32000,
+                "message": "historical state dddd73c4c827faaa48e772dd7d964f6bd49f91f72fd9aebb74058f2b9992897f is not available"
+              },
+              "id": 7,
+              "jsonrpc": "2.0"
+            },
+            {
+              "jsonrpc": "2.0",
+              "error": {
+                "code": -32602,
+                "message": "Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode"
+              },
+              "id": 9
+            },
+            {
+              "jsonrpc": "2.0",
+              "error": {
+                "code": -32602,
+                "message": "Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode"
+              },
+              "id": 11
+            },
+            {
+              "jsonrpc": "2.0",
+              "error": {
+                "code": -32602,
+                "message": "Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode"
+              },
+              "id": 10
+            }
+          ],
+          "elapsed_ms": 1427
+        }
+      ],
+      "limitation": "Point-in-time probes of two anchored blocks, not full-window availability or SLA.",
+      "chain_id_verified": true,
+      "both_requested_blocks_usable": false
+    },
+    {
+      "observed_at_utc": "2026-10-02T14:08:27.202261+00:00",
+      "endpoint": "https://arbitrum.drpc.org",
+      "provider_reference": "https://drpc.org/docs/arbitrum-api",
+      "user_agent": "crypto-market-info/1.0",
+      "nature": "read-only public JSON-RPC; no credentials or transactions",
+      "spoke_pool": "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+      "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+      "cases": [
+        {
+          "name": "recent_failed_hash",
+          "hash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+          "header_verified": true,
+          "block_number": 510995400,
+          "storage_eip1898_available": false,
+          "implementation_code_eip1898_available": false,
+          "matches_current_allowlisted_implementation": false,
+          "matches_archived_current_runtime_bytecode": false,
+          "height_parameter_diagnostic": {
+            "storage_available": false,
+            "code_nonempty": false,
+            "changes_collector_anchor_rule": false
+          },
+          "usable_for_requested_identity_reads": false
+        },
+        {
+          "name": "frozen_30_day_start",
+          "hash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+          "expected_number": 500994686,
+          "header_verified": true,
+          "block_number": 500994686,
+          "storage_eip1898_available": false,
+          "implementation_code_eip1898_available": false,
+          "matches_current_allowlisted_implementation": false,
+          "matches_archived_current_runtime_bytecode": false,
+          "height_parameter_diagnostic": {
+            "storage_available": false,
+            "code_nonempty": false,
+            "changes_collector_anchor_rule": false
+          },
+          "usable_for_requested_identity_reads": false
+        }
+      ],
+      "requests": [
+        {
+          "requested_at_utc": "2026-10-02T14:08:27.202291+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "method": "eth_chainId",
+              "params": []
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 2,
+              "method": "eth_getBlockByHash",
+              "params": [
+                "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                false
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 3,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                {
+                  "blockHash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                  "requireCanonical": true
+                }
+              ]
+            }
+          ],
+          "request_sha256": "508d0e62e8b444ab5edbb356979547266b060af95e97c2e0c5cfdd96113f8032",
+          "http_status": 200,
+          "raw_response_sha256": "b60a4731ddd6b2e959017da141e39375ffd804e14e5f04a76b0eac9d8cbfaed7",
+          "responses": [
+            {
+              "id": 1,
+              "jsonrpc": "2.0",
+              "result": "0xa4b1"
+            },
+            {
+              "id": 2,
+              "jsonrpc": "2.0",
+              "result": {
+                "number": "0x1e752bc8",
+                "hash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                "parentHash": "0xb34f3945ea3818e0310ee06d4168a14cd585f2f146174ba0f2e90cb13ef44940",
+                "timestamp": "0x6abfaf18",
+                "stateRoot": "0x18137d4adf07c03b53b6483f81179e2327c8670a73eea5d5194f8560e3651271"
+              },
+              "header_other_fields_omitted": true
+            },
+            {
+              "id": 3,
+              "jsonrpc": "2.0",
+              "error": {
+                "code": -32000,
+                "message": "historical state 18137d4adf07c03b53b6483f81179e2327c8670a73eea5d5194f8560e3651271 is not available"
+              }
+            }
+          ],
+          "elapsed_ms": 744
+        },
+        {
+          "requested_at_utc": "2026-10-02T14:08:27.946178+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 4,
+              "method": "eth_getBlockByHash",
+              "params": [
+                "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                false
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 5,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                {
+                  "blockHash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                  "requireCanonical": true
+                }
+              ]
+            }
+          ],
+          "request_sha256": "fa39639215fbd898ae3975442b86c5b66e14ccda6f5a3dc17ec34dc3d1e426a5",
+          "http_status": 200,
+          "raw_response_sha256": "fd51dc10603ab090afd86ab2802066a2c999128d60ba73192a22cf377b2c86e4",
+          "responses": [
+            {
+              "id": 4,
+              "jsonrpc": "2.0",
+              "result": {
+                "number": "0x1ddc927e",
+                "hash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                "parentHash": "0x31cbbbafafa967f3b55e3225f5e6ace26fdcb717bfa8202eb5e47c4089a2cb1f",
+                "timestamp": "0x6a9827c5",
+                "stateRoot": "0xdddd73c4c827faaa48e772dd7d964f6bd49f91f72fd9aebb74058f2b9992897f"
+              },
+              "header_other_fields_omitted": true
+            },
+            {
+              "id": 5,
+              "jsonrpc": "2.0",
+              "error": {
+                "code": -32000,
+                "message": "historical state dddd73c4c827faaa48e772dd7d964f6bd49f91f72fd9aebb74058f2b9992897f is not available"
+              }
+            }
+          ],
+          "elapsed_ms": 624
+        },
+        {
+          "requested_at_utc": "2026-10-02T14:08:28.570473+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 6,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                {
+                  "blockHash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                  "requireCanonical": true
+                }
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 8,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                "0x1e752bc8"
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 9,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                "0x1e752bc8"
+              ]
+            }
+          ],
+          "request_sha256": "fbda095579431cef6508f6fb01272769b3f14875ba422c7aaf2f1711b9fa7755",
+          "http_status": 200,
+          "raw_response_sha256": "a2a26c44bab10e739bba1260ff8f6a8f395bb1cd21391cca1b5b29d8cd4c97bf",
+          "responses": [
+            {
+              "id": 6,
+              "jsonrpc": "2.0",
+              "error": {
+                "code": -32000,
+                "message": "historical state 18137d4adf07c03b53b6483f81179e2327c8670a73eea5d5194f8560e3651271 is not available"
+              }
+            },
+            {
+              "id": 8,
+              "jsonrpc": "2.0",
+              "error": {
+                "message": "Unknown state. First available state is 1",
+                "code": 27
+              }
+            },
+            {
+              "id": 9,
+              "jsonrpc": "2.0",
+              "error": {
+                "message": "Unknown state. First available state is 1",
+                "code": 27
+              }
+            }
+          ],
+          "elapsed_ms": 612
+        },
+        {
+          "requested_at_utc": "2026-10-02T14:08:29.182150+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 7,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                {
+                  "blockHash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                  "requireCanonical": true
+                }
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 10,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                "0x1ddc927e"
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 11,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                "0x1ddc927e"
+              ]
+            }
+          ],
+          "request_sha256": "9a880eb3d1d0c7fcb6bb987344a6280f929d13370d38fb97d7f99675a788719a",
+          "http_status": 200,
+          "raw_response_sha256": "461fbd946fc8fba857c19ed9659b1bd1abab32a93c4bece184203d27022db36a",
+          "responses": [
+            {
+              "id": 7,
+              "jsonrpc": "2.0",
+              "error": {
+                "code": -32000,
+                "message": "historical state dddd73c4c827faaa48e772dd7d964f6bd49f91f72fd9aebb74058f2b9992897f is not available"
+              }
+            },
+            {
+              "id": 10,
+              "jsonrpc": "2.0",
+              "error": {
+                "message": "Unknown state. First available state is 1",
+                "code": 27
+              }
+            },
+            {
+              "id": 11,
+              "jsonrpc": "2.0",
+              "error": {
+                "message": "Unknown state. First available state is 1",
+                "code": 27
+              }
+            }
+          ],
+          "elapsed_ms": 635
+        }
+      ],
+      "limitation": "Point-in-time probes of two anchored blocks, not full-window availability or SLA.",
+      "chain_id_verified": true,
+      "both_requested_blocks_usable": false,
+      "prior_attempts": [
+        {
+          "requested_at_utc": "2026-10-02T14:06:56.489231+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "method": "eth_chainId",
+              "params": []
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 2,
+              "method": "eth_getBlockByHash",
+              "params": [
+                "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                false
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 3,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                {
+                  "blockHash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                  "requireCanonical": true
+                }
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 4,
+              "method": "eth_getBlockByHash",
+              "params": [
+                "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                false
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 5,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                {
+                  "blockHash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                  "requireCanonical": true
+                }
+              ]
+            }
+          ],
+          "request_sha256": "9d18b2549e1b679fb3dda6c6f6e3d8f1fc125aa1ffd472a55a645d03ce8d12b3",
+          "error": "HTTPError: HTTP Error 500: Internal Server Error",
+          "http_status": 500,
+          "error_body": "[{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"Batch of more than 3 requests are not allowed on free plan, to use this feature register paid account at drpc.org\",\"code\":31}},{\"id\":2,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"Batch of more than 3 requests are not allowed on free plan, to use this feature register paid account at drpc.org\",\"code\":31}},{\"id\":3,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"Batch of more than 3 requests are not allowed on free plan, to use this feature register paid account at drpc.org\",\"code\":31}},{\"id\":4,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"Batch of more than 3 requests are not allowed on free plan, to use this feature register paid account at drpc.org\",\"code\":31}},{\"id\":5,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"Batch of more than 3 requests are not allowed on free plan, to use this feature register paid account at drpc.org\",\"code\":31}}]",
+          "elapsed_ms": 482
+        },
+        {
+          "requested_at_utc": "2026-10-02T14:06:56.971767+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 6,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                {
+                  "blockHash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                  "requireCanonical": true
+                }
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 7,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                {
+                  "blockHash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                  "requireCanonical": true
+                }
+              ]
+            }
+          ],
+          "request_sha256": "70b9f1d29d56507a74aa6992b4391a7fb536ec437ba2ad44db0e572ff9a41fd1",
+          "http_status": 200,
+          "raw_response_sha256": "5ca37d57eea9a7a423dc3b1e88e6fb2de2f9ed782cd6f9d06ba2c157078025eb",
+          "responses": [
+            {
+              "id": 6,
+              "jsonrpc": "2.0",
+              "error": {
+                "code": -32000,
+                "message": "historical state 18137d4adf07c03b53b6483f81179e2327c8670a73eea5d5194f8560e3651271 is not available"
+              }
+            },
+            {
+              "id": 7,
+              "jsonrpc": "2.0",
+              "error": {
+                "code": -32000,
+                "message": "historical state dddd73c4c827faaa48e772dd7d964f6bd49f91f72fd9aebb74058f2b9992897f is not available"
+              }
+            }
+          ],
+          "elapsed_ms": 674
+        }
+      ]
+    },
+    {
+      "observed_at_utc": "2026-10-02T14:08:27.200006+00:00",
+      "endpoint": "https://arbitrum.api.onfinality.io/public",
+      "provider_reference": "https://onfinality.io/en/networks/arbitrum",
+      "user_agent": "crypto-market-info/1.0",
+      "nature": "read-only public JSON-RPC; no credentials or transactions",
+      "spoke_pool": "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+      "implementation_slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+      "cases": [
+        {
+          "name": "recent_failed_hash",
+          "hash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+          "header_verified": false,
+          "storage_eip1898_available": false,
+          "implementation_code_eip1898_available": false,
+          "matches_current_allowlisted_implementation": false,
+          "matches_archived_current_runtime_bytecode": false,
+          "height_parameter_diagnostic": {
+            "storage_available": false,
+            "code_nonempty": false,
+            "changes_collector_anchor_rule": false
+          },
+          "usable_for_requested_identity_reads": false
+        },
+        {
+          "name": "frozen_30_day_start",
+          "hash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+          "expected_number": 500994686,
+          "header_verified": false,
+          "storage_eip1898_available": false,
+          "implementation_code_eip1898_available": false,
+          "matches_current_allowlisted_implementation": false,
+          "matches_archived_current_runtime_bytecode": false,
+          "height_parameter_diagnostic": {
+            "storage_available": false,
+            "code_nonempty": false,
+            "changes_collector_anchor_rule": false
+          },
+          "usable_for_requested_identity_reads": false
+        }
+      ],
+      "requests": [
+        {
+          "requested_at_utc": "2026-10-02T14:08:27.200037+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "method": "eth_chainId",
+              "params": []
+            }
+          ],
+          "request_sha256": "c90be31a4929bd934bae7d6b4411d2f19a42f41582f52bffc9671eeadd3452cd",
+          "http_status": 200,
+          "raw_response_sha256": "e763eb434bb5883ee998250ad94c5b2d9851e2613d49bdd5d7372ca3bdcfcc8d",
+          "responses": [
+            {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "result": "0xa4b1"
+            }
+          ],
+          "elapsed_ms": 522
+        },
+        {
+          "requested_at_utc": "2026-10-02T14:08:28.122670+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 2,
+              "method": "eth_getBlockByHash",
+              "params": [
+                "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                false
+              ]
+            }
+          ],
+          "request_sha256": "2136bcaaa3d67fa7118b290a536526055ead81b019e8c94cd2185972bd275edc",
+          "error": "HTTPError: HTTP Error 429: Too Many Requests",
+          "http_status": 429,
+          "error_body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32029,\"message\":\"Too Many Requests, Please apply an OnFinality API key or contact us to receive a higher rate limit\"},\"id\":2}",
+          "elapsed_ms": 502
+        },
+        {
+          "requested_at_utc": "2026-10-02T14:08:29.025035+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 3,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                {
+                  "blockHash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                  "requireCanonical": true
+                }
+              ]
+            }
+          ],
+          "request_sha256": "694c6c63ca00781410a22a03ca29c9b125fcf1a1e7d4b0ea258700262597a776",
+          "error": "HTTPError: HTTP Error 429: Too Many Requests",
+          "http_status": 429,
+          "error_body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32029,\"message\":\"Too Many Requests, Please apply an OnFinality API key or contact us to receive a higher rate limit\"},\"id\":3}",
+          "elapsed_ms": 467
+        },
+        {
+          "requested_at_utc": "2026-10-02T14:08:29.892071+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 4,
+              "method": "eth_getBlockByHash",
+              "params": [
+                "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                false
+              ]
+            }
+          ],
+          "request_sha256": "76ab1537198f0d0bbad0009ab818a62f8f96e82b1265b5f5bd5dc27c5fae1920",
+          "error": "HTTPError: HTTP Error 429: Too Many Requests",
+          "http_status": 429,
+          "error_body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32029,\"message\":\"Too Many Requests, Please apply an OnFinality API key or contact us to receive a higher rate limit\"},\"id\":4}",
+          "elapsed_ms": 1643
+        },
+        {
+          "requested_at_utc": "2026-10-02T14:08:31.935531+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 5,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                {
+                  "blockHash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                  "requireCanonical": true
+                }
+              ]
+            }
+          ],
+          "request_sha256": "d4baf514115712415a4c0a74b8315a2cc738dc70e29ade6c7132cc8646d3f03c",
+          "error": "HTTPError: HTTP Error 429: Too Many Requests",
+          "http_status": 429,
+          "error_body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32029,\"message\":\"Too Many Requests, Please apply an OnFinality API key or contact us to receive a higher rate limit\"},\"id\":5}",
+          "elapsed_ms": 509
+        },
+        {
+          "requested_at_utc": "2026-10-02T14:08:32.444903+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 6,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                {
+                  "blockHash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                  "requireCanonical": true
+                }
+              ]
+            }
+          ],
+          "request_sha256": "2f96680bf72b0a63b67e89bfde1ccdc4aa9a2e4c342c30aa63869b8edaa91ee6",
+          "error": "HTTPError: HTTP Error 429: Too Many Requests",
+          "http_status": 429,
+          "error_body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32029,\"message\":\"Too Many Requests, Please apply an OnFinality API key or contact us to receive a higher rate limit\"},\"id\":6}",
+          "elapsed_ms": 485
+        },
+        {
+          "requested_at_utc": "2026-10-02T14:08:33.329825+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 7,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                {
+                  "blockHash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                  "requireCanonical": true
+                }
+              ]
+            }
+          ],
+          "request_sha256": "5b288dd27afb151c842e7e70d7cc67f8e5d492d77c45ad09faf5048b65524766",
+          "error": "HTTPError: HTTP Error 429: Too Many Requests",
+          "http_status": 429,
+          "error_body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32029,\"message\":\"Too Many Requests, Please apply an OnFinality API key or contact us to receive a higher rate limit\"},\"id\":7}",
+          "elapsed_ms": 477
+        }
+      ],
+      "limitation": "Point-in-time probes of two anchored blocks, not full-window availability or SLA.",
+      "chain_id_verified": true,
+      "both_requested_blocks_usable": false,
+      "prior_attempts": [
+        {
+          "requested_at_utc": "2026-10-02T14:06:56.491303+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "method": "eth_chainId",
+              "params": []
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 2,
+              "method": "eth_getBlockByHash",
+              "params": [
+                "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                false
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 3,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                {
+                  "blockHash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                  "requireCanonical": true
+                }
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 4,
+              "method": "eth_getBlockByHash",
+              "params": [
+                "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                false
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 5,
+              "method": "eth_getStorageAt",
+              "params": [
+                "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                {
+                  "blockHash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                  "requireCanonical": true
+                }
+              ]
+            }
+          ],
+          "request_sha256": "9d18b2549e1b679fb3dda6c6f6e3d8f1fc125aa1ffd472a55a645d03ce8d12b3",
+          "error": "HTTPError: HTTP Error 429: Too Many Requests",
+          "http_status": 429,
+          "error_body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32029,\"message\":\"Too Many Requests, Please apply an OnFinality API key or contact us to receive a higher rate limit\"},\"id\":1}",
+          "elapsed_ms": 652
+        },
+        {
+          "requested_at_utc": "2026-10-02T14:06:57.143604+00:00",
+          "request": [
+            {
+              "jsonrpc": "2.0",
+              "id": 6,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                {
+                  "blockHash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+                  "requireCanonical": true
+                }
+              ]
+            },
+            {
+              "jsonrpc": "2.0",
+              "id": 7,
+              "method": "eth_getCode",
+              "params": [
+                "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+                {
+                  "blockHash": "0x53843c9a1e28221d7ab5991a043303c12f0fb095c902244619d6fde1c63db633",
+                  "requireCanonical": true
+                }
+              ]
+            }
+          ],
+          "request_sha256": "70b9f1d29d56507a74aa6992b4391a7fb536ec437ba2ad44db0e572ff9a41fd1",
+          "error": "HTTPError: HTTP Error 429: Too Many Requests",
+          "http_status": 429,
+          "error_body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32029,\"message\":\"Too Many Requests, Please apply an OnFinality API key or contact us to receive a higher rate limit\"},\"id\":6}",
+          "elapsed_ms": 468
+        }
+      ]
+    }
+  ],
+  "verified_archive_alternatives": [],
+  "limitation": "Two anchored blocks are tested; this does not prove full 30-day window availability or SLA.",
+  "conclusion": "No confirmed credential-free historical-state replacement among the three tested official public endpoints; existing routing was not changed.",
+  "provider_findings": {
+    "https://arbitrum-one-rpc.publicnode.com": "Chain/header verified. Both EIP-1898 anchored historical states unavailable; height-parameter diagnostics explicitly require a personal archive token.",
+    "https://arbitrum.drpc.org": "Chain/header verified with <=3-request batches. Both anchored historical slot/code reads unavailable. Current 20-member collector batching is incompatible with this free endpoint.",
+    "https://arbitrum.api.onfinality.io/public": "Chain ID verified once. Anchored state/header probes repeatedly HTTP429; archive capability remains unknown, not proven absent."
+  },
+  "routing_changed": false
+}

@@ -1,0 +1,2 @@
+{"instrument_id":1,"exchange":"Binance","market_type":"spot","exchange_symbol":"BTCUSDT","venue_contract_version":"","base_asset":"BTC","quote_asset":"USDT","settle_asset":null,"contract_multiplier":"1","price_tick_size":"0.01","quantity_step_size":"0.00001","expiry_time":null}
+{"instrument_id":3,"exchange":"OKX","market_type":"spot","exchange_symbol":"BTC-USDT","venue_contract_version":"","base_asset":"BTC","quote_asset":"USDT","settle_asset":null,"contract_multiplier":"1","price_tick_size":"0.1","quantity_step_size":"0.00000001","expiry_time":null}

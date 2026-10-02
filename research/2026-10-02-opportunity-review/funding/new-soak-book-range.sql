@@ -1,0 +1,1 @@
+SELECT min(minute_time) AS first_minute,max(minute_time) AS last_minute,count() AS minute_rows,uniqExact(instrument_id) AS instruments FROM crypto_market_info_perp_soak_20260928.order_book_minute FINAL

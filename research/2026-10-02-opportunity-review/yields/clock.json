@@ -1,0 +1,30 @@
+{
+	"meta":
+	[
+		{
+			"name": "query_time",
+			"type": "DateTime64(3, 'UTC')"
+		},
+		{
+			"name": "version",
+			"type": "String"
+		}
+	],
+
+	"data":
+	[
+		{
+			"query_time": "2026-10-01 17:24:47.499",
+			"version": "26.8.1.1825"
+		}
+	],
+
+	"rows": 1,
+
+	"statistics":
+	{
+		"elapsed": 1.080263122,
+		"rows_read": 1,
+		"bytes_read": 1
+	}
+}

@@ -1,0 +1,8 @@
+{
+  "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=ATOM-USDT-SWAP&limit=100",
+  "requested_at_utc": "2026-10-01T17:36:34.320335+00:00",
+  "received_at_utc": "2026-10-01T17:36:35.160035+00:00",
+  "http_status": 200,
+  "error": null,
+  "sha256": "3dd7d7fba240d17a797189c04182721765c5ac7f8441690dc3d34ccbf71016f3"
+}

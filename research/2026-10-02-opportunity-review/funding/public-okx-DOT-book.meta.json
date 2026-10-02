@@ -1,0 +1,8 @@
+{
+  "url": "https://www.okx.com/api/v5/market/books?instId=DOT-USDT-SWAP&sz=10",
+  "requested_at_utc": "2026-10-01T17:36:36.656412+00:00",
+  "received_at_utc": "2026-10-01T17:36:37.705665+00:00",
+  "http_status": 200,
+  "error": null,
+  "sha256": "136f005f9ae11680f49a1444f9282c2220464bd263759d6bdbac1edf746a3d1d"
+}

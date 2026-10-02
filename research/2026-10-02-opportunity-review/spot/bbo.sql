@@ -1,0 +1,1 @@
+SELECT instrument_id,minute_time,valid_bitmap,bid_price_01,bid_qty_01,ask_price_01,ask_qty_01 FROM crypto_market_info.order_book_minute FINAL WHERE instrument_id IN (1,3) AND minute_time>toDateTime('2026-09-01 17:25:00','UTC') AND minute_time<=toDateTime('2026-10-01 17:25:00','UTC') ORDER BY minute_time,instrument_id

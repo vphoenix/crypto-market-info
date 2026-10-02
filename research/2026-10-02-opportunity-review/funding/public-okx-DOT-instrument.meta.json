@@ -1,0 +1,8 @@
+{
+  "url": "https://www.okx.com/api/v5/public/instruments?instType=SWAP&instId=DOT-USDT-SWAP",
+  "requested_at_utc": "2026-10-01T17:36:37.611089+00:00",
+  "received_at_utc": "2026-10-01T17:36:38.516068+00:00",
+  "http_status": 200,
+  "error": null,
+  "sha256": "0c6bb65653766b8ba91dd422bc2706e980380c676b635e8645609eb5c75f8c41"
+}

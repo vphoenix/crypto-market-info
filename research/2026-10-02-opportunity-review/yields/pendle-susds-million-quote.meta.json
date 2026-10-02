@@ -1,0 +1,7 @@
+{
+  "collected_at_utc": "2026-10-01T17:26:27.666267+00:00",
+  "url": "https://api-v2.pendle.finance/core/v2/sdk/1/convert?receiver=0x000000000000000000000000000000000000dEaD&slippage=0.001&tokensIn=0xdac17f958d2ee523a2206206994597c13d831ec7&tokensOut=0xdc169abe56461a2e0c034da431ac2a3ebf596094&amountsIn=1000000000000&enableAggregator=true&additionalData=impliedApy,effectiveApy",
+  "read_only": "Public API/docs; no signing, account access or broadcasting",
+  "http_status": 200,
+  "sha256": "eed8fdbc2e0a9d134a630cfb5d93b1e6e10f4f1b1b3faad1e2cb41bb93bd2d89"
+}

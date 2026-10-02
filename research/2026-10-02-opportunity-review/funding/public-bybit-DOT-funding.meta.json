@@ -1,0 +1,8 @@
+{
+  "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=DOTUSDT&limit=200",
+  "requested_at_utc": "2026-10-01T17:36:35.943960+00:00",
+  "received_at_utc": "2026-10-01T17:36:37.610882+00:00",
+  "http_status": 200,
+  "error": null,
+  "sha256": "c427007751e43c5247ef4a33c2a65fa52034532f184751f15f33b6e9f53cd723"
+}

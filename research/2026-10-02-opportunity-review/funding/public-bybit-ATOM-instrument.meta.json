@@ -1,0 +1,8 @@
+{
+  "url": "https://api.bybit.com/v5/market/instruments-info?category=linear&symbol=ATOMUSDT",
+  "requested_at_utc": "2026-10-01T17:36:35.160257+00:00",
+  "received_at_utc": "2026-10-01T17:36:36.614340+00:00",
+  "http_status": 200,
+  "error": null,
+  "sha256": "2053f48a030c79960ea277dead53a5aeb5c54643c7e20258848d029c9a291dd9"
+}

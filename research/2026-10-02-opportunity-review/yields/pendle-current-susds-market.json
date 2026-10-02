@@ -1,0 +1,296 @@
+{
+  "name": "sUSDS",
+  "protocol": "Sky Protocol",
+  "icon": "https://storage.googleapis.com/prod-pendle-bucket-a/images/uploads/2c6d3ada-f43c-48e5-b56d-9c5f486e7481.svg",
+  "address": "0x9c560ebaf78e596cbcc27411d633a74d628dd7dc",
+  "expiry": "2026-11-26T00:00:00.000Z",
+  "pt": "1-0xdc169abe56461a2e0c034da431ac2a3ebf596094",
+  "yt": "1-0xc7b8551c6b286ce0b44952320e940bd3dee58a09",
+  "sy": "1-0xbe3d4ec488a0a042bb86f9176c24f8cd54018ba7",
+  "underlyingAsset": "1-0xa3931d71877c0e7a3148cb7eb4463524fec27fbd",
+  "accountingAsset": "1-0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+  "rewardTokens": [
+    "1-0x808507121b80c02388fad14726482e061b8da827"
+  ],
+  "inputTokens": [
+    "1-0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+    "1-0xa3931d71877c0e7a3148cb7eb4463524fec27fbd"
+  ],
+  "outputTokens": [
+    "1-0x6b175474e89094c44da98b954eedeac495271d0f",
+    "1-0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+    "1-0xa3931d71877c0e7a3148cb7eb4463524fec27fbd"
+  ],
+  "details": {
+    "liquidity": "4843918.828316554",
+    "totalTvl": "95061524.23007706",
+    "tradingVolume": "10919.391019585952",
+    "underlyingApy": "0.03599927300899797",
+    "swapFeeApy": "0.010340679650827411",
+    "pendleApy": "0.005019901987019259",
+    "ytFloatingApy": "0.5260252843847502",
+    "impliedApy": "0.04886114931196062",
+    "feeRate": "0.0009985765669870972",
+    "yieldRange": {
+      "min": "0.03",
+      "max": "0.11999999999999998"
+    },
+    "aggregatedApy": "0.05415205916047466",
+    "maxBoostedApy": "0.06168191214100355",
+    "totalPt": "1059248.522533879",
+    "totalSy": "3412502.201306144",
+    "totalSupply": "1549062.455319408",
+    "totalActiveSupply": "1549062.455319408",
+    "ytRoi": "0.06609419832262775",
+    "ptRoi": "0.007249810226069409"
+  },
+  "isNew": false,
+  "isPrime": false,
+  "timestamp": "2026-05-15T07:10:23.000Z",
+  "categoryIds": [
+    "stables",
+    "rwa",
+    "skymoney",
+    "fixed-rates",
+    "yt-leverage"
+  ],
+  "isVolatile": false,
+  "underlyingRewardApyBreakdown": [
+    {
+      "asset": "1-0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+      "absoluteApy": "0.01698648281813887",
+      "relativeApy": 1,
+      "source": "PORTAL_INCENTIVE",
+      "ytExclusive": true,
+      "lpExclusive": false,
+      "portalExtData": {
+        "amount": 30000,
+        "startTimestamp": "2026-10-01T00:00:00.000Z",
+        "endTimestamp": "2026-10-08T00:00:00.000Z"
+      }
+    }
+  ],
+  "lpRewardApyBreakdown": [],
+  "ytApyBreakdown": {
+    "categories": [
+      {
+        "label": "Protocol Yield",
+        "apy": "0.03599927300899797",
+        "items": [
+          {
+            "id": "1-0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+            "apy": "0.03599927300899797",
+            "tags": [
+              "INTEREST",
+              "AUTO"
+            ],
+            "source": "CONTRACT"
+          }
+        ]
+      },
+      {
+        "label": "YT Extra Rewards",
+        "apy": "0.01698648281813887",
+        "items": [
+          {
+            "id": "1-0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+            "apy": "0.01698648281813887",
+            "tags": [
+              "REWARD"
+            ],
+            "source": "PORTAL_INCENTIVE",
+            "campaignDetail": {
+              "amount": 30000,
+              "startTimestamp": "2026-10-01T00:00:00.000Z",
+              "endTimestamp": "2026-10-08T00:00:00.000Z"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "lpApyBreakdown": {
+    "categories": [
+      {
+        "label": "Underlying Yield",
+        "apy": "0.028184136138722123",
+        "items": [
+          {
+            "id": "1-0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+            "apy": "0.028184136138722123",
+            "tags": [
+              "INTEREST",
+              "AUTO"
+            ],
+            "source": "CONTRACT"
+          }
+        ]
+      },
+      {
+        "label": "PT Fixed Yield",
+        "apy": "0.010607341137597757",
+        "items": [
+          {
+            "id": "1-0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+            "apy": "0.010607341137597757",
+            "tags": [
+              "FIXED_YIELD",
+              "AUTO"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "LP Rewards",
+        "apy": "0.01536058163784667",
+        "items": [
+          {
+            "id": "1-0x9c560ebaf78e596cbcc27411d633a74d628dd7dc",
+            "apy": "0.010340679650827411",
+            "tags": [
+              "SWAP_FEE",
+              "AUTO"
+            ]
+          },
+          {
+            "id": "PENDLE",
+            "apy": "0.005019901987019259",
+            "tags": [
+              "INCENTIVE",
+              "BOOSTABLE"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "chainId": 1,
+  "externalProtocols": {
+    "pt": [
+      {
+        "protocol": {
+          "id": "morpho",
+          "name": "Morpho",
+          "iconUrl": "https://storage.googleapis.com/external-integration-prod/f2b5eb7e-539f-4aea-b73f-d7f4e37a35c7.png",
+          "category": "money market",
+          "url": "https://app.morpho.org/ethereum/borrow",
+          "description": "A permissionless and non-custodial lending protocol where users can earn interest on over-collaterized lending and borrow digital assets using immutable infrastructure."
+        },
+        "integrationUrl": "https://app.morpho.org/ethereum/market/0x9a8dab6de1059e6dc66c34b358764b70effb289e514e237f3161ffb09eaaf24f",
+        "description": "The PT-sUSDS-26NOV2026 is the asset used as collateral in a Morpho market with USDS as the loan token.",
+        "subtitle": "USDS",
+        "liquidity": "420305.95186950004",
+        "liquidityToTargetUsd": "179108.09969403635",
+        "optimalUtilization": "0.9",
+        "borrowApy": "0.04027532278319135",
+        "supplyApy": "0.035579337730255345",
+        "totalSupply": "2412242.351024298",
+        "maxLtv": "0.915",
+        "chainId": 1,
+        "maxLoopingApy": "0.10185498630251479"
+      },
+      {
+        "protocol": {
+          "id": "morpho",
+          "name": "Morpho",
+          "iconUrl": "https://storage.googleapis.com/external-integration-prod/f2b5eb7e-539f-4aea-b73f-d7f4e37a35c7.png",
+          "category": "money market",
+          "url": "https://app.morpho.org/ethereum/borrow",
+          "description": "A permissionless and non-custodial lending protocol where users can earn interest on over-collaterized lending and borrow digital assets using immutable infrastructure."
+        },
+        "integrationUrl": "https://app.morpho.org/ethereum/market/0x0367161b7cb23dfd03747dd3815d1c445b0437b648a6d50346249c6e7b92ff1b",
+        "description": "The PT-sUSDS-26NOV2026 is the asset used as collateral in a Morpho market with USDT as the loan token.",
+        "subtitle": "USDT",
+        "liquidity": "4198502.584460172",
+        "liquidityToTargetUsd": "531834.666601653",
+        "optimalUtilization": "0.9",
+        "borrowApy": "0.04444596732776751",
+        "supplyApy": "0.034073919662382934",
+        "totalSupply": "5368133.735706",
+        "maxLtv": "0.915",
+        "chainId": 1,
+        "maxLoopingApy": "0.06110629427213537"
+      },
+      {
+        "protocol": {
+          "id": "morpho",
+          "name": "Morpho",
+          "iconUrl": "https://storage.googleapis.com/external-integration-prod/f2b5eb7e-539f-4aea-b73f-d7f4e37a35c7.png",
+          "category": "money market",
+          "url": "https://app.morpho.org/ethereum/borrow",
+          "description": "A permissionless and non-custodial lending protocol where users can earn interest on over-collaterized lending and borrow digital assets using immutable infrastructure."
+        },
+        "integrationUrl": "https://app.morpho.org/ethereum/market/0x22fe4c688161863c73571a2b8db65cc11a4a6bceee4f0dea4aa83e4b784f1bd9",
+        "description": "The PT-sUSDS-26NOV2026 is the asset used as collateral in a Morpho market with USDC as the loan token.",
+        "subtitle": "USDC",
+        "liquidity": "6083157.637709672",
+        "liquidityToTargetUsd": "1115941.1310146113",
+        "optimalUtilization": "0.9",
+        "borrowApy": "0.043134407673806496",
+        "supplyApy": "0.0360198530806326",
+        "totalSupply": "15840446.782471",
+        "maxLtv": "0.915",
+        "chainId": 1,
+        "maxLoopingApy": "0.073503008056568"
+      }
+    ],
+    "yt": [],
+    "lp": [],
+    "crossPt": []
+  },
+  "limitOrderIncentive": {
+    "amountPerSec": "0.00012559060680080776",
+    "impliedApy": "0.04886114931196062",
+    "buyYtApr": "0.06256232846006111",
+    "sellPtApr": "0.00045360801080012776",
+    "sellYtApr": "0.030724221065956094",
+    "buyPtApr": "0.00022276770150767258",
+    "long": {
+      "mode": "RELATIVE",
+      "amountPerSec": "0.00008347820973177019",
+      "minApy": "0.047151009086041994",
+      "maxApy": "0.05057128953787924"
+    },
+    "short": {
+      "mode": "RELATIVE",
+      "amountPerSec": "0.00004211239706903757",
+      "minApy": "0.04544086886012337",
+      "maxApy": "0.05228142976379786"
+    }
+  },
+  "pendleEmission": {
+    "totalIncentive": "271.83141146073586",
+    "tvlIncentive": "40.83946030794345",
+    "feeIncentive": "154.82764208218714",
+    "discretionaryIncentive": 0,
+    "cobribingIncentive": 0,
+    "limitOrderIncentive": "76.16430907060526"
+  },
+  "marketInfo": {
+    "assetDescription": "<p>Sky sUSDS is the yield-bearing version of USDS, Sky\u2019s dollar stablecoin. Users deposit USDS into the Sky Savings Rate module and receive sUSDS, which accrues yield from the protocol-set Sky Savings Rate.</p>\n<p><strong>$30k weekly incentives</strong> will also be given to Pendle users until maturity, distributed every Saturday and claimable on Pendle dashboard.</p>",
+    "riskInvolved": "<p>This pool has minimal risk of generating negative yield</p>",
+    "importantQuirks": "<p>This market has no special quirks</p>",
+    "initiatedBy": "Pendle",
+    "conversionRate": {
+      "rate": "1.1113623572792177",
+      "fromUnit": "sUSDS",
+      "toUnit": "USDS supplied into Sky"
+    },
+    "utilizedProtocols": [
+      {
+        "id": "sky",
+        "url": "https://app.sky.money/",
+        "name": "Sky",
+        "imageUrl": "https://storage.googleapis.com/prod-pendle-bucket-a/images/uploads/8a0e0cbf-9624-4e01-b8ec-889f39aa38ec.svg"
+      }
+    ],
+    "deposit": {
+      "url": "https://app.sky.money/?network=ethereum&widget=savings&flow=supply",
+      "description": "Pendle Router automatically finds the best route between native minting and DEX swapping"
+    },
+    "withdrawal": {
+      "url": "https://app.sky.money/?network=ethereum&widget=savings&flow=supply",
+      "description": "Pendle Router automatically finds the best route between native withdrawal and DEX swapping"
+    }
+  }
+}

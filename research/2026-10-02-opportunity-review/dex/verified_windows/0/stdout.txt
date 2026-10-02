@@ -1,0 +1,17 @@
+UTC 2026-09-28T00:00:00Z .. 2026-09-28T02:00:00Z | capital 1000000.000000 USDT | finalized_only=true
+blocks=598 complete_live_quotes=592 observed_height_span=598 missing_heights=0
+route | complete blocks | confirmed windows | unknown fragments | positive UTC dates | best gross USDC | amount USDC | assessment
+dai_usdc_100_psm_first | 592 | 0 | 0 | 0 | -0.115714 | 1000.000000 | quoted_nonpositive
+dai_usdc_100_v3_first | 592 | 0 | 0 | 0 | -0.082105 | 1000.000000 | quoted_nonpositive
+dai_usdc_500_psm_first | 592 | 0 | 0 | 0 | -0.266424 | 1000.000000 | quoted_nonpositive
+dai_usdc_500_v3_first | 592 | 0 | 0 | 0 | -0.734327 | 1000.000000 | quoted_nonpositive
+dai_usds_3000_dai_first | 592 | 0 | 0 | 0 | -3.292871 | 1000.000000 | quoted_nonpositive
+dai_usds_3000_usds_first | 592 | 0 | 0 | 0 | -2.754529 | 1000.000000 | quoted_nonpositive
+usdc_usds_3000_psm_first | 592 | 0 | 0 | 0 | -4.204798 | 1000.000000 | quoted_nonpositive
+usdc_usds_3000_v3_first | 592 | 0 | 0 | 0 | -1.982770 | 1000.000000 | quoted_nonpositive
+positive observed segments=0; no cumulative profit or APR computed
+NOTE: all routes share Sky PSM; simultaneous candidates are mutually exclusive
+NOTE: block-end quotations do not establish inclusion, realized profit or APR
+NOTE: USDC profits are not USDT returns; entry/exit and idle capital need separate accounting
+NOTE: missing heights outside the observed endpoints cannot be measured from this report
+Report: /home/ubuntu/crypto-market-info/research/2026-10-02-opportunity-review/dex/verified_windows/0

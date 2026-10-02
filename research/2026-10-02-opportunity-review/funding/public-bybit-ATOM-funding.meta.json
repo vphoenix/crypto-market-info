@@ -1,0 +1,8 @@
+{
+  "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=ATOMUSDT&limit=200",
+  "requested_at_utc": "2026-10-01T17:36:34.319806+00:00",
+  "received_at_utc": "2026-10-01T17:36:36.655814+00:00",
+  "http_status": 200,
+  "error": null,
+  "sha256": "4b6b220de8046ffebfd2edb661e8fa797f11b959e696a60d5a9acb12f2e2533c"
+}

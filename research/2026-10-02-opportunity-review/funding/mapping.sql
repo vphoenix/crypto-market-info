@@ -1,0 +1,1 @@
+SELECT * FROM crypto_market_info_perp_soak_20260928.instrument_canonical_mapping FINAL WHERE mapping_revision='1f287a7cfe9fce6090da2a625f2e770afdf88eb8702c8bce2ecca4c7208f888a'

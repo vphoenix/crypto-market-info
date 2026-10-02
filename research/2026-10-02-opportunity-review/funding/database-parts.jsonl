@@ -1,0 +1,5 @@
+{"database":"crypto_market_info","table":"funding_rate_hourly","physical_rows":1208,"bytes":20092}
+{"database":"crypto_market_info","table":"order_book_minute","physical_rows":244763,"bytes":136414848}
+{"database":"crypto_market_info_perp_soak","table":"funding_rate_hourly","physical_rows":185809,"bytes":968746}
+{"database":"crypto_market_info_perp_soak","table":"order_book_minute","physical_rows":7107480,"bytes":2093641000}
+{"database":"crypto_market_info_perp_soak_20260928","table":"order_book_minute","physical_rows":281,"bytes":204254}

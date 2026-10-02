@@ -1,0 +1,126 @@
+{
+  "manifest_hash": "0x3741189275afc9ca1f2113565587d971727bb74b6cb3c32e486f3a59cd07b091",
+  "from_utc": "2026-10-02T00:00:00Z",
+  "to_utc": "2026-10-03T00:00:00Z",
+  "generated_at_utc": "2026-10-02T13:30:20.408458Z",
+  "scope": "Base-Arbitrum native USDC; original empty-message terms; public polling observations",
+  "coverage_scope": "coverage.csv and capture/evidence/unknown-event/log-gap counts use ALL saved captures for this manifest, including outside [from_utc,to_utc); latest revisions are selected before filtering",
+  "order_scope": "orders.csv, order counts and fee-space totals select deposit block_time in [from_utc,to_utc); matching fills, updates and probes use all saved evidence, including after to_utc; this is a deposit cohort, not an as-of replay",
+  "receipt_and_probe_counts_scope": "unique receipt fees and receipt counts select receipt block_time in [from_utc,to_utc); probe status/price counts select probe requested_at in that window; refund rows and unmatched-fill counts select their event block_time in that window",
+  "counts": {
+    "accepted_captures": 69,
+    "cross_chain_clock_order_inversions": 1,
+    "eligible_original_empty_terms": 6,
+    "excluded_message": 2,
+    "excluded_route": 56,
+    "excluded_token_or_spoke": 1,
+    "fill_unknown_orders": 62,
+    "matched_fast_fill_orders": 3,
+    "receipt_fee_unknown": 65,
+    "unique_deposits": 65,
+    "unique_receipts": 67,
+    "unknown_events": 0,
+    "unmatched_fills": 117,
+    "verified_refund_transfers": 9
+  },
+  "original_terms_fee_space_usdc": "0.013791",
+  "observed_fast_fill_fee_space_usdc": "0.005324",
+  "live_observed_open_original_terms_fee_space_usdc": "0.000000",
+  "utc_days": {
+    "2026-10-02": {
+      "orders": 6,
+      "input_usdc": "56.587803",
+      "original_terms_fee_space_usdc": "0.013791",
+      "observed_fast_fill_fee_space_usdc": "0.005324",
+      "live_open_original_terms_fee_space_usdc": "0.000000"
+    }
+  },
+  "directions": {
+    "42161-\u003e8453": {
+      "orders": 2,
+      "input_usdc": "25.100000",
+      "original_terms_fee_space_usdc": "0.005324",
+      "observed_fast_fill_fee_space_usdc": "0.005324",
+      "live_open_original_terms_fee_space_usdc": "0.000000"
+    },
+    "8453-\u003e42161": {
+      "orders": 4,
+      "input_usdc": "31.487803",
+      "original_terms_fee_space_usdc": "0.008467",
+      "observed_fast_fill_fee_space_usdc": "0.000000",
+      "live_open_original_terms_fee_space_usdc": "0.000000"
+    }
+  },
+  "fast_fills_by_repayment_address": {
+    "42161/0x000000000000000000000000394311a6aaa0d8e3411d8b62de4578d41322d1bd": 1,
+    "42161/0x000000000000000000000000fd03abcadaf3f930fa4e37eb2f6ea3a44a41b7f0": 1,
+    "8453/0x000000000000000000000000fd03abcadaf3f930fa4e37eb2f6ea3a44a41b7f0": 1
+  },
+  "unique_observed_transaction_fees_wei_by_chain": {
+    "42161": "13456093877520"
+  },
+  "inventory_sensitivity": {
+    "basis": "hypothetical fully utilized inventory; not observed capacity or profit",
+    "inventory_budget_usdt": "250000.000000",
+    "inventory_budget_by_chain_usdt": {
+      "42161": "125000.000000",
+      "8453": "125000.000000"
+    },
+    "assumed_usdc_usdt": "1.000000",
+    "assumptions": [
+      "assume USDC/USDT parity solely for this sensitivity; no executable conversion quote",
+      "reserve 125000 USDT-equivalent of USDC on each chain; balances are separate",
+      "each payment's full principal becomes available on the same chain after the assumed interval; return path and timing are unverified",
+      "assume sufficient balanced eligible orders and full utilization; ignore setup, idle time, gas reserves and inventory restoration costs",
+      "pending refunds are not spendable before the assumed return; capacity equals inventory times 24 divided by turnaround hours"
+    ],
+    "scenarios": [
+      {
+        "assumed_turnaround_hours": 3,
+        "maximum_gross_daily_payment_capacity_usdc": "2000000.000000",
+        "maximum_gross_daily_payment_capacity_by_chain_usdc": {
+          "42161": "1000000.000000",
+          "8453": "1000000.000000"
+        }
+      },
+      {
+        "assumed_turnaround_hours": 6,
+        "maximum_gross_daily_payment_capacity_usdc": "1000000.000000",
+        "maximum_gross_daily_payment_capacity_by_chain_usdc": {
+          "42161": "500000.000000",
+          "8453": "500000.000000"
+        }
+      },
+      {
+        "assumed_turnaround_hours": 12,
+        "maximum_gross_daily_payment_capacity_usdc": "500000.000000",
+        "maximum_gross_daily_payment_capacity_by_chain_usdc": {
+          "42161": "250000.000000",
+          "8453": "250000.000000"
+        }
+      },
+      {
+        "assumed_turnaround_hours": 24,
+        "maximum_gross_daily_payment_capacity_usdc": "250000.000000",
+        "maximum_gross_daily_payment_capacity_by_chain_usdc": {
+          "42161": "125000.000000",
+          "8453": "125000.000000"
+        }
+      }
+    ],
+    "observed_turnaround_hours": null,
+    "actual_daily_payment_capacity_usdc": null,
+    "net_profit_usdt": null
+  },
+  "net_profit_usdt": null,
+  "negative_conclusion_allowed": false,
+  "limitations": [
+    "fee space is before LP, transaction, failure, inventory and operating costs; no verified net profit",
+    "all relayer refunds remain per-order attribution_unknown; no observed capital turnover",
+    "absence of a matched fill remains fill_unknown: destination coverage and prefill history are not proven by an absent event",
+    "unknown ABI, unmatched fills, nonempty messages and updated execution terms prevent a global negative Across conclusion",
+    "CEX prices are reference observations only; historical receipts are not repriced using current quotes",
+    "two-chain capture excludes other origins and user-refund membership; refund transfers are not route income",
+    "orders.csv fill_transaction_fee_wei_shared is the full shared transaction fee; do not sum this column across orders; summary receipt fees deduplicate chain/block_hash/tx_hash"
+  ]
+}

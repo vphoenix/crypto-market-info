@@ -1,0 +1,53 @@
+{
+  "captured_on": "2026-10-02",
+  "sources": [
+    {
+      "chain_id": 8453,
+      "rpc": "https://mainnet.base.org",
+      "verified_source": "https://base.blockscout.com/api/v2/smart-contracts/0xf23c6c04a2b88e8651fe99bbdccbb5c9d306e6b0",
+      "verification": "explorer verified source, exact RPC runtime-bytecode match; explorer full-match flag false"
+    },
+    {
+      "chain_id": 42161,
+      "rpc": "https://arb1.arbitrum.io/rpc",
+      "verified_source": "https://arbitrum.blockscout.com/api/v2/smart-contracts/0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+      "verification": "explorer fully verified source, exact RPC runtime-bytecode match"
+    },
+    {
+      "purpose": "Circle native USDC chain/address identity",
+      "url": "https://developers.circle.com/stablecoins/usdc-contract-addresses"
+    }
+  ],
+  "files": [
+    {
+      "path": "preflight-8453.json",
+      "sha256": "841b647680b6f95d4668e8b49d15927c81baed41b7c7d47797deb25fe04ecbf8"
+    },
+    {
+      "path": "preflight-42161.json",
+      "sha256": "19985263782eda5be3e5355626145287112a4f9997964d1eadc31231d0a65b33"
+    },
+    {
+      "path": "bytecode-8453.json",
+      "sha256": "3ac3c09ed3bf24e3939b253f855578d77e1cc6ec908003edfb846d8ca647b03b"
+    },
+    {
+      "path": "bytecode-42161.json",
+      "sha256": "ae9bf4d88d83fe2866d3c886771883a326589395414d10c78c75a693c4a6e7e3"
+    },
+    {
+      "path": "verified-8453.json",
+      "sha256": "b05839f48af96bff99b0946706ac1c3224de0cead7635b850ace98359b232a91"
+    },
+    {
+      "path": "verified-42161.json",
+      "sha256": "82be186871a6b6bc9b4e4f87559418d561449b0a5b5efc4c9f349846a283e753"
+    },
+    {
+      "path": "circle-usdc-addresses.html",
+      "sha256": "c439cc1d11db7db326c0f13700d192e1f0b4e9583168d6b0b95e45303dabad6f"
+    }
+  ],
+  "abi": "internal/across/abi.json consists of actual deployed ABI events plus read-only methods. It is not inferred from repository master.",
+  "historical_limit": "Only these two implementation runtime code hashes are allowlisted. Unknown historical implementations and upgrade boundary blocks must remain unknown."
+}

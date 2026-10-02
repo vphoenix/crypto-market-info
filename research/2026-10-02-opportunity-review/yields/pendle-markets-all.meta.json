@@ -1,0 +1,6 @@
+{
+  "collected_at_utc": "2026-10-01T17:29:35.127379+00:00",
+  "url": "https://api-v2.pendle.finance/core/v2/markets/all?limit=1000&skip=0",
+  "read_only": true,
+  "error": "HTTP Error 400: Bad Request"
+}

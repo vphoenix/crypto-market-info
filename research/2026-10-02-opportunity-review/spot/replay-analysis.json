@@ -1,0 +1,426 @@
+{
+  "scope": "Only +/-2 minutes around 52 minute-anchor spikes; existing stored_depth=10/50 replayed in full; 500000 USDT buy-leg budget including 10bp fee, two initial trades only; all dollars Decimal.",
+  "paired_valid_seconds": 5986,
+  "positive_initial_pair_seconds": 2345,
+  "daily_best": {
+    "2026-09-16": {
+      "time": "2026-09-16 18:01:32",
+      "buy": 3,
+      "sell": 1,
+      "identical_saved_book_segment_seconds": {
+        "1": 1,
+        "3": 1
+      },
+      "quantity_btc": "6.62027",
+      "buy_with_fee": "499999.663152032043",
+      "sell_after_fee": "501747.8597214687",
+      "net_first_two_trades": "1748.196569436657",
+      "buy_budget_used_fraction": "0.999999326304064086",
+      "depth_or_budget_limit": "budget"
+    },
+    "2026-09-18": {
+      "time": "2026-09-18 15:03:28",
+      "buy": 3,
+      "sell": 1,
+      "identical_saved_book_segment_seconds": {
+        "1": 1,
+        "3": 1
+      },
+      "quantity_btc": "6.18497",
+      "buy_with_fee": "499999.437688864113",
+      "sell_after_fee": "500330.0095176420",
+      "net_first_two_trades": "330.571828777887",
+      "buy_budget_used_fraction": "0.999998875377728226",
+      "depth_or_budget_limit": "budget"
+    },
+    "2026-09-21": {
+      "time": "2026-09-21 08:38:59",
+      "buy": 3,
+      "sell": 1,
+      "identical_saved_book_segment_seconds": {
+        "1": 1,
+        "3": 1
+      },
+      "quantity_btc": "1.68498",
+      "buy_with_fee": "141120.036268164954",
+      "sell_after_fee": "141496.6436425755",
+      "net_first_two_trades": "376.607374410546",
+      "buy_budget_used_fraction": "0.282240072536329908",
+      "depth_or_budget_limit": "saved_depth"
+    },
+    "2026-09-24": {
+      "time": "2026-09-24 13:55:39",
+      "buy": 1,
+      "sell": 3,
+      "identical_saved_book_segment_seconds": {
+        "1": 1,
+        "3": 1
+      },
+      "quantity_btc": "2.67267",
+      "buy_with_fee": "224565.8559113970",
+      "sell_after_fee": "224694.994239665181",
+      "net_first_two_trades": "129.138328268181",
+      "buy_budget_used_fraction": "0.449131711822794",
+      "depth_or_budget_limit": "saved_depth"
+    },
+    "2026-09-28": {
+      "time": "2026-09-28 15:18:37",
+      "buy": 1,
+      "sell": 3,
+      "identical_saved_book_segment_seconds": {
+        "1": 1,
+        "3": 1
+      },
+      "quantity_btc": "6.02991",
+      "buy_with_fee": "499999.2146840691",
+      "sell_after_fee": "501142.760345910339",
+      "net_first_two_trades": "1143.545661841239",
+      "buy_budget_used_fraction": "0.9999984293681382",
+      "depth_or_budget_limit": "budget"
+    },
+    "2026-09-29": {
+      "time": "2026-09-29 14:13:50",
+      "buy": 1,
+      "sell": 3,
+      "identical_saved_book_segment_seconds": {
+        "1": 1,
+        "3": 1
+      },
+      "quantity_btc": "3.33393",
+      "buy_with_fee": "280070.9648305569",
+      "sell_after_fee": "281100.201121295001",
+      "net_first_two_trades": "1029.236290738101",
+      "buy_budget_used_fraction": "0.5601419296611138",
+      "depth_or_budget_limit": "saved_depth"
+    }
+  },
+  "largest_10": [
+    {
+      "time": "2026-09-16 18:01:32",
+      "buy": 3,
+      "sell": 1,
+      "identical_saved_book_segment_seconds": {
+        "1": 1,
+        "3": 1
+      },
+      "quantity_btc": "6.62027",
+      "buy_with_fee": "499999.663152032043",
+      "sell_after_fee": "501747.8597214687",
+      "net_first_two_trades": "1748.196569436657",
+      "buy_budget_used_fraction": "0.999999326304064086",
+      "depth_or_budget_limit": "budget"
+    },
+    {
+      "time": "2026-09-16 18:00:33",
+      "buy": 3,
+      "sell": 1,
+      "identical_saved_book_segment_seconds": {
+        "1": 39,
+        "3": 1
+      },
+      "quantity_btc": "6.61943",
+      "buy_with_fee": "499999.500292073782",
+      "sell_after_fee": "501400.8445948578",
+      "net_first_two_trades": "1401.344302784018",
+      "buy_budget_used_fraction": "0.999999000584147564",
+      "depth_or_budget_limit": "budget"
+    },
+    {
+      "time": "2026-09-16 18:00:34",
+      "buy": 3,
+      "sell": 1,
+      "identical_saved_book_segment_seconds": {
+        "1": 39,
+        "3": 1
+      },
+      "quantity_btc": "6.61943",
+      "buy_with_fee": "499999.500292073782",
+      "sell_after_fee": "501400.8445948578",
+      "net_first_two_trades": "1401.344302784018",
+      "buy_budget_used_fraction": "0.999999000584147564",
+      "depth_or_budget_limit": "budget"
+    },
+    {
+      "time": "2026-09-16 18:00:35",
+      "buy": 3,
+      "sell": 1,
+      "identical_saved_book_segment_seconds": {
+        "1": 39,
+        "3": 1
+      },
+      "quantity_btc": "6.61740",
+      "buy_with_fee": "499999.672408053818",
+      "sell_after_fee": "501247.0888374249",
+      "net_first_two_trades": "1247.416429371082",
+      "buy_budget_used_fraction": "0.999999344816107636",
+      "depth_or_budget_limit": "budget"
+    },
+    {
+      "time": "2026-09-16 18:00:30",
+      "buy": 3,
+      "sell": 1,
+      "identical_saved_book_segment_seconds": {
+        "1": 39,
+        "3": 1
+      },
+      "quantity_btc": "6.61734",
+      "buy_with_fee": "499999.757988818087",
+      "sell_after_fee": "501242.5443322791",
+      "net_first_two_trades": "1242.786343461013",
+      "buy_budget_used_fraction": "0.999999515977636174",
+      "depth_or_budget_limit": "budget"
+    },
+    {
+      "time": "2026-09-16 18:00:31",
+      "buy": 3,
+      "sell": 1,
+      "identical_saved_book_segment_seconds": {
+        "1": 39,
+        "3": 1
+      },
+      "quantity_btc": "6.61734",
+      "buy_with_fee": "499999.757988818087",
+      "sell_after_fee": "501242.5443322791",
+      "net_first_two_trades": "1242.786343461013",
+      "buy_budget_used_fraction": "0.999999515977636174",
+      "depth_or_budget_limit": "budget"
+    },
+    {
+      "time": "2026-09-16 18:00:32",
+      "buy": 3,
+      "sell": 1,
+      "identical_saved_book_segment_seconds": {
+        "1": 39,
+        "3": 1
+      },
+      "quantity_btc": "6.61721",
+      "buy_with_fee": "499999.330402073502",
+      "sell_after_fee": "501232.6979044632",
+      "net_first_two_trades": "1233.367502389698",
+      "buy_budget_used_fraction": "0.999998660804147004",
+      "depth_or_budget_limit": "budget"
+    },
+    {
+      "time": "2026-09-16 18:00:36",
+      "buy": 3,
+      "sell": 1,
+      "identical_saved_book_segment_seconds": {
+        "1": 39,
+        "3": 1
+      },
+      "quantity_btc": "6.61614",
+      "buy_with_fee": "499999.856727659288",
+      "sell_after_fee": "501151.6542293631",
+      "net_first_two_trades": "1151.797501703812",
+      "buy_budget_used_fraction": "0.999999713455318576",
+      "depth_or_budget_limit": "budget"
+    },
+    {
+      "time": "2026-09-28 15:18:37",
+      "buy": 1,
+      "sell": 3,
+      "identical_saved_book_segment_seconds": {
+        "1": 1,
+        "3": 1
+      },
+      "quantity_btc": "6.02991",
+      "buy_with_fee": "499999.2146840691",
+      "sell_after_fee": "501142.760345910339",
+      "net_first_two_trades": "1143.545661841239",
+      "buy_budget_used_fraction": "0.9999984293681382",
+      "depth_or_budget_limit": "budget"
+    },
+    {
+      "time": "2026-09-28 15:18:38",
+      "buy": 1,
+      "sell": 3,
+      "identical_saved_book_segment_seconds": {
+        "1": 1,
+        "3": 1
+      },
+      "quantity_btc": "6.02991",
+      "buy_with_fee": "499999.2146840691",
+      "sell_after_fee": "501142.760345910339",
+      "net_first_two_trades": "1143.545661841239",
+      "buy_budget_used_fraction": "0.9999984293681382",
+      "depth_or_budget_limit": "budget"
+    }
+  ],
+  "identical_full_book_segments_ge30_seconds": [
+    {
+      "instrument": 1,
+      "start": "2026-09-28 14:01:50",
+      "end": "2026-09-28 14:02:34",
+      "seconds": 45
+    },
+    {
+      "instrument": 1,
+      "start": "2026-09-28 14:06:08",
+      "end": "2026-09-28 14:06:52",
+      "seconds": 45
+    },
+    {
+      "instrument": 1,
+      "start": "2026-09-28 14:15:03",
+      "end": "2026-09-28 14:15:47",
+      "seconds": 45
+    },
+    {
+      "instrument": 1,
+      "start": "2026-09-29 14:47:27",
+      "end": "2026-09-29 14:48:11",
+      "seconds": 45
+    },
+    {
+      "instrument": 1,
+      "start": "2026-09-29 15:22:09",
+      "end": "2026-09-29 15:22:53",
+      "seconds": 45
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-28 14:05:06",
+      "end": "2026-09-28 14:05:50",
+      "seconds": 45
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-28 14:45:28",
+      "end": "2026-09-28 14:46:12",
+      "seconds": 45
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-29 14:47:31",
+      "end": "2026-09-29 14:48:15",
+      "seconds": 45
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-29 15:37:39",
+      "end": "2026-09-29 15:38:23",
+      "seconds": 45
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-28 14:15:02",
+      "end": "2026-09-28 14:15:45",
+      "seconds": 44
+    },
+    {
+      "instrument": 1,
+      "start": "2026-09-29 15:30:00",
+      "end": "2026-09-29 15:30:42",
+      "seconds": 43
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-28 12:09:03",
+      "end": "2026-09-28 12:09:45",
+      "seconds": 43
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-28 14:40:46",
+      "end": "2026-09-28 14:41:28",
+      "seconds": 43
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-29 15:22:16",
+      "end": "2026-09-29 15:22:56",
+      "seconds": 41
+    },
+    {
+      "instrument": 1,
+      "start": "2026-09-29 15:00:58",
+      "end": "2026-09-29 15:01:37",
+      "seconds": 40
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-28 14:01:26",
+      "end": "2026-09-28 14:02:05",
+      "seconds": 40
+    },
+    {
+      "instrument": 1,
+      "start": "2026-09-16 18:00:14",
+      "end": "2026-09-16 18:00:52",
+      "seconds": 39
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-29 14:50:04",
+      "end": "2026-09-29 14:50:40",
+      "seconds": 37
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-28 14:02:14",
+      "end": "2026-09-28 14:02:49",
+      "seconds": 36
+    },
+    {
+      "instrument": 1,
+      "start": "2026-09-29 15:09:00",
+      "end": "2026-09-29 15:09:34",
+      "seconds": 35
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-28 12:07:00",
+      "end": "2026-09-28 12:07:34",
+      "seconds": 35
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-28 14:35:27",
+      "end": "2026-09-28 14:36:01",
+      "seconds": 35
+    },
+    {
+      "instrument": 1,
+      "start": "2026-09-29 14:50:07",
+      "end": "2026-09-29 14:50:40",
+      "seconds": 34
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-29 15:30:02",
+      "end": "2026-09-29 15:30:35",
+      "seconds": 34
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-29 15:10:57",
+      "end": "2026-09-29 15:11:29",
+      "seconds": 33
+    },
+    {
+      "instrument": 3,
+      "start": "2026-09-29 15:05:25",
+      "end": "2026-09-29 15:05:55",
+      "seconds": 31
+    },
+    {
+      "instrument": 1,
+      "start": "2026-09-16 18:00:56",
+      "end": "2026-09-16 18:01:25",
+      "seconds": 30
+    },
+    {
+      "instrument": 1,
+      "start": "2026-09-28 12:09:08",
+      "end": "2026-09-28 12:09:37",
+      "seconds": 30
+    },
+    {
+      "instrument": 1,
+      "start": "2026-09-29 13:46:35",
+      "end": "2026-09-29 13:47:04",
+      "seconds": 30
+    }
+  ],
+  "limitations": "No source event time in standard stored books; valid bitmap does not prove synchronized fresh quotes. Repeated seconds are not independent fills. Inventory restoration, hedging, latency and future capacity are absent; no return annualization."
+}

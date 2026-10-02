@@ -1,0 +1,8 @@
+{
+  "queried_at_utc": "2026-10-01T17:26:07.069757+00:00",
+  "sha256": "fd369e7e3b1d577f0853d0ce9943eac5ecd4a32f899e3d7bba95ca730615757e",
+  "rows": 1,
+  "readonly": 1,
+  "max_threads": 2,
+  "max_execution_time": 60
+}

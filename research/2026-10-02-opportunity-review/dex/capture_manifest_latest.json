@@ -1,0 +1,93 @@
+[
+  {
+    "name": "latest",
+    "captured_at_utc": "2026-10-01T17:28:20.339782+00:00",
+    "sha256": "7c818b4d11fb1e7bf30386f8f71d75b2b6629f1eb37069a99b38f6b4d76e68c0",
+    "bytes": 15287,
+    "url": "http://127.0.0.1:8123/?database=crypto_market_info&readonly=1&max_execution_time=60&max_threads=2"
+  },
+  {
+    "name": "coverage_recent",
+    "captured_at_utc": "2026-10-01T17:28:20.390329+00:00",
+    "sha256": "8689c5ce5715d54a4f29c5b4a1085e016091eb54a12d6b6418b3c423b16b36dd",
+    "bytes": 4868,
+    "url": "http://127.0.0.1:8123/?database=crypto_market_info&readonly=1&max_execution_time=60&max_threads=2"
+  },
+  {
+    "name": "window_0_blocks",
+    "captured_at_utc": "2026-10-01T17:28:20.401298+00:00",
+    "sha256": "3fe5a6494c8ad009dc26133083f71ed9751e0f726b6b06cb9cb7e88785fcc861",
+    "bytes": 331886,
+    "url": "http://127.0.0.1:8123/?database=crypto_market_info&readonly=1&max_execution_time=60&max_threads=2"
+  },
+  {
+    "name": "window_1_blocks",
+    "captured_at_utc": "2026-10-01T17:28:23.673517+00:00",
+    "sha256": "ded5566f488128a3f093aebb9903c0637c986e35307824fd9212458f03a46aeb",
+    "bytes": 331250,
+    "url": "http://127.0.0.1:8123/?database=crypto_market_info&readonly=1&max_execution_time=60&max_threads=2"
+  },
+  {
+    "name": "window_2_blocks",
+    "captured_at_utc": "2026-10-01T17:28:24.070961+00:00",
+    "sha256": "af16f34908ca050ba71523429380f7d864bf1cc4af5e37e3f39ea05d02f0d244",
+    "bytes": 332370,
+    "url": "http://127.0.0.1:8123/?database=crypto_market_info&readonly=1&max_execution_time=60&max_threads=2"
+  },
+  {
+    "name": "window_3_blocks",
+    "captured_at_utc": "2026-10-01T17:28:24.677635+00:00",
+    "sha256": "6d1256cb3d1e6feb242ffda3bacf2fbd47a5fa78236c7a036a412b768ec99bc6",
+    "bytes": 331257,
+    "url": "http://127.0.0.1:8123/?database=crypto_market_info&readonly=1&max_execution_time=60&max_threads=2"
+  },
+  {
+    "name": "window_0_summary",
+    "captured_at_utc": "2026-10-01T17:28:20.419909+00:00",
+    "sha256": "38fe2c01d4d19afffcf01d150c59f2e07bcfb1caf77d863d1d2ca61019741a0e",
+    "bytes": 14189,
+    "url": "http://127.0.0.1:8123/?database=crypto_market_info&readonly=1&max_execution_time=60&max_threads=2"
+  },
+  {
+    "name": "window_1_summary",
+    "captured_at_utc": "2026-10-01T17:28:23.693652+00:00",
+    "sha256": "2dd2fc74b2bfdb190b0db7f0bffb366255b8ed495ec93663865ff574400bc939",
+    "bytes": 14192,
+    "url": "http://127.0.0.1:8123/?database=crypto_market_info&readonly=1&max_execution_time=60&max_threads=2"
+  },
+  {
+    "name": "window_2_summary",
+    "captured_at_utc": "2026-10-01T17:28:24.108452+00:00",
+    "sha256": "39083f85743d70e15a8f28d984558c82560fa36676cb1760066cef986b4ea01d",
+    "bytes": 14188,
+    "url": "http://127.0.0.1:8123/?database=crypto_market_info&readonly=1&max_execution_time=60&max_threads=2"
+  },
+  {
+    "name": "window_3_summary",
+    "captured_at_utc": "2026-10-01T17:28:24.721393+00:00",
+    "sha256": "acc303cf148b4166df634beb25b0f6a63eaf9e7d81ae0acf08d2bda4e04a80a4",
+    "bytes": 14192,
+    "url": "http://127.0.0.1:8123/?database=crypto_market_info&readonly=1&max_execution_time=60&max_threads=2"
+  },
+  {
+    "name": "exit_reference_block",
+    "captured_at_utc": "2026-10-01T17:31:14.395823+00:00",
+    "sha256": "c367412943769b3a3d1fbc9c0948f111a76bb0bc82c878864f392e8bbdd786c5",
+    "bytes": 359,
+    "url": "http://127.0.0.1:8123/?database=crypto_market_info&readonly=1&max_execution_time=60&max_threads=2"
+  },
+  {
+    "name": "exit_reference_sky",
+    "captured_at_utc": "2026-10-01T17:31:14.545587+00:00",
+    "sha256": "a070d493bade6096da9984b22d58dc1d02d8366e7a8271d75d288b2d797386c0",
+    "bytes": 663,
+    "url": "http://127.0.0.1:8123/?database=crypto_market_info&readonly=1&max_execution_time=60&max_threads=2"
+  },
+  {
+    "name": "exit_reference_quotes",
+    "captured_at_utc": "2026-10-01T17:31:14.838658+00:00",
+    "sha256": "6768046486238385c99977fa7ec020fe84f7bb7dbbad53096f63ec7f08151f44",
+    "bytes": 5027,
+    "url": "http://127.0.0.1:8123/?database=crypto_market_info&readonly=1&max_execution_time=60&max_threads=2"
+  }
+]

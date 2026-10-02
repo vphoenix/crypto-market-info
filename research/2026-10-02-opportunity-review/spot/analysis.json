@@ -1,0 +1,118 @@
+{
+  "method": "Stored minute second 0 only; valid bitmap checked; Decimal tick conversion; 10bp per venue illustrative taker fee; no missing seconds filled; no repeated liquidity summed or annualized.",
+  "server_clock": {
+    "server_time": "2026-10-01 17:26:46.171",
+    "readonly": "1"
+  },
+  "window_statistics": {
+    "1": {
+      "start_exclusive_utc": "2026-09-30 17:25:00",
+      "end_inclusive_utc": "2026-10-01 17:25:00",
+      "paired_valid_minute_anchors": 1436,
+      "expected_anchors": 1440,
+      "max_gross_bps": "8.1881672954965079874769206068876936662117684840000",
+      "median_gross_bps": "0.5032551785196379234021767336783135656607287330000",
+      "p95_gross_bps": "1.4517967770111550352358217764756562240431826240000",
+      "above_20_bps": 0,
+      "above_10_bps": 0,
+      "days_with_above20": []
+    },
+    "7": {
+      "start_exclusive_utc": "2026-09-24 17:25:00",
+      "end_inclusive_utc": "2026-10-01 17:25:00",
+      "paired_valid_minute_anchors": 9741,
+      "expected_anchors": 10080,
+      "max_gross_bps": "60.704150994382104803752555254074198251614648920000",
+      "median_gross_bps": "0.5915409642117716651878142561372375036971310260000",
+      "p95_gross_bps": "2.3822168760243621855393364008095965838938567020000",
+      "above_20_bps": 47,
+      "above_10_bps": 115,
+      "days_with_above20": [
+        "2026-09-28",
+        "2026-09-29"
+      ]
+    },
+    "30": {
+      "start_exclusive_utc": "2026-09-01 17:25:00",
+      "end_inclusive_utc": "2026-10-01 17:25:00",
+      "paired_valid_minute_anchors": 39843,
+      "expected_anchors": 43200,
+      "max_gross_bps": "60.704150994382104803752555254074198251614648920000",
+      "median_gross_bps": "0.5167623461763882926372195313565859124463329360000",
+      "p95_gross_bps": "1.6420092014298549590222464919578381463688427920000",
+      "above_20_bps": 52,
+      "above_10_bps": 133,
+      "days_with_above20": [
+        "2026-09-16",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-24",
+        "2026-09-28",
+        "2026-09-29"
+      ]
+    }
+  },
+  "spike_minute_count": 52,
+  "largest_10_anchors": [
+    {
+      "time": "2026-09-29 14:14:00",
+      "gross_bps": "60.704150994382104803752555254074198251614648920000",
+      "buy_instrument": 1,
+      "sell_instrument": 3
+    },
+    {
+      "time": "2026-09-29 14:13:00",
+      "gross_bps": "47.454690502756539069931929522519731665793968237000",
+      "buy_instrument": 1,
+      "sell_instrument": 3
+    },
+    {
+      "time": "2026-09-28 15:19:00",
+      "gross_bps": "46.772413693185522525372283783229059263569915945000",
+      "buy_instrument": 1,
+      "sell_instrument": 3
+    },
+    {
+      "time": "2026-09-29 14:15:00",
+      "gross_bps": "46.111238671623613901455949343529383448211272618000",
+      "buy_instrument": 1,
+      "sell_instrument": 3
+    },
+    {
+      "time": "2026-09-29 14:16:00",
+      "gross_bps": "43.529269870508645548940276087409405392366479173000",
+      "buy_instrument": 1,
+      "sell_instrument": 3
+    },
+    {
+      "time": "2026-09-28 14:44:00",
+      "gross_bps": "42.546862735920061617685652337297868108455694119000",
+      "buy_instrument": 1,
+      "sell_instrument": 3
+    },
+    {
+      "time": "2026-09-28 15:18:00",
+      "gross_bps": "40.362209731399018067756076964136079962513045475000",
+      "buy_instrument": 1,
+      "sell_instrument": 3
+    },
+    {
+      "time": "2026-09-28 14:05:00",
+      "gross_bps": "39.319855538388179524602562195920039201216493607000",
+      "buy_instrument": 1,
+      "sell_instrument": 3
+    },
+    {
+      "time": "2026-09-29 15:29:00",
+      "gross_bps": "39.004133180307912655994243956672569374080889661000",
+      "buy_instrument": 1,
+      "sell_instrument": 3
+    },
+    {
+      "time": "2026-09-28 14:53:00",
+      "gross_bps": "37.056963747045417450021460394992171489714123358000",
+      "buy_instrument": 1,
+      "sell_instrument": 3
+    }
+  ]
+}

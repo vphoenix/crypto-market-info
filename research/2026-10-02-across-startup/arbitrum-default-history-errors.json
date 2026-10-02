@@ -1,0 +1,61 @@
+[
+  {
+    "payload_hash": "0xa5b277a253284033c56522760e34a2db5b37b5d784a3087718fb93b5dfd6545e",
+    "source": "arb1.arbitrum.io",
+    "at": "2026-10-02T14:00:20.799211Z",
+    "requests": [
+      {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_getCode",
+        "params": [
+          "0xcfcda84333431bcc9155f2368b8362f0d1dff8c9",
+          {
+            "blockHash": "0x748005f1ad7f4a441bec32301c333ae6715c1058ba268ca2294b5c34ffba4114",
+            "requireCanonical": true
+          }
+        ]
+      }
+    ],
+    "response": [
+      {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "error": {
+          "code": -32000,
+          "message": "historical state 18137d4adf07c03b53b6483f81179e2327c8670a73eea5d5194f8560e3651271 is not available"
+        }
+      }
+    ]
+  },
+  {
+    "payload_hash": "0xde372196ca87a048232a7861aa21a2d3f4b63868b759417c191c661c4905650e",
+    "source": "arb1.arbitrum.io",
+    "at": "2026-10-02T14:00:21.150037Z",
+    "requests": [
+      {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_getStorageAt",
+        "params": [
+          "0xe35e9842fceaca96570b734083f4a58e8f7c5f2a",
+          "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          {
+            "blockHash": "0xf75c1f100a9d350fa8267cf9b4fa47b6108ff72070f6df536e3d7551ea1436fe",
+            "requireCanonical": true
+          }
+        ]
+      }
+    ],
+    "response": [
+      {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "error": {
+          "code": -32000,
+          "message": "historical state 4cc42f19d92dd0bab0ef42d30fa4ca8f2b569a7b96beaf397956bc4d923507fa is not available"
+        }
+      }
+    ]
+  }
+]

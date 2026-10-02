@@ -1,0 +1,117 @@
+[
+  {
+    "source": "internal/storage/clickhouse/canonical_mapping.go",
+    "sha256": "03b820d4a3e8818c1fb6d8951ddd7a85f638fd4a554f79f3c9b1e2d75be9fb8c",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/client.go",
+    "sha256": "b743a43c46e63fe98c956dfd7d0095a7b3040558a4a3c6b57e6fd96786a1e532",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/query.go",
+    "sha256": "dfde851b12f03a6bbdb2ead01ae4e88873f553e39ca9daa6850987dee0fbfaf6",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/dex_reader.go",
+    "sha256": "048895d5a506a476f5bd62eb0552b2897970969c10cea11bfa7bbcc926f1dc54",
+    "budget_only_change": true
+  },
+  {
+    "source": "internal/storage/clickhouse/options_live_metadata.go",
+    "sha256": "3575b6350c5566cc3b595d12431e409f23d66fea0a1d4dc6ff8b22c19978f87d",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/options_live_run.go",
+    "sha256": "f3a8bdda79cf5f4849eeb8a6efa87116e15e15cdf3fecf8c0c4adadb3888086b",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/derivative_writer.go",
+    "sha256": "0c41ea13d364065ab56f653b04e1a1321584d5f226a6eabacdb07abe4aabbc32",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/derivative_spec.go",
+    "sha256": "c8acd2c8f5b83e17dabc4e775db33920c886acb960fbda9ec2b9a814502b5958",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/dex_schema.go",
+    "sha256": "44a748e7f93e7d5e40282ccf0c28879e95e2ca4c447ced0eab5f3af45dc38489",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/derivative_query.go",
+    "sha256": "8aa1981ac377625235023b88373a6375a450a97b4d9277267caf1c8e26697930",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/dex_writer.go",
+    "sha256": "17a56c2b098fac1f8b03337e74b61bc9c2ad30746e815838ad2a2b83f7cc1d31",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/instrument.go",
+    "sha256": "3387d91a7f69c8120abb249bbf5f8603af86853d7cda317826283224d0948d5f",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/options_live_schema.go",
+    "sha256": "b0bdc822eeac5711ccd1d1f9de059b88b50999fecb158e654cb54e5cb3e1c7a2",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/dex_query.go",
+    "sha256": "b9cc3a4b9ad5df756a98f3895b4a74352401108b850b7c25a4fc2a7109a5f33c",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/derivative_rule_query.go",
+    "sha256": "69e4755bd6e5bbe335daa252e78080758f7034f6813a7ea125f8ae85b66161f1",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/options_live_spec.go",
+    "sha256": "c5ff511a4052e490593c10fe7b392e72b54b297237f05c1a64df1e7424a006a8",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/schema.go",
+    "sha256": "2e890e9170e612831884571efbc66b04792ed212b9ccaf051b7d500ebf054d2a",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/derivative_quality.go",
+    "sha256": "367fdb34b668da1b93d0de9b96bcad02fc2a3b2e53cfa6bf39955f4ffd07a5d1",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/perpetual_check.go",
+    "sha256": "055ea595203d3f9772e7eec2c5a09dc1ba0cc75a0c7c11e0385425dc4c0aee7d",
+    "budget_only_change": true
+  },
+  {
+    "source": "internal/storage/clickhouse/options_live_minute.go",
+    "sha256": "6d15c4561f4f6c34af7415609282e681a78595bbf21cf94b20befbf7306cc622",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/yield.go",
+    "sha256": "eb9e514ce5796b8100b608159d62abd0e96fb026cb522ad71a90f8f9d96993c2",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/derivative_schema.go",
+    "sha256": "c4fbd2ceab9938998f5722d29bad35756872ea95989c45f330137dd00ac5b51b",
+    "budget_only_change": false
+  },
+  {
+    "source": "internal/storage/clickhouse/writer.go",
+    "sha256": "0ac1506585afc73bad64d4bcc904f040274f3f13cf4c8195cba2445eeba0624b",
+    "budget_only_change": false
+  }
+]

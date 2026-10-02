@@ -1,0 +1,109 @@
+{
+  "primary_tables": {
+    "elapsed_us": 46035,
+    "rows": [
+      {
+        "table": "across_capture",
+        "physical_rows": 69,
+        "compressed_column_bytes": 17153,
+        "disk_bytes": 41200
+      },
+      {
+        "table": "across_deposit",
+        "physical_rows": 65,
+        "compressed_column_bytes": 21259,
+        "disk_bytes": 42627
+      },
+      {
+        "table": "across_fill",
+        "physical_rows": 120,
+        "compressed_column_bytes": 27032,
+        "disk_bytes": 55057
+      },
+      {
+        "table": "across_refund",
+        "physical_rows": 3,
+        "compressed_column_bytes": 1633,
+        "disk_bytes": 6173
+      },
+      {
+        "table": "across_tx_receipt",
+        "physical_rows": 67,
+        "compressed_column_bytes": 19713,
+        "disk_bytes": 45461
+      }
+    ]
+  },
+  "primary_log_captures": {
+    "elapsed_us": 3493,
+    "rows": [
+      {
+        "chain_id": 8453,
+        "from_block": 52077937,
+        "to_block": 52078448,
+        "status": "complete",
+        "unknown_event_count": 0,
+        "finality": "finalized",
+        "expected_tasks": 1,
+        "completed_tasks": 1
+      },
+      {
+        "chain_id": 42161,
+        "from_block": 510991304,
+        "to_block": 510991815,
+        "status": "complete",
+        "unknown_event_count": 0,
+        "finality": "finalized",
+        "expected_tasks": 1,
+        "completed_tasks": 1
+      }
+    ]
+  },
+  "primary_counts": {
+    "elapsed_us": 19085,
+    "rows": [
+      {
+        "chain_id": 8453,
+        "deposits": 56,
+        "earliest_utc": "2026-10-02 12:47:07.000000",
+        "latest_utc": "2026-10-02 13:03:33.000000"
+      },
+      {
+        "chain_id": 42161,
+        "deposits": 9,
+        "earliest_utc": "2026-10-02 13:00:07.000000",
+        "latest_utc": "2026-10-02 13:02:21.000000"
+      }
+    ]
+  },
+  "live_probes": {
+    "elapsed_us": 48567,
+    "rows": [
+      {
+        "chain_id": 8453,
+        "probe_status": "ok",
+        "reason": "",
+        "probes": 1
+      },
+      {
+        "chain_id": 8453,
+        "probe_status": "rpc_error",
+        "reason": "source_canonical_unknown",
+        "probes": 1
+      },
+      {
+        "chain_id": 42161,
+        "probe_status": "ok",
+        "reason": "",
+        "probes": 1
+      }
+    ]
+  },
+  "evidence": {
+    "var/across/evidence": 4766979,
+    "var/across/livecheck-evidence": 2405188
+  },
+  "binary_sha256": "09f0c94d763e83101875183e0647a022a41e8b72712cc80cd532e2d32df83d3a",
+  "final_binary_sha256": "48e000e554f7a75758a0cb6fec95e9fe28d0456a94ade3c78a9ab6f08cb2e8ed",
+  "final_reviewed_source_bundle_sha256": "b336757b11c48f5c01298244b433f5a764bff94357940746d4b6c6f50304f7cb"
+}

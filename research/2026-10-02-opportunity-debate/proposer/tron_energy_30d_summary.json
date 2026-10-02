@@ -1,0 +1,370 @@
+{
+  "complete_endpoint_pagination": true,
+  "pages": [
+    {
+      "page": 1,
+      "count": 200,
+      "has_next": true
+    },
+    {
+      "page": 2,
+      "count": 176,
+      "has_next": false
+    }
+  ],
+  "window_start_UTC": "2026-09-02T08:51:35.110000+00:00",
+  "window_end_UTC": "2026-10-02T08:51:35.110000+00:00",
+  "fixed_duration_days": "30",
+  "event_count": 376,
+  "unique_transaction_count": 376,
+  "gross_rewards_TRX": "50064.663099",
+  "reference_TRXUSDT_bid": "0.33480000",
+  "gross_rewards_USDT_at_reference_bid": "16761.64920554520000",
+  "gross_USDT_per_fixed_day": "558.72164018484000",
+  "full_UTC_day_count": 29,
+  "zero_event_full_UTC_days": [],
+  "largest_UTC_day": {
+    "UTC_date": "2026-09-10",
+    "coverage_ms": 86400000,
+    "complete_UTC_day": true,
+    "event_count": 10,
+    "gross_TRX": "13394.57776",
+    "gross_USDT_at_reference_bid": "4484.5046340480000",
+    "share_of_total_rewards": "0.2675455487139300363875599522"
+  },
+  "top_two_addresses_by_reward_amount_share": "0.9841436437027405791871341002",
+  "top_two_addresses_by_reward_event_share": "0.9281914893617021276595744681",
+  "address_rewards": [
+    {
+      "liquidator_hex": "0x2ef4f6c1573f3485c94ea6cb8423a85ee913e276",
+      "events": 176,
+      "gross_TRX": "28653.413803",
+      "gross_USDT_at_reference_bid": "9593.16294124440000",
+      "share_of_reward_amount": "0.5723281058805792324582841192"
+    },
+    {
+      "liquidator_hex": "0x59155f50e82796f8089247701d62acdb26b929ed",
+      "events": 173,
+      "gross_TRX": "20617.40616",
+      "gross_USDT_at_reference_bid": "6902.7075823680000",
+      "share_of_reward_amount": "0.4118155378221613467288499810"
+    },
+    {
+      "liquidator_hex": "0x11b9f751c7b62b5aa34983c4ee5929dde7df32f0",
+      "events": 10,
+      "gross_TRX": "383.576496",
+      "gross_USDT_at_reference_bid": "128.42141086080000",
+      "share_of_reward_amount": "0.007661621436291291480523141511"
+    },
+    {
+      "liquidator_hex": "0xbeed4bd7349d4f1a0d4983f1cde7b51cd830acba",
+      "events": 11,
+      "gross_TRX": "220",
+      "gross_USDT_at_reference_bid": "73.65600000",
+      "share_of_reward_amount": "0.004394316996899841656917088925"
+    },
+    {
+      "liquidator_hex": "0x302250fe34a8857436db45dffed440c633797ca5",
+      "events": 6,
+      "gross_TRX": "190.26664",
+      "gross_USDT_at_reference_bid": "63.7012710720000",
+      "share_of_reward_amount": "0.003800417864068287675425669401"
+    }
+  ],
+  "nested_last_7d_events": 80,
+  "nested_last_7d_gross_TRX": "3256.784436",
+  "calendar_UTC": [
+    {
+      "UTC_date": "2026-09-02",
+      "coverage_ms": 54504890,
+      "complete_UTC_day": false,
+      "event_count": 13,
+      "gross_TRX": "881.60040",
+      "gross_USDT_at_reference_bid": "295.1598139200000",
+      "share_of_total_rewards": "0.01760923464633499620306712892"
+    },
+    {
+      "UTC_date": "2026-09-03",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 18,
+      "gross_TRX": "411.259864",
+      "gross_USDT_at_reference_bid": "137.68980246720000",
+      "share_of_total_rewards": "0.008214573684172351370205712048"
+    },
+    {
+      "UTC_date": "2026-09-04",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 16,
+      "gross_TRX": "325.02024",
+      "gross_USDT_at_reference_bid": "108.8167763520000",
+      "share_of_total_rewards": "0.006492008931674844505878135920"
+    },
+    {
+      "UTC_date": "2026-09-05",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 8,
+      "gross_TRX": "177.53264",
+      "gross_USDT_at_reference_bid": "59.4379278720000",
+      "share_of_total_rewards": "0.003546066806620457749702113900"
+    },
+    {
+      "UTC_date": "2026-09-06",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 10,
+      "gross_TRX": "265.19848",
+      "gross_USDT_at_reference_bid": "88.7884511040000",
+      "share_of_total_rewards": "0.005297119037345466907523152131"
+    },
+    {
+      "UTC_date": "2026-09-07",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 13,
+      "gross_TRX": "2912.38728",
+      "gross_USDT_at_reference_bid": "975.0672613440000",
+      "share_of_total_rewards": "0.05817251330026771943463388091"
+    },
+    {
+      "UTC_date": "2026-09-08",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 20,
+      "gross_TRX": "712.20824",
+      "gross_USDT_at_reference_bid": "238.4473187520000",
+      "share_of_total_rewards": "0.01422576715620055310341638059"
+    },
+    {
+      "UTC_date": "2026-09-09",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 20,
+      "gross_TRX": "3942.810651",
+      "gross_USDT_at_reference_bid": "1320.05300595480000",
+      "share_of_total_rewards": "0.07875436299657740756866448199"
+    },
+    {
+      "UTC_date": "2026-09-10",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 10,
+      "gross_TRX": "13394.57776",
+      "gross_USDT_at_reference_bid": "4484.5046340480000",
+      "share_of_total_rewards": "0.2675455487139300363875599522"
+    },
+    {
+      "UTC_date": "2026-09-11",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 15,
+      "gross_TRX": "335.85512",
+      "gross_USDT_at_reference_bid": "112.4442941760000",
+      "share_of_total_rewards": "0.006708426646871981580294944231"
+    },
+    {
+      "UTC_date": "2026-09-12",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 7,
+      "gross_TRX": "1378.63808",
+      "gross_USDT_at_reference_bid": "461.5680291840000",
+      "share_of_total_rewards": "0.02753714885235165297361906452"
+    },
+    {
+      "UTC_date": "2026-09-13",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 11,
+      "gross_TRX": "2067.02328",
+      "gross_USDT_at_reference_bid": "692.0393941440000",
+      "share_of_total_rewards": "0.04128707060132572969618816290"
+    },
+    {
+      "UTC_date": "2026-09-14",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 13,
+      "gross_TRX": "260",
+      "gross_USDT_at_reference_bid": "87.04800000",
+      "share_of_total_rewards": "0.005193283723608903776356559638"
+    },
+    {
+      "UTC_date": "2026-09-15",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 12,
+      "gross_TRX": "6117.87048",
+      "gross_USDT_at_reference_bid": "2048.2630367040000",
+      "share_of_total_rewards": "0.1221993737958899672251243006"
+    },
+    {
+      "UTC_date": "2026-09-16",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 13,
+      "gross_TRX": "730.61648",
+      "gross_USDT_at_reference_bid": "244.6103975040000",
+      "share_of_total_rewards": "0.01459345643763242374515514165"
+    },
+    {
+      "UTC_date": "2026-09-17",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 12,
+      "gross_TRX": "307.532416",
+      "gross_USDT_at_reference_bid": "102.96185287680000",
+      "share_of_total_rewards": "0.006142704194211240067132524858"
+    },
+    {
+      "UTC_date": "2026-09-18",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 15,
+      "gross_TRX": "1148.12288",
+      "gross_USDT_at_reference_bid": "384.3915402240000",
+      "share_of_total_rewards": "0.02293279948233453306674372753"
+    },
+    {
+      "UTC_date": "2026-09-19",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 10,
+      "gross_TRX": "346.08640",
+      "gross_USDT_at_reference_bid": "115.8697267200000",
+      "share_of_total_rewards": "0.006912787954163078907329410930"
+    },
+    {
+      "UTC_date": "2026-09-20",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 10,
+      "gross_TRX": "200",
+      "gross_USDT_at_reference_bid": "66.96000000",
+      "share_of_total_rewards": "0.003994833633545310597197353568"
+    },
+    {
+      "UTC_date": "2026-09-21",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 13,
+      "gross_TRX": "1933.04272",
+      "gross_USDT_at_reference_bid": "647.1827026560000",
+      "share_of_total_rewards": "0.03861092036467955220025598359"
+    },
+    {
+      "UTC_date": "2026-09-22",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 7,
+      "gross_TRX": "6068.260932",
+      "gross_USDT_at_reference_bid": "2031.65376003360000",
+      "share_of_total_rewards": "0.1212084643414130647438914468"
+    },
+    {
+      "UTC_date": "2026-09-23",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 16,
+      "gross_TRX": "2285.69536",
+      "gross_USDT_at_reference_bid": "765.2508065280000",
+      "share_of_total_rewards": "0.04565486350083228390886410027"
+    },
+    {
+      "UTC_date": "2026-09-24",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 13,
+      "gross_TRX": "270.24200",
+      "gross_USDT_at_reference_bid": "90.4770216000000",
+      "share_of_total_rewards": "0.005397859153982759132039036115"
+    },
+    {
+      "UTC_date": "2026-09-25",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 12,
+      "gross_TRX": "1376.78904",
+      "gross_USDT_at_reference_bid": "460.9489705920000",
+      "share_of_total_rewards": "0.02750021581644279986808585555"
+    },
+    {
+      "UTC_date": "2026-09-26",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 16,
+      "gross_TRX": "627.32904",
+      "gross_USDT_at_reference_bid": "210.0297625920000",
+      "share_of_total_rewards": "0.01253037574145845746720821252"
+    },
+    {
+      "UTC_date": "2026-09-27",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 8,
+      "gross_TRX": "178.81752",
+      "gross_USDT_at_reference_bid": "59.8681056960000",
+      "share_of_total_rewards": "0.003571731215815806243102748578"
+    },
+    {
+      "UTC_date": "2026-09-28",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 16,
+      "gross_TRX": "508.787156",
+      "gross_USDT_at_reference_bid": "170.34193982880000",
+      "share_of_total_rewards": "0.01016260021552332387942351546"
+    },
+    {
+      "UTC_date": "2026-09-29",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 8,
+      "gross_TRX": "160",
+      "gross_USDT_at_reference_bid": "53.56800000",
+      "share_of_total_rewards": "0.003195866906836248477757882854"
+    },
+    {
+      "UTC_date": "2026-09-30",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 12,
+      "gross_TRX": "556.20496",
+      "gross_USDT_at_reference_bid": "186.2174206080000",
+      "share_of_total_rewards": "0.01110973140676362069450865077"
+    },
+    {
+      "UTC_date": "2026-10-01",
+      "coverage_ms": 86400000,
+      "complete_UTC_day": true,
+      "event_count": 9,
+      "gross_TRX": "185.15368",
+      "gross_USDT_at_reference_bid": "61.9894520640000",
+      "share_of_total_rewards": "0.003698290741193428519070438497"
+    },
+    {
+      "UTC_date": "2026-10-02",
+      "coverage_ms": 31895110,
+      "complete_UTC_day": false,
+      "event_count": 0,
+      "gross_TRX": "0",
+      "gross_USDT_at_reference_bid": "0E-8",
+      "share_of_total_rewards": "0E+6"
+    }
+  ],
+  "limitations": [
+    "Public confirmed endpoint, not independent block-hash finality validation.",
+    "Current reference-bid revaluation, not historical realized USD proceeds.",
+    "Gross rewards only; no resource, competition, failure, conversion, or operating costs deducted.",
+    "First and last UTC calendar dates are partial; only 29 full UTC days in the rolling window."
+  ],
+  "full_UTC_day_gross_USDT_min": "53.56800000",
+  "full_UTC_day_gross_USDT_median": "186.2174206080000",
+  "full_UTC_days_gross_below_200_USDT": 15,
+  "top_five_full_UTC_days_share_of_all_rewards": "0.6478802631480781953598740625",
+  "other_three_addresses_gross_USDT_daily": "8.85928939776000",
+  "required_gross_pool_share_for_30_USDT_daily_30d": "0.05369400045087783060749131140",
+  "required_gross_pool_share_for_30_USDT_daily_7d": "0.1925949216766570261391851509"
+}

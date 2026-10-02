@@ -1,0 +1,38 @@
+{
+  "repository": "https://github.com/across-protocol/contracts",
+  "commit": "a634bea927668519c748e46036181c89c7bd9b40",
+  "files": [
+    {
+      "path": "contracts/interfaces/SpokePoolInterface.sol",
+      "url": "https://raw.githubusercontent.com/across-protocol/contracts/a634bea927668519c748e46036181c89c7bd9b40/contracts/interfaces/SpokePoolInterface.sol",
+      "sha256": "879fbcc499a3b297f2130b0dd9ad02616b4f76e61b5d2ad5866cf320a63e3db1"
+    },
+    {
+      "path": "broadcast/deployed-addresses.json",
+      "url": "https://raw.githubusercontent.com/across-protocol/contracts/a634bea927668519c748e46036181c89c7bd9b40/broadcast/deployed-addresses.json",
+      "sha256": "b822997dc803c17499f8cd5cef6bbf4a52af18b7f86fbcff05b4771c6318360f"
+    },
+    {
+      "path": "deployments/legacy-addresses.json",
+      "url": "https://raw.githubusercontent.com/across-protocol/contracts/a634bea927668519c748e46036181c89c7bd9b40/deployments/legacy-addresses.json",
+      "sha256": "f82a9c8d17408df115e7701a0297029f08a0d49a221b80e0a56bff28fe442ca3"
+    },
+    {
+      "path": "contracts/hub-pool/HubPool.sol",
+      "url": "https://raw.githubusercontent.com/across-protocol/contracts/a634bea927668519c748e46036181c89c7bd9b40/contracts/hub-pool/HubPool.sol",
+      "sha256": "c5274610d99854d881447382db8fdd126bd9128b6f6d3b938ca136776588f6c2"
+    },
+    {
+      "path": "contracts/interfaces/V3SpokePoolInterface.sol",
+      "url": "https://raw.githubusercontent.com/across-protocol/contracts/a634bea927668519c748e46036181c89c7bd9b40/contracts/interfaces/V3SpokePoolInterface.sol",
+      "sha256": "07f5b06abe1c51b481aa7d293939cdd912690ae5739323f912c5ce2e7b7652ed"
+    },
+    {
+      "path": "contracts/spoke-pools/SpokePool.sol",
+      "url": "https://raw.githubusercontent.com/across-protocol/contracts/a634bea927668519c748e46036181c89c7bd9b40/contracts/spoke-pools/SpokePool.sol",
+      "sha256": "a30a02a2fc942e83ed404d96affbf495255f2999e3fbccf48e2a6f214a1de6db"
+    }
+  ],
+  "collected_on": "2026-10-02",
+  "scope": "Design source audit only; deployed implementation/code identity not yet verified."
+}

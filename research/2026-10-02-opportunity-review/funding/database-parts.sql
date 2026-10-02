@@ -1,0 +1,1 @@
+SELECT database,table,sum(rows) AS physical_rows,sum(bytes_on_disk) AS bytes FROM system.parts WHERE active AND database IN ('crypto_market_info','crypto_market_info_perp_soak','crypto_market_info_perp_soak_20260928') AND table IN ('funding_rate_hourly','order_book_minute') GROUP BY database,table ORDER BY database,table

@@ -1,0 +1,1 @@
+SELECT min(hour_time) AS first_hour,max(hour_time) AS latest_hour,minIf(funding_time,is_actual) AS first_actual,maxIf(funding_time,is_actual) AS latest_actual,count() AS rows,countIf(is_actual) AS actual_rows,countIf(NOT is_actual) AS estimates FROM crypto_market_info_perp_soak.funding_rate_hourly FINAL

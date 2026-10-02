@@ -1,0 +1,1770 @@
+[
+  {
+    "market": "TRUST-USDT-PERP",
+    "long_id": 1332,
+    "short_id": 1331,
+    "long_venue": "OKX",
+    "short_venue": "Bybit",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-20",
+    "last_day_utc": "2026-09-22",
+    "daily": [
+      {
+        "date_utc": "2026-09-20",
+        "long_sum": "0.00030",
+        "short_sum": "0.00071349",
+        "spread": "0.00041349",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "0.0003386881669055",
+        "short_sum": "0.00937053",
+        "spread": "0.0090318418330945",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "0.00030",
+        "short_sum": "0.00654944",
+        "spread": "0.00624944",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      }
+    ],
+    "long_cadence_hours_inferred": "4",
+    "short_cadence_hours_inferred": "4",
+    "mean_daily_spread_per_N": "0.0052315906110315",
+    "gross_APR_pct_2N": "95.47652865132487500",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "25081.6173569327206433245092652714649617901204",
+        "fee_only_net_APR_pct": "91.5479033528044303481344588182408471105339394",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "24259.6995487135425611327284433536567426120382"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "77342.6493836196993157184955796413765546176514",
+        "fee_only_net_APR_pct": "94.1002234167373008341241696218970081414514760",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "74876.8959589621650691431531138879518970834048"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "234125.745463680635332900454522751111333100245",
+        "fee_only_net_APR_pct": "94.9509967713815909961207398897823951517573213",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "226728.485189708032593174427125490837360497505"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-28 00:00:00",
+    "latest_short_actual_source_time": "2026-09-25 04:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 1,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "SOON-USDT-PERP",
+    "long_id": 1220,
+    "short_id": 1219,
+    "long_venue": "OKX",
+    "short_venue": "Bybit",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-20",
+    "last_day_utc": "2026-09-22",
+    "daily": [
+      {
+        "date_utc": "2026-09-20",
+        "long_sum": "0.00030",
+        "short_sum": "0.00091717",
+        "spread": "0.00061717",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "0.0007558971547966",
+        "short_sum": "0.00955623",
+        "spread": "0.0088003328452034",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "0.0008816203232112",
+        "short_sum": "0.00507311",
+        "spread": "0.0041914896767888",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      }
+    ],
+    "long_cadence_hours_inferred": "4",
+    "short_cadence_hours_inferred": "4",
+    "mean_daily_spread_per_N": "0.00453633084066406666666666666666666666666666667",
+    "gross_APR_pct_2N": "82.7880378421192166666666666666666666666666665",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "21608.9647902905282786407605347718229192681018",
+        "fee_only_net_APR_pct": "78.8727214845604282170387759519171536553285715",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "20787.0469820713501964489797128540147000900196"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "66924.6916836931222216672493881424504270515958",
+        "fee_only_net_APR_pct": "81.4250415484932987030284867555733146862461081",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "64458.9382590355879750919069223890257695173492"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "202871.872363900904050746715948254332950402078",
+        "fee_only_net_APR_pct": "82.2758149031375888650250570234587016965519534",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "195474.612089928301311020688550994058977799338"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-28 00:00:00",
+    "latest_short_actual_source_time": "2026-09-25 04:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 0,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "ESP-USDT-PERP",
+    "long_id": 477,
+    "short_id": 476,
+    "long_venue": "OKX",
+    "short_venue": "Bybit",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-20",
+    "last_day_utc": "2026-09-22",
+    "daily": [
+      {
+        "date_utc": "2026-09-20",
+        "long_sum": "-0.0007697701213116",
+        "short_sum": "0.00008958",
+        "spread": "0.0008593501213116",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "0.00030",
+        "short_sum": "0.00801335",
+        "spread": "0.00771335",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "0.00030",
+        "short_sum": "0.00269223",
+        "spread": "0.00239223",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      }
+    ],
+    "long_cadence_hours_inferred": "4",
+    "short_cadence_hours_inferred": "4",
+    "mean_daily_spread_per_N": "0.00365497670710386666666666666666666666666666667",
+    "gross_APR_pct_2N": "66.7033249046455666666666666666666666666666665",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "17206.8163783220951334432179544811281487771174",
+        "fee_only_net_APR_pct": "62.8048797808756472370677455338561177430364782",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "16384.8985701029170512514371325633199295990352"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "53718.2464477878227860746216472703661155786424",
+        "fee_only_net_APR_pct": "65.3571998448085177230574563375122787739540148",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "51252.4930231302885394992791815169414580443958"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "163252.536656185005743968832725638080015983217",
+        "fee_only_net_APR_pct": "66.2079731994528078850540266053976657842598601",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "155855.276382212403004242805328377806043380477"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-28 04:00:00",
+    "latest_short_actual_source_time": "2026-09-25 04:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 4,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "ONT-USDT-PERP",
+    "long_id": 961,
+    "short_id": 960,
+    "long_venue": "OKX",
+    "short_venue": "Bybit",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-20",
+    "last_day_utc": "2026-09-22",
+    "daily": [
+      {
+        "date_utc": "2026-09-20",
+        "long_sum": "-0.0005176201795547",
+        "short_sum": "-0.00016366",
+        "spread": "0.0003539601795547",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "0.0002296021272841",
+        "short_sum": "0.00448829",
+        "spread": "0.0042586878727159",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "0.0001885153606721",
+        "short_sum": "0.00166362",
+        "spread": "0.0014751046393279",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      }
+    ],
+    "long_cadence_hours_inferred": "4",
+    "short_cadence_hours_inferred": "4",
+    "mean_daily_spread_per_N": "0.0020292508971995",
+    "gross_APR_pct_2N": "37.03382887389087500",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "9086.71343688876679486539133909395135108136456",
+        "fee_only_net_APR_pct": "33.1665040446439988012586783876929224314469807",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "8264.79562866958871267361051717614313190328237"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "29357.9376234878377703411418011088357224913840",
+        "fee_only_net_APR_pct": "35.7188241085768692872483891913490834623645173",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "26892.1841988303035237657993353554110649571374"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "90171.6101832850506967683931871534888367214424",
+        "fee_only_net_APR_pct": "36.5695974632211594492449594592344704726703628",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "82774.3499093124479570423657898932148641187027"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-28 00:00:00",
+    "latest_short_actual_source_time": "2026-09-25 04:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 2,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "RIVER-USDT-PERP",
+    "long_id": 1108,
+    "short_id": 1107,
+    "long_venue": "OKX",
+    "short_venue": "Bybit",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-20",
+    "last_day_utc": "2026-09-22",
+    "daily": [
+      {
+        "date_utc": "2026-09-20",
+        "long_sum": "0.0007159959480633",
+        "short_sum": "0.00259986",
+        "spread": "0.0018838640519367",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "0.000587598122909",
+        "short_sum": "0.00238843",
+        "spread": "0.001800831877091",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "0.0007978054275634",
+        "short_sum": "0.00161985",
+        "spread": "0.0008220445724366",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      }
+    ],
+    "long_cadence_hours_inferred": "4",
+    "short_cadence_hours_inferred": "4",
+    "mean_daily_spread_per_N": "0.00150224683382143333333333333333333333333333333",
+    "gross_APR_pct_2N": "27.4160047172411583333333333333333333333333332",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "6454.45698926843481011604481960608028237017796",
+        "fee_only_net_APR_pct": "23.5587680108297870569235635915621930306511495",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "5632.53918104925672792426399768827206319209577"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "21461.1682806268418160931022426452225163578242",
+        "fee_only_net_APR_pct": "26.1110880747626575429132743952183540615686861",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "18995.4148559693075695177597768917978588235776"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "66481.3021547020628340242745117626492183207631",
+        "fee_only_net_APR_pct": "26.9618614294069477049098446631037410718745316",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "59084.0418807294600942982471145023752457180234"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-28 00:00:00",
+    "latest_short_actual_source_time": "2026-09-25 04:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 1,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "POPMART-USDT-PERP",
+    "long_id": 1035,
+    "short_id": 1036,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 5,
+    "first_day_utc": "2026-09-14",
+    "last_day_utc": "2026-09-18",
+    "daily": [
+      {
+        "date_utc": "2026-09-14",
+        "long_sum": "0.00011051",
+        "short_sum": "0.0020257535626378",
+        "spread": "0.0019152435626378",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-15",
+        "long_sum": "0",
+        "short_sum": "0.0013699096601736",
+        "spread": "0.0013699096601736",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-16",
+        "long_sum": "0",
+        "short_sum": "0.0017570863633602",
+        "spread": "0.0017570863633602",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-17",
+        "long_sum": "0",
+        "short_sum": "0.0009477694254009",
+        "spread": "0.0009477694254009",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-18",
+        "long_sum": "0",
+        "short_sum": "0.0010829142414532",
+        "spread": "0.0010829142414532",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.00141458465060514",
+    "gross_APR_pct_2N": "25.81616987354380500",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "6016.60581691793616702462414464811947455172069",
+        "fee_only_net_APR_pct": "21.9606112317504670096398781279656360821137805",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "5194.68800869875808483284332273031125537363850"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "20147.6147635753458868188402177713400929024524",
+        "fee_only_net_APR_pct": "24.5129312956833374956295889316217971130313171",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "17681.8613389178116402434977520179154353682058"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "62540.6416035475750462014884371410019479546476",
+        "fee_only_net_APR_pct": "25.3637046503276276576261591995071841233371626",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "55143.3813295749723064754610398807279753519079"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-26 16:00:00",
+    "latest_short_actual_source_time": "2026-09-28 00:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 0,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "MINIMAX-USDT-PERP",
+    "long_id": 844,
+    "short_id": 845,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-21",
+    "last_day_utc": "2026-09-23",
+    "daily": [
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "0",
+        "short_sum": "0.0003656886091635",
+        "spread": "0.0003656886091635",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "0.00111070",
+        "short_sum": "0.0031920731715869",
+        "spread": "0.0020813731715869",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-23",
+        "long_sum": "-0.00039296",
+        "short_sum": "0.0010921333127157",
+        "spread": "0.0014850933127157",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.0013107183644887",
+    "gross_APR_pct_2N": "23.92061015191877500",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "5497.81911237550571899505519204834923330502971",
+        "fee_only_net_APR_pct": "20.0670397601705958743319514509764747015633585",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "4675.90130415632763680327437013054101412694752"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "18591.2546499480545427301333599720293691623795",
+        "fee_only_net_APR_pct": "22.6193598241034663603216622546326357324808951",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "16125.5012252905202961547908942186047116281329"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "57871.5612626657010139353678637430697767344288",
+        "fee_only_net_APR_pct": "23.4701331787477565223182325225180227427867406",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "50474.3009886930982742093404664827958041316891"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-26 16:00:00",
+    "latest_short_actual_source_time": "2026-09-28 00:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 2,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "TRUTH-USDT-PERP",
+    "long_id": 1334,
+    "short_id": 1335,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-20",
+    "last_day_utc": "2026-09-22",
+    "daily": [
+      {
+        "date_utc": "2026-09-20",
+        "long_sum": "0.00055874",
+        "short_sum": "0.0016226790115840",
+        "spread": "0.0010639390115840",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "0.00214249",
+        "short_sum": "0.0023503635182417",
+        "spread": "0.0002078735182417",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "0.00160218",
+        "short_sum": "0.0042277198199477",
+        "spread": "0.0026255398199477",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      }
+    ],
+    "long_cadence_hours_inferred": "4",
+    "short_cadence_hours_inferred": "4",
+    "mean_daily_spread_per_N": "0.00129911744992446666666666666666666666666666667",
+    "gross_APR_pct_2N": "23.7088934611215166666666666666666666666666668",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "5439.87538047283685463596556948537369095782763",
+        "fee_only_net_APR_pct": "19.8555451387258545194212743286216139719960709",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "4617.95757225365877244418474756756547177974544"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "18417.4234542400479496528644922831027421207732",
+        "fee_only_net_APR_pct": "22.4078652026587250054109851322777750029136075",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "15951.6700295825137030775220265296780845865266"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "57350.0676755416812347035612606762898956096099",
+        "fee_only_net_APR_pct": "23.2586385573030151674075554001631620132194530",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "49952.8074015690784949775338634160159230068702"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-26 16:00:00",
+    "latest_short_actual_source_time": "2026-09-28 00:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 4,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "ROBO-USDT-PERP",
+    "long_id": 1116,
+    "short_id": 1555,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-20",
+    "last_day_utc": "2026-09-22",
+    "daily": [
+      {
+        "date_utc": "2026-09-20",
+        "long_sum": "0.00030",
+        "short_sum": "0.0005807958887569",
+        "spread": "0.0002807958887569",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "0.00030",
+        "short_sum": "0.0023011742763878",
+        "spread": "0.0020011742763878",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "0.00030",
+        "short_sum": "0.0017775792686358",
+        "spread": "0.0014775792686358",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      }
+    ],
+    "long_cadence_hours_inferred": "4",
+    "short_cadence_hours_inferred": "4",
+    "mean_daily_spread_per_N": "0.0012531831445935",
+    "gross_APR_pct_2N": "22.87059238883137500",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "5210.44475597372758603466360321662254632635732",
+        "fee_only_net_APR_pct": "19.0181233593041056890265221517406722940912042",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "4388.52694775454950384288278129881432714827513"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "17729.1315807427201438489585934768493082263623",
+        "fee_only_net_APR_pct": "21.5704434232369761750162329553968333250087408",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "15263.3781560851858972736161277234246506921157"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "55285.1920550496978172918435642575295939263773",
+        "fee_only_net_APR_pct": "22.4212167778812663370128032232822203353145863",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "47887.9317810770950775658161669972556213236376"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-25 04:00:00",
+    "latest_short_actual_source_time": "2026-09-28 00:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 0,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "USELESS-USDT-PERP",
+    "long_id": 1382,
+    "short_id": 1381,
+    "long_venue": "OKX",
+    "short_venue": "Bybit",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-20",
+    "last_day_utc": "2026-09-22",
+    "daily": [
+      {
+        "date_utc": "2026-09-20",
+        "long_sum": "0.0003938623604758",
+        "short_sum": "0.00061378",
+        "spread": "0.0002199176395242",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "0.0005037739798029",
+        "short_sum": "0.00159879",
+        "spread": "0.0010950160201971",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "0.0004940743963369",
+        "short_sum": "0.00268315",
+        "spread": "0.0021890756036631",
+        "long_actual_count": 6,
+        "short_actual_count": 6
+      }
+    ],
+    "long_cadence_hours_inferred": "4",
+    "short_cadence_hours_inferred": "4",
+    "mean_daily_spread_per_N": "0.0011680030877948",
+    "gross_APR_pct_2N": "21.3160563522551000",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "4784.99119821587333300034963288547025623095749",
+        "fee_only_net_APR_pct": "17.4652178734879376654512761600319664352429949",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "3963.07338999669525080856881096766203705287530"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "16452.7709074691573847460166824833924379401628",
+        "fee_only_net_APR_pct": "20.0175379374208081514409869636881274661605314",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "13987.0174828116231381706742167299677804059162"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "51456.1100352290095399830178312771589830677788",
+        "fee_only_net_APR_pct": "20.8683112920650983134375572315735144764663770",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "44058.8497612564068002569904340168850104650391"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-28 00:00:00",
+    "latest_short_actual_source_time": "2026-09-25 04:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 0,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "ATOM-USDT-PERP",
+    "long_id": 143,
+    "short_id": 144,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-21",
+    "last_day_utc": "2026-09-23",
+    "daily": [
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "0.00009791",
+        "short_sum": "0.0003",
+        "spread": "0.00020209",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "-0.00023735",
+        "short_sum": "-0.0001057045211046",
+        "spread": "0.0001316454788954",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-23",
+        "long_sum": "-0.00006632",
+        "short_sum": "0.0002527130354462",
+        "spread": "0.0003190330354462",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.000217589504780533333333333333333333333333333333",
+    "gross_APR_pct_2N": "3.97100846224473333333333333333333333333333332",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "37.9077207958310440703927542746782544994422506",
+        "fee_only_net_APR_pct": "0.138363180904783310856933553102575628922964213",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-784.010087423347038121388067643129964678639941"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "2211.52047520903051795614604665101643274561710",
+        "fee_only_net_APR_pct": "2.69068324483765379684664435675873665984050080",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-254.23294944850372861919641910240822478862948"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "8732.35873844862893961340592378003096748414164",
+        "fee_only_net_APR_pct": "3.54145659948194395884321462464412367014634633",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "1335.09846447602619988737852651975699488140191"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-25 00:00:00",
+    "latest_short_actual_source_time": "2026-09-28 08:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 4,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "DOT-USDT-PERP",
+    "long_id": 431,
+    "short_id": 430,
+    "long_venue": "OKX",
+    "short_venue": "Bybit",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-21",
+    "last_day_utc": "2026-09-23",
+    "daily": [
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "-0.0001381016724556",
+        "short_sum": "0.00025736",
+        "spread": "0.0003954616724556",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "0.0002116748857351",
+        "short_sum": "0.0003",
+        "spread": "0.0000883251142649",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-23",
+        "long_sum": "0.0000369114120609",
+        "short_sum": "0.00018117",
+        "spread": "0.0001442585879391",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.000209348458219866666666666666666666666666666667",
+    "gross_APR_pct_2N": "3.82060936251256666666666666666666666666666668",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-3.25429189417777999766911409686495846028336746",
+        "fee_only_net_APR_pct": "-0.0118781654137488969914922664535570983800342890",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-825.172100113355862189449936014673177638365559"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "2088.03443713900404575196044153638679386644024",
+        "fee_only_net_APR_pct": "2.54044189851912158899821853720260393253750230",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-377.71898751853020082338202421703786366780634"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "8361.90062423854952300084910843614205084661105",
+        "fee_only_net_APR_pct": "3.39121525316341175099478880508799094284334782",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "964.64035026594678327482171117586807824387132"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-28 08:00:00",
+    "latest_short_actual_source_time": "2026-09-25 00:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 2,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "BNB-USDT-PERP",
+    "long_id": 247,
+    "short_id": 248,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 4,
+    "first_day_utc": "2026-09-20",
+    "last_day_utc": "2026-09-23",
+    "daily": [
+      {
+        "date_utc": "2026-09-20",
+        "long_sum": "0.00002929",
+        "short_sum": "0.0002730219318215",
+        "spread": "0.0002437319318215",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "0.00027157",
+        "short_sum": "0.0003",
+        "spread": "0.00002843",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "0.00009777",
+        "short_sum": "0.0003",
+        "spread": "0.00020223",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-23",
+        "long_sum": "0.00002587",
+        "short_sum": "0.0002523956184557",
+        "spread": "0.0002265256184557",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.0001752293875693",
+    "gross_APR_pct_2N": "3.19793632313972500",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-173.670707910194295989211328105489236301883023",
+        "fee_only_net_APR_pct": "-0.633898083872209180360621347585035712501873033",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-995.588516129372378180992150023297455479965215"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "1576.78518909095449777733379951051396034164128",
+        "fee_only_net_APR_pct": "1.91842198006066130562908945607112531841566355",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-888.96823556657974879800866624291069719260530"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "6828.15288009440087907696918235852355027221417",
+        "fee_only_net_APR_pct": "2.76919533470495146762565972395651232872150908",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-569.10739387820186064905821490175042233052556"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-25 00:00:00",
+    "latest_short_actual_source_time": "2026-09-28 08:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 0,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "BCH-USDT-PERP",
+    "long_id": 205,
+    "short_id": 206,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-20",
+    "last_day_utc": "2026-09-22",
+    "daily": [
+      {
+        "date_utc": "2026-09-20",
+        "long_sum": "0.00006607",
+        "short_sum": "0.0002943116071956",
+        "spread": "0.0002282416071956",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "0.0002446",
+        "short_sum": "0.0002733952185968",
+        "spread": "0.0000287952185968",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "-0.00008607",
+        "short_sum": "0.0000488357036578",
+        "spread": "0.0001349057036578",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.000130647509816733333333333333333333333333333333",
+    "gross_APR_pct_2N": "2.38431705415538333333333333333333333333333332",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-396.346287314652947738208214707890048782112117",
+        "fee_only_net_APR_pct": "-1.44666394869848325924445998368379867805470923",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-1218.26409553383102992998903662569826796019431"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "908.758450877578542530343139703311522900953993",
+        "fee_only_net_APR_pct": "1.10565611523438722674525081997236235286282736",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-1556.99497377995570404499932605011313463329259"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "4824.07266545427301333599720293691623795015234",
+        "fee_only_net_APR_pct": "1.95642946987867738874182108785774936316867288",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-2573.18760851832972639003019432335773465258739"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-25 00:00:00",
+    "latest_short_actual_source_time": "2026-09-28 08:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 5,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "DOGE-USDT-PERP",
+    "long_id": 419,
+    "short_id": 420,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 4,
+    "first_day_utc": "2026-09-15",
+    "last_day_utc": "2026-09-18",
+    "daily": [
+      {
+        "date_utc": "2026-09-15",
+        "long_sum": "-0.00003352",
+        "short_sum": "0.0001242698009258",
+        "spread": "0.0001577898009258",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-16",
+        "long_sum": "-0.00003769",
+        "short_sum": "0.0001549033101607",
+        "spread": "0.0001925933101607",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-17",
+        "long_sum": "0.00005275",
+        "short_sum": "0.0001265921388394",
+        "spread": "0.0000738421388394",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-18",
+        "long_sum": "0.00025552",
+        "short_sum": "0.0002855224438777",
+        "spread": "0.0000300024438777",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.0001135569234509",
+    "gross_APR_pct_2N": "2.07241385297892500",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-481.709587678437640477498626442235652564806952",
+        "fee_only_net_APR_pct": "-1.75823999502629738774286998651416013186154538",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-1303.62739589761572266927944836004387174288914"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "652.668549786224464312471904500274711552869486",
+        "fee_only_net_APR_pct": "0.794080068906573098246840817142000899055991209",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-1813.08487487130978226287056125314994598137709"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "4055.80296218021077868238349732780580390589880",
+        "fee_only_net_APR_pct": "1.64485342355086326024341108502738790936183674",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-3341.45731179239196104364389993246816869684093"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-25 00:00:00",
+    "latest_short_actual_source_time": "2026-09-28 08:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 0,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "TRX-USDT-PERP",
+    "long_id": 1337,
+    "short_id": 1338,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-20",
+    "last_day_utc": "2026-09-22",
+    "daily": [
+      {
+        "date_utc": "2026-09-20",
+        "long_sum": "0.00009489",
+        "short_sum": "0.0001482862170051",
+        "spread": "0.0000533962170051",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "-0.00014806",
+        "short_sum": "0.0000389369263894",
+        "spread": "0.0001869969263894",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "-0.00009732",
+        "short_sum": "-0.0000390409907006",
+        "spread": "0.0000582790092994",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.0000995573842313",
+    "gross_APR_pct_2N": "1.81692226222122500",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-551.633863287048598971080365616103091753658658",
+        "fee_only_net_APR_pct": "-2.01346360099772738624444333449877628490085410",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-1373.55167150622668116286118753391131093174085"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "442.895722960391588831726686978672393986314370",
+        "fee_only_net_APR_pct": "0.538856462935143099745267469157384746016682483",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-2022.85770169714265774361577877475226354793221"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "3426.48448170271215224014784476299885120623345",
+        "fee_only_net_APR_pct": "1.38962981757943326174183773704277175632252801",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-3970.77579226989058748587955249727512139650628"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-25 00:00:00",
+    "latest_short_actual_source_time": "2026-09-28 00:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 3,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "SOL-USDT-PERP",
+    "long_id": 1210,
+    "short_id": 1211,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-15",
+    "last_day_utc": "2026-09-17",
+    "daily": [
+      {
+        "date_utc": "2026-09-15",
+        "long_sum": "-0.00000868",
+        "short_sum": "0.0000532184125399",
+        "spread": "0.0000618984125399",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-16",
+        "long_sum": "-0.00014736",
+        "short_sum": "-0.0000792473354705",
+        "spread": "0.0000681126645295",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-17",
+        "long_sum": "0.00000740",
+        "short_sum": "0.0001197542806164",
+        "spread": "0.0001123542806164",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.0000807884525619333333333333333333333333333333333",
+    "gross_APR_pct_2N": "1.47438925925528333333333333333333333333333334",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-645.380088097830611191582172052678021410851940",
+        "fee_only_net_APR_pct": "-2.35563732155708173084927492799227477814960957",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-1467.29789631700869338336299397048624058893413"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "161.657048528045552170221267668947605014734529",
+        "fee_only_net_APR_pct": "0.196682742375788755140435875663886252767927012",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-2304.09637612948869440512119808447705251951205"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "2582.76845840567404225563158683382448429149393",
+        "fee_only_net_APR_pct": "1.04745609702007891713700614354927326307377254",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-4814.49181556692869747039581042644948831124580"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-25 00:00:00",
+    "latest_short_actual_source_time": "2026-09-28 00:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 3,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "SUI-USDT-PERP",
+    "long_id": 1270,
+    "short_id": 1271,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-15",
+    "last_day_utc": "2026-09-17",
+    "daily": [
+      {
+        "date_utc": "2026-09-15",
+        "long_sum": "0.00012685",
+        "short_sum": "0.0001867865930699",
+        "spread": "0.0000599365930699",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-16",
+        "long_sum": "-0.00011355",
+        "short_sum": "-0.0000105043065438",
+        "spread": "0.0001030456934562",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-17",
+        "long_sum": "0.00012329",
+        "short_sum": "0.0001968838302145",
+        "spread": "0.0000735938302145",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.0000788587055802",
+    "gross_APR_pct_2N": "1.4391713768386500",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-655.018702461415513710603865940762199690325158",
+        "fee_only_net_APR_pct": "-2.39081826398416662504370411068378202886968683",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-1476.93651068059359590238468785857041886840735"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "132.741205437290844613156186004695070176314869",
+        "fee_only_net_APR_pct": "0.161501799948703860946006692972379002047849758",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-2333.01221922024340196218627974872958735793171"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "2496.02092913340991958443634184106687977623495",
+        "fee_only_net_APR_pct": "1.01227515459299402294257696085776601235369528",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-4901.23934483919282014159105541920709282650478"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-25 00:00:00",
+    "latest_short_actual_source_time": "2026-09-28 00:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 0,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "LTC-USDT-PERP",
+    "long_id": 780,
+    "short_id": 781,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-16",
+    "last_day_utc": "2026-09-18",
+    "daily": [
+      {
+        "date_utc": "2026-09-16",
+        "long_sum": "0.00013979",
+        "short_sum": "0.0002215464858823",
+        "spread": "0.0000817564858823",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-17",
+        "long_sum": "-0.00001680",
+        "short_sum": "0.0000860229634196",
+        "spread": "0.0001028229634196",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-18",
+        "long_sum": "0.00015999",
+        "short_sum": "0.0002096072159963",
+        "spread": "0.0000496172159963",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.0000780655550994",
+    "gross_APR_pct_2N": "1.4246963805640500",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-658.980295193047300334648618950102392487887717",
+        "fee_only_net_APR_pct": "-2.40527807745462264622146745916787373258079017",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-1480.89810341222538252642944086791061166596991"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "120.856427242395484741021926976674491783627191",
+        "fee_only_net_APR_pct": "0.147041986478247839768243344488287298336746416",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-2344.89699741513876183432053877675016575061939"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "2460.36659454872383996803356475700514459817192",
+        "fee_only_net_APR_pct": "0.997815341122538001764813612373674308642591943",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-4936.89367942387889975799383250326882800456781"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-25 00:00:00",
+    "latest_short_actual_source_time": "2026-09-28 00:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 2,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "LINK-USDT-PERP",
+    "long_id": 760,
+    "short_id": 761,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-15",
+    "last_day_utc": "2026-09-17",
+    "daily": [
+      {
+        "date_utc": "2026-09-15",
+        "long_sum": "-0.00000748",
+        "short_sum": "0.0001303611210179",
+        "spread": "0.0001378411210179",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-16",
+        "long_sum": "-0.00004599",
+        "short_sum": "0.0000192680340687",
+        "spread": "0.0000652580340687",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-17",
+        "long_sum": "0.00008411",
+        "short_sum": "0.0001030545138642",
+        "spread": "0.0000189445138642",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.0000740145563169333333333333333333333333333333333",
+    "gross_APR_pct_2N": "1.35076565278403333333333333333333333333333334",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-679.214043669480378935451109668181742503704445",
+        "fee_only_net_APR_pct": "-2.47913125939360338311439655028886336013852122",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-1501.13185188865846112723193158598996168178664"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "60.1551818130962489386144548224364417361770141",
+        "fee_only_net_APR_pct": "0.0731888045392671028753142533672976707790153689",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-2405.59824284443799763672801093098821579806957"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "2278.26285826082613256081114829429099445582139",
+        "fee_only_net_APR_pct": "0.923962159183557264871884521252684681084860896",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-5118.99741571177660716521624896598297814691834"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-25 00:00:00",
+    "latest_short_actual_source_time": "2026-09-28 08:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 1,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "ETH-USDT-PERP",
+    "long_id": 484,
+    "short_id": 485,
+    "long_venue": "Bybit",
+    "short_venue": "OKX",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 4,
+    "first_day_utc": "2026-09-15",
+    "last_day_utc": "2026-09-18",
+    "daily": [
+      {
+        "date_utc": "2026-09-15",
+        "long_sum": "-0.00009677",
+        "short_sum": "0.0000507592944066",
+        "spread": "0.0001475292944066",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-16",
+        "long_sum": "-0.00007281",
+        "short_sum": "0.0000219569092249",
+        "spread": "0.0000947669092249",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-17",
+        "long_sum": "0.00011225",
+        "short_sum": "0.0001184629609847",
+        "spread": "0.0000062129609847",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-18",
+        "long_sum": "0.00022413",
+        "short_sum": "0.0002571799062960",
+        "spread": "0.0000330499062960",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.00007038976772805",
+    "gross_APR_pct_2N": "1.284613261036912500",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-697.318976434493781529394136157035113131212227",
+        "fee_only_net_APR_pct": "-2.54521426398590230258228859697317816292892463",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-1519.23678465367186372117495807484333230929442"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "5.84038351805604115678537535587632985365366365",
+        "fee_only_net_APR_pct": "0.00710579994696818340742220668298286798861195744",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-2459.91304113947820541855709039754832768059292"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "2115.31846337570550921532390989461065880825133",
+        "fee_only_net_APR_pct": "0.857879154591258345403992474568369878294457485",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-5281.94181059689723051070348736566331379448840"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-25 00:00:00",
+    "latest_short_actual_source_time": "2026-09-28 08:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 3,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "ADA-USDT-PERP",
+    "long_id": 35,
+    "short_id": 34,
+    "long_venue": "OKX",
+    "short_venue": "Bybit",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-15",
+    "last_day_utc": "2026-09-17",
+    "daily": [
+      {
+        "date_utc": "2026-09-15",
+        "long_sum": "-0.0000169693735628",
+        "short_sum": "0.00004999",
+        "spread": "0.0000669593735628",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-16",
+        "long_sum": "-0.0000840231551993",
+        "short_sum": "-0.00008091",
+        "spread": "0.0000031131551993",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-17",
+        "long_sum": "0.0000287230583127",
+        "short_sum": "0.00014265",
+        "spread": "0.0001139269416873",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.0000613331568164666666666666666666666666666666667",
+    "gross_APR_pct_2N": "1.11933011190051666666666666666666666666666666",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-742.554533657326473869104107353945024391056056",
+        "fee_only_net_APR_pct": "-2.71032404784924162962222999184189933902735461",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-1564.47234187650455606088492927175324356913825"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-129.866288150442035862344538234853403925877828",
+        "fee_only_net_APR_pct": "-0.158003983916371143632519188185738308109818026",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-2595.61971280797628243768700398827806146012441"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "1708.19844837021127815793416912242145746965686",
+        "fee_only_net_APR_pct": "0.692769370727919018364051079699648702196027501",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-5689.06182560239146156809322813785251513308287"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-28 08:00:00",
+    "latest_short_actual_source_time": "2026-09-25 00:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 3,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "AVAX-USDT-PERP",
+    "long_id": 154,
+    "short_id": 153,
+    "long_venue": "OKX",
+    "short_venue": "Bybit",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-16",
+    "last_day_utc": "2026-09-18",
+    "daily": [
+      {
+        "date_utc": "2026-09-16",
+        "long_sum": "-0.0001101927223847",
+        "short_sum": "-0.00003249",
+        "spread": "0.0000777027223847",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-17",
+        "long_sum": "0.0002438008275935",
+        "short_sum": "0.00028592",
+        "spread": "0.0000421191724065",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-18",
+        "long_sum": "0.0002415093016176",
+        "short_sum": "0.0003",
+        "spread": "0.0000584906983824",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.0000594375310578666666666666666666666666666666667",
+    "gross_APR_pct_2N": "1.08473494180606666666666666666666666666666666",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-752.022720853770207948320929690491650433711268",
+        "fee_only_net_APR_pct": "-2.74488293111626125901137139337029452408304614",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-1573.94052907294829014010175160829986961179346"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-158.270849739773238099995005244493282053843464",
+        "fee_only_net_APR_pct": "-0.192562867183390773021660589714133493165509550",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-2624.02427439730748467533747099791793958809004"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "1622.98476360221767144498276809350182308575995",
+        "fee_only_net_APR_pct": "0.658210487460899388974909678171253517140335977",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-5774.27551037038506828104462916677214951697978"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-28 08:00:00",
+    "latest_short_actual_source_time": "2026-09-25 00:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 3,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  },
+  {
+    "market": "ETH-USDT-PERP",
+    "long_id": 485,
+    "short_id": 484,
+    "long_venue": "OKX",
+    "short_venue": "Bybit",
+    "sample_status": "STALE historical reference; retrospectively chosen direction/streak, no current funding verification",
+    "sample_days": 3,
+    "first_day_utc": "2026-09-20",
+    "last_day_utc": "2026-09-22",
+    "daily": [
+      {
+        "date_utc": "2026-09-20",
+        "long_sum": "0.0001339477370806",
+        "short_sum": "0.00013811",
+        "spread": "0.0000041622629194",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-21",
+        "long_sum": "0.0001265423701996",
+        "short_sum": "0.00026851",
+        "spread": "0.0001419676298004",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      },
+      {
+        "date_utc": "2026-09-22",
+        "long_sum": "0.0001552257790840",
+        "short_sum": "0.00016974",
+        "spread": "0.0000145142209160",
+        "long_actual_count": 3,
+        "short_actual_count": 3
+      }
+    ],
+    "long_cadence_hours_inferred": "8",
+    "short_cadence_hours_inferred": "8",
+    "mean_daily_spread_per_N": "0.0000535480378786",
+    "gross_APR_pct_2N": "0.9772516912844500",
+    "roundtrip_fee_per_N": "0.00210",
+    "scenarios": [
+      {
+        "days": "10",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-781.439299342690175315918285799910094400879076",
+        "fee_only_net_APR_pct": "-2.85225344260081913990310174316967184456320863",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-1603.35710756186825750769910771771831357896127"
+      },
+      {
+        "days": "30",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "-246.520585206533140202787073572748613955346886",
+        "fee_only_net_APR_pct": "-0.299933378667948653913390939513510813645672044",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-2712.27400986406738677812953932617327148959347"
+      },
+      {
+        "days": "90",
+        "notional_each_leg_USDT": "499475.550671794615653563758054043254582688177",
+        "total_fee_reserve_USDT": "1048.89865641076869287248389191349083462364517",
+        "fee_only_profit_USDT": "1358.23555720193796513660656310873582738124969",
+        "fee_only_net_APR_pct": "0.550839975976341508083179328371876196660173483",
+        "additional_exit_cost_budget_USDT_to_keep_3pct": "-6039.02471677066477458942083415153814522149004"
+      }
+    ],
+    "latest_long_actual_source_time": "2026-09-28 08:00:00",
+    "latest_short_actual_source_time": "2026-09-25 00:00:00",
+    "negative_spread_complete_days_outside_selected_streak": 7,
+    "daily_extra_roundtrip_APR_drag_pct": "38.2848009589930572898456620548424154637630488"
+  }
+]

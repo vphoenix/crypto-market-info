@@ -282,3 +282,25 @@ go run ./cmd/perp-check \
 建表命令、查询、成本情景及验收记录见 [DEX 实现说明](dex-arbitrage-implementation.md)。`dex-check`数据库连接启用服务端readonly；可选成本RPC补报只保存报告文件。DEX RPC失败单独退避，不取消CEX、收益或期权分支；既有finalized区块hash出现冲突时仅暂停DEX并记录错误，排查来源后通过现有collector生命周期恢复。
 
 部署验收时连续高度 `26027452..26027477` 已落库，25/26区块为完整58/58报价，最近完整区块的58条状态全为 `ok`；完整区块单次采集耗时约3.9至7.3秒。继续观察到69个连续区块时服务仍为零重启，早期区块已由 `head` 追加修订为 `safe`，证明最终性重检链路在运行；当时Ethereum的 `finalized` 锚点尚未推进到本次启动后的高度。五路生产CEX盘口同期写到最新完整分钟且各有60个有效秒。首份只读报告位于 `var/dex-reports/initial-live/`，使用 `--include-head` 仅为启动验收；日常机会结论继续使用默认finalized口径。
+
+## Across 独立研究采集器（2026-10-02）
+
+2026-10-02 13:57 UTC 已启动并启用 user unit `crypto-market-info-across.service`，常驻采集 Base / Arbitrum。入口 `var/across/bin/across-data`，工作目录仓库根，七表独立库 `crypto_market_info_across`，证据 `var/across/evidence`。user linger 已开启，退出登录后继续运行；失败15秒后自动重启，恢复已提交游标与待补收据。
+
+另启用 `crypto-market-info-across-history.service`，隔离库 `crypto_market_info_across_history`、证据 `var/across/history-evidence`。一个 writer 顺序回补 Base `50783591..52079591`、Arbitrum `500994686..511000892`，起止高度已按 finalized 头冻结，约对应2026-09-02至2026-10-02的30天；重启不会把窗口滑动到另一天。两条命令均完成前显示 `activating (start)`，成功处理固定日志范围后显示 `active (exited)`，失败60秒后重试。收据缺口、未知实现或 partial 仍须读报告，不能把 unit 结束理解为完整30日研究数据。启动窗口证据与验收见 [startup](../research/2026-10-02-across-startup/)。
+
+```bash
+systemctl --user status crypto-market-info-across.service crypto-market-info-across-history.service
+journalctl --user -u crypto-market-info-across.service -n 30 --no-pager
+journalctl --user -u crypto-market-info-across-history.service -n 30 --no-pager
+var/across/bin/across-data report --out var/across/reports/live-latest
+var/across/bin/across-data report --database crypto_market_info_across_history --evidence var/across/history-evidence --out var/across/reports/history-latest
+```
+
+实时与历史分别报告；两个库可能覆盖相同事件，不能直接相加收入或订单数。不要在任何一个正在运行的库上手工启动第二个 writer。30日回补是一次固定任务，启动/重启它用 `systemctl --user start --no-block ...`，避免终端等待整个回补；它不周期滚动补采另一份30日。
+
+启动回补时曾触发Base `-32016 over rate limit`；现history unit使用 `--rpc-min-interval 500ms`，每个Reader单请求串行、响应后冷却500毫秒，降低批量header/receipt突发对实时的影响。watch使用默认0保持原实时批量行为。限速并非公共节点配额承诺，history仍可能退避重试。
+
+14:20:53 UTC部署限速修正后，14:23:25已提交Base `50784359..50784870`，跨过原停点；前220份单成员RPC响应无HTTP/RPC错误。14:24:49快照中实时服务0重启，主库558存款事件/733成交事件/403收据，两条链已采到当时最新十几秒内；history在Base阶段，306存款事件/211成交事件/20收据，Arbitrum30日阶段尚未开始。事件包含其他路线，不能当作机会数。限速修正经独立Agent复审和race回归通过，详见上述startup目录；短时验收不代表长期覆盖保证。
+
+命令、RPC环境变量、恢复方式与实测限制见[Across实现说明](across-stablecoin-data-implementation.md)。访问 Base/Arbitrum 公开 RPC 和 `api.binance.com` 行情。实时轮询配置目标1秒；先前90秒测试完整循环约6–14秒，本次启动追赶阶段约12–36秒，需按probe真实时间和coverage评价样本。默认 Arbitrum RPC 对部分历史合约状态返回 `historical state ... is not available`，对应 capture 保留 raw/partial，不伪造完整解码。两个进程仍共享公共 RPC 的访问额度，独立库只隔离 writer 和查询范围。服务不与已有行情、DEX或Reserve采集器共用业务表。

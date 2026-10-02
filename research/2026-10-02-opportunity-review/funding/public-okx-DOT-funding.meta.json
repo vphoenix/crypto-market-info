@@ -1,0 +1,8 @@
+{
+  "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=DOT-USDT-SWAP&limit=100",
+  "requested_at_utc": "2026-10-01T17:36:35.970647+00:00",
+  "received_at_utc": "2026-10-01T17:36:36.979317+00:00",
+  "http_status": 200,
+  "error": null,
+  "sha256": "a4afa9e70b48197f57f72b410edc8ae63b3c5abef379aa919c759480a83b2f6a"
+}

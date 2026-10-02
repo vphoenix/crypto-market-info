@@ -1,0 +1,100 @@
+{
+  "url": "https://base-rpc.publicnode.com",
+  "tested_at_utc": "2026-10-02T14:10:26.233372+00:00",
+  "requests": [
+    {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "eth_chainId",
+      "params": []
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "eth_getStorageAt",
+      "params": [
+        "0x09aea4b2242abC8bb4BB78D537A67a245A7bEC64",
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+        {
+          "blockHash": "0x1c425cf044a0b5dff688ee611eaa7d7774b5b87b4096004094850d5174b96746",
+          "requireCanonical": true
+        }
+      ]
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "method": "eth_getCode",
+      "params": [
+        "0xf23c6c04a2b88e8651fe99bbdccbb5c9d306e6b0",
+        {
+          "blockHash": "0x1c425cf044a0b5dff688ee611eaa7d7774b5b87b4096004094850d5174b96746",
+          "requireCanonical": true
+        }
+      ]
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "method": "eth_getLogs",
+      "params": [
+        {
+          "address": "0x09aea4b2242abC8bb4BB78D537A67a245A7bEC64",
+          "fromBlock": "0x306e567",
+          "toBlock": "0x306e766"
+        }
+      ]
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 5,
+      "method": "eth_getTransactionReceipt",
+      "params": [
+        "0x5b63aa990be37793436c03765ce06e450f457243ab2288db00396c99a247a297"
+      ]
+    }
+  ],
+  "user_agent": "crypto-market-info/1.0",
+  "http_status": 200,
+  "raw_response_sha256": "ca74b884f40c1849321450b0591836a92f53bfa897b61756392e64852f3806fd",
+  "response": [
+    {
+      "id": 1,
+      "jsonrpc": "2.0",
+      "result": "0x2105"
+    },
+    {
+      "error": {
+        "code": -32603,
+        "message": "state at block #50783592 is pruned"
+      },
+      "id": 2,
+      "jsonrpc": "2.0"
+    },
+    {
+      "error": {
+        "code": -32603,
+        "message": "state at block #50783592 is pruned"
+      },
+      "id": 3,
+      "jsonrpc": "2.0"
+    },
+    {
+      "jsonrpc": "2.0",
+      "error": {
+        "code": -32602,
+        "message": "Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode"
+      },
+      "id": 4
+    },
+    {
+      "jsonrpc": "2.0",
+      "error": {
+        "code": -32602,
+        "message": "Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode"
+      },
+      "id": 5
+    }
+  ],
+  "elapsed_ms": 538
+}

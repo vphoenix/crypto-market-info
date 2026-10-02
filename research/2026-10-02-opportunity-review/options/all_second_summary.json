@@ -1,0 +1,252 @@
+[
+  {
+    "directory": ".",
+    "minute_utc": "2026-10-01 17:25:00",
+    "run": "d0d26782-21b7-4e1e-9e05-ce3b6aa20c32",
+    "instruments": 28,
+    "valid_instrument_seconds": 1680,
+    "all_instruments_valid_seconds": 60,
+    "candidates": 2880,
+    "gross_positive": 0,
+    "net_after_standard_entry_positive": 0,
+    "max_source_age_seconds": "11.97",
+    "closest_gross_reference": {
+      "second": 29,
+      "type": "conversion",
+      "family": [
+        "ETH",
+        "USDC",
+        "2026-10-03 08:00:00"
+      ],
+      "strikes": [
+        2700
+      ],
+      "direction": "short_synthetic_long_future",
+      "gross_native_per_base": "-1.35",
+      "entry_fee_native_per_base": "2.5645045",
+      "net_before_delivery_native_per_base": "-3.9145045",
+      "native_currency": "USDC",
+      "gross_usd_reference_per_base": "-1.35",
+      "net_usd_reference_per_base": "-3.9145045"
+    },
+    "closest_net_reference": {
+      "second": 29,
+      "type": "conversion",
+      "family": [
+        "ETH",
+        "USDC",
+        "2026-10-03 08:00:00"
+      ],
+      "strikes": [
+        2700
+      ],
+      "direction": "short_synthetic_long_future",
+      "gross_native_per_base": "-1.35",
+      "entry_fee_native_per_base": "2.5645045",
+      "net_before_delivery_native_per_base": "-3.9145045",
+      "native_currency": "USDC",
+      "gross_usd_reference_per_base": "-1.35",
+      "net_usd_reference_per_base": "-3.9145045"
+    }
+  },
+  {
+    "directory": "windows/0",
+    "minute_utc": "2026-09-28 18:00:00",
+    "run": "77094c0f-f545-4d90-b55b-5b550b619323",
+    "instruments": 28,
+    "valid_instrument_seconds": 1680,
+    "all_instruments_valid_seconds": 60,
+    "candidates": 2880,
+    "gross_positive": 0,
+    "net_after_standard_entry_positive": 0,
+    "max_source_age_seconds": "21.247",
+    "closest_gross_reference": {
+      "second": 12,
+      "type": "conversion",
+      "family": [
+        "ETH",
+        "USDC",
+        "2026-10-01 08:00:00"
+      ],
+      "strikes": [
+        2700
+      ],
+      "direction": "short_synthetic_long_future",
+      "gross_native_per_base": "-0.6",
+      "entry_fee_native_per_base": "2.559612",
+      "net_before_delivery_native_per_base": "-3.159612",
+      "native_currency": "USDC",
+      "gross_usd_reference_per_base": "-0.6",
+      "net_usd_reference_per_base": "-3.159612"
+    },
+    "closest_net_reference": {
+      "second": 14,
+      "type": "conversion",
+      "family": [
+        "ETH",
+        "USDC",
+        "2026-10-01 08:00:00"
+      ],
+      "strikes": [
+        2700
+      ],
+      "direction": "short_synthetic_long_future",
+      "gross_native_per_base": "-0.6",
+      "entry_fee_native_per_base": "2.559198",
+      "net_before_delivery_native_per_base": "-3.159198",
+      "native_currency": "USDC",
+      "gross_usd_reference_per_base": "-0.6",
+      "net_usd_reference_per_base": "-3.159198"
+    }
+  },
+  {
+    "directory": "windows/1",
+    "minute_utc": "2026-09-29 12:00:00",
+    "run": "77094c0f-f545-4d90-b55b-5b550b619323",
+    "instruments": 28,
+    "valid_instrument_seconds": 1680,
+    "all_instruments_valid_seconds": 60,
+    "candidates": 2880,
+    "gross_positive": 0,
+    "net_after_standard_entry_positive": 0,
+    "max_source_age_seconds": "501.939",
+    "closest_gross_reference": {
+      "second": 14,
+      "type": "conversion",
+      "family": [
+        "ETH",
+        "USDC",
+        "2026-10-01 08:00:00"
+      ],
+      "strikes": [
+        2720
+      ],
+      "direction": "short_synthetic_long_future",
+      "gross_native_per_base": "-0.75",
+      "entry_fee_native_per_base": "2.5939725",
+      "net_before_delivery_native_per_base": "-3.3439725",
+      "native_currency": "USDC",
+      "gross_usd_reference_per_base": "-0.75",
+      "net_usd_reference_per_base": "-3.3439725"
+    },
+    "closest_net_reference": {
+      "second": 15,
+      "type": "conversion",
+      "family": [
+        "ETH",
+        "USDC",
+        "2026-10-01 08:00:00"
+      ],
+      "strikes": [
+        2720
+      ],
+      "direction": "short_synthetic_long_future",
+      "gross_native_per_base": "-0.75",
+      "entry_fee_native_per_base": "2.5939485",
+      "net_before_delivery_native_per_base": "-3.3439485",
+      "native_currency": "USDC",
+      "gross_usd_reference_per_base": "-0.75",
+      "net_usd_reference_per_base": "-3.3439485"
+    }
+  },
+  {
+    "directory": "windows/2",
+    "minute_utc": "2026-09-30 14:00:00",
+    "run": "d0d26782-21b7-4e1e-9e05-ce3b6aa20c32",
+    "instruments": 28,
+    "valid_instrument_seconds": 1652,
+    "all_instruments_valid_seconds": 59,
+    "candidates": 2832,
+    "gross_positive": 0,
+    "net_after_standard_entry_positive": 0,
+    "max_source_age_seconds": "11.479",
+    "closest_gross_reference": {
+      "second": 57,
+      "type": "conversion",
+      "family": [
+        "ETH",
+        "ETH",
+        "2026-10-03 08:00:00"
+      ],
+      "strikes": [
+        2720
+      ],
+      "direction": "long_synthetic_short_future",
+      "gross_native_per_base": "-0.0005101710587147480351363846509477577438742487286",
+      "entry_fee_native_per_base": "0.00095210355987055016181229773462783171521035598705501",
+      "net_before_delivery_native_per_base": "-0.0014622746185852981969486823855755894590846047156550",
+      "native_currency": "ETH",
+      "gross_usd_reference_per_base": "-1.3791199144706426259824318076745261211280628755880",
+      "net_usd_reference_per_base": "-3.9528938626907073509015256588072122052704576975944"
+    },
+    "closest_net_reference": {
+      "second": 57,
+      "type": "conversion",
+      "family": [
+        "ETH",
+        "ETH",
+        "2026-10-03 08:00:00"
+      ],
+      "strikes": [
+        2720
+      ],
+      "direction": "long_synthetic_short_future",
+      "gross_native_per_base": "-0.0005101710587147480351363846509477577438742487286",
+      "entry_fee_native_per_base": "0.00095210355987055016181229773462783171521035598705501",
+      "net_before_delivery_native_per_base": "-0.0014622746185852981969486823855755894590846047156550",
+      "native_currency": "ETH",
+      "gross_usd_reference_per_base": "-1.3791199144706426259824318076745261211280628755880",
+      "net_usd_reference_per_base": "-3.9528938626907073509015256588072122052704576975944"
+    }
+  },
+  {
+    "directory": "windows/3",
+    "minute_utc": "2026-10-01 08:00:00",
+    "run": "d0d26782-21b7-4e1e-9e05-ce3b6aa20c32",
+    "instruments": 28,
+    "valid_instrument_seconds": 1680,
+    "all_instruments_valid_seconds": 60,
+    "candidates": 2231,
+    "gross_positive": 0,
+    "net_after_standard_entry_positive": 0,
+    "max_source_age_seconds": "43.658",
+    "closest_gross_reference": {
+      "second": 19,
+      "type": "conversion",
+      "family": [
+        "ETH",
+        "USDC",
+        "2026-10-03 08:00:00"
+      ],
+      "strikes": [
+        2680
+      ],
+      "direction": "long_synthetic_short_future",
+      "gross_native_per_base": "-2.45",
+      "entry_fee_native_per_base": "2.5428105",
+      "net_before_delivery_native_per_base": "-4.9928105",
+      "native_currency": "USDC",
+      "gross_usd_reference_per_base": "-2.45",
+      "net_usd_reference_per_base": "-4.9928105"
+    },
+    "closest_net_reference": {
+      "second": 19,
+      "type": "conversion",
+      "family": [
+        "ETH",
+        "USDC",
+        "2026-10-03 08:00:00"
+      ],
+      "strikes": [
+        2680
+      ],
+      "direction": "long_synthetic_short_future",
+      "gross_native_per_base": "-2.45",
+      "entry_fee_native_per_base": "2.5428105",
+      "net_before_delivery_native_per_base": "-4.9928105",
+      "native_currency": "USDC",
+      "gross_usd_reference_per_base": "-2.45",
+      "net_usd_reference_per_base": "-4.9928105"
+    }
+  }
+]

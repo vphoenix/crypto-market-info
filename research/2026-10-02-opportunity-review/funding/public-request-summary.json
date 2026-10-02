@@ -1,0 +1,98 @@
+[
+  {
+    "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=ATOMUSDT&limit=200",
+    "requested_at_utc": "2026-10-01T17:36:34.319806+00:00",
+    "received_at_utc": "2026-10-01T17:36:36.655814+00:00",
+    "http_status": 200,
+    "error": null,
+    "sha256": "4b6b220de8046ffebfd2edb661e8fa797f11b959e696a60d5a9acb12f2e2533c"
+  },
+  {
+    "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=ATOM-USDT-SWAP&limit=100",
+    "requested_at_utc": "2026-10-01T17:36:34.320335+00:00",
+    "received_at_utc": "2026-10-01T17:36:35.160035+00:00",
+    "http_status": 200,
+    "error": null,
+    "sha256": "3dd7d7fba240d17a797189c04182721765c5ac7f8441690dc3d34ccbf71016f3"
+  },
+  {
+    "url": "https://api.bybit.com/v5/market/orderbook?category=linear&symbol=ATOMUSDT&limit=10",
+    "requested_at_utc": "2026-10-01T17:36:34.320683+00:00",
+    "received_at_utc": "2026-10-01T17:36:35.943815+00:00",
+    "http_status": 200,
+    "error": null,
+    "sha256": "3fdb892ee71c16e0dd490bcd17fff464c073f5508c447c4cc02c0b1c6957beee"
+  },
+  {
+    "url": "https://www.okx.com/api/v5/market/books?instId=ATOM-USDT-SWAP&sz=10",
+    "requested_at_utc": "2026-10-01T17:36:34.321148+00:00",
+    "received_at_utc": "2026-10-01T17:36:35.205813+00:00",
+    "http_status": 200,
+    "error": null,
+    "sha256": "a6cfd3081251acd58868a85a73a8ae7b0dd7908cfe5c89469341351404682f9d"
+  },
+  {
+    "url": "https://api.bybit.com/v5/market/instruments-info?category=linear&symbol=ATOMUSDT",
+    "requested_at_utc": "2026-10-01T17:36:35.160257+00:00",
+    "received_at_utc": "2026-10-01T17:36:36.614340+00:00",
+    "http_status": 200,
+    "error": null,
+    "sha256": "2053f48a030c79960ea277dead53a5aeb5c54643c7e20258848d029c9a291dd9"
+  },
+  {
+    "url": "https://www.okx.com/api/v5/public/instruments?instType=SWAP&instId=ATOM-USDT-SWAP",
+    "requested_at_utc": "2026-10-01T17:36:35.205967+00:00",
+    "received_at_utc": "2026-10-01T17:36:35.970502+00:00",
+    "http_status": 200,
+    "error": null,
+    "sha256": "5ba50d77b548cc263aa099712a34dc619ef0615d10910b301a8ded5b890b85d2"
+  },
+  {
+    "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=DOTUSDT&limit=200",
+    "requested_at_utc": "2026-10-01T17:36:35.943960+00:00",
+    "received_at_utc": "2026-10-01T17:36:37.610882+00:00",
+    "http_status": 200,
+    "error": null,
+    "sha256": "c427007751e43c5247ef4a33c2a65fa52034532f184751f15f33b6e9f53cd723"
+  },
+  {
+    "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=DOT-USDT-SWAP&limit=100",
+    "requested_at_utc": "2026-10-01T17:36:35.970647+00:00",
+    "received_at_utc": "2026-10-01T17:36:36.979317+00:00",
+    "http_status": 200,
+    "error": null,
+    "sha256": "a4afa9e70b48197f57f72b410edc8ae63b3c5abef379aa919c759480a83b2f6a"
+  },
+  {
+    "url": "https://api.bybit.com/v5/market/orderbook?category=linear&symbol=DOTUSDT&limit=10",
+    "requested_at_utc": "2026-10-01T17:36:36.614481+00:00",
+    "received_at_utc": "2026-10-01T17:36:38.011843+00:00",
+    "http_status": 200,
+    "error": null,
+    "sha256": "924f4ae76f100c3cc25550f19e653a8972779d63222daeee85f075e7db9092a5"
+  },
+  {
+    "url": "https://www.okx.com/api/v5/market/books?instId=DOT-USDT-SWAP&sz=10",
+    "requested_at_utc": "2026-10-01T17:36:36.656412+00:00",
+    "received_at_utc": "2026-10-01T17:36:37.705665+00:00",
+    "http_status": 200,
+    "error": null,
+    "sha256": "136f005f9ae11680f49a1444f9282c2220464bd263759d6bdbac1edf746a3d1d"
+  },
+  {
+    "url": "https://api.bybit.com/v5/market/instruments-info?category=linear&symbol=DOTUSDT",
+    "requested_at_utc": "2026-10-01T17:36:36.979476+00:00",
+    "received_at_utc": "2026-10-01T17:36:38.515862+00:00",
+    "http_status": 200,
+    "error": null,
+    "sha256": "a1b780f529209f45f268182bd7a43c637ff3f583abf699f5ab80c9454d22174b"
+  },
+  {
+    "url": "https://www.okx.com/api/v5/public/instruments?instType=SWAP&instId=DOT-USDT-SWAP",
+    "requested_at_utc": "2026-10-01T17:36:37.611089+00:00",
+    "received_at_utc": "2026-10-01T17:36:38.516068+00:00",
+    "http_status": 200,
+    "error": null,
+    "sha256": "0c6bb65653766b8ba91dd422bc2706e980380c676b635e8645609eb5c75f8c41"
+  }
+]

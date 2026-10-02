@@ -1,0 +1,71 @@
+{
+  "status": "Research acceptance targets ONLY; none of these assumed margins, volumes, cycle lengths or market shares has been validated.",
+  "all_money_and_rates": "Decimal",
+  "total_capital_usd": "1000000",
+  "daily_target_usd": "200",
+  "full_capital_simple_annual_target_pct": "7.300",
+  "30day_target_usd": "6000",
+  "turnover_requirements": [
+    {
+      "net_edge_bps": "0.5",
+      "required_daily_completed_cycle_notional_usd": "4.0E+6"
+    },
+    {
+      "net_edge_bps": "1",
+      "required_daily_completed_cycle_notional_usd": "2.00E+6"
+    },
+    {
+      "net_edge_bps": "3",
+      "required_daily_completed_cycle_notional_usd": "666666.6666666666666666666666666666666667"
+    },
+    {
+      "net_edge_bps": "5",
+      "required_daily_completed_cycle_notional_usd": "4.0E+5"
+    },
+    {
+      "net_edge_bps": "10",
+      "required_daily_completed_cycle_notional_usd": "2.00E+5"
+    }
+  ],
+  "illustrative_portfolio_acceptance_targets": [
+    {
+      "business": "cross_chain_inventory",
+      "reserved_capital_usd": "250000",
+      "daily_completed_notional_usd": "1000000",
+      "net_variable_edge_bps": "0.8",
+      "daily_contribution_usd": "80.0"
+    },
+    {
+      "business": "inventory_market_making",
+      "reserved_capital_usd": "200000",
+      "daily_completed_notional_usd": "200000",
+      "net_variable_edge_bps": "3",
+      "daily_contribution_usd": "60"
+    },
+    {
+      "business": "discount_redemption",
+      "reserved_capital_usd": "200000",
+      "asset_purchase_usd": "100000",
+      "hedge_and_other_capital_usd": "100000",
+      "cycle_days": "7",
+      "net_cycle_edge_bps_on_purchase": "35",
+      "daily_contribution_usd": "50"
+    },
+    {
+      "business": "keepers_and_auctions",
+      "reserved_capital_usd": "50000",
+      "required_30day_net_event_profit_usd": "900",
+      "daily_contribution_usd": "30"
+    }
+  ],
+  "reserved_business_capital_usd": "700000",
+  "unallocated_liquidity_buffer_usd": "300000",
+  "assumed_daily_common_operating_cost_usd": "20",
+  "conditional_daily_net_usd": "200.0",
+  "cash_accounting": "Capital is segregated by chain/venue and not double counted. Variable margins include execution, hedging and inventory restoration; common operating costs are deducted once. Unallocated reserves earn zero. Daily contributions are calendar averages, not guaranteed daily realized cash.",
+  "stress_cases": {
+    "no_cross_chain_access_daily_net_usd": "120.0",
+    "all_business_contributions_halved_daily_net_usd": "90.0",
+    "one_10000_usd_loss_erases_target_days": "50"
+  }
+}

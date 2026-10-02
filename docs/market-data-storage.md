@@ -361,3 +361,13 @@ member 只有 `run_id UUID`、`instrument_id UInt32`、`canonical_market_key Str
 报告连接使用服务端 `readonly=1`，不执行数据库引导或DDL。成本补报只写报告目录的证据与JSON/CSV，不修改生产事实。参考1 WETH卖出价格不参与可执行gas成本计算；成本必须用同hash、实际gas数量的USDC→WETH exact-output，Quoter内部gas不作为交易总gas。
 
 日规模存储/查询验收见[容量记录](../research/2026-09-22-dex-implementation/validation.md#日规模合成容量)：真实样本衍生的两份7,200块合成数据分别占40,849,739及34,423,988压缩列字节，另列查询耗时；不包含gzip证据、marks和真实行情变化的额外熵，不当作实采日量。
+
+## Across 稳定币中继（2026-10-02 已实现）
+
+独立研究库 `crypto_market_info_across` 已建立七表：`across_capture`、`across_deposit`、`across_deposit_update`、`across_fill`、`across_refund`、`across_tx_receipt`、`across_order_probe`。入口 `AcrossSchemaStatements` / `InitAcrossSchema`，命令 `cmd/across-data`。字段见 [DDL](across-stablecoin-data-schema.sql)，操作和实际限制见 [实现说明](across-stablecoin-data-implementation.md)。
+
+金额原子单位 UInt256，估值价格/数量 Decimal(38,18)，时间 DateTime64(6,UTC)；协议 bytes32 和 EVM address 分别为32/20字节。原始响应存有SHA256的本地gzip证据，不使用通用JSON业务表。事实包含capture_id并按原区块时间分月，capture/probe分别按开始/请求时间分月，不设TTL。
+
+先归档证据、写事实，再提交capture；读取先取最新revision，再筛canonical/committed并核验六组成员计数/摘要。重试内容不变；重组revision只改canonical/finality/说明，旧成功版本不会重新出现。跨capture按不可变链上事实去重，采集时间和payload格式不同不算协议冲突。capture错误、成功空日志和未知ABI保持不同状态。
+
+原始/更新条款、真实live首见、计划/实际后续probe各自保存；原始响应先收到不代表解码已可用。重启/补采不能制造历史live可见性。聚合退款仅通过同交易Transfer核验地址到账，不伪造逐单归属。整笔gas按交易去重，未知费用/过期价格保留NULL。库存及成本情景只在离线报告计算。已通过[独立代码审核与必要验证](../discuss/0013-across-stablecoin-code-review.md)，完整验收见[记录](../research/2026-10-02-across-implementation/validation.md)。

@@ -1,0 +1,8 @@
+{
+  "url": "https://api.bybit.com/v5/market/orderbook?category=linear&symbol=DOTUSDT&limit=10",
+  "requested_at_utc": "2026-10-01T17:36:36.614481+00:00",
+  "received_at_utc": "2026-10-01T17:36:38.011843+00:00",
+  "http_status": 200,
+  "error": null,
+  "sha256": "924f4ae76f100c3cc25550f19e653a8972779d63222daeee85f075e7db9092a5"
+}

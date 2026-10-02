@@ -1,0 +1,15 @@
+{
+  "count": 50,
+  "oldest_utc": "2026-09-27T13:43:57+00:00",
+  "newest_utc": "2026-10-01T21:44:12+00:00",
+  "days_between": "4.333506944444444444444444444",
+  "gross_rewards_TRX": "1510.145796",
+  "gross_TRX_per_day_sample": "348.4812221048836184447738472",
+  "unique_liquidators": {
+    "0x59155f50e82796f8089247701d62acdb26b929ed": 20,
+    "0xbeed4bd7349d4f1a0d4983f1cde7b51cd830acba": 3,
+    "0x2ef4f6c1573f3485c94ea6cb8423a85ee913e276": 26,
+    "0x11b9f751c7b62b5aa34983c4ee5929dde7df32f0": 1
+  },
+  "last_tx": "5c63519663ae37058868ed2d171d9d0edb272acf2be534ccb8f9d941a44e1823"
+}

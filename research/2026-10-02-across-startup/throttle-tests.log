@@ -1,0 +1,9 @@
+Independent reviewer command:
+GOCACHE=/tmp/crypto-market-info-go-cache go test -race ./internal/across ./cmd/across-data ./internal/storage/clickhouse -count=1
+
+Observed stdout:
+ok  	github.com/vphoenix/crypto-market-info/internal/across	2.107s
+ok  	github.com/vphoenix/crypto-market-info/cmd/across-data	1.034s
+ok  	github.com/vphoenix/crypto-market-info/internal/storage/clickhouse	1.055s
+
+Observed exit code: 0

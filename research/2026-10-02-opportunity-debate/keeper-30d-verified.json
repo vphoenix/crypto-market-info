@@ -1,0 +1,22 @@
+{
+  "events": 376,
+  "unique_transactions": 376,
+  "gross_trx": "50064.663099",
+  "gross_current_bid_usdt": "16761.64920554520000",
+  "mean_gross_daily_usdt": "558.72164018484000",
+  "full_utc_days": 29,
+  "zero_event_full_utc_days": 0,
+  "median_full_utc_day_gross_usdt": "186.2174206080000",
+  "full_utc_days_gross_below_200_usdt": 15,
+  "largest_day_reward_fraction": "0.2675455487139300363875599521688893568560",
+  "top_five_days_reward_fraction": "0.6478802631480781953598740624574356531015",
+  "top_two_addresses_reward_fraction": "0.9841436437027405791871341001630975541342",
+  "other_addresses_mean_gross_daily_usdt": "8.85928939776000",
+  "gross_share_needed_for_30_usdt_daily_at_month_mean": "0.05369400045087783060749131139884130136975",
+  "gross_share_needed_for_30_usdt_daily_at_week_mean": "0.1925949216766570261391851509006742379751",
+  "raw_page_sha256": {
+    "tron_energy_30d_page_01.raw.json": "edcbb31a255c4fe04e74f48214a63fb0f07ee7858503d84e7c18f12e69091e17",
+    "tron_energy_30d_page_02.raw.json": "f5c10c7256a12528ce3a71527686c7d4ad2feafced5384d1fe9e7e370089af33"
+  },
+  "limitations": "Observed selected-contract rewards, not our income or marketwide capacity. Current bid valuation excludes trading fees. confirmed=true is provider evidence; block hashes and independent finality checks are not yet complete."
+}

@@ -1,0 +1,21 @@
+[
+  {
+    "at": "2026-10-02T14:24:19.674429Z",
+    "payload_hash": "0x9fc1b86d400f47369b32441b380a5b41c0c5198efd37427826ee2dc577c08dda",
+    "request": [
+      {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x306ea67",
+          false
+        ]
+      }
+    ],
+    "error": {
+      "code": -32016,
+      "message": "over rate limit"
+    }
+  }
+]

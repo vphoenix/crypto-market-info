@@ -1,0 +1,6 @@
+{
+  "url": "https://api.trongrid.io/walletsolidity/gettransactioninfobyid",
+  "txid": "5cc7f7b10621990900e6b278b627d1b4ae46279fc6b31a6d0e41a227fc5639fc",
+  "collected_at": "2026-10-02T08:50:17.995452+00:00",
+  "sha256": "866d895d1835764fef149356ba5a1282d17cd4f5219cacf5946cb51134f8b746"
+}

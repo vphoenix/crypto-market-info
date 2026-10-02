@@ -1,0 +1,83 @@
+{
+  "window_start_utc_seconds": "2026-09-25T08:51:35+00:00",
+  "window_end_utc_seconds": "2026-10-02T08:51:35+00:00",
+  "window_start_ms": 1790326295110,
+  "window_end_ms": 1790931095110,
+  "unique_events": 80,
+  "unique_transactions": 80,
+  "gross_trx": "3256.784436",
+  "valuation_bid_usdt_per_trx": "0.33480000",
+  "gross_current_bid_valuation_usdt": "1090.37142917280000",
+  "seven_day_mean_gross_usdt": "155.7673470246857142857142857142857142857",
+  "liquidator_addresses": [
+    {
+      "address": "0x2ef4f6c1573f3485c94ea6cb8423a85ee913e276",
+      "events": 40,
+      "reward_trx": "1556.702996",
+      "reward_fraction": "0.4779877288752800954493384836355193144260"
+    },
+    {
+      "address": "0x59155f50e82796f8089247701d62acdb26b929ed",
+      "events": 31,
+      "reward_trx": "1514.87344",
+      "reward_fraction": "0.4651439079770890921808617977563928643142"
+    },
+    {
+      "address": "0xbeed4bd7349d4f1a0d4983f1cde7b51cd830acba",
+      "events": 6,
+      "reward_trx": "120",
+      "reward_fraction": "0.03684615987276844134365667915516899135660"
+    },
+    {
+      "address": "0x11b9f751c7b62b5aa34983c4ee5929dde7df32f0",
+      "events": 3,
+      "reward_trx": "65.208",
+      "reward_fraction": "0.02002220327486237102614303945291882990318"
+    }
+  ],
+  "top_two_by_reward_amount_fraction": "0.9431316368523691876302002813919121787402",
+  "receipts": [
+    {
+      "transaction_id": "5c63519663ae37058868ed2d171d9d0edb272acf2be534ccb8f9d941a44e1823",
+      "block_number": 86739482,
+      "event_reward_trx": "20",
+      "exact_native_transfer_from_rental_contract_to_liquidator": true,
+      "matched_internal_transfer_hash": "5b8333ad85db1bc6d213a097fea8fedba1fc4d91f0ca34232f4c4de02c242398",
+      "total_transaction_energy": "219372",
+      "energy_all_burn_equivalent_trx_at_current_parameter": "21.9372",
+      "receipt_burned_fee_field": "omitted",
+      "cost_limitation": "Whole transaction may include other actions. Energy burn-equivalent is not actual marginal liquidation cost; bandwidth, resource opportunity cost and failed attempts are additional."
+    },
+    {
+      "transaction_id": "5cc7f7b10621990900e6b278b627d1b4ae46279fc6b31a6d0e41a227fc5639fc",
+      "block_number": 86709261,
+      "event_reward_trx": "20",
+      "exact_native_transfer_from_rental_contract_to_liquidator": true,
+      "matched_internal_transfer_hash": "966827cc3dc727cb4d1e53ad648f543a996e72ef1ff06b140828f467baff1b0c",
+      "total_transaction_energy": "90536",
+      "energy_all_burn_equivalent_trx_at_current_parameter": "9.0536",
+      "receipt_burned_fee_field": "omitted",
+      "cost_limitation": "Whole transaction may include other actions. Energy burn-equivalent is not actual marginal liquidation cost; bandwidth, resource opportunity cost and failed attempts are additional."
+    },
+    {
+      "transaction_id": "9f5cc98fc94c5b8f0a169b457ca0644cbbcaa7657564e87f806b9c27e72c8c67",
+      "block_number": 86655464,
+      "event_reward_trx": "126.021476",
+      "exact_native_transfer_from_rental_contract_to_liquidator": true,
+      "matched_internal_transfer_hash": "01aac475dd185a5208ebefc72c912093a116b574ecb46e2c6daf34647e32acb9",
+      "total_transaction_energy": "229683",
+      "energy_all_burn_equivalent_trx_at_current_parameter": "22.9683",
+      "receipt_burned_fee_field": "omitted",
+      "cost_limitation": "Whole transaction may include other actions. Energy burn-equivalent is not actual marginal liquidation cost; bandwidth, resource opportunity cost and failed attempts are additional."
+    }
+  ],
+  "verified_payload_sha256": {
+    "tron_energy_7d": "28e32c35fbc995150b46d61bc467bab6c302e2be6a93c3334aa893d479a8c2d1",
+    "trx_bookticker": "e10ea3513ed076286d65faddc84772c29b3154d62280c0509e4ed3a1db8f5593",
+    "tron_chainparameters": "e1e2190ac36f28e59f21cd28ff56cddb8c3e2e16b4a7e64135d75a16eb770e30",
+    "tron_receipt_0": "75a35e1d9f549e443cbd2f6b8ae028eafffc6e2306c06001078eb33894904f12",
+    "tron_receipt_1": "866d895d1835764fef149356ba5a1282d17cd4f5219cacf5946cb51134f8b746",
+    "tron_receipt_2": "03079a02ef634a85e1496638768f2219cb2ea9b1506676d94863bd1edffc5a84"
+  },
+  "limitations": "Observed selected-contract rewards, not our income or marketwide capacity. Current bid valuation excludes trading fees. confirmed=true is provider evidence; block hashes and independent finality checks are not yet complete."
+}

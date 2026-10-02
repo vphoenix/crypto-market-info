@@ -1,0 +1,106 @@
+[
+  {
+    "Source": "api.binance.com",
+    "Symbol": "ETHUSDT",
+    "HTTPStatus": 200,
+    "RequestedAt": "2026-10-02T13:57:48.90201Z",
+    "AvailableAt": "2026-10-02T13:57:51.781312Z",
+    "payload_sha256": "7800d925f6cf40563384142c849dba8504635c4e9948ea30b5f760d62e919821"
+  },
+  {
+    "Source": "api.binance.com",
+    "Symbol": "USDCUSDT",
+    "HTTPStatus": 200,
+    "RequestedAt": "2026-10-02T13:57:51.782429Z",
+    "AvailableAt": "2026-10-02T13:57:52.726727Z",
+    "payload_sha256": "f1af07359f5a30fadf1e6447cb003c0986747ba73fb65957a23184279f35103d"
+  },
+  {
+    "Source": "api.binance.com",
+    "Symbol": "ETHUSDT",
+    "HTTPStatus": 200,
+    "RequestedAt": "2026-10-02T13:58:58.71824Z",
+    "AvailableAt": "2026-10-02T13:58:59.453419Z",
+    "payload_sha256": "ff7229844abd65bee6eda368bf0874b210fa2a5bb5468b78c404eaa6817be950"
+  },
+  {
+    "Source": "api.binance.com",
+    "Symbol": "USDCUSDT",
+    "HTTPStatus": 200,
+    "RequestedAt": "2026-10-02T13:58:59.454526Z",
+    "AvailableAt": "2026-10-02T13:59:00.212429Z",
+    "payload_sha256": "f31f60db00ffe72e050249d3060bedc92da87e62abe66f29c088e760435c2cef"
+  },
+  {
+    "Source": "api.binance.com",
+    "Symbol": "ETHUSDT",
+    "HTTPStatus": 200,
+    "RequestedAt": "2026-10-02T14:00:06.226075Z",
+    "AvailableAt": "2026-10-02T14:00:08.280824Z",
+    "payload_sha256": "8d68f625986e64969aeefa7481531ed8584ef734b34305d8e55411343eb58c97"
+  },
+  {
+    "Source": "api.binance.com",
+    "Symbol": "USDCUSDT",
+    "HTTPStatus": 200,
+    "RequestedAt": "2026-10-02T14:00:08.282041Z",
+    "AvailableAt": "2026-10-02T14:00:09.810037Z",
+    "payload_sha256": "b5874528ecf76c4401f8d28aedd34e3a44d451d99e0d17bfc0694428dce89ca7"
+  },
+  {
+    "Source": "api.binance.com",
+    "Symbol": "ETHUSDT",
+    "HTTPStatus": 200,
+    "RequestedAt": "2026-10-02T14:01:09.850979Z",
+    "AvailableAt": "2026-10-02T14:01:10.97005Z",
+    "payload_sha256": "fa716c80acce26e747d8273a441a1aadf633558f4dfa6e1b505e0760d1e47b74"
+  },
+  {
+    "Source": "api.binance.com",
+    "Symbol": "USDCUSDT",
+    "HTTPStatus": 200,
+    "RequestedAt": "2026-10-02T14:01:10.972887Z",
+    "AvailableAt": "2026-10-02T14:01:11.729548Z",
+    "payload_sha256": "61d536419c108f3635bf5d2bbbcaaf7a7bcd85489f32a299dde26c24923519e9"
+  },
+  {
+    "Source": "api.binance.com",
+    "Symbol": "ETHUSDT",
+    "HTTPStatus": 200,
+    "RequestedAt": "2026-10-02T14:02:23.57027Z",
+    "AvailableAt": "2026-10-02T14:02:24.696815Z",
+    "payload_sha256": "7090fd5fbe3ae58087c08a13e9506928c5f3145ab3c13e7f1291451260436bf7"
+  },
+  {
+    "Source": "api.binance.com",
+    "Symbol": "USDCUSDT",
+    "HTTPStatus": 200,
+    "RequestedAt": "2026-10-02T14:02:24.698023Z",
+    "AvailableAt": "2026-10-02T14:02:25.675216Z",
+    "payload_sha256": "f7f597bcbd1824992b9d99f6aa4d15614ebc735404a7d97d3c2568d293037f4a"
+  },
+  {
+    "Source": "api.binance.com",
+    "Symbol": "ETHUSDT",
+    "HTTPStatus": 200,
+    "RequestedAt": "2026-10-02T14:03:42.53328Z",
+    "AvailableAt": "2026-10-02T14:03:43.855358Z",
+    "payload_sha256": "2d7fcb99361f8d54258466c76c0a98535a3a04743e1abae58ad0d253261d16f5"
+  },
+  {
+    "Source": "api.binance.com",
+    "Symbol": "USDCUSDT",
+    "HTTPStatus": 200,
+    "RequestedAt": "2026-10-02T14:03:43.857906Z",
+    "AvailableAt": "2026-10-02T14:03:44.588741Z",
+    "payload_sha256": "4713cc17af75c2362b8c5eb5adeb06c96769cb69ec535f1872b1250b7235d13f"
+  },
+  {
+    "Source": "api.binance.com",
+    "Symbol": "ETHUSDT",
+    "HTTPStatus": 200,
+    "RequestedAt": "2026-10-02T14:04:58.586658Z",
+    "AvailableAt": "2026-10-02T14:04:59.528691Z",
+    "payload_sha256": "f1f5d7ff30be5111f3793100832724fb2b4dd75f9c4a60aa5db607e0eac37451"
+  }
+]

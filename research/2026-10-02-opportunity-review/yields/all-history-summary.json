@@ -1,0 +1,1081 @@
+{
+	"meta":
+	[
+		{
+			"name": "yield_route_id",
+			"type": "UInt32"
+		},
+		{
+			"name": "n",
+			"type": "UInt64"
+		},
+		{
+			"name": "first_observation",
+			"type": "DateTime64(3, 'UTC')"
+		},
+		{
+			"name": "last_observation",
+			"type": "DateTime64(3, 'UTC')"
+		},
+		{
+			"name": "last_collection",
+			"type": "DateTime64(3, 'UTC')"
+		}
+	],
+
+	"data":
+	[
+		{
+			"yield_route_id": 1,
+			"n": 485,
+			"first_observation": "2026-08-21 05:02:18.500",
+			"last_observation": "2026-10-01 16:53:41.029",
+			"last_collection": "2026-10-01 16:53:41.029"
+		},
+		{
+			"yield_route_id": 2,
+			"n": 485,
+			"first_observation": "2026-08-21 05:02:18.500",
+			"last_observation": "2026-10-01 16:53:41.029",
+			"last_collection": "2026-10-01 16:53:41.029"
+		},
+		{
+			"yield_route_id": 3,
+			"n": 485,
+			"first_observation": "2026-08-21 05:02:18.500",
+			"last_observation": "2026-10-01 16:53:41.029",
+			"last_collection": "2026-10-01 16:53:41.029"
+		},
+		{
+			"yield_route_id": 4,
+			"n": 485,
+			"first_observation": "2026-08-21 05:02:18.400",
+			"last_observation": "2026-10-01 16:53:40.947",
+			"last_collection": "2026-10-01 16:53:41.029"
+		},
+		{
+			"yield_route_id": 5,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 6,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 7,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 8,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 9,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 10,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 11,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 12,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 13,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 14,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 15,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 16,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 17,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 18,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 19,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 20,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 21,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 22,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 23,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 24,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 25,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 26,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 27,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 28,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 29,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 30,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 31,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 32,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 33,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 34,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 35,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 36,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 37,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 38,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 39,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 40,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 41,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 42,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 43,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 44,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 45,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 46,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 47,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 48,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 49,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 50,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 51,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 52,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 53,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 54,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 55,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 56,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 57,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 58,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 59,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 60,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 61,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 62,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 63,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 64,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 65,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 66,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 67,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 68,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 69,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 70,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 71,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 72,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 73,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 74,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 75,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 76,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 77,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 78,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 79,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 80,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 81,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 82,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 83,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 84,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 85,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 86,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 87,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 88,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 89,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 90,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 91,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 92,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 93,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 94,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 95,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 96,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 97,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 98,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 99,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 100,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 101,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 102,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 103,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 104,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 105,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 106,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 107,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 108,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 109,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 110,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 111,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 112,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 113,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 114,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 115,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 116,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 117,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 118,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 119,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 120,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 121,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 122,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 123,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 124,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 125,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 126,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 127,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 128,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 129,
+			"n": 98,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 130,
+			"n": 16,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-08-24 09:52:15.000",
+			"last_collection": "2026-08-24 09:53:10.940"
+		},
+		{
+			"yield_route_id": 131,
+			"n": 11,
+			"first_observation": "2026-08-21 05:05:03.000",
+			"last_observation": "2026-08-23 03:46:42.000",
+			"last_collection": "2026-08-23 03:47:38.030"
+		},
+		{
+			"yield_route_id": 132,
+			"n": 1,
+			"first_observation": "2026-08-23 09:47:48.000",
+			"last_observation": "2026-08-23 09:47:48.000",
+			"last_collection": "2026-08-23 09:48:44.489"
+		},
+		{
+			"yield_route_id": 133,
+			"n": 86,
+			"first_observation": "2026-08-23 15:48:54.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 134,
+			"n": 82,
+			"first_observation": "2026-08-24 15:53:21.000",
+			"last_observation": "2026-10-01 14:05:33.000",
+			"last_collection": "2026-10-01 14:06:30.901"
+		},
+		{
+			"yield_route_id": 135,
+			"n": 39,
+			"first_observation": "2026-07-27 02:52:53.000",
+			"last_observation": "2026-09-30 05:36:03.000",
+			"last_collection": "2026-10-01 13:52:06.760"
+		},
+		{
+			"yield_route_id": 136,
+			"n": 39,
+			"first_observation": "2026-07-27 04:48:45.000",
+			"last_observation": "2026-09-30 07:10:58.000",
+			"last_collection": "2026-10-01 13:52:08.556"
+		},
+		{
+			"yield_route_id": 137,
+			"n": 82,
+			"first_observation": "2026-08-24 18:37:14.000",
+			"last_observation": "2026-10-01 14:02:02.000",
+			"last_collection": "2026-10-01 14:02:12.600"
+		},
+		{
+			"yield_route_id": 138,
+			"n": 101,
+			"first_observation": "2026-08-17 23:58:59.000",
+			"last_observation": "2026-10-01 13:37:56.000",
+			"last_collection": "2026-10-01 13:52:20.305"
+		},
+		{
+			"yield_route_id": 139,
+			"n": 1567,
+			"first_observation": "2026-07-27 09:00:00.000",
+			"last_observation": "2026-10-01 12:00:00.000",
+			"last_collection": "2026-10-01 13:51:52.613"
+		},
+		{
+			"yield_route_id": 140,
+			"n": 74,
+			"first_observation": "2026-08-26 09:54:01.000",
+			"last_observation": "2026-10-01 13:52:00.000",
+			"last_collection": "2026-10-01 13:52:10.387"
+		},
+		{
+			"yield_route_id": 141,
+			"n": 74,
+			"first_observation": "2026-08-26 09:54:01.000",
+			"last_observation": "2026-10-01 13:51:58.000",
+			"last_collection": "2026-10-01 13:52:08.913"
+		},
+		{
+			"yield_route_id": 142,
+			"n": 74,
+			"first_observation": "2026-08-26 09:54:02.000",
+			"last_observation": "2026-10-01 13:51:56.000",
+			"last_collection": "2026-10-01 13:52:06.742"
+		},
+		{
+			"yield_route_id": 143,
+			"n": 140,
+			"first_observation": "2026-07-28 00:00:00.000",
+			"last_observation": "2026-10-01 13:50:32.000",
+			"last_collection": "2026-10-01 13:51:52.746"
+		},
+		{
+			"yield_route_id": 144,
+			"n": 393,
+			"first_observation": "2026-08-19 00:00:00.000",
+			"last_observation": "2026-10-01 16:00:00.000",
+			"last_collection": "2026-10-01 16:51:52.585"
+		},
+		{
+			"yield_route_id": 145,
+			"n": 757,
+			"first_observation": "2026-08-19 17:00:00.000",
+			"last_observation": "2026-10-01 16:00:00.000",
+			"last_collection": "2026-10-01 16:51:52.588"
+		},
+		{
+			"yield_route_id": 146,
+			"n": 757,
+			"first_observation": "2026-08-19 17:00:00.000",
+			"last_observation": "2026-10-01 16:00:00.000",
+			"last_collection": "2026-10-01 16:52:52.913"
+		},
+		{
+			"yield_route_id": 147,
+			"n": 334,
+			"first_observation": "2026-08-27 13:15:14.000",
+			"last_observation": "2026-10-01 16:53:22.000",
+			"last_collection": "2026-10-01 16:53:31.285"
+		},
+		{
+			"yield_route_id": 148,
+			"n": 334,
+			"first_observation": "2026-08-27 13:15:14.000",
+			"last_observation": "2026-10-01 16:53:25.000",
+			"last_collection": "2026-10-01 16:53:34.288"
+		},
+		{
+			"yield_route_id": 149,
+			"n": 334,
+			"first_observation": "2026-08-27 13:15:14.000",
+			"last_observation": "2026-10-01 16:53:22.000",
+			"last_collection": "2026-10-01 16:53:32.294"
+		}
+	],
+
+	"rows": 149,
+
+	"statistics":
+	{
+		"elapsed": 0.003180693,
+		"rows_read": 19485,
+		"bytes_read": 390850
+	}
+}

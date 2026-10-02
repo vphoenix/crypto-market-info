@@ -1,0 +1,69 @@
+{
+  "url": "https://arb1.arbitrum.io/rpc",
+  "request": [
+    {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "eth_getStorageAt",
+      "params": [
+        "0xe35e9842fceaCA96570B734083f4a58e8F7C5f2A",
+        "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+        "finalized"
+      ]
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "eth_getBlockByNumber",
+      "params": [
+        "finalized",
+        false
+      ]
+    }
+  ],
+  "response": [
+    {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": "0x000000000000000000000000cfcda84333431bcc9155f2368b8362f0d1dff8c9"
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "result": {
+        "baseFeePerGas": "0x1349fd0",
+        "difficulty": "0x1",
+        "extraData": "0x97c46f15a9beedb406541bced3bde4ae33978bf871432f79e26665bea6b87c23",
+        "gasLimit": "0x4000000000000",
+        "gasUsed": "0x16fa19",
+        "hash": "0x420258ef87bb6ad5da1c4a8a4f17aa9cf0ed11c68ff755063b29c98f72144fe8",
+        "l1BlockNumber": "0x18e538c",
+        "logsBloom": "0x0000000000000000009000000800002000000000000002100000100001000011000001000008000000000000008200000000500108002001004004000020000004001001004024080000000900002408004008000004000020800000000000000200000800200000200000043000000008400080000000100000001010080000000000000000000000000040004000000000000000200022000000040000000002400000000000000100002000000000000000000000000000000000000000000040a002000000000000000000000000000000800400200000000000108000000010000000208000100800000040290110000081000000204000800000020004",
+        "miner": "0xa4b000000000000000000073657175656e636572",
+        "mixHash": "0x0000000000028a9b00000000018e538c000000000000003d0001000000000000",
+        "nonce": "0x000000000027683a",
+        "number": "0x1e750d88",
+        "parentHash": "0x394b9a98750862d5b2caff09af89652b7db4f6d5b5961bf26117deccc2bac30c",
+        "receiptsRoot": "0xd2a14f627c79da3a9998c767cc4c421318173bd345b33909f3e71e725b651212",
+        "sendCount": "0x28a9b",
+        "sendRoot": "0x97c46f15a9beedb406541bced3bde4ae33978bf871432f79e26665bea6b87c23",
+        "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+        "size": "0x18f2",
+        "stateRoot": "0x9846e19dcbbd28a4f8d709ac6403a5866139f8276158db642d2a9dcf6dc0b18c",
+        "timestamp": "0x6abfa70f",
+        "transactions": [
+          "0x87b75dae24421bea74db75f02b429f1ccd06ae63141f306d3e1faa99f2119839",
+          "0x23a2138ac98a68cb63c67ff684e9f799cec11f98947d4fcac86d71a84ba5f74e",
+          "0x9687ae8214c25dcc7d4ca43bd66684ccd1f6a4c6256f37089e685dd8d6b4e36b",
+          "0x992faaaa9c023d0738560ab37a841314882eddf9399b4e7f635f75e9800d5135",
+          "0x7f5d91de54c8025debaed971a36e989b24ac01178296fae702f78fe0cffd8369",
+          "0xc85a1113b2f5a870d0cd73ef66cedf9ddc0abfe10c04e6692257f1e1cf180c26",
+          "0xaed6892208507c50d304e7121eb4f7699c814b7546499abb3c951d5fd5784487",
+          "0xa29a7e9c264e0935f48f47f41c09df4040dbb29aaeaa2eb5ce52f23d06a3b89c"
+        ],
+        "transactionsRoot": "0x72469f5e2fdd04bd5e8c380c4af7d28dacc4f940e6dc56825fb7f6b4e759ab5f",
+        "uncles": []
+      }
+    }
+  ]
+}

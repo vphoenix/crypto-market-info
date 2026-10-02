@@ -1,0 +1,9 @@
+2026/10/02 13:32:41 chain=42161 head_unavailable: rpc_transport_or_timeout
+2026/10/02 13:32:43 pending=0 scheduled=0 receipt_backlog=0 cycle_ms=11416
+2026/10/02 13:32:49 pending=0 scheduled=0 receipt_backlog=0 cycle_ms=6258
+2026/10/02 13:32:58 pending=0 scheduled=0 receipt_backlog=0 cycle_ms=8259
+2026/10/02 13:33:11 pending=1 scheduled=1 receipt_backlog=0 cycle_ms=13728
+2026/10/02 13:33:24 pending=0 scheduled=0 receipt_backlog=0 cycle_ms=13015
+2026/10/02 13:33:33 pending=0 scheduled=0 receipt_backlog=0 cycle_ms=8926
+2026/10/02 13:33:41 pending=0 scheduled=0 receipt_backlog=0 cycle_ms=8139
+2026/10/02 13:33:51 pending=0 scheduled=0 receipt_backlog=0 cycle_ms=9362

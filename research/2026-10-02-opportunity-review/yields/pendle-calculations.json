@@ -1,0 +1,2149 @@
+{
+  "definition": "Profit=PT_out*(1-future_exit_loss)+cash_reserve-total_capital-gas_extra; simple APR=profit/total_capital*365/actual_days; minOut protects entry only, not redemption or exit. PT units are 1USDS claim at maturity, not 1sUSDS.",
+  "results": [
+    {
+      "quote_name": "pendle-susds-million-quote",
+      "route_index": 0,
+      "collected_at_utc": "2026-10-01T17:26:27.666267+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2732908996875",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "1000000",
+      "reserve_usdt": "0",
+      "pt_expected": "1006609.671990826185818639",
+      "pt_min": "1005603.06231883535963282",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6609.671990826185818639",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "5603.06231883535963282",
+      "expected_simple_annualized_full_capital_rate": "0.0436473066354946780837836287924224606644080245809577353694630",
+      "min_simple_annualized_full_capital_rate": "0.0370001082455263903927606922532223916547934727257595396807973",
+      "profit_required_for_3pct": "4543.01021093321917808219178082191780821917808219178082191781",
+      "expected_additional_cost_budget_for_3pct": "2066.66177989296664055680821917808219178082191780821917808219",
+      "min_additional_cost_budget_for_3pct": "1060.05210790214045473780821917808219178082191780821917808219",
+      "reported_effective_apy": "0.0475665411701347",
+      "gas_used_estimate": "2578124",
+      "entry_fee_in_quote": {
+        "usd": "151.06071379826628"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6109.671990826185818639",
+          "simple_annualized_full_capital_rate": "0.0403455310938282815773152442781891789590717877524587546075105",
+          "max_future_exit_haircut_bps_for_3pct": "15.5637465393561659760069700326920879627374675219920338731950",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5103.06231883535963282",
+          "simple_annualized_full_capital_rate": "0.0336983327038599938862923077389891099494572358972605589188447",
+          "max_future_exit_haircut_bps_for_3pct": "5.56931585521137735335674247672884597721980151563625830663097",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5606.3671548307727257296805",
+          "simple_annualized_full_capital_rate": "0.0370219318988441377318049679495596860234033469116692949778732",
+          "max_future_exit_haircut_bps_for_3pct": "15.5637465393561659760069700326920879627374675219920338731950",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4600.260787675941953003590",
+          "simple_annualized_full_capital_rate": "0.0303780571080708341846275428786292170482936023323986983870518",
+          "max_future_exit_haircut_bps_for_3pct": "5.56931585521137735335674247672884597721980151563625830663097",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5103.062318835359632820361",
+          "simple_annualized_full_capital_rate": "0.0336983327038599938862946916209301930877349060708798353482360",
+          "max_future_exit_haircut_bps_for_3pct": "15.5637465393561659760069700326920879627374675219920338731950",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4097.45925651652427318718",
+          "simple_annualized_full_capital_rate": "0.0270577815122816744829627780182693241471299687675368378552589",
+          "max_future_exit_haircut_bps_for_3pct": "5.56931585521137735335674247672884597721980151563625830663097",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5609.671990826185818639",
+          "simple_annualized_full_capital_rate": "0.0370437555521618850708468597639558972537355509239597738455580",
+          "max_future_exit_haircut_bps_for_3pct": "10.5965778948196689313486701344560330867031446336555098385183",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "4603.06231883535963282",
+          "simple_annualized_full_capital_rate": "0.0303965571621935973798239232247558282441209990687615781568922",
+          "max_future_exit_haircut_bps_for_3pct": "0.597175069889558489834918971831151080117922127324794572375747",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5106.3671548307727257296805",
+          "simple_annualized_full_capital_rate": "0.0337201563571777412253365834353264043180671100831703142159207",
+          "max_future_exit_haircut_bps_for_3pct": "10.5965778948196689313486701344560330867031446336555098385183",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4100.260787675941953003590",
+          "simple_annualized_full_capital_rate": "0.0270762815664044376781591583643959353429573655038997176250993",
+          "max_future_exit_haircut_bps_for_3pct": "0.597175069889558489834918971831151080117922127324794572375747",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4603.062318835359632820361",
+          "simple_annualized_full_capital_rate": "0.0303965571621935973798263071066969113823986692423808545862834",
+          "max_future_exit_haircut_bps_for_3pct": "10.5965778948196689313486701344560330867031446336555098385183",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "3597.45925651652427318718",
+          "simple_annualized_full_capital_rate": "0.0237560059706152779764943935040360424417937319390378570933063",
+          "max_future_exit_haircut_bps_for_3pct": "0.597175069889558489834918971831151080117922127324794572375747",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-million-quote",
+      "route_index": 1,
+      "collected_at_utc": "2026-10-01T17:26:27.666267+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2732908996875",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "1000000",
+      "reserve_usdt": "0",
+      "pt_expected": "1006608.94787728694887823",
+      "pt_min": "1005602.338929409661929351",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6608.94787728694887823",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "5602.338929409661929351",
+      "expected_simple_annualized_full_capital_rate": "0.0436425249147481940430257394107584345690888112255107331325548",
+      "min_simple_annualized_full_capital_rate": "0.0369953313065006528360408599085469464732272874451353416216910",
+      "profit_required_for_3pct": "4543.01021093321917808219178082191780821917808219178082191781",
+      "expected_additional_cost_budget_for_3pct": "2065.93766635372970014780821917808219178082191780821917808219",
+      "min_additional_cost_budget_for_3pct": "1059.32871847644275126880821917808219178082191780821917808219",
+      "reported_effective_apy": "0.047566829962575774",
+      "gas_used_estimate": "3008031",
+      "entry_fee_in_quote": {
+        "usd": "151.06060513390764"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6108.94787728694887823",
+          "simple_annualized_full_capital_rate": "0.0403407493730817975365573548965251528637525743970117523706023",
+          "max_future_exit_haircut_bps_for_3pct": "15.5565641419733241357110892408379022407520375979624633783714",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5102.338929409661929351",
+          "simple_annualized_full_capital_rate": "0.0336935557648342563295724753943136647678910506166363608597385",
+          "max_future_exit_haircut_bps_for_3pct": "5.56212626824156570140484889923987701830816963698947376366910",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5605.643403348305403790885",
+          "simple_annualized_full_capital_rate": "0.0370171525689580269330674575125864919411317931629000162420835",
+          "max_future_exit_haircut_bps_for_3pct": "15.5565641419733241357110892408379022407520375979624633783714",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4599.5377599449570983863245",
+          "simple_annualized_full_capital_rate": "0.0303732825575146094966860704501261095893182001444148124269751",
+          "max_future_exit_haircut_bps_for_3pct": "5.56212626824156570140484889923987701830816963698947376366910",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5102.33892940966192935177",
+          "simple_annualized_full_capital_rate": "0.0336935557648342563295775601286478310185110119287882801135647",
+          "max_future_exit_haircut_bps_for_3pct": "15.5565641419733241357110892408379022407520375979624633783714",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4096.736590480252267421649",
+          "simple_annualized_full_capital_rate": "0.0270530093501949626637996655059385544107453496721932639942117",
+          "max_future_exit_haircut_bps_for_3pct": "5.56212626824156570140484889923987701830816963698947376366910",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5608.94787728694887823",
+          "simple_annualized_full_capital_rate": "0.0370389738314154010300889703822918711584163375685127716086498",
+          "max_future_exit_haircut_bps_for_3pct": "10.5893919242577144208219153375372528096825490638978216121968",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "4602.338929409661929351",
+          "simple_annualized_full_capital_rate": "0.0303917802231678598231040908800803830625548137881373800977859",
+          "max_future_exit_haircut_bps_for_3pct": "0.589981906163878299113379723348746437985179393154461646764848",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5105.643403348305403790885",
+          "simple_annualized_full_capital_rate": "0.0337153770272916304265990729983532102357955563344010354801310",
+          "max_future_exit_haircut_bps_for_3pct": "10.5893919242577144208219153375372528096825490638978216121968",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4099.5377599449570983863245",
+          "simple_annualized_full_capital_rate": "0.0270715070158482129902176859358928278839819633159158316650226",
+          "max_future_exit_haircut_bps_for_3pct": "0.589981906163878299113379723348746437985179393154461646764848",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4602.33892940966192935177",
+          "simple_annualized_full_capital_rate": "0.0303917802231678598231091756144145493131747751002892993516122",
+          "max_future_exit_haircut_bps_for_3pct": "10.5893919242577144208219153375372528096825490638978216121968",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "3596.736590480252267421649",
+          "simple_annualized_full_capital_rate": "0.0237512338085285661573312809917052727054091128436942832322592",
+          "max_future_exit_haircut_bps_for_3pct": "0.589981906163878299113379723348746437985179393154461646764848",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-million-quote",
+      "route_index": 2,
+      "collected_at_utc": "2026-10-01T17:26:27.666267+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2732908996875",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "1000000",
+      "reserve_usdt": "0",
+      "pt_expected": "1006606.608433544798763061",
+      "pt_min": "1005600.001825111253964297",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6606.608433544798763061",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "5600.001825111253964297",
+      "expected_simple_annualized_full_capital_rate": "0.0436270762784903225267213685261067100251924451070249670821743",
+      "min_simple_annualized_full_capital_rate": "0.0369798981188790391912516773946467904118556313788022504881445",
+      "profit_required_for_3pct": "4543.01021093321917808219178082191780821917808219178082191781",
+      "expected_additional_cost_budget_for_3pct": "2063.59822261157958497880821917808219178082191780821917808219",
+      "min_additional_cost_budget_for_3pct": "1056.99161417803478621480821917808219178082191780821917808219",
+      "reported_effective_apy": "0.04756659926928131",
+      "gas_used_estimate": "1838522",
+      "entry_fee_in_quote": {
+        "usd": "151.0602540644451"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6106.608433544798763061",
+          "simple_annualized_full_capital_rate": "0.0403253007368239260202529840118734283198562082785259863202218",
+          "max_future_exit_haircut_bps_for_3pct": "15.5333594028834238224578462471223106034845464982540910576947",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5100.001825111253964297",
+          "simple_annualized_full_capital_rate": "0.0336781225772126426847832928804135087065193945503032697261919",
+          "max_future_exit_haircut_bps_for_3pct": "5.53889830118460843087940244535276200557623363885026518845266",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5603.3051293280263636794695",
+          "simple_annualized_full_capital_rate": "0.0370017116570182843525212388133770932595073752274734930747282",
+          "max_future_exit_haircut_bps_for_3pct": "15.5333594028834238224578462471223106034845464982540910576947",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4597.2018241986983373148515",
+          "simple_annualized_full_capital_rate": "0.0303578570864868066587192825274829036059772299061148878389953",
+          "max_future_exit_haircut_bps_for_3pct": "5.53889830118460843087940244535276200557623363885026518845266",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5100.001825111253964297939",
+          "simple_annualized_full_capital_rate": "0.0336781225772126426847894936148807581991585421764209998292345",
+          "max_future_exit_haircut_bps_for_3pct": "15.5333594028834238224578462471223106034845464982540910576947",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4094.401823286142710332703",
+          "simple_annualized_full_capital_rate": "0.0270375915957609706326552721745522985054350652619265059517987",
+          "max_future_exit_haircut_bps_for_3pct": "5.53889830118460843087940244535276200557623363885026518845266",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5606.608433544798763061",
+          "simple_annualized_full_capital_rate": "0.0370235251951575295137845994976401466145199714500270055582693",
+          "max_future_exit_haircut_bps_for_3pct": "10.5661756410155469174198385927936915227856069018633408297453",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "4600.001825111253964297",
+          "simple_annualized_full_capital_rate": "0.0303763470355462461783149083661802270011831577218042889642394",
+          "max_future_exit_haircut_bps_for_3pct": "0.566742383398945863273784534902133098790417860106918471563524",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5103.3051293280263636794695",
+          "simple_annualized_full_capital_rate": "0.0336999361153518878460528542991438115541711383989745123127756",
+          "max_future_exit_haircut_bps_for_3pct": "10.5661756410155469174198385927936915227856069018633408297453",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4097.2018241986983373148515",
+          "simple_annualized_full_capital_rate": "0.0270560815448204101522508980132496219006409930776159070770428",
+          "max_future_exit_haircut_bps_for_3pct": "0.566742383398945863273784534902133098790417860106918471563524",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4600.001825111253964297939",
+          "simple_annualized_full_capital_rate": "0.0303763470355462461783211091006474764938223053479220190672820",
+          "max_future_exit_haircut_bps_for_3pct": "10.5661756410155469174198385927936915227856069018633408297453",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "3594.401823286142710332703",
+          "simple_annualized_full_capital_rate": "0.0237358160540945741261868876603190168000988284334275251898462",
+          "max_future_exit_haircut_bps_for_3pct": "0.566742383398945863273784534902133098790417860106918471563524",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-million-quote",
+      "route_index": 3,
+      "collected_at_utc": "2026-10-01T17:26:27.666267+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2732908996875",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "1000000",
+      "reserve_usdt": "0",
+      "pt_expected": "1006603.93478355377006001",
+      "pt_min": "1005597.330848770216289949",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6603.93478355377006001",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "5597.330848770216289949",
+      "expected_simple_annualized_full_capital_rate": "0.0436094206941956122223687992643023585514445004223066154793032",
+      "min_simple_annualized_full_capital_rate": "0.0369622601901686235972031239209989933171377748635481654421423",
+      "profit_required_for_3pct": "4543.01021093321917808219178082191780821917808219178082191781",
+      "expected_additional_cost_budget_for_3pct": "2060.92457262055088192780821917808219178082191780821917808219",
+      "min_additional_cost_budget_for_3pct": "1054.32063783699711186680821917808219178082191780821917808219",
+      "reported_effective_apy": "0.04756680732533747",
+      "gas_used_estimate": "1467249",
+      "entry_fee_in_quote": {
+        "usd": "151.05985284220952"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6103.93478355377006001",
+          "simple_annualized_full_capital_rate": "0.0403076451525292157159004147500690768461082635938076347173507",
+          "max_future_exit_haircut_bps_for_3pct": "15.5068395689928489920624478887386604741253015220464231821524",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5097.330848770216289949",
+          "simple_annualized_full_capital_rate": "0.0336604846485022270907347394067657116118015380350491846801898",
+          "max_future_exit_haircut_bps_for_3pct": "5.51235192091376275480742568587880357936835477079604710109407",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5600.632816161993174979995",
+          "simple_annualized_full_capital_rate": "0.0369840649005157214033208458362036439614963045150975006476585",
+          "max_future_exit_haircut_bps_for_3pct": "15.5068395689928489920624478887386604741253015220464231821524",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4594.5321833458311818040255",
+          "simple_annualized_full_capital_rate": "0.0303402279767407462724677533305719304098067323191184298355162",
+          "max_future_exit_haircut_bps_for_3pct": "5.51235192091376275480742568587880357936835477079604710109407",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5097.33084877021628994999",
+          "simple_annualized_full_capital_rate": "0.0336604846485022270907412769223382110768843454363873665779663",
+          "max_future_exit_haircut_bps_for_3pct": "15.5068395689928489920624478887386604741253015220464231821524",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4091.733517921446073659051",
+          "simple_annualized_full_capital_rate": "0.0270199713049792654542007672543781492078119266031876749908426",
+          "max_future_exit_haircut_bps_for_3pct": "5.51235192091376275480742568587880357936835477079604710109407",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5603.93478355377006001",
+          "simple_annualized_full_capital_rate": "0.0370058696108628192094320302358357951407720267653086539553982",
+          "max_future_exit_haircut_bps_for_3pct": "10.5396426137423898784356378647652447481014303908631985520681",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "4597.330848770216289949",
+          "simple_annualized_full_capital_rate": "0.0303587091068358305842663548925324299064653012065502039182372",
+          "max_future_exit_haircut_bps_for_3pct": "0.540182796538928807233036382448777381313154565709189645033323",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5100.632816161993174979995",
+          "simple_annualized_full_capital_rate": "0.0336822893588493248968524613219703622561600676865985198857060",
+          "max_future_exit_haircut_bps_for_3pct": "10.5396426137423898784356378647652447481014303908631985520681",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4094.5321833458311818040255",
+          "simple_annualized_full_capital_rate": "0.0270384524350743497659993688163386487044704954906194490735636",
+          "max_future_exit_haircut_bps_for_3pct": "0.540182796538928807233036382448777381313154565709189645033323",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4597.33084877021628994999",
+          "simple_annualized_full_capital_rate": "0.0303587091068358305842728924081049293715481086078883858160138",
+          "max_future_exit_haircut_bps_for_3pct": "10.5396426137423898784356378647652447481014303908631985520681",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "3591.733517921446073659051",
+          "simple_annualized_full_capital_rate": "0.0237181957633128689477323827401448675024756897746886942288900",
+          "max_future_exit_haircut_bps_for_3pct": "0.540182796538928807233036382448777381313154565709189645033323",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-999k-quote",
+      "route_index": 0,
+      "collected_at_utc": "2026-10-01T17:29:35.126577+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2711212201736111111111111111111111111111111111111111111111",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "999000",
+      "reserve_usdt": "1000",
+      "pt_expected": "1005591.495028999936403947",
+      "pt_min": "1004585.903533970936467543",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6591.495028999936403947",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "5585.903533970936467543",
+      "expected_simple_annualized_full_capital_rate": "0.0435289828118565471787827814799286202557730392823641860659128",
+      "min_simple_annualized_full_capital_rate": "0.0368882473322293062946282165158401109692841424918366227485939",
+      "profit_required_for_3pct": "4542.83188111015981735159817351598173515981735159817351598174",
+      "expected_additional_cost_budget_for_3pct": "2048.66314788977658659540182648401826484018264840182648401826",
+      "min_additional_cost_budget_for_3pct": "1043.07165286077665019140182648401826484018264840182648401826",
+      "reported_effective_apy": "0.047566724536889815",
+      "gas_used_estimate": "2034992",
+      "entry_fee_in_quote": {
+        "usd": "150.9023241662776"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6091.495028999936403947",
+          "simple_annualized_full_capital_rate": "0.0402270776582952937568731557638814214703023679455677405563123",
+          "max_future_exit_haircut_bps_for_3pct": "15.4005195503877563904864080851360052268492850512598420382227",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5085.903533970936467543",
+          "simple_annualized_full_capital_rate": "0.0335863421786680528727185907997929121838134711550401772389935",
+          "max_future_exit_haircut_bps_for_3pct": "5.40592547586362001049637769476583779570584105526427639978361",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5588.6992814854364357450265",
+          "simple_annualized_full_capital_rate": "0.0369067099184816733147960482828103055734892807604669093991886",
+          "max_future_exit_haircut_bps_for_3pct": "15.4005195503877563904864080851360052268492850512598420382227",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4583.6105822039509993092285",
+          "simple_annualized_full_capital_rate": "0.0302692948065942460510835606012038405416436284183346098635284",
+          "max_future_exit_haircut_bps_for_3pct": "5.40592547586362001049637769476583779570584105526427639978361",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5085.903533970936467543053",
+          "simple_annualized_full_capital_rate": "0.0335863421786680528727189408017391896766761935753660782420648",
+          "max_future_exit_haircut_bps_for_3pct": "15.4005195503877563904864080851360052268492850512598420382227",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4081.317630436965531075457",
+          "simple_annualized_full_capital_rate": "0.0269522474345204392294485304026147688994737856816290424880632",
+          "max_future_exit_haircut_bps_for_3pct": "5.40592547586362001049637769476583779570584105526427639978361",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5591.495028999936403947",
+          "simple_annualized_full_capital_rate": "0.0369251725047340403349635300478342226848316966087712950467119",
+          "max_future_exit_haircut_bps_for_3pct": "10.4283215706745264423746427048607321297204175007892751451346",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "4585.903533970936467543",
+          "simple_annualized_full_capital_rate": "0.0302844370251067994508089650837457133983427998182437317293931",
+          "max_future_exit_haircut_bps_for_3pct": "0.428750320995521964338454128600897110923372398358616643281763",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5088.6992814854364357450265",
+          "simple_annualized_full_capital_rate": "0.0336048047649204198928864225667631067880186094236704638895881",
+          "max_future_exit_haircut_bps_for_3pct": "10.4283215706745264423746427048607321297204175007892751451346",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4083.6105822039509993092285",
+          "simple_annualized_full_capital_rate": "0.0269673896530329926291739348851566417561729570815381643539279",
+          "max_future_exit_haircut_bps_for_3pct": "0.428750320995521964338454128600897110923372398358616643281763",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4585.903533970936467543053",
+          "simple_annualized_full_capital_rate": "0.0302844370251067994508093150856919908912055222385696327324643",
+          "max_future_exit_haircut_bps_for_3pct": "10.4283215706745264423746427048607321297204175007892751451346",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "3581.317630436965531075457",
+          "simple_annualized_full_capital_rate": "0.0236503422809591858075389046865675701140031143448325969784628",
+          "max_future_exit_haircut_bps_for_3pct": "0.428750320995521964338454128600897110923372398358616643281763",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-999k-quote",
+      "route_index": 1,
+      "collected_at_utc": "2026-10-01T17:29:35.126577+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2711212201736111111111111111111111111111111111111111111111",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "999000",
+      "reserve_usdt": "1000",
+      "pt_expected": "1005591.495028999936403947",
+      "pt_min": "1004585.903533970936467543",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6591.495028999936403947",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "5585.903533970936467543",
+      "expected_simple_annualized_full_capital_rate": "0.0435289828118565471787827814799286202557730392823641860659128",
+      "min_simple_annualized_full_capital_rate": "0.0368882473322293062946282165158401109692841424918366227485939",
+      "profit_required_for_3pct": "4542.83188111015981735159817351598173515981735159817351598174",
+      "expected_additional_cost_budget_for_3pct": "2048.66314788977658659540182648401826484018264840182648401826",
+      "min_additional_cost_budget_for_3pct": "1043.07165286077665019140182648401826484018264840182648401826",
+      "reported_effective_apy": "0.047566724256347115",
+      "gas_used_estimate": "2664306",
+      "entry_fee_in_quote": {
+        "usd": "150.9023241662776"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6091.495028999936403947",
+          "simple_annualized_full_capital_rate": "0.0402270776582952937568731557638814214703023679455677405563123",
+          "max_future_exit_haircut_bps_for_3pct": "15.4005195503877563904864080851360052268492850512598420382227",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5085.903533970936467543",
+          "simple_annualized_full_capital_rate": "0.0335863421786680528727185907997929121838134711550401772389935",
+          "max_future_exit_haircut_bps_for_3pct": "5.40592547586362001049637769476583779570584105526427639978361",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5588.6992814854364357450265",
+          "simple_annualized_full_capital_rate": "0.0369067099184816733147960482828103055734892807604669093991886",
+          "max_future_exit_haircut_bps_for_3pct": "15.4005195503877563904864080851360052268492850512598420382227",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4583.6105822039509993092285",
+          "simple_annualized_full_capital_rate": "0.0302692948065942460510835606012038405416436284183346098635284",
+          "max_future_exit_haircut_bps_for_3pct": "5.40592547586362001049637769476583779570584105526427639978361",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5085.903533970936467543053",
+          "simple_annualized_full_capital_rate": "0.0335863421786680528727189408017391896766761935753660782420648",
+          "max_future_exit_haircut_bps_for_3pct": "15.4005195503877563904864080851360052268492850512598420382227",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4081.317630436965531075457",
+          "simple_annualized_full_capital_rate": "0.0269522474345204392294485304026147688994737856816290424880632",
+          "max_future_exit_haircut_bps_for_3pct": "5.40592547586362001049637769476583779570584105526427639978361",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5591.495028999936403947",
+          "simple_annualized_full_capital_rate": "0.0369251725047340403349635300478342226848316966087712950467119",
+          "max_future_exit_haircut_bps_for_3pct": "10.4283215706745264423746427048607321297204175007892751451346",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "4585.903533970936467543",
+          "simple_annualized_full_capital_rate": "0.0302844370251067994508089650837457133983427998182437317293931",
+          "max_future_exit_haircut_bps_for_3pct": "0.428750320995521964338454128600897110923372398358616643281763",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5088.6992814854364357450265",
+          "simple_annualized_full_capital_rate": "0.0336048047649204198928864225667631067880186094236704638895881",
+          "max_future_exit_haircut_bps_for_3pct": "10.4283215706745264423746427048607321297204175007892751451346",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4083.6105822039509993092285",
+          "simple_annualized_full_capital_rate": "0.0269673896530329926291739348851566417561729570815381643539279",
+          "max_future_exit_haircut_bps_for_3pct": "0.428750320995521964338454128600897110923372398358616643281763",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4585.903533970936467543053",
+          "simple_annualized_full_capital_rate": "0.0302844370251067994508093150856919908912055222385696327324643",
+          "max_future_exit_haircut_bps_for_3pct": "10.4283215706745264423746427048607321297204175007892751451346",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "3581.317630436965531075457",
+          "simple_annualized_full_capital_rate": "0.0236503422809591858075389046865675701140031143448325969784628",
+          "max_future_exit_haircut_bps_for_3pct": "0.428750320995521964338454128600897110923372398358616643281763",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-999k-quote",
+      "route_index": 2,
+      "collected_at_utc": "2026-10-01T17:29:35.126577+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2711212201736111111111111111111111111111111111111111111111",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "999000",
+      "reserve_usdt": "1000",
+      "pt_expected": "1005589.712595739120577912",
+      "pt_min": "1004584.122883143381457334",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6589.712595739120577912",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "5584.122883143381457334",
+      "expected_simple_annualized_full_capital_rate": "0.0435172119607170136473110285337300991459304165795577020664496",
+      "min_simple_annualized_full_capital_rate": "0.0368764882519409122966877041892270390928118287379328219292153",
+      "profit_required_for_3pct": "4542.83188111015981735159817351598173515981735159817351598174",
+      "expected_additional_cost_budget_for_3pct": "2046.88071462896076056040182648401826484018264840182648401826",
+      "min_additional_cost_budget_for_3pct": "1041.29100203322163998240182648401826484018264840182648401826",
+      "reported_effective_apy": "0.04756663944027384",
+      "gas_used_estimate": "2452203",
+      "entry_fee_in_quote": {
+        "usd": "150.90205669470615"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6089.712595739120577912",
+          "simple_annualized_full_capital_rate": "0.0402153068071557602254014028176829003604597452427612565568492",
+          "max_future_exit_haircut_bps_for_3pct": "15.3828215946639070197568095323881261923328183147397535488870",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5084.122883143381457334",
+          "simple_annualized_full_capital_rate": "0.0335745830983796588747780784731798403073411574011363764196148",
+          "max_future_exit_haircut_bps_for_3pct": "5.38820980446837539515108598150081211009969463422933123790843",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5586.9177394412510176230440",
+          "simple_annualized_full_capital_rate": "0.0368949449527677095500900312130848837242015793690118286417251",
+          "max_future_exit_haircut_bps_for_3pct": "15.3828215946639070197568095323881261923328183147397535488870",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4581.8308217018097666053330",
+          "simple_annualized_full_capital_rate": "0.0302575416058459962501420185307540752011095508213077609445594",
+          "max_future_exit_haircut_bps_for_3pct": "5.38820980446837539515108598150081211009969463422933123790843",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5084.122883143381457334088",
+          "simple_annualized_full_capital_rate": "0.0335745830983796588747786596084868670879434134952624007266011",
+          "max_future_exit_haircut_bps_for_3pct": "15.3828215946639070197568095323881261923328183147397535488870",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4079.538760260238075876666",
+          "simple_annualized_full_capital_rate": "0.0269405001133123336255059585883283100948779442414791454695039",
+          "max_future_exit_haircut_bps_for_3pct": "5.38820980446837539515108598150081211009969463422933123790843",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5589.712595739120577912",
+          "simple_annualized_full_capital_rate": "0.0369134016535945068034917771016357015749890739059648110472488",
+          "max_future_exit_haircut_bps_for_3pct": "10.4106148016036953041353698876963553004484408125919639686252",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "4584.122883143381457334",
+          "simple_annualized_full_capital_rate": "0.0302726779448184054528684527571326415218704860643399309100144",
+          "max_future_exit_haircut_bps_for_3pct": "0.411025827431126430565059875145137078727062705519406353377166",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5086.9177394412510176230440",
+          "simple_annualized_full_capital_rate": "0.0335930397992064561281804054970376849387309080322153831321247",
+          "max_future_exit_haircut_bps_for_3pct": "10.4106148016036953041353698876963553004484408125919639686252",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4081.8308217018097666053330",
+          "simple_annualized_full_capital_rate": "0.0269556364522847428282323928147068764156388794845113154349589",
+          "max_future_exit_haircut_bps_for_3pct": "0.411025827431126430565059875145137078727062705519406353377166",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4584.122883143381457334088",
+          "simple_annualized_full_capital_rate": "0.0302726779448184054528690338924396683024727421584659552170006",
+          "max_future_exit_haircut_bps_for_3pct": "10.4106148016036953041353698876963553004484408125919639686252",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "3579.538760260238075876666",
+          "simple_annualized_full_capital_rate": "0.0236385949597510802035963328722811113094072729046826999599035",
+          "max_future_exit_haircut_bps_for_3pct": "0.411025827431126430565059875145137078727062705519406353377166",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-999k-quote",
+      "route_index": 3,
+      "collected_at_utc": "2026-10-01T17:29:35.126577+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2711212201736111111111111111111111111111111111111111111111",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "999000",
+      "reserve_usdt": "1000",
+      "pt_expected": "1005587.98586351770524644",
+      "pt_min": "1004582.397877654187541193",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6587.98586351770524644",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "5582.397877654187541193",
+      "expected_simple_annualized_full_capital_rate": "0.0435058089486755905386938468547304278323318581556761146434120",
+      "min_simple_annualized_full_capital_rate": "0.0368650966429115306111760226934414056272965861857991675379471",
+      "profit_required_for_3pct": "4542.83188111015981735159817351598173515981735159817351598174",
+      "expected_additional_cost_budget_for_3pct": "2045.15398240754542908840182648401826484018264840182648401826",
+      "min_additional_cost_budget_for_3pct": "1039.56599654402772384140182648401826484018264840182648401826",
+      "reported_effective_apy": "0.0475666475266725",
+      "gas_used_estimate": "1687827",
+      "entry_fee_in_quote": {
+        "usd": "150.9017975816246"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6087.98586351770524644",
+          "simple_annualized_full_capital_rate": "0.0402039037951143371167842211386832290468611868188796691338115",
+          "max_future_exit_haircut_bps_for_3pct": "15.3656766402264844671516400092328427616983243171260883286302",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5082.397877654187541193",
+          "simple_annualized_full_capital_rate": "0.0335631914893502771892663969773942068418259148490027220283467",
+          "max_future_exit_haircut_bps_for_3pct": "5.37104768791439886601208620534007419222824550507417615110345",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5585.191870585946393816780",
+          "simple_annualized_full_capital_rate": "0.0368835476422323071530271581249247122462598202243421820123990",
+          "max_future_exit_haircut_bps_for_3pct": "15.3656766402264844671516400092328427616983243171260883286302",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4580.1066787153604474224035",
+          "simple_annualized_full_capital_rate": "0.0302461556926211292554730928757163345523270658904501733804869",
+          "max_future_exit_haircut_bps_for_3pct": "5.37104768791439886601208620534007419222824550507417615110345",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5082.39787765418754119356",
+          "simple_annualized_full_capital_rate": "0.0335631914893502771892700951111661954456584536298046948909864",
+          "max_future_exit_haircut_bps_for_3pct": "15.3656766402264844671516400092328427616983243171260883286302",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4077.815479776533353651807",
+          "simple_annualized_full_capital_rate": "0.0269291198958919813216797887740384622628282169318976247326271",
+          "max_future_exit_haircut_bps_for_3pct": "5.37104768791439886601208620534007419222824550507417615110345",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5587.98586351770524644",
+          "simple_annualized_full_capital_rate": "0.0369019986415530836948745954226360302613905154820832236242111",
+          "max_future_exit_haircut_bps_for_3pct": "10.3934613092065896467431280984994306547141249829657387098366",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "4582.397877654187541193",
+          "simple_annualized_full_capital_rate": "0.0302612863357890237673567712613470080563552435122062765187463",
+          "max_future_exit_haircut_bps_for_3pct": "0.393855164370960607344904341002952211231408707880932384832222",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5085.191870585946393816780",
+          "simple_annualized_full_capital_rate": "0.0335816424886710537311175324088775134607891488875457365027985",
+          "max_future_exit_haircut_bps_for_3pct": "10.3934613092065896467431280984994306547141249829657387098366",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4080.1066787153604474224035",
+          "simple_annualized_full_capital_rate": "0.0269442505390598758335634671596691357668563945536537278708864",
+          "max_future_exit_haircut_bps_for_3pct": "0.393855164370960607344904341002952211231408707880932384832222",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4582.39787765418754119356",
+          "simple_annualized_full_capital_rate": "0.0302612863357890237673604693951189966601877822930082493813860",
+          "max_future_exit_haircut_bps_for_3pct": "10.3934613092065896467431280984994306547141249829657387098366",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "3577.815479776533353651807",
+          "simple_annualized_full_capital_rate": "0.0236272147423307278997701630579912634773575455951011792230266",
+          "max_future_exit_haircut_bps_for_3pct": "0.393855164370960607344904341002952211231408707880932384832222",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-999k-slippage1bp",
+      "route_index": 0,
+      "collected_at_utc": "2026-10-01T17:31:36.406364+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2697175189351851851851851851851851851851851851851851851852",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "999000",
+      "reserve_usdt": "1000",
+      "pt_expected": "1005605.377959841351069826",
+      "pt_min": "1005504.817422045366934719",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6605.377959841351069826",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "6504.817422045366934719",
+      "expected_simple_annualized_full_capital_rate": "0.0436217709004231264685088321600306644097843639310949134328314",
+      "min_simple_annualized_full_capital_rate": "0.0429576713185325665837120047694440199263438962941021291328296",
+      "profit_required_for_3pct": "4542.71650840563165905631659056316590563165905631659056316591",
+      "expected_additional_cost_budget_for_3pct": "2062.66145143571941076968340943683409436834094368340943683409",
+      "min_additional_cost_budget_for_3pct": "1962.10091363973527566268340943683409436834094368340943683409",
+      "reported_effective_apy": "0.047566373572321075",
+      "gas_used_estimate": "1467051",
+      "entry_fee_in_quote": {
+        "usd": "150.89935688567178"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6105.377959841351069826",
+          "simple_annualized_full_capital_rate": "0.0403197818874075230042953106477534448202001068237323130253399",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096892383960797134839072984457724545726639347886879434",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6004.817422045366934719",
+          "simple_annualized_full_capital_rate": "0.0396556823055169631194984832571668003367596391867395287253381",
+          "max_future_exit_haircut_bps_for_3pct": "14.5409637856169577754908602148214848976851752361016869111298",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5602.5752708614303942910870",
+          "simple_annualized_full_capital_rate": "0.0369992839779547235803117482409084871180005417915115277615395",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096892383960797134839072984457724545726639347886879434",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5502.0650133343442512516405",
+          "simple_annualized_full_capital_rate": "0.0363355164458551089754573192640171359568017943883372398536877",
+          "max_future_exit_haircut_bps_for_3pct": "14.5409637856169577754908602148214848976851752361016869111298",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5099.772581881509718756174",
+          "simple_annualized_full_capital_rate": "0.0336787860685019241563281858340635294158009767592907424977391",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096892383960797134839072984457724545726639347886879434",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4999.312604623321567784281",
+          "simple_annualized_full_capital_rate": "0.0330153505861932548314161552708674715768439495899349509820373",
+          "max_future_exit_haircut_bps_for_3pct": "14.5409637856169577754908602148214848976851752361016869111298",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5605.377959841351069826",
+          "simple_annualized_full_capital_rate": "0.0370177928743919195400817891354762252306158497163697126178484",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803534308125243756205724676280709819989589455864586348",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5504.817422045366934719",
+          "simple_annualized_full_capital_rate": "0.0363536932925013596552849617448895807471753820793769283178466",
+          "max_future_exit_haircut_bps_for_3pct": "9.56833718714952747712316002393016986453496932725910389468656",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5102.5752708614303942910870",
+          "simple_annualized_full_capital_rate": "0.0336972949649391201160982267286312675284162846841489273540480",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803534308125243756205724676280709819989589455864586348",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5002.0650133343442512516405",
+          "simple_annualized_full_capital_rate": "0.0330335274328395055112437977517399163672175372809746394461962",
+          "max_future_exit_haircut_bps_for_3pct": "9.56833718714952747712316002393016986453496932725910389468656",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4599.772581881509718756174",
+          "simple_annualized_full_capital_rate": "0.0303767970554863206921146643217863098262167196519281420902476",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803534308125243756205724676280709819989589455864586348",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4499.312604623321567784281",
+          "simple_annualized_full_capital_rate": "0.0297133615731776513672026337585902519872596924825723505745458",
+          "max_future_exit_haircut_bps_for_3pct": "9.56833718714952747712316002393016986453496932725910389468656",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-999k-slippage1bp",
+      "route_index": 1,
+      "collected_at_utc": "2026-10-01T17:31:36.406364+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2697175189351851851851851851851851851851851851851851851852",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "999000",
+      "reserve_usdt": "1000",
+      "pt_expected": "1005605.322258803336755438",
+      "pt_min": "1005504.761726577456421762",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6605.322258803336755438",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "6504.761726577456421762",
+      "expected_simple_annualized_full_capital_rate": "0.0436214030519920528073587178972308442751110302111067024646314",
+      "min_simple_annualized_full_capital_rate": "0.0429573035068863360299251076925126572800838361210067424978146",
+      "profit_required_for_3pct": "4542.71650840563165905631659056316590563165905631659056316591",
+      "expected_additional_cost_budget_for_3pct": "2062.60575039770509638168340943683409436834094368340943683409",
+      "min_additional_cost_budget_for_3pct": "1962.04521817182476270568340943683409436834094368340943683409",
+      "reported_effective_apy": "0.047566499394769535",
+      "gas_used_estimate": "1550970",
+      "entry_fee_in_quote": {
+        "usd": "150.8993485273557"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6105.322258803336755438",
+          "simple_annualized_full_capital_rate": "0.0403194140389764493431451963849536246855267731037441020571399",
+          "max_future_exit_haircut_bps_for_3pct": "15.5389566444195062986579756299814625766190222190212311655250",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6004.761726577456421762",
+          "simple_annualized_full_capital_rate": "0.0396553144938707325657115861802354376904995790136441420903231",
+          "max_future_exit_haircut_bps_for_3pct": "14.5404106854880551041638620414889651204754782112700697516348",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5602.5195976739350870602810",
+          "simple_annualized_full_capital_rate": "0.0369989163134478654559922090352400668933945447383833108988236",
+          "max_future_exit_haircut_bps_for_3pct": "15.5389566444195062986579756299814625766190222190212311655250",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5502.0093457141676935511190",
+          "simple_annualized_full_capital_rate": "0.0363351488181147015369473156356242389918648642453284009119902",
+          "max_future_exit_haircut_bps_for_3pct": "14.5404106854880551041638620414889651204754782112700697516348",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5099.716936544533418682562",
+          "simple_annualized_full_capital_rate": "0.0336784185879192815688392216855265091012623163730225197405072",
+          "max_future_exit_haircut_bps_for_3pct": "15.5389566444195062986579756299814625766190222190212311655250",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4999.256964850878965340238",
+          "simple_annualized_full_capital_rate": "0.0330149831423586705081830450910130402932301494770126597336573",
+          "max_future_exit_haircut_bps_for_3pct": "14.5404106854880551041638620414889651204754782112700697516348",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5605.322258803336755438",
+          "simple_annualized_full_capital_rate": "0.0370174250259608458789316748726764050959425159963815016496484",
+          "max_future_exit_haircut_bps_for_3pct": "10.5668270332029138452653838938059328978035909681884237447814",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5504.761726577456421762",
+          "simple_annualized_full_capital_rate": "0.0363533254808551291014980646679582181009153219062815416828316",
+          "max_future_exit_haircut_bps_for_3pct": "9.56778381158407225248610027326909797736661418112349739153206",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5102.5195976739350870602810",
+          "simple_annualized_full_capital_rate": "0.0336969273004322619917786875229628473038102876310207104913321",
+          "max_future_exit_haircut_bps_for_3pct": "10.5668270332029138452653838938059328978035909681884237447814",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5002.0093457141676935511190",
+          "simple_annualized_full_capital_rate": "0.0330331598050990980727337941233470194022806071379658005044987",
+          "max_future_exit_haircut_bps_for_3pct": "9.56778381158407225248610027326909797736661418112349739153206",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4599.716936544533418682562",
+          "simple_annualized_full_capital_rate": "0.0303764295749036781046257001732492895116780592656599193330158",
+          "max_future_exit_haircut_bps_for_3pct": "10.5668270332029138452653838938059328978035909681884237447814",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4499.256964850878965340238",
+          "simple_annualized_full_capital_rate": "0.0297129941293430670439695235787358207036458923696500593261658",
+          "max_future_exit_haircut_bps_for_3pct": "9.56778381158407225248610027326909797736661418112349739153206",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-999k-slippage1bp",
+      "route_index": 2,
+      "collected_at_utc": "2026-10-01T17:31:36.406364+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2697175189351851851851851851851851851851851851851851851852",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "999000",
+      "reserve_usdt": "1000",
+      "pt_expected": "1005605.377959841351069826",
+      "pt_min": "1005504.817422045366934719",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6605.377959841351069826",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "6504.817422045366934719",
+      "expected_simple_annualized_full_capital_rate": "0.0436217709004231264685088321600306644097843639310949134328314",
+      "min_simple_annualized_full_capital_rate": "0.0429576713185325665837120047694440199263438962941021291328296",
+      "profit_required_for_3pct": "4542.71650840563165905631659056316590563165905631659056316591",
+      "expected_additional_cost_budget_for_3pct": "2062.66145143571941076968340943683409436834094368340943683409",
+      "min_additional_cost_budget_for_3pct": "1962.10091363973527566268340943683409436834094368340943683409",
+      "reported_effective_apy": "0.04756636441800932",
+      "gas_used_estimate": "1679654",
+      "entry_fee_in_quote": {
+        "usd": "150.89935688567178"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6105.377959841351069826",
+          "simple_annualized_full_capital_rate": "0.0403197818874075230042953106477534448202001068237323130253399",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096892383960797134839072984457724545726639347886879434",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6004.817422045366934719",
+          "simple_annualized_full_capital_rate": "0.0396556823055169631194984832571668003367596391867395287253381",
+          "max_future_exit_haircut_bps_for_3pct": "14.5409637856169577754908602148214848976851752361016869111298",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5602.5752708614303942910870",
+          "simple_annualized_full_capital_rate": "0.0369992839779547235803117482409084871180005417915115277615395",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096892383960797134839072984457724545726639347886879434",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5502.0650133343442512516405",
+          "simple_annualized_full_capital_rate": "0.0363355164458551089754573192640171359568017943883372398536877",
+          "max_future_exit_haircut_bps_for_3pct": "14.5409637856169577754908602148214848976851752361016869111298",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5099.772581881509718756174",
+          "simple_annualized_full_capital_rate": "0.0336787860685019241563281858340635294158009767592907424977391",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096892383960797134839072984457724545726639347886879434",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4999.312604623321567784281",
+          "simple_annualized_full_capital_rate": "0.0330153505861932548314161552708674715768439495899349509820373",
+          "max_future_exit_haircut_bps_for_3pct": "14.5409637856169577754908602148214848976851752361016869111298",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5605.377959841351069826",
+          "simple_annualized_full_capital_rate": "0.0370177928743919195400817891354762252306158497163697126178484",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803534308125243756205724676280709819989589455864586348",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5504.817422045366934719",
+          "simple_annualized_full_capital_rate": "0.0363536932925013596552849617448895807471753820793769283178466",
+          "max_future_exit_haircut_bps_for_3pct": "9.56833718714952747712316002393016986453496932725910389468656",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5102.5752708614303942910870",
+          "simple_annualized_full_capital_rate": "0.0336972949649391201160982267286312675284162846841489273540480",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803534308125243756205724676280709819989589455864586348",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5002.0650133343442512516405",
+          "simple_annualized_full_capital_rate": "0.0330335274328395055112437977517399163672175372809746394461962",
+          "max_future_exit_haircut_bps_for_3pct": "9.56833718714952747712316002393016986453496932725910389468656",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4599.772581881509718756174",
+          "simple_annualized_full_capital_rate": "0.0303767970554863206921146643217863098262167196519281420902476",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803534308125243756205724676280709819989589455864586348",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4499.312604623321567784281",
+          "simple_annualized_full_capital_rate": "0.0297133615731776513672026337585902519872596924825723505745458",
+          "max_future_exit_haircut_bps_for_3pct": "9.56833718714952747712316002393016986453496932725910389468656",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-999k-slippage1bp",
+      "route_index": 3,
+      "collected_at_utc": "2026-10-01T17:31:36.406364+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2697175189351851851851851851851851851851851851851851851852",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "999000",
+      "reserve_usdt": "1000",
+      "pt_expected": "1005605.377959841351069826",
+      "pt_min": "1005504.817422045366934719",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6605.377959841351069826",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "6504.817422045366934719",
+      "expected_simple_annualized_full_capital_rate": "0.0436217709004231264685088321600306644097843639310949134328314",
+      "min_simple_annualized_full_capital_rate": "0.0429576713185325665837120047694440199263438962941021291328296",
+      "profit_required_for_3pct": "4542.71650840563165905631659056316590563165905631659056316591",
+      "expected_additional_cost_budget_for_3pct": "2062.66145143571941076968340943683409436834094368340943683409",
+      "min_additional_cost_budget_for_3pct": "1962.10091363973527566268340943683409436834094368340943683409",
+      "reported_effective_apy": "0.04756636434563277",
+      "gas_used_estimate": "2058088",
+      "entry_fee_in_quote": {
+        "usd": "150.89935688567178"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6105.377959841351069826",
+          "simple_annualized_full_capital_rate": "0.0403197818874075230042953106477534448202001068237323130253399",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096892383960797134839072984457724545726639347886879434",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6004.817422045366934719",
+          "simple_annualized_full_capital_rate": "0.0396556823055169631194984832571668003367596391867395287253381",
+          "max_future_exit_haircut_bps_for_3pct": "14.5409637856169577754908602148214848976851752361016869111298",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5602.5752708614303942910870",
+          "simple_annualized_full_capital_rate": "0.0369992839779547235803117482409084871180005417915115277615395",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096892383960797134839072984457724545726639347886879434",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5502.0650133343442512516405",
+          "simple_annualized_full_capital_rate": "0.0363355164458551089754573192640171359568017943883372398536877",
+          "max_future_exit_haircut_bps_for_3pct": "14.5409637856169577754908602148214848976851752361016869111298",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5099.772581881509718756174",
+          "simple_annualized_full_capital_rate": "0.0336787860685019241563281858340635294158009767592907424977391",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096892383960797134839072984457724545726639347886879434",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4999.312604623321567784281",
+          "simple_annualized_full_capital_rate": "0.0330153505861932548314161552708674715768439495899349509820373",
+          "max_future_exit_haircut_bps_for_3pct": "14.5409637856169577754908602148214848976851752361016869111298",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5605.377959841351069826",
+          "simple_annualized_full_capital_rate": "0.0370177928743919195400817891354762252306158497163697126178484",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803534308125243756205724676280709819989589455864586348",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5504.817422045366934719",
+          "simple_annualized_full_capital_rate": "0.0363536932925013596552849617448895807471753820793769283178466",
+          "max_future_exit_haircut_bps_for_3pct": "9.56833718714952747712316002393016986453496932725910389468656",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5102.5752708614303942910870",
+          "simple_annualized_full_capital_rate": "0.0336972949649391201160982267286312675284162846841489273540480",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803534308125243756205724676280709819989589455864586348",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5002.0650133343442512516405",
+          "simple_annualized_full_capital_rate": "0.0330335274328395055112437977517399163672175372809746394461962",
+          "max_future_exit_haircut_bps_for_3pct": "9.56833718714952747712316002393016986453496932725910389468656",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4599.772581881509718756174",
+          "simple_annualized_full_capital_rate": "0.0303767970554863206921146643217863098262167196519281420902476",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803534308125243756205724676280709819989589455864586348",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4499.312604623321567784281",
+          "simple_annualized_full_capital_rate": "0.0297133615731776513672026337585902519872596924825723505745458",
+          "max_future_exit_haircut_bps_for_3pct": "9.56833718714952747712316002393016986453496932725910389468656",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-999k-slippage3bp",
+      "route_index": 0,
+      "collected_at_utc": "2026-10-01T17:31:36.406968+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2697175119444444444444444444444444444444444444444444444444",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "999000",
+      "reserve_usdt": "1000",
+      "pt_expected": "1005605.377959841351069826",
+      "pt_min": "1005303.696346453398664505",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6605.377959841351069826",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "6303.696346453398664505",
+      "expected_simple_annualized_full_capital_rate": "0.0436217709059405871096084334783973870221514277689802065557160",
+      "min_simple_annualized_full_capital_rate": "0.0416294721600169133319245989086119268302036138922892319561570",
+      "profit_required_for_3pct": "4542.71650783105022831050228310502283105022831050228310502283",
+      "expected_additional_cost_budget_for_3pct": "2062.66145201030084151549771689497716894977168949771689497717",
+      "min_additional_cost_budget_for_3pct": "1760.97983862234843619449771689497716894977168949771689497717",
+      "reported_effective_apy": "0.04756637501989047",
+      "gas_used_estimate": "1467051",
+      "entry_fee_in_quote": {
+        "usd": "150.89935688567178"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6105.377959841351069826",
+          "simple_annualized_full_capital_rate": "0.0403197818925073345211022484398773026973751041075817096575031",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096949521824549565974297947727401825290788690248329463",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5803.696346453398664505",
+          "simple_annualized_full_capital_rate": "0.0383274831465836607434184138700918425054272902308907350579441",
+          "max_future_exit_haircut_bps_for_3pct": "12.5432726767552090176613774038223821533646891294851294516939",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5602.5752708614303942910870",
+          "simple_annualized_full_capital_rate": "0.0369992839826345448916297653696565397634124810559601211529106",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096949521824549565974297947727401825290788690248329463",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5301.0444982801719651727475",
+          "simple_annualized_full_capital_rate": "0.0350079813860838329508347727171559723015606410862074920406514",
+          "max_future_exit_haircut_bps_for_3pct": "12.5432726767552090176613774038223821533646891294851294516939",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5099.772581881509718756174",
+          "simple_annualized_full_capital_rate": "0.0336787860727617552621572822994357768294498580043385326483181",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096949521824549565974297947727401825290788690248329463",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4798.392650106945265840495",
+          "simple_annualized_full_capital_rate": "0.0316884796255840051582511315642201020976939919415242490233586",
+          "max_future_exit_haircut_bps_for_3pct": "12.5432726767552090176613774038223821533646891294851294516939",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5605.377959841351069826",
+          "simple_annualized_full_capital_rate": "0.0370177928790740819325960634013572183725987804461832127592902",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803591445988996187340949639550387099553738798226036377",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5303.696346453398664505",
+          "simple_annualized_full_capital_rate": "0.0350254941331504081549122288315717581806509665694922381597312",
+          "max_future_exit_haircut_bps_for_3pct": "7.56965125452095518617406761787991677473436382352060303113603",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5102.5752708614303942910870",
+          "simple_annualized_full_capital_rate": "0.0336972949692012923031235803311364554386361573945616242546977",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803591445988996187340949639550387099553738798226036377",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4801.0444982801719651727475",
+          "simple_annualized_full_capital_rate": "0.0317059923726505803623285876786358879767843174248089951424385",
+          "max_future_exit_haircut_bps_for_3pct": "7.56965125452095518617406761787991677473436382352060303113603",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4599.772581881509718756174",
+          "simple_annualized_full_capital_rate": "0.0303767970593285026736510972609156925046735343429400357501052",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803591445988996187340949639550387099553738798226036377",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4298.392650106945265840495",
+          "simple_annualized_full_capital_rate": "0.0283864906121507525697449465257000177729176682801257521251458",
+          "max_future_exit_haircut_bps_for_3pct": "7.56965125452095518617406761787991677473436382352060303113603",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-999k-slippage3bp",
+      "route_index": 1,
+      "collected_at_utc": "2026-10-01T17:31:36.406968+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2697175119444444444444444444444444444444444444444444444444",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "999000",
+      "reserve_usdt": "1000",
+      "pt_expected": "1005605.322258803336755438",
+      "pt_min": "1005303.640662125695754411",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6605.322258803336755438",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "6303.640662125695754411",
+      "expected_simple_annualized_full_capital_rate": "0.0436214030575094669214788214740659479810438702854230437094780",
+      "min_simple_annualized_full_capital_rate": "0.0416291044219403224798493362892340866585703819620847607494122",
+      "profit_required_for_3pct": "4542.71650783105022831050228310502283105022831050228310502283",
+      "expected_additional_cost_budget_for_3pct": "2062.60575097228652712749771689497716894977168949771689497717",
+      "min_additional_cost_budget_for_3pct": "1760.92415429464552610049771689497716894977168949771689497717",
+      "reported_effective_apy": "0.04756650084234271",
+      "gas_used_estimate": "1550970",
+      "entry_fee_in_quote": {
+        "usd": "150.8993485273557"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6105.322258803336755438",
+          "simple_annualized_full_capital_rate": "0.0403194140440762143329726364355458636562675466240245468112652",
+          "max_future_exit_haircut_bps_for_3pct": "15.5389566501332929903908938983397681486319977251181118266799",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5803.640662125695754411",
+          "simple_annualized_full_capital_rate": "0.0383271154085070698913431512507140023337940583006862638511993",
+          "max_future_exit_haircut_bps_for_3pct": "12.5427194659730849158619916393582470135521316350823069579460",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5602.5195976739350870602810",
+          "simple_annualized_full_capital_rate": "0.0369989163181276402635942181713272664418254773511447368880958",
+          "max_future_exit_haircut_bps_for_3pct": "15.5389566501332929903908938983397681486319977251181118266799",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5300.9888417946329065337945",
+          "simple_annualized_full_capital_rate": "0.0350076138318762803941855477290878210500132257719681230695099",
+          "max_future_exit_haircut_bps_for_3pct": "12.5427194659730849158619916393582470135521316350823069579460",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5099.716936544533418682562",
+          "simple_annualized_full_capital_rate": "0.0336784185921790661942157999071086692273834080782649269649264",
+          "max_future_exit_haircut_bps_for_3pct": "15.5389566501332929903908938983397681486319977251181118266799",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4798.337021463570058656589",
+          "simple_annualized_full_capital_rate": "0.0316881122552454908970279442074616397662323932432499822878206",
+          "max_future_exit_haircut_bps_for_3pct": "12.5427194659730849158619916393582470135521316350823069579460",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5605.322258803336755438",
+          "simple_annualized_full_capital_rate": "0.0370174250306429617444664513970257793314912229626260499130523",
+          "max_future_exit_haircut_bps_for_3pct": "10.5668270389167005369983021621642384698165664742853044059363",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5303.640662125695754411",
+          "simple_annualized_full_capital_rate": "0.0350251263950738173028369662121939180090177346392877669529864",
+          "max_future_exit_haircut_bps_for_3pct": "7.56909776824717468940145992060896307999423697723815637341336",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5102.5195976739350870602810",
+          "simple_annualized_full_capital_rate": "0.0336969273046943876750880331328071821170491536897462399898829",
+          "max_future_exit_haircut_bps_for_3pct": "10.5668270389167005369983021621642384698165664742853044059363",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4800.9888417946329065337945",
+          "simple_annualized_full_capital_rate": "0.0317056248184430278056793626905677367252369021105696261712971",
+          "max_future_exit_haircut_bps_for_3pct": "7.56909776824717468940145992060896307999423697723815637341336",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4599.716936544533418682562",
+          "simple_annualized_full_capital_rate": "0.0303764295787458136057096148685885849026070844168664300667135",
+          "max_future_exit_haircut_bps_for_3pct": "10.5668270389167005369983021621642384698165664742853044059363",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4298.337021463570058656589",
+          "simple_annualized_full_capital_rate": "0.0283861232418122383085217591689415554414560695818514853896077",
+          "max_future_exit_haircut_bps_for_3pct": "7.56909776824717468940145992060896307999423697723815637341336",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-999k-slippage3bp",
+      "route_index": 2,
+      "collected_at_utc": "2026-10-01T17:31:36.406968+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2697175119444444444444444444444444444444444444444444444444",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "999000",
+      "reserve_usdt": "1000",
+      "pt_expected": "1005605.377959841351069826",
+      "pt_min": "1005303.696346453398664505",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6605.377959841351069826",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "6303.696346453398664505",
+      "expected_simple_annualized_full_capital_rate": "0.0436217709059405871096084334783973870221514277689802065557160",
+      "min_simple_annualized_full_capital_rate": "0.0416294721600169133319245989086119268302036138922892319561570",
+      "profit_required_for_3pct": "4542.71650783105022831050228310502283105022831050228310502283",
+      "expected_additional_cost_budget_for_3pct": "2062.66145201030084151549771689497716894977168949771689497717",
+      "min_additional_cost_budget_for_3pct": "1760.97983862234843619449771689497716894977168949771689497717",
+      "reported_effective_apy": "0.04756636585865026",
+      "gas_used_estimate": "1679654",
+      "entry_fee_in_quote": {
+        "usd": "150.89935688567178"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6105.377959841351069826",
+          "simple_annualized_full_capital_rate": "0.0403197818925073345211022484398773026973751041075817096575031",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096949521824549565974297947727401825290788690248329463",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5803.696346453398664505",
+          "simple_annualized_full_capital_rate": "0.0383274831465836607434184138700918425054272902308907350579441",
+          "max_future_exit_haircut_bps_for_3pct": "12.5432726767552090176613774038223821533646891294851294516939",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5602.5752708614303942910870",
+          "simple_annualized_full_capital_rate": "0.0369992839826345448916297653696565397634124810559601211529106",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096949521824549565974297947727401825290788690248329463",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5301.0444982801719651727475",
+          "simple_annualized_full_capital_rate": "0.0350079813860838329508347727171559723015606410862074920406514",
+          "max_future_exit_haircut_bps_for_3pct": "12.5432726767552090176613774038223821533646891294851294516939",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5099.772581881509718756174",
+          "simple_annualized_full_capital_rate": "0.0336787860727617552621572822994357768294498580043385326483181",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096949521824549565974297947727401825290788690248329463",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4798.392650106945265840495",
+          "simple_annualized_full_capital_rate": "0.0316884796255840051582511315642201020976939919415242490233586",
+          "max_future_exit_haircut_bps_for_3pct": "12.5432726767552090176613774038223821533646891294851294516939",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5605.377959841351069826",
+          "simple_annualized_full_capital_rate": "0.0370177928790740819325960634013572183725987804461832127592902",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803591445988996187340949639550387099553738798226036377",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5303.696346453398664505",
+          "simple_annualized_full_capital_rate": "0.0350254941331504081549122288315717581806509665694922381597312",
+          "max_future_exit_haircut_bps_for_3pct": "7.56965125452095518617406761787991677473436382352060303113603",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5102.5752708614303942910870",
+          "simple_annualized_full_capital_rate": "0.0336972949692012923031235803311364554386361573945616242546977",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803591445988996187340949639550387099553738798226036377",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4801.0444982801719651727475",
+          "simple_annualized_full_capital_rate": "0.0317059923726505803623285876786358879767843174248089951424385",
+          "max_future_exit_haircut_bps_for_3pct": "7.56965125452095518617406761787991677473436382352060303113603",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4599.772581881509718756174",
+          "simple_annualized_full_capital_rate": "0.0303767970593285026736510972609156925046735343429400357501052",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803591445988996187340949639550387099553738798226036377",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4298.392650106945265840495",
+          "simple_annualized_full_capital_rate": "0.0283864906121507525697449465257000177729176682801257521251458",
+          "max_future_exit_haircut_bps_for_3pct": "7.56965125452095518617406761787991677473436382352060303113603",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    },
+    {
+      "quote_name": "pendle-susds-999k-slippage3bp",
+      "route_index": 3,
+      "collected_at_utc": "2026-10-01T17:31:36.406968+00:00",
+      "expiry_utc": "2026-11-26T00:00:00+00:00",
+      "hold_days": "55.2697175119444444444444444444444444444444444444444444444444",
+      "capital_usdt": "1000000",
+      "amount_in_usdt": "999000",
+      "reserve_usdt": "1000",
+      "pt_expected": "1005605.377959841351069826",
+      "pt_min": "1005303.696346453398664505",
+      "expected_profit_at_usds_usdt_1_before_extra_costs": "6605.377959841351069826",
+      "min_profit_at_usds_usdt_1_before_extra_costs": "6303.696346453398664505",
+      "expected_simple_annualized_full_capital_rate": "0.0436217709059405871096084334783973870221514277689802065557160",
+      "min_simple_annualized_full_capital_rate": "0.0416294721600169133319245989086119268302036138922892319561570",
+      "profit_required_for_3pct": "4542.71650783105022831050228310502283105022831050228310502283",
+      "expected_additional_cost_budget_for_3pct": "2062.66145201030084151549771689497716894977168949771689497717",
+      "min_additional_cost_budget_for_3pct": "1760.97983862234843619449771689497716894977168949771689497717",
+      "reported_effective_apy": "0.047566365855770565",
+      "gas_used_estimate": "2058088",
+      "entry_fee_in_quote": {
+        "usd": "150.89935688567178"
+      },
+      "scenarios": [
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "6105.377959841351069826",
+          "simple_annualized_full_capital_rate": "0.0403197818925073345211022484398773026973751041075817096575031",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096949521824549565974297947727401825290788690248329463",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5803.696346453398664505",
+          "simple_annualized_full_capital_rate": "0.0383274831465836607434184138700918425054272902308907350579441",
+          "max_future_exit_haircut_bps_for_3pct": "12.5432726767552090176613774038223821533646891294851294516939",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5602.5752708614303942910870",
+          "simple_annualized_full_capital_rate": "0.0369992839826345448916297653696565397634124810559601211529106",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096949521824549565974297947727401825290788690248329463",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5301.0444982801719651727475",
+          "simple_annualized_full_capital_rate": "0.0350079813860838329508347727171559723015606410862074920406514",
+          "max_future_exit_haircut_bps_for_3pct": "12.5432726767552090176613774038223821533646891294851294516939",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "5099.772581881509718756174",
+          "simple_annualized_full_capital_rate": "0.0336787860727617552621572822994357768294498580043385326483181",
+          "max_future_exit_haircut_bps_for_3pct": "15.5395096949521824549565974297947727401825290788690248329463",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "500",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4798.392650106945265840495",
+          "simple_annualized_full_capital_rate": "0.0316884796255840051582511315642201020976939919415242490233586",
+          "max_future_exit_haircut_bps_for_3pct": "12.5432726767552090176613774038223821533646891294851294516939",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5605.377959841351069826",
+          "simple_annualized_full_capital_rate": "0.0370177928790740819325960634013572183725987804461832127592902",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803591445988996187340949639550387099553738798226036377",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0",
+          "full_capital_hold_profit_usdt": "5303.696346453398664505",
+          "simple_annualized_full_capital_rate": "0.0350254941331504081549122288315717581806509665694922381597312",
+          "max_future_exit_haircut_bps_for_3pct": "7.56965125452095518617406761787991677473436382352060303113603",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "5102.5752708614303942910870",
+          "simple_annualized_full_capital_rate": "0.0336972949692012923031235803311364554386361573945616242546977",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803591445988996187340949639550387099553738798226036377",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.0005",
+          "full_capital_hold_profit_usdt": "4801.0444982801719651727475",
+          "simple_annualized_full_capital_rate": "0.0317059923726505803623285876786358879767843174248089951424385",
+          "max_future_exit_haircut_bps_for_3pct": "7.56965125452095518617406761787991677473436382352060303113603",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "expected",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4599.772581881509718756174",
+          "simple_annualized_full_capital_rate": "0.0303767970593285026736510972609156925046735343429400357501052",
+          "max_future_exit_haircut_bps_for_3pct": "10.5673803591445988996187340949639550387099553738798226036377",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        },
+        {
+          "bound": "min",
+          "extra_gas_and_fixed_costs_usdt": "1000",
+          "future_usds_to_usdt_haircut_rate": "0.001",
+          "full_capital_hold_profit_usdt": "4298.392650106945265840495",
+          "simple_annualized_full_capital_rate": "0.0283864906121507525697449465257000177729176682801257521251458",
+          "max_future_exit_haircut_bps_for_3pct": "7.56965125452095518617406761787991677473436382352060303113603",
+          "status": "conditional: assumes successful redemption and future exit within budget; quote is read-only, unfilled"
+        }
+      ]
+    }
+  ]
+}

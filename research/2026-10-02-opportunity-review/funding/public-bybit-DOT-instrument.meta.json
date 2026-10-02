@@ -1,0 +1,8 @@
+{
+  "url": "https://api.bybit.com/v5/market/instruments-info?category=linear&symbol=DOTUSDT",
+  "requested_at_utc": "2026-10-01T17:36:36.979476+00:00",
+  "received_at_utc": "2026-10-01T17:36:38.515862+00:00",
+  "http_status": 200,
+  "error": null,
+  "sha256": "a1b780f529209f45f268182bd7a43c637ff3f583abf699f5ab80c9454d22174b"
+}

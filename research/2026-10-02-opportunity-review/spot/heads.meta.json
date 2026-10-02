@@ -1,0 +1,8 @@
+{
+  "queried_at_utc": "2026-10-01T17:26:46.524922+00:00",
+  "rows": 2,
+  "sha256": "7ae5010129eeb0b4ebfea2b36ee03559822d2322011bb00ca1139ebb15403ad0",
+  "endpoint": "http://127.0.0.1:8123/?readonly=1&max_execution_time=60&max_threads=2&output_format_json_quote_decimals=1",
+  "read_only": true,
+  "readonly_setting": "readonly=1 requested; SELECT only."
+}

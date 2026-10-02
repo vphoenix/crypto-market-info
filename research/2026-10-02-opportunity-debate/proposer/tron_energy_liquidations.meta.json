@@ -1,0 +1,5 @@
+{
+  "url": "https://api.trongrid.io/v1/contracts/TU2MJ5Veik1LRAgjeSzEdvmDYx7mefJZvd/events?event_name=Liquidate&only_confirmed=true&limit=50&order_by=block_timestamp,desc",
+  "collected_at": "2026-10-02T08:49:16.129595+00:00",
+  "sha256": "e67ac256a3fad72d2d029e21b9ff9966a5c0a49466ccfd257cd0910c9a70c41e"
+}

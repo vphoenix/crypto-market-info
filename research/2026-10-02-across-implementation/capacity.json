@@ -1,0 +1,238 @@
+{
+  "created_at": "2026-10-02T13:44:03.292662299Z",
+  "limitations": [
+    "These are synthetic 24-hour capacity fixtures, not observed daily traffic or earnings.",
+    "Window cadence is endpoint timestamp difference plus one second; repetitions are clipped at the synthetic 24-hour boundary.",
+    "Amounts remain exact UInt256/big.Int; balances/fees are not interpolated. Capture, block, transaction, deposit and relay identities are synthetic.",
+    "Repeated token/address/message/fee values make compression optimistic despite unique random hashes. One capture per synthetic day also undercounts production capture overhead.",
+    "No probes or deposit updates exist in source windows; capacity for these paths is not measured.",
+    "Receipt coverage is only the receipts already present for these windows, not complete future daily receipt workload.",
+    "Query runs include one first run and six warm runs; microseconds are client wall clock. This is not a sustained load benchmark.",
+    "Gzip bytes are measured for deduplicated original-window capture and RPC evidence only, not synthetic daily raw evidence."
+  ],
+  "samples": [
+    {
+      "ChainID": 8453,
+      "Kind": "synthetic_24h_from_repeated_real_512_block_window",
+      "SourceCapture": "0x70f5e78617a047295209b450f2d9f93ddbe264c70875fd3772747114066ea228",
+      "SourceFromBlock": 52077937,
+      "SourceToBlock": 52078448,
+      "SourceStart": "2026-10-02T12:47:01Z",
+      "SourceEnd": "2026-10-02T13:04:03Z",
+      "SourceHeaderSpanSeconds": 1022,
+      "RepeatCadenceSeconds": 1023,
+      "CopiesIncludingPartial": 85,
+      "SourceRows": {
+        "deposit": 56,
+        "fill": 116,
+        "probe": 0,
+        "receipt": 65,
+        "refund": 3,
+        "update": 0
+      },
+      "SyntheticRows": {
+        "deposit": 4730,
+        "fill": 9799,
+        "probe": 0,
+        "receipt": 5491,
+        "refund": 255,
+        "update": 0
+      },
+      "SyntheticDay": "2026-10-01T00:00:00Z",
+      "InsertMillis": 634,
+      "Parts": [
+        {
+          "table": "across_capture",
+          "Rows": 1,
+          "CompressedBytes": 1380,
+          "UncompressedBytes": 805,
+          "DiskBytes": 6333
+        },
+        {
+          "table": "across_deposit",
+          "Rows": 4730,
+          "CompressedBytes": 923875,
+          "UncompressedBytes": 3904912,
+          "DiskBytes": 961428
+        },
+        {
+          "table": "across_fill",
+          "Rows": 9799,
+          "CompressedBytes": 1485475,
+          "UncompressedBytes": 6251831,
+          "DiskBytes": 1523883
+        },
+        {
+          "table": "across_refund",
+          "Rows": 255,
+          "CompressedBytes": 11162,
+          "UncompressedBytes": 171553,
+          "DiskBytes": 19472
+        },
+        {
+          "table": "across_tx_receipt",
+          "Rows": 5491,
+          "CompressedBytes": 666877,
+          "UncompressedBytes": 2734594,
+          "DiskBytes": 694688
+        }
+      ],
+      "Queries": [
+        {
+          "Name": "deposit_sum_by_token_and_destination",
+          "SQL": "SELECT toString(count()) FROM (SELECT destination_chain_id,input_token,count(),sum(input_amount_raw) FROM `\u003ctemporary_database\u003e`.across_deposit FINAL WHERE block_time\u003e=? AND block_time\u003c? GROUP BY destination_chain_id,input_token)",
+          "Micros": [
+            65597,
+            6761,
+            5724,
+            3865,
+            4566,
+            4953,
+            3332
+          ],
+          "Result": "16"
+        },
+        {
+          "Name": "hourly_fill_aggregation",
+          "SQL": "SELECT toString(count()) FROM (SELECT toStartOfHour(block_time),fill_type,count(),sum(updated_output_amount_raw) FROM `\u003ctemporary_database\u003e`.across_fill FINAL WHERE block_time\u003e=? AND block_time\u003c? GROUP BY toStartOfHour(block_time),fill_type)",
+          "Micros": [
+            5023,
+            7680,
+            5074,
+            3741,
+            5315,
+            5943,
+            6840
+          ],
+          "Result": "24"
+        },
+        {
+          "Name": "receipt_cost_completeness",
+          "SQL": "SELECT concat(toString(count()),':',toString(countIf(fee_complete))) FROM `\u003ctemporary_database\u003e`.across_tx_receipt FINAL WHERE block_time\u003e=? AND block_time\u003c?",
+          "Micros": [
+            4861,
+            3841,
+            3676,
+            3365,
+            4431,
+            6868,
+            3366
+          ],
+          "Result": "5491:0"
+        }
+      ],
+      "SourceEvidenceGzipBytes": 4519982,
+      "TemporaryDatabase": "crypto_market_info_across_capacity_8453_1790948640470800533",
+      "Cleaned": true
+    },
+    {
+      "ChainID": 42161,
+      "Kind": "synthetic_24h_from_repeated_real_512_block_window",
+      "SourceCapture": "0x30c0fd9d48be974ad8edc8e1d693545198f1459fb784af1d3a9d9563a2a20b84",
+      "SourceFromBlock": 510991304,
+      "SourceToBlock": 510991815,
+      "SourceStart": "2026-10-02T13:00:02Z",
+      "SourceEnd": "2026-10-02T13:02:21Z",
+      "SourceHeaderSpanSeconds": 139,
+      "RepeatCadenceSeconds": 140,
+      "CopiesIncludingPartial": 618,
+      "SourceRows": {
+        "deposit": 9,
+        "fill": 4,
+        "probe": 0,
+        "receipt": 2,
+        "refund": 0,
+        "update": 0
+      },
+      "SyntheticRows": {
+        "deposit": 5555,
+        "fill": 2470,
+        "probe": 0,
+        "receipt": 1236,
+        "refund": 0,
+        "update": 0
+      },
+      "SyntheticDay": "2026-10-01T00:00:00Z",
+      "InsertMillis": 142,
+      "Parts": [
+        {
+          "table": "across_capture",
+          "Rows": 1,
+          "CompressedBytes": 1349,
+          "UncompressedBytes": 805,
+          "DiskBytes": 6303
+        },
+        {
+          "table": "across_deposit",
+          "Rows": 5555,
+          "CompressedBytes": 1037487,
+          "UncompressedBytes": 4494146,
+          "DiskBytes": 1074364
+        },
+        {
+          "table": "across_fill",
+          "Rows": 2470,
+          "CompressedBytes": 307200,
+          "UncompressedBytes": 1417867,
+          "DiskBytes": 334738
+        },
+        {
+          "table": "across_tx_receipt",
+          "Rows": 1236,
+          "CompressedBytes": 105477,
+          "UncompressedBytes": 574831,
+          "DiskBytes": 123114
+        }
+      ],
+      "Queries": [
+        {
+          "Name": "deposit_sum_by_token_and_destination",
+          "SQL": "SELECT toString(count()) FROM (SELECT destination_chain_id,input_token,count(),sum(input_amount_raw) FROM `\u003ctemporary_database\u003e`.across_deposit FINAL WHERE block_time\u003e=? AND block_time\u003c? GROUP BY destination_chain_id,input_token)",
+          "Micros": [
+            3845,
+            11451,
+            20400,
+            5215,
+            10001,
+            3574,
+            3351
+          ],
+          "Result": "7"
+        },
+        {
+          "Name": "hourly_fill_aggregation",
+          "SQL": "SELECT toString(count()) FROM (SELECT toStartOfHour(block_time),fill_type,count(),sum(updated_output_amount_raw) FROM `\u003ctemporary_database\u003e`.across_fill FINAL WHERE block_time\u003e=? AND block_time\u003c? GROUP BY toStartOfHour(block_time),fill_type)",
+          "Micros": [
+            5133,
+            3674,
+            3171,
+            2930,
+            3884,
+            5047,
+            3384
+          ],
+          "Result": "24"
+        },
+        {
+          "Name": "receipt_cost_completeness",
+          "SQL": "SELECT concat(toString(count()),':',toString(countIf(fee_complete))) FROM `\u003ctemporary_database\u003e`.across_tx_receipt FINAL WHERE block_time\u003e=? AND block_time\u003c?",
+          "Micros": [
+            2443,
+            2520,
+            2594,
+            2861,
+            2913,
+            2040,
+            1981
+          ],
+          "Result": "1236:1236"
+        }
+      ],
+      "SourceEvidenceGzipBytes": 80664,
+      "TemporaryDatabase": "crypto_market_info_across_capacity_42161_1790948642491292034",
+      "Cleaned": true
+    }
+  ],
+  "source_database": "crypto_market_info_across",
+  "synthetic": true
+}

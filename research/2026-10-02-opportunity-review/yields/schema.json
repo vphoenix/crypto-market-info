@@ -1,0 +1,379 @@
+{
+	"meta":
+	[
+		{
+			"name": "name",
+			"type": "String"
+		},
+		{
+			"name": "type",
+			"type": "String"
+		},
+		{
+			"name": "default_type",
+			"type": "String"
+		},
+		{
+			"name": "default_expression",
+			"type": "String"
+		},
+		{
+			"name": "comment",
+			"type": "String"
+		},
+		{
+			"name": "codec_expression",
+			"type": "String"
+		},
+		{
+			"name": "ttl_expression",
+			"type": "String"
+		}
+	],
+
+	"data":
+	[
+		{
+			"name": "yield_route_id",
+			"type": "UInt32",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "observation_time",
+			"type": "DateTime64(3, 'UTC')",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "collected_at",
+			"type": "DateTime64(3, 'UTC')",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "tier_no",
+			"type": "UInt16",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "tier_min_amount",
+			"type": "Decimal(38, 18)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "tier_max_amount",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "tier_mode",
+			"type": "LowCardinality(String)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "rate",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "rate_kind",
+			"type": "LowCardinality(String)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "rate_origin",
+			"type": "LowCardinality(String)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "rate_mode",
+			"type": "LowCardinality(String)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "reward_asset_keys",
+			"type": "Array(String)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "reward_component_rates",
+			"type": "Array(Nullable(Decimal(38, 18)))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "entry_fee_rate",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "exit_fee_rate",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "fixed_penalty_rate",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "performance_fee_rate",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "entry_fee_amount",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "exit_fee_amount",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "fixed_fee_asset_key",
+			"type": "Nullable(String)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "lock_seconds",
+			"type": "UInt64",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "unbonding_seconds",
+			"type": "Nullable(UInt64)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "rule_principal_loss_mode",
+			"type": "LowCardinality(String)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "fixed_principal_loss_rate",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "rule_eligibility",
+			"type": "LowCardinality(String)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "eligibility_reason",
+			"type": "Nullable(String)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "exposure_ratio",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "capacity",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "remaining_capacity",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "tvl",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "availability",
+			"type": "LowCardinality(String)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "block_height",
+			"type": "Nullable(UInt64)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "block_hash",
+			"type": "Nullable(String)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "finality",
+			"type": "Nullable(String)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "source_payload_hash",
+			"type": "Nullable(String)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "pool_cash",
+			"type": "Nullable(Decimal(38, 18))",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		},
+		{
+			"name": "redemption_window_seconds",
+			"type": "Nullable(UInt64)",
+			"default_type": "",
+			"default_expression": "",
+			"comment": "",
+			"codec_expression": "",
+			"ttl_expression": ""
+		}
+	],
+
+	"rows": 37,
+
+	"statistics":
+	{
+		"elapsed": 0.000590288,
+		"rows_read": 37,
+		"bytes_read": 3347
+	}
+}

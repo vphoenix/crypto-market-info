@@ -1,0 +1,77 @@
+[
+  {
+    "directory": ".",
+    "command": [
+      "/home/ubuntu/crypto-market-info/research/2026-10-02-opportunity-review/options/options-check",
+      "--database",
+      "crypto_market_info",
+      "--profile",
+      "live",
+      "--run",
+      "d0d26782-21b7-4e1e-9e05-ce3b6aa20c32",
+      "--at",
+      "2026-10-01T17:25:59+00:00"
+    ],
+    "returncode": 0
+  },
+  {
+    "directory": "windows/0",
+    "command": [
+      "/home/ubuntu/crypto-market-info/research/2026-10-02-opportunity-review/options/options-check",
+      "--database",
+      "crypto_market_info",
+      "--profile",
+      "live",
+      "--run",
+      "77094c0f-f545-4d90-b55b-5b550b619323",
+      "--at",
+      "2026-09-28T18:00:59+00:00"
+    ],
+    "returncode": 0
+  },
+  {
+    "directory": "windows/1",
+    "command": [
+      "/home/ubuntu/crypto-market-info/research/2026-10-02-opportunity-review/options/options-check",
+      "--database",
+      "crypto_market_info",
+      "--profile",
+      "live",
+      "--run",
+      "77094c0f-f545-4d90-b55b-5b550b619323",
+      "--at",
+      "2026-09-29T12:00:59+00:00"
+    ],
+    "returncode": 0
+  },
+  {
+    "directory": "windows/2",
+    "command": [
+      "/home/ubuntu/crypto-market-info/research/2026-10-02-opportunity-review/options/options-check",
+      "--database",
+      "crypto_market_info",
+      "--profile",
+      "live",
+      "--run",
+      "d0d26782-21b7-4e1e-9e05-ce3b6aa20c32",
+      "--at",
+      "2026-09-30T14:00:59+00:00"
+    ],
+    "returncode": 0
+  },
+  {
+    "directory": "windows/3",
+    "command": [
+      "/home/ubuntu/crypto-market-info/research/2026-10-02-opportunity-review/options/options-check",
+      "--database",
+      "crypto_market_info",
+      "--profile",
+      "live",
+      "--run",
+      "d0d26782-21b7-4e1e-9e05-ce3b6aa20c32",
+      "--at",
+      "2026-10-01T08:00:59+00:00"
+    ],
+    "returncode": 0
+  }
+]

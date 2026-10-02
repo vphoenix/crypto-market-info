@@ -1,0 +1,21 @@
+{
+  "test": "TestProtocolLiveRelayHash",
+  "result": "passed",
+  "nature": "synthetic relay tuple compared against read-only getV3RelayHash on each verified deployed implementation; no transaction submitted",
+  "cases": [
+    {
+      "chain_id": 8453,
+      "finalized_block": 52078638,
+      "block_hash": "0x9f643bb0426af689a0ee11da64b1ae5c5143998e16d41fadebba9787f18fcdeb",
+      "relay_hash": "0x87196459341121c36d1dd4f1c82fe543c33e4329518091d81ea802cc3616b457"
+    },
+    {
+      "chain_id": 42161,
+      "finalized_block": 510993531,
+      "block_hash": "0x1ba7878531c73f5acd2bb8819158738c711d9948ee783d78358b8f75baa94f90",
+      "relay_hash": "0x7165356e82782884d8352f33ea3f881d270597d28bb7d74aa2a513b3ba0a27b1"
+    }
+  ],
+  "raw_evidence_dir": "live-protocol-evidence",
+  "test_sha256": "d8aa1c46092348fb60cb83e43c1cb7c3fcbd98ca6640de71186f05828095f73d"
+}

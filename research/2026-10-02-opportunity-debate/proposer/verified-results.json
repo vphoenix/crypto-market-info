@@ -1,0 +1,45 @@
+{
+  "window_start_ms": 1790326295110,
+  "window_end_ms": 1790931095110,
+  "event_count": 80,
+  "transaction_count": 80,
+  "endpoint_has_next_page": false,
+  "gross_reward_TRX": "3256.784436",
+  "valuation_TRXUSDT_bid": "0.33480000",
+  "gross_reward_revalued_USDT": "1090.37142917280000",
+  "gross_per_day_revalued_USDT": "155.7673470246857142857142857",
+  "liquidator_counts": {
+    "0x59155f50e82796f8089247701d62acdb26b929ed": 31,
+    "0xbeed4bd7349d4f1a0d4983f1cde7b51cd830acba": 6,
+    "0x2ef4f6c1573f3485c94ea6cb8423a85ee913e276": 40,
+    "0x11b9f751c7b62b5aa34983c4ee5929dde7df32f0": 3
+  },
+  "top_two_event_share": "0.8875",
+  "receipt_checks": [
+    {
+      "tx": "5c63519663ae37058868ed2d171d9d0edb272acf2be534ccb8f9d941a44e1823",
+      "reward_TRX": "20",
+      "matched_internal_transfers": 1,
+      "energy_usage_total": 219372,
+      "energy_burn_equivalent_TRX_at_100_sun": "21.9372",
+      "fee_field_present": false
+    },
+    {
+      "tx": "5cc7f7b10621990900e6b278b627d1b4ae46279fc6b31a6d0e41a227fc5639fc",
+      "reward_TRX": "20",
+      "matched_internal_transfers": 1,
+      "energy_usage_total": 90536,
+      "energy_burn_equivalent_TRX_at_100_sun": "9.0536",
+      "fee_field_present": false
+    },
+    {
+      "tx": "9f5cc98fc94c5b8f0a169b457ca0644cbbcaa7657564e87f806b9c27e72c8c67",
+      "reward_TRX": "126.021476",
+      "matched_internal_transfers": 1,
+      "energy_usage_total": 229683,
+      "energy_burn_equivalent_TRX_at_100_sun": "22.9683",
+      "fee_field_present": false
+    }
+  ],
+  "limitation": "Confirmed endpoint sample; not independently hash-finality-validated for all 80 event blocks. Current-bid valuation is not contemporaneous realized proceeds or own achievable net profit."
+}

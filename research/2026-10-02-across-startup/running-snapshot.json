@@ -1,0 +1,245 @@
+{
+  "observed_at_utc": "2026-10-02T14:24:49.198888+00:00",
+  "services": {
+    "crypto-market-info-across.service": {
+      "MainPID": "1694994",
+      "NRestarts": "0",
+      "ActiveState": "active",
+      "SubState": "running",
+      "UnitFileState": "enabled"
+    },
+    "crypto-market-info-across-history.service": {
+      "MainPID": "1705901",
+      "NRestarts": "3",
+      "ActiveState": "activating",
+      "SubState": "start",
+      "UnitFileState": "enabled"
+    }
+  },
+  "databases": {
+    "crypto_market_info_across": {
+      "fact_table_rows_FINAL": [
+        {
+          "table": "across_deposit_update",
+          "rows": 0
+        },
+        {
+          "table": "across_deposit",
+          "rows": 558
+        },
+        {
+          "table": "across_fill",
+          "rows": 733
+        },
+        {
+          "table": "across_capture",
+          "rows": 773
+        },
+        {
+          "table": "across_tx_receipt",
+          "rows": 403
+        },
+        {
+          "table": "across_refund",
+          "rows": 18
+        },
+        {
+          "table": "across_order_probe",
+          "rows": 92
+        }
+      ],
+      "captures_by_status": [
+        {
+          "chain_id": 8453,
+          "capture_kind": "logs",
+          "status": "complete",
+          "captures": 100,
+          "last_block": 52080868,
+          "last_write": "2026-10-02 14:24:46.577940"
+        },
+        {
+          "chain_id": 8453,
+          "capture_kind": "logs",
+          "status": "error",
+          "captures": 5,
+          "last_block": 52080328,
+          "last_write": "2026-10-02 14:06:46.415789"
+        },
+        {
+          "chain_id": 8453,
+          "capture_kind": "probes",
+          "status": "complete",
+          "captures": 14,
+          "last_block": 52080808,
+          "last_write": "2026-10-02 14:22:44.772671"
+        },
+        {
+          "chain_id": 8453,
+          "capture_kind": "probes",
+          "status": "partial",
+          "captures": 10,
+          "last_block": 52080596,
+          "last_write": "2026-10-02 14:15:39.739566"
+        },
+        {
+          "chain_id": 8453,
+          "capture_kind": "receipts",
+          "status": "complete",
+          "captures": 325,
+          "last_block": 52080858,
+          "last_write": "2026-10-02 14:24:44.310163"
+        },
+        {
+          "chain_id": 8453,
+          "capture_kind": "receipts",
+          "status": "error",
+          "captures": 48,
+          "last_block": null,
+          "last_write": "2026-10-02 14:17:17.439189"
+        },
+        {
+          "chain_id": 42161,
+          "capture_kind": "logs",
+          "status": "complete",
+          "captures": 86,
+          "last_block": 511010685,
+          "last_write": "2026-10-02 14:24:42.048981"
+        },
+        {
+          "chain_id": 42161,
+          "capture_kind": "logs",
+          "status": "partial",
+          "captures": 13,
+          "last_block": 510999495,
+          "last_write": "2026-10-02 14:02:51.332172"
+        },
+        {
+          "chain_id": 42161,
+          "capture_kind": "probes",
+          "status": "complete",
+          "captures": 16,
+          "last_block": 511009684,
+          "last_write": "2026-10-02 14:20:24.992190"
+        },
+        {
+          "chain_id": 42161,
+          "capture_kind": "probes",
+          "status": "partial",
+          "captures": 52,
+          "last_block": 511007813,
+          "last_write": "2026-10-02 14:12:39.416384"
+        },
+        {
+          "chain_id": 42161,
+          "capture_kind": "receipts",
+          "status": "complete",
+          "captures": 78,
+          "last_block": 511010516,
+          "last_write": "2026-10-02 14:24:13.725294"
+        },
+        {
+          "chain_id": 42161,
+          "capture_kind": "receipts",
+          "status": "error",
+          "captures": 26,
+          "last_block": null,
+          "last_write": "2026-10-02 14:23:55.322348"
+        }
+      ],
+      "latest_complete_log_captures": [
+        {
+          "chain_id": 8453,
+          "evidence_hash": "A962704147AA4559D17862373380ADEEDFAB4EB9537AA1B50AE8D2CEF1BD6128",
+          "to_block": 52080868,
+          "available_at": "2026-10-02 14:24:46.577940",
+          "source_from_time": "2026-10-02T14:24:31Z",
+          "source_to_time": "2026-10-02T14:24:43Z"
+        },
+        {
+          "chain_id": 42161,
+          "evidence_hash": "DCF00A4E3DD22CC29ABB75D3F59B340573B34CEECA2BE4F5F4691DFC7BB7C719",
+          "to_block": 511010685,
+          "available_at": "2026-10-02 14:24:42.048981",
+          "source_from_time": "2026-10-02T14:23:57Z",
+          "source_to_time": "2026-10-02T14:24:30Z"
+        }
+      ]
+    },
+    "crypto_market_info_across_history": {
+      "fact_table_rows_FINAL": [
+        {
+          "table": "across_order_probe",
+          "rows": 0
+        },
+        {
+          "table": "across_deposit_update",
+          "rows": 0
+        },
+        {
+          "table": "across_capture",
+          "rows": 84
+        },
+        {
+          "table": "across_tx_receipt",
+          "rows": 20
+        },
+        {
+          "table": "across_deposit",
+          "rows": 306
+        },
+        {
+          "table": "across_refund",
+          "rows": 6
+        },
+        {
+          "table": "across_fill",
+          "rows": 211
+        }
+      ],
+      "captures_by_status": [
+        {
+          "chain_id": 8453,
+          "capture_kind": "logs",
+          "status": "complete",
+          "captures": 3,
+          "last_block": 50784870,
+          "last_write": "2026-10-02 14:23:25.020554"
+        },
+        {
+          "chain_id": 8453,
+          "capture_kind": "logs",
+          "status": "error",
+          "captures": 41,
+          "last_block": 50784870,
+          "last_write": "2026-10-02 14:24:19.675461"
+        },
+        {
+          "chain_id": 8453,
+          "capture_kind": "receipts",
+          "status": "complete",
+          "captures": 20,
+          "last_block": 50784834,
+          "last_write": "2026-10-02 14:24:15.427581"
+        },
+        {
+          "chain_id": 8453,
+          "capture_kind": "receipts",
+          "status": "error",
+          "captures": 20,
+          "last_block": null,
+          "last_write": "2026-10-02 14:24:18.968670"
+        }
+      ],
+      "latest_complete_log_captures": [
+        {
+          "chain_id": 8453,
+          "evidence_hash": "0E14EB0200B08890666751797CF8A46768FB4A69BDC4659EFCE381CA81DB2A89",
+          "to_block": 50784870,
+          "available_at": "2026-10-02 14:23:25.020554",
+          "source_from_time": "2026-09-02T14:07:45Z",
+          "source_to_time": "2026-09-02T14:24:47Z"
+        }
+      ]
+    }
+  }
+}

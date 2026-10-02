@@ -1,0 +1,15 @@
+{
+  "observed_at_utc": "2026-10-02T13:56:34Z",
+  "database": "crypto_market_info_across",
+  "table_rows_from_system_parts_before_start": {
+    "across_capture": 69,
+    "across_deposit": 65,
+    "across_fill": 120,
+    "across_refund": 3,
+    "across_tx_receipt": 67
+  },
+  "started_at_utc": "2026-10-02T13:57:18Z",
+  "binary_sha256": "48e000e554f7a75758a0cb6fec95e9fe28d0456a94ade3c78a9ab6f08cb2e8ed",
+  "service": "crypto-market-info-across.service",
+  "linger": true
+}

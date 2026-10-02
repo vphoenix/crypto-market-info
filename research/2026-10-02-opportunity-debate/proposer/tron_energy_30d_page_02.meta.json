@@ -1,0 +1,7 @@
+{
+  "url": "https://api.trongrid.io/v1/contracts/TU2MJ5Veik1LRAgjeSzEdvmDYx7mefJZvd/events?event_name=Liquidate&limit=200&max_block_timestamp=1790931095110&min_block_timestamp=1788339095110&only_confirmed=true&order_by=block_timestamp,desc&fingerprint=4JgX2Mp2tMm1T4NpvJAWigeTVDw7cqQG6qk3iJRsZW1V23bQKwbqykAvWtRXuoK1KxSr65UDLSzmhHUjK2UZBHE8ww95fHc9LB2AfpZTZzywJLwmKZdMTp6BMqKTd7vhYpXxyrauJrVmcMyjn3wzxMVseJQykb7jjbJgSFTr6SoTitggsApTi5RNVNEq9i45bDSho9aWcJmFHPwG4gPxbBU46EcSZ9HQxntazVbNDBWqzvCSoU",
+  "collected_at": "2026-10-02T08:58:47.714791+00:00",
+  "window_start_ms": 1788339095110,
+  "window_end_ms": 1790931095110,
+  "sha256": "f5c10c7256a12528ce3a71527686c7d4ad2feafced5384d1fe9e7e370089af33"
+}

@@ -1,0 +1,13 @@
+{
+  "verified_offline": true,
+  "source_sha256": "6abe9c8e53e8eaf8e78dad319632e57eeddfea77ccf71f68671dd51a328d4f60",
+  "minimum_pt_from_contract_parameter": "1005504.817422045366934719",
+  "holding_days": "55.2697175189351851851851851851851851851851851851851851851852",
+  "conditional_net_profit_usdt": "4999.312604623321567784281",
+  "conditional_simple_annualized_pct": "3.30153505861932548314161552708674715768439495899349509820372",
+  "max_future_exit_loss_bps_with_500_fixed_cost": "14.5409637856169577754908602148214848976851752361016869111297",
+  "current_exit_reference_input_usds": "1005500",
+  "current_exit_reference_output_usdt": "1005906.071258",
+  "current_exit_reference_minimum_output_usdt": "1005805.48065",
+  "scope": "Raw API byte hash, market and currency identities, contract minPtOut and independent Decimal arithmetic checked. No chain simulation, transaction or future exit guarantee; fixed cost and haircut are assumptions."
+}

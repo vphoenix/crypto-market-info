@@ -1,0 +1,19 @@
+[Unit]
+Description=Public Across stablecoin relay research collector
+After=network-online.target crypto-market-info-clickhouse.service
+Wants=network-online.target crypto-market-info-clickhouse.service
+
+[Service]
+Type=simple
+WorkingDirectory=%h/crypto-market-info
+ExecStart=%h/crypto-market-info/var/across/bin/across-data watch --database crypto_market_info_across --evidence var/across/evidence
+Restart=on-failure
+RestartSec=15
+KillSignal=SIGTERM
+TimeoutStopSec=30
+UMask=0077
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

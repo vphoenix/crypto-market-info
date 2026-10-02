@@ -1,0 +1,1 @@
+SELECT * FROM options_index_minute FINAL WHERE minute_time='2026-09-30 14:00:00' AND batch_id='83282d1c9a489ae2ffb3adb421045f7a1b26956d7897f632811a7b18d217f679' ORDER BY index_id FORMAT JSONEachRow

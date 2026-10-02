@@ -1,0 +1,95 @@
+[
+  {
+    "capture": {
+      "hex(evidence_hash)": "755DBE486E84DFD3C0EF244783DBCFEEE04B15FEEE4E9401873863CE63494760",
+      "capture_kind": "logs",
+      "reason": "rpc_method_error",
+      "from_block": null,
+      "to_block": null
+    },
+    "source": "mainnet.base.org",
+    "requests": [
+      {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x306e867",
+          false
+        ]
+      }
+    ],
+    "errors": [
+      {
+        "jsonrpc": "2.0",
+        "error": {
+          "code": -32016,
+          "message": "over rate limit"
+        },
+        "id": 1
+      }
+    ]
+  },
+  {
+    "capture": {
+      "hex(evidence_hash)": "692EE3C081D5E86096BE475B1432262F03AD34F213CB6636CD7B9FC4E0C9F819",
+      "capture_kind": "logs",
+      "reason": "rpc_method_error",
+      "from_block": null,
+      "to_block": null
+    },
+    "source": "mainnet.base.org",
+    "requests": [
+      {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x306e867",
+          false
+        ]
+      }
+    ],
+    "errors": [
+      {
+        "jsonrpc": "2.0",
+        "error": {
+          "code": -32016,
+          "message": "over rate limit"
+        },
+        "id": 1
+      }
+    ]
+  },
+  {
+    "capture": {
+      "hex(evidence_hash)": "7D761953649CAE9D592BEB16DF2159E03E8D7DE9BA1721F02AB846579C9AEF18",
+      "capture_kind": "logs",
+      "reason": "rpc_method_error",
+      "from_block": null,
+      "to_block": null
+    },
+    "source": "mainnet.base.org",
+    "requests": [
+      {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x306e867",
+          false
+        ]
+      }
+    ],
+    "errors": [
+      {
+        "jsonrpc": "2.0",
+        "error": {
+          "code": -32016,
+          "message": "over rate limit"
+        },
+        "id": 1
+      }
+    ]
+  }
+]
