@@ -1,0 +1,5 @@
+{
+  "cutoff": "2026-09-21 14:30:00",
+  "captured_at": "2026-09-21T14:31:08.316082+00:00",
+  "source": "local ClickHouse public market history; committed realtime batches only"
+}

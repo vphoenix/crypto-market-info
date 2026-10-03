@@ -1,0 +1,6 @@
+{
+  "collected_at": "2026-09-21T15:10:58.960564+00:00",
+  "endpoint": "https://api.v3.aave.com/graphql",
+  "query": "query { market(request: {address: \"0x87870Bca3F3fD6335C3F4ce8392D69350B4fa4E2\", chainId: 1}) { address chain { chainId } reserves { underlyingToken { address symbol decimals } supplyInfo { apy { raw decimals } } } } }",
+  "sha256": "a65275b64c35bd5308aeae6ac53b76d1286864a27ba3ae53d9a513afef9f824c"
+}

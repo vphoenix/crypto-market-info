@@ -1,0 +1,7 @@
+{
+  "name": "okx-futures",
+  "url": "https://www.okx.com/api/v5/market/tickers?instType=FUTURES",
+  "retrieved_at_utc": "2026-09-16T10:31:28.192081+00:00",
+  "sha256": "46a47f2cf9a86856dffa98f3bb30f55a922106a518cdc71cd861cdf3c229d29b",
+  "rows": null
+}

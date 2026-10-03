@@ -1,0 +1,1507 @@
+[
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1786896000000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00056175",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1786924800001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00054970",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1786953600003,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00055150",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1786982400005,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00054305",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787011200006,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00053870",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787040000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00053090",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787068800003,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00053490",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787097600000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00053113",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787126400000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00052780",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787155200004,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00054769",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787184000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00055936",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787212800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00055720",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787241600005,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00057070",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787270400004,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00057670",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787299200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00058130",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787328000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00060362",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787356800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00061151",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787385600000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00060580",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787414400000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00059300",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787443200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00059470",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787472000000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00057338",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787500800006,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00059500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787529600001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00060000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787558400002,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00058010",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787587200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00058718",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787616000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00058567",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787644800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00058284",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787673600005,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00058441",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787702400000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00057030",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787731200005,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00057231",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787760000000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00058356",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787788800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00060297",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787817600000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00059820",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787846400013,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00060460",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787875200026,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00060480",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787904000000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00058790",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787932800001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00060260",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787961600000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00059290",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1787990400000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00058842",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788019200002,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00059010",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788048000000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00059209",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788076800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00059260",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788105600001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00059511",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788134400002,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00057077",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788163200002,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00058414",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788192000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00057870",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788220800005,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00057995",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788249600000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00058473",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788278400000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00060288",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788307200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00060190",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788336000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00060140",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788364800005,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00058830",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788393600000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00058683",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788422400000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00059858",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788451200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00061171",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788480000000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00061508",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788508800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00060480",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788537600009,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00059966",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788566400000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00060508",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788595200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00060985",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788624000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00064155",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788652800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00068220",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788681600000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00076818",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788710400004,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00071675",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788739200004,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00073240",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788768000000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00085064",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788796800003,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00088690",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788825600004,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00093650",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788854400002,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00097892",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788883200001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00091180",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788912000005,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00085390",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788940800004,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.00116587",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788969600002,
+    "fundingRate": "-0.00346134",
+    "markPrice": "0.00168943",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1788998400000,
+    "fundingRate": "-0.02000000",
+    "markPrice": "0.00185834",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789002000004,
+    "fundingRate": "-0.00590608",
+    "markPrice": "0.00160167",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789005600004,
+    "fundingRate": "-0.01220798",
+    "markPrice": "0.00141145",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789009200004,
+    "fundingRate": "-0.01212270",
+    "markPrice": "0.00124048",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789012800000,
+    "fundingRate": "-0.01737853",
+    "markPrice": "0.00118760",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789016400005,
+    "fundingRate": "-0.00098836",
+    "markPrice": "0.00109060",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789020000003,
+    "fundingRate": "-0.00046145",
+    "markPrice": "0.00108990",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789023600000,
+    "fundingRate": "-0.00023568",
+    "markPrice": "0.00105420",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789027200007,
+    "fundingRate": "-0.00018639",
+    "markPrice": "0.00103510",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789030800002,
+    "fundingRate": "-0.00026770",
+    "markPrice": "0.00102500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789034400000,
+    "fundingRate": "-0.00081913",
+    "markPrice": "0.00109939",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789038000000,
+    "fundingRate": "-0.00151929",
+    "markPrice": "0.00108537",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789041600000,
+    "fundingRate": "-0.00202328",
+    "markPrice": "0.00107860",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789045200000,
+    "fundingRate": "-0.00244789",
+    "markPrice": "0.00113900",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789048800002,
+    "fundingRate": "-0.00177346",
+    "markPrice": "0.00110408",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789052400005,
+    "fundingRate": "-0.00155237",
+    "markPrice": "0.00110020",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789056000002,
+    "fundingRate": "-0.00140357",
+    "markPrice": "0.00107447",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789059600003,
+    "fundingRate": "-0.00126268",
+    "markPrice": "0.00103126",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789063200000,
+    "fundingRate": "-0.00112900",
+    "markPrice": "0.00101230",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789066800004,
+    "fundingRate": "-0.00153242",
+    "markPrice": "0.00102230",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789070400000,
+    "fundingRate": "-0.00189671",
+    "markPrice": "0.00101304",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789074000000,
+    "fundingRate": "-0.00183765",
+    "markPrice": "0.00100740",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789077600003,
+    "fundingRate": "-0.00196394",
+    "markPrice": "0.00099169",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789081200007,
+    "fundingRate": "-0.00208508",
+    "markPrice": "0.00099320",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789084800008,
+    "fundingRate": "-0.00223572",
+    "markPrice": "0.00099650",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789088400000,
+    "fundingRate": "-0.00143002",
+    "markPrice": "0.00095722",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789092000000,
+    "fundingRate": "-0.00116264",
+    "markPrice": "0.00093480",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789095600000,
+    "fundingRate": "-0.00100497",
+    "markPrice": "0.00091940",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789099200005,
+    "fundingRate": "-0.00068770",
+    "markPrice": "0.00093370",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789102800002,
+    "fundingRate": "-0.00061296",
+    "markPrice": "0.00095190",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789106400003,
+    "fundingRate": "-0.00048775",
+    "markPrice": "0.00092870",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789110000000,
+    "fundingRate": "-0.00045438",
+    "markPrice": "0.00093080",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789113600000,
+    "fundingRate": "-0.00047192",
+    "markPrice": "0.00093190",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789117200004,
+    "fundingRate": "-0.00048556",
+    "markPrice": "0.00101380",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789120800002,
+    "fundingRate": "-0.00082028",
+    "markPrice": "0.00097628",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789124400010,
+    "fundingRate": "-0.00044889",
+    "markPrice": "0.00092669",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789128000000,
+    "fundingRate": "-0.00041015",
+    "markPrice": "0.00092093",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789131600004,
+    "fundingRate": "-0.00034955",
+    "markPrice": "0.00096257",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789135200000,
+    "fundingRate": "-0.00022539",
+    "markPrice": "0.00095049",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789138800000,
+    "fundingRate": "-0.00037915",
+    "markPrice": "0.00092880",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789142400000,
+    "fundingRate": "-0.00066404",
+    "markPrice": "0.00091223",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789146000006,
+    "fundingRate": "-0.00095455",
+    "markPrice": "0.00091730",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789149600001,
+    "fundingRate": "-0.00085812",
+    "markPrice": "0.00089541",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789153200000,
+    "fundingRate": "-0.00082800",
+    "markPrice": "0.00087270",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789156800004,
+    "fundingRate": "-0.00078982",
+    "markPrice": "0.00087630",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789160400001,
+    "fundingRate": "-0.00101068",
+    "markPrice": "0.00087600",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789164000000,
+    "fundingRate": "-0.00118924",
+    "markPrice": "0.00086730",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789167600000,
+    "fundingRate": "-0.00146636",
+    "markPrice": "0.00087795",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789171200001,
+    "fundingRate": "-0.00124096",
+    "markPrice": "0.00089410",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789174800000,
+    "fundingRate": "-0.00158026",
+    "markPrice": "0.00090821",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789178400000,
+    "fundingRate": "-0.00107479",
+    "markPrice": "0.00088621",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789182000005,
+    "fundingRate": "-0.00104378",
+    "markPrice": "0.00087091",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789185600002,
+    "fundingRate": "-0.00078776",
+    "markPrice": "0.00085030",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789189200001,
+    "fundingRate": "-0.00058519",
+    "markPrice": "0.00085800",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789192800002,
+    "fundingRate": "-0.00054685",
+    "markPrice": "0.00088900",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789196400007,
+    "fundingRate": "-0.00056228",
+    "markPrice": "0.00087200",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789200000003,
+    "fundingRate": "-0.00089625",
+    "markPrice": "0.00088940",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789203600001,
+    "fundingRate": "-0.00080139",
+    "markPrice": "0.00086890",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789207200000,
+    "fundingRate": "-0.00114224",
+    "markPrice": "0.00086620",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789210800000,
+    "fundingRate": "-0.00133179",
+    "markPrice": "0.00088180",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789214400000,
+    "fundingRate": "-0.00167240",
+    "markPrice": "0.00087169",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789218000000,
+    "fundingRate": "-0.00172935",
+    "markPrice": "0.00087850",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789221600005,
+    "fundingRate": "-0.00164572",
+    "markPrice": "0.00087199",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789225200000,
+    "fundingRate": "-0.00138921",
+    "markPrice": "0.00087508",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789228800000,
+    "fundingRate": "-0.00107124",
+    "markPrice": "0.00087220",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789232400000,
+    "fundingRate": "-0.00106304",
+    "markPrice": "0.00086160",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789236000000,
+    "fundingRate": "-0.00106327",
+    "markPrice": "0.00086030",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789239600001,
+    "fundingRate": "-0.00125732",
+    "markPrice": "0.00085900",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789243200000,
+    "fundingRate": "-0.00141861",
+    "markPrice": "0.00086850",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789246800000,
+    "fundingRate": "-0.00141299",
+    "markPrice": "0.00087430",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789250400000,
+    "fundingRate": "-0.00147937",
+    "markPrice": "0.00088230",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789254000005,
+    "fundingRate": "-0.00137414",
+    "markPrice": "0.00088950",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789257600002,
+    "fundingRate": "-0.00119745",
+    "markPrice": "0.00090390",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789261200001,
+    "fundingRate": "-0.00114861",
+    "markPrice": "0.00086290",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789264800000,
+    "fundingRate": "-0.00115540",
+    "markPrice": "0.00085280",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789268400000,
+    "fundingRate": "-0.00112877",
+    "markPrice": "0.00083770",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789272000007,
+    "fundingRate": "-0.00121619",
+    "markPrice": "0.00081267",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789275600001,
+    "fundingRate": "-0.00125352",
+    "markPrice": "0.00083920",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789279200000,
+    "fundingRate": "-0.00072828",
+    "markPrice": "0.00083700",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789282800000,
+    "fundingRate": "-0.00070622",
+    "markPrice": "0.00082680",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789286400000,
+    "fundingRate": "-0.00080573",
+    "markPrice": "0.00082170",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789290000000,
+    "fundingRate": "-0.00103438",
+    "markPrice": "0.00082350",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789293600000,
+    "fundingRate": "-0.00098950",
+    "markPrice": "0.00082910",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789297200007,
+    "fundingRate": "-0.00087115",
+    "markPrice": "0.00082221",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789300800001,
+    "fundingRate": "-0.00076694",
+    "markPrice": "0.00082402",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789304400001,
+    "fundingRate": "-0.00074674",
+    "markPrice": "0.00080939",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789308000000,
+    "fundingRate": "-0.00111899",
+    "markPrice": "0.00081280",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789311600000,
+    "fundingRate": "-0.00091671",
+    "markPrice": "0.00080030",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789315200000,
+    "fundingRate": "-0.00077729",
+    "markPrice": "0.00078640",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789318800002,
+    "fundingRate": "-0.00059390",
+    "markPrice": "0.00077890",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789322400000,
+    "fundingRate": "-0.00037325",
+    "markPrice": "0.00077792",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789326000001,
+    "fundingRate": "-0.00034681",
+    "markPrice": "0.00077760",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789329600000,
+    "fundingRate": "-0.00043543",
+    "markPrice": "0.00077205",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789333200001,
+    "fundingRate": "-0.00068909",
+    "markPrice": "0.00078140",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789336800000,
+    "fundingRate": "-0.00097769",
+    "markPrice": "0.00077731",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789340400002,
+    "fundingRate": "-0.00142319",
+    "markPrice": "0.00076697",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789344000000,
+    "fundingRate": "-0.00152219",
+    "markPrice": "0.00076080",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789347600002,
+    "fundingRate": "-0.00165273",
+    "markPrice": "0.00077710",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789351200006,
+    "fundingRate": "-0.00133352",
+    "markPrice": "0.00076670",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789354800001,
+    "fundingRate": "-0.00069174",
+    "markPrice": "0.00078270",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789358400000,
+    "fundingRate": "-0.00073278",
+    "markPrice": "0.00078488",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789362000003,
+    "fundingRate": "-0.00051945",
+    "markPrice": "0.00078270",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789365600000,
+    "fundingRate": "-0.00053454",
+    "markPrice": "0.00080246",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789369200000,
+    "fundingRate": "-0.00053175",
+    "markPrice": "0.00080270",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789372800000,
+    "fundingRate": "-0.00069169",
+    "markPrice": "0.00078890",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789376400000,
+    "fundingRate": "-0.00055517",
+    "markPrice": "0.00078190",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789380000000,
+    "fundingRate": "-0.00047967",
+    "markPrice": "0.00078770",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789383600000,
+    "fundingRate": "-0.00040030",
+    "markPrice": "0.00078860",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789387200002,
+    "fundingRate": "-0.00036326",
+    "markPrice": "0.00079050",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789390800000,
+    "fundingRate": "-0.00049288",
+    "markPrice": "0.00077451",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789394400001,
+    "fundingRate": "-0.00050048",
+    "markPrice": "0.00077501",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789398000003,
+    "fundingRate": "-0.00055728",
+    "markPrice": "0.00077743",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789401600000,
+    "fundingRate": "-0.00067248",
+    "markPrice": "0.00077600",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789405200001,
+    "fundingRate": "-0.00062442",
+    "markPrice": "0.00077475",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789408800000,
+    "fundingRate": "-0.00062498",
+    "markPrice": "0.00078049",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789412400006,
+    "fundingRate": "-0.00058288",
+    "markPrice": "0.00078210",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789416000008,
+    "fundingRate": "-0.00056371",
+    "markPrice": "0.00078283",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789419600001,
+    "fundingRate": "-0.00047531",
+    "markPrice": "0.00079030",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789423200002,
+    "fundingRate": "-0.00050644",
+    "markPrice": "0.00078640",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789426800000,
+    "fundingRate": "-0.00055885",
+    "markPrice": "0.00078100",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789430400000,
+    "fundingRate": "-0.00052338",
+    "markPrice": "0.00078695",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789434000002,
+    "fundingRate": "-0.00025361",
+    "markPrice": "0.00076890",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789437600000,
+    "fundingRate": "-0.00024192",
+    "markPrice": "0.00075960",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789441200002,
+    "fundingRate": "-0.00021485",
+    "markPrice": "0.00076340",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789444800001,
+    "fundingRate": "-0.00019730",
+    "markPrice": "0.00075290",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789448400001,
+    "fundingRate": "-0.00016695",
+    "markPrice": "0.00076235",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789452000000,
+    "fundingRate": "-0.00016290",
+    "markPrice": "0.00076250",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789455600000,
+    "fundingRate": "-0.00012126",
+    "markPrice": "0.00078260",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789459200005,
+    "fundingRate": "-0.00016363",
+    "markPrice": "0.00078950",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789462800000,
+    "fundingRate": "-0.00017747",
+    "markPrice": "0.00078423",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789466400000,
+    "fundingRate": "-0.00022416",
+    "markPrice": "0.00077920",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789470000002,
+    "fundingRate": "-0.00024320",
+    "markPrice": "0.00078240",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789473600005,
+    "fundingRate": "-0.00020354",
+    "markPrice": "0.00077043",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789477200000,
+    "fundingRate": "-0.00011930",
+    "markPrice": "0.00076435",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789480800002,
+    "fundingRate": "-0.00009003",
+    "markPrice": "0.00076700",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789484400001,
+    "fundingRate": "-0.00024421",
+    "markPrice": "0.00075432",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789488000001,
+    "fundingRate": "-0.00016879",
+    "markPrice": "0.00075990",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789491600001,
+    "fundingRate": "-0.00018691",
+    "markPrice": "0.00077227",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789502400000,
+    "fundingRate": "-0.00049602",
+    "markPrice": "0.00075350",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789516800001,
+    "fundingRate": "-0.00048685",
+    "markPrice": "0.00072110",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789531200002,
+    "fundingRate": "-0.00097244",
+    "markPrice": "0.00074782",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "IOSTUSDT",
+    "fundingTime": 1789545600002,
+    "fundingRate": "-0.00922250",
+    "markPrice": "0.00082390",
+    "rateType": "Regular"
+  }
+]

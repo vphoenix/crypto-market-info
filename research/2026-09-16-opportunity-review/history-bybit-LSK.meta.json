@@ -1,0 +1,7 @@
+{
+  "name": "history-bybit-LSK",
+  "url": "https://api.bybit.com/v5/market/funding/history?category=linear&limit=200&symbol=LSKUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:18.317259+00:00",
+  "sha256": "cf14bf8bb62d37b4b4a170fa292bb775c8b24dd389f7d424c463830a4ce8ec04",
+  "rows": null
+}

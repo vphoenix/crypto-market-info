@@ -1,0 +1,1 @@
+SELECT run_id,count() AS minutes,min(minute_time) AS first_minute,max(minute_time) AS last_minute,sum(anchor_count) AS anchors FROM options_live_minute_commit FINAL GROUP BY run_id ORDER BY last_minute DESC FORMAT JSONEachRow

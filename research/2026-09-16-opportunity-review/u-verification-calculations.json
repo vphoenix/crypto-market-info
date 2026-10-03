@@ -1,0 +1,253 @@
+{
+  "generated_utc": "2026-09-16T10:38:40.648042+00:00",
+  "book_update_id": 18521105,
+  "execution_assumptions": "Public depth only; zero spot fee if eligible; entry size rounded to lot step; no tax/transfer costs; source book has no wall-clock exchange timestamp; all capital counted; no private account data.",
+  "scenario_assumptions": "All calculations are 28 full bonus days after 2026-09-16 subscription; subscription eligibility and pool availability unverified; both 0.7% real-time and offer persistence assumed; exit price not guaranteed; quoted rewards are U, not dollars.",
+  "u_offer_url": "https://www.binance.com/en/support/announcement/detail/47934ad1629f4236a80c3709e2cd116a",
+  "sources": [
+    {
+      "file": "u-depth-usdt.json",
+      "url": "https://api.binance.com/api/v3/depth?symbol=UUSDT&limit=100",
+      "sha256": "419458bd5d3d28acd575bfd928a090c597345b801cd766f5fd0750eafa219e73",
+      "downloaded_file_mtime_utc": "2026-09-16T10:32:31.591699+00:00"
+    },
+    {
+      "file": "u-rule-usdt.json",
+      "url": "https://api.binance.com/api/v3/exchangeInfo?symbol=UUSDT",
+      "sha256": "40d898c37ce327abf7d3ce0aef4a7e0725c11ee1c85d520c58263add1787f2c1",
+      "downloaded_file_mtime_utc": "2026-09-16T10:34:23.173127+00:00"
+    },
+    {
+      "file": "u-reserves-jul-2026.pdf",
+      "url": "https://u.tech/assets/audit-report/United%20Stables%20-%20Assurance%20%26%20Reserves%20Report%20Jul%202026.pdf",
+      "sha256": "56490cb788ebaef10e12012eff989e5a5b0baf81425e9d7d48c660db9e36121f",
+      "downloaded_file_mtime_utc": "2026-09-16T10:32:04.799614+00:00"
+    }
+  ],
+  "scenarios": [
+    {
+      "capital_usdt": "100000",
+      "tier": "regular",
+      "eligible_cap_u": "8000",
+      "acquired_u": "99960.00000000",
+      "cash_dust_usdt": "0.0160000000000000",
+      "entry_cost_usdt": "99999.9840000000000000",
+      "entry_vwap": "1.00040000",
+      "immediate_roundtrip_cost_usdt": "9.9960000000000000",
+      "bonus_accrual_days": "28",
+      "gross_rewards_u": "90.49906849315068493150684932",
+      "whole_capital_gross_run_rate_pct": "1.17972000000",
+      "net_if_current_exit_book_repeats_usdt": "80.5302182136986301369863",
+      "net_if_exit_at_one_usdt": "50.5150684931506849315068"
+    },
+    {
+      "capital_usdt": "100000",
+      "tier": "vip1_3",
+      "eligible_cap_u": "200000",
+      "acquired_u": "99960.00000000",
+      "cash_dust_usdt": "0.0160000000000000",
+      "entry_cost_usdt": "99999.9840000000000000",
+      "entry_vwap": "1.00040000",
+      "immediate_roundtrip_cost_usdt": "9.9960000000000000",
+      "bonus_accrual_days": "28",
+      "gross_rewards_u": "513.7670136986301369863013699",
+      "whole_capital_gross_run_rate_pct": "6.69732000000",
+      "net_if_current_exit_book_repeats_usdt": "503.9251438027397260273973",
+      "net_if_exit_at_one_usdt": "473.7830136986301369863014"
+    },
+    {
+      "capital_usdt": "100000",
+      "tier": "vip4_9",
+      "eligible_cap_u": "500000",
+      "acquired_u": "99960.00000000",
+      "cash_dust_usdt": "0.0160000000000000",
+      "entry_cost_usdt": "99999.9840000000000000",
+      "entry_vwap": "1.00040000",
+      "immediate_roundtrip_cost_usdt": "9.9960000000000000",
+      "bonus_accrual_days": "28",
+      "gross_rewards_u": "590.4486575342465753424657534",
+      "whole_capital_gross_run_rate_pct": "7.69692000000",
+      "net_if_current_exit_book_repeats_usdt": "580.6297921315068493150685",
+      "net_if_exit_at_one_usdt": "550.4646575342465753424658"
+    },
+    {
+      "capital_usdt": "200000",
+      "tier": "regular",
+      "eligible_cap_u": "8000",
+      "acquired_u": "199915.00000000",
+      "cash_dust_usdt": "0.4084000000000000",
+      "entry_cost_usdt": "199999.5916000000000000",
+      "entry_vwap": "1.000423137833579271190255859",
+      "immediate_roundtrip_cost_usdt": "24.6171000000000000",
+      "bonus_accrual_days": "28",
+      "gross_rewards_u": "144.1735342465753424657534247",
+      "whole_capital_gross_run_rate_pct": "0.93970250000",
+      "net_if_current_exit_book_repeats_usdt": "119.5996863068493150684931",
+      "net_if_exit_at_one_usdt": "59.5819342465753424657534"
+    },
+    {
+      "capital_usdt": "200000",
+      "tier": "vip1_3",
+      "eligible_cap_u": "200000",
+      "acquired_u": "199915.00000000",
+      "cash_dust_usdt": "0.4084000000000000",
+      "entry_cost_usdt": "199999.5916000000000000",
+      "entry_vwap": "1.000423137833579271190255859",
+      "immediate_roundtrip_cost_usdt": "24.6171000000000000",
+      "bonus_accrual_days": "28",
+      "gross_rewards_u": "1027.508328767123287671232877",
+      "whole_capital_gross_run_rate_pct": "6.69715250000",
+      "net_if_current_exit_book_repeats_usdt": "1003.1994812657534246575343",
+      "net_if_exit_at_one_usdt": "942.9167287671232876712329"
+    },
+    {
+      "capital_usdt": "200000",
+      "tier": "vip4_9",
+      "eligible_cap_u": "500000",
+      "acquired_u": "199915.00000000",
+      "cash_dust_usdt": "0.4084000000000000",
+      "entry_cost_usdt": "199999.5916000000000000",
+      "entry_vwap": "1.000423137833579271190255859",
+      "immediate_roundtrip_cost_usdt": "24.6171000000000000",
+      "bonus_accrual_days": "28",
+      "gross_rewards_u": "1180.867780821917808219178082",
+      "whole_capital_gross_run_rate_pct": "7.69672750000",
+      "net_if_current_exit_book_repeats_usdt": "1156.6049411561643835616439",
+      "net_if_exit_at_one_usdt": "1096.2761808219178082191781"
+    },
+    {
+      "capital_usdt": "500000",
+      "tier": "regular",
+      "eligible_cap_u": "8000",
+      "acquired_u": "499765.00000000",
+      "cash_dust_usdt": "0.4834000000000000",
+      "entry_cost_usdt": "499999.5166000000000000",
+      "entry_vwap": "1.000469253749262153212009645",
+      "immediate_roundtrip_cost_usdt": "84.5871000000000000",
+      "bonus_accrual_days": "28",
+      "gross_rewards_u": "305.1888767123287671232876712",
+      "whole_capital_gross_run_rate_pct": "0.79567100000",
+      "net_if_current_exit_book_repeats_usdt": "220.6933333753424657534247",
+      "net_if_exit_at_one_usdt": "70.6722767123287671232877"
+    },
+    {
+      "capital_usdt": "500000",
+      "tier": "vip1_3",
+      "eligible_cap_u": "200000",
+      "acquired_u": "499765.00000000",
+      "cash_dust_usdt": "0.4834000000000000",
+      "entry_cost_usdt": "499999.5166000000000000",
+      "entry_vwap": "1.000469253749262153212009645",
+      "immediate_roundtrip_cost_usdt": "84.5871000000000000",
+      "bonus_accrual_days": "28",
+      "gross_rewards_u": "1188.914904109589041095890411",
+      "whole_capital_gross_run_rate_pct": "3.09967100000",
+      "net_if_current_exit_book_repeats_usdt": "1104.6844785808219178082192",
+      "net_if_exit_at_one_usdt": "954.3983041095890410958904"
+    },
+    {
+      "capital_usdt": "500000",
+      "tier": "vip4_9",
+      "eligible_cap_u": "500000",
+      "acquired_u": "499765.00000000",
+      "cash_dust_usdt": "0.4834000000000000",
+      "entry_cost_usdt": "499999.5166000000000000",
+      "entry_vwap": "1.000469253749262153212009645",
+      "immediate_roundtrip_cost_usdt": "84.5871000000000000",
+      "bonus_accrual_days": "28",
+      "gross_rewards_u": "2952.036547945205479452054795",
+      "whole_capital_gross_run_rate_pct": "7.69638100000",
+      "net_if_current_exit_book_repeats_usdt": "2868.3350589095890410958904",
+      "net_if_exit_at_one_usdt": "2717.5199479452054794520548"
+    },
+    {
+      "capital_usdt": "1000000",
+      "tier": "regular",
+      "eligible_cap_u": "8000",
+      "acquired_u": "999515.00000000",
+      "cash_dust_usdt": "0.6084000000000000",
+      "entry_cost_usdt": "999999.3916000000000000",
+      "entry_vwap": "1.000484626643922302316623562",
+      "immediate_roundtrip_cost_usdt": "184.5371000000000000",
+      "bonus_accrual_days": "28",
+      "gross_rewards_u": "573.5477808219178082191780822",
+      "whole_capital_gross_run_rate_pct": "0.74766050000",
+      "net_if_current_exit_book_repeats_usdt": "389.182745156164383561644",
+      "net_if_exit_at_one_usdt": "89.156180821917808219178"
+    },
+    {
+      "capital_usdt": "1000000",
+      "tier": "vip1_3",
+      "eligible_cap_u": "200000",
+      "acquired_u": "999515.00000000",
+      "cash_dust_usdt": "0.6084000000000000",
+      "entry_cost_usdt": "999999.3916000000000000",
+      "entry_vwap": "1.000484626643922302316623562",
+      "immediate_roundtrip_cost_usdt": "184.5371000000000000",
+      "bonus_accrual_days": "28",
+      "gross_rewards_u": "1457.273808219178082191780822",
+      "whole_capital_gross_run_rate_pct": "1.89966050000",
+      "net_if_current_exit_book_repeats_usdt": "1273.173890361643835616439",
+      "net_if_exit_at_one_usdt": "972.882208219178082191781"
+    },
+    {
+      "capital_usdt": "1000000",
+      "tier": "vip4_9",
+      "eligible_cap_u": "500000",
+      "acquired_u": "999515.00000000",
+      "cash_dust_usdt": "0.6084000000000000",
+      "entry_cost_usdt": "999999.3916000000000000",
+      "entry_vwap": "1.000484626643922302316623562",
+      "immediate_roundtrip_cost_usdt": "184.5371000000000000",
+      "bonus_accrual_days": "28",
+      "gross_rewards_u": "3221.657369863013698630136986",
+      "whole_capital_gross_run_rate_pct": "4.19966050000",
+      "net_if_current_exit_book_repeats_usdt": "3038.086767073972602739726",
+      "net_if_exit_at_one_usdt": "2737.265769863013698630137"
+    }
+  ],
+  "reserve_report_timestamp_utc": "2026-07-31T23:59:00Z",
+  "reserves": {
+    "binance_total": {
+      "usd": "724302276.47",
+      "share_pct": "65.30670545591535801532056300"
+    },
+    "binance_rwusd": {
+      "usd": "303376167.55",
+      "share_pct": "27.35390825097440383290491936"
+    },
+    "binance_usdc": {
+      "usd": "340331263.83",
+      "share_pct": "30.68596403245711607788199626"
+    },
+    "binance_usd1": {
+      "usd": "80219237.73",
+      "share_pct": "7.232966539693253519105650404"
+    },
+    "institutional_custody": {
+      "usd": "23500558.99",
+      "share_pct": "2.118927599522547605125036001"
+    },
+    "bank_cash": {
+      "usd": "56096563.42",
+      "share_pct": "5.057945920332550925881857037"
+    },
+    "tbill_fund_token": {
+      "usd": "201178560.90",
+      "share_pct": "18.13926235987111106163505804"
+    },
+    "smart_wallet_usdc": {
+      "usd": "50000000",
+      "share_pct": "4.508249357864630957710329769"
+    },
+    "money_market_fund": {
+      "usd": "54000000",
+      "share_pct": "4.868909306493801434327156150"
+    },
+    "total_assets_usd": "1109077959.78",
+    "circulation_u": "1103009107.80",
+    "excess_assets_usd": "6068851.98",
+    "reserve_ratio_pct": "100.5502086915768620636951009",
+    "binance_loss_haircut_exhausting_buffer_pct": "0.8378893974457039856112769232"
+  }
+}

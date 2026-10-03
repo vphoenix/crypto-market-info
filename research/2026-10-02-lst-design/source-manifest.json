@@ -1,0 +1,142 @@
+[
+  {
+    "name": "lido-withdrawal-queue",
+    "url": "https://raw.githubusercontent.com/lidofinance/core/v4.0.1/contracts/0.8.9/WithdrawalQueue.sol",
+    "requested_at": "2026-10-02T13:49:02.591006+00:00",
+    "http_status": 200,
+    "received_at": "2026-10-02T13:49:04.213095+00:00",
+    "sha256": "efa5a32fbc99cafdb16a38d96a9bb5b29a62e60b5610e7c317711cc58402b131",
+    "file": "lido-withdrawal-queue.raw.sol",
+    "status": "ok"
+  },
+  {
+    "name": "lido-withdrawal-base",
+    "url": "https://raw.githubusercontent.com/lidofinance/core/v4.0.1/contracts/0.8.9/WithdrawalQueueBase.sol",
+    "requested_at": "2026-10-02T13:49:04.213449+00:00",
+    "http_status": 200,
+    "received_at": "2026-10-02T13:49:04.649378+00:00",
+    "sha256": "68d8919f89198c3d39272b2259a3144bf87a4aa48c570624b025fd86da47d2bb",
+    "file": "lido-withdrawal-base.raw.sol",
+    "status": "ok"
+  },
+  {
+    "name": "lido-withdrawal-erc721",
+    "url": "https://raw.githubusercontent.com/lidofinance/core/v4.0.1/contracts/0.8.9/WithdrawalQueueERC721.sol",
+    "requested_at": "2026-10-02T13:49:04.649818+00:00",
+    "http_status": 200,
+    "received_at": "2026-10-02T13:49:20.078792+00:00",
+    "sha256": "f28f0974b484f26cc8b37672c6579fd05585d82e41c8e58aa4bdd6e0c0383542",
+    "file": "lido-withdrawal-erc721.raw.sol",
+    "status": "ok"
+  },
+  {
+    "name": "uniswap-quoter-v2",
+    "url": "https://raw.githubusercontent.com/Uniswap/v3-periphery/0682387198a24c7cd63566a2c58398533860a5d1/contracts/lens/QuoterV2.sol",
+    "requested_at": "2026-10-02T13:51:46.527614+00:00",
+    "status": "ok",
+    "initial_failed_url": "https://raw.githubusercontent.com/Uniswap/v3-periphery/v1.4.4/contracts/lens/QuoterV2.sol",
+    "initial_error": "HTTP Error 404: Not Found",
+    "commit": "0682387198a24c7cd63566a2c58398533860a5d1",
+    "received_at": "2026-10-02T13:51:46.939156+00:00",
+    "sha256": "7c0a974a98e224b1ec63158bad6c13c73a659dec669dead1fd99a0b0d85418a6",
+    "file": "uniswap-quoter-v2.raw.sol",
+    "http_status": 200
+  },
+  {
+    "name": "binance-eth-depth",
+    "url": "https://fapi.binance.com/fapi/v1/depth?symbol=ETHUSDT&limit=100",
+    "requested_at": "2026-10-02T13:49:20.473724+00:00",
+    "http_status": 200,
+    "received_at": "2026-10-02T13:49:25.487295+00:00",
+    "sha256": "1416cc2620b75ef2f0d28c23b2c7987396e5a0aa6d297831a61239ed9d9e4e45",
+    "file": "binance-eth-depth.raw.json",
+    "fields_checked": {
+      "E": 1790948964581,
+      "T": 1790948964577,
+      "lastUpdateId": 11718794111523
+    },
+    "bid_count": 100,
+    "ask_count": 100,
+    "status": "ok"
+  },
+  {
+    "name": "binance-eth-mark",
+    "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=ETHUSDT",
+    "requested_at": "2026-10-02T13:49:25.487874+00:00",
+    "http_status": 200,
+    "received_at": "2026-10-02T13:49:29.501596+00:00",
+    "sha256": "fe71848acfeddaa3812e15e14cf3c8ca6d21b807fa8d97926d8fa895a567a313",
+    "file": "binance-eth-mark.raw.json",
+    "fields_checked": {
+      "symbol": "ETHUSDT",
+      "markPrice": "2757.94000000",
+      "indexPrice": "2758.46093023",
+      "lastFundingRate": "0.00008621",
+      "nextFundingTime": 1790956800000,
+      "time": 1790948969000
+    },
+    "status": "ok"
+  },
+  {
+    "name": "binance-eth-funding",
+    "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=ETHUSDT&limit=5",
+    "requested_at": "2026-10-02T13:49:29.502167+00:00",
+    "http_status": 200,
+    "received_at": "2026-10-02T13:49:32.999760+00:00",
+    "sha256": "8aa2fd8a834b7d0154edf43570cda99d1c4aa5aef5bf76c4377948ce4bf16900",
+    "file": "binance-eth-funding.raw.json",
+    "rows": 5,
+    "row_fields": [
+      "fundingRate",
+      "fundingTime",
+      "markPrice",
+      "rateType",
+      "symbol"
+    ],
+    "mark_present_all_rows": true,
+    "status": "ok"
+  },
+  {
+    "name": "binance-exchange-info",
+    "url": "https://fapi.binance.com/fapi/v1/exchangeInfo",
+    "requested_at": "2026-10-02T13:49:33.000313+00:00",
+    "http_status": 200,
+    "received_at": "2026-10-02T13:49:40.475766+00:00",
+    "sha256": "16ac47527db79f51c9d4e343d111f013590662cbe31c75c2a223b58d867cb8cb",
+    "file": "binance-exchange-info.raw.json",
+    "fields_checked": {
+      "symbol": "ETHUSDT",
+      "contractType": "PERPETUAL",
+      "status": "TRADING",
+      "onboardDate": 1574840700000,
+      "baseAsset": "ETH",
+      "quoteAsset": "USDT",
+      "marginAsset": "USDT"
+    },
+    "filters": [
+      {
+        "tickSize": "0.01",
+        "filterType": "PRICE_FILTER",
+        "minPrice": "39.86",
+        "maxPrice": "306177"
+      },
+      {
+        "filterType": "LOT_SIZE",
+        "maxQty": "10000",
+        "minQty": "0.001",
+        "stepSize": "0.001"
+      },
+      {
+        "filterType": "MARKET_LOT_SIZE",
+        "maxQty": "2000",
+        "stepSize": "0.001",
+        "minQty": "0.001"
+      },
+      {
+        "notional": "20",
+        "filterType": "MIN_NOTIONAL"
+      }
+    ],
+    "status": "ok"
+  }
+]

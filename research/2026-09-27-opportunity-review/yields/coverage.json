@@ -1,0 +1,136 @@
+{
+	"meta":
+	[
+		{
+			"name": "provider",
+			"type": "LowCardinality(String)"
+		},
+		{
+			"name": "yield_type",
+			"type": "LowCardinality(String)"
+		},
+		{
+			"name": "price_exposure_asset",
+			"type": "Nullable(String)"
+		},
+		{
+			"name": "routes",
+			"type": "UInt64"
+		}
+	],
+
+	"data":
+	[
+		{
+			"provider": "Aave",
+			"yield_type": "lending",
+			"price_exposure_asset": "AVAX",
+			"routes": 2
+		},
+		{
+			"provider": "Ankr",
+			"yield_type": "liquid_staking",
+			"price_exposure_asset": "AVAX",
+			"routes": 1
+		},
+		{
+			"provider": "BENQI",
+			"yield_type": "lending",
+			"price_exposure_asset": "AVAX",
+			"routes": 1
+		},
+		{
+			"provider": "BENQI",
+			"yield_type": "liquid_staking",
+			"price_exposure_asset": "AVAX",
+			"routes": 1
+		},
+		{
+			"provider": "BlazeStake",
+			"yield_type": "liquid_staking",
+			"price_exposure_asset": "solana:mainnet:native:SOL",
+			"routes": 1
+		},
+		{
+			"provider": "Helius",
+			"yield_type": "liquid_staking",
+			"price_exposure_asset": "solana:mainnet:native:SOL",
+			"routes": 1
+		},
+		{
+			"provider": "Jito",
+			"yield_type": "liquid_staking",
+			"price_exposure_asset": "solana:mainnet:native:SOL",
+			"routes": 1
+		},
+		{
+			"provider": "Jupiter",
+			"yield_type": "liquid_staking",
+			"price_exposure_asset": "solana:mainnet:native:SOL",
+			"routes": 1
+		},
+		{
+			"provider": "JustLend",
+			"yield_type": "lending",
+			"price_exposure_asset": "TRX",
+			"routes": 3
+		},
+		{
+			"provider": "JustLend",
+			"yield_type": "liquid_staking",
+			"price_exposure_asset": "TRX",
+			"routes": 1
+		},
+		{
+			"provider": "Kamino",
+			"yield_type": "lending",
+			"price_exposure_asset": "solana:mainnet:native:SOL",
+			"routes": 1
+		},
+		{
+			"provider": "Laine",
+			"yield_type": "liquid_staking",
+			"price_exposure_asset": "solana:mainnet:native:SOL",
+			"routes": 1
+		},
+		{
+			"provider": "Marinade",
+			"yield_type": "liquid_staking",
+			"price_exposure_asset": "solana:mainnet:native:SOL",
+			"routes": 1
+		},
+		{
+			"provider": "Marinade",
+			"yield_type": "native_staking",
+			"price_exposure_asset": "solana:mainnet:native:SOL",
+			"routes": 1
+		},
+		{
+			"provider": "OKX",
+			"yield_type": "cex_earn",
+			"price_exposure_asset": "AVAX",
+			"routes": 1
+		},
+		{
+			"provider": "Save",
+			"yield_type": "lending",
+			"price_exposure_asset": "solana:mainnet:native:SOL",
+			"routes": 1
+		},
+		{
+			"provider": "TRON",
+			"yield_type": "native_staking",
+			"price_exposure_asset": "TRX",
+			"routes": 130
+		}
+	],
+
+	"rows": 17,
+
+	"statistics":
+	{
+		"elapsed": 0.042342514,
+		"rows_read": 149,
+		"bytes_read": 2571
+	}
+}

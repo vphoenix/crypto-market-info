@@ -1,0 +1,1 @@
+SELECT * FROM crypto_market_info.order_book_second_delta FINAL WHERE minute_id IN (128131755046600705,128131755046600707,128151670809952257,128151670809952259) ORDER BY minute_id,second_offset

@@ -1,0 +1,21 @@
+{
+  "url": "https://www.okx.com/api/v5/finance/savings/lending-rate-summary?ccy=USDC",
+  "retrieved_at_utc": "2026-09-13T14:07:09.110568+00:00",
+  "http_status": 200,
+  "sha256": "38e7d13b5706e0bf6b2c942d2acc623608d3a0992421317f49268d7a6e71d9d6",
+  "raw_file": "okx-usdc-summary.raw.json",
+  "data": {
+    "code": "0",
+    "data": [
+      {
+        "avgAmt": "",
+        "avgAmtUsd": "",
+        "avgRate": "0.035",
+        "ccy": "USDC",
+        "estRate": "0.035",
+        "preRate": "0.035"
+      }
+    ],
+    "msg": ""
+  }
+}

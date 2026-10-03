@@ -1,0 +1,19 @@
+[Unit]
+Description=Public Reserve r5 research data collector
+After=network-online.target crypto-market-info-clickhouse.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/crypto-market-info
+ExecStart=%h/crypto-market-info/var/reserve/reserve-data watch
+Restart=on-failure
+RestartSec=15
+KillSignal=SIGTERM
+TimeoutStopSec=15
+UMask=0077
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

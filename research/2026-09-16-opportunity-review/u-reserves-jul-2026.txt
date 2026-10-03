@@ -1,0 +1,436 @@
+Docusign Envelope ID: 5B7E10C9-002A-8EAD-8211-96DC940E3436
+
+
+                                                                                                                      United Stables
+                                                                                                                      https://u.tech
+
+
+
+            United Stables Limited
+            Independent Assurance Report on the Reserves Report
+
+
+            As of 31 July 2026 at 11:59pm UTC
+
+
+
+            Management’s Assertion
+
+
+            United Stables Limited (the “Company”, or “United Stables”) is responsible for the completeness, accuracy and
+            validity of the United Stables Reserves Report (the “Reserves Report”) as of 31 July 2026 at 11:59pm Coordinated
+            Universal Time (the “Report Date and Time”). United Stables (“$U”) is a digital asset issued and redeemed exclusively
+            by the Company on the approved blockchains.
+
+
+            The Company's management asserts that the reported value of the corresponding reserve assets held across (i) an
+            institutional digital asset custody, (ii) a centralised digital asset exchange, (iii) bank accounts, (iv) a smart contract
+            wallet, and (v) a fund (collectively, the "Reserve Assets") is at least equal to the total supply of United Stables ("$U")
+            in circulation as of the Report Date and Time.
+
+
+            United Stables Reserves Report
+
+
+
+             Report Date and Time                                           31 July 2026 at 11:59pm Coordinated Universal Time
+
+             $U in circulation (Definition A)                                                                    1,103,009,107.80
+
+             Reserve Assets (Definition B)                                         United States Dollar (“USD”) 1,109,077,959.78
+
+             Reserve Assets to Circulation Ratio                                                                           100.55%
+
+
+            Definition
+
+
+            A.         $U in circulation is defined as the total $U supply on the Company’s approved blockchains at the Report
+                       Date and Time.
+
+
+                       As of the Reporting Date and Time, the Company approved blockchains are BNB Smart Chain, Tron and
+                       Ethereum.
+
+
+            B.         The reported value (“Reported Value”) of the Reserve Assets is defined as the value of the Reserves Assets,
+                       determined in accordance with the valuation methodology set out in Notes to the Reserves Report below,
+                       held in segregated accounts (“Segregated Accounts”) across the following categories:
+
+
+
+
+             The Most United Stablecoin for Everyone                                                                      https://u.tech
+             United. Inclusive. Fluid.                                                                                            Page 1
+Docusign Envelope ID: 5B7E10C9-002A-8EAD-8211-96DC940E3436
+
+
+                                                                                                                       United Stables
+                                                                                                                       https://u.tech
+
+
+
+                       (i)         Digital assets held at an institutional custody controlled by the Company;
+
+
+                       (ii)        Digital assets and investment products held at a centralised digital asset exchange in accounts
+                                   registered to the Company;
+
+
+                       (iii)       Cash held at bank accounts maintained directly by the Company;
+
+
+                       (iv)        Digital assets held in a smart contract wallet controlled by the Company; and
+
+
+                       (v)         Investment products held in a fund account registered to the Company.
+
+
+                       Segregated Accounts are unencumbered accounts held on behalf of $U holders that are segregated from
+                       other accounts (including general corporate funds) of the Company.
+
+
+
+            A.         $U IN CIRCULATION
+
+
+                         Blockchain
+                                                       Token Address                                               $U in Circulation
+                         Network
+
+                         BNB Smart Chain               0xce24439f2d9c6a2289f741120fe202248b666666                  934,858,607.91
+
+
+                         Ethereum                      0xce24439f2d9c6a2289f741120fe202248b666666                  113,150,299.89
+
+
+                         Tron                          TFNirp6PbqYE1ZTtWuCMUKJWLNZkoCoeFJ                           55,000,200.00
+
+
+                         TOTAL                                                                                       1,103,009,107.80
+
+
+
+
+             The Most United Stablecoin for Everyone                                                                      https://u.tech
+             United. Inclusive. Fluid.                                                                                            Page 2
+Docusign Envelope ID: 5B7E10C9-002A-8EAD-8211-96DC940E3436
+
+
+                                                                                                         United Stables
+                                                                                                         https://u.tech
+
+
+
+            B.         RESERVE ASSETS
+
+
+
+                                                                                                      Reported Value
+                         Item
+                                                                                                               (USD)
+
+                         I.      Assets held at designated institutional custody wallets               23,500,558.99
+
+
+                         II.     Assets held at a centralised exchange                                724,302,276.47
+
+
+                         III. Cash held at bank accounts                                               56,096,563.42
+
+
+                         IV.     Digital assets tokens held in a smart contract wallet                251,178,560.90
+
+
+                         V.      Investment products held in a fund account                            54,000,000.00
+
+
+                         TOTAL                                                                          1,109,077,959.78
+
+
+
+
+                       I. Assets held at an institutional digital asset custody
+
+
+                                                                  Blockchain Network /                Reported Value
+                        Custody            Wallet Type                                   Asset Name
+                                                                  Mirror Exchange                              (USD)
+
+                        Ceffu              Qualified Wallet       BNB Smart Chain        BSC-USDC4              318.94
+
+
+                        Ceffu              Qualified Wallet       BNB Smart Chain        BSC-USDT4                 1.65
+
+
+                        Ceffu              Qualified Wallet       BNB Smart Chain        USD13                     0.31
+
+
+                        Ceffu              Qualified Wallet       Ethereum               USD13                     0.48
+
+
+                        Ceffu              Qualified Wallet       Ethereum               USDC1         3,500,315.08
+
+
+                        Ceffu              Qualified Wallet       Ethereum               USDT2                     4.92
+
+
+                        Ceffu              Qualified Wallet       Tron                   USDC1                     1.55
+
+
+                        Ceffu              Qualified Wallet       Tron                   USDT2                     1.03
+
+
+                        Ceffu              Co-sign Wallet         BNB Smart Chain        BSC-USDC4     9,999,910.04
+
+
+                        Ceffu              Co-sign Wallet         BNB Smart Chain        BSC-USDT4                 3.91
+
+
+                        Ceffu              Co-sign Wallet         Ethereum               USDC1        10,000,000.08
+
+
+
+
+             The Most United Stablecoin for Everyone                                                         https://u.tech
+             United. Inclusive. Fluid.                                                                               Page 3
+Docusign Envelope ID: 5B7E10C9-002A-8EAD-8211-96DC940E3436
+
+
+                                                                                                United Stables
+                                                                                                https://u.tech
+
+
+
+                        Ceffu              Co-sign Wallet        Ethereum            USDT2               0.00
+
+
+                        Ceffu              Co-sign Wallet        Tron                USDT2               1.00
+
+
+                        TOTAL                                                                    23,500,558.99
+
+
+
+
+                       II. Assets held at a centralised exchange 9
+
+
+                                                                                             Reported Value
+                         Centralised exchange               Asset Name
+                                                                                                      (USD)
+
+                         Binance                            USD13                             80,219,237.73
+
+
+                         Binance                            RWUSD5                           303,376,167.55
+
+
+                         Binance                            USDC1                            340,331,263.83
+
+
+                         Binance                            USDT2                                375,607.36
+
+
+                         TOTAL                                                                  724,302,276.47
+
+
+
+
+                       III. Cash held at bank accounts
+
+
+                                                                                             Reported Value
+                         Bank                                  Account Type    Currency
+                                                                                                      (USD)
+
+                         BITGO BANK & TRUST7                   Current         USD           16,060,179.23
+
+
+                         SINGAPORE GULF BANK8                  Main            USD           20,001,033.74
+
+
+                         SINGAPORE GULF BANK8                  Flex            USD           15,035,350.45
+
+
+                         SINGAPORE GULF BANK8                  Fixed Deposit   USD            5,000,000.00
+
+
+                         TOTAL                                                                   56,096,563.42
+
+
+
+
+             The Most United Stablecoin for Everyone                                               https://u.tech
+             United. Inclusive. Fluid.                                                                     Page 4
+Docusign Envelope ID: 5B7E10C9-002A-8EAD-8211-96DC940E3436
+
+
+                                                                                                                      United Stables
+                                                                                                                      https://u.tech
+
+
+
+                          IV. Digital assets held in a smart contract wallet
+
+
+                                                                                                Balance           Reported Value
+                            Blockchain Network                      Asset Name
+                                                                                               (in Unit)                   (USD)
+
+                            BNB Smart Chain                         TBILL6            174,709,844.72              201,178,560.90
+
+
+                            Ethereum                                USDC1              50,000,000.00               50,000,000.00
+
+
+                            TOTAL                                                                                     251,178,560.90
+
+
+
+
+                          V. Investment products held in a fund account
+
+
+                                                                                                                  Reported Value
+                            Fund Type                                               Currency
+                                                                                                                           (USD)
+
+                            Money Market Fund                                       USD                            54,000,000.00
+
+
+                            TOTAL                                                                                      54,000,000.00
+
+
+
+
+            NOTES TO THE RESERVES REPORT
+
+            1
+             USDC is a USD-pegged stablecoin issued by Circle Internet Financial, LLC ("Circle"). It is reported at par value, on the
+            basis that USDC is designed to maintain a 1:1 peg to USD and is redeemable at par from Circle in accordance with
+            Circle's published terms. The par value reported herein does not reflect the realisable value in the event of a de-
+            pegging event, issuer insolvency, or redemption restriction.
+
+            2
+             USDT is a USD-pegged stablecoin issued by Tether International, S.A. de C.V. ("Tether"). It is reported at par value,
+            on the basis that USDT is designed to maintain a 1:1 peg to USD and is redeemable at par from Tether in accordance
+            with Tether's published terms. The par value reported herein does not reflect the realisable value in the event of a
+            de-pegging event, issuer insolvency, or redemption restriction.
+
+            3
+             USD1 is a USD-pegged stablecoin issued and redeemed by BitGo Bank & Trust, N.A. ("BitGo"), a federally chartered
+            national trust bank regulated by the Office of the Comptroller of the Currency. It is reported at par value, on the basis
+            that USD1 is designed to maintain a 1:1 peg to USD and is redeemable at par from BitGo in accordance with BitGo's
+            published terms. The par value reported herein does not reflect the realisable value in the event of a de-pegging
+            event, issuer insolvency, or redemption restriction.
+
+
+
+
+                The Most United Stablecoin for Everyone                                                                  https://u.tech
+                United. Inclusive. Fluid.                                                                                        Page 5
+Docusign Envelope ID: 5B7E10C9-002A-8EAD-8211-96DC940E3436
+
+
+                                                                                                                     United Stables
+                                                                                                                     https://u.tech
+
+
+            4
+              Binance-Bridged USDC (BSC-USDC) and Binance-Bridged USDT (BSC-USDT) are BEP-20 tokens on the BNB Smart
+            Chain ("BSC") that represent native USDC (see Note 1) and native USDT (see Note 2), respectively, locked in Binance-
+            operated bridge smart contracts on the originating chains. Each bridged token is backed 1:1 by the corresponding
+            native stablecoin held in the bridge contract. Accordingly, it is reported at par value, on the basis that both BSC-USDC
+            and BSC-USDT are designed to maintain a 1:1 peg to USD and are redeemable at par from Binance in accordance with
+            Binance's published terms. The par value reported herein does not reflect the realisable value in the event of a de-
+            pegging event, issuer insolvency, or redemption restriction.
+
+            5
+              RWUSD is an internal, off-chain digital product offered by Binance, issued to users who deposit eligible assets (such
+            as USDC, USDT, or other supported stablecoins). Upon subscription, the deposited assets become the property of
+            Binance. RWUSD is not tradeable on any exchange, is not transferable to external wallets, and has no on-chain
+            existence. Upon redemption of RWUSD, it will be returned as USDC (see Note 1) under the Company’s account. It is
+            reported at par value, based on the contractual terms of the Binance RWUSD product, which provides for subscription
+            and redemption denominated at 1:1 to USD value of the deposited assets. RWUSD is not a traded token and has no
+            observable market price. The par value reported herein is based on Binance's contractual redemption obligation and
+            does not reflect the realisable value in the event of a de-pegging event, issuer insolvency, or redemption restriction.
+
+            6
+              TBILL is a tokenised real-world asset issued by Treasury Bills Institutional Liquidity Limited (the "TBILL Fund"), a
+            registered professional fund regulated by the British Virgin Islands Financial Services Commission under the British
+            Virgin Islands Securities and Investment Business Act 2010. TBILL tokens are available only to Professional Investors
+            as defined under the Act. The underlying U.S. Treasury Bills are both managed and custodied by BNY Investment
+            Management.
+
+
+            TBILL is reported at the net asset value ("NAV") per token as determined by the Fund's independent fund
+            administrator as stated in the Fund’s monthly report, calculated as NAV less fees divided by total tokens issued. The
+            NAV per token used for this Report was USD 1.151501 as per the Fund’s June report.
+
+
+            The Company holds TBILL tokens, which contractually represent an economic interest in the value of the underlying
+            assets held by the TBILL Fund. The Company does not hold the underlying U.S. Treasury Bills directly. The Reported
+            Value does not reflect the realisable value in the event of fund administrator error, smart contract failure, redemption
+            restriction, underlying asset default, or a decline in the market value of the underlying U.S. Treasury Bills.
+
+            7
+             BitGo Bank & Trust, N.A. is a federally chartered national trust bank regulated by the Office of the Comptroller of
+            the Currency. The current account balance is stated at face value as at the Report Date. The Reported Value does not
+            necessarily represent the realisable value in the event of bank insolvency, a deposit freeze, sanctions-related action,
+            or restrictions on cross-border USD remittance.
+
+            8
+              Singapore Gulf Bank is a Conventional Wholesale Bank licensed and regulated by the Central Bank of Bahrain. The
+            fixed deposit is stated at face value as at the Report Date and has a residual maturity not exceeding 30 days. The
+            Reported Value reflects principal only and excludes accrued interest. It does not necessarily represent the amount
+            that would be realisable in the event of bank insolvency, a deposit freeze, sanctions-related action, or restrictions on
+            cross-border USD remittance.
+
+
+
+                The Most United Stablecoin for Everyone                                                                 https://u.tech
+                United. Inclusive. Fluid.                                                                                       Page 6
+Docusign Envelope ID: 5B7E10C9-002A-8EAD-8211-96DC940E3436
+
+
+                                                                                                                      United Stables
+                                                                                                                      https://u.tech
+
+
+
+
+            9
+              Assets held at a centralised exchange are either under spot wallets or margin wallets. Spot wallets hold digital assets
+            available for immediate withdrawal, while margin wallets are designated accounts capable of supporting leveraged
+            trading. As of the reporting date, no borrowings or margin positions were outstanding against the margin wallet
+            balances.
+
+            10
+              The Company holds shares in a US dollar-denominated money market fund that invests in obligations of the US
+            Treasury (the "Fund"). The shares are held in a fund account registered to the Company and administered by the
+            Fund's transfer agent.
+
+
+            The Reported Value is stated at the net asset value per share as at the Report Date, as stated in the investment
+            statement issued by the transfer agent.
+
+
+            The Company holds shares in the Fund and does not hold the underlying US Treasury obligations directly. The
+            Reported Value does not reflect the realisable value in the event of fund administrator error, redemption restriction,
+            underlying asset default, or a decline in the market value of the underlying US Treasury obligations.
+
+
+
+
+            _________________
+            Athena Yu
+            Director of United Stables Limited
+            Date: 8 August 2026
+
+
+
+
+                The Most United Stablecoin for Everyone                                                                  https://u.tech
+                United. Inclusive. Fluid.                                                                                        Page 7
+

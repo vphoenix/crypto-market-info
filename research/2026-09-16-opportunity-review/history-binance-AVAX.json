@@ -1,0 +1,653 @@
+[
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1786896000000,
+    "fundingRate": "0.00000295",
+    "markPrice": "6.42847551",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1786924800001,
+    "fundingRate": "-0.00000100",
+    "markPrice": "6.32631492",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1786953600003,
+    "fundingRate": "0.00003174",
+    "markPrice": "6.35930845",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1786982400005,
+    "fundingRate": "-0.00007983",
+    "markPrice": "6.32400000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787011200006,
+    "fundingRate": "-0.00008161",
+    "markPrice": "6.34700000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787040000001,
+    "fundingRate": "0.00000795",
+    "markPrice": "6.31017439",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787068800003,
+    "fundingRate": "0.00004996",
+    "markPrice": "6.37200000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787097600000,
+    "fundingRate": "0.00002100",
+    "markPrice": "6.33100000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787126400000,
+    "fundingRate": "0.00006876",
+    "markPrice": "6.34700000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787155200004,
+    "fundingRate": "0.00004046",
+    "markPrice": "6.55900000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787184000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "6.77800000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787212800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "6.80800062",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787241600005,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.05600000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787270400004,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.29208706",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787299200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.47393232",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787328000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.62076346",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787356800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.84100000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787385600000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.60996523",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787414400000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.45168421",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787443200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.49500000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787472000000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.37239406",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787500800006,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.55600000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787529600001,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.60891997",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787558400002,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.45700000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787587200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.53672874",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787616000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.54300000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787644800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.52578803",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787673600005,
+    "fundingRate": "0.00003543",
+    "markPrice": "7.50562583",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787702400000,
+    "fundingRate": "0.00000367",
+    "markPrice": "7.32344840",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787731200005,
+    "fundingRate": "0.00001231",
+    "markPrice": "7.38896983",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787760000000,
+    "fundingRate": "0.00006169",
+    "markPrice": "7.22600000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787788800000,
+    "fundingRate": "0.00009811",
+    "markPrice": "7.43900000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787817600000,
+    "fundingRate": "0.00005984",
+    "markPrice": "7.37344673",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787846400013,
+    "fundingRate": "0.00004943",
+    "markPrice": "7.51600000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787875200026,
+    "fundingRate": "0.00005925",
+    "markPrice": "7.52300000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787904000000,
+    "fundingRate": "0.00002294",
+    "markPrice": "7.39506696",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787932800001,
+    "fundingRate": "0.00000120",
+    "markPrice": "7.32700000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787961600000,
+    "fundingRate": "-0.00000750",
+    "markPrice": "7.30500000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1787990400000,
+    "fundingRate": "0.00003090",
+    "markPrice": "7.26672042",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788019200002,
+    "fundingRate": "0.00005955",
+    "markPrice": "7.32724687",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788048000000,
+    "fundingRate": "0.00008474",
+    "markPrice": "7.32700000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788076800000,
+    "fundingRate": "0.00002733",
+    "markPrice": "7.32200000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788105600001,
+    "fundingRate": "0.00008639",
+    "markPrice": "7.40800000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788134400002,
+    "fundingRate": "-0.00002149",
+    "markPrice": "7.10800000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788163200002,
+    "fundingRate": "-0.00001305",
+    "markPrice": "7.21452332",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788192000001,
+    "fundingRate": "-0.00000131",
+    "markPrice": "7.19900000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788220800005,
+    "fundingRate": "0.00002403",
+    "markPrice": "7.22900000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788249600000,
+    "fundingRate": "0.00005981",
+    "markPrice": "7.31242224",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788278400000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.30112189",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788307200000,
+    "fundingRate": "0.00002309",
+    "markPrice": "7.21400000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788336000001,
+    "fundingRate": "0.00007870",
+    "markPrice": "7.20598150",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788364800005,
+    "fundingRate": "0.00001544",
+    "markPrice": "7.14685847",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788393600000,
+    "fundingRate": "0.00009880",
+    "markPrice": "7.19240202",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788422400000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.25742267",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788451200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.51000000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788480000000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.51838895",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788508800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.47267953",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788537600009,
+    "fundingRate": "0.00001759",
+    "markPrice": "7.36300000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788566400000,
+    "fundingRate": "0.00004841",
+    "markPrice": "7.38330888",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788595200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.49100000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788624000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.54226273",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788652800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.58915708",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788681600000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.64905609",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788710400004,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.62600000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788739200004,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.90355838",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788768000000,
+    "fundingRate": "0.00008367",
+    "markPrice": "7.78000000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788796800003,
+    "fundingRate": "0.00008302",
+    "markPrice": "8.08500000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788825600004,
+    "fundingRate": "0.00000689",
+    "markPrice": "8.07200000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788854400002,
+    "fundingRate": "0.00005493",
+    "markPrice": "8.05700000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788883200001,
+    "fundingRate": "0.00007972",
+    "markPrice": "8.05079127",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788912000005,
+    "fundingRate": "0.00004736",
+    "markPrice": "8.00400000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788940800004,
+    "fundingRate": "0.00000574",
+    "markPrice": "8.02800000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788969600002,
+    "fundingRate": "-0.00003066",
+    "markPrice": "7.89100000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1788998400000,
+    "fundingRate": "0.00000496",
+    "markPrice": "7.79512768",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789027200007,
+    "fundingRate": "0.00001720",
+    "markPrice": "7.74403858",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789056000002,
+    "fundingRate": "0.00000152",
+    "markPrice": "7.59400000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789084800008,
+    "fundingRate": "-0.00000321",
+    "markPrice": "7.41899706",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789113600000,
+    "fundingRate": "-0.00001173",
+    "markPrice": "7.47900000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789142400000,
+    "fundingRate": "-0.00001420",
+    "markPrice": "7.57364731",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789171200001,
+    "fundingRate": "-0.00001186",
+    "markPrice": "7.45800000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789200000003,
+    "fundingRate": "-0.00000146",
+    "markPrice": "7.44979161",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789228800000,
+    "fundingRate": "0.00005631",
+    "markPrice": "7.42800000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789257600002,
+    "fundingRate": "0.00001195",
+    "markPrice": "7.39619883",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789286400000,
+    "fundingRate": "0.00001849",
+    "markPrice": "7.36000000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789315200000,
+    "fundingRate": "0.00004900",
+    "markPrice": "7.35800000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789344000000,
+    "fundingRate": "0.00001540",
+    "markPrice": "7.28486451",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789372800000,
+    "fundingRate": "0.00002766",
+    "markPrice": "7.41810588",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789401600000,
+    "fundingRate": "0.00002648",
+    "markPrice": "7.45755912",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789430400000,
+    "fundingRate": "0.00010000",
+    "markPrice": "7.56100000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789459200005,
+    "fundingRate": "-0.00002416",
+    "markPrice": "7.46086212",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789488000001,
+    "fundingRate": "0.00004842",
+    "markPrice": "7.42600000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789516800001,
+    "fundingRate": "0.00001434",
+    "markPrice": "7.26502772",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "AVAXUSDT",
+    "fundingTime": 1789545600002,
+    "fundingRate": "-0.00000083",
+    "markPrice": "7.23959854",
+    "rateType": "Regular"
+  }
+]

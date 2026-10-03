@@ -1,0 +1,30 @@
+[
+  {
+    "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=BTCUSDT&startTime=1786579200000&endTime=1789239600000&limit=1000",
+    "retrieved_at_utc": "2026-09-12T19:16:37.487816+00:00",
+    "sha256": "cd5609c38b78240444de0073c762e56c1deadf3fdb8efcac848ec3d5f7d09088",
+    "file": "public-funding-BTCUSDT.json",
+    "rows": 93
+  },
+  {
+    "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=SOLUSDT&startTime=1786579200000&endTime=1789239600000&limit=1000",
+    "retrieved_at_utc": "2026-09-12T19:16:39.655919+00:00",
+    "sha256": "87f5ae33e203401944ed169fc92109a12ee6a4b0f37b6c60979f2fcabd69b2da",
+    "file": "public-funding-SOLUSDT.json",
+    "rows": 93
+  },
+  {
+    "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=AVAXUSDT&startTime=1786579200000&endTime=1789239600000&limit=1000",
+    "retrieved_at_utc": "2026-09-12T19:16:41.823761+00:00",
+    "sha256": "18d7673a212ef1931cae6ce3cd0df4fefed58aaf084629fb1fc6b46ea9302eab",
+    "file": "public-funding-AVAXUSDT.json",
+    "rows": 93
+  },
+  {
+    "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=TRXUSDT&startTime=1786579200000&endTime=1789239600000&limit=1000",
+    "retrieved_at_utc": "2026-09-12T19:16:43.978836+00:00",
+    "sha256": "f16fec42f1d1beea3f66cbad62ade926e7f78afa7e5b0c55d8e225259e7098a4",
+    "file": "public-funding-TRXUSDT.json",
+    "rows": 93
+  }
+]

@@ -1,0 +1,558 @@
+[
+  {
+    "type": "function",
+    "name": "version",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "decimals",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint8"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "totalSupply",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "getPendingFeeShares",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "mintFee",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "tvlFee",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "daoFeeRegistry",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "isDeprecated",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "trustedFillerRegistry",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "trustedFillerEnabled",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "bidsEnabled",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "nextAuctionId",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "token0",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "token1",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "fee",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint24"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "stateChangeActive",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "sync",
+        "type": "bool"
+      },
+      {
+        "name": "async",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "totalAssets",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "assets",
+        "type": "address[]"
+      },
+      {
+        "name": "amounts",
+        "type": "uint256[]"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "toAssets",
+    "stateMutability": "view",
+    "inputs": [
+      {
+        "name": "shares",
+        "type": "uint256"
+      },
+      {
+        "name": "rounding",
+        "type": "uint8"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "assets",
+        "type": "address[]"
+      },
+      {
+        "name": "amounts",
+        "type": "uint256[]"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "getFeeDetails",
+    "stateMutability": "view",
+    "inputs": [
+      {
+        "name": "folio",
+        "type": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "recipient",
+        "type": "address"
+      },
+      {
+        "name": "numerator",
+        "type": "uint256"
+      },
+      {
+        "name": "denominator",
+        "type": "uint256"
+      },
+      {
+        "name": "floor",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "getBid",
+    "stateMutability": "view",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "name": "sell",
+        "type": "address"
+      },
+      {
+        "name": "buy",
+        "type": "address"
+      },
+      {
+        "name": "maxSell",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "sell",
+        "type": "uint256"
+      },
+      {
+        "name": "buy",
+        "type": "uint256"
+      },
+      {
+        "name": "price",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "auctions",
+    "stateMutability": "view",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "nonce",
+        "type": "uint256"
+      },
+      {
+        "name": "start",
+        "type": "uint256"
+      },
+      {
+        "name": "end",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "getAuctionPrice",
+    "stateMutability": "view",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "name": "token",
+        "type": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "price",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "low",
+            "type": "uint256"
+          },
+          {
+            "name": "high",
+            "type": "uint256"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "getRebalance",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "nonce",
+        "type": "uint256"
+      },
+      {
+        "name": "priceControl",
+        "type": "uint8"
+      },
+      {
+        "name": "tokens",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "name": "weight",
+            "type": "tuple",
+            "components": [
+              {
+                "name": "low",
+                "type": "uint256"
+              },
+              {
+                "name": "spot",
+                "type": "uint256"
+              },
+              {
+                "name": "high",
+                "type": "uint256"
+              }
+            ]
+          },
+          {
+            "name": "price",
+            "type": "tuple",
+            "components": [
+              {
+                "name": "low",
+                "type": "uint256"
+              },
+              {
+                "name": "high",
+                "type": "uint256"
+              }
+            ]
+          },
+          {
+            "name": "maxAuctionSize",
+            "type": "uint256"
+          },
+          {
+            "name": "inRebalance",
+            "type": "bool"
+          }
+        ]
+      },
+      {
+        "name": "limits",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "low",
+            "type": "uint256"
+          },
+          {
+            "name": "spot",
+            "type": "uint256"
+          },
+          {
+            "name": "high",
+            "type": "uint256"
+          }
+        ]
+      },
+      {
+        "name": "timestamps",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "startedAt",
+            "type": "uint256"
+          },
+          {
+            "name": "restrictedUntil",
+            "type": "uint256"
+          },
+          {
+            "name": "availableUntil",
+            "type": "uint256"
+          }
+        ]
+      },
+      {
+        "name": "bidsEnabled",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "getPool",
+    "stateMutability": "view",
+    "inputs": [
+      {
+        "name": "a",
+        "type": "address"
+      },
+      {
+        "name": "b",
+        "type": "address"
+      },
+      {
+        "name": "fee",
+        "type": "uint24"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "pool",
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "quoteExactInput",
+    "stateMutability": "view",
+    "inputs": [
+      {
+        "name": "path",
+        "type": "bytes"
+      },
+      {
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "name": "prices",
+        "type": "uint160[]"
+      },
+      {
+        "name": "ticks",
+        "type": "uint32[]"
+      },
+      {
+        "name": "gas",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "quoteExactOutput",
+    "stateMutability": "view",
+    "inputs": [
+      {
+        "name": "path",
+        "type": "bytes"
+      },
+      {
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "name": "prices",
+        "type": "uint160[]"
+      },
+      {
+        "name": "ticks",
+        "type": "uint32[]"
+      },
+      {
+        "name": "gas",
+        "type": "uint256"
+      }
+    ]
+  }
+]

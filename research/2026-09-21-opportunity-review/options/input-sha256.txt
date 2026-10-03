@@ -1,0 +1,8 @@
+2be6b769b34abe6bf88bcaf4e88d12974990c8bbfd18b65fc945e8b569481845  research/2026-09-21-opportunity-review/options/raw_books.json.gz
+68cb0deb2ca721e24288a47ec5f5d3b98bcf16325260f01e9ac99fa389ec3057  research/2026-09-21-opportunity-review/options/raw_commits.json.gz
+796a504a8490019ac1a5ed330c8933cc09ef5300bb5f2998ec9177f42df33a0c  research/2026-09-21-opportunity-review/options/raw_indices.json.gz
+4061832cb67dc58776c7af18e6ebac6e8ddcf1933f0b045c0beff169807fc4bf  research/2026-09-21-opportunity-review/options/raw_instruments.json.gz
+14c56113c5fee188b78f3e687dcd0c19edd729485e6da51aa14e92905d0c55bc  research/2026-09-21-opportunity-review/options/raw_quality.json.gz
+653d35ff70643fa1c469e6d91ab524aa98c3a510da65428125008f420f480963  research/2026-09-21-opportunity-review/options/raw_rules.json.gz
+40cf612d78e374627bfd52f9b7177ef9154b8229e0f35664d150d3a631cc67cc  research/2026-09-21-opportunity-review/options/raw_runs.json.gz
+efb5ac40e89fba8e554aa769f2122ec4a7933a1da05be9a9317dab34f57c6140  research/2026-09-21-opportunity-review/options/raw_specs.json.gz

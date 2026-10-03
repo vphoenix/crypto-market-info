@@ -1,0 +1,515 @@
+[
+  {
+    "name": "margin-config",
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:spec:margin",
+    "requested_at": "2026-09-13T14:04:47.621606+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:04:48.292155+00:00",
+    "sha256": "125dca422f255fae2cf20405b7026c3840319da84d3c2e6a7594a52941075771",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/margin-config.raw"
+  },
+  {
+    "name": "pair-info",
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:info:pair",
+    "requested_at": "2026-09-13T14:04:47.622269+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:04:48.144068+00:00",
+    "sha256": "1455ca8151f8c57f990cdf15a5a9ec131ae062912795b0873b7f894bd12430d5",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/pair-info.raw"
+  },
+  {
+    "name": "currency-list",
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:list:currency",
+    "requested_at": "2026-09-13T14:04:47.624542+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:04:48.132988+00:00",
+    "sha256": "4de56fb3a5a9178c80d58e0347adf561a69b8c0481537988345fb96bf88c1200",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/currency-list.raw"
+  },
+  {
+    "name": "terms",
+    "url": "https://www.bitfinex.com/legal/exchange/terms",
+    "requested_at": "2026-09-13T14:04:47.625254+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:04:48.799626+00:00",
+    "sha256": "8a5241df20659062c854a30d5301b07e63498a73971462fc231d4a9d602a470a",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/terms.raw"
+  },
+  {
+    "name": "fees",
+    "url": "https://www.bitfinex.com/fees/",
+    "requested_at": "2026-09-13T14:04:48.144425+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:04:48.663415+00:00",
+    "sha256": "20f2e12f7a508d70422ce03eed3d88bfb88b09a9927f949d5a7c659335de0675",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/fees.raw"
+  },
+  {
+    "name": "js-24",
+    "url": "https://www.bitfinex.com/_next/static/chunks/2l5smp9dhvk62.js",
+    "requested_at": "2026-09-13T14:06:50.264724+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:50.739719+00:00",
+    "sha256": "9ab3fdd168151ffa9afb010ac41de26261df5d4fd2530001411d0712564c14ae",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-24.raw"
+  },
+  {
+    "name": "js-25",
+    "url": "https://www.bitfinex.com/_next/static/chunks/1kjk5rcob0kq1.js",
+    "requested_at": "2026-09-13T14:06:50.265249+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:50.724556+00:00",
+    "sha256": "e33d9bce7ced6f1d32d06118752099621b33d9a1692cbc26ca98e0498ac3e400",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-25.raw"
+  },
+  {
+    "name": "js-26",
+    "url": "https://www.bitfinex.com/_next/static/chunks/0dh-l-iysms9v.js",
+    "requested_at": "2026-09-13T14:06:50.265879+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:50.720130+00:00",
+    "sha256": "7de9ccb5736d59e591143b4a424853170cb19041e831bf32bdc9c52a800b38b3",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-26.raw"
+  },
+  {
+    "name": "js-27",
+    "url": "https://www.bitfinex.com/_next/static/chunks/0x3lr__jhqhvm.js",
+    "requested_at": "2026-09-13T14:06:50.266592+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:50.724887+00:00",
+    "sha256": "df429c76f075396462c4788936f030a2831bffef83d81bb1144a23acfdc59b0c",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-27.raw"
+  },
+  {
+    "name": "js-28",
+    "url": "https://www.bitfinex.com/_next/static/chunks/41k35pbunjwhj.js",
+    "requested_at": "2026-09-13T14:06:50.720624+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:51.051443+00:00",
+    "sha256": "14bac8208f2ba08dbe39b340a3a8ca41d7cf4a6d65f9902149e43cdf0a7c42a7",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-28.raw"
+  },
+  {
+    "name": "js-29",
+    "url": "https://www.bitfinex.com/_next/static/chunks/1f4t4z8r5q17l.js",
+    "requested_at": "2026-09-13T14:06:50.725040+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:51.047317+00:00",
+    "sha256": "47d5aacd9a3548bc3ab0b871822d448dc94ef75360e999c6af79ded70fc0e668",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-29.raw"
+  },
+  {
+    "name": "js-30",
+    "url": "https://www.bitfinex.com/_next/static/chunks/0rilp9-d-htpz.js",
+    "requested_at": "2026-09-13T14:06:50.725293+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:51.058779+00:00",
+    "sha256": "0520605d50dc14d91dcdcde51643d2818ae0e9dd0e70760ebc770b65bd82fecf",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-30.raw"
+  },
+  {
+    "name": "js-31",
+    "url": "https://www.bitfinex.com/_next/static/chunks/1myascy9o53ls.js",
+    "requested_at": "2026-09-13T14:06:50.768632+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:51.074053+00:00",
+    "sha256": "f77b757c689442cae1b2a831ca68e8e9e6abd8ef9a2e5102baba4c39ae37f0fe",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-31.raw"
+  },
+  {
+    "name": "js-32",
+    "url": "https://www.bitfinex.com/_next/static/chunks/3nc_ssin1atux.js",
+    "requested_at": "2026-09-13T14:06:51.047530+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:51.368604+00:00",
+    "sha256": "a4c85c6afde23bea8b1ccac9bccfc66a462d6220bc60505982368e1df7f373ec",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-32.raw"
+  },
+  {
+    "name": "js-33",
+    "url": "https://www.bitfinex.com/_next/static/chunks/0cz1d0mv5g_q7.js",
+    "requested_at": "2026-09-13T14:06:51.051690+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:51.419269+00:00",
+    "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-33.raw"
+  },
+  {
+    "name": "js-34",
+    "url": "https://www.bitfinex.com/_next/static/chunks/107-l5uxvfs1h.js",
+    "requested_at": "2026-09-13T14:06:51.059050+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:51.353809+00:00",
+    "sha256": "28d20505ac1c43f6a3fba2a17898e6fe0f61ad9f2b3008bc004898f410dd62ae",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-34.raw"
+  },
+  {
+    "name": "margin-assets",
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:list:currency:margin",
+    "requested_at": "2026-09-13T14:06:51.074276+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:51.545423+00:00",
+    "sha256": "85a585b1b74fccd96c263e9a99824c7db1e5575e51ec56b256d958e9ca525b1b",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/margin-assets.raw"
+  },
+  {
+    "name": "margin-pairs",
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:list:pair:margin",
+    "requested_at": "2026-09-13T14:06:51.354145+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:51.703955+00:00",
+    "sha256": "96880a5c0d66a8ca9dab32e7b4dbb4d7bff3f87bc0d2c29e56e8061fbdfa617a",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/margin-pairs.raw"
+  },
+  {
+    "name": "borrow-help-json",
+    "url": "https://support.bitfinex.com/api/v2/help_center/en-us/articles/900003195246.json",
+    "requested_at": "2026-09-13T14:06:51.369042+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:51.912190+00:00",
+    "sha256": "460370ed5dbc4c723ff781e2e0df6079e055bc197b7092edc027762b42342f3e",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/borrow-help-json.raw"
+  },
+  {
+    "name": "margin-call-json",
+    "url": "https://support.bitfinex.com/api/v2/help_center/en-us/articles/213895229.json",
+    "requested_at": "2026-09-13T14:06:51.419845+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:51.894798+00:00",
+    "sha256": "76015409da02fe96956440e14b2213929bd4e575eafaf5158b9365ccd52bcb31",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/margin-call-json.raw"
+  },
+  {
+    "name": "funding-risk-json",
+    "url": "https://support.bitfinex.com/api/v2/help_center/en-us/articles/213918969.json",
+    "requested_at": "2026-09-13T14:06:51.545752+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:52.171956+00:00",
+    "sha256": "7ee0c35cf3f6f6d96330ce914b2bac2a06e368eea5a588df8fb1d1fe826ecafb",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/funding-risk-json.raw"
+  },
+  {
+    "name": "pub-wallets",
+    "url": "https://raw.githubusercontent.com/bitfinexcom/pub/main/wallets.txt",
+    "requested_at": "2026-09-13T14:06:51.704170+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:06:52.309169+00:00",
+    "sha256": "1ffb55547342927abf5a6bc5486b8842342f90e9b598489cdf65199fbaa55a55",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/pub-wallets.raw"
+  },
+  {
+    "name": "js-0",
+    "url": "https://www.bitfinex.com/_next/static/chunks/2-53m74dqkhnw.js",
+    "requested_at": "2026-09-13T14:11:09.358459+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:09.787996+00:00",
+    "sha256": "4ff7682cc3283955511a5d4f88b95a27fbef2ddc7b9916c568082aecabc8f1c0",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-0.raw"
+  },
+  {
+    "name": "js-1",
+    "url": "https://www.bitfinex.com/_next/static/chunks/2uv575d3zwdsb.js",
+    "requested_at": "2026-09-13T14:11:09.359071+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:34.785295+00:00",
+    "sha256": "1422888c1435dcadc1c140843cc2b3bc037934e24d216e49e5b9be8de3d72c82",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-1.raw"
+  },
+  {
+    "name": "js-2",
+    "url": "https://www.bitfinex.com/_next/static/chunks/42r055gexzev7.js",
+    "requested_at": "2026-09-13T14:11:09.359412+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:09.769003+00:00",
+    "sha256": "beb2e67ca3cc974e4cb24ae246baba3aadfa7481580a19fa092c523e2d8550e8",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-2.raw"
+  },
+  {
+    "name": "js-3",
+    "url": "https://www.bitfinex.com/_next/static/chunks/turbopack-0kprn8xso4wtx.js",
+    "requested_at": "2026-09-13T14:11:09.359780+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:09.749917+00:00",
+    "sha256": "bb181e42545f547e2fb0322cb6c9f0de13f35d8d91d6dbdb1f82dcd8184f28ba",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-3.raw"
+  },
+  {
+    "name": "js-4",
+    "url": "https://www.bitfinex.com/_next/static/chunks/3g8m5hezsdl2x.js",
+    "requested_at": "2026-09-13T14:11:09.360143+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:09.763753+00:00",
+    "sha256": "61804c2e4c61479c0ac629aa51f895524ec08d2d190e3223dcde7cc99e6ecca0",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-4.raw"
+  },
+  {
+    "name": "js-5",
+    "url": "https://www.bitfinex.com/_next/static/chunks/08p6t_qqcpnwr.js",
+    "requested_at": "2026-09-13T14:11:09.360510+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:09.774726+00:00",
+    "sha256": "800db6e4f40e21327323639da519e108db5ade0fceccb7475fbc1f854074dfb0",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-5.raw"
+  },
+  {
+    "name": "js-6",
+    "url": "https://www.bitfinex.com/_next/static/chunks/0u64u3xnjrxj_.js",
+    "requested_at": "2026-09-13T14:11:09.360897+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:09.768051+00:00",
+    "sha256": "1710fd98dac7ced34c5245464cdb4c0edaed16e7f12480cdf868a93947f7b05d",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-6.raw"
+  },
+  {
+    "name": "js-7",
+    "url": "https://www.bitfinex.com/_next/static/chunks/1ntn7efqc-iiw.js",
+    "requested_at": "2026-09-13T14:11:09.750164+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.157640+00:00",
+    "sha256": "32e9576b2b87cbc03075cbfde10797120b73b5c6e486723cd9e58a66d99c585d",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-7.raw"
+  },
+  {
+    "name": "js-8",
+    "url": "https://www.bitfinex.com/_next/static/chunks/2bjy9qpx79i23.js",
+    "requested_at": "2026-09-13T14:11:09.764062+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.089741+00:00",
+    "sha256": "5f62e5cd4dedf0b708b362b9ac9c16ebe3cadbb77ac788c8ea73ef688c130320",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-8.raw"
+  },
+  {
+    "name": "js-9",
+    "url": "https://www.bitfinex.com/_next/static/chunks/359dky8ws579l.js",
+    "requested_at": "2026-09-13T14:11:09.768265+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.111942+00:00",
+    "sha256": "db76a7c0557b9796e1d719c58a729a6f9f4c9b067f2d7677c6f8762c6d82a4c7",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-9.raw"
+  },
+  {
+    "name": "js-10",
+    "url": "https://www.bitfinex.com/_next/static/chunks/14n2fer6ot-_z.js",
+    "requested_at": "2026-09-13T14:11:09.769359+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.094091+00:00",
+    "sha256": "c29813c0c9b6d8d6963096e49a7d6690ee3af5288514217d1d707ec469223a51",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-10.raw"
+  },
+  {
+    "name": "js-11",
+    "url": "https://www.bitfinex.com/_next/static/chunks/0zw72jem024w1.js",
+    "requested_at": "2026-09-13T14:11:09.774941+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.321087+00:00",
+    "sha256": "5f4877d6da3a87bce98a9b85072e711b696ad156d534c4092a5bddf0f7456c2f",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-11.raw"
+  },
+  {
+    "name": "js-12",
+    "url": "https://www.bitfinex.com/_next/static/chunks/1n85spr2rav3o.js",
+    "requested_at": "2026-09-13T14:11:09.788328+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.156436+00:00",
+    "sha256": "36c639cdd81c95a94daa5c886313127d9bf8cdba8358518bbea8933e7e91fe05",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-12.raw"
+  },
+  {
+    "name": "js-13",
+    "url": "https://www.bitfinex.com/_next/static/chunks/2heu9t5pln8lj.js",
+    "requested_at": "2026-09-13T14:11:10.089958+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.569094+00:00",
+    "sha256": "73f657bb421d93fa54611ed0527aa8bc54e9f92ff7ea40dd4d5488729d33651e",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-13.raw"
+  },
+  {
+    "name": "js-14",
+    "url": "https://www.bitfinex.com/_next/static/chunks/3q555nyo33qp2.js",
+    "requested_at": "2026-09-13T14:11:10.094480+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.489003+00:00",
+    "sha256": "728f1b497109b4902bf5e9ed148297c1deb82e9c47dc89f158f8188a14568e4c",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-14.raw"
+  },
+  {
+    "name": "js-15",
+    "url": "https://www.bitfinex.com/_next/static/chunks/0q06a_k13t80x.js",
+    "requested_at": "2026-09-13T14:11:10.112194+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.499326+00:00",
+    "sha256": "63be316cac32d0cacb13c1f4d84d7f4439dc95ffa310fcc8dacf9f50aa37a5be",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-15.raw"
+  },
+  {
+    "name": "js-16",
+    "url": "https://www.bitfinex.com/_next/static/chunks/3as1rtckig-s6.js",
+    "requested_at": "2026-09-13T14:11:10.157241+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.575960+00:00",
+    "sha256": "2afc1255ffd9bbcfdfc254a2f0f27f522066e0252f9bc17aaf92efcc3bdd0608",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-16.raw"
+  },
+  {
+    "name": "js-17",
+    "url": "https://www.bitfinex.com/_next/static/chunks/0ua-nclrkqc_u.js",
+    "requested_at": "2026-09-13T14:11:10.157947+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.576465+00:00",
+    "sha256": "a013d94bfaa5e90d9df6b91e31a0a1fd6f6b28dc47c7fe79275d0d476e269073",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-17.raw"
+  },
+  {
+    "name": "js-18",
+    "url": "https://www.bitfinex.com/_next/static/chunks/1r3n3vru72m2l.js",
+    "requested_at": "2026-09-13T14:11:10.330686+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.628339+00:00",
+    "sha256": "1af6f490ae8c1907c463032dda021dc02e3e22925a189132236a82b74e8bc641",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-18.raw"
+  },
+  {
+    "name": "js-19",
+    "url": "https://www.bitfinex.com/_next/static/chunks/3yzz6atvgz7_k.js",
+    "requested_at": "2026-09-13T14:11:10.489242+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.802302+00:00",
+    "sha256": "a95e954c097a78d673c2dd36723eafca55b4e7c0a2a3dbb2afeaa826e2b71e20",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-19.raw"
+  },
+  {
+    "name": "js-20",
+    "url": "https://www.bitfinex.com/_next/static/chunks/1ak_hegahdxvr.js",
+    "requested_at": "2026-09-13T14:11:10.499734+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.803353+00:00",
+    "sha256": "179f808a7049451f23482e8704864ebe1bd18cdd0dce0f3c1a127ce8a8272f77",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-20.raw"
+  },
+  {
+    "name": "js-21",
+    "url": "https://www.bitfinex.com/_next/static/chunks/3_yjvpzizltpo.js",
+    "requested_at": "2026-09-13T14:11:10.569571+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.883777+00:00",
+    "sha256": "eeddcef7349589524712d55c5857d7f588035413cdf88800d074335d3e446f0c",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-21.raw"
+  },
+  {
+    "name": "js-22",
+    "url": "https://www.bitfinex.com/_next/static/chunks/2-85c-9yjvxnk.js",
+    "requested_at": "2026-09-13T14:11:10.576177+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.918970+00:00",
+    "sha256": "8cebcff4628cf0e39138829ce5e14f39918a64c11ee7804f5678090cb49816f1",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-22.raw"
+  },
+  {
+    "name": "js-23",
+    "url": "https://www.bitfinex.com/_next/static/chunks/2kdjrah95omjn.js",
+    "requested_at": "2026-09-13T14:11:10.576670+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.891575+00:00",
+    "sha256": "35761fe9ef0e1090f96734331c0383c1a628b24649357a089910b1a560760f26",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-23.raw"
+  },
+  {
+    "name": "margin-faq-json",
+    "url": "https://support.bitfinex.com/api/v2/help_center/en-us/articles/60356897072665.json",
+    "requested_at": "2026-09-13T14:11:10.628577+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:11.214302+00:00",
+    "sha256": "7d4d7cee5da8158baf874f6fa6e7f1eb4f8a059f80ef0e446ab6ad8c3e80a5c5",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/margin-faq-json.raw"
+  },
+  {
+    "name": "funding-credits-doc",
+    "url": "https://docs.bitfinex.com/reference/rest-auth-funding-credits.md",
+    "requested_at": "2026-09-13T14:11:10.802622+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:11.562096+00:00",
+    "sha256": "8920edeb3abbd738a7f4f3e5a9473732fe10864784a3ade87096e5fe5f170c4b",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/funding-credits-doc.raw"
+  },
+  {
+    "name": "stats-doc",
+    "url": "https://docs.bitfinex.com/reference/rest-public-stats.md",
+    "requested_at": "2026-09-13T14:11:10.803539+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:11.540429+00:00",
+    "sha256": "2c29fdf784ae3dfc393fd7f9f100e0d19d05f509fb005740201187a4a3d96e57",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/stats-doc.raw"
+  },
+  {
+    "name": "derivatives-doc",
+    "url": "https://docs.bitfinex.com/docs/derivatives.md",
+    "requested_at": "2026-09-13T14:11:10.884007+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:11.477083+00:00",
+    "sha256": "078509b14238093396d53a9504f65a872cddfb48c13e1bedade590ee2d1a66d2",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/derivatives-doc.raw"
+  },
+  {
+    "name": "margin-blog",
+    "url": "https://blog.bitfinex.com/products/how-to-trade-margin-on-bitfinex/",
+    "requested_at": "2026-09-13T14:11:10.891844+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:12.097010+00:00",
+    "sha256": "5e62566dba2ba32e0e50627d8983f77ca571b81c15ef41a4741a0eb3608a89ff",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/margin-blog.raw"
+  },
+  {
+    "name": "proof-reserves-blog",
+    "url": "https://blog.bitfinex.com/announcements/bitfinex-resilient-in-face-of-market-events-committed-to-greater-transparency-and-demonstrating-proof-of-reserves/",
+    "requested_at": "2026-09-13T14:11:10.919410+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:12.125642+00:00",
+    "sha256": "50820054f236c458d249a49e3f27e56802d8e6c9a0a464dbdbca81c4e5c63aaa",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/proof-reserves-blog.raw"
+  },
+  {
+    "name": "exchange-terms-api",
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:legal:terms:tos",
+    "requested_at": "2026-09-13T14:12:10.983742+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:12:11.386221+00:00",
+    "sha256": "0b9afe9cc38426064a796a299cd9c65e36805bc27b99ac91a30ecd547e8a0e73",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/exchange-terms-api.raw"
+  },
+  {
+    "name": "derivatives-terms-api",
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:legal:terms:derivatives",
+    "requested_at": "2026-09-13T14:12:10.984433+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:12:11.556110+00:00",
+    "sha256": "d2d3d76a09a8e8be1d428426d9b970d8a7e53cf461b4152b7427788a204eb3d8",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/derivatives-terms-api.raw"
+  },
+  {
+    "name": "risk-statement-api",
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:legal:terms:rds",
+    "requested_at": "2026-09-13T14:12:10.984927+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:12:11.362406+00:00",
+    "sha256": "f44965fa6c7b1582029033a420cb88549440e59b35d5fbf0d8b0adad42dabccd",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/risk-statement-api.raw"
+  },
+  {
+    "name": "termination-json",
+    "url": "https://support.bitfinex.com/api/v2/help_center/en-us/articles/360035477394.json",
+    "requested_at": "2026-09-13T14:12:10.985404+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:12:11.573645+00:00",
+    "sha256": "47aa5469d1f9dfc885c3a193c9fda58475ecf176ec8369326f3b42ca80b5af1c",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/termination-json.raw"
+  },
+  {
+    "name": "currency-map",
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:map:currency:sym",
+    "requested_at": "2026-09-13T14:12:10.985879+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:12:11.431481+00:00",
+    "sha256": "4018f8227fd412219a11f241e84b0811212f8595d51fdcfde2db26cacf432f40",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/currency-map.raw"
+  }
+]

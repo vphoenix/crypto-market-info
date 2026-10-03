@@ -1,0 +1,1018 @@
+{
+  "venue": "Bybit",
+  "symbol": "BLURUSDT",
+  "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=BLURUSDT&limit=200",
+  "fetched_at": "2026-09-12T19:15:05.348747+00:00",
+  "payload_sha256": "d61043c40dca9d0dbb42a6ab27c6cb9cc9dd05b1a8f4a2f6a12b302d0d552952",
+  "data": {
+    "retCode": 0,
+    "retMsg": "OK",
+    "result": {
+      "category": "linear",
+      "list": [
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00034938",
+          "fundingRateTimestamp": "1789228800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1789200000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00064362",
+          "fundingRateTimestamp": "1789171200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00288853",
+          "fundingRateTimestamp": "1789142400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.0000684",
+          "fundingRateTimestamp": "1789113600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.000217",
+          "fundingRateTimestamp": "1789084800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00012369",
+          "fundingRateTimestamp": "1789056000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00026583",
+          "fundingRateTimestamp": "1789027200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00003473",
+          "fundingRateTimestamp": "1788998400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00016446",
+          "fundingRateTimestamp": "1788969600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00009664",
+          "fundingRateTimestamp": "1788940800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788912000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788883200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788854400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788825600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788796800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788768000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788739200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788710400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00006278",
+          "fundingRateTimestamp": "1788681600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788652800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788624000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788595200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788566400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00014518",
+          "fundingRateTimestamp": "1788537600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00004906",
+          "fundingRateTimestamp": "1788508800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788480000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788451200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00001902",
+          "fundingRateTimestamp": "1788422400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00006425",
+          "fundingRateTimestamp": "1788393600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00002009",
+          "fundingRateTimestamp": "1788364800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00001531",
+          "fundingRateTimestamp": "1788336000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788307200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00023957",
+          "fundingRateTimestamp": "1788278400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00003502",
+          "fundingRateTimestamp": "1788249600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788220800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.0000802",
+          "fundingRateTimestamp": "1788192000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788163200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00008471",
+          "fundingRateTimestamp": "1788134400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788105600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0000168",
+          "fundingRateTimestamp": "1788076800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00003314",
+          "fundingRateTimestamp": "1788048000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1788019200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787990400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00005684",
+          "fundingRateTimestamp": "1787961600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787932800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00006718",
+          "fundingRateTimestamp": "1787904000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787875200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787846400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787817600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787788800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787760000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787731200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00003166",
+          "fundingRateTimestamp": "1787702400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787673600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787644800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787616000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787587200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787558400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787529600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787500800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787472000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787443200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787414400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787385600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787356800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787328000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787299200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787270400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787241600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787212800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787184000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787155200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787126400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1787097600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00008574",
+          "fundingRateTimestamp": "1787068800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00001608",
+          "fundingRateTimestamp": "1787040000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00015713",
+          "fundingRateTimestamp": "1787011200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0000899",
+          "fundingRateTimestamp": "1786982400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786953600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00008554",
+          "fundingRateTimestamp": "1786924800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786896000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00001846",
+          "fundingRateTimestamp": "1786867200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00010298",
+          "fundingRateTimestamp": "1786838400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786809600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786780800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786752000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00000297",
+          "fundingRateTimestamp": "1786723200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786694400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00007076",
+          "fundingRateTimestamp": "1786665600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786636800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786608000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786579200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786550400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00003053",
+          "fundingRateTimestamp": "1786521600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786492800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00007825",
+          "fundingRateTimestamp": "1786464000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00005867",
+          "fundingRateTimestamp": "1786435200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786406400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786377600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786348800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786320000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786291200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786262400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786233600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786204800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00029552",
+          "fundingRateTimestamp": "1786176000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00008244",
+          "fundingRateTimestamp": "1786147200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00007964",
+          "fundingRateTimestamp": "1786118400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00004078",
+          "fundingRateTimestamp": "1786089600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1786060800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00002542",
+          "fundingRateTimestamp": "1786032000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00000777",
+          "fundingRateTimestamp": "1786003200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00002373",
+          "fundingRateTimestamp": "1785974400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1785945600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00007208",
+          "fundingRateTimestamp": "1785916800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00002096",
+          "fundingRateTimestamp": "1785888000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00030867",
+          "fundingRateTimestamp": "1785859200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00043794",
+          "fundingRateTimestamp": "1785830400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00007886",
+          "fundingRateTimestamp": "1785801600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00024794",
+          "fundingRateTimestamp": "1785772800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00024121",
+          "fundingRateTimestamp": "1785744000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00006878",
+          "fundingRateTimestamp": "1785715200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00001097",
+          "fundingRateTimestamp": "1785686400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1785657600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00008368",
+          "fundingRateTimestamp": "1785628800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00009211",
+          "fundingRateTimestamp": "1785600000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00009846",
+          "fundingRateTimestamp": "1785571200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00004573",
+          "fundingRateTimestamp": "1785542400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00002806",
+          "fundingRateTimestamp": "1785513600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00000407",
+          "fundingRateTimestamp": "1785484800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00001834",
+          "fundingRateTimestamp": "1785456000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00016134",
+          "fundingRateTimestamp": "1785427200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00016753",
+          "fundingRateTimestamp": "1785398400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00002684",
+          "fundingRateTimestamp": "1785369600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00005321",
+          "fundingRateTimestamp": "1785340800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00010309",
+          "fundingRateTimestamp": "1785312000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00003869",
+          "fundingRateTimestamp": "1785283200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00003497",
+          "fundingRateTimestamp": "1785254400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00022254",
+          "fundingRateTimestamp": "1785225600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00005095",
+          "fundingRateTimestamp": "1785196800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00003752",
+          "fundingRateTimestamp": "1785168000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00009258",
+          "fundingRateTimestamp": "1785139200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00009768",
+          "fundingRateTimestamp": "1785110400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1785081600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1785052800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1785024000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00004696",
+          "fundingRateTimestamp": "1784995200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00099413",
+          "fundingRateTimestamp": "1784966400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00008619",
+          "fundingRateTimestamp": "1784937600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1784908800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00010145",
+          "fundingRateTimestamp": "1784880000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00015871",
+          "fundingRateTimestamp": "1784851200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00039314",
+          "fundingRateTimestamp": "1784822400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00001558",
+          "fundingRateTimestamp": "1784793600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1784764800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00196681",
+          "fundingRateTimestamp": "1784736000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00007995",
+          "fundingRateTimestamp": "1784707200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1784678400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00005017",
+          "fundingRateTimestamp": "1784649600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00004068",
+          "fundingRateTimestamp": "1784620800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1784592000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00007281",
+          "fundingRateTimestamp": "1784563200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1784534400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00003924",
+          "fundingRateTimestamp": "1784505600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1784476800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00003703",
+          "fundingRateTimestamp": "1784448000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00009139",
+          "fundingRateTimestamp": "1784419200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.0000861",
+          "fundingRateTimestamp": "1784390400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00000678",
+          "fundingRateTimestamp": "1784361600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00001382",
+          "fundingRateTimestamp": "1784332800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1784304000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00011476",
+          "fundingRateTimestamp": "1784275200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1784246400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00010348",
+          "fundingRateTimestamp": "1784217600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00016638",
+          "fundingRateTimestamp": "1784188800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1784160000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1784131200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00003515",
+          "fundingRateTimestamp": "1784102400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00013656",
+          "fundingRateTimestamp": "1784073600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00006707",
+          "fundingRateTimestamp": "1784044800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00003058",
+          "fundingRateTimestamp": "1784016000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1783987200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1783958400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1783929600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00006542",
+          "fundingRateTimestamp": "1783900800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00004194",
+          "fundingRateTimestamp": "1783872000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00000439",
+          "fundingRateTimestamp": "1783843200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "-0.00005913",
+          "fundingRateTimestamp": "1783814400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00003859",
+          "fundingRateTimestamp": "1783785600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1783756800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.00004575",
+          "fundingRateTimestamp": "1783728000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1783699200000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1783670400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1783641600000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0001",
+          "fundingRateTimestamp": "1783612800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1783584000000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1783580400000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1783576800000"
+        },
+        {
+          "symbol": "BLURUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1783573200000"
+        }
+      ]
+    },
+    "retExtInfo": {},
+    "time": 1789240507051
+  }
+}

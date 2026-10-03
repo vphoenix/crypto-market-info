@@ -1,0 +1,27 @@
+{
+  "scope": "bounded watch, successful archived HTTP responses; refused reservations are not HTTP sends",
+  "window_from_utc": "2026-10-02T15:54:18+00:00",
+  "window_to_utc": "2026-10-02T15:59:19+00:00",
+  "hosts": {
+    "ethereum-rpc.publicnode.com": {
+      "successful_response_count": 144,
+      "min_send_gap_us": 688608,
+      "peak_requests_in_rolling_60s": 41,
+      "status_counts": {
+        "200": 144
+      },
+      "from_utc": "2026-10-02T15:54:20.769120+00:00",
+      "to_utc": "2026-10-02T15:59:12.506502+00:00"
+    },
+    "fapi.binance.com": {
+      "successful_response_count": 11,
+      "min_send_gap_us": 5503136,
+      "peak_requests_in_rolling_60s": 5,
+      "status_counts": {
+        "200": 11
+      },
+      "from_utc": "2026-10-02T15:55:38.960606+00:00",
+      "to_utc": "2026-10-02T15:59:04.694637+00:00"
+    }
+  }
+}

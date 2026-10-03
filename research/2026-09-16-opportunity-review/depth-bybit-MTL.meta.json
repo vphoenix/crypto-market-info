@@ -1,0 +1,7 @@
+{
+  "name": "depth-bybit-MTL",
+  "url": "https://api.bybit.com/v5/market/orderbook?category=linear&limit=200&symbol=MTLUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:16.696526+00:00",
+  "sha256": "eca9ff15fcea0a088f066574227e2b1eab9097567b05c78fde29a681b0459d59",
+  "rows": null
+}

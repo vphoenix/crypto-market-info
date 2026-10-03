@@ -1,0 +1,7 @@
+{
+  "name": "history-bybit-HIVE",
+  "url": "https://api.bybit.com/v5/market/funding/history?category=linear&limit=200&symbol=HIVEUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:25.852109+00:00",
+  "sha256": "aab5de07f9c73facbfc46bb5c675abc289c263fdacf8becc6665fddf31fd1c09",
+  "rows": null
+}

@@ -1,0 +1,6 @@
+{
+  "collected_at": "2026-09-21T15:11:42.969937+00:00",
+  "endpoint": "https://api.v3.aave.com/graphql",
+  "query": "query {usdc_LAST_WEEK: supplyAPYHistory(request: {chainId: 1, underlyingToken: \"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48\", market: \"0x87870Bca3F3fD6335C3F4ce8392D69350B4fa4E2\", window: LAST_WEEK}) { date avgRate { raw decimals } } usdc_LAST_MONTH: supplyAPYHistory(request: {chainId: 1, underlyingToken: \"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48\", market: \"0x87870Bca3F3fD6335C3F4ce8392D69350B4fa4E2\", window: LAST_MONTH}) { date avgRate { raw decimals } } usdt_LAST_WEEK: supplyAPYHistory(request: {chainId: 1, underlyingToken: \"0xdAC17F958D2ee523a2206206994597C13D831ec7\", market: \"0x87870Bca3F3fD6335C3F4ce8392D69350B4fa4E2\", window: LAST_WEEK}) { date avgRate { raw decimals } } usdt_LAST_MONTH: supplyAPYHistory(request: {chainId: 1, underlyingToken: \"0xdAC17F958D2ee523a2206206994597C13D831ec7\", market: \"0x87870Bca3F3fD6335C3F4ce8392D69350B4fa4E2\", window: LAST_MONTH}) { date avgRate { raw decimals } }}",
+  "sha256": "f55515c33ce4c344c0e8416b0c9e2ff006bf3e391d7df15dcb549a14a22cf13f"
+}

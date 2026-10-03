@@ -1,0 +1,3 @@
+SELECT yield_route_id,count() AS n,min(observation_time) AS first_observation,max(observation_time) AS last_observation,max(collected_at) AS last_collection,min(rate) AS min_rate,max(rate) AS max_rate,countIf(isNull(source_payload_hash) OR length(source_payload_hash)!=64) AS missing_hash_count,countIf(isNotNull(block_height)) AS anchored_count,groupUniqArray(finality) AS finality_values FROM crypto_market_info.yield_observation FINAL WHERE observation_time >= now('UTC') - INTERVAL 7 DAY GROUP BY yield_route_id ORDER BY yield_route_id
+SETTINGS readonly=1,output_format_json_quote_decimals=1
+FORMAT JSON

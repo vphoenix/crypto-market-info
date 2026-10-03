@@ -1,0 +1,1 @@
+SELECT i.exchange,i.exchange_symbol,i.base_asset,i.quote_asset,i.settle_asset,i.contract_multiplier,f.* FROM crypto_market_info_perp_soak.funding_rate_hourly AS f FINAL INNER JOIN crypto_market_info_perp_soak.instrument AS i FINAL USING(instrument_id) WHERE hour_time>=now()-INTERVAL 8 DAY ORDER BY instrument_id,hour_time FORMAT JSONEachRow

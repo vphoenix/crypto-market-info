@@ -1,0 +1,30 @@
+[
+  {
+    "url": "https://www.okx.com/api/v5/market/books?instId=AVAX-USDT&sz=400",
+    "requested_utc": "2026-09-21T14:44:41.885993+00:00",
+    "received_utc": "2026-09-21T14:44:43.522397+00:00",
+    "file": "million-spot-book.raw.json",
+    "sha256": "b39898af69f40585aa85e6f6cd11c4a54cf038ad051abd10c124f6e730207f19"
+  },
+  {
+    "url": "https://www.okx.com/api/v5/market/books?instId=AVAX-USDT-SWAP&sz=400",
+    "requested_utc": "2026-09-21T14:44:43.522468+00:00",
+    "received_utc": "2026-09-21T14:44:45.520443+00:00",
+    "file": "million-swap-book.raw.json",
+    "sha256": "97db0dfe1f8959d7cb57a733d5d8509da0c12b6c8ab2bbfa5b5b45095ce91e24"
+  },
+  {
+    "url": "https://www.okx.com/api/v5/public/instruments?instType=SPOT&instId=AVAX-USDT",
+    "requested_utc": "2026-09-21T14:44:45.520482+00:00",
+    "received_utc": "2026-09-21T14:44:48.731472+00:00",
+    "file": "million-spot-spec.raw.json",
+    "sha256": "409cbfb4e987d775f17dc7c8749e653decda9817d4c59006db6b11c0a953eed6"
+  },
+  {
+    "url": "https://www.okx.com/api/v5/public/instruments?instType=SWAP&instId=AVAX-USDT-SWAP",
+    "requested_utc": "2026-09-21T14:44:48.731511+00:00",
+    "received_utc": "2026-09-21T14:44:50.736825+00:00",
+    "file": "million-swap-spec.raw.json",
+    "sha256": "ce2e26ddd10f2aec9b3cd5997601e0ab7dca8765a60b7c08662ffbe0af744096"
+  }
+]

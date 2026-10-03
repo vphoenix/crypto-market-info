@@ -1,0 +1,7 @@
+{
+  "name": "depth-binance-MTL",
+  "url": "https://fapi.binance.com/fapi/v1/depth?limit=100&symbol=MTLUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:16.692082+00:00",
+  "sha256": "d88f6b97649519cfe4464cb0e32ad866155fa9d3fa4a59bdacd4bfaafa8504f0",
+  "rows": null
+}

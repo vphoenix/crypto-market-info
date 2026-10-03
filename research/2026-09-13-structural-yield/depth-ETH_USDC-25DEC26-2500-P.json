@@ -1,0 +1,101 @@
+{
+  "name": "depth-ETH_USDC-25DEC26-2500-P",
+  "url": "https://www.deribit.com/api/v2/public/get_order_book?instrument_name=ETH_USDC-25DEC26-2500-P&depth=100",
+  "requested_at": "2026-09-13T13:44:23.182156+00:00",
+  "received_at": "2026-09-13T13:44:23.750222+00:00",
+  "payload_sha256": "20af9aea555618de2de7039e9f93032abe7ad4a7d0a8e34e563349dd3689a95a",
+  "data": {
+    "jsonrpc": "2.0",
+    "result": {
+      "timestamp": 1789307063115,
+      "state": "open",
+      "stats": {
+        "high": "282.0",
+        "low": "282.0",
+        "price_change": "0.0",
+        "volume": "5.0",
+        "volume_usd": "1409.86",
+        "volume_notional": "1410.0"
+      },
+      "greeks": {
+        "delta": "-0.4426",
+        "gamma": "5.6e-4",
+        "vega": "5.24206",
+        "theta": "-1.35583",
+        "rho": "-3.9046"
+      },
+      "change_id": 188823467152,
+      "index_price": "2475.63",
+      "instrument_name": "ETH_USDC-25DEC26-2500-P",
+      "bids": [
+        [
+          "276.0",
+          "14.0"
+        ],
+        [
+          "275.0",
+          "154.2"
+        ],
+        [
+          "274.0",
+          "154.2"
+        ],
+        [
+          "272.0",
+          "150.0"
+        ],
+        [
+          "262.0",
+          "150.0"
+        ],
+        [
+          "0.2",
+          "36.0"
+        ]
+      ],
+      "asks": [
+        [
+          "280.0",
+          "150.0"
+        ],
+        [
+          "281.0",
+          "14.0"
+        ],
+        [
+          "282.0",
+          "154.2"
+        ],
+        [
+          "283.0",
+          "151.8"
+        ],
+        [
+          "296.0",
+          "150.0"
+        ]
+      ],
+      "last_price": "282.0",
+      "settlement_price": "260.58111721",
+      "min_price": "178.0",
+      "max_price": "418.0",
+      "open_interest": "125.3",
+      "mark_price": "279.33",
+      "interest_rate": "0.0",
+      "estimated_delivery_price": "2475.63",
+      "best_ask_price": "280.0",
+      "best_bid_price": "276.0",
+      "mark_iv": "53.16",
+      "bid_iv": "52.52",
+      "ask_iv": "53.28",
+      "underlying_price": "2502.36",
+      "underlying_index": "ETH_USDC-25DEC26",
+      "best_ask_amount": "150.0",
+      "best_bid_amount": "14.0"
+    },
+    "usIn": 1789307063612789,
+    "usOut": 1789307063613066,
+    "usDiff": 277,
+    "testnet": false
+  }
+}

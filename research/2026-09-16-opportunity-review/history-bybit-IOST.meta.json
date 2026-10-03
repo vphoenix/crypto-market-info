@@ -1,0 +1,7 @@
+{
+  "name": "history-bybit-IOST",
+  "url": "https://api.bybit.com/v5/market/funding/history?category=linear&limit=200&symbol=IOSTUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:21.097569+00:00",
+  "sha256": "b17db30c2a86f27ae5fe6cbcfc9ccdc7f7d48397bfdcc73fd10a8c5c161201c9",
+  "rows": null
+}

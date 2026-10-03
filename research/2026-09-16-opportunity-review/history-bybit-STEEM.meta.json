@@ -1,0 +1,7 @@
+{
+  "name": "history-bybit-STEEM",
+  "url": "https://api.bybit.com/v5/market/funding/history?category=linear&limit=200&symbol=STEEMUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:23.368995+00:00",
+  "sha256": "4e98bc61741da06f52479b9c11b503c79db75218155a2de7611d4a60ee2113a6",
+  "rows": null
+}

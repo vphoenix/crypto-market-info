@@ -1,0 +1,3787 @@
+{
+  "capture": {
+    "cutoff": "2026-09-21 14:30:00",
+    "captured_at": "2026-09-21T14:31:08.316082+00:00",
+    "source": "local ClickHouse public market history; committed realtime batches only"
+  },
+  "minutes_committed": 1144,
+  "raw_books": 31814,
+  "eligible_two_sided_books": 31788,
+  "exclusions": {
+    "one_or_both_book_sides_empty": 26
+  },
+  "scope": "minute boundaries only; held quotes retained with exact source age; no delta replay; public BBO and minimum order quantity; no mark/mid",
+  "fees": "Standard taker 0.00035 future; min(0.0003*index, 0.125*premium) linear option or min(0.0003, 0.125*premium) coin option. Delivery/financing/account margin not deducted: all net results are optimistic.",
+  "by_freshness": {
+    "10": {
+      "btc_usd/long_box_hedged_inverse_future": {
+        "samples": 1747,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:55:00",
+          "family": "btc_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00119912048711482871025278307",
+          "opening_fees": "0.001204305307829509809951411526",
+          "net_before_delivery": "-0.002403425794944338520204194596",
+          "capital_denominator": "0.01470430530782950980995141153",
+          "annualized_before_delivery": "-23.83067226477327347371739192",
+          "max_source_age_s": "2.955",
+          "bbo_capacity_base": "1.7",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "debit": "0.01350000",
+            "payout": "0.01230087951288517128974721693",
+            "index": "81259.11",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 19:55:00",
+          "family": "btc_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00119912048711482871025278307",
+          "opening_fees": "0.001204305307829509809951411526",
+          "net_before_delivery": "-0.002403425794944338520204194596",
+          "capital_denominator": "0.01470430530782950980995141153",
+          "annualized_before_delivery": "-23.83067226477327347371739192",
+          "max_source_age_s": "2.955",
+          "bbo_capacity_base": "1.7",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "debit": "0.01350000",
+            "payout": "0.01230087951288517128974721693",
+            "index": "81259.11",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "btc_usd/long_synthetic_short_future": {
+        "samples": 1799,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:20:00",
+          "family": "btc_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81000",
+          "gross_profit": "-0.000581415108913950254904990",
+          "opening_fees": "0.0009503784952881198825892167465",
+          "net_before_delivery": "-0.001531793604202070137494206746",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2287246359001727455303849618",
+          "max_source_age_s": "4.321",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81000-C,BTC-23SEP26-81000-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01050000",
+            "put": "0.01100000",
+            "future": "80912.50000000",
+            "index": "80886.44",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 07:18:00",
+          "family": "btc_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81500",
+          "gross_profit": "-0.0004686064318529862174578867",
+          "opening_fees": "0.0009494640122511485451761102603",
+          "net_before_delivery": "-0.001418070444104134762633996960",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2550779690010722899522343608",
+          "max_source_age_s": "7.699",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01250000",
+            "put": "0.01050000",
+            "future": "81625.00000000",
+            "index": "81587.91",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usd/short_box_hedged_inverse_future": {
+        "samples": 1835,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-21 05:19:00",
+          "family": "btc_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00128501228501228501228501229",
+          "opening_fees": "0.001204299754299754299754299754",
+          "net_before_delivery": "-0.002489312039312039312039312044",
+          "capital_denominator": "0.01228501228501228501228501229",
+          "annualized_before_delivery": "-35.02214008549819138441302208",
+          "max_source_age_s": "4.985",
+          "bbo_capacity_base": "2",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "credit": "0.01100000",
+            "liability": "0.01228501228501228501228501229",
+            "index": "81378.19",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 05:19:00",
+          "family": "btc_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "81000-81500",
+          "gross_profit": "-0.001142506142506142506142506143",
+          "opening_fees": "0.001202149877149877149877149877",
+          "net_before_delivery": "-0.002344656019656019656019656020",
+          "capital_denominator": "0.006142506142506142506142506143",
+          "annualized_before_delivery": "-65.97394804340677408747122657",
+          "max_source_age_s": "4.915",
+          "bbo_capacity_base": "3.6",
+          "legs": "BTC-23SEP26-81000-C,BTC-23SEP26-81000-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "credit": "0.00500000",
+            "liability": "0.006142506142506142506142506143",
+            "index": "81378.19",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "btc_usd/short_synthetic_long_future": {
+        "samples": 1969,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-21 01:50:00",
+          "family": "btc_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81500",
+          "gross_profit": "-0.000262465011842145735289594",
+          "opening_fees": "0.0009509581372458552489926486421",
+          "net_before_delivery": "-0.001213423149088000984282242642",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1962385252802010207196143793",
+          "max_source_age_s": "2.174",
+          "bbo_capacity_base": "0.6",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01050000",
+            "put": "0.01350000",
+            "future": "81277.50000000",
+            "index": "81256.43",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 01:50:00",
+          "family": "btc_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81500",
+          "gross_profit": "-0.000262465011842145735289594",
+          "opening_fees": "0.0009509581372458552489926486421",
+          "net_before_delivery": "-0.001213423149088000984282242642",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1962385252802010207196143793",
+          "max_source_age_s": "2.174",
+          "bbo_capacity_base": "0.6",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01050000",
+            "put": "0.01350000",
+            "future": "81277.50000000",
+            "index": "81256.43",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usdc/long_box": {
+        "samples": 1983,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:49:00",
+          "family": "btc_usdc",
+          "strategy": "long_box",
+          "strike": "80500-81500",
+          "gross_profit": "-135.00000000",
+          "opening_fees": "97.093272",
+          "net_before_delivery": "-232.09327200",
+          "capital_denominator": "1232.09327200",
+          "annualized_before_delivery": "-28.36119153408552084268921632",
+          "max_source_age_s": "1.102",
+          "bbo_capacity_base": "0.48",
+          "legs": "BTC_USDC-23SEP26-80500-C,BTC_USDC-23SEP26-80500-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "debit": "1135.00000000",
+            "payout": "1000",
+            "index": "80911.06",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:49:00",
+          "family": "btc_usdc",
+          "strategy": "long_box",
+          "strike": "81000-81500",
+          "gross_profit": "-80.00000000",
+          "opening_fees": "97.486332",
+          "net_before_delivery": "-177.48633200",
+          "capital_denominator": "677.48633200",
+          "annualized_before_delivery": "-40.84707664843980934875789780",
+          "max_source_age_s": "2.021",
+          "bbo_capacity_base": "5",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "debit": "580.00000000",
+            "payout": "500",
+            "index": "81238.61",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "btc_usdc/long_synthetic_short_future": {
+        "samples": 2351,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-21 02:03:00",
+          "family": "btc_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81000",
+          "gross_profit": "-37.50000000",
+          "opening_fees": "77.1512490000000",
+          "net_before_delivery": "-114.6512490000000",
+          "capital_denominator": "81182.29",
+          "annualized_before_delivery": "-0.2293137780651589360241967181",
+          "max_source_age_s": "3.203",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "1100.00000000",
+            "put": "800.00000000",
+            "future": "81262.50000000",
+            "index": "81182.29",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 02:03:00",
+          "family": "btc_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81000",
+          "gross_profit": "-37.50000000",
+          "opening_fees": "77.1512490000000",
+          "net_before_delivery": "-114.6512490000000",
+          "capital_denominator": "81182.29",
+          "annualized_before_delivery": "-0.2293137780651589360241967181",
+          "max_source_age_s": "3.203",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "1100.00000000",
+            "put": "800.00000000",
+            "future": "81262.50000000",
+            "index": "81182.29",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usdc/short_box": {
+        "samples": 1983,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 20:53:00",
+          "family": "btc_usdc",
+          "strategy": "short_box",
+          "strike": "80500-81500",
+          "gross_profit": "-145.00000000",
+          "opening_fees": "97.287540",
+          "net_before_delivery": "-242.28754000",
+          "capital_denominator": "1000",
+          "annualized_before_delivery": "-35.90254610205807724837891176",
+          "max_source_age_s": "5.15",
+          "bbo_capacity_base": "1.05",
+          "legs": "BTC_USDC-23SEP26-80500-C,BTC_USDC-23SEP26-80500-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "credit": "855.00000000",
+            "liability": "1000",
+            "index": "81072.95",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:17:00",
+          "family": "btc_usdc",
+          "strategy": "short_box",
+          "strike": "81000-81500",
+          "gross_profit": "-75.00000000",
+          "opening_fees": "97.38696",
+          "net_before_delivery": "-172.38696000",
+          "capital_denominator": "500",
+          "annualized_before_delivery": "-53.25100568674698795180722892",
+          "max_source_age_s": "6.234",
+          "bbo_capacity_base": "10",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "credit": "425.00000000",
+            "liability": "500",
+            "index": "81155.8",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "btc_usdc/short_synthetic_long_future": {
+        "samples": 2316,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 23:35:00",
+          "family": "btc_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81000",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "77.0828940000000",
+          "net_before_delivery": "-82.0828940000000",
+          "capital_denominator": "81125.24",
+          "annualized_before_delivery": "-0.1571062089052022237641854697",
+          "max_source_age_s": "4.932",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "980.00000000",
+            "put": "820.00000000",
+            "future": "81165.00000000",
+            "index": "81125.24",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:35:00",
+          "family": "btc_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81000",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "77.0828940000000",
+          "net_before_delivery": "-82.0828940000000",
+          "capital_denominator": "81125.24",
+          "annualized_before_delivery": "-0.1571062089052022237641854697",
+          "max_source_age_s": "4.932",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "980.00000000",
+            "put": "820.00000000",
+            "future": "81165.00000000",
+            "index": "81125.24",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usd/long_box_hedged_inverse_future": {
+        "samples": 2068,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:13:00",
+          "family": "eth_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00171970203418966669850062076",
+          "opening_fees": "0.001205348104288033616655524783",
+          "net_before_delivery": "-0.002925050138477700315156145543",
+          "capital_denominator": "0.01820534810428803361665552478",
+          "annualized_before_delivery": "-23.94331196616835936349213124",
+          "max_source_age_s": "6.065",
+          "bbo_capacity_base": "21",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "debit": "0.01700000",
+            "payout": "0.01528029796581033330149937924",
+            "index": "2616.24",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:13:00",
+          "family": "eth_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00171970203418966669850062076",
+          "opening_fees": "0.001205348104288033616655524783",
+          "net_before_delivery": "-0.002925050138477700315156145543",
+          "capital_denominator": "0.01820534810428803361665552478",
+          "annualized_before_delivery": "-23.94331196616835936349213124",
+          "max_source_age_s": "6.065",
+          "bbo_capacity_base": "21",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "debit": "0.01700000",
+            "payout": "0.01528029796581033330149937924",
+            "index": "2616.24",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "eth_usd/long_synthetic_short_future": {
+        "samples": 2401,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:52:00",
+          "family": "eth_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-0.000663318487633848194826116",
+          "opening_fees": "0.0009502321614706718468681891406",
+          "net_before_delivery": "-0.001613550649104520041694305141",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2350560479959356246991482212",
+          "max_source_age_s": "7.462",
+          "bbo_capacity_base": "5",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01600000",
+            "put": "0.01600000",
+            "future": "2638.25000000",
+            "index": "2636.73",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 19:52:00",
+          "family": "eth_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-0.000663318487633848194826116",
+          "opening_fees": "0.0009502321614706718468681891406",
+          "net_before_delivery": "-0.001613550649104520041694305141",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2350560479959356246991482212",
+          "max_source_age_s": "7.462",
+          "bbo_capacity_base": "5",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01600000",
+            "put": "0.01600000",
+            "future": "2638.25000000",
+            "index": "2636.73",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usd/short_box_hedged_inverse_future": {
+        "samples": 2065,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-21 00:01:00",
+          "family": "eth_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00161001983190102937010104826",
+          "opening_fees": "0.001205288506941165360279535367",
+          "net_before_delivery": "-0.002815308338842194730380583627",
+          "capital_denominator": "0.01511001983190102937010104826",
+          "annualized_before_delivery": "-29.15454614468591842810360228",
+          "max_source_age_s": "3.693",
+          "bbo_capacity_base": "11",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "credit": "0.01350000",
+            "liability": "0.01511001983190102937010104826",
+            "index": "2646.16",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 00:09:00",
+          "family": "eth_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "2620-2640",
+          "gross_profit": "-0.001518796992481203007518796992",
+          "opening_fees": "0.001202631578947368421052631579",
+          "net_before_delivery": "-0.002721428571428571428571428571",
+          "capital_denominator": "0.007518796992481203007518796992",
+          "annualized_before_delivery": "-56.77138764547896150402864816",
+          "max_source_age_s": "1.829",
+          "bbo_capacity_base": "21",
+          "legs": "ETH-23SEP26-2620-C,ETH-23SEP26-2620-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "credit": "0.00600000",
+            "liability": "0.007518796992481203007518796992",
+            "index": "2659.59",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "eth_usd/short_synthetic_long_future": {
+        "samples": 2398,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2640",
+          "gross_profit": "-0.000246701090074584050487665",
+          "opening_fees": "0.0009534136546184738955823293172",
+          "net_before_delivery": "-0.001200114744693057946069994317",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1787419410061409057677497912",
+          "max_source_age_s": "1.694",
+          "bbo_capacity_base": "6",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01150000",
+            "put": "0.02150000",
+            "future": "2614.50000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2640",
+          "gross_profit": "-0.000246701090074584050487665",
+          "opening_fees": "0.0009534136546184738955823293172",
+          "net_before_delivery": "-0.001200114744693057946069994317",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1787419410061409057677497912",
+          "max_source_age_s": "1.694",
+          "bbo_capacity_base": "6",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01150000",
+            "put": "0.02150000",
+            "future": "2614.50000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usdc/long_box": {
+        "samples": 2259,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:24:00",
+          "family": "eth_usdc",
+          "strategy": "long_box",
+          "strike": "2600-2640",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "3.145188",
+          "net_before_delivery": "-8.14518800",
+          "capital_denominator": "48.14518800",
+          "annualized_before_delivery": "-25.29034279671777807142691560",
+          "max_source_age_s": "2.146",
+          "bbo_capacity_base": "11.9",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "debit": "45.00000000",
+            "payout": "40",
+            "index": "2620.99",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:04:00",
+          "family": "eth_usdc",
+          "strategy": "long_box",
+          "strike": "2620-2640",
+          "gross_profit": "-4.20000000",
+          "opening_fees": "3.16260",
+          "net_before_delivery": "-7.36260000",
+          "capital_denominator": "27.36260000",
+          "annualized_before_delivery": "-41.40104843358644496562437206",
+          "max_source_age_s": "0.583",
+          "bbo_capacity_base": "3.7",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "debit": "24.20000000",
+            "payout": "20",
+            "index": "2635.5",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "eth_usdc/long_synthetic_short_future": {
+        "samples": 2654,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-1.50000000",
+          "opening_fees": "2.4887490000000",
+          "net_before_delivery": "-3.9887490000000",
+          "capital_denominator": "2619.29",
+          "annualized_before_delivery": "-0.2270645617705561430769406977",
+          "max_source_age_s": "1.493",
+          "bbo_capacity_base": "1.6",
+          "legs": "ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "34.00000000",
+            "put": "52.00000000",
+            "future": "2620.50000000",
+            "index": "2619.29",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-1.50000000",
+          "opening_fees": "2.4887490000000",
+          "net_before_delivery": "-3.9887490000000",
+          "capital_denominator": "2619.29",
+          "annualized_before_delivery": "-0.2270645617705561430769406977",
+          "max_source_age_s": "1.493",
+          "bbo_capacity_base": "1.6",
+          "legs": "ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "34.00000000",
+            "put": "52.00000000",
+            "future": "2620.50000000",
+            "index": "2619.29",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usdc/short_box": {
+        "samples": 2259,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "short_box",
+          "strike": "2600-2640",
+          "gross_profit": "-4.60000000",
+          "opening_fees": "3.143148",
+          "net_before_delivery": "-7.74314800",
+          "capital_denominator": "40",
+          "annualized_before_delivery": "-28.86381977872340425531914894",
+          "max_source_age_s": "1.893",
+          "bbo_capacity_base": "2.5",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "credit": "35.40000000",
+            "liability": "40",
+            "index": "2619.29",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "short_box",
+          "strike": "2600-2640",
+          "gross_profit": "-4.60000000",
+          "opening_fees": "3.143148",
+          "net_before_delivery": "-7.74314800",
+          "capital_denominator": "40",
+          "annualized_before_delivery": "-28.86381977872340425531914894",
+          "max_source_age_s": "1.893",
+          "bbo_capacity_base": "2.5",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "credit": "35.40000000",
+            "liability": "40",
+            "index": "2619.29",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "eth_usdc/short_synthetic_long_future": {
+        "samples": 2661,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2620",
+          "gross_profit": "-0.85000000",
+          "opening_fees": "2.4834655000000",
+          "net_before_delivery": "-3.3334655000000",
+          "capital_denominator": "2614.13",
+          "annualized_before_delivery": "-0.1899207784797270376880467572",
+          "max_source_age_s": "1.864",
+          "bbo_capacity_base": "5.9",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "38.00000000",
+            "put": "44.60000000",
+            "future": "2614.25000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2620",
+          "gross_profit": "-0.85000000",
+          "opening_fees": "2.4834655000000",
+          "net_before_delivery": "-3.3334655000000",
+          "capital_denominator": "2614.13",
+          "annualized_before_delivery": "-0.1899207784797270376880467572",
+          "max_source_age_s": "1.864",
+          "bbo_capacity_base": "5.9",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "38.00000000",
+            "put": "44.60000000",
+            "future": "2614.25000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      }
+    },
+    "60": {
+      "btc_usd/long_box_hedged_inverse_future": {
+        "samples": 2827,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:31:00",
+          "family": "btc_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00118169499876816949987681695",
+          "opening_fees": "0.001204311406750431140675043114",
+          "net_before_delivery": "-0.002386006405518600640551860064",
+          "capital_denominator": "0.01470431140675043114067504311",
+          "annualized_before_delivery": "-23.50148483163729448414840444",
+          "max_source_age_s": "11.562",
+          "bbo_capacity_base": "0.8",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "debit": "0.01350000",
+            "payout": "0.01231830500123183050012318305",
+            "index": "81146.16",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 20:31:00",
+          "family": "btc_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00117941846855171564097825417",
+          "opening_fees": "0.001204312203536006899525657611",
+          "net_before_delivery": "-0.002383730672087722540503911781",
+          "capital_denominator": "0.01470431220353600689952565761",
+          "annualized_before_delivery": "-23.87378498568376423972688612",
+          "max_source_age_s": "20.572",
+          "bbo_capacity_base": "0.5",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "debit": "0.01350000",
+            "payout": "0.01232058153144828435902174583",
+            "index": "81132.53",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "btc_usd/long_synthetic_short_future": {
+        "samples": 2524,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:20:00",
+          "family": "btc_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81000",
+          "gross_profit": "-0.000581415108913950254904990",
+          "opening_fees": "0.0009503784952881198825892167465",
+          "net_before_delivery": "-0.001531793604202070137494206746",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2287246359001727455303849618",
+          "max_source_age_s": "4.321",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81000-C,BTC-23SEP26-81000-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01050000",
+            "put": "0.01100000",
+            "future": "80912.50000000",
+            "index": "80886.44",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 08:12:00",
+          "family": "btc_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81500",
+          "gross_profit": "-0.0004630465272272699554850906",
+          "opening_fees": "0.0009478870662845295444844197817",
+          "net_before_delivery": "-0.001410933593511799499969510382",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2585727673465138832580106893",
+          "max_source_age_s": "16.761",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01450000",
+            "put": "0.00800000",
+            "future": "81995.00000000",
+            "index": "81936.19",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usd/short_box_hedged_inverse_future": {
+        "samples": 3022,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-21 04:47:00",
+          "family": "btc_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00128010929297270745709636816",
+          "opening_fees": "0.001204298038252540447609983729",
+          "net_before_delivery": "-0.002484407331225247904706351889",
+          "capital_denominator": "0.01228010929297270745709636816",
+          "annualized_before_delivery": "-34.60296921575008135372600068",
+          "max_source_age_s": "11.671",
+          "bbo_capacity_base": "1.2",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "credit": "0.01100000",
+            "liability": "0.01228010929297270745709636816",
+            "index": "81406.49",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 04:43:00",
+          "family": "btc_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "81000-81500",
+          "gross_profit": "-0.001141563027790572700752341471",
+          "opening_fees": "0.001202149547059726700445263320",
+          "net_before_delivery": "-0.002343712574850299401197604791",
+          "capital_denominator": "0.006141563027790572700752341471",
+          "annualized_before_delivery": "-65.18584465388365290867728307",
+          "max_source_age_s": "27.062",
+          "bbo_capacity_base": "0.2",
+          "legs": "BTC-23SEP26-81000-C,BTC-23SEP26-81000-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "credit": "0.00500000",
+            "liability": "0.006141563027790572700752341471",
+            "index": "81382.79",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "btc_usd/short_synthetic_long_future": {
+        "samples": 2759,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 20:31:00",
+          "family": "btc_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81500",
+          "gross_profit": "-0.000372605186964824739727715",
+          "opening_fees": "0.0009514445881845623113410952998",
+          "net_before_delivery": "-0.001324049775149387051068810300",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1949903507476934250607359747",
+          "max_source_age_s": "10.309",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.00900000",
+            "put": "0.01350000",
+            "future": "81165.00000000",
+            "index": "81132.53",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 01:50:00",
+          "family": "btc_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81500",
+          "gross_profit": "-0.000262465011842145735289594",
+          "opening_fees": "0.0009509581372458552489926486421",
+          "net_before_delivery": "-0.001213423149088000984282242642",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1962385252802010207196143793",
+          "max_source_age_s": "2.174",
+          "bbo_capacity_base": "0.6",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01050000",
+            "put": "0.01350000",
+            "future": "81277.50000000",
+            "index": "81256.43",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usdc/long_box": {
+        "samples": 3229,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-21 01:56:00",
+          "family": "btc_usdc",
+          "strategy": "long_box",
+          "strike": "80500-81500",
+          "gross_profit": "-115.00000000",
+          "opening_fees": "97.132656",
+          "net_before_delivery": "-212.13265600",
+          "capital_denominator": "1212.13265600",
+          "annualized_before_delivery": "-28.35514607105212729954846452",
+          "max_source_age_s": "12.646",
+          "bbo_capacity_base": "1.75",
+          "legs": "BTC_USDC-23SEP26-80500-C,BTC_USDC-23SEP26-80500-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "debit": "1115.00000000",
+            "payout": "1000",
+            "index": "80943.88",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:49:00",
+          "family": "btc_usdc",
+          "strategy": "long_box",
+          "strike": "81000-81500",
+          "gross_profit": "-80.00000000",
+          "opening_fees": "97.486332",
+          "net_before_delivery": "-177.48633200",
+          "capital_denominator": "677.48633200",
+          "annualized_before_delivery": "-40.84707664843980934875789780",
+          "max_source_age_s": "2.021",
+          "bbo_capacity_base": "5",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "debit": "580.00000000",
+            "payout": "500",
+            "index": "81238.61",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "btc_usdc/long_synthetic_short_future": {
+        "samples": 3148,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81500",
+          "gross_profit": "-32.50000000",
+          "opening_fees": "77.1492210000000",
+          "net_before_delivery": "-109.6492210000000",
+          "capital_denominator": "81196.41",
+          "annualized_before_delivery": "-0.2086362508785273535587003880",
+          "max_source_age_s": "10.758",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "805.00000000",
+            "put": "1040.00000000",
+            "future": "81232.50000000",
+            "index": "81196.41",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81500",
+          "gross_profit": "-32.50000000",
+          "opening_fees": "77.1492210000000",
+          "net_before_delivery": "-109.6492210000000",
+          "capital_denominator": "81196.41",
+          "annualized_before_delivery": "-0.2086362508785273535587003880",
+          "max_source_age_s": "10.758",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "805.00000000",
+            "put": "1040.00000000",
+            "future": "81232.50000000",
+            "index": "81196.41",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usdc/short_box": {
+        "samples": 3229,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "short_box",
+          "strike": "80500-81500",
+          "gross_profit": "-95.00000000",
+          "opening_fees": "97.435692",
+          "net_before_delivery": "-192.43569200",
+          "capital_denominator": "1000",
+          "annualized_before_delivery": "-29.73080532486772486772486772",
+          "max_source_age_s": "10.758",
+          "bbo_capacity_base": "0.5",
+          "legs": "BTC_USDC-23SEP26-80500-C,BTC_USDC-23SEP26-80500-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "credit": "905.00000000",
+            "liability": "1000",
+            "index": "81196.41",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "short_box",
+          "strike": "81000-81500",
+          "gross_profit": "-70.00000000",
+          "opening_fees": "97.435692",
+          "net_before_delivery": "-167.43569200",
+          "capital_denominator": "500",
+          "annualized_before_delivery": "-51.73674292486772486772486772",
+          "max_source_age_s": "11.686",
+          "bbo_capacity_base": "5",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "credit": "430.00000000",
+            "liability": "500",
+            "index": "81196.41",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "btc_usdc/short_synthetic_long_future": {
+        "samples": 3119,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 23:35:00",
+          "family": "btc_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81000",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "77.0828940000000",
+          "net_before_delivery": "-82.0828940000000",
+          "capital_denominator": "81125.24",
+          "annualized_before_delivery": "-0.1571062089052022237641854697",
+          "max_source_age_s": "4.932",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "980.00000000",
+            "put": "820.00000000",
+            "future": "81165.00000000",
+            "index": "81125.24",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:35:00",
+          "family": "btc_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81000",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "77.0828940000000",
+          "net_before_delivery": "-82.0828940000000",
+          "capital_denominator": "81125.24",
+          "annualized_before_delivery": "-0.1571062089052022237641854697",
+          "max_source_age_s": "4.932",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "980.00000000",
+            "put": "820.00000000",
+            "future": "81165.00000000",
+            "index": "81125.24",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usd/long_box_hedged_inverse_future": {
+        "samples": 3281,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:13:00",
+          "family": "eth_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00171970203418966669850062076",
+          "opening_fees": "0.001205348104288033616655524783",
+          "net_before_delivery": "-0.002925050138477700315156145543",
+          "capital_denominator": "0.01820534810428803361665552478",
+          "annualized_before_delivery": "-23.94331196616835936349213124",
+          "max_source_age_s": "6.065",
+          "bbo_capacity_base": "21",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "debit": "0.01700000",
+            "payout": "0.01528029796581033330149937924",
+            "index": "2616.24",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:13:00",
+          "family": "eth_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00171970203418966669850062076",
+          "opening_fees": "0.001205348104288033616655524783",
+          "net_before_delivery": "-0.002925050138477700315156145543",
+          "capital_denominator": "0.01820534810428803361665552478",
+          "annualized_before_delivery": "-23.94331196616835936349213124",
+          "max_source_age_s": "6.065",
+          "bbo_capacity_base": "21",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "debit": "0.01700000",
+            "payout": "0.01528029796581033330149937924",
+            "index": "2616.24",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "eth_usd/long_synthetic_short_future": {
+        "samples": 3303,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:52:00",
+          "family": "eth_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-0.000663318487633848194826116",
+          "opening_fees": "0.0009502321614706718468681891406",
+          "net_before_delivery": "-0.001613550649104520041694305141",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2350560479959356246991482212",
+          "max_source_age_s": "7.462",
+          "bbo_capacity_base": "5",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01600000",
+            "put": "0.01600000",
+            "future": "2638.25000000",
+            "index": "2636.73",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 19:52:00",
+          "family": "eth_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-0.000663318487633848194826116",
+          "opening_fees": "0.0009502321614706718468681891406",
+          "net_before_delivery": "-0.001613550649104520041694305141",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2350560479959356246991482212",
+          "max_source_age_s": "7.462",
+          "bbo_capacity_base": "5",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01600000",
+            "put": "0.01600000",
+            "future": "2638.25000000",
+            "index": "2636.73",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usd/short_box_hedged_inverse_future": {
+        "samples": 3278,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:30:00",
+          "family": "eth_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00170912547528517110266159696",
+          "opening_fees": "0.001205323193916349809885931559",
+          "net_before_delivery": "-0.002914448669201520912547528519",
+          "capital_denominator": "0.01520912547528517110266159696",
+          "annualized_before_delivery": "-27.74603305785123966942148762",
+          "max_source_age_s": "34.175",
+          "bbo_capacity_base": "9",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "credit": "0.01350000",
+            "liability": "0.01520912547528517110266159696",
+            "index": "2629.05",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 06:39:00",
+          "family": "eth_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "2620-2640",
+          "gross_profit": "-0.001509621702806721111424012015",
+          "opening_fees": "0.001202628367595982352388998404",
+          "net_before_delivery": "-0.002712250070402703463813010419",
+          "capital_denominator": "0.007509621702806721111424012015",
+          "annualized_before_delivery": "-64.11041945288753799392097264",
+          "max_source_age_s": "29.149",
+          "bbo_capacity_base": "2",
+          "legs": "ETH-23SEP26-2620-C,ETH-23SEP26-2620-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "credit": "0.00600000",
+            "liability": "0.007509621702806721111424012015",
+            "index": "2662.25",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "eth_usd/short_synthetic_long_future": {
+        "samples": 3300,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2640",
+          "gross_profit": "-0.000246701090074584050487665",
+          "opening_fees": "0.0009534136546184738955823293172",
+          "net_before_delivery": "-0.001200114744693057946069994317",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1787419410061409057677497912",
+          "max_source_age_s": "1.694",
+          "bbo_capacity_base": "6",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01150000",
+            "put": "0.02150000",
+            "future": "2614.50000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2640",
+          "gross_profit": "-0.000246701090074584050487665",
+          "opening_fees": "0.0009534136546184738955823293172",
+          "net_before_delivery": "-0.001200114744693057946069994317",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1787419410061409057677497912",
+          "max_source_age_s": "1.694",
+          "bbo_capacity_base": "6",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01150000",
+            "put": "0.02150000",
+            "future": "2614.50000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usdc/long_box": {
+        "samples": 3311,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:24:00",
+          "family": "eth_usdc",
+          "strategy": "long_box",
+          "strike": "2600-2640",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "3.145188",
+          "net_before_delivery": "-8.14518800",
+          "capital_denominator": "48.14518800",
+          "annualized_before_delivery": "-25.29034279671777807142691560",
+          "max_source_age_s": "2.146",
+          "bbo_capacity_base": "11.9",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "debit": "45.00000000",
+            "payout": "40",
+            "index": "2620.99",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:04:00",
+          "family": "eth_usdc",
+          "strategy": "long_box",
+          "strike": "2620-2640",
+          "gross_profit": "-4.20000000",
+          "opening_fees": "3.16260",
+          "net_before_delivery": "-7.36260000",
+          "capital_denominator": "27.36260000",
+          "annualized_before_delivery": "-41.40104843358644496562437206",
+          "max_source_age_s": "0.583",
+          "bbo_capacity_base": "3.7",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "debit": "24.20000000",
+            "payout": "20",
+            "index": "2635.5",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "eth_usdc/long_synthetic_short_future": {
+        "samples": 3336,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-1.50000000",
+          "opening_fees": "2.4887490000000",
+          "net_before_delivery": "-3.9887490000000",
+          "capital_denominator": "2619.29",
+          "annualized_before_delivery": "-0.2270645617705561430769406977",
+          "max_source_age_s": "1.493",
+          "bbo_capacity_base": "1.6",
+          "legs": "ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "34.00000000",
+            "put": "52.00000000",
+            "future": "2620.50000000",
+            "index": "2619.29",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-1.50000000",
+          "opening_fees": "2.4887490000000",
+          "net_before_delivery": "-3.9887490000000",
+          "capital_denominator": "2619.29",
+          "annualized_before_delivery": "-0.2270645617705561430769406977",
+          "max_source_age_s": "1.493",
+          "bbo_capacity_base": "1.6",
+          "legs": "ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "34.00000000",
+            "put": "52.00000000",
+            "future": "2620.50000000",
+            "index": "2619.29",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usdc/short_box": {
+        "samples": 3311,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "short_box",
+          "strike": "2600-2640",
+          "gross_profit": "-4.60000000",
+          "opening_fees": "3.143148",
+          "net_before_delivery": "-7.74314800",
+          "capital_denominator": "40",
+          "annualized_before_delivery": "-28.86381977872340425531914894",
+          "max_source_age_s": "1.893",
+          "bbo_capacity_base": "2.5",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "credit": "35.40000000",
+            "liability": "40",
+            "index": "2619.29",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "short_box",
+          "strike": "2600-2640",
+          "gross_profit": "-4.60000000",
+          "opening_fees": "3.143148",
+          "net_before_delivery": "-7.74314800",
+          "capital_denominator": "40",
+          "annualized_before_delivery": "-28.86381977872340425531914894",
+          "max_source_age_s": "1.893",
+          "bbo_capacity_base": "2.5",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "credit": "35.40000000",
+            "liability": "40",
+            "index": "2619.29",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "eth_usdc/short_synthetic_long_future": {
+        "samples": 3348,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2620",
+          "gross_profit": "-0.85000000",
+          "opening_fees": "2.4834655000000",
+          "net_before_delivery": "-3.3334655000000",
+          "capital_denominator": "2614.13",
+          "annualized_before_delivery": "-0.1899207784797270376880467572",
+          "max_source_age_s": "1.864",
+          "bbo_capacity_base": "5.9",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "38.00000000",
+            "put": "44.60000000",
+            "future": "2614.25000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2620",
+          "gross_profit": "-0.85000000",
+          "opening_fees": "2.4834655000000",
+          "net_before_delivery": "-3.3334655000000",
+          "capital_denominator": "2614.13",
+          "annualized_before_delivery": "-0.1899207784797270376880467572",
+          "max_source_age_s": "1.864",
+          "bbo_capacity_base": "5.9",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "38.00000000",
+            "put": "44.60000000",
+            "future": "2614.25000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      }
+    },
+    "300": {
+      "btc_usd/long_box_hedged_inverse_future": {
+        "samples": 2881,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:31:00",
+          "family": "btc_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00118169499876816949987681695",
+          "opening_fees": "0.001204311406750431140675043114",
+          "net_before_delivery": "-0.002386006405518600640551860064",
+          "capital_denominator": "0.01470431140675043114067504311",
+          "annualized_before_delivery": "-23.50148483163729448414840444",
+          "max_source_age_s": "11.562",
+          "bbo_capacity_base": "0.8",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "debit": "0.01350000",
+            "payout": "0.01231830500123183050012318305",
+            "index": "81146.16",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 20:31:00",
+          "family": "btc_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00117941846855171564097825417",
+          "opening_fees": "0.001204312203536006899525657611",
+          "net_before_delivery": "-0.002383730672087722540503911781",
+          "capital_denominator": "0.01470431220353600689952565761",
+          "annualized_before_delivery": "-23.87378498568376423972688612",
+          "max_source_age_s": "20.572",
+          "bbo_capacity_base": "0.5",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "debit": "0.01350000",
+            "payout": "0.01232058153144828435902174583",
+            "index": "81132.53",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "btc_usd/long_synthetic_short_future": {
+        "samples": 2550,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:20:00",
+          "family": "btc_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81000",
+          "gross_profit": "-0.000581415108913950254904990",
+          "opening_fees": "0.0009503784952881198825892167465",
+          "net_before_delivery": "-0.001531793604202070137494206746",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2287246359001727455303849618",
+          "max_source_age_s": "4.321",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81000-C,BTC-23SEP26-81000-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01050000",
+            "put": "0.01100000",
+            "future": "80912.50000000",
+            "index": "80886.44",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 08:12:00",
+          "family": "btc_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81500",
+          "gross_profit": "-0.0004630465272272699554850906",
+          "opening_fees": "0.0009478870662845295444844197817",
+          "net_before_delivery": "-0.001410933593511799499969510382",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2585727673465138832580106893",
+          "max_source_age_s": "16.761",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01450000",
+            "put": "0.00800000",
+            "future": "81995.00000000",
+            "index": "81936.19",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usd/short_box_hedged_inverse_future": {
+        "samples": 3079,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-21 04:47:00",
+          "family": "btc_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00128010929297270745709636816",
+          "opening_fees": "0.001204298038252540447609983729",
+          "net_before_delivery": "-0.002484407331225247904706351889",
+          "capital_denominator": "0.01228010929297270745709636816",
+          "annualized_before_delivery": "-34.60296921575008135372600068",
+          "max_source_age_s": "11.671",
+          "bbo_capacity_base": "1.2",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "credit": "0.01100000",
+            "liability": "0.01228010929297270745709636816",
+            "index": "81406.49",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 04:43:00",
+          "family": "btc_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "81000-81500",
+          "gross_profit": "-0.001141563027790572700752341471",
+          "opening_fees": "0.001202149547059726700445263320",
+          "net_before_delivery": "-0.002343712574850299401197604791",
+          "capital_denominator": "0.006141563027790572700752341471",
+          "annualized_before_delivery": "-65.18584465388365290867728307",
+          "max_source_age_s": "27.062",
+          "bbo_capacity_base": "0.2",
+          "legs": "BTC-23SEP26-81000-C,BTC-23SEP26-81000-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "credit": "0.00500000",
+            "liability": "0.006141563027790572700752341471",
+            "index": "81382.79",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "btc_usd/short_synthetic_long_future": {
+        "samples": 2787,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 20:31:00",
+          "family": "btc_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81500",
+          "gross_profit": "-0.000372605186964824739727715",
+          "opening_fees": "0.0009514445881845623113410952998",
+          "net_before_delivery": "-0.001324049775149387051068810300",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1949903507476934250607359747",
+          "max_source_age_s": "10.309",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.00900000",
+            "put": "0.01350000",
+            "future": "81165.00000000",
+            "index": "81132.53",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 01:50:00",
+          "family": "btc_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81500",
+          "gross_profit": "-0.000262465011842145735289594",
+          "opening_fees": "0.0009509581372458552489926486421",
+          "net_before_delivery": "-0.001213423149088000984282242642",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1962385252802010207196143793",
+          "max_source_age_s": "2.174",
+          "bbo_capacity_base": "0.6",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01050000",
+            "put": "0.01350000",
+            "future": "81277.50000000",
+            "index": "81256.43",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usdc/long_box": {
+        "samples": 3377,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-21 01:56:00",
+          "family": "btc_usdc",
+          "strategy": "long_box",
+          "strike": "80500-81500",
+          "gross_profit": "-115.00000000",
+          "opening_fees": "97.132656",
+          "net_before_delivery": "-212.13265600",
+          "capital_denominator": "1212.13265600",
+          "annualized_before_delivery": "-28.35514607105212729954846452",
+          "max_source_age_s": "12.646",
+          "bbo_capacity_base": "1.75",
+          "legs": "BTC_USDC-23SEP26-80500-C,BTC_USDC-23SEP26-80500-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "debit": "1115.00000000",
+            "payout": "1000",
+            "index": "80943.88",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:49:00",
+          "family": "btc_usdc",
+          "strategy": "long_box",
+          "strike": "81000-81500",
+          "gross_profit": "-80.00000000",
+          "opening_fees": "97.486332",
+          "net_before_delivery": "-177.48633200",
+          "capital_denominator": "677.48633200",
+          "annualized_before_delivery": "-40.84707664843980934875789780",
+          "max_source_age_s": "2.021",
+          "bbo_capacity_base": "5",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "debit": "580.00000000",
+            "payout": "500",
+            "index": "81238.61",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "btc_usdc/long_synthetic_short_future": {
+        "samples": 3225,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81500",
+          "gross_profit": "-32.50000000",
+          "opening_fees": "77.1492210000000",
+          "net_before_delivery": "-109.6492210000000",
+          "capital_denominator": "81196.41",
+          "annualized_before_delivery": "-0.2086362508785273535587003880",
+          "max_source_age_s": "10.758",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "805.00000000",
+            "put": "1040.00000000",
+            "future": "81232.50000000",
+            "index": "81196.41",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81500",
+          "gross_profit": "-32.50000000",
+          "opening_fees": "77.1492210000000",
+          "net_before_delivery": "-109.6492210000000",
+          "capital_denominator": "81196.41",
+          "annualized_before_delivery": "-0.2086362508785273535587003880",
+          "max_source_age_s": "10.758",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "805.00000000",
+            "put": "1040.00000000",
+            "future": "81232.50000000",
+            "index": "81196.41",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usdc/short_box": {
+        "samples": 3377,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "short_box",
+          "strike": "80500-81500",
+          "gross_profit": "-95.00000000",
+          "opening_fees": "97.435692",
+          "net_before_delivery": "-192.43569200",
+          "capital_denominator": "1000",
+          "annualized_before_delivery": "-29.73080532486772486772486772",
+          "max_source_age_s": "10.758",
+          "bbo_capacity_base": "0.5",
+          "legs": "BTC_USDC-23SEP26-80500-C,BTC_USDC-23SEP26-80500-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "credit": "905.00000000",
+            "liability": "1000",
+            "index": "81196.41",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "short_box",
+          "strike": "81000-81500",
+          "gross_profit": "-70.00000000",
+          "opening_fees": "97.435692",
+          "net_before_delivery": "-167.43569200",
+          "capital_denominator": "500",
+          "annualized_before_delivery": "-51.73674292486772486772486772",
+          "max_source_age_s": "11.686",
+          "bbo_capacity_base": "5",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "credit": "430.00000000",
+            "liability": "500",
+            "index": "81196.41",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "btc_usdc/short_synthetic_long_future": {
+        "samples": 3194,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 23:35:00",
+          "family": "btc_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81000",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "77.0828940000000",
+          "net_before_delivery": "-82.0828940000000",
+          "capital_denominator": "81125.24",
+          "annualized_before_delivery": "-0.1571062089052022237641854697",
+          "max_source_age_s": "4.932",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "980.00000000",
+            "put": "820.00000000",
+            "future": "81165.00000000",
+            "index": "81125.24",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:35:00",
+          "family": "btc_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81000",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "77.0828940000000",
+          "net_before_delivery": "-82.0828940000000",
+          "capital_denominator": "81125.24",
+          "annualized_before_delivery": "-0.1571062089052022237641854697",
+          "max_source_age_s": "4.932",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "980.00000000",
+            "put": "820.00000000",
+            "future": "81165.00000000",
+            "index": "81125.24",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usd/long_box_hedged_inverse_future": {
+        "samples": 3405,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:13:00",
+          "family": "eth_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00171970203418966669850062076",
+          "opening_fees": "0.001205348104288033616655524783",
+          "net_before_delivery": "-0.002925050138477700315156145543",
+          "capital_denominator": "0.01820534810428803361665552478",
+          "annualized_before_delivery": "-23.94331196616835936349213124",
+          "max_source_age_s": "6.065",
+          "bbo_capacity_base": "21",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "debit": "0.01700000",
+            "payout": "0.01528029796581033330149937924",
+            "index": "2616.24",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:13:00",
+          "family": "eth_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00171970203418966669850062076",
+          "opening_fees": "0.001205348104288033616655524783",
+          "net_before_delivery": "-0.002925050138477700315156145543",
+          "capital_denominator": "0.01820534810428803361665552478",
+          "annualized_before_delivery": "-23.94331196616835936349213124",
+          "max_source_age_s": "6.065",
+          "bbo_capacity_base": "21",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "debit": "0.01700000",
+            "payout": "0.01528029796581033330149937924",
+            "index": "2616.24",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "eth_usd/long_synthetic_short_future": {
+        "samples": 3372,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:52:00",
+          "family": "eth_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-0.000663318487633848194826116",
+          "opening_fees": "0.0009502321614706718468681891406",
+          "net_before_delivery": "-0.001613550649104520041694305141",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2350560479959356246991482212",
+          "max_source_age_s": "7.462",
+          "bbo_capacity_base": "5",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01600000",
+            "put": "0.01600000",
+            "future": "2638.25000000",
+            "index": "2636.73",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 19:52:00",
+          "family": "eth_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-0.000663318487633848194826116",
+          "opening_fees": "0.0009502321614706718468681891406",
+          "net_before_delivery": "-0.001613550649104520041694305141",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2350560479959356246991482212",
+          "max_source_age_s": "7.462",
+          "bbo_capacity_base": "5",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01600000",
+            "put": "0.01600000",
+            "future": "2638.25000000",
+            "index": "2636.73",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usd/short_box_hedged_inverse_future": {
+        "samples": 3402,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:30:00",
+          "family": "eth_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00170912547528517110266159696",
+          "opening_fees": "0.001205323193916349809885931559",
+          "net_before_delivery": "-0.002914448669201520912547528519",
+          "capital_denominator": "0.01520912547528517110266159696",
+          "annualized_before_delivery": "-27.74603305785123966942148762",
+          "max_source_age_s": "34.175",
+          "bbo_capacity_base": "9",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "credit": "0.01350000",
+            "liability": "0.01520912547528517110266159696",
+            "index": "2629.05",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 06:39:00",
+          "family": "eth_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "2620-2640",
+          "gross_profit": "-0.001509621702806721111424012015",
+          "opening_fees": "0.001202628367595982352388998404",
+          "net_before_delivery": "-0.002712250070402703463813010419",
+          "capital_denominator": "0.007509621702806721111424012015",
+          "annualized_before_delivery": "-64.11041945288753799392097264",
+          "max_source_age_s": "29.149",
+          "bbo_capacity_base": "2",
+          "legs": "ETH-23SEP26-2620-C,ETH-23SEP26-2620-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "credit": "0.00600000",
+            "liability": "0.007509621702806721111424012015",
+            "index": "2662.25",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "eth_usd/short_synthetic_long_future": {
+        "samples": 3369,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2640",
+          "gross_profit": "-0.000246701090074584050487665",
+          "opening_fees": "0.0009534136546184738955823293172",
+          "net_before_delivery": "-0.001200114744693057946069994317",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1787419410061409057677497912",
+          "max_source_age_s": "1.694",
+          "bbo_capacity_base": "6",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01150000",
+            "put": "0.02150000",
+            "future": "2614.50000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2640",
+          "gross_profit": "-0.000246701090074584050487665",
+          "opening_fees": "0.0009534136546184738955823293172",
+          "net_before_delivery": "-0.001200114744693057946069994317",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1787419410061409057677497912",
+          "max_source_age_s": "1.694",
+          "bbo_capacity_base": "6",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01150000",
+            "put": "0.02150000",
+            "future": "2614.50000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usdc/long_box": {
+        "samples": 3388,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:24:00",
+          "family": "eth_usdc",
+          "strategy": "long_box",
+          "strike": "2600-2640",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "3.145188",
+          "net_before_delivery": "-8.14518800",
+          "capital_denominator": "48.14518800",
+          "annualized_before_delivery": "-25.29034279671777807142691560",
+          "max_source_age_s": "2.146",
+          "bbo_capacity_base": "11.9",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "debit": "45.00000000",
+            "payout": "40",
+            "index": "2620.99",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:04:00",
+          "family": "eth_usdc",
+          "strategy": "long_box",
+          "strike": "2620-2640",
+          "gross_profit": "-4.20000000",
+          "opening_fees": "3.16260",
+          "net_before_delivery": "-7.36260000",
+          "capital_denominator": "27.36260000",
+          "annualized_before_delivery": "-41.40104843358644496562437206",
+          "max_source_age_s": "0.583",
+          "bbo_capacity_base": "3.7",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "debit": "24.20000000",
+            "payout": "20",
+            "index": "2635.5",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "eth_usdc/long_synthetic_short_future": {
+        "samples": 3380,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-1.50000000",
+          "opening_fees": "2.4887490000000",
+          "net_before_delivery": "-3.9887490000000",
+          "capital_denominator": "2619.29",
+          "annualized_before_delivery": "-0.2270645617705561430769406977",
+          "max_source_age_s": "1.493",
+          "bbo_capacity_base": "1.6",
+          "legs": "ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "34.00000000",
+            "put": "52.00000000",
+            "future": "2620.50000000",
+            "index": "2619.29",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-1.50000000",
+          "opening_fees": "2.4887490000000",
+          "net_before_delivery": "-3.9887490000000",
+          "capital_denominator": "2619.29",
+          "annualized_before_delivery": "-0.2270645617705561430769406977",
+          "max_source_age_s": "1.493",
+          "bbo_capacity_base": "1.6",
+          "legs": "ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "34.00000000",
+            "put": "52.00000000",
+            "future": "2620.50000000",
+            "index": "2619.29",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usdc/short_box": {
+        "samples": 3388,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "short_box",
+          "strike": "2600-2640",
+          "gross_profit": "-4.60000000",
+          "opening_fees": "3.143148",
+          "net_before_delivery": "-7.74314800",
+          "capital_denominator": "40",
+          "annualized_before_delivery": "-28.86381977872340425531914894",
+          "max_source_age_s": "1.893",
+          "bbo_capacity_base": "2.5",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "credit": "35.40000000",
+            "liability": "40",
+            "index": "2619.29",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "short_box",
+          "strike": "2600-2640",
+          "gross_profit": "-4.60000000",
+          "opening_fees": "3.143148",
+          "net_before_delivery": "-7.74314800",
+          "capital_denominator": "40",
+          "annualized_before_delivery": "-28.86381977872340425531914894",
+          "max_source_age_s": "1.893",
+          "bbo_capacity_base": "2.5",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "credit": "35.40000000",
+            "liability": "40",
+            "index": "2619.29",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "eth_usdc/short_synthetic_long_future": {
+        "samples": 3392,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2620",
+          "gross_profit": "-0.85000000",
+          "opening_fees": "2.4834655000000",
+          "net_before_delivery": "-3.3334655000000",
+          "capital_denominator": "2614.13",
+          "annualized_before_delivery": "-0.1899207784797270376880467572",
+          "max_source_age_s": "1.864",
+          "bbo_capacity_base": "5.9",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "38.00000000",
+            "put": "44.60000000",
+            "future": "2614.25000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2620",
+          "gross_profit": "-0.85000000",
+          "opening_fees": "2.4834655000000",
+          "net_before_delivery": "-3.3334655000000",
+          "capital_denominator": "2614.13",
+          "annualized_before_delivery": "-0.1899207784797270376880467572",
+          "max_source_age_s": "1.864",
+          "bbo_capacity_base": "5.9",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "38.00000000",
+            "put": "44.60000000",
+            "future": "2614.25000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      }
+    },
+    "3600": {
+      "btc_usd/long_box_hedged_inverse_future": {
+        "samples": 2881,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:31:00",
+          "family": "btc_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00118169499876816949987681695",
+          "opening_fees": "0.001204311406750431140675043114",
+          "net_before_delivery": "-0.002386006405518600640551860064",
+          "capital_denominator": "0.01470431140675043114067504311",
+          "annualized_before_delivery": "-23.50148483163729448414840444",
+          "max_source_age_s": "11.562",
+          "bbo_capacity_base": "0.8",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "debit": "0.01350000",
+            "payout": "0.01231830500123183050012318305",
+            "index": "81146.16",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 20:31:00",
+          "family": "btc_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00117941846855171564097825417",
+          "opening_fees": "0.001204312203536006899525657611",
+          "net_before_delivery": "-0.002383730672087722540503911781",
+          "capital_denominator": "0.01470431220353600689952565761",
+          "annualized_before_delivery": "-23.87378498568376423972688612",
+          "max_source_age_s": "20.572",
+          "bbo_capacity_base": "0.5",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "debit": "0.01350000",
+            "payout": "0.01232058153144828435902174583",
+            "index": "81132.53",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "btc_usd/long_synthetic_short_future": {
+        "samples": 2550,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:20:00",
+          "family": "btc_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81000",
+          "gross_profit": "-0.000581415108913950254904990",
+          "opening_fees": "0.0009503784952881198825892167465",
+          "net_before_delivery": "-0.001531793604202070137494206746",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2287246359001727455303849618",
+          "max_source_age_s": "4.321",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81000-C,BTC-23SEP26-81000-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01050000",
+            "put": "0.01100000",
+            "future": "80912.50000000",
+            "index": "80886.44",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 08:12:00",
+          "family": "btc_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81500",
+          "gross_profit": "-0.0004630465272272699554850906",
+          "opening_fees": "0.0009478870662845295444844197817",
+          "net_before_delivery": "-0.001410933593511799499969510382",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2585727673465138832580106893",
+          "max_source_age_s": "16.761",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01450000",
+            "put": "0.00800000",
+            "future": "81995.00000000",
+            "index": "81936.19",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usd/short_box_hedged_inverse_future": {
+        "samples": 3079,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-21 04:47:00",
+          "family": "btc_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00128010929297270745709636816",
+          "opening_fees": "0.001204298038252540447609983729",
+          "net_before_delivery": "-0.002484407331225247904706351889",
+          "capital_denominator": "0.01228010929297270745709636816",
+          "annualized_before_delivery": "-34.60296921575008135372600068",
+          "max_source_age_s": "11.671",
+          "bbo_capacity_base": "1.2",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "credit": "0.01100000",
+            "liability": "0.01228010929297270745709636816",
+            "index": "81406.49",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 04:43:00",
+          "family": "btc_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "81000-81500",
+          "gross_profit": "-0.001141563027790572700752341471",
+          "opening_fees": "0.001202149547059726700445263320",
+          "net_before_delivery": "-0.002343712574850299401197604791",
+          "capital_denominator": "0.006141563027790572700752341471",
+          "annualized_before_delivery": "-65.18584465388365290867728307",
+          "max_source_age_s": "27.062",
+          "bbo_capacity_base": "0.2",
+          "legs": "BTC-23SEP26-81000-C,BTC-23SEP26-81000-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "credit": "0.00500000",
+            "liability": "0.006141563027790572700752341471",
+            "index": "81382.79",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "btc_usd/short_synthetic_long_future": {
+        "samples": 2787,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 20:31:00",
+          "family": "btc_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81500",
+          "gross_profit": "-0.000372605186964824739727715",
+          "opening_fees": "0.0009514445881845623113410952998",
+          "net_before_delivery": "-0.001324049775149387051068810300",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1949903507476934250607359747",
+          "max_source_age_s": "10.309",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.00900000",
+            "put": "0.01350000",
+            "future": "81165.00000000",
+            "index": "81132.53",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 01:50:00",
+          "family": "btc_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81500",
+          "gross_profit": "-0.000262465011842145735289594",
+          "opening_fees": "0.0009509581372458552489926486421",
+          "net_before_delivery": "-0.001213423149088000984282242642",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1962385252802010207196143793",
+          "max_source_age_s": "2.174",
+          "bbo_capacity_base": "0.6",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01050000",
+            "put": "0.01350000",
+            "future": "81277.50000000",
+            "index": "81256.43",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usdc/long_box": {
+        "samples": 3377,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-21 01:56:00",
+          "family": "btc_usdc",
+          "strategy": "long_box",
+          "strike": "80500-81500",
+          "gross_profit": "-115.00000000",
+          "opening_fees": "97.132656",
+          "net_before_delivery": "-212.13265600",
+          "capital_denominator": "1212.13265600",
+          "annualized_before_delivery": "-28.35514607105212729954846452",
+          "max_source_age_s": "12.646",
+          "bbo_capacity_base": "1.75",
+          "legs": "BTC_USDC-23SEP26-80500-C,BTC_USDC-23SEP26-80500-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "debit": "1115.00000000",
+            "payout": "1000",
+            "index": "80943.88",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:49:00",
+          "family": "btc_usdc",
+          "strategy": "long_box",
+          "strike": "81000-81500",
+          "gross_profit": "-80.00000000",
+          "opening_fees": "97.486332",
+          "net_before_delivery": "-177.48633200",
+          "capital_denominator": "677.48633200",
+          "annualized_before_delivery": "-40.84707664843980934875789780",
+          "max_source_age_s": "2.021",
+          "bbo_capacity_base": "5",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "debit": "580.00000000",
+            "payout": "500",
+            "index": "81238.61",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "btc_usdc/long_synthetic_short_future": {
+        "samples": 3225,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81500",
+          "gross_profit": "-32.50000000",
+          "opening_fees": "77.1492210000000",
+          "net_before_delivery": "-109.6492210000000",
+          "capital_denominator": "81196.41",
+          "annualized_before_delivery": "-0.2086362508785273535587003880",
+          "max_source_age_s": "10.758",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "805.00000000",
+            "put": "1040.00000000",
+            "future": "81232.50000000",
+            "index": "81196.41",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81500",
+          "gross_profit": "-32.50000000",
+          "opening_fees": "77.1492210000000",
+          "net_before_delivery": "-109.6492210000000",
+          "capital_denominator": "81196.41",
+          "annualized_before_delivery": "-0.2086362508785273535587003880",
+          "max_source_age_s": "10.758",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "805.00000000",
+            "put": "1040.00000000",
+            "future": "81232.50000000",
+            "index": "81196.41",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usdc/short_box": {
+        "samples": 3377,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "short_box",
+          "strike": "80500-81500",
+          "gross_profit": "-95.00000000",
+          "opening_fees": "97.435692",
+          "net_before_delivery": "-192.43569200",
+          "capital_denominator": "1000",
+          "annualized_before_delivery": "-29.73080532486772486772486772",
+          "max_source_age_s": "10.758",
+          "bbo_capacity_base": "0.5",
+          "legs": "BTC_USDC-23SEP26-80500-C,BTC_USDC-23SEP26-80500-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "credit": "905.00000000",
+            "liability": "1000",
+            "index": "81196.41",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "short_box",
+          "strike": "81000-81500",
+          "gross_profit": "-70.00000000",
+          "opening_fees": "97.435692",
+          "net_before_delivery": "-167.43569200",
+          "capital_denominator": "500",
+          "annualized_before_delivery": "-51.73674292486772486772486772",
+          "max_source_age_s": "11.686",
+          "bbo_capacity_base": "5",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "credit": "430.00000000",
+            "liability": "500",
+            "index": "81196.41",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "btc_usdc/short_synthetic_long_future": {
+        "samples": 3194,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 23:35:00",
+          "family": "btc_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81000",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "77.0828940000000",
+          "net_before_delivery": "-82.0828940000000",
+          "capital_denominator": "81125.24",
+          "annualized_before_delivery": "-0.1571062089052022237641854697",
+          "max_source_age_s": "4.932",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "980.00000000",
+            "put": "820.00000000",
+            "future": "81165.00000000",
+            "index": "81125.24",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:35:00",
+          "family": "btc_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81000",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "77.0828940000000",
+          "net_before_delivery": "-82.0828940000000",
+          "capital_denominator": "81125.24",
+          "annualized_before_delivery": "-0.1571062089052022237641854697",
+          "max_source_age_s": "4.932",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "980.00000000",
+            "put": "820.00000000",
+            "future": "81165.00000000",
+            "index": "81125.24",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usd/long_box_hedged_inverse_future": {
+        "samples": 3405,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:13:00",
+          "family": "eth_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00171970203418966669850062076",
+          "opening_fees": "0.001205348104288033616655524783",
+          "net_before_delivery": "-0.002925050138477700315156145543",
+          "capital_denominator": "0.01820534810428803361665552478",
+          "annualized_before_delivery": "-23.94331196616835936349213124",
+          "max_source_age_s": "6.065",
+          "bbo_capacity_base": "21",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "debit": "0.01700000",
+            "payout": "0.01528029796581033330149937924",
+            "index": "2616.24",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:13:00",
+          "family": "eth_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00171970203418966669850062076",
+          "opening_fees": "0.001205348104288033616655524783",
+          "net_before_delivery": "-0.002925050138477700315156145543",
+          "capital_denominator": "0.01820534810428803361665552478",
+          "annualized_before_delivery": "-23.94331196616835936349213124",
+          "max_source_age_s": "6.065",
+          "bbo_capacity_base": "21",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "debit": "0.01700000",
+            "payout": "0.01528029796581033330149937924",
+            "index": "2616.24",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "eth_usd/long_synthetic_short_future": {
+        "samples": 3372,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:52:00",
+          "family": "eth_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-0.000663318487633848194826116",
+          "opening_fees": "0.0009502321614706718468681891406",
+          "net_before_delivery": "-0.001613550649104520041694305141",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2350560479959356246991482212",
+          "max_source_age_s": "7.462",
+          "bbo_capacity_base": "5",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01600000",
+            "put": "0.01600000",
+            "future": "2638.25000000",
+            "index": "2636.73",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 19:52:00",
+          "family": "eth_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-0.000663318487633848194826116",
+          "opening_fees": "0.0009502321614706718468681891406",
+          "net_before_delivery": "-0.001613550649104520041694305141",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2350560479959356246991482212",
+          "max_source_age_s": "7.462",
+          "bbo_capacity_base": "5",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01600000",
+            "put": "0.01600000",
+            "future": "2638.25000000",
+            "index": "2636.73",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usd/short_box_hedged_inverse_future": {
+        "samples": 3402,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:30:00",
+          "family": "eth_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00170912547528517110266159696",
+          "opening_fees": "0.001205323193916349809885931559",
+          "net_before_delivery": "-0.002914448669201520912547528519",
+          "capital_denominator": "0.01520912547528517110266159696",
+          "annualized_before_delivery": "-27.74603305785123966942148762",
+          "max_source_age_s": "34.175",
+          "bbo_capacity_base": "9",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "credit": "0.01350000",
+            "liability": "0.01520912547528517110266159696",
+            "index": "2629.05",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 06:39:00",
+          "family": "eth_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "2620-2640",
+          "gross_profit": "-0.001509621702806721111424012015",
+          "opening_fees": "0.001202628367595982352388998404",
+          "net_before_delivery": "-0.002712250070402703463813010419",
+          "capital_denominator": "0.007509621702806721111424012015",
+          "annualized_before_delivery": "-64.11041945288753799392097264",
+          "max_source_age_s": "29.149",
+          "bbo_capacity_base": "2",
+          "legs": "ETH-23SEP26-2620-C,ETH-23SEP26-2620-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "credit": "0.00600000",
+            "liability": "0.007509621702806721111424012015",
+            "index": "2662.25",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "eth_usd/short_synthetic_long_future": {
+        "samples": 3369,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2640",
+          "gross_profit": "-0.000246701090074584050487665",
+          "opening_fees": "0.0009534136546184738955823293172",
+          "net_before_delivery": "-0.001200114744693057946069994317",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1787419410061409057677497912",
+          "max_source_age_s": "1.694",
+          "bbo_capacity_base": "6",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01150000",
+            "put": "0.02150000",
+            "future": "2614.50000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2640",
+          "gross_profit": "-0.000246701090074584050487665",
+          "opening_fees": "0.0009534136546184738955823293172",
+          "net_before_delivery": "-0.001200114744693057946069994317",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1787419410061409057677497912",
+          "max_source_age_s": "1.694",
+          "bbo_capacity_base": "6",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01150000",
+            "put": "0.02150000",
+            "future": "2614.50000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usdc/long_box": {
+        "samples": 3392,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:24:00",
+          "family": "eth_usdc",
+          "strategy": "long_box",
+          "strike": "2600-2640",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "3.145188",
+          "net_before_delivery": "-8.14518800",
+          "capital_denominator": "48.14518800",
+          "annualized_before_delivery": "-25.29034279671777807142691560",
+          "max_source_age_s": "2.146",
+          "bbo_capacity_base": "11.9",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "debit": "45.00000000",
+            "payout": "40",
+            "index": "2620.99",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:04:00",
+          "family": "eth_usdc",
+          "strategy": "long_box",
+          "strike": "2620-2640",
+          "gross_profit": "-4.20000000",
+          "opening_fees": "3.16260",
+          "net_before_delivery": "-7.36260000",
+          "capital_denominator": "27.36260000",
+          "annualized_before_delivery": "-41.40104843358644496562437206",
+          "max_source_age_s": "0.583",
+          "bbo_capacity_base": "3.7",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "debit": "24.20000000",
+            "payout": "20",
+            "index": "2635.5",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "eth_usdc/long_synthetic_short_future": {
+        "samples": 3382,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-1.50000000",
+          "opening_fees": "2.4887490000000",
+          "net_before_delivery": "-3.9887490000000",
+          "capital_denominator": "2619.29",
+          "annualized_before_delivery": "-0.2270645617705561430769406977",
+          "max_source_age_s": "1.493",
+          "bbo_capacity_base": "1.6",
+          "legs": "ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "34.00000000",
+            "put": "52.00000000",
+            "future": "2620.50000000",
+            "index": "2619.29",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-1.50000000",
+          "opening_fees": "2.4887490000000",
+          "net_before_delivery": "-3.9887490000000",
+          "capital_denominator": "2619.29",
+          "annualized_before_delivery": "-0.2270645617705561430769406977",
+          "max_source_age_s": "1.493",
+          "bbo_capacity_base": "1.6",
+          "legs": "ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "34.00000000",
+            "put": "52.00000000",
+            "future": "2620.50000000",
+            "index": "2619.29",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usdc/short_box": {
+        "samples": 3392,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "short_box",
+          "strike": "2600-2640",
+          "gross_profit": "-4.60000000",
+          "opening_fees": "3.143148",
+          "net_before_delivery": "-7.74314800",
+          "capital_denominator": "40",
+          "annualized_before_delivery": "-28.86381977872340425531914894",
+          "max_source_age_s": "1.893",
+          "bbo_capacity_base": "2.5",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "credit": "35.40000000",
+            "liability": "40",
+            "index": "2619.29",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "short_box",
+          "strike": "2600-2640",
+          "gross_profit": "-4.60000000",
+          "opening_fees": "3.143148",
+          "net_before_delivery": "-7.74314800",
+          "capital_denominator": "40",
+          "annualized_before_delivery": "-28.86381977872340425531914894",
+          "max_source_age_s": "1.893",
+          "bbo_capacity_base": "2.5",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "credit": "35.40000000",
+            "liability": "40",
+            "index": "2619.29",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "eth_usdc/short_synthetic_long_future": {
+        "samples": 3394,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2620",
+          "gross_profit": "-0.85000000",
+          "opening_fees": "2.4834655000000",
+          "net_before_delivery": "-3.3334655000000",
+          "capital_denominator": "2614.13",
+          "annualized_before_delivery": "-0.1899207784797270376880467572",
+          "max_source_age_s": "1.864",
+          "bbo_capacity_base": "5.9",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "38.00000000",
+            "put": "44.60000000",
+            "future": "2614.25000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2620",
+          "gross_profit": "-0.85000000",
+          "opening_fees": "2.4834655000000",
+          "net_before_delivery": "-3.3334655000000",
+          "capital_denominator": "2614.13",
+          "annualized_before_delivery": "-0.1899207784797270376880467572",
+          "max_source_age_s": "1.864",
+          "bbo_capacity_base": "5.9",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "38.00000000",
+            "put": "44.60000000",
+            "future": "2614.25000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      }
+    },
+    "None": {
+      "btc_usd/long_box_hedged_inverse_future": {
+        "samples": 2881,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:31:00",
+          "family": "btc_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00118169499876816949987681695",
+          "opening_fees": "0.001204311406750431140675043114",
+          "net_before_delivery": "-0.002386006405518600640551860064",
+          "capital_denominator": "0.01470431140675043114067504311",
+          "annualized_before_delivery": "-23.50148483163729448414840444",
+          "max_source_age_s": "11.562",
+          "bbo_capacity_base": "0.8",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "debit": "0.01350000",
+            "payout": "0.01231830500123183050012318305",
+            "index": "81146.16",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 20:31:00",
+          "family": "btc_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00117941846855171564097825417",
+          "opening_fees": "0.001204312203536006899525657611",
+          "net_before_delivery": "-0.002383730672087722540503911781",
+          "capital_denominator": "0.01470431220353600689952565761",
+          "annualized_before_delivery": "-23.87378498568376423972688612",
+          "max_source_age_s": "20.572",
+          "bbo_capacity_base": "0.5",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "debit": "0.01350000",
+            "payout": "0.01232058153144828435902174583",
+            "index": "81132.53",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "btc_usd/long_synthetic_short_future": {
+        "samples": 2550,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:20:00",
+          "family": "btc_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81000",
+          "gross_profit": "-0.000581415108913950254904990",
+          "opening_fees": "0.0009503784952881198825892167465",
+          "net_before_delivery": "-0.001531793604202070137494206746",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2287246359001727455303849618",
+          "max_source_age_s": "4.321",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81000-C,BTC-23SEP26-81000-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01050000",
+            "put": "0.01100000",
+            "future": "80912.50000000",
+            "index": "80886.44",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 08:12:00",
+          "family": "btc_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81500",
+          "gross_profit": "-0.0004630465272272699554850906",
+          "opening_fees": "0.0009478870662845295444844197817",
+          "net_before_delivery": "-0.001410933593511799499969510382",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2585727673465138832580106893",
+          "max_source_age_s": "16.761",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01450000",
+            "put": "0.00800000",
+            "future": "81995.00000000",
+            "index": "81936.19",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usd/short_box_hedged_inverse_future": {
+        "samples": 3079,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-21 04:47:00",
+          "family": "btc_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "80500-81500",
+          "gross_profit": "-0.00128010929297270745709636816",
+          "opening_fees": "0.001204298038252540447609983729",
+          "net_before_delivery": "-0.002484407331225247904706351889",
+          "capital_denominator": "0.01228010929297270745709636816",
+          "annualized_before_delivery": "-34.60296921575008135372600068",
+          "max_source_age_s": "11.671",
+          "bbo_capacity_base": "1.2",
+          "legs": "BTC-23SEP26-80500-C,BTC-23SEP26-80500-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "credit": "0.01100000",
+            "liability": "0.01228010929297270745709636816",
+            "index": "81406.49",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 04:43:00",
+          "family": "btc_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "81000-81500",
+          "gross_profit": "-0.001141563027790572700752341471",
+          "opening_fees": "0.001202149547059726700445263320",
+          "net_before_delivery": "-0.002343712574850299401197604791",
+          "capital_denominator": "0.006141563027790572700752341471",
+          "annualized_before_delivery": "-65.18584465388365290867728307",
+          "max_source_age_s": "27.062",
+          "bbo_capacity_base": "0.2",
+          "legs": "BTC-23SEP26-81000-C,BTC-23SEP26-81000-P,BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "credit": "0.00500000",
+            "liability": "0.006141563027790572700752341471",
+            "index": "81382.79",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "btc_usd/short_synthetic_long_future": {
+        "samples": 2787,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 20:31:00",
+          "family": "btc_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81500",
+          "gross_profit": "-0.000372605186964824739727715",
+          "opening_fees": "0.0009514445881845623113410952998",
+          "net_before_delivery": "-0.001324049775149387051068810300",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1949903507476934250607359747",
+          "max_source_age_s": "10.309",
+          "bbo_capacity_base": "0.3",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.00900000",
+            "put": "0.01350000",
+            "future": "81165.00000000",
+            "index": "81132.53",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 01:50:00",
+          "family": "btc_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81500",
+          "gross_profit": "-0.000262465011842145735289594",
+          "opening_fees": "0.0009509581372458552489926486421",
+          "net_before_delivery": "-0.001213423149088000984282242642",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1962385252802010207196143793",
+          "max_source_age_s": "2.174",
+          "bbo_capacity_base": "0.6",
+          "legs": "BTC-23SEP26-81500-C,BTC-23SEP26-81500-P,BTC-23SEP26",
+          "detail": {
+            "call": "0.01050000",
+            "put": "0.01350000",
+            "future": "81277.50000000",
+            "index": "81256.43",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usdc/long_box": {
+        "samples": 3377,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-21 01:56:00",
+          "family": "btc_usdc",
+          "strategy": "long_box",
+          "strike": "80500-81500",
+          "gross_profit": "-115.00000000",
+          "opening_fees": "97.132656",
+          "net_before_delivery": "-212.13265600",
+          "capital_denominator": "1212.13265600",
+          "annualized_before_delivery": "-28.35514607105212729954846452",
+          "max_source_age_s": "12.646",
+          "bbo_capacity_base": "1.75",
+          "legs": "BTC_USDC-23SEP26-80500-C,BTC_USDC-23SEP26-80500-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "debit": "1115.00000000",
+            "payout": "1000",
+            "index": "80943.88",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:49:00",
+          "family": "btc_usdc",
+          "strategy": "long_box",
+          "strike": "81000-81500",
+          "gross_profit": "-80.00000000",
+          "opening_fees": "97.486332",
+          "net_before_delivery": "-177.48633200",
+          "capital_denominator": "677.48633200",
+          "annualized_before_delivery": "-40.84707664843980934875789780",
+          "max_source_age_s": "2.021",
+          "bbo_capacity_base": "5",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "debit": "580.00000000",
+            "payout": "500",
+            "index": "81238.61",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "btc_usdc/long_synthetic_short_future": {
+        "samples": 3225,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81500",
+          "gross_profit": "-32.50000000",
+          "opening_fees": "77.1492210000000",
+          "net_before_delivery": "-109.6492210000000",
+          "capital_denominator": "81196.41",
+          "annualized_before_delivery": "-0.2086362508785273535587003880",
+          "max_source_age_s": "10.758",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "805.00000000",
+            "put": "1040.00000000",
+            "future": "81232.50000000",
+            "index": "81196.41",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "81500",
+          "gross_profit": "-32.50000000",
+          "opening_fees": "77.1492210000000",
+          "net_before_delivery": "-109.6492210000000",
+          "capital_denominator": "81196.41",
+          "annualized_before_delivery": "-0.2086362508785273535587003880",
+          "max_source_age_s": "10.758",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "805.00000000",
+            "put": "1040.00000000",
+            "future": "81232.50000000",
+            "index": "81196.41",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "btc_usdc/short_box": {
+        "samples": 3377,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "short_box",
+          "strike": "80500-81500",
+          "gross_profit": "-95.00000000",
+          "opening_fees": "97.435692",
+          "net_before_delivery": "-192.43569200",
+          "capital_denominator": "1000",
+          "annualized_before_delivery": "-29.73080532486772486772486772",
+          "max_source_age_s": "10.758",
+          "bbo_capacity_base": "0.5",
+          "legs": "BTC_USDC-23SEP26-80500-C,BTC_USDC-23SEP26-80500-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "credit": "905.00000000",
+            "liability": "1000",
+            "index": "81196.41",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:18:00",
+          "family": "btc_usdc",
+          "strategy": "short_box",
+          "strike": "81000-81500",
+          "gross_profit": "-70.00000000",
+          "opening_fees": "97.435692",
+          "net_before_delivery": "-167.43569200",
+          "capital_denominator": "500",
+          "annualized_before_delivery": "-51.73674292486772486772486772",
+          "max_source_age_s": "11.686",
+          "bbo_capacity_base": "5",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26-81500-C,BTC_USDC-23SEP26-81500-P",
+          "detail": {
+            "credit": "430.00000000",
+            "liability": "500",
+            "index": "81196.41",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "btc_usdc/short_synthetic_long_future": {
+        "samples": 3194,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 23:35:00",
+          "family": "btc_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81000",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "77.0828940000000",
+          "net_before_delivery": "-82.0828940000000",
+          "capital_denominator": "81125.24",
+          "annualized_before_delivery": "-0.1571062089052022237641854697",
+          "max_source_age_s": "4.932",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "980.00000000",
+            "put": "820.00000000",
+            "future": "81165.00000000",
+            "index": "81125.24",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:35:00",
+          "family": "btc_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "81000",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "77.0828940000000",
+          "net_before_delivery": "-82.0828940000000",
+          "capital_denominator": "81125.24",
+          "annualized_before_delivery": "-0.1571062089052022237641854697",
+          "max_source_age_s": "4.932",
+          "bbo_capacity_base": "0.07",
+          "legs": "BTC_USDC-23SEP26-81000-C,BTC_USDC-23SEP26-81000-P,BTC_USDC-23SEP26",
+          "detail": {
+            "call": "980.00000000",
+            "put": "820.00000000",
+            "future": "81165.00000000",
+            "index": "81125.24",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usd/long_box_hedged_inverse_future": {
+        "samples": 3405,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:13:00",
+          "family": "eth_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00171970203418966669850062076",
+          "opening_fees": "0.001205348104288033616655524783",
+          "net_before_delivery": "-0.002925050138477700315156145543",
+          "capital_denominator": "0.01820534810428803361665552478",
+          "annualized_before_delivery": "-23.94331196616835936349213124",
+          "max_source_age_s": "6.065",
+          "bbo_capacity_base": "21",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "debit": "0.01700000",
+            "payout": "0.01528029796581033330149937924",
+            "index": "2616.24",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:13:00",
+          "family": "eth_usd",
+          "strategy": "long_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00171970203418966669850062076",
+          "opening_fees": "0.001205348104288033616655524783",
+          "net_before_delivery": "-0.002925050138477700315156145543",
+          "capital_denominator": "0.01820534810428803361665552478",
+          "annualized_before_delivery": "-23.94331196616835936349213124",
+          "max_source_age_s": "6.065",
+          "bbo_capacity_base": "21",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "debit": "0.01700000",
+            "payout": "0.01528029796581033330149937924",
+            "index": "2616.24",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "eth_usd/long_synthetic_short_future": {
+        "samples": 3372,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:52:00",
+          "family": "eth_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-0.000663318487633848194826116",
+          "opening_fees": "0.0009502321614706718468681891406",
+          "net_before_delivery": "-0.001613550649104520041694305141",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2350560479959356246991482212",
+          "max_source_age_s": "7.462",
+          "bbo_capacity_base": "5",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01600000",
+            "put": "0.01600000",
+            "future": "2638.25000000",
+            "index": "2636.73",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 19:52:00",
+          "family": "eth_usd",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-0.000663318487633848194826116",
+          "opening_fees": "0.0009502321614706718468681891406",
+          "net_before_delivery": "-0.001613550649104520041694305141",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.2350560479959356246991482212",
+          "max_source_age_s": "7.462",
+          "bbo_capacity_base": "5",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01600000",
+            "put": "0.01600000",
+            "future": "2638.25000000",
+            "index": "2636.73",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usd/short_box_hedged_inverse_future": {
+        "samples": 3402,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 19:30:00",
+          "family": "eth_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "2600-2640",
+          "gross_profit": "-0.00170912547528517110266159696",
+          "opening_fees": "0.001205323193916349809885931559",
+          "net_before_delivery": "-0.002914448669201520912547528519",
+          "capital_denominator": "0.01520912547528517110266159696",
+          "annualized_before_delivery": "-27.74603305785123966942148762",
+          "max_source_age_s": "34.175",
+          "bbo_capacity_base": "9",
+          "legs": "ETH-23SEP26-2600-C,ETH-23SEP26-2600-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "credit": "0.01350000",
+            "liability": "0.01520912547528517110266159696",
+            "index": "2629.05",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-21 06:39:00",
+          "family": "eth_usd",
+          "strategy": "short_box_hedged_inverse_future",
+          "strike": "2620-2640",
+          "gross_profit": "-0.001509621702806721111424012015",
+          "opening_fees": "0.001202628367595982352388998404",
+          "net_before_delivery": "-0.002712250070402703463813010419",
+          "capital_denominator": "0.007509621702806721111424012015",
+          "annualized_before_delivery": "-64.11041945288753799392097264",
+          "max_source_age_s": "29.149",
+          "bbo_capacity_base": "2",
+          "legs": "ETH-23SEP26-2620-C,ETH-23SEP26-2620-P,ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "credit": "0.00600000",
+            "liability": "0.007509621702806721111424012015",
+            "index": "2662.25",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "eth_usd/short_synthetic_long_future": {
+        "samples": 3369,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2640",
+          "gross_profit": "-0.000246701090074584050487665",
+          "opening_fees": "0.0009534136546184738955823293172",
+          "net_before_delivery": "-0.001200114744693057946069994317",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1787419410061409057677497912",
+          "max_source_age_s": "1.694",
+          "bbo_capacity_base": "6",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01150000",
+            "put": "0.02150000",
+            "future": "2614.50000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usd",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2640",
+          "gross_profit": "-0.000246701090074584050487665",
+          "opening_fees": "0.0009534136546184738955823293172",
+          "net_before_delivery": "-0.001200114744693057946069994317",
+          "capital_denominator": "1",
+          "annualized_before_delivery": "-0.1787419410061409057677497912",
+          "max_source_age_s": "1.694",
+          "bbo_capacity_base": "6",
+          "legs": "ETH-23SEP26-2640-C,ETH-23SEP26-2640-P,ETH-23SEP26",
+          "detail": {
+            "call": "0.01150000",
+            "put": "0.02150000",
+            "future": "2614.50000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usdc/long_box": {
+        "samples": 3392,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:24:00",
+          "family": "eth_usdc",
+          "strategy": "long_box",
+          "strike": "2600-2640",
+          "gross_profit": "-5.00000000",
+          "opening_fees": "3.145188",
+          "net_before_delivery": "-8.14518800",
+          "capital_denominator": "48.14518800",
+          "annualized_before_delivery": "-25.29034279671777807142691560",
+          "max_source_age_s": "2.146",
+          "bbo_capacity_base": "11.9",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "debit": "45.00000000",
+            "payout": "40",
+            "index": "2620.99",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 23:04:00",
+          "family": "eth_usdc",
+          "strategy": "long_box",
+          "strike": "2620-2640",
+          "gross_profit": "-4.20000000",
+          "opening_fees": "3.16260",
+          "net_before_delivery": "-7.36260000",
+          "capital_denominator": "27.36260000",
+          "annualized_before_delivery": "-41.40104843358644496562437206",
+          "max_source_age_s": "0.583",
+          "bbo_capacity_base": "3.7",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "debit": "24.20000000",
+            "payout": "20",
+            "index": "2635.5",
+            "denominator": "premium plus opening fees; additional account margin omitted; this is not an account return"
+          }
+        }
+      },
+      "eth_usdc/long_synthetic_short_future": {
+        "samples": 3382,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-1.50000000",
+          "opening_fees": "2.4887490000000",
+          "net_before_delivery": "-3.9887490000000",
+          "capital_denominator": "2619.29",
+          "annualized_before_delivery": "-0.2270645617705561430769406977",
+          "max_source_age_s": "1.493",
+          "bbo_capacity_base": "1.6",
+          "legs": "ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "34.00000000",
+            "put": "52.00000000",
+            "future": "2620.50000000",
+            "index": "2619.29",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "long_synthetic_short_future",
+          "strike": "2640",
+          "gross_profit": "-1.50000000",
+          "opening_fees": "2.4887490000000",
+          "net_before_delivery": "-3.9887490000000",
+          "capital_denominator": "2619.29",
+          "annualized_before_delivery": "-0.2270645617705561430769406977",
+          "max_source_age_s": "1.493",
+          "bbo_capacity_base": "1.6",
+          "legs": "ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "34.00000000",
+            "put": "52.00000000",
+            "future": "2620.50000000",
+            "index": "2619.29",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      },
+      "eth_usdc/short_box": {
+        "samples": 3392,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "short_box",
+          "strike": "2600-2640",
+          "gross_profit": "-4.60000000",
+          "opening_fees": "3.143148",
+          "net_before_delivery": "-7.74314800",
+          "capital_denominator": "40",
+          "annualized_before_delivery": "-28.86381977872340425531914894",
+          "max_source_age_s": "1.893",
+          "bbo_capacity_base": "2.5",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "credit": "35.40000000",
+            "liability": "40",
+            "index": "2619.29",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:15:00",
+          "family": "eth_usdc",
+          "strategy": "short_box",
+          "strike": "2600-2640",
+          "gross_profit": "-4.60000000",
+          "opening_fees": "3.143148",
+          "net_before_delivery": "-7.74314800",
+          "capital_denominator": "40",
+          "annualized_before_delivery": "-28.86381977872340425531914894",
+          "max_source_age_s": "1.893",
+          "bbo_capacity_base": "2.5",
+          "legs": "ETH_USDC-23SEP26-2600-C,ETH_USDC-23SEP26-2600-P,ETH_USDC-23SEP26-2640-C,ETH_USDC-23SEP26-2640-P",
+          "detail": {
+            "credit": "35.40000000",
+            "liability": "40",
+            "index": "2619.29",
+            "denominator": "fully reserved terminal liability; excludes account margin and any external reinvestment"
+          }
+        }
+      },
+      "eth_usdc/short_synthetic_long_future": {
+        "samples": 3394,
+        "positive_gross": 0,
+        "positive_after_opening_fees": 0,
+        "at_least_3pct": 0,
+        "best_annualized": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2620",
+          "gross_profit": "-0.85000000",
+          "opening_fees": "2.4834655000000",
+          "net_before_delivery": "-3.3334655000000",
+          "capital_denominator": "2614.13",
+          "annualized_before_delivery": "-0.1899207784797270376880467572",
+          "max_source_age_s": "1.864",
+          "bbo_capacity_base": "5.9",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "38.00000000",
+            "put": "44.60000000",
+            "future": "2614.25000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        },
+        "best_net": {
+          "minute": "2026-09-20 21:11:00",
+          "family": "eth_usdc",
+          "strategy": "short_synthetic_long_future",
+          "strike": "2620",
+          "gross_profit": "-0.85000000",
+          "opening_fees": "2.4834655000000",
+          "net_before_delivery": "-3.3334655000000",
+          "capital_denominator": "2614.13",
+          "annualized_before_delivery": "-0.1899207784797270376880467572",
+          "max_source_age_s": "1.864",
+          "bbo_capacity_base": "5.9",
+          "legs": "ETH_USDC-23SEP26-2620-C,ETH_USDC-23SEP26-2620-P,ETH_USDC-23SEP26",
+          "detail": {
+            "call": "38.00000000",
+            "put": "44.60000000",
+            "future": "2614.25000000",
+            "index": "2614.13",
+            "denominator": "1 base unit equivalent, not verified account margin"
+          }
+        }
+      }
+    }
+  }
+}

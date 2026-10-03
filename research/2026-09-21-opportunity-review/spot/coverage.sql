@@ -1,0 +1,1 @@
+SELECT instrument_id,min(minute_time) first,max(minute_time) last,count() minutes,sum(bitCount(valid_bitmap)) valid_seconds FROM crypto_market_info.order_book_minute FINAL GROUP BY instrument_id ORDER BY instrument_id

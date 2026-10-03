@@ -1,0 +1,192 @@
+---
+updatedAt: 2025-06-10T21:59:36.000Z
+---
+
+Fetch the complete documentation index at: https://docs.bitfinex.com/llms.txt. Use this file to discover all available pages before exploring further. Append .md to any documentation page URL to get its markdown version.
+
+# Stats
+
+The Stats endpoint provides various statistics on a specified trading pair or funding currency. Use the available keys to specify which statistic you wish to retrieve.
+
+### Response Fields
+
+| Index | Field | Type  | Description                 |
+| ----- | ----- | ----- | --------------------------- |
+| \[0]  | MTS   | int   | Millisecond epoch timestamp |
+| \[1]  | VALUE | float | Total amount                |
+
+### Available keys and arguments
+
+| Key                     | Size | Sym/Platform          | Side/Pair             | Example                                             |
+| ----------------------- | ---- | --------------------- | --------------------- | --------------------------------------------------- |
+| pos.size                | 1m   | tBTCUSD, tLTCUSD, ... | short, long           | pos.size:1m:tBTCUSD:short, pos.size:1m:tBTCUSD:long |
+| funding.size            | 1m   | fUSD, fETH, ...       | -                     | funding.size:1m:fUSD                                |
+| credits.size            | 1m   | fUSD, fETH, ...       | -                     | credits.size:1m:fUSD                                |
+| credits.size.sym        | 1m   | fUSD, fETH, ...       | tBTCUSD, tLTCUSD, ... | credits.size.sym:1m:fUSD:tBTCUSD                    |
+| vol.1d, vol.7d, vol.30d | 30m  | BFX                   | -                     | vol.1d:30m:BFX                                      |
+| vwap                    | 1d   | tBTCUSD, tLTCUSD, ... | -                     | vwap:1d:tBTCUSD                                     |
+
+### Available keys description
+
+| Key                     | Description                                                         |
+| ----------------------- | ------------------------------------------------------------------- |
+| pos.size                | Total longs/shorts in base currency (i.e. BTC for tBTCUSD)          |
+| funding.size            | Total active funding in specified CCY                               |
+| credits.size            | Total funding used in positions in specified CCY                    |
+| credits.size.sym        | Total funding used in positions on a specific pair in specified CCY |
+| vol.1d, vol.7d, vol.30d | Total trading volume for specified time period (1d/7d/30d)          |
+| vwap                    | Volume weighted average price for the day                           |
+
+> 🚧
+>
+> Specifying either "hist" or "last" section is mandatory for all keys.
+
+<HTMLBlock>{`
+<hr/>
+
+<table>
+  <tr>
+    <td style="font-weight: 600;">Rate Limit:</td>
+    <td style="text-align: right;">15 reqs/min (requests per minute)</td>
+  </tr>
+</table>
+`}</HTMLBlock>
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "api-settings-public",
+    "version": "2"
+  },
+  "servers": [
+    {
+      "url": "https://api-pub.bitfinex.com/v2"
+    }
+  ],
+  "security": [
+    {}
+  ],
+  "paths": {
+    "/stats1/{key}:{size}:{sym_platform}:{side_pair}/{section}": {
+      "get": {
+        "summary": "Stats",
+        "description": "The Stats endpoint provides various statistics on a specified trading pair or funding currency. Use the available keys to specify which statistic you wish to retrieve.",
+        "operationId": "rest-public-stats",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "description": "Available keys: \"funding.size\", \"credits.size\", \"credits.size.sym\", \"pos.size\", \"vol.1d\", \"vol.7d\", \"vol.30d\", \"vwap\"",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "pos.size"
+            }
+          },
+          {
+            "name": "size",
+            "in": "path",
+            "description": "Available values: '1m' (for keys: \"pos.size\", \"funding.size\", \"credits.size\", \"credits.size.sym\"), \"30m\" (for keys: vol.1d, vol.7d, vol.30d), \"1d\" (for keys: vwap)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "1m"
+            }
+          },
+          {
+            "name": "sym_platform",
+            "in": "path",
+            "description": "The symbol you want information about. (e.g. tBTCUSD, tETHUSD, fUSD, fBTC) (used for keys: \"pos.size\", \"funding.size\", \"credits.size\", \"credits.size.sym\", \"vwap\", \"vol1d/7d/30d\").",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "tBTCUSD"
+            }
+          },
+          {
+            "name": "side_pair",
+            "in": "path",
+            "description": "Used to specify the side for \"pos.size\" key. Available values: \"long\", \"short\". Only for non-funding queries. Used to specify the trading pair on credits.size.sym.",
+            "schema": {
+              "type": "string",
+              "default": "long"
+            },
+            "required": true
+          },
+          {
+            "name": "section",
+            "in": "path",
+            "description": "Available values: \"last\", \"hist\".",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "hist"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "+1: sort in ascending order | -1: sort in descending order (by MTS field).",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "If start is given, only records with MTS >= start (milliseconds) will be given as response.",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "description": "If end is given, only records with MTS <= end (milliseconds) will be given as response.",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of records in response (max. 10000).",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "// Response with section=\"last\"\n[ \n  1573554000000, //MTS\n  25957.94278561 //VALUE\n]\n\n// Response with section=\"hist\"\n[\n  [\n   \t1573560420000, //MTS\n   \t369005353.5945115 //VALUE\n  ],\n  [...]\n]"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+  },
+  "x-readme-fauxas": true
+}
+```

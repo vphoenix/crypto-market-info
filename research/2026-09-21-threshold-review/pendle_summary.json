@@ -1,0 +1,85 @@
+{
+  "quote_observed_at_utc": "2026-09-21T15:12:36.285246+00:00",
+  "capital_usdt": "1000000",
+  "target_simple_apr": "0.045",
+  "assumptions": [
+    "Normal PT redemption in accounting asset",
+    "Accounting asset converts 1:1 into USDT at maturity",
+    "No gas, post-quote slippage, redemption fee, or exit cost yet deducted",
+    "API quote only; no independent eth_call or guaranteed inclusion"
+  ],
+  "markets": [
+    {
+      "name": "sUSDS",
+      "address": "0x9c560ebaf78e596cbcc27411d633a74d628dd7dc",
+      "pt": "1-0xdc169abe56461a2e0c034da431ac2a3ebf596094",
+      "expiry": "2026-11-26T00:00:00.000Z",
+      "days_to_expiry": "65.366246698541666666666666666666666666666666666667",
+      "indicative_apy": "0.04758838346290162",
+      "api_liquidity_usd": "3952244.3166996674",
+      "indicative_simple_apr": "0.046684819976493338731992689130233117770005365257610",
+      "hypothetical_million_cost_headroom_usdt_before_size_quote": "301.72700883861575706770734602485041008968384202190"
+    },
+    {
+      "name": "sUSDe",
+      "address": "0x47ad2cd1dd15739a7a035b9d3b7828d916fef77e",
+      "pt": "1-0xb195b618ea52b77cb2a58846f452f59f8dfa9390",
+      "expiry": "2026-11-26T00:00:00.000Z",
+      "days_to_expiry": "65.366246698541666666666666666666666666666666666667",
+      "indicative_apy": "0.0497730634116762",
+      "api_liquidity_usd": "3954396.012296645",
+      "indicative_simple_apr": "0.048785895049374785733651539515827032368537655030415",
+      "hypothetical_million_cost_headroom_usdt_before_size_quote": "677.99931444443788514658117250622791927891302672190"
+    }
+  ],
+  "susds_routes": [
+    {
+      "route_index": 0,
+      "aggregator": "KYBERSWAP",
+      "quoted_pt_out": "1008103.678505979888513243",
+      "min_pt_out_for_requested_0_1_percent_slippage": "1007095.574827473908624729",
+      "api_effective_apy_in_underlying_terms": "0.04697615624153273",
+      "api_fee_usd_included_in_quote_not_subtracted_twice": "178.68007218352372",
+      "cashflow_simple_apr_before_remaining_costs": "0.045250305839399668891847503264004054795964585290736",
+      "cashflow_apy_before_remaining_costs": "0.0460989330290275403393710556690472886620651349981",
+      "remaining_cost_budget_usdt_to_target_simple_apr": "44.8261732829707050238219178082191780821917808219",
+      "min_out_cashflow_simple_apr": "0.039621133885384266193084078690594008789714548443725"
+    },
+    {
+      "route_index": 1,
+      "aggregator": "OKX",
+      "quoted_pt_out": "1008103.38791475531418642",
+      "min_pt_out_for_requested_0_1_percent_slippage": "1007095.284526840558872233",
+      "api_effective_apy_in_underlying_terms": "0.04697615206985306",
+      "api_fee_usd_included_in_quote_not_subtracted_twice": "178.68002067386226",
+      "cashflow_simple_apr_before_remaining_costs": "0.045248683200769998333779548554632888867430917720593",
+      "cashflow_apy_before_remaining_costs": "0.0460972492345390029275591870530297547758933139852",
+      "remaining_cost_budget_usdt_to_target_simple_apr": "44.5355820583963782008219178082191780821917808219",
+      "min_out_cashflow_simple_apr": "0.039619512869393225305575180290063941179645701062110"
+    },
+    {
+      "route_index": 2,
+      "aggregator": "OKX",
+      "quoted_pt_out": "1008103.258763099947818943",
+      "min_pt_out_for_requested_0_1_percent_slippage": "1007095.155504336847871124",
+      "api_effective_apy_in_underlying_terms": "0.04697613357299413",
+      "api_fee_usd_included_in_quote_not_subtracted_twice": "178.67999778067946",
+      "cashflow_simple_apr_before_remaining_costs": "0.045247962028045700307970948248062573343301524650524",
+      "cashflow_apy_before_remaining_costs": "0.0460965008821471402054144550016953257807208348896",
+      "remaining_cost_budget_usdt_to_target_simple_apr": "44.4064304030300107238219178082191780821917808219",
+      "min_out_cashflow_simple_apr": "0.039618792417841651577795308974822192020625058009183"
+    },
+    {
+      "route_index": 3,
+      "aggregator": "KYBERSWAP",
+      "quoted_pt_out": "1008097.87744412634917408",
+      "min_pt_out_for_requested_0_1_percent_slippage": "1007089.779566682222824905",
+      "api_effective_apy_in_underlying_terms": "0.046976132348125255",
+      "api_fee_usd_included_in_quote_not_subtracted_twice": "178.6790438980903",
+      "cashflow_simple_apr_before_remaining_costs": "0.045217913164533282566012942534077538540935221598176",
+      "cashflow_apy_before_remaining_costs": "0.0460653199231317980502909236863828721612747638659",
+      "remaining_cost_budget_usdt_to_target_simple_apr": "39.0251114294313658608219178082191780821917808219",
+      "min_out_cashflow_simple_apr": "0.039588773603192746253574442342168766362446345736801"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+SELECT instrument_id,minute_time,valid_bitmap,bid_price_01,bid_qty_01,ask_price_01,ask_qty_01 FROM crypto_market_info.order_book_minute FINAL WHERE instrument_id IN (1,3,5,6,7) AND minute_time >= '2026-08-22 00:00:00' AND bitTest(valid_bitmap,0) ORDER BY minute_time,instrument_id

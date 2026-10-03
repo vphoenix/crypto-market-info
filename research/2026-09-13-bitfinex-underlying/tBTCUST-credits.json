@@ -1,0 +1,10 @@
+{
+  "url": "https://api-pub.bitfinex.com/v2/stats1/credits.size.sym:1m:fUST:tBTCUST/last",
+  "requested_at_utc": "2026-09-13T14:09:48.876394+00:00",
+  "received_at_utc": "2026-09-13T14:09:49.381347+00:00",
+  "payload_sha256": "39ce161b774fd64f55aaabb997475fd19aab06210539d035dc3e2847475c8c54",
+  "data": [
+    1789308540000,
+    "321101991.65382487"
+  ]
+}

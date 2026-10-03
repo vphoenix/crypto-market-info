@@ -1,0 +1,1304 @@
+[
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1786881600008,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03926000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1786896000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03939692",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1786910400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03920500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1786924800001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03876000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1786939200001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03918000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1786953600003,
+    "fundingRate": "-0.00000458",
+    "markPrice": "0.03902071",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1786968000002,
+    "fundingRate": "0.00003103",
+    "markPrice": "0.03896000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1786982400005,
+    "fundingRate": "0.00002332",
+    "markPrice": "0.03913000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1786996800000,
+    "fundingRate": "0.00003740",
+    "markPrice": "0.03873000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787011200006,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03857500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787025600001,
+    "fundingRate": "-0.00000790",
+    "markPrice": "0.03764000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787040000001,
+    "fundingRate": "0.00003575",
+    "markPrice": "0.03772000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787054400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03790904",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787068800003,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03826450",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787083200008,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03802000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787097600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03799000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787112000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03777000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787126400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03777683",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787140800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03805350",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787155200004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03950549",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787169600009,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03955612",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787184000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04019000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787198400011,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03978096",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787212800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04007000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787227200002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04077093",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787241600005,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04116000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787256000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04123000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787270400004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04207976",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787284800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04218000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787299200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04276450",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787313600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04385067",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787328000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04433148",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787342400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04397000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787356800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04519542",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787371200004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04649000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787385600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04539833",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787400000002,
+    "fundingRate": "0.00012374",
+    "markPrice": "0.04365000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787414400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04444000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787428800001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04441036",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787443200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04379929",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787457600004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04237000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787472000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04240000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787486400002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04331983",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787500800006,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04391000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787515200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04408817",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787529600001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04402000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787544000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04268000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787558400002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04310882",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787572800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04349000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787587200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04324500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787601600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04298000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787616000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04288825",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787630400001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04326000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787644800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04314000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787659200001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04302267",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787673600005,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04259000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787688000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04234404",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787702400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04189000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787716800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04219429",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787731200005,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04212683",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787745600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04211000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787760000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04232000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787774400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04253000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787788800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04359000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787803200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04312229",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787817600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04374733",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787832000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04334000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787846400013,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04372143",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787860800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04348371",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787875200026,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04393000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787889600008,
+    "fundingRate": "0.00002435",
+    "markPrice": "0.04306000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787904000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04316000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787918400004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04316767",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787932800001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04286440",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787947200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04242000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787961600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04321532",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787976000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04299655",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1787990400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04286000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788004800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04235000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788019200002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04291002",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788033600002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04282954",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788048000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04282500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788062400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04266000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788076800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04256536",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788091200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04307000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788105600001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04297000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788120000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04309478",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788134400002,
+    "fundingRate": "-0.00007678",
+    "markPrice": "0.04196443",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788148800002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04256000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788163200002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04288669",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788177600003,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04298059",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788192000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04275000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788206400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04302000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788220800005,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04333000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788235200007,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04370000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788249600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04396179",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788264000001,
+    "fundingRate": "-0.00007375",
+    "markPrice": "0.04390943",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788278400000,
+    "fundingRate": "0.00003848",
+    "markPrice": "0.04400600",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788292800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04350326",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788307200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04366000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788321600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04483259",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788336000001,
+    "fundingRate": "0.00001560",
+    "markPrice": "0.04417150",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788350400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04393500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788364800005,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04392000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788379200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04387240",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788393600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04419536",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788408000000,
+    "fundingRate": "-0.00193010",
+    "markPrice": "0.05051000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788422400000,
+    "fundingRate": "-0.00724120",
+    "markPrice": "0.04638721",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788436800002,
+    "fundingRate": "-0.00321418",
+    "markPrice": "0.04525299",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788451200000,
+    "fundingRate": "-0.00148966",
+    "markPrice": "0.04592000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788465600000,
+    "fundingRate": "-0.00136327",
+    "markPrice": "0.04560000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788480000000,
+    "fundingRate": "-0.00202543",
+    "markPrice": "0.04576440",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788494400000,
+    "fundingRate": "-0.00842771",
+    "markPrice": "0.04648294",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788508800000,
+    "fundingRate": "-0.00175255",
+    "markPrice": "0.04571088",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788523200003,
+    "fundingRate": "-0.00088253",
+    "markPrice": "0.04620000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788537600009,
+    "fundingRate": "-0.00045736",
+    "markPrice": "0.04601441",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788552000000,
+    "fundingRate": "-0.00049003",
+    "markPrice": "0.04612656",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788566400000,
+    "fundingRate": "-0.00012023",
+    "markPrice": "0.04633000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788580800001,
+    "fundingRate": "0.00003011",
+    "markPrice": "0.04640573",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788595200000,
+    "fundingRate": "0.00002243",
+    "markPrice": "0.04602000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788609600007,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04642216",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788624000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04657867",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788638400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04673138",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788652800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04677000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788667200005,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04631000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788681600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04627000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788696000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04661000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788710400004,
+    "fundingRate": "0.00002867",
+    "markPrice": "0.04657000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788724800000,
+    "fundingRate": "-0.00002899",
+    "markPrice": "0.04647500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788739200004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04680733",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788753600001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04611264",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788768000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04557000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788782400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04594000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788796800003,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04520683",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788811200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04561960",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788825600004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04554300",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788840000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04551810",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788854400002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04558000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788868800006,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04584000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788883200001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04593483",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788897600002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04542857",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788912000005,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04560000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788926400004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04536000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788940800004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04610493",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788955200004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04631500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788969600002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04531024",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788984000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04544000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1788998400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04555893",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789012800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04525842",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789027200007,
+    "fundingRate": "-0.00011430",
+    "markPrice": "0.04457000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789041600000,
+    "fundingRate": "-0.00005048",
+    "markPrice": "0.04426967",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789056000002,
+    "fundingRate": "-0.00004787",
+    "markPrice": "0.04420929",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789070400000,
+    "fundingRate": "-0.00005306",
+    "markPrice": "0.04417000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789084800008,
+    "fundingRate": "-0.00001585",
+    "markPrice": "0.04369000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789099200005,
+    "fundingRate": "0.00000740",
+    "markPrice": "0.04430000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789113600000,
+    "fundingRate": "0.00001146",
+    "markPrice": "0.04455000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789128000000,
+    "fundingRate": "-0.00000694",
+    "markPrice": "0.04440000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789142400000,
+    "fundingRate": "-0.00004194",
+    "markPrice": "0.04524538",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789156800004,
+    "fundingRate": "0.00002227",
+    "markPrice": "0.04510321",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789171200001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04561000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789185600002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04634400",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789200000003,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04622779",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789214400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04666126",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789228800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04862000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789243200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04729000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789257600002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04876167",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789272000007,
+    "fundingRate": "-0.00223507",
+    "markPrice": "0.05262000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789286400000,
+    "fundingRate": "-0.00040042",
+    "markPrice": "0.05178919",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789300800001,
+    "fundingRate": "-0.00284147",
+    "markPrice": "0.05350157",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789315200000,
+    "fundingRate": "-0.00540764",
+    "markPrice": "0.05026000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789329600000,
+    "fundingRate": "-0.00185809",
+    "markPrice": "0.05128000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789344000000,
+    "fundingRate": "-0.00226459",
+    "markPrice": "0.05021000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789358400000,
+    "fundingRate": "-0.00215411",
+    "markPrice": "0.05104000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789372800000,
+    "fundingRate": "-0.00248522",
+    "markPrice": "0.05334988",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789387200002,
+    "fundingRate": "-0.00073339",
+    "markPrice": "0.05176000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789401600000,
+    "fundingRate": "-0.00085633",
+    "markPrice": "0.05217000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789416000008,
+    "fundingRate": "-0.00044521",
+    "markPrice": "0.05262494",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789430400000,
+    "fundingRate": "-0.00031415",
+    "markPrice": "0.05229333",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789444800001,
+    "fundingRate": "-0.01089842",
+    "markPrice": "0.05455765",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789459200005,
+    "fundingRate": "-0.00479132",
+    "markPrice": "0.05037363",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789473600005,
+    "fundingRate": "-0.00488886",
+    "markPrice": "0.05161000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789488000001,
+    "fundingRate": "-0.00347613",
+    "markPrice": "0.05135926",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789502400000,
+    "fundingRate": "-0.00352616",
+    "markPrice": "0.05152000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789516800001,
+    "fundingRate": "-0.00621393",
+    "markPrice": "0.05156000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789531200002,
+    "fundingRate": "-0.00584636",
+    "markPrice": "0.05213000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "HIVEUSDT",
+    "fundingTime": 1789545600002,
+    "fundingRate": "-0.00250506",
+    "markPrice": "0.05069000",
+    "rateType": "Regular"
+  }
+]

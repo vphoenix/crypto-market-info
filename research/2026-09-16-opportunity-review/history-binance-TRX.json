@@ -1,0 +1,653 @@
+[
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1786896000000,
+    "fundingRate": "0.00002796",
+    "markPrice": "0.33184596",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1786924800001,
+    "fundingRate": "-0.00015969",
+    "markPrice": "0.33101000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1786953600003,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.33269003",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1786982400005,
+    "fundingRate": "-0.00013736",
+    "markPrice": "0.32948598",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787011200006,
+    "fundingRate": "-0.00002114",
+    "markPrice": "0.33109000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787040000001,
+    "fundingRate": "0.00002875",
+    "markPrice": "0.33324000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787068800003,
+    "fundingRate": "0.00000726",
+    "markPrice": "0.33189000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787097600000,
+    "fundingRate": "-0.00003616",
+    "markPrice": "0.33264769",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787126400000,
+    "fundingRate": "-0.00001176",
+    "markPrice": "0.33329688",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787155200004,
+    "fundingRate": "-0.00009106",
+    "markPrice": "0.33338000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787184000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.33453251",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787212800000,
+    "fundingRate": "-0.00000362",
+    "markPrice": "0.33396000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787241600005,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.33857412",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787270400004,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.33733000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787299200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.33910510",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787328000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.33999000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787356800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.34354808",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787385600000,
+    "fundingRate": "0.00011577",
+    "markPrice": "0.34525896",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787414400000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.34384537",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787443200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.34422176",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787472000000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.34244000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787500800006,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.34341000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787529600001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.34385000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787558400002,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.34380745",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787587200000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.34324484",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787616000001,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.34497483",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787644800000,
+    "fundingRate": "0.00008743",
+    "markPrice": "0.34375253",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787673600005,
+    "fundingRate": "0.00006900",
+    "markPrice": "0.34183000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787702400000,
+    "fundingRate": "-0.00010689",
+    "markPrice": "0.33606167",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787731200005,
+    "fundingRate": "0.00005577",
+    "markPrice": "0.33696000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787760000000,
+    "fundingRate": "-0.00030956",
+    "markPrice": "0.33425543",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787788800000,
+    "fundingRate": "0.00009103",
+    "markPrice": "0.33586000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787817600000,
+    "fundingRate": "-0.00007574",
+    "markPrice": "0.33498933",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787846400013,
+    "fundingRate": "0.00002008",
+    "markPrice": "0.33715000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787875200026,
+    "fundingRate": "0.00002983",
+    "markPrice": "0.33752284",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787904000000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.33949000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787932800001,
+    "fundingRate": "0.00006413",
+    "markPrice": "0.33965000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787961600000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.34117000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1787990400000,
+    "fundingRate": "0.00002082",
+    "markPrice": "0.33879033",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788019200002,
+    "fundingRate": "-0.00001759",
+    "markPrice": "0.33810892",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788048000000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.34073751",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788076800000,
+    "fundingRate": "0.00010000",
+    "markPrice": "0.34055000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788105600001,
+    "fundingRate": "0.00002619",
+    "markPrice": "0.33997000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788134400002,
+    "fundingRate": "-0.00012938",
+    "markPrice": "0.33593000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788163200002,
+    "fundingRate": "-0.00005565",
+    "markPrice": "0.33670924",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788192000001,
+    "fundingRate": "-0.00039762",
+    "markPrice": "0.33270000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788220800005,
+    "fundingRate": "-0.00060231",
+    "markPrice": "0.33223000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788249600000,
+    "fundingRate": "-0.00058622",
+    "markPrice": "0.33154000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788278400000,
+    "fundingRate": "-0.00169699",
+    "markPrice": "0.32393839",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788307200000,
+    "fundingRate": "-0.00185769",
+    "markPrice": "0.32181000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788336000001,
+    "fundingRate": "-0.00083101",
+    "markPrice": "0.32263000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788364800005,
+    "fundingRate": "-0.00040213",
+    "markPrice": "0.32395000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788393600000,
+    "fundingRate": "-0.00049525",
+    "markPrice": "0.32499096",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788422400000,
+    "fundingRate": "-0.00018055",
+    "markPrice": "0.32594910",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788451200000,
+    "fundingRate": "-0.00013980",
+    "markPrice": "0.33149000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788480000000,
+    "fundingRate": "-0.00035961",
+    "markPrice": "0.33045294",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788508800000,
+    "fundingRate": "-0.00070150",
+    "markPrice": "0.32774341",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788537600009,
+    "fundingRate": "-0.00005109",
+    "markPrice": "0.33007200",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788566400000,
+    "fundingRate": "-0.00014133",
+    "markPrice": "0.33119000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788595200000,
+    "fundingRate": "-0.00006922",
+    "markPrice": "0.33248843",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788624000001,
+    "fundingRate": "-0.00004331",
+    "markPrice": "0.33415233",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788652800000,
+    "fundingRate": "-0.00012460",
+    "markPrice": "0.33361000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788681600000,
+    "fundingRate": "-0.00019851",
+    "markPrice": "0.33344000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788710400004,
+    "fundingRate": "-0.00001455",
+    "markPrice": "0.33510961",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788739200004,
+    "fundingRate": "-0.00003949",
+    "markPrice": "0.33487790",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788768000000,
+    "fundingRate": "0.00000155",
+    "markPrice": "0.33632000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788796800003,
+    "fundingRate": "-0.00016720",
+    "markPrice": "0.33356225",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788825600004,
+    "fundingRate": "-0.00023450",
+    "markPrice": "0.33440159",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788854400002,
+    "fundingRate": "-0.00005045",
+    "markPrice": "0.33792000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788883200001,
+    "fundingRate": "0.00002765",
+    "markPrice": "0.33916000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788912000005,
+    "fundingRate": "-0.00002806",
+    "markPrice": "0.33855006",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788940800004,
+    "fundingRate": "-0.00013391",
+    "markPrice": "0.33912000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788969600002,
+    "fundingRate": "-0.00022170",
+    "markPrice": "0.33815237",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1788998400000,
+    "fundingRate": "-0.00005229",
+    "markPrice": "0.33882000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789027200007,
+    "fundingRate": "-0.00009186",
+    "markPrice": "0.33945471",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789056000002,
+    "fundingRate": "-0.00015828",
+    "markPrice": "0.33888459",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789084800008,
+    "fundingRate": "-0.00013800",
+    "markPrice": "0.33979000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789113600000,
+    "fundingRate": "-0.00014329",
+    "markPrice": "0.33833000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789142400000,
+    "fundingRate": "-0.00044696",
+    "markPrice": "0.33509000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789171200001,
+    "fundingRate": "-0.00019713",
+    "markPrice": "0.33840000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789200000003,
+    "fundingRate": "0.00000353",
+    "markPrice": "0.33936000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789228800000,
+    "fundingRate": "-0.00006759",
+    "markPrice": "0.33977000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789257600002,
+    "fundingRate": "-0.00008612",
+    "markPrice": "0.33965565",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789286400000,
+    "fundingRate": "-0.00005350",
+    "markPrice": "0.33963000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789315200000,
+    "fundingRate": "0.00002882",
+    "markPrice": "0.34114000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789344000000,
+    "fundingRate": "-0.00010700",
+    "markPrice": "0.33805000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789372800000,
+    "fundingRate": "-0.00019806",
+    "markPrice": "0.33897000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789401600000,
+    "fundingRate": "-0.00003618",
+    "markPrice": "0.33968480",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789430400000,
+    "fundingRate": "-0.00034877",
+    "markPrice": "0.33774000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789459200005,
+    "fundingRate": "-0.00034544",
+    "markPrice": "0.33743000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789488000001,
+    "fundingRate": "-0.00033045",
+    "markPrice": "0.33556063",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789516800001,
+    "fundingRate": "-0.00055361",
+    "markPrice": "0.33275000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "TRXUSDT",
+    "fundingTime": 1789545600002,
+    "fundingRate": "-0.00004343",
+    "markPrice": "0.33493022",
+    "rateType": "Regular"
+  }
+]

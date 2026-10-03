@@ -1,0 +1,31 @@
+[
+  {
+    "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=SOL-USDT-SWAP&limit=100",
+    "requested_at_utc": "2026-09-21T14:34:50.908767+00:00",
+    "sha256": "78443deefe759c1bc0af191d06487a3a4ba325e7fb91f832a72a7c6c9e959554",
+    "bytes": 19044,
+    "file": "okx-sol-funding.raw.json"
+  },
+  {
+    "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=AVAX-USDT-SWAP&limit=100",
+    "requested_at_utc": "2026-09-21T14:34:52.703626+00:00",
+    "sha256": "6eae63ffa38af439e263b58270e0e25e27fdb72b74e6c364c1e7d753382e607a",
+    "bytes": 18872,
+    "file": "okx-avax-funding.raw.json"
+  },
+  {
+    "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=TRX-USDT-SWAP&limit=100",
+    "requested_at_utc": "2026-09-21T14:34:54.647429+00:00",
+    "sha256": "297ad55fee135afa84980bcfa78516cb2b5d18dee9c00f2032e4bf88b1da897a",
+    "bytes": 19270,
+    "file": "okx-trx-funding.raw.json"
+  },
+  {
+    "url": "https://www.okx.com/api/v5/public/funding-rate?instId=AVAX-USDT-SWAP",
+    "source_ts_ms": "1790001433434",
+    "saved_by_review_utc": "2026-09-21T14:39:58.678990+00:00",
+    "sha256": "1959eccef64cf863ecb7d1f44887dcb24ddd62b3b7b7fb2f6ced424fa99c9cc0",
+    "bytes": 519,
+    "file": "okx-avax-current-funding.raw.json"
+  }
+]

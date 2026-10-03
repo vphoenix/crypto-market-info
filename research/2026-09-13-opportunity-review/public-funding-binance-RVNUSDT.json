@@ -1,0 +1,3509 @@
+{
+  "venue": "Binance",
+  "symbol": "RVNUSDT",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=RVNUSDT&limit=1000",
+  "fetched_at": "2026-09-12T19:15:15.610460+00:00",
+  "payload_sha256": "aa63a13c51e3b018dc04214cd021c85f6e15a91d989f2a2f35d86c23a9d780e9",
+  "data": [
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782028800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00416551",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782043200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00415035",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782057600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00416600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782072000004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00420800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782086400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00408440",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782100800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00410200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782115200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00410900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782129600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00411587",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782144000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00409900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782158400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00404183",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782172800003,
+      "fundingRate": "0.00004319",
+      "markPrice": "0.00399400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782187200000,
+      "fundingRate": "0.00004603",
+      "markPrice": "0.00404823",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782201600005,
+      "fundingRate": "0.00001817",
+      "markPrice": "0.00398399",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782216000000,
+      "fundingRate": "0.00000576",
+      "markPrice": "0.00392700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782230400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00396900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782244800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00398400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782259200005,
+      "fundingRate": "0.00003079",
+      "markPrice": "0.00397955",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782288000005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00395261",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782302400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00397100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782316800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00381700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782331200006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00378800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782345600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00387600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782360000008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00383900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782374400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00387555",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782388800006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00385200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782403200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00377676",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782417600011,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00375000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782432000010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00378200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782446400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00381000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782460800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00386000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782475200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00379834",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782489600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00395691",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782504000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00392917",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782518400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00390900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782532800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00396600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782547200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00394900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782561600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00402100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782576000009,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00403200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782590400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00395800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782604800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00402200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782619200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00398900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782633600013,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00395300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782648000008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00395900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782662400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00396600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782676800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00394162",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782691200006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00394400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782705600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00397570",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782720000013,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00398800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782734400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00391800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782748800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00394282",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782763200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00386200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782777600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00387300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782792000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00382600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782806400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00380800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782820800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00373399",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782835200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00375036",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782849600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00371891",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782864000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00369100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782878400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00368300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782892800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00365400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782907200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00367488",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782921600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00377238",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782936000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00372290",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782950400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376701",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782964800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00384100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782979200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00378953",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1782993600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00384000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783008000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00382800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783022400008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00381300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783036800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00382721",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783051200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00382519",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783065600007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00387600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783080000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00392600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783094400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00390455",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783108800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00392900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783123200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00394332",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783137600006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00388659",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783152000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00388938",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783166400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00390300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783180800007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00396200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783195200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00395603",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783209600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00393395",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783224000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00387317",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783238400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00385365",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783252800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00381900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783267200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00384300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783281600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00384955",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783296000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00385447",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783310400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00382041",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783324800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00377600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783339200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00378400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783353600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00386339",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783368000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00387800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783382400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00387467",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783396800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00379245",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783411200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00380900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783425600010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00380400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783440000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00382500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783454400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783468800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00372641",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783483200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00367100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783497600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00372093",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783512000005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00372900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783526400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00364651",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783540800006,
+      "fundingRate": "0.00004736",
+      "markPrice": "0.00367861",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783555200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00367800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783569600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00369069",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783584000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00374400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783598400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00374600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783612800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00373826",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783627200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00390500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783641600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00404900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783656000000,
+      "fundingRate": "-0.00000539",
+      "markPrice": "0.00415000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783670400005,
+      "fundingRate": "-0.00008960",
+      "markPrice": "0.00424674",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783684800002,
+      "fundingRate": "-0.00018484",
+      "markPrice": "0.00402237",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783699200005,
+      "fundingRate": "-0.00046771",
+      "markPrice": "0.00403800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783713600000,
+      "fundingRate": "-0.00020115",
+      "markPrice": "0.00391200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783728000000,
+      "fundingRate": "-0.00022055",
+      "markPrice": "0.00392042",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783742400000,
+      "fundingRate": "0.00003991",
+      "markPrice": "0.00395151",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783756800000,
+      "fundingRate": "-0.00006625",
+      "markPrice": "0.00390100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783771200008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00390230",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783785600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00392700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783800000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00389069",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783814400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00378333",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783828800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00387200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783843200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00385066",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783857600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00381100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783872000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00381056",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783886400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00378347",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783900800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00374300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783915200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00367800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783929600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00373100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783944000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00374000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783958400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00373900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783972800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00369900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1783987200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00375300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784001600000,
+      "fundingRate": "0.00003520",
+      "markPrice": "0.00373749",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784016000002,
+      "fundingRate": "0.00004951",
+      "markPrice": "0.00373969",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784030400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00372300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784044800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00380900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784059200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00380000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784073600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00384103",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784088000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00380100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784102400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00379606",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784116800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00385407",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784131200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00386100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784145600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00385300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784160000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00386530",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784174400003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00390500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784188800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00386443",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784203200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00385240",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784217600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00388105",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784232000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00385050",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784246400000,
+      "fundingRate": "0.00003065",
+      "markPrice": "0.00380200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784260800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00380050",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784275200010,
+      "fundingRate": "0.00004585",
+      "markPrice": "0.00377400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784289600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00377700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784304000004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00379600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784318400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00378200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784332800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00377425",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784347200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00377154",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784361600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376001",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784376000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00378392",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784390400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376094",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784404800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00375700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784419200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784433600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376101",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784448000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784462400000,
+      "fundingRate": "0.00003701",
+      "markPrice": "0.00376100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784476800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00377900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784491200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376244",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784505600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784520000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784534400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00374000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784548800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00377976",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784563200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00381018",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784577600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00381100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784592000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00380474",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784606400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00385867",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784620800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00389343",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784635200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00386652",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784649600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00387198",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784664000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00386014",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784678400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00386140",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784692800008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00384400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784707200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00380700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784721600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00381772",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784736000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00383400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784750400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00382887",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784764800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00382400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784779200006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00378900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784793600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00379559",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784808000000,
+      "fundingRate": "0.00000824",
+      "markPrice": "0.00380005",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784822400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00379682",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784836800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376588",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784851200000,
+      "fundingRate": "0.00004632",
+      "markPrice": "0.00374900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784865600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00377900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784880000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00379944",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784894400000,
+      "fundingRate": "-0.00002312",
+      "markPrice": "0.00378000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784908800008,
+      "fundingRate": "-0.00000004",
+      "markPrice": "0.00373200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784923200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00371600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784937600002,
+      "fundingRate": "-0.00005734",
+      "markPrice": "0.00372400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784952000000,
+      "fundingRate": "-0.00000293",
+      "markPrice": "0.00372100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784966400000,
+      "fundingRate": "-0.00000402",
+      "markPrice": "0.00370743",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784980800000,
+      "fundingRate": "-0.00010676",
+      "markPrice": "0.00370500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1784995200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00373139",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785009600003,
+      "fundingRate": "-0.00006458",
+      "markPrice": "0.00374104",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785024000000,
+      "fundingRate": "-0.00015701",
+      "markPrice": "0.00373000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785038400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00375400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785052800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00375320",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785067200000,
+      "fundingRate": "0.00002189",
+      "markPrice": "0.00371300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785081600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00373380",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785096000000,
+      "fundingRate": "-0.00035889",
+      "markPrice": "0.00371500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785110400010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00375100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785124800000,
+      "fundingRate": "-0.00001711",
+      "markPrice": "0.00374700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785139200000,
+      "fundingRate": "0.00002207",
+      "markPrice": "0.00372700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785153600000,
+      "fundingRate": "-0.00004224",
+      "markPrice": "0.00369052",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785168000001,
+      "fundingRate": "-0.00007793",
+      "markPrice": "0.00358016",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785182400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00358935",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785196800000,
+      "fundingRate": "0.00003253",
+      "markPrice": "0.00349307",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785211200012,
+      "fundingRate": "0.00004579",
+      "markPrice": "0.00347900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785225600000,
+      "fundingRate": "-0.00013345",
+      "markPrice": "0.00346351",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785240000001,
+      "fundingRate": "-0.00003698",
+      "markPrice": "0.00347671",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785254400000,
+      "fundingRate": "0.00002634",
+      "markPrice": "0.00350900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785268800000,
+      "fundingRate": "-0.00003900",
+      "markPrice": "0.00350528",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785283200000,
+      "fundingRate": "-0.00019973",
+      "markPrice": "0.00350600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785297600000,
+      "fundingRate": "-0.00022087",
+      "markPrice": "0.00342179",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785312000002,
+      "fundingRate": "0.00002018",
+      "markPrice": "0.00347972",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785326400007,
+      "fundingRate": "-0.00009654",
+      "markPrice": "0.00346700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785340800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00344077",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785355200003,
+      "fundingRate": "-0.00006204",
+      "markPrice": "0.00342900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785369600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00346641",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785384000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00351900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785398400000,
+      "fundingRate": "-0.00000982",
+      "markPrice": "0.00354878",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785412800000,
+      "fundingRate": "-0.00009476",
+      "markPrice": "0.00356283",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785427200000,
+      "fundingRate": "-0.00002302",
+      "markPrice": "0.00362222",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785441600003,
+      "fundingRate": "-0.00002775",
+      "markPrice": "0.00356100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785456000003,
+      "fundingRate": "-0.00015091",
+      "markPrice": "0.00356500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785470400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00356817",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785484800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00360997",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785499200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00355748",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785513600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00358800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785528000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00358866",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785542400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00359468",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785556800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00362147",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785571200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00360063",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785585600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00359235",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785600000000,
+      "fundingRate": "0.00004932",
+      "markPrice": "0.00355500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785614400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00353600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785628800000,
+      "fundingRate": "0.00002902",
+      "markPrice": "0.00355200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785643200000,
+      "fundingRate": "0.00002367",
+      "markPrice": "0.00360197",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785657600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00360800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785672000007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00360072",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785686400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00360164",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785700800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00359000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785715200000,
+      "fundingRate": "-0.00015810",
+      "markPrice": "0.00357300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785729600000,
+      "fundingRate": "0.00004229",
+      "markPrice": "0.00352350",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785744000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00351318",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785758400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00349978",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785772800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00355539",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785787200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00354675",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785801600004,
+      "fundingRate": "0.00000134",
+      "markPrice": "0.00353900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785816000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00352160",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785830400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00353406",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785844800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00353396",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785859200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00353712",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785873600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00353890",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785888000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00351600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785902400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00353048",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785916800004,
+      "fundingRate": "0.00001575",
+      "markPrice": "0.00354563",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785931200008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00352812",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785945600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00352600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785960000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00352849",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785974400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00351900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1785988800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00352519",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786003200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00355944",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786017600000,
+      "fundingRate": "0.00002529",
+      "markPrice": "0.00354659",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786032000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00357039",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786046400001,
+      "fundingRate": "-0.00001484",
+      "markPrice": "0.00355334",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786060800000,
+      "fundingRate": "0.00004645",
+      "markPrice": "0.00355105",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786075200000,
+      "fundingRate": "-0.00014093",
+      "markPrice": "0.00353800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786089600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00356645",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786104000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00356857",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786118400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00357100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786132800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00356148",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786147200001,
+      "fundingRate": "-0.00000402",
+      "markPrice": "0.00354904",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786161600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00355300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786176000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00355248",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786190400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00356850",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786204800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00360787",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786219200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00360800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786233600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00360747",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786248000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00361645",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786262400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00362191",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786276800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00360470",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786291200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00360000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786305600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00360208",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786320000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00354525",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786334400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00354990",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786348800005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00356100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786363200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00357700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786377600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00355217",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786392000000,
+      "fundingRate": "0.00001698",
+      "markPrice": "0.00360447",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786406400000,
+      "fundingRate": "-0.00017338",
+      "markPrice": "0.00353400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786420800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00352852",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786435200006,
+      "fundingRate": "-0.00092892",
+      "markPrice": "0.00285700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786449600001,
+      "fundingRate": "-0.00156334",
+      "markPrice": "0.00288545",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786464000000,
+      "fundingRate": "-0.00308011",
+      "markPrice": "0.00282938",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786478400003,
+      "fundingRate": "-0.00327927",
+      "markPrice": "0.00286864",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786492800001,
+      "fundingRate": "-0.00396829",
+      "markPrice": "0.00286800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786507200000,
+      "fundingRate": "-0.00329410",
+      "markPrice": "0.00274300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786521600000,
+      "fundingRate": "-0.00252928",
+      "markPrice": "0.00270180",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786536000000,
+      "fundingRate": "-0.00133600",
+      "markPrice": "0.00266744",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786550400000,
+      "fundingRate": "-0.00279667",
+      "markPrice": "0.00262600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786564800001,
+      "fundingRate": "-0.00149688",
+      "markPrice": "0.00263359",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786579200000,
+      "fundingRate": "-0.00121627",
+      "markPrice": "0.00259616",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786593600000,
+      "fundingRate": "-0.00136334",
+      "markPrice": "0.00262500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786608000000,
+      "fundingRate": "-0.00186574",
+      "markPrice": "0.00262900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786622400000,
+      "fundingRate": "-0.00062089",
+      "markPrice": "0.00263415",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786636800000,
+      "fundingRate": "-0.00061172",
+      "markPrice": "0.00267150",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786651200002,
+      "fundingRate": "-0.00063377",
+      "markPrice": "0.00271000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786665600000,
+      "fundingRate": "-0.00111483",
+      "markPrice": "0.00265213",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786680000001,
+      "fundingRate": "-0.00090088",
+      "markPrice": "0.00263647",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786694400001,
+      "fundingRate": "-0.00064945",
+      "markPrice": "0.00259701",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786708800002,
+      "fundingRate": "-0.00007646",
+      "markPrice": "0.00268881",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786723200001,
+      "fundingRate": "-0.00212593",
+      "markPrice": "0.00278600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786737600000,
+      "fundingRate": "-0.00036142",
+      "markPrice": "0.00268214",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786752000003,
+      "fundingRate": "-0.00075293",
+      "markPrice": "0.00266955",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786766400000,
+      "fundingRate": "-0.00091102",
+      "markPrice": "0.00265656",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786780800002,
+      "fundingRate": "-0.00117101",
+      "markPrice": "0.00265200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786795200001,
+      "fundingRate": "-0.00103941",
+      "markPrice": "0.00264000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786809600000,
+      "fundingRate": "-0.00050571",
+      "markPrice": "0.00272700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786824000003,
+      "fundingRate": "-0.00070932",
+      "markPrice": "0.00278700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786838400000,
+      "fundingRate": "-0.00076176",
+      "markPrice": "0.00281611",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786852800001,
+      "fundingRate": "-0.00100641",
+      "markPrice": "0.00275055",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786867200002,
+      "fundingRate": "-0.00005514",
+      "markPrice": "0.00271800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786881600008,
+      "fundingRate": "-0.00029012",
+      "markPrice": "0.00273800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786896000000,
+      "fundingRate": "-0.00085644",
+      "markPrice": "0.00281000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786910400000,
+      "fundingRate": "-0.00031069",
+      "markPrice": "0.00285900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786924800001,
+      "fundingRate": "-0.00040767",
+      "markPrice": "0.00293700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786939200001,
+      "fundingRate": "-0.00012530",
+      "markPrice": "0.00287825",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786953600003,
+      "fundingRate": "-0.00140917",
+      "markPrice": "0.00292300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786968000002,
+      "fundingRate": "-0.00056210",
+      "markPrice": "0.00282314",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786982400005,
+      "fundingRate": "-0.00042212",
+      "markPrice": "0.00285000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1786996800000,
+      "fundingRate": "-0.00037810",
+      "markPrice": "0.00281151",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787011200006,
+      "fundingRate": "-0.00093412",
+      "markPrice": "0.00278400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787025600001,
+      "fundingRate": "-0.00022530",
+      "markPrice": "0.00274800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787040000001,
+      "fundingRate": "-0.00006088",
+      "markPrice": "0.00272420",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787054400000,
+      "fundingRate": "0.00002405",
+      "markPrice": "0.00272000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787068800003,
+      "fundingRate": "-0.00012318",
+      "markPrice": "0.00274800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787083200008,
+      "fundingRate": "-0.00058682",
+      "markPrice": "0.00270900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787097600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271051",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787112000001,
+      "fundingRate": "-0.00027310",
+      "markPrice": "0.00274600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787126400000,
+      "fundingRate": "-0.00053409",
+      "markPrice": "0.00271200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787140800000,
+      "fundingRate": "-0.00038522",
+      "markPrice": "0.00267700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787155200004,
+      "fundingRate": "-0.00050000",
+      "markPrice": "0.00277300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787169600009,
+      "fundingRate": "-0.00028320",
+      "markPrice": "0.00277600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787184000001,
+      "fundingRate": "-0.00026339",
+      "markPrice": "0.00281700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787198400011,
+      "fundingRate": "-0.00031051",
+      "markPrice": "0.00282000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787212800000,
+      "fundingRate": "-0.00017663",
+      "markPrice": "0.00284619",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787227200002,
+      "fundingRate": "-0.00009076",
+      "markPrice": "0.00292700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787241600005,
+      "fundingRate": "-0.00062460",
+      "markPrice": "0.00294200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787256000001,
+      "fundingRate": "-0.00018920",
+      "markPrice": "0.00296900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787270400004,
+      "fundingRate": "-0.00026858",
+      "markPrice": "0.00303600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787284800000,
+      "fundingRate": "-0.00017896",
+      "markPrice": "0.00303901",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787299200000,
+      "fundingRate": "-0.00088895",
+      "markPrice": "0.00313057",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787313600000,
+      "fundingRate": "-0.00051265",
+      "markPrice": "0.00324400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787328000001,
+      "fundingRate": "-0.00013702",
+      "markPrice": "0.00340300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787342400000,
+      "fundingRate": "-0.00019771",
+      "markPrice": "0.00331400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787356800000,
+      "fundingRate": "-0.00012716",
+      "markPrice": "0.00345275",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787371200004,
+      "fundingRate": "0.00004640",
+      "markPrice": "0.00361600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787385600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00363015",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787400000002,
+      "fundingRate": "-0.00004606",
+      "markPrice": "0.00342681",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787414400000,
+      "fundingRate": "-0.00006012",
+      "markPrice": "0.00333016",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787428800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00333500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787443200000,
+      "fundingRate": "-0.00012840",
+      "markPrice": "0.00329716",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787457600004,
+      "fundingRate": "-0.00039527",
+      "markPrice": "0.00319317",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787472000000,
+      "fundingRate": "-0.00018736",
+      "markPrice": "0.00320100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787486400002,
+      "fundingRate": "-0.00013696",
+      "markPrice": "0.00329900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787500800006,
+      "fundingRate": "-0.00021757",
+      "markPrice": "0.00334165",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787515200000,
+      "fundingRate": "-0.00007601",
+      "markPrice": "0.00333045",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787529600001,
+      "fundingRate": "-0.00036058",
+      "markPrice": "0.00332435",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787544000000,
+      "fundingRate": "-0.00029363",
+      "markPrice": "0.00329400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787558400002,
+      "fundingRate": "-0.00019704",
+      "markPrice": "0.00332800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787572800000,
+      "fundingRate": "0.00001582",
+      "markPrice": "0.00330912",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787587200000,
+      "fundingRate": "-0.00028696",
+      "markPrice": "0.00334500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787601600000,
+      "fundingRate": "-0.00013565",
+      "markPrice": "0.00329005",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787616000001,
+      "fundingRate": "-0.00013749",
+      "markPrice": "0.00329900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787630400001,
+      "fundingRate": "-0.00003097",
+      "markPrice": "0.00333800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787644800000,
+      "fundingRate": "-0.00024298",
+      "markPrice": "0.00328098",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787659200001,
+      "fundingRate": "-0.00006599",
+      "markPrice": "0.00330000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787673600005,
+      "fundingRate": "-0.00051312",
+      "markPrice": "0.00331500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787688000000,
+      "fundingRate": "-0.00034578",
+      "markPrice": "0.00322253",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787702400000,
+      "fundingRate": "-0.00011831",
+      "markPrice": "0.00318600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787716800000,
+      "fundingRate": "-0.00017656",
+      "markPrice": "0.00323349",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787731200005,
+      "fundingRate": "-0.00001319",
+      "markPrice": "0.00327549",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787745600000,
+      "fundingRate": "-0.00001240",
+      "markPrice": "0.00325300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787760000000,
+      "fundingRate": "-0.00043362",
+      "markPrice": "0.00327433",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787774400000,
+      "fundingRate": "-0.00013709",
+      "markPrice": "0.00325100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787788800000,
+      "fundingRate": "-0.00013274",
+      "markPrice": "0.00332700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787803200000,
+      "fundingRate": "-0.00021385",
+      "markPrice": "0.00327900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787817600000,
+      "fundingRate": "-0.00001212",
+      "markPrice": "0.00323500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787832000000,
+      "fundingRate": "-0.00012407",
+      "markPrice": "0.00329000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787846400013,
+      "fundingRate": "-0.00008045",
+      "markPrice": "0.00332900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787860800000,
+      "fundingRate": "-0.00004842",
+      "markPrice": "0.00330800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787875200026,
+      "fundingRate": "-0.00021349",
+      "markPrice": "0.00334300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787889600008,
+      "fundingRate": "-0.00022900",
+      "markPrice": "0.00328100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787904000000,
+      "fundingRate": "-0.00018087",
+      "markPrice": "0.00324800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787918400004,
+      "fundingRate": "-0.00015930",
+      "markPrice": "0.00315403",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787932800001,
+      "fundingRate": "-0.00024812",
+      "markPrice": "0.00305900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787947200000,
+      "fundingRate": "-0.00012594",
+      "markPrice": "0.00304441",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787961600000,
+      "fundingRate": "-0.00010758",
+      "markPrice": "0.00308700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787976000000,
+      "fundingRate": "-0.00018479",
+      "markPrice": "0.00305720",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1787990400000,
+      "fundingRate": "-0.00005753",
+      "markPrice": "0.00304000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788004800000,
+      "fundingRate": "-0.00044579",
+      "markPrice": "0.00302600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788019200002,
+      "fundingRate": "-0.00030930",
+      "markPrice": "0.00303451",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788033600002,
+      "fundingRate": "-0.00022205",
+      "markPrice": "0.00302500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788048000000,
+      "fundingRate": "-0.00028453",
+      "markPrice": "0.00302450",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788062400000,
+      "fundingRate": "-0.00010981",
+      "markPrice": "0.00300610",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788076800000,
+      "fundingRate": "-0.00024303",
+      "markPrice": "0.00300900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788091200000,
+      "fundingRate": "-0.00012219",
+      "markPrice": "0.00300353",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788105600001,
+      "fundingRate": "-0.00051770",
+      "markPrice": "0.00297900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788120000000,
+      "fundingRate": "-0.00010357",
+      "markPrice": "0.00299000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788134400002,
+      "fundingRate": "-0.00013235",
+      "markPrice": "0.00291108",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788148800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00298500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788163200002,
+      "fundingRate": "-0.00002074",
+      "markPrice": "0.00299751",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788177600003,
+      "fundingRate": "-0.00044770",
+      "markPrice": "0.00296319",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788192000001,
+      "fundingRate": "-0.00025988",
+      "markPrice": "0.00296700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788206400000,
+      "fundingRate": "-0.00011384",
+      "markPrice": "0.00295846",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788220800005,
+      "fundingRate": "-0.00010978",
+      "markPrice": "0.00295653",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788235200007,
+      "fundingRate": "-0.00047966",
+      "markPrice": "0.00299300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788249600000,
+      "fundingRate": "-0.00062734",
+      "markPrice": "0.00296800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788264000001,
+      "fundingRate": "-0.00029529",
+      "markPrice": "0.00293221",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788278400000,
+      "fundingRate": "-0.00091398",
+      "markPrice": "0.00298346",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788292800000,
+      "fundingRate": "-0.00038174",
+      "markPrice": "0.00298300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788307200000,
+      "fundingRate": "-0.00043603",
+      "markPrice": "0.00296019",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788321600000,
+      "fundingRate": "-0.00002586",
+      "markPrice": "0.00296564",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788336000001,
+      "fundingRate": "-0.00048179",
+      "markPrice": "0.00295400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788350400000,
+      "fundingRate": "-0.00031584",
+      "markPrice": "0.00292500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788364800005,
+      "fundingRate": "-0.00015646",
+      "markPrice": "0.00291051",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788379200000,
+      "fundingRate": "-0.00019486",
+      "markPrice": "0.00291381",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788393600000,
+      "fundingRate": "-0.00027152",
+      "markPrice": "0.00292458",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788408000000,
+      "fundingRate": "-0.00054231",
+      "markPrice": "0.00301750",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788422400000,
+      "fundingRate": "-0.00008715",
+      "markPrice": "0.00303512",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788436800002,
+      "fundingRate": "-0.00023628",
+      "markPrice": "0.00301800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788451200000,
+      "fundingRate": "0.00002613",
+      "markPrice": "0.00307204",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788465600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00308931",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788480000000,
+      "fundingRate": "-0.00036781",
+      "markPrice": "0.00308548",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788494400000,
+      "fundingRate": "-0.00026268",
+      "markPrice": "0.00307900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788508800000,
+      "fundingRate": "-0.00021635",
+      "markPrice": "0.00304900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788523200003,
+      "fundingRate": "-0.00010713",
+      "markPrice": "0.00307800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788537600009,
+      "fundingRate": "-0.00000950",
+      "markPrice": "0.00302600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788552000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00304000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788566400000,
+      "fundingRate": "-0.00007994",
+      "markPrice": "0.00305948",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788580800001,
+      "fundingRate": "-0.00037166",
+      "markPrice": "0.00304600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788595200000,
+      "fundingRate": "-0.00007280",
+      "markPrice": "0.00306300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788609600007,
+      "fundingRate": "-0.00018925",
+      "markPrice": "0.00304800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788624000001,
+      "fundingRate": "-0.00035393",
+      "markPrice": "0.00305900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788638400000,
+      "fundingRate": "-0.00021490",
+      "markPrice": "0.00305000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788652800000,
+      "fundingRate": "-0.00021084",
+      "markPrice": "0.00305900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788667200005,
+      "fundingRate": "-0.00037369",
+      "markPrice": "0.00309100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788681600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00306541",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788696000001,
+      "fundingRate": "-0.00000756",
+      "markPrice": "0.00308900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788710400004,
+      "fundingRate": "-0.00007907",
+      "markPrice": "0.00309219",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788724800000,
+      "fundingRate": "-0.00010266",
+      "markPrice": "0.00307200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788739200004,
+      "fundingRate": "0.00001202",
+      "markPrice": "0.00307851",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788753600001,
+      "fundingRate": "-0.00022638",
+      "markPrice": "0.00310100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788768000000,
+      "fundingRate": "-0.00007589",
+      "markPrice": "0.00306800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788782400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00311275",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788796800003,
+      "fundingRate": "-0.00018010",
+      "markPrice": "0.00305291",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788811200000,
+      "fundingRate": "-0.00018868",
+      "markPrice": "0.00306900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788825600004,
+      "fundingRate": "-0.00018200",
+      "markPrice": "0.00305500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788840000000,
+      "fundingRate": "-0.00030066",
+      "markPrice": "0.00304467",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788854400002,
+      "fundingRate": "-0.00043213",
+      "markPrice": "0.00304400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788868800006,
+      "fundingRate": "-0.00008698",
+      "markPrice": "0.00306248",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788883200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00312761",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788897600002,
+      "fundingRate": "-0.00005207",
+      "markPrice": "0.00308100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788912000005,
+      "fundingRate": "-0.00005661",
+      "markPrice": "0.00307600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788926400004,
+      "fundingRate": "-0.00010059",
+      "markPrice": "0.00303200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788940800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00309100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788955200004,
+      "fundingRate": "-0.00006243",
+      "markPrice": "0.00309640",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788969600002,
+      "fundingRate": "-0.00007565",
+      "markPrice": "0.00305953",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788984000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00304079",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1788998400000,
+      "fundingRate": "-0.00010166",
+      "markPrice": "0.00300500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789012800000,
+      "fundingRate": "-0.00018252",
+      "markPrice": "0.00305400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789027200007,
+      "fundingRate": "-0.00015902",
+      "markPrice": "0.00299700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789041600000,
+      "fundingRate": "-0.00575591",
+      "markPrice": "0.00241300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789056000002,
+      "fundingRate": "-0.00245808",
+      "markPrice": "0.00230006",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789070400000,
+      "fundingRate": "-0.00284733",
+      "markPrice": "0.00231084",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789084800008,
+      "fundingRate": "-0.00373487",
+      "markPrice": "0.00228345",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789099200005,
+      "fundingRate": "-0.00182079",
+      "markPrice": "0.00224600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789113600000,
+      "fundingRate": "-0.00248401",
+      "markPrice": "0.00226300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789128000000,
+      "fundingRate": "-0.00274757",
+      "markPrice": "0.00222985",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789142400000,
+      "fundingRate": "-0.00095911",
+      "markPrice": "0.00224700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789156800004,
+      "fundingRate": "-0.00191055",
+      "markPrice": "0.00222700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789171200001,
+      "fundingRate": "-0.00165651",
+      "markPrice": "0.00223500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789185600002,
+      "fundingRate": "-0.00116204",
+      "markPrice": "0.00220700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789200000003,
+      "fundingRate": "-0.00131195",
+      "markPrice": "0.00222700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789214400000,
+      "fundingRate": "-0.00129747",
+      "markPrice": "0.00223200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "fundingTime": 1789228800000,
+      "fundingRate": "-0.00145432",
+      "markPrice": "0.00220950",
+      "rateType": "Regular"
+    }
+  ]
+}

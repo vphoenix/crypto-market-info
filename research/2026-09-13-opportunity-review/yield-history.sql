@@ -1,0 +1,1 @@
+SELECT r.provider,r.product_code,r.yield_type,r.deposit_asset_key,r.source_url,o.* FROM crypto_market_info.yield_route AS r FINAL INNER JOIN crypto_market_info.yield_observation AS o FINAL USING(yield_route_id) WHERE o.observation_time >= '2026-09-05 00:00:00'

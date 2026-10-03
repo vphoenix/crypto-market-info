@@ -1,0 +1,7 @@
+{
+  "name": "local-funding",
+  "url": "http://127.0.0.1:8123/?readonly=1&max_execution_time=45&max_threads=2",
+  "retrieved_at_utc": "2026-09-16T10:31:14.649255+00:00",
+  "sha256": "8776bc935bba03855f4af6b1cf16542ba40aef6b049b3294e301bf74d282e160",
+  "rows": 74591
+}

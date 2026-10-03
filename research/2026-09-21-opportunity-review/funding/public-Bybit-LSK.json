@@ -1,0 +1,1019 @@
+{
+  "venue": "Bybit",
+  "symbol": "LSK",
+  "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=LSKUSDT&limit=200",
+  "retrieved_at": "2026-09-21T14:32:58.085331+00:00",
+  "status": 200,
+  "sha256": "6c55a4b209b141c385d64575bd2f616a89bbb534f77c23bceb8f34a4a6da899b",
+  "data": {
+    "retCode": 0,
+    "retMsg": "OK",
+    "result": {
+      "category": "linear",
+      "list": [
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789999200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00034529",
+          "fundingRateTimestamp": "1789995600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789992000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789988400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789984800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789981200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00135467",
+          "fundingRateTimestamp": "1789977600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00096788",
+          "fundingRateTimestamp": "1789974000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00047788",
+          "fundingRateTimestamp": "1789970400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00157253",
+          "fundingRateTimestamp": "1789966800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.0025791",
+          "fundingRateTimestamp": "1789963200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00416398",
+          "fundingRateTimestamp": "1789959600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.004265",
+          "fundingRateTimestamp": "1789956000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00015363",
+          "fundingRateTimestamp": "1789952400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789948800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789945200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789941600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00056846",
+          "fundingRateTimestamp": "1789938000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00043044",
+          "fundingRateTimestamp": "1789934400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00115712",
+          "fundingRateTimestamp": "1789930800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789927200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00030677",
+          "fundingRateTimestamp": "1789923600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00057416",
+          "fundingRateTimestamp": "1789920000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789916400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00073467",
+          "fundingRateTimestamp": "1789912800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.0011853",
+          "fundingRateTimestamp": "1789909200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.0014782",
+          "fundingRateTimestamp": "1789905600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00216849",
+          "fundingRateTimestamp": "1789902000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00065109",
+          "fundingRateTimestamp": "1789898400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00099896",
+          "fundingRateTimestamp": "1789894800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00084191",
+          "fundingRateTimestamp": "1789891200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00084182",
+          "fundingRateTimestamp": "1789887600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00010187",
+          "fundingRateTimestamp": "1789884000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789880400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789876800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00010793",
+          "fundingRateTimestamp": "1789873200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00116584",
+          "fundingRateTimestamp": "1789869600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00057912",
+          "fundingRateTimestamp": "1789866000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00168408",
+          "fundingRateTimestamp": "1789862400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00211258",
+          "fundingRateTimestamp": "1789858800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789855200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789851600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00035885",
+          "fundingRateTimestamp": "1789848000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00070691",
+          "fundingRateTimestamp": "1789844400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00335551",
+          "fundingRateTimestamp": "1789840800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00181307",
+          "fundingRateTimestamp": "1789837200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00104032",
+          "fundingRateTimestamp": "1789833600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00043796",
+          "fundingRateTimestamp": "1789830000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00039995",
+          "fundingRateTimestamp": "1789826400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00091748",
+          "fundingRateTimestamp": "1789822800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00110916",
+          "fundingRateTimestamp": "1789819200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00109351",
+          "fundingRateTimestamp": "1789815600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00343399",
+          "fundingRateTimestamp": "1789812000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00259159",
+          "fundingRateTimestamp": "1789808400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00335072",
+          "fundingRateTimestamp": "1789804800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00463345",
+          "fundingRateTimestamp": "1789801200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00366485",
+          "fundingRateTimestamp": "1789797600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00270267",
+          "fundingRateTimestamp": "1789794000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00126871",
+          "fundingRateTimestamp": "1789790400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00236879",
+          "fundingRateTimestamp": "1789786800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00360185",
+          "fundingRateTimestamp": "1789783200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00387348",
+          "fundingRateTimestamp": "1789779600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00266291",
+          "fundingRateTimestamp": "1789776000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00186325",
+          "fundingRateTimestamp": "1789772400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00317867",
+          "fundingRateTimestamp": "1789768800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00501594",
+          "fundingRateTimestamp": "1789765200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00092803",
+          "fundingRateTimestamp": "1789761600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00030397",
+          "fundingRateTimestamp": "1789758000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00038089",
+          "fundingRateTimestamp": "1789754400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00052147",
+          "fundingRateTimestamp": "1789750800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00077229",
+          "fundingRateTimestamp": "1789747200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00071933",
+          "fundingRateTimestamp": "1789743600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.0020654",
+          "fundingRateTimestamp": "1789740000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00196906",
+          "fundingRateTimestamp": "1789736400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00112256",
+          "fundingRateTimestamp": "1789732800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00260604",
+          "fundingRateTimestamp": "1789729200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00611941",
+          "fundingRateTimestamp": "1789725600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00614203",
+          "fundingRateTimestamp": "1789722000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00838993",
+          "fundingRateTimestamp": "1789718400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00868663",
+          "fundingRateTimestamp": "1789714800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00720182",
+          "fundingRateTimestamp": "1789711200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00620729",
+          "fundingRateTimestamp": "1789707600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00878594",
+          "fundingRateTimestamp": "1789704000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.01121234",
+          "fundingRateTimestamp": "1789700400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.02",
+          "fundingRateTimestamp": "1789696800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.0131091",
+          "fundingRateTimestamp": "1789693200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00355313",
+          "fundingRateTimestamp": "1789689600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00103051",
+          "fundingRateTimestamp": "1789686000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00329551",
+          "fundingRateTimestamp": "1789682400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00351086",
+          "fundingRateTimestamp": "1789678800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00304701",
+          "fundingRateTimestamp": "1789675200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00542734",
+          "fundingRateTimestamp": "1789671600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00397163",
+          "fundingRateTimestamp": "1789668000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00659434",
+          "fundingRateTimestamp": "1789664400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.011321",
+          "fundingRateTimestamp": "1789660800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.01029783",
+          "fundingRateTimestamp": "1789657200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00435112",
+          "fundingRateTimestamp": "1789653600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00881655",
+          "fundingRateTimestamp": "1789650000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.01001668",
+          "fundingRateTimestamp": "1789646400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.0169412",
+          "fundingRateTimestamp": "1789642800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00952059",
+          "fundingRateTimestamp": "1789639200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00565622",
+          "fundingRateTimestamp": "1789635600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00408315",
+          "fundingRateTimestamp": "1789632000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.0040351",
+          "fundingRateTimestamp": "1789628400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00389981",
+          "fundingRateTimestamp": "1789624800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00449529",
+          "fundingRateTimestamp": "1789621200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00230503",
+          "fundingRateTimestamp": "1789617600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00130061",
+          "fundingRateTimestamp": "1789614000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.0020402",
+          "fundingRateTimestamp": "1789610400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00140123",
+          "fundingRateTimestamp": "1789606800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00212617",
+          "fundingRateTimestamp": "1789603200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00050392",
+          "fundingRateTimestamp": "1789599600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0005964",
+          "fundingRateTimestamp": "1789596000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00118396",
+          "fundingRateTimestamp": "1789592400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00110718",
+          "fundingRateTimestamp": "1789588800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00091476",
+          "fundingRateTimestamp": "1789585200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00019923",
+          "fundingRateTimestamp": "1789581600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00032488",
+          "fundingRateTimestamp": "1789578000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789574400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789570800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00023233",
+          "fundingRateTimestamp": "1789567200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789563600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00017642",
+          "fundingRateTimestamp": "1789560000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789556400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00008872",
+          "fundingRateTimestamp": "1789552800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00019775",
+          "fundingRateTimestamp": "1789549200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789545600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789542000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00019978",
+          "fundingRateTimestamp": "1789538400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00124725",
+          "fundingRateTimestamp": "1789534800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789531200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00182484",
+          "fundingRateTimestamp": "1789527600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00416776",
+          "fundingRateTimestamp": "1789524000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00456587",
+          "fundingRateTimestamp": "1789520400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00387761",
+          "fundingRateTimestamp": "1789516800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00045157",
+          "fundingRateTimestamp": "1789513200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00088215",
+          "fundingRateTimestamp": "1789509600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00033059",
+          "fundingRateTimestamp": "1789506000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00032617",
+          "fundingRateTimestamp": "1789502400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789498800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789495200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789491600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00044521",
+          "fundingRateTimestamp": "1789488000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00165648",
+          "fundingRateTimestamp": "1789484400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00177911",
+          "fundingRateTimestamp": "1789480800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.0019181",
+          "fundingRateTimestamp": "1789477200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.0041718",
+          "fundingRateTimestamp": "1789473600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.0015878",
+          "fundingRateTimestamp": "1789470000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00141449",
+          "fundingRateTimestamp": "1789466400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00436066",
+          "fundingRateTimestamp": "1789462800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00772359",
+          "fundingRateTimestamp": "1789459200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00283392",
+          "fundingRateTimestamp": "1789455600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00154564",
+          "fundingRateTimestamp": "1789452000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00146353",
+          "fundingRateTimestamp": "1789448400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00315606",
+          "fundingRateTimestamp": "1789444800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00314287",
+          "fundingRateTimestamp": "1789441200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00114892",
+          "fundingRateTimestamp": "1789437600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00358565",
+          "fundingRateTimestamp": "1789434000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00403744",
+          "fundingRateTimestamp": "1789430400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00251295",
+          "fundingRateTimestamp": "1789426800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00214949",
+          "fundingRateTimestamp": "1789423200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00133288",
+          "fundingRateTimestamp": "1789419600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00100203",
+          "fundingRateTimestamp": "1789416000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00076738",
+          "fundingRateTimestamp": "1789412400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00179633",
+          "fundingRateTimestamp": "1789408800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00168151",
+          "fundingRateTimestamp": "1789405200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00199169",
+          "fundingRateTimestamp": "1789401600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.01648521",
+          "fundingRateTimestamp": "1789398000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.02",
+          "fundingRateTimestamp": "1789394400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.02",
+          "fundingRateTimestamp": "1789390800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.02",
+          "fundingRateTimestamp": "1789387200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.02",
+          "fundingRateTimestamp": "1789383600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.02",
+          "fundingRateTimestamp": "1789380000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.02",
+          "fundingRateTimestamp": "1789376400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.02",
+          "fundingRateTimestamp": "1789372800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.01433744",
+          "fundingRateTimestamp": "1789369200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.01346628",
+          "fundingRateTimestamp": "1789365600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.01591256",
+          "fundingRateTimestamp": "1789362000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.01781941",
+          "fundingRateTimestamp": "1789358400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.01734973",
+          "fundingRateTimestamp": "1789354800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.01096172",
+          "fundingRateTimestamp": "1789351200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00274709",
+          "fundingRateTimestamp": "1789347600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00075534",
+          "fundingRateTimestamp": "1789344000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789340400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00015124",
+          "fundingRateTimestamp": "1789336800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.0000125",
+          "fundingRateTimestamp": "1789333200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00135934",
+          "fundingRateTimestamp": "1789329600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00054442",
+          "fundingRateTimestamp": "1789326000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00046698",
+          "fundingRateTimestamp": "1789322400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00162795",
+          "fundingRateTimestamp": "1789318800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00330286",
+          "fundingRateTimestamp": "1789315200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00612297",
+          "fundingRateTimestamp": "1789311600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.0118648",
+          "fundingRateTimestamp": "1789308000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.02",
+          "fundingRateTimestamp": "1789304400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.02",
+          "fundingRateTimestamp": "1789300800000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00690064",
+          "fundingRateTimestamp": "1789286400000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "0.00299305",
+          "fundingRateTimestamp": "1789272000000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00201325",
+          "fundingRateTimestamp": "1789257600000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00113497",
+          "fundingRateTimestamp": "1789243200000"
+        },
+        {
+          "symbol": "LSKUSDT",
+          "fundingRate": "-0.00620225",
+          "fundingRateTimestamp": "1789228800000"
+        }
+      ]
+    },
+    "retExtInfo": {},
+    "time": 1790001180242
+  }
+}

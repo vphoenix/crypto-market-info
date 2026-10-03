@@ -1,0 +1,1 @@
+SELECT instrument_id,count() AS minutes,min(minute_time) AS first_minute,max(minute_time) AS last_minute,sum(bitCount(valid_bitmap)) AS valid_seconds,countIf(bitTest(valid_bitmap,0)) AS valid_anchors FROM crypto_market_info.order_book_minute FINAL WHERE minute_time>=toDateTime('2026-09-19 16:00:00','UTC') GROUP BY instrument_id ORDER BY instrument_id

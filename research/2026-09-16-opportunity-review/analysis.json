@@ -1,0 +1,883 @@
+{
+  "end_utc": "2026-09-16T08:01:00Z",
+  "majors": {
+    "BTC": {
+      "7": {
+        "count": 21,
+        "sum": "0.00114106",
+        "first_ms": 1788969600002,
+        "last_ms": 1789545600002,
+        "max_gap_hours": "8.000001944444444444444444444444444444444",
+        "history_reaches_start": true,
+        "notional_simple_apr": "0.05949812857142857142857142857142857142857",
+        "two_equal_capital_gross_simple_apr": "0.02974906428571428571428571428571428571428"
+      },
+      "30": {
+        "count": 90,
+        "sum": "0.00603936",
+        "first_ms": 1786982400005,
+        "last_ms": 1789545600002,
+        "max_gap_hours": "8.000003611111111111111111111111111111111",
+        "history_reaches_start": true,
+        "notional_simple_apr": "0.07347888",
+        "two_equal_capital_gross_simple_apr": "0.03673944"
+      }
+    },
+    "ETH": {
+      "7": {
+        "count": 21,
+        "sum": "0.00020081",
+        "first_ms": 1788969600002,
+        "last_ms": 1789545600002,
+        "max_gap_hours": "8.000001944444444444444444444444444444444",
+        "history_reaches_start": true,
+        "notional_simple_apr": "0.01047080714285714285714285714285714285714",
+        "two_equal_capital_gross_simple_apr": "0.00523540357142857142857142857142857142857"
+      },
+      "30": {
+        "count": 90,
+        "sum": "0.00433473",
+        "first_ms": 1786982400005,
+        "last_ms": 1789545600002,
+        "max_gap_hours": "8.000003611111111111111111111111111111111",
+        "history_reaches_start": true,
+        "notional_simple_apr": "0.052739215",
+        "two_equal_capital_gross_simple_apr": "0.0263696075"
+      }
+    },
+    "SOL": {
+      "7": {
+        "count": 21,
+        "sum": "0.00012421",
+        "first_ms": 1788969600002,
+        "last_ms": 1789545600002,
+        "max_gap_hours": "8.000001944444444444444444444444444444444",
+        "history_reaches_start": true,
+        "notional_simple_apr": "0.006476664285714285714285714285714285714286",
+        "two_equal_capital_gross_simple_apr": "0.003238332142857142857142857142857142857143"
+      },
+      "30": {
+        "count": 90,
+        "sum": "0.00279019",
+        "first_ms": 1786982400005,
+        "last_ms": 1789545600002,
+        "max_gap_hours": "8.000003611111111111111111111111111111111",
+        "history_reaches_start": true,
+        "notional_simple_apr": "0.03394731166666666666666666666666666666667",
+        "two_equal_capital_gross_simple_apr": "0.01697365583333333333333333333333333333334"
+      }
+    },
+    "TRX": {
+      "7": {
+        "count": 21,
+        "sum": "-0.00358731",
+        "first_ms": 1788969600002,
+        "last_ms": 1789545600002,
+        "max_gap_hours": "8.000001944444444444444444444444444444444",
+        "history_reaches_start": true,
+        "notional_simple_apr": "-0.1870525928571428571428571428571428571429",
+        "two_equal_capital_gross_simple_apr": "-0.09352629642857142857142857142857142857145"
+      },
+      "30": {
+        "count": 90,
+        "sum": "-0.01168486",
+        "first_ms": 1786982400005,
+        "last_ms": 1789545600002,
+        "max_gap_hours": "8.000003611111111111111111111111111111111",
+        "history_reaches_start": true,
+        "notional_simple_apr": "-0.1421657966666666666666666666666666666667",
+        "two_equal_capital_gross_simple_apr": "-0.07108289833333333333333333333333333333335"
+      }
+    },
+    "AVAX": {
+      "7": {
+        "count": 21,
+        "sum": "0.00029362",
+        "first_ms": 1788969600002,
+        "last_ms": 1789545600002,
+        "max_gap_hours": "8.000001944444444444444444444444444444444",
+        "history_reaches_start": true,
+        "notional_simple_apr": "0.01531018571428571428571428571428571428571",
+        "two_equal_capital_gross_simple_apr": "0.007655092857142857142857142857142857142855"
+      },
+      "30": {
+        "count": 90,
+        "sum": "0.00449694",
+        "first_ms": 1786982400005,
+        "last_ms": 1789545600002,
+        "max_gap_hours": "8.000003611111111111111111111111111111111",
+        "history_reaches_start": true,
+        "notional_simple_apr": "0.05471277",
+        "two_equal_capital_gross_simple_apr": "0.027356385"
+      }
+    }
+  },
+  "candidates": {
+    "CVC": {
+      "windows": {
+        "1": {
+          "binance": {
+            "count": 6,
+            "sum": "-0.03080015",
+            "first_ms": 1789473600005,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "4.000000277777777777777777777777777777778",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 24,
+            "sum": "-0.02625487",
+            "first_ms": 1789462800000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "1",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "0.00454528"
+        },
+        "7": {
+          "binance": {
+            "count": 42,
+            "sum": "-0.13521133",
+            "first_ms": 1788955200004,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "4.000002222222222222222222222222222222222",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 77,
+            "sum": "-0.18246238",
+            "first_ms": 1788969600000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "8",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "-0.04725105"
+        }
+      },
+      "capacity": {
+        "binance": {
+          "asks": {
+            "all_visible_usdt": "222097.9613600",
+            "within_50bp_usdt": "29058.0327700"
+          },
+          "bids": {
+            "all_visible_usdt": "326688.0153500",
+            "within_50bp_usdt": "30110.4613600"
+          }
+        },
+        "bybit": {
+          "asks": {
+            "all_visible_usdt": "103408.57258",
+            "within_50bp_usdt": "8050.71307"
+          },
+          "bids": {
+            "all_visible_usdt": "136436.42109",
+            "within_50bp_usdt": "8344.25636"
+          }
+        }
+      },
+      "roundtrip_friction": {
+        "100000": {
+          "qty": "1834189",
+          "spread_slippage": "1998.0594300",
+          "fees": "105.05488567750",
+          "total": "2103.11431567750",
+          "leg_values": {
+            "binance": {
+              "asks": "49994.7606000",
+              "bids": "49554.4295800"
+            },
+            "bybit": {
+              "asks": "51033.67383",
+              "bids": "49475.94542"
+            }
+          }
+        },
+        "1000000": {
+          "qty": "18341892",
+          "insufficient_visible_depth": true,
+          "leg_values": {
+            "binance": {
+              "asks": null,
+              "bids": null
+            },
+            "bybit": {
+              "asks": null,
+              "bids": null
+            }
+          }
+        }
+      }
+    },
+    "MTL": {
+      "windows": {
+        "1": {
+          "binance": {
+            "count": 24,
+            "sum": "-0.02037429",
+            "first_ms": 1789462800000,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "1.000001666666666666666666666666666666667",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 24,
+            "sum": "-0.01257530",
+            "first_ms": 1789462800000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "1",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "0.00779899"
+        },
+        "7": {
+          "binance": {
+            "count": 84,
+            "sum": "-0.18186639",
+            "first_ms": 1788969600002,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "8.000001944444444444444444444444444444444",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 84,
+            "sum": "-0.25352706",
+            "first_ms": 1788969600000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "8",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "-0.07166067"
+        }
+      },
+      "capacity": {
+        "binance": {
+          "asks": {
+            "all_visible_usdt": "164235.5001",
+            "within_50bp_usdt": "23239.1390"
+          },
+          "bids": {
+            "all_visible_usdt": "272264.0134",
+            "within_50bp_usdt": "16695.1928"
+          }
+        },
+        "bybit": {
+          "asks": {
+            "all_visible_usdt": "149088.96265",
+            "within_50bp_usdt": "11151.57790"
+          },
+          "bids": {
+            "all_visible_usdt": "204494.78391",
+            "within_50bp_usdt": "9573.45128"
+          }
+        }
+      },
+      "roundtrip_friction": {
+        "100000": {
+          "qty": "180358",
+          "spread_slippage": "1727.52050",
+          "fees": "105.0879119110",
+          "total": "1832.6084119110",
+          "leg_values": {
+            "binance": {
+              "asks": "50185.4556",
+              "bids": "49644.8065"
+            },
+            "bybit": {
+              "asks": "50750.50921",
+              "bids": "49563.63781"
+            }
+          }
+        },
+        "1000000": {
+          "qty": "1803589",
+          "insufficient_visible_depth": true,
+          "leg_values": {
+            "binance": {
+              "asks": null,
+              "bids": null
+            },
+            "bybit": {
+              "asks": null,
+              "bids": null
+            }
+          }
+        }
+      }
+    },
+    "LSK": {
+      "windows": {
+        "1": {
+          "binance": {
+            "count": 24,
+            "sum": "-0.04504677",
+            "first_ms": 1789462800000,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "1.000001666666666666666666666666666666667",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 24,
+            "sum": "-0.03223818",
+            "first_ms": 1789462800000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "1",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "0.01280859"
+        },
+        "7": {
+          "binance": {
+            "count": 93,
+            "sum": "-0.35222990",
+            "first_ms": 1788955200004,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "4.000002222222222222222222222222222222222",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 93,
+            "sum": "-0.40488710",
+            "first_ms": 1788955200000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "4",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "-0.05265720"
+        }
+      },
+      "capacity": {
+        "binance": {
+          "asks": {
+            "all_visible_usdt": "30853.365030",
+            "within_50bp_usdt": "30853.365030"
+          },
+          "bids": {
+            "all_visible_usdt": "14841.700580",
+            "within_50bp_usdt": "14841.700580"
+          }
+        },
+        "bybit": {
+          "asks": {
+            "all_visible_usdt": "9486.411959",
+            "within_50bp_usdt": "9486.411959"
+          },
+          "bids": {
+            "all_visible_usdt": "9847.995420",
+            "within_50bp_usdt": "9847.995420"
+          }
+        }
+      },
+      "roundtrip_friction": {
+        "100000": {
+          "qty": "92033",
+          "insufficient_visible_depth": true,
+          "leg_values": {
+            "binance": {
+              "asks": null,
+              "bids": null
+            },
+            "bybit": {
+              "asks": null,
+              "bids": null
+            }
+          }
+        },
+        "1000000": {
+          "qty": "920331",
+          "insufficient_visible_depth": true,
+          "leg_values": {
+            "binance": {
+              "asks": null,
+              "bids": null
+            },
+            "bybit": {
+              "asks": null,
+              "bids": null
+            }
+          }
+        }
+      }
+    },
+    "IOST": {
+      "windows": {
+        "1": {
+          "binance": {
+            "count": 13,
+            "sum": "-0.01283542",
+            "first_ms": 1789462800000,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "4.000000277777777777777777777777777777778",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 12,
+            "sum": "-0.01160725",
+            "first_ms": 1789462800000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "8",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "0.00122817"
+        },
+        "7": {
+          "binance": {
+            "count": 143,
+            "sum": "-0.19651167",
+            "first_ms": 1788969600002,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "7.999999444444444444444444444444444444444",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 142,
+            "sum": "-0.23161216",
+            "first_ms": 1788969600000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "8",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "-0.03510049"
+        }
+      },
+      "capacity": {
+        "binance": {
+          "asks": {
+            "all_visible_usdt": "142906.03762370",
+            "within_50bp_usdt": "68438.10649680"
+          },
+          "bids": {
+            "all_visible_usdt": "143998.38070110",
+            "within_50bp_usdt": "54000.93408880"
+          }
+        },
+        "bybit": {
+          "asks": {
+            "all_visible_usdt": "96297.3982672",
+            "within_50bp_usdt": "11291.5145702"
+          },
+          "bids": {
+            "all_visible_usdt": "100156.3135628",
+            "within_50bp_usdt": "20197.4604758"
+          }
+        }
+      },
+      "roundtrip_friction": {
+        "100000": {
+          "qty": "63787714",
+          "spread_slippage": "1181.10870460",
+          "fees": "105.133479834035",
+          "total": "1286.242184434035",
+          "leg_values": {
+            "binance": {
+              "asks": "50071.04279990",
+              "bids": "49800.83554340"
+            },
+            "bybit": {
+              "asks": "50635.0331444",
+              "bids": "49724.1316963"
+            }
+          }
+        },
+        "1000000": {
+          "qty": "637877144",
+          "insufficient_visible_depth": true,
+          "leg_values": {
+            "binance": {
+              "asks": null,
+              "bids": null
+            },
+            "bybit": {
+              "asks": null,
+              "bids": null
+            }
+          }
+        }
+      }
+    },
+    "STEEM": {
+      "windows": {
+        "1": {
+          "binance": {
+            "count": 6,
+            "sum": "-0.04388798",
+            "first_ms": 1789473600005,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "4.000000277777777777777777777777777777778",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 6,
+            "sum": "-0.04664866",
+            "first_ms": 1789473600000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "4",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "-0.00276068"
+        },
+        "7": {
+          "binance": {
+            "count": 42,
+            "sum": "-0.16855364",
+            "first_ms": 1788955200004,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "4.000002222222222222222222222222222222222",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 42,
+            "sum": "-0.17551334",
+            "first_ms": 1788955200000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "4",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "-0.00695970"
+        }
+      },
+      "capacity": {
+        "binance": {
+          "asks": {
+            "all_visible_usdt": "123594.579820",
+            "within_50bp_usdt": "36229.293970"
+          },
+          "bids": {
+            "all_visible_usdt": "160612.002320",
+            "within_50bp_usdt": "25527.403420"
+          }
+        },
+        "bybit": {
+          "asks": {
+            "all_visible_usdt": "45870.19150",
+            "within_50bp_usdt": "4841.79020"
+          },
+          "bids": {
+            "all_visible_usdt": "147356.53692",
+            "within_50bp_usdt": "6200.94478"
+          }
+        }
+      },
+      "roundtrip_friction": {
+        "100000": {
+          "qty": "897223",
+          "insufficient_visible_depth": true,
+          "leg_values": {
+            "binance": {
+              "asks": "50089.122220",
+              "bids": "49648.501720"
+            },
+            "bybit": {
+              "asks": null,
+              "bids": "49426.73190"
+            }
+          }
+        },
+        "1000000": {
+          "qty": "8972230",
+          "insufficient_visible_depth": true,
+          "leg_values": {
+            "binance": {
+              "asks": null,
+              "bids": null
+            },
+            "bybit": {
+              "asks": null,
+              "bids": null
+            }
+          }
+        }
+      }
+    },
+    "HIVE": {
+      "windows": {
+        "1": {
+          "binance": {
+            "count": 6,
+            "sum": "-0.02645650",
+            "first_ms": 1789473600005,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "4.000000277777777777777777777777777777778",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 6,
+            "sum": "-0.02962734",
+            "first_ms": 1789473600000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "4",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "-0.00317084"
+        },
+        "7": {
+          "binance": {
+            "count": 42,
+            "sum": "-0.06383124",
+            "first_ms": 1788955200004,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "4.000002222222222222222222222222222222222",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 42,
+            "sum": "-0.07471615",
+            "first_ms": 1788955200000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "4",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "-0.01088491"
+        }
+      },
+      "capacity": {
+        "binance": {
+          "asks": {
+            "all_visible_usdt": "138155.1244700",
+            "within_50bp_usdt": "40643.6052800"
+          },
+          "bids": {
+            "all_visible_usdt": "148875.5747700",
+            "within_50bp_usdt": "35041.7452100"
+          }
+        },
+        "bybit": {
+          "asks": {
+            "all_visible_usdt": "94747.30328",
+            "within_50bp_usdt": "4229.54068"
+          },
+          "bids": {
+            "all_visible_usdt": "82250.68213",
+            "within_50bp_usdt": "4826.05812"
+          }
+        }
+      },
+      "roundtrip_friction": {
+        "100000": {
+          "qty": "990197",
+          "spread_slippage": "3745.5020300",
+          "fees": "105.01881999550",
+          "total": "3850.52084999550",
+          "leg_values": {
+            "binance": {
+              "asks": "50096.4660700",
+              "bids": "49720.8694300"
+            },
+            "bybit": {
+              "asks": "51785.09110",
+              "bids": "48415.18571"
+            }
+          }
+        },
+        "1000000": {
+          "qty": "9901970",
+          "insufficient_visible_depth": true,
+          "leg_values": {
+            "binance": {
+              "asks": null,
+              "bids": null
+            },
+            "bybit": {
+              "asks": null,
+              "bids": null
+            }
+          }
+        }
+      }
+    },
+    "ONG": {
+      "windows": {
+        "1": {
+          "binance": {
+            "count": 6,
+            "sum": "-0.00120939",
+            "first_ms": 1789473600005,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "4.000000277777777777777777777777777777778",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 6,
+            "sum": "-0.00050064",
+            "first_ms": 1789473600000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "4",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "0.00070875"
+        },
+        "7": {
+          "binance": {
+            "count": 139,
+            "sum": "-0.06941276",
+            "first_ms": 1788944400001,
+            "last_ms": 1789545600002,
+            "max_gap_hours": "4.000001111111111111111111111111111111111",
+            "history_reaches_start": true
+          },
+          "bybit": {
+            "count": 42,
+            "sum": "-0.04603538",
+            "first_ms": 1788955200000,
+            "last_ms": 1789545600000,
+            "max_gap_hours": "4",
+            "history_reaches_start": true
+          },
+          "bybit_short_minus_binance_long": "0.02337738"
+        }
+      },
+      "capacity": {
+        "binance": {
+          "asks": {
+            "all_visible_usdt": "249840.8019800",
+            "within_50bp_usdt": "119494.7860700"
+          },
+          "bids": {
+            "all_visible_usdt": "273010.7996700",
+            "within_50bp_usdt": "76005.4281500"
+          }
+        },
+        "bybit": {
+          "asks": {
+            "all_visible_usdt": "91561.09584",
+            "within_50bp_usdt": "3296.86580"
+          },
+          "bids": {
+            "all_visible_usdt": "108925.97068",
+            "within_50bp_usdt": "2642.94761"
+          }
+        }
+      },
+      "roundtrip_friction": {
+        "100000": {
+          "qty": "668784",
+          "spread_slippage": "2147.3657800",
+          "fees": "105.01972002200",
+          "total": "2252.38550002200",
+          "leg_values": {
+            "binance": {
+              "asks": "50033.3403800",
+              "bids": "49865.7451200"
+            },
+            "bybit": {
+              "asks": "51053.68278",
+              "bids": "49073.91226"
+            }
+          }
+        },
+        "1000000": {
+          "qty": "6687844",
+          "insufficient_visible_depth": true,
+          "leg_values": {
+            "binance": {
+              "asks": null,
+              "bids": null
+            },
+            "bybit": {
+              "asks": null,
+              "bids": null
+            }
+          }
+        }
+      }
+    }
+  },
+  "dated": [
+    {
+      "instrument": "BTC-USD-261225",
+      "total_capital": 100000,
+      "face_usd": "100870.0",
+      "btc_hedge": "1.312404249019472689657286669324161107723",
+      "spot_cost": "99691.90101299728250447784424653499364874",
+      "modeled_total_cost": "299.0757030389918475134335327396049809462",
+      "capital_used": "99990.97671603627435199127777927459862969",
+      "idle_capital": "9.0232839637256480087222207254013703138",
+      "profit": "879.0232839637256480087222207254013703138",
+      "net_simple_apr_total_capital": "0.03211859297246353717606382970733513002311",
+      "days": "99.89338540509259259259259259259259259259",
+      "spot_ts": "1789554811309",
+      "future_ts": "1789554811501",
+      "cost_assumption_bps": 30
+    },
+    {
+      "instrument": "BTC-USD-261225",
+      "total_capital": 1000000,
+      "face_usd": "1008000.0",
+      "btc_hedge": "13.12214258685262209617805700350025697467",
+      "spot_cost": "997003.6874227573467595052009757894278649",
+      "modeled_total_cost": "2991.011062268272040278515602927368283595",
+      "capital_used": "999994.6984850256187997837165787167961485",
+      "idle_capital": "5.301514974381200216283421283203851505",
+      "profit": "8005.301514974381200216283421283203851505",
+      "net_simple_apr_total_capital": "0.02925053586998251914063277452740498636810",
+      "days": "99.89338540509259259259259259259259259259",
+      "spot_ts": "1789554811309",
+      "future_ts": "1789554811501",
+      "cost_assumption_bps": 30
+    },
+    {
+      "instrument": "BTC-USD-270326",
+      "total_capital": 100000,
+      "face_usd": "101980.0",
+      "btc_hedge": "1.312509731634715769300402121716036095406",
+      "spot_cost": "99699.91367286811579602021592958136227562",
+      "modeled_total_cost": "299.0997410186043473880606477887440868269",
+      "capital_used": "99999.01341388672014340827657737010636245",
+      "idle_capital": "0.9865861132798565917234226298936375531",
+      "profit": "1980.986586113279856591723422629893637553",
+      "net_simple_apr_total_capital": "0.03787769306877480252422270122577699394227",
+      "days": "190.8933848263888888888888888888888888889",
+      "spot_ts": "1789554811309",
+      "future_ts": "1789554811551",
+      "cost_assumption_bps": 30
+    },
+    {
+      "instrument": "BTC-USD-270326",
+      "total_capital": 1000000,
+      "face_usd": "1017390.0",
+      "btc_hedge": "13.12218257001071330986446152280448722910",
+      "spot_cost": "997006.7257989171194152342413640449108214",
+      "modeled_total_cost": "2991.020177396751358245702724092134732464",
+      "capital_used": "999997.7459763138707734799440881370455539",
+      "idle_capital": "2.254023686129226520055911862954446136",
+      "profit": "17392.25402368612922652005591186295444614",
+      "net_simple_apr_total_capital": "0.03325506918125469187061833244906193161593",
+      "days": "190.8933848263888888888888888888888888889",
+      "spot_ts": "1789554811309",
+      "future_ts": "1789554811551",
+      "cost_assumption_bps": 30
+    },
+    {
+      "instrument": "BTC-USD-270924",
+      "total_capital": 100000,
+      "face_usd": "102860.0",
+      "btc_hedge": "1.312505329505830461054471879698918006662",
+      "spot_cost": "99699.57927879394289957368747850123973026",
+      "modeled_total_cost": "299.0987378363818286987210624355037191908",
+      "capital_used": "99998.67801663032472827240854093674344945",
+      "idle_capital": "1.3219833696752717275914590632565505492",
+      "profit": "2861.321983369675271727591459063256550549",
+      "net_simple_apr_total_capital": "0.02800753791045998492905462246113813597046",
+      "days": "372.8933715162037037037037037037037037037",
+      "spot_ts": "1789554811309",
+      "future_ts": "1789554812701",
+      "cost_assumption_bps": 30
+    },
+    {
+      "instrument": "BTC-USD-270924",
+      "total_capital": 1000000,
+      "face_usd": "201410.0",
+      "btc_hedge": "2.634858938703061756433845767626138501744",
+      "spot_cost": "200152.2089988952501054010460436739289082",
+      "modeled_total_cost": "600.4566269966857503162031381310217867246",
+      "capital_used": "200752.6656258919358557172491818049506949",
+      "idle_capital": "799247.3343741080641442827508181950493051",
+      "profit": "657.3343741080641442827508181950493050754",
+      "net_simple_apr_total_capital": "0.0006434199824306011454828350170738912018235",
+      "days": "372.8933715162037037037037037037037037037",
+      "spot_ts": "1789554811309",
+      "future_ts": "1789554812701",
+      "cost_assumption_bps": 30
+    }
+  ]
+}

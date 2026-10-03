@@ -23,6 +23,7 @@ type Config struct {
 }
 
 type Client struct {
+	readOnly     bool // Constructors that set a server readonly session also reject writes locally.
 	conn         driver.Conn
 	database     string
 	writeTimeout time.Duration

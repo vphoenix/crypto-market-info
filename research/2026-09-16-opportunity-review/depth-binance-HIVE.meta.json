@@ -1,0 +1,7 @@
+{
+  "name": "depth-binance-HIVE",
+  "url": "https://fapi.binance.com/fapi/v1/depth?limit=100&symbol=HIVEUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:25.873066+00:00",
+  "sha256": "c462e7c72d01b0b300d699a52e22478015c370b101767d4eba74408c133eb7e9",
+  "rows": null
+}

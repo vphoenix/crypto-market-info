@@ -1,0 +1,5 @@
+{
+  "url": "https://data-api.binance.vision/api/v3/depth?symbol=BTCUSDT&limit=1000",
+  "retrieved_at_utc": "2026-09-21T14:45:04.819954+00:00",
+  "sha256": "a92686ff3be80314df4e6f4a79a979d0535fac007e2f7e09f53e4ef0ef44987d"
+}

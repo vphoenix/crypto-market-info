@@ -1,0 +1,27 @@
+{
+  "checked_at_utc": "2026-10-02T09:31:02.516952+00:00",
+  "repository": "https://github.com/reserve-protocol/reserve-index-dtf",
+  "tag": "r5.0.0",
+  "commit": "241f0d244c45a311a4cd2af2c383a4f3bbe56265",
+  "source_status": "Official source reviewed for DESIGN; live deployed code hashes and target Folio addresses still require preflight verification during implementation.",
+  "files": [
+    {
+      "path": "contracts/Folio.sol",
+      "url": "https://raw.githubusercontent.com/reserve-protocol/reserve-index-dtf/241f0d244c45a311a4cd2af2c383a4f3bbe56265/contracts/Folio.sol",
+      "sha256": "cc25ee2abaa2d20903c5126b1076aa2fa94debd3b6e948d1b965680aa2563411"
+    },
+    {
+      "path": "contracts/interfaces/IFolio.sol",
+      "url": "https://raw.githubusercontent.com/reserve-protocol/reserve-index-dtf/241f0d244c45a311a4cd2af2c383a4f3bbe56265/contracts/interfaces/IFolio.sol",
+      "sha256": "7d984b47f59264b4a2bdc0a9c8d8199aa38faf1b9e2ea7339b495cebb21c71f6"
+    },
+    {
+      "path": "contracts/utils/Versioned.sol",
+      "url": "https://raw.githubusercontent.com/reserve-protocol/reserve-index-dtf/241f0d244c45a311a4cd2af2c383a4f3bbe56265/contracts/utils/Versioned.sol",
+      "sha256": "1dd42278270e314b7701e41d8d9d05cf40e62baf01dd5199a4b5d914f3745076"
+    }
+  ],
+  "documentation": "https://docs.reserve.org/core-components/index-dtfs/smart-contracts",
+  "ethereum_implementation_candidate": "0xb6b35b2c7032E00BAa2535Ba480d461321B7E0A6",
+  "known_documentation_mismatch": "r5 getBid takes auctionId, sellToken, buyToken, maxSellAmount; old technical prose lists timestamp parameter."
+}

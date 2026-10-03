@@ -1,0 +1,32 @@
+{
+  "scope": "selected valid-at-2026-09-12T19:12:00Z sample, official metadata checked 2026-09-12T19:19Z",
+  "okx_selected_categories": {
+    "1": 272,
+    "3": 149,
+    "4": 4
+  },
+  "confirmed_crypto_vs_stock_or_commodity": [
+    {
+      "canonical_market_key": "BB-USDT-PERP",
+      "okx_instrument_id": 203,
+      "okx_instCategory": "3",
+      "binance_instrument_id": 201,
+      "binance_underlyingType": "COIN",
+      "binance_underlyingSubType": [
+        "Layer-1",
+        "Crypto"
+      ]
+    },
+    {
+      "canonical_market_key": "QNT-USDT-PERP",
+      "okx_instrument_id": 1069,
+      "okx_instCategory": "3",
+      "binance_instrument_id": 1067,
+      "binance_underlyingType": "COIN",
+      "binance_underlyingSubType": [
+        "Infrastructure",
+        "Crypto"
+      ]
+    }
+  ]
+}

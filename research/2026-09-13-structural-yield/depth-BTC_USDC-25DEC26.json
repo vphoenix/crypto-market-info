@@ -1,0 +1,68 @@
+{
+  "name": "depth-BTC_USDC-25DEC26",
+  "url": "https://www.deribit.com/api/v2/public/get_order_book?instrument_name=BTC_USDC-25DEC26&depth=100",
+  "requested_at": "2026-09-13T13:44:24.763845+00:00",
+  "received_at": "2026-09-13T13:44:25.226095+00:00",
+  "payload_sha256": "f93a276c1dec33c7558eebd68e2705c057bc4c2fd31c7073c18867a7b9dc7636",
+  "data": {
+    "jsonrpc": "2.0",
+    "result": {
+      "timestamp": 1789307064977,
+      "state": "open",
+      "stats": {
+        "high": "78430.0",
+        "low": "78190.0",
+        "price_change": "-0.1564",
+        "volume": "1.1813",
+        "volume_usd": "92596.49",
+        "volume_notional": "92615.0085"
+      },
+      "change_id": 188823486758,
+      "index_price": "76742.7",
+      "instrument_name": "BTC_USDC-25DEC26",
+      "bids": [
+        [
+          "77765.0",
+          "0.5273"
+        ],
+        [
+          "77762.5",
+          "0.5168"
+        ],
+        [
+          "77760.0",
+          "0.5273"
+        ],
+        [
+          "7.0e4",
+          "0.0001"
+        ]
+      ],
+      "asks": [
+        [
+          "77810.0",
+          "0.527"
+        ],
+        [
+          "77812.5",
+          "0.5168"
+        ]
+      ],
+      "last_price": "78190.0",
+      "settlement_price": "78115.35",
+      "min_price": "76625.0",
+      "max_price": "78962.5",
+      "open_interest": "8.8329",
+      "mark_price": "77793.84",
+      "estimated_delivery_price": "76742.7",
+      "best_ask_price": "77810.0",
+      "best_bid_price": "77765.0",
+      "best_ask_amount": "0.527",
+      "best_bid_amount": "0.5273"
+    },
+    "usIn": 1789307065073863,
+    "usOut": 1789307065074237,
+    "usDiff": 374,
+    "testnet": false
+  }
+}

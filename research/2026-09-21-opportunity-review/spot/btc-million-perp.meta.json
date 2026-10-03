@@ -1,0 +1,5 @@
+{
+  "url": "https://fapi.binance.com/fapi/v1/depth?symbol=BTCUSDT&limit=1000",
+  "retrieved_at_utc": "2026-09-21T14:45:09.144571+00:00",
+  "sha256": "838d0a1eb8dd4d6a4bf1476e3cb6cc3b604ce2091a3dd94ea2805c52a97384bf"
+}

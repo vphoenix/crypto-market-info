@@ -1,0 +1,3509 @@
+{
+  "venue": "Binance",
+  "symbol": "ONEUSDT",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=ONEUSDT&limit=1000",
+  "fetched_at": "2026-09-12T19:15:13.121922+00:00",
+  "payload_sha256": "486c54a3f1c5d07195fca49f536bf2c1b63517a2d0319d0dfb3fd81dcb44c779",
+  "data": [
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1774857600005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00214000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1774886400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00211542",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1774915200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00207199",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1774944000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00209843",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1774972800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00209000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775001600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00210887",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775030400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00214500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775059200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00212515",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775088000003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00209506",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775116800001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00209498",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775145600001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00209302",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775174400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00222613",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775203200008,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00227543",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775232000008,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00222505",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775260800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00226489",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775289600003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00227500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775318400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00220386",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775347200008,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00222836",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775376000000,
+      "fundingRate": "-0.00001534",
+      "markPrice": "0.00216300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775404800001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00216621",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775433600004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00218482",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775462400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00223362",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775491200003,
+      "fundingRate": "0.00004220",
+      "markPrice": "0.00222000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775520000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00218506",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775548800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00214487",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775577600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00210290",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775606400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00224118",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775635200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00223387",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775664000006,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00221498",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775692800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00216360",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775721600010,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00214930",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775750400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00217508",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775779200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00214789",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775808000005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00213000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775836800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00215230",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775865600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00215504",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775894400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00211636",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775923200003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00211279",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775952000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00211496",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1775980800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00206508",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776009600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00204869",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776038400011,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00204500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776067200006,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00203500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776096000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00205491",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776124800005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00212400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776153600003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00208945",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776182400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00211000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776211200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00208507",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776240000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00207163",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776268800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00208500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776297600013,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00213493",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776326400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00218876",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776355200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00224888",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776384000001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00229504",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776412800011,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00228000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776441600001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00237000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776470400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00236038",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776499200006,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00247692",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776528000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00238000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776556800002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00229000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776585600010,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00223500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776614400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00227500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776643200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00215462",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776672000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00219245",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776700800001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00235723",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776729600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00231500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776758400004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00225398",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776787200004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00225495",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776816000004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00228265",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776844800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00230000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776873600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00228700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776902400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00222171",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776931200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00218600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776960000004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00222950",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1776988800006,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00223200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777017600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00224400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777046400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00230383",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777075200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00232400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777104000002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00234799",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777132800002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00225400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777161600003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00226065",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777190400007,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00226300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777219200004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00229982",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777248000004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00228646",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777276800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00221784",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777305600002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00218430",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777334400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00222855",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777363200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00222934",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777392000004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00223197",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777420800006,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00228200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777449600011,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00232822",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777478400003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00236300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777507200002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00232129",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777536000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00228576",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777564800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00230130",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777593600000,
+      "fundingRate": "0.00003646",
+      "markPrice": "0.00225300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777622400005,
+      "fundingRate": "0.00006697",
+      "markPrice": "0.00227300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777651200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00231300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777680000006,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00227300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777708800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00225600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777737600010,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00228650",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777766400005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00230910",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777795200003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00225742",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777824000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00225400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777852800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00222600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777881600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00226228",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777910400003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00224800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777939200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00224400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777968000011,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00229807",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1777996800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00231380",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778025600010,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00234100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778054400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00240184",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778083200002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00237800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778112000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00239529",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778140800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00241700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778169600004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00236500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778198400003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00241326",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778227200002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00238600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778256000003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00245900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778284800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00253247",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778313600001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00259100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778342400002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00250345",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778371200003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00246620",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778400000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00252603",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778428800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00257741",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778457600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00259300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778486400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00251587",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778515200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00253927",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778544000002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00254700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778572800008,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00251998",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778601600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00242943",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778630400010,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00243518",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778659200003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00247747",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778688000001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00230823",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778716800005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00231339",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778745600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00229400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778774400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00236900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778803200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00230600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778832000016,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00228860",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778860800012,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00217500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778889600005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00220407",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778918400000,
+      "fundingRate": "-0.00003928",
+      "markPrice": "0.00211850",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778947200005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00212900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1778976000000,
+      "fundingRate": "0.00009344",
+      "markPrice": "0.00210132",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779004800010,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00212750",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779033600009,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00211300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779062400007,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00205100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779091200002,
+      "fundingRate": "0.00008674",
+      "markPrice": "0.00203409",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779120000007,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00202300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779148800001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00207200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779177600001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00206000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779206400009,
+      "fundingRate": "-0.00002787",
+      "markPrice": "0.00200218",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779235200001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00201000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779264000006,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00197250",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779292800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00201900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779321600001,
+      "fundingRate": "0.00001950",
+      "markPrice": "0.00200300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779350400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00206908",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779379200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00204272",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779408000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00206400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779436800004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00207100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779465600001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00202200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779494400009,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00193665",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779523200001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00189500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779552000003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00196200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779580800011,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00199900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779609600008,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00196900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779638400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00192400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779667200001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00190815",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779696000001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00194000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779724800001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00195100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779753600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00193627",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779782400003,
+      "fundingRate": "0.00005665",
+      "markPrice": "0.00190600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779811200000,
+      "fundingRate": "-0.00006813",
+      "markPrice": "0.00193155",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779840000000,
+      "fundingRate": "0.00006553",
+      "markPrice": "0.00187500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779868800004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00186719",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779897600009,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00190393",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779926400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00183913",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779955200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00178289",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1779984000001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00177410",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780012800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00179877",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780041600001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00179600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780070400008,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00181622",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780099200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00180141",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780128000001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00184861",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780156800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00183341",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780185600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00182650",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780214400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00184500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780243200004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00183927",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780272000001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00190357",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780300800001,
+      "fundingRate": "0.00005661",
+      "markPrice": "0.00193955",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780329600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00203800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780358400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00199200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780387200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00192508",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780416000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00183642",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780444800013,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00178900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780473600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00185608",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780502400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00182587",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780531200009,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00180812",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780560000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00167000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780588800003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00170623",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780617600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00166326",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780646400004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00155389",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780675200009,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00150400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780704000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00151131",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780732800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00150200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780761600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00152600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780790400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00150900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780819200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00154257",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780848000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00152782",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780876800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00154215",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780905600005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00152472",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780934400004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00155300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780963200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00151500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1780992000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00147689",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781020800001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00144775",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781049600001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00145600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781078400011,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00144906",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781107200009,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00147100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781136000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00144300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781164800004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00149600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781193600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00148800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781222400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00148600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781251200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00148480",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781280000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00149346",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781308800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00148714",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781337600007,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00150200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781366400002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00150989",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781395200005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00149351",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781424000009,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00148905",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781452800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00147200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781481600013,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00154600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781510400013,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00153100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781539200004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00158595",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781568000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00152600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781596800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00151833",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781625600001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00150200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781654400012,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00150800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781683200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00150437",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781712000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00153200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781740800002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00149400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781769600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00146500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781798400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00138400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781827200005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00142100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781856000001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00139233",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781884800001,
+      "fundingRate": "-0.00002028",
+      "markPrice": "0.00141100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781913600001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00140400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781942400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00140607",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1781971200001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00144177",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782000000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00143818",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782028800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00143443",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782057600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00143400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782086400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00138966",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782115200000,
+      "fundingRate": "0.00007028",
+      "markPrice": "0.00142000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782144000002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00141482",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782172800003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00137700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782201600005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00133700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782230400002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00131545",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782259200005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00131129",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782288000005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00130347",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782316800003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00125195",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782345600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00126250",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782374400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00126537",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782403200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00122400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782432000010,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00123200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782460800002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00125032",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782489600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00125787",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782518400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00124450",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782547200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00124113",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782576000009,
+      "fundingRate": "-0.00005382",
+      "markPrice": "0.00123200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782604800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00120941",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782633600013,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00121800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782662400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00127550",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782691200006,
+      "fundingRate": "0.00009930",
+      "markPrice": "0.00122053",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782720000013,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00122000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782748800004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00122259",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782777600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00122700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782806400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00121500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782835200005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00118800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782864000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00115500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782892800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00116560",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782921600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00124400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782950400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00127563",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1782979200000,
+      "fundingRate": "0.00004126",
+      "markPrice": "0.00124350",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783008000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00125300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783036800000,
+      "fundingRate": "0.00001103",
+      "markPrice": "0.00127663",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783065600007,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00126253",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783094400000,
+      "fundingRate": "-0.00000901",
+      "markPrice": "0.00128300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783123200000,
+      "fundingRate": "-0.00011604",
+      "markPrice": "0.00131052",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783152000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00127100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783180800007,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00130650",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783209600003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00129200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783238400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00126461",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783267200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00126547",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783296000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00127250",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783324800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00124200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783353600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00127030",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783382400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00126450",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783411200000,
+      "fundingRate": "0.00009735",
+      "markPrice": "0.00122800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783440000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00124150",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783468800000,
+      "fundingRate": "-0.00032303",
+      "markPrice": "0.00120170",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783497600000,
+      "fundingRate": "-0.00017635",
+      "markPrice": "0.00119600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783526400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00117500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783555200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00119320",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783584000001,
+      "fundingRate": "0.00009162",
+      "markPrice": "0.00119849",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783612800001,
+      "fundingRate": "0.00002596",
+      "markPrice": "0.00118394",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783641600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00119331",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783670400005,
+      "fundingRate": "-0.00004561",
+      "markPrice": "0.00125218",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783699200005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00123090",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783728000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00122668",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783756800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00121930",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783785600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00124100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783814400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00119617",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783843200003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00118700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783872000000,
+      "fundingRate": "-0.00003953",
+      "markPrice": "0.00118600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783900800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00117047",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783929600001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00115350",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783958400004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00114653",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1783987200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00114100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784016000002,
+      "fundingRate": "0.00002608",
+      "markPrice": "0.00113500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784044800001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00116950",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784073600005,
+      "fundingRate": "-0.00003161",
+      "markPrice": "0.00116355",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784102400002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00114400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784131200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00116400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784160000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00114400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784188800003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00113709",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784217600002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00112350",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784246400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00110750",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784275200010,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00116836",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784304000004,
+      "fundingRate": "0.00003884",
+      "markPrice": "0.00114700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784332800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00119150",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784361600000,
+      "fundingRate": "0.00006131",
+      "markPrice": "0.00118086",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784390400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00113750",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784419200003,
+      "fundingRate": "0.00007642",
+      "markPrice": "0.00112550",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784448000000,
+      "fundingRate": "0.00001596",
+      "markPrice": "0.00111300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784476800001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00114800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784505600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00111732",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784534400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00113357",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784563200004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00113362",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784592000001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00112042",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784620800000,
+      "fundingRate": "0.00009499",
+      "markPrice": "0.00114247",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784649600002,
+      "fundingRate": "-0.00964270",
+      "markPrice": "0.00155500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784678400000,
+      "fundingRate": "-0.00244803",
+      "markPrice": "0.00138441",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784707200000,
+      "fundingRate": "-0.00053452",
+      "markPrice": "0.00126400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784736000001,
+      "fundingRate": "-0.01047920",
+      "markPrice": "0.00130459",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784764800000,
+      "fundingRate": "-0.00349892",
+      "markPrice": "0.00131300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784793600000,
+      "fundingRate": "-0.00107264",
+      "markPrice": "0.00130815",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784822400000,
+      "fundingRate": "-0.00064638",
+      "markPrice": "0.00127550",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784851200000,
+      "fundingRate": "-0.00032871",
+      "markPrice": "0.00122883",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784880000000,
+      "fundingRate": "-0.00071131",
+      "markPrice": "0.00127000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784908800008,
+      "fundingRate": "-0.00072607",
+      "markPrice": "0.00124171",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784937600002,
+      "fundingRate": "-0.00017085",
+      "markPrice": "0.00131200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784966400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00127000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1784995200000,
+      "fundingRate": "-0.00106320",
+      "markPrice": "0.00124904",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785024000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00127500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785052800002,
+      "fundingRate": "-0.00007660",
+      "markPrice": "0.00125331",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785081600000,
+      "fundingRate": "-0.00045978",
+      "markPrice": "0.00125792",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785110400010,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00127643",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785139200000,
+      "fundingRate": "0.00005116",
+      "markPrice": "0.00126200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785168000001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00122800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785196800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00124600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785225600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00125100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785254400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00125502",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785283200000,
+      "fundingRate": "0.00005866",
+      "markPrice": "0.00122700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785312000002,
+      "fundingRate": "-0.00011702",
+      "markPrice": "0.00118410",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785340800000,
+      "fundingRate": "-0.00006315",
+      "markPrice": "0.00117600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785369600000,
+      "fundingRate": "-0.00000992",
+      "markPrice": "0.00117561",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785398400000,
+      "fundingRate": "-0.00011379",
+      "markPrice": "0.00117142",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785427200000,
+      "fundingRate": "-0.00013089",
+      "markPrice": "0.00118400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785456000003,
+      "fundingRate": "-0.00061990",
+      "markPrice": "0.00117550",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785484800000,
+      "fundingRate": "-0.00027182",
+      "markPrice": "0.00120449",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785513600000,
+      "fundingRate": "-0.00020963",
+      "markPrice": "0.00120100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785542400001,
+      "fundingRate": "-0.00000108",
+      "markPrice": "0.00120671",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785571200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00121351",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785600000000,
+      "fundingRate": "0.00003626",
+      "markPrice": "0.00119400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785628800000,
+      "fundingRate": "0.00004796",
+      "markPrice": "0.00118300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785657600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00121350",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785686400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00122744",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785715200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00121580",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785744000000,
+      "fundingRate": "-0.00005619",
+      "markPrice": "0.00122800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785772800000,
+      "fundingRate": "0.00008676",
+      "markPrice": "0.00122551",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785801600004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00122361",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785830400002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00120300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785859200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00119400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785888000003,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00119133",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785916800004,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00121154",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785945600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00121800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1785974400002,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00121208",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786003200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00123300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786032000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00123922",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786060800000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00125360",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786089600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00126150",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786118400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00124455",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786147200001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00123553",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786176000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00124800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786204800002,
+      "fundingRate": "0.00005597",
+      "markPrice": "0.00126200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786233600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00128300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786262400005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00128100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786291200000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00127970",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786320000001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00126100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786348800005,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00128048",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786377600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00125000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786406400000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00123852",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786435200006,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00123056",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786464000000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00121000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786492800001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00117844",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786521600000,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00074167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786550400000,
+      "fundingRate": "-0.00512886",
+      "markPrice": "0.00074587",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786579200000,
+      "fundingRate": "-0.00272282",
+      "markPrice": "0.00079575",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786608000000,
+      "fundingRate": "-0.00046379",
+      "markPrice": "0.00079347",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786636800000,
+      "fundingRate": "-0.00167559",
+      "markPrice": "0.00076300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786665600000,
+      "fundingRate": "-0.00032633",
+      "markPrice": "0.00070865",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786694400001,
+      "fundingRate": "0.00010000",
+      "markPrice": "0.00065459",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786723200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00063999",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786752000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00074067",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786780800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00073866",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786809600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00071492",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786838400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00068596",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786867200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00069318",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786896000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00073147",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786924800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00072648",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786953600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00071498",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1786982400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00072997",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787011200006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00070754",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787040000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00068606",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787068800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00070051",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787097600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00071704",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787126400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00068829",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787155200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00070085",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787184000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00070246",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787212800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00069113",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787241600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00070855",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787270400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00073379",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787299200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00078144",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787328000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00083559",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787356800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00079951",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787385600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00080858",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787414400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00075175",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787443200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00074694",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787472000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00073749",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787500800006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076206",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787529600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076896",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787558400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00074709",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787587200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00073128",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787616000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00075274",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787644800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00074555",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787673600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00073043",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787702400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00072438",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787731200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00074676",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787760000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00072824",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787788800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00075028",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787817600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00075198",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787846400013,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00074969",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787875200026,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076080",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787904000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00077653",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787932800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00075177",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787961600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076344",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1787990400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00075832",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788019200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00075375",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788048000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00074900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788076800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076641",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788105600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00075679",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788134400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00072445",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788163200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076063",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788192000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00074833",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788220800005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00075784",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788249600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00074421",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788278400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00073780",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788307200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00073278",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788336000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076326",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788364800005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00074024",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788393600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00074044",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788422400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076047",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788451200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788480000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00075996",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788508800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076083",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788537600009,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076014",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788566400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076283",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788595200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076455",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788624000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076433",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788652800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00076507",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788681600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00075249",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788710400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00074978",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788739200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00075076",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788768000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00071869",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788796800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00071164",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788825600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00072278",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788854400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00073118",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788883200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00071043",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788912000005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00069136",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788940800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00069650",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788969600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00067033",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1788998400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00064500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1789027200007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00064586",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1789056000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00065126",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1789084800008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00063251",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1789113600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00064763",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1789142400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00065067",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1789171200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00065805",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1789200000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00067697",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "fundingTime": 1789228800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00067637",
+      "rateType": "Regular"
+    }
+  ]
+}

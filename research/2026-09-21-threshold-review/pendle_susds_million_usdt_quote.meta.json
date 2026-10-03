@@ -1,0 +1,12 @@
+{
+  "url": "https://api-v2.pendle.finance/core/v2/sdk/1/convert?receiver=0x000000000000000000000000000000000000dEaD&slippage=0.001&tokensIn=0xdac17f958d2ee523a2206206994597c13d831ec7&tokensOut=0xdc169abe56461a2e0c034da431ac2a3ebf596094&amountsIn=1000000000000&enableAggregator=true&additionalData=impliedApy,effectiveApy",
+  "observed_at_utc": "2026-09-21T15:12:36.285246+00:00",
+  "http_status": 200,
+  "sha256": "64e5b321761453c765df0fc549a0e5878b95427895928495a108ce55f7c709a8",
+  "headers": {
+    "Date": "Mon, 21 Sep 2026 15:12:38 GMT",
+    "Content-Type": "application/json; charset=utf-8",
+    "Last-Modified": null,
+    "Age": null
+  }
+}

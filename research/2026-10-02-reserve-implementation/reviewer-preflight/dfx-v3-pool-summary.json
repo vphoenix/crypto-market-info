@@ -1,0 +1,623 @@
+{
+  "block_number": 26104018,
+  "block_hash": "0x5bf0cf4ba3c9b2b8cc70cc317a0d6aca2fef9f1efd29d0408789e05ee99d5304",
+  "factory": "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+  "usdc": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+  "weth": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+  "tokens": [
+    "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+    "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+    "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+    "0xd533a949740bb3306d119cc777fa900ba034cd52",
+    "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+    "0x57e114b691db790c35207b2e685d4a43181e6061",
+    "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b"
+  ],
+  "decimals": {
+    "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984": 18,
+    "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9": 18,
+    "0x5a98fcbea516cf06857215779fd812ca3bef1b32": 18,
+    "0xd533a949740bb3306d119cc777fa900ba034cd52": 18,
+    "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3": 18,
+    "0x57e114b691db790c35207b2e685d4a43181e6061": 18,
+    "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b": 18
+  },
+  "queries": [
+    {
+      "token": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 100,
+      "pool": "0xe8bf7d7358a96fa870d3945bb37bfcc91a9041cc",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "200303137565374696979095",
+      "token0": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    {
+      "token": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 500,
+      "pool": "0xab2044f105c43c25b1de3ee27504f0b889ce5953",
+      "error": null,
+      "liquidity": "5000665917193247",
+      "slot0": "389729726590377610242793",
+      "token0": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    {
+      "token": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 3000,
+      "pool": "0xd0fc8ba7e267f2bc56044a7715a489d851dc6d78",
+      "error": null,
+      "liquidity": "1201494814145525737",
+      "slot0": "238159387517810070642864",
+      "token0": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    {
+      "token": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 10000,
+      "pool": "0xe845469aae04f8823202b011a848cf199420b4c1",
+      "error": null,
+      "liquidity": "33741474143",
+      "slot0": "224655033398792163083480",
+      "token0": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    {
+      "token": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 100,
+      "pool": "0x8026a88657a21f28c9f3d1db96c43303fca0cf58",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "4356148023450364672163745094",
+      "token0": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 500,
+      "pool": "0xfaa318479b7755b2dbfdd34dc306cb28b420ad12",
+      "error": null,
+      "liquidity": "1872459158726250839669",
+      "slot0": "4544876978879097504411583297",
+      "token0": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 3000,
+      "pool": "0x1d42064fc4beb5f8aaf85f4617ae8b3b5b8bd801",
+      "error": null,
+      "liquidity": "124989960648924625469097",
+      "slot0": "4544982978554238237803368264",
+      "token0": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 10000,
+      "pool": "0x360b9726186c0f62cc719450685ce70280774dc8",
+      "error": null,
+      "liquidity": "72034578442478853943",
+      "slot0": "4560750567373484901817109096",
+      "token0": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 100,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 500,
+      "pool": "0x493035412520336ff4719d4cee527bea55eca844",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "920954369547812392123695",
+      "token0": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    {
+      "token": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 3000,
+      "pool": "0xdceaf5d0e5e0db9596a47c0c4120654e80b1d706",
+      "error": null,
+      "liquidity": "5311006835761711",
+      "slot0": "1078582106853359083570077",
+      "token0": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    {
+      "token": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 10000,
+      "pool": "0xa8e45fe78bcf372d8f0a8f6a25868e66088a1365",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "987197648099126810454923",
+      "token0": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    {
+      "token": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 100,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 500,
+      "pool": "0x4674abc5796e1334b5075326b39b748bee9eaa34",
+      "error": null,
+      "liquidity": "1291227541828668984987",
+      "slot0": "20570397808115165925189760542",
+      "token0": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 3000,
+      "pool": "0x5ab53ee1d50eef2c1dd3d5402789cd27bb52c1bb",
+      "error": null,
+      "liquidity": "26717202475941775029347",
+      "slot0": "20591818264182996895121833858",
+      "token0": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 10000,
+      "pool": "0x1353fe67fff8f376762b7034dc9066f0be15a723",
+      "error": null,
+      "liquidity": "572910393077215577",
+      "slot0": "20424115764970385488184025240",
+      "token0": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 100,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 500,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 3000,
+      "pool": "0x33e71cacbb6b596bc006aac3eeaa2817e8212264",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "60740936726065297565925",
+      "token0": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    {
+      "token": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 10000,
+      "pool": "0x78235d08b2ae7a3e00184329212a4d7acd2f9985",
+      "error": null,
+      "liquidity": "426974861393964816",
+      "slot0": "53350337169203103006720",
+      "token0": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    {
+      "token": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 100,
+      "pool": "0xe7e0734ea59cfff5781d6de8d6f7a545effb91db",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "1829487311465356912195552691",
+      "token0": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 500,
+      "pool": "0xcfecc1c9f3cb6190cb1ff7f65a130bfbe5107d38",
+      "error": null,
+      "liquidity": "8316649801726797406291",
+      "slot0": "1018438633951924898940015358",
+      "token0": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 3000,
+      "pool": "0xa3f558aebaecaf0e11ca4b2199cc5ed341edfd74",
+      "error": null,
+      "liquidity": "30754363645943301107831",
+      "slot0": "1018435977830518673673028532",
+      "token0": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 10000,
+      "pool": "0xf4ad61db72f114be877e87d62dc5e7bd52df4d9b",
+      "error": null,
+      "liquidity": "58902911595525381",
+      "slot0": "1017256416272572941215106376",
+      "token0": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 100,
+      "pool": "0xaf245b402269419801c1dc00a0017a62656a7120",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "71717548739447757884494134323482971",
+      "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1": "0xd533a949740bb3306d119cc777fa900ba034cd52"
+    },
+    {
+      "token": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 500,
+      "pool": "0x09622b458f27c6f394455b9c0fb404ffac05e37a",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "50156721291823968246238845653416871",
+      "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1": "0xd533a949740bb3306d119cc777fa900ba034cd52"
+    },
+    {
+      "token": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 3000,
+      "pool": "0x47bde1364cb8cfe45b59e261cc66aa551f1f7954",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "79209562620604518767431569785168238",
+      "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1": "0xd533a949740bb3306d119cc777fa900ba034cd52"
+    },
+    {
+      "token": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 10000,
+      "pool": "0x9445bd19767f73dcae6f2de90e6cd31192f62589",
+      "error": null,
+      "liquidity": "66648231853044088",
+      "slot0": "127859147121765999052479221911315437",
+      "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1": "0xd533a949740bb3306d119cc777fa900ba034cd52"
+    },
+    {
+      "token": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 100,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 500,
+      "pool": "0x39d1fa498a4622c1039db214096b043451334771",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "6050863305135881625874974375936",
+      "token0": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1": "0xd533a949740bb3306d119cc777fa900ba034cd52"
+    },
+    {
+      "token": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 3000,
+      "pool": "0x919fa96e88d67499339577fa202345436bcdaf79",
+      "error": null,
+      "liquidity": "6926699304621385932743",
+      "slot0": "6715794020852507507502459626899",
+      "token0": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1": "0xd533a949740bb3306d119cc777fa900ba034cd52"
+    },
+    {
+      "token": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 10000,
+      "pool": "0x4c83a7f819a5c37d64b4c5a2f8238ea082fa1f4e",
+      "error": null,
+      "liquidity": "336163855896508072859",
+      "slot0": "6704186859282848289947686274472",
+      "token0": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1": "0xd533a949740bb3306d119cc777fa900ba034cd52"
+    },
+    {
+      "token": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 100,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 500,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 3000,
+      "pool": "0xa8e8c91faa15149f5f6e4a37846dcd58b88b3ec7",
+      "error": null,
+      "liquidity": "5878643267598178",
+      "slot0": "111492050856673262544364361621358220",
+      "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3"
+    },
+    {
+      "token": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 10000,
+      "pool": "0x57784919375274e60a49b6a0a0ae787de40e52b1",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "4295128740",
+      "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3"
+    },
+    {
+      "token": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 100,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 500,
+      "pool": "0xd77382bdab34e6b629be1cf3a96547326b7280ed",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "6802554469286934338293581102451",
+      "token0": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3"
+    },
+    {
+      "token": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 3000,
+      "pool": "0x7b1e5d984a43ee732de195628d20d05cfabc3cc7",
+      "error": null,
+      "liquidity": "291200299802470977078255",
+      "slot0": "5831748990278298743775989492925",
+      "token0": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3"
+    },
+    {
+      "token": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 10000,
+      "pool": "0xd0f292fa6fe694892bcf52b55ca0f3e277be17c0",
+      "error": null,
+      "liquidity": "4503599627370496",
+      "slot0": "8623854977881586931365757189768",
+      "token0": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "token1": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3"
+    },
+    {
+      "token": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 100,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 500,
+      "pool": "0xfc545f345e2afc52652cd6f76323c5ddc847bd6d",
+      "error": null,
+      "liquidity": "18731895485385",
+      "slot0": "39856526104056478084886",
+      "token0": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    {
+      "token": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 3000,
+      "pool": "0x408a625596f47314e1fd4a6cbce84c4a8695ba3f",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "4295128749",
+      "token0": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    {
+      "token": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 10000,
+      "pool": "0x37cf81d0d7cad1e37edf47215594012f54a9271a",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "50327710677967465517338",
+      "token0": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    {
+      "token": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 100,
+      "pool": "0x779c5e264ae1dbeb97c843e6d0c0a3faca7cf0e2",
+      "error": null,
+      "liquidity": "0",
+      "slot0": "737864223460276744690555498",
+      "token0": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 500,
+      "pool": "0xae4045ffeddf61d570e6d1fe2d71ded1a2e85a88",
+      "error": null,
+      "liquidity": "386890203982994113669",
+      "slot0": "750670125845522406978882906",
+      "token0": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 3000,
+      "pool": "0xc3db44adc1fcdfd5671f555236eae49f4a8eea18",
+      "error": null,
+      "liquidity": "326153396637047592114807",
+      "slot0": "750842061776972363035621699",
+      "token0": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 10000,
+      "pool": "0x08b8cebfca0f49a9303bab1cc4e2c25d280f2c00",
+      "error": null,
+      "liquidity": "52767922834804994862",
+      "slot0": "749456791738125650911888441",
+      "token0": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 100,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 500,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 3000,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 10000,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 100,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 500,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 3000,
+      "pool": "0x1914256c2f70aac87e097cd8b07958e9f17f2bcd",
+      "error": null,
+      "liquidity": "2453190577194980299820",
+      "slot0": "1817174192353728989677714393",
+      "token0": "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b",
+      "quote": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "fee": 10000,
+      "pool": "0x0000000000000000000000000000000000000000",
+      "error": null
+    },
+    {
+      "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 100,
+      "pool": "0xe0554a476a092703abdb3ef35c80e0d76d32939f",
+      "error": null,
+      "liquidity": "1042278088541662390",
+      "slot0": "1513674185945423954521762777706011",
+      "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 500,
+      "pool": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+      "error": null,
+      "liquidity": "3046498375285904440",
+      "slot0": "1513689983929399212198306422504639",
+      "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 3000,
+      "pool": "0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8",
+      "error": null,
+      "liquidity": "4695867956389406070",
+      "slot0": "1511695726500930293666374125355008",
+      "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    {
+      "token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "quote": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "fee": 10000,
+      "pool": "0x7bea39867e4169dbe237d55c8242a8f2fcdcc387",
+      "error": null,
+      "liquidity": "13556528627495148",
+      "slot0": "1512567446657760946610337386860069",
+      "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    }
+  ]
+}

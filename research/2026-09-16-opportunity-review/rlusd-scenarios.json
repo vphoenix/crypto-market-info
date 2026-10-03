@@ -1,0 +1,122 @@
+[
+  {
+    "capital_usdt": 100000,
+    "rlusd_qty": "99900.00000000",
+    "ask": "1.00100000",
+    "bid": "1.00090000",
+    "immediate_roundtrip_zero_fee_loss": "9.9900000000000000",
+    "exit_at_par_principal_loss": "99.9000000000000000",
+    "9_day_opportunity_cost_3_6pct_apr": "88.76712328767123287671232877",
+    "score_approx_at_flat_usd": "1798200.00000000",
+    "reward_scenarios": {
+      "380_exit_1.00090000": {
+        "net_before_base_earn_and_fees": "370.3520000000000000",
+        "excess_after_opportunity_cost": "281.5848767123287671232876712"
+      },
+      "380_exit_1": {
+        "net_before_base_earn_and_fees": "280.1000000000000000",
+        "excess_after_opportunity_cost": "191.3328767123287671232876712"
+      },
+      "880_exit_1.00090000": {
+        "net_before_base_earn_and_fees": "870.8020000000000000",
+        "excess_after_opportunity_cost": "782.0348767123287671232876712"
+      },
+      "880_exit_1": {
+        "net_before_base_earn_and_fees": "780.1000000000000000",
+        "excess_after_opportunity_cost": "691.3328767123287671232876712"
+      },
+      "2800_exit_1.00090000": {
+        "net_before_base_earn_and_fees": "2792.5300000000000000",
+        "excess_after_opportunity_cost": "2703.762876712328767123287671"
+      },
+      "2800_exit_1": {
+        "net_before_base_earn_and_fees": "2700.1000000000000000",
+        "excess_after_opportunity_cost": "2611.332876712328767123287671"
+      },
+      "10000_exit_1.00090000": {
+        "net_before_base_earn_and_fees": "9999.0100000000000000",
+        "excess_after_opportunity_cost": "9910.242876712328767123287671"
+      },
+      "10000_exit_1": {
+        "net_before_base_earn_and_fees": "9900.1000000000000000",
+        "excess_after_opportunity_cost": "9811.332876712328767123287671"
+      },
+      "20000_exit_1.00090000": {
+        "net_before_base_earn_and_fees": "20008.0100000000000000",
+        "excess_after_opportunity_cost": "19919.24287671232876712328767"
+      },
+      "20000_exit_1": {
+        "net_before_base_earn_and_fees": "19900.1000000000000000",
+        "excess_after_opportunity_cost": "19811.33287671232876712328767"
+      },
+      "40000_exit_1.00090000": {
+        "net_before_base_earn_and_fees": "40026.0100000000000000",
+        "excess_after_opportunity_cost": "39937.24287671232876712328767"
+      },
+      "40000_exit_1": {
+        "net_before_base_earn_and_fees": "39900.1000000000000000",
+        "excess_after_opportunity_cost": "39811.33287671232876712328767"
+      }
+    }
+  },
+  {
+    "capital_usdt": 1000000,
+    "rlusd_qty": "999000.00000000",
+    "ask": "1.00100000",
+    "bid": "1.00090000",
+    "immediate_roundtrip_zero_fee_loss": "99.9000000000000000",
+    "exit_at_par_principal_loss": "999.0000000000000000",
+    "9_day_opportunity_cost_3_6pct_apr": "887.6712328767123287671232877",
+    "score_approx_at_flat_usd": "17982000.00000000",
+    "reward_scenarios": {
+      "380_exit_1.00090000": {
+        "net_before_base_earn_and_fees": "280.4420000000000000",
+        "excess_after_opportunity_cost": "-607.2292328767123287671232877"
+      },
+      "380_exit_1": {
+        "net_before_base_earn_and_fees": "-619.0000000000000000",
+        "excess_after_opportunity_cost": "-1506.671232876712328767123288"
+      },
+      "880_exit_1.00090000": {
+        "net_before_base_earn_and_fees": "780.8920000000000000",
+        "excess_after_opportunity_cost": "-106.7792328767123287671232877"
+      },
+      "880_exit_1": {
+        "net_before_base_earn_and_fees": "-119.0000000000000000",
+        "excess_after_opportunity_cost": "-1006.671232876712328767123288"
+      },
+      "2800_exit_1.00090000": {
+        "net_before_base_earn_and_fees": "2702.6200000000000000",
+        "excess_after_opportunity_cost": "1814.948767123287671232876712"
+      },
+      "2800_exit_1": {
+        "net_before_base_earn_and_fees": "1801.0000000000000000",
+        "excess_after_opportunity_cost": "913.3287671232876712328767123"
+      },
+      "10000_exit_1.00090000": {
+        "net_before_base_earn_and_fees": "9909.1000000000000000",
+        "excess_after_opportunity_cost": "9021.428767123287671232876712"
+      },
+      "10000_exit_1": {
+        "net_before_base_earn_and_fees": "9001.0000000000000000",
+        "excess_after_opportunity_cost": "8113.328767123287671232876712"
+      },
+      "20000_exit_1.00090000": {
+        "net_before_base_earn_and_fees": "19918.1000000000000000",
+        "excess_after_opportunity_cost": "19030.42876712328767123287671"
+      },
+      "20000_exit_1": {
+        "net_before_base_earn_and_fees": "19001.0000000000000000",
+        "excess_after_opportunity_cost": "18113.32876712328767123287671"
+      },
+      "40000_exit_1.00090000": {
+        "net_before_base_earn_and_fees": "39936.1000000000000000",
+        "excess_after_opportunity_cost": "39048.42876712328767123287671"
+      },
+      "40000_exit_1": {
+        "net_before_base_earn_and_fees": "39001.0000000000000000",
+        "excess_after_opportunity_cost": "38113.32876712328767123287671"
+      }
+    }
+  }
+]

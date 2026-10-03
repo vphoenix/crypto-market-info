@@ -1,0 +1,169 @@
+{
+  "checked_at": "2026-10-02T11:34:43.249834+00:00",
+  "manifest_hash": "0x98cf5cc757bbbe69d9cc8219210cad0490ae70e6a19a4531f6f6aa74afc3a4a9",
+  "scope": "Queries are sequential read-only observations; table physical counts include earlier manifests.",
+  "query_elapsed_ms": {
+    "tables": 296,
+    "current_manifest_captures": 1189,
+    "covered_live_heights": 348,
+    "snapshot_latency": 65,
+    "missing_ranges": 5,
+    "current_quote_counts": 3
+  },
+  "tables": [
+    {
+      "name": "dex_log",
+      "engine": "ReplacingMergeTree",
+      "total_rows": 0,
+      "total_bytes": 0
+    },
+    {
+      "name": "dex_tx_receipt",
+      "engine": "ReplacingMergeTree",
+      "total_rows": 0,
+      "total_bytes": 0
+    },
+    {
+      "name": "reserve_capture",
+      "engine": "ReplacingMergeTree",
+      "total_rows": 119,
+      "total_bytes": 96911
+    },
+    {
+      "name": "reserve_folio_state",
+      "engine": "ReplacingMergeTree",
+      "total_rows": 24,
+      "total_bytes": 51147
+    },
+    {
+      "name": "reserve_route_quote",
+      "engine": "ReplacingMergeTree",
+      "total_rows": 312,
+      "total_bytes": 124686
+    }
+  ],
+  "current_manifest_captures": [
+    {
+      "capture_kind": "logs",
+      "capture_mode": "live",
+      "finality": "head",
+      "log_coverage": "complete",
+      "state_coverage": "not_requested",
+      "quote_coverage": "not_requested",
+      "n": 49,
+      "first_block": 26104304,
+      "last_block": 26104371
+    },
+    {
+      "capture_kind": "logs",
+      "capture_mode": "live",
+      "finality": "safe",
+      "log_coverage": "complete",
+      "state_coverage": "not_requested",
+      "quote_coverage": "not_requested",
+      "n": 9,
+      "first_block": 26104276,
+      "last_block": 26104303
+    },
+    {
+      "capture_kind": "logs",
+      "capture_mode": "backfill",
+      "finality": "finalized",
+      "log_coverage": "missing",
+      "state_coverage": "not_requested",
+      "quote_coverage": "not_requested",
+      "n": 1,
+      "first_block": 25889149,
+      "last_block": 25889660
+    },
+    {
+      "capture_kind": "logs",
+      "capture_mode": "live",
+      "finality": "finalized",
+      "log_coverage": "complete",
+      "state_coverage": "not_requested",
+      "quote_coverage": "not_requested",
+      "n": 32,
+      "first_block": 26104215,
+      "last_block": 26104275
+    },
+    {
+      "capture_kind": "snapshot",
+      "capture_mode": "live",
+      "finality": "head",
+      "log_coverage": "not_requested",
+      "state_coverage": "complete",
+      "quote_coverage": "complete",
+      "n": 9,
+      "first_block": 26104311,
+      "last_block": 26104366
+    },
+    {
+      "capture_kind": "snapshot",
+      "capture_mode": "live",
+      "finality": "safe",
+      "log_coverage": "not_requested",
+      "state_coverage": "complete",
+      "quote_coverage": "complete",
+      "n": 3,
+      "first_block": 26104286,
+      "last_block": 26104297
+    },
+    {
+      "capture_kind": "snapshot",
+      "capture_mode": "live",
+      "finality": "finalized",
+      "log_coverage": "not_requested",
+      "state_coverage": "complete",
+      "quote_coverage": "complete",
+      "n": 10,
+      "first_block": 26104215,
+      "last_block": 26104275
+    }
+  ],
+  "covered_live_heights": [
+    {
+      "first_block": 26104215,
+      "last_block": 26104371,
+      "covered_heights": 157,
+      "missing_heights_inside_span": 0
+    }
+  ],
+  "snapshot_latency": [
+    {
+      "observations": 22,
+      "min_ms": 2976,
+      "max_ms": 29255
+    }
+  ],
+  "missing_ranges": [
+    {
+      "capture_mode": "backfill",
+      "from_block": 25889149,
+      "to_block": 25889660,
+      "log_coverage": "missing",
+      "receipt_coverage": "missing",
+      "reason": "rpc_http_403"
+    }
+  ],
+  "current_quote_counts": [
+    {
+      "route_kind": "mint",
+      "quality": "indicative_overlap",
+      "status": "ok",
+      "n": 66
+    },
+    {
+      "route_kind": "redeem",
+      "quality": "indicative_overlap",
+      "status": "ok",
+      "n": 66
+    },
+    {
+      "route_kind": "cost_reference",
+      "quality": "quoted_complete",
+      "status": "ok",
+      "n": 154
+    }
+  ]
+}

@@ -8,7 +8,7 @@
 |---|---|---|
 | ClickHouse | 用户级 systemd unit `crypto-market-info-clickhouse.service`；宿主机原生二进制以前台模式运行并带 ClickHouse watchdog；核实版本 `26.8.1.1825` | HTTP `127.0.0.1:8123`；native `127.0.0.1:9000`；数据库 `crypto_market_info` |
 | collector | 用户级 systemd unit `crypto-market-info-collector.service`；直接运行编译后的单个二进制 | 依赖 ClickHouse 健康后启动，采集盘口、资金费率、TRX/SOL/AVAX 收益及 Ethereum DEX 链上数据；没有独立 HTTP 服务端口 |
-| 全量永续验收 collector | 用户级 systemd unit `crypto-market-info-perp-soak.service`；独立二进制与数据库 | `crypto_market_info_perp_soak`；仅三家共有 USDT 永续盘口和资金费率，不重复采集现货与收益 |
+| 全量永续验收 collector | 用户级 systemd unit `crypto-market-info-perp-soak.service`；独立二进制与数据库 | `crypto_market_info_perp_soak_20260928`；仅三家共有 USDT 永续盘口和资金费率，不重复采集现货与收益 |
 | 桌面状态指示器 | 图形会话用户级 systemd unit `crypto-market-info-status-indicator.service`；Python/Gtk AppIndicator | 每 30 秒只读检查生产 unit、五路盘口及最新收益写入；不访问交易所、不写数据库 |
 
 本项目不使用 Redis、PostgreSQL、消息队列或其他项目的服务。生产 collector 保持 BTC 显式列表及现有收益配置，尚未切换自动全量；新版本先在独立验收服务运行。具体构建版本用下文 `go version -m` 查询，不以当前仓库 HEAD 推断正在运行的二进制版本。
@@ -19,7 +19,7 @@ AVAX 第二阶段已于 2026-08-27 部署。collector unit 保持 `AVAX_YIELD_EN
 
 2026-09-22 已在同一个生产 collector 启用 Ethereum DEX 采集，unit 设置 `DEX_ENABLED=true`、`DEX_ETH_RPC_URL=https://ethereum-rpc.publicnode.com`，证据写入持久目录。部署后二进制 SHA-256 为 `cf49b0795aad53a8b5ae00f623d66f867836aac07154761c8c13097f61aaf7a4`。验收区间 `26027452` 至 `26027477` 共26个连续高度无缺口，其中25个区块达到58/58完整报价；`26027460` 因一次RPC/Sky状态读取不完整保留为 `partial/unknown`，后续区块自动恢复。首份24高度机会报告没有毛正窗口。DEX分支不包含钱包、签名或交易发送。
 
-2026-09-23 排查发现 DEX 公共 RPC 的响应读取超时集中出现在最终性校验阶段，旧版在校验失败后额外等待5秒，并在下一轮立即重复昂贵的校验。现版将 RPC 响应读取超时、截断与超过16 MiB分别记录；最终性校验把 `finalized`、`safe` 和原 checkpoint 合为一个 RPC 批次，每轮最多校验20个高度、最多占用6秒，失败后30秒再重试。实时新区块采集与补采、最终性、日志和回执维护现已独立运行，维护任务不会在调度上阻塞实时轮询；共享 RPC 仍可能使实时请求变慢。实时请求失败后按正常2秒轮询间隔重试。Binance 实际资金费率历史中部分 `fundingTime` 比计划整点晚数毫秒，现版查询并匹配整点后1秒内唯一的来源记录，保留其原始毫秒时间，启动补查窗口扩大到72小时；重试耗尽而来源尚无记录时会明确告警。2026-09-23 12:39 CST重启时，OKX启动元数据请求超时曾导致整个collector首次启动失败，此类启动缺口只能补回区块元数据，不能补回当时的实时报价。现已将DEX与CEX等其他来源拆成独立启动和重试分支，并分别使用数据库连接；CEX元数据超时不会停止已运行的DEX分支。12:52 CST重启验收时，DEX先于CEX元数据初始化完成写入新区块。当前生产二进制 SHA-256 为 `bbf1bf5666d9ce3e154e8cd21e127bdc7299d584ae5d796fb6851fb7e256eca7`。更新未增加外部域名。
+2026-09-23 排查发现 DEX 公共 RPC 的响应读取超时集中出现在最终性校验阶段，旧版在校验失败后额外等待5秒，并在下一轮立即重复昂贵的校验。现版将 RPC 响应读取超时、截断与超过16 MiB分别记录；最终性校验把 `finalized`、`safe` 和原 checkpoint 合为一个 RPC 批次，每轮最多校验20个高度、最多占用6秒，失败后30秒再重试。实时新区块采集与补采、最终性、日志和回执维护现已独立运行，维护任务不会在调度上阻塞实时轮询；共享 RPC 仍可能使实时请求变慢。实时请求失败后按正常2秒轮询间隔重试。Binance 实际资金费率历史中部分 `fundingTime` 比计划整点晚数毫秒，现版查询并匹配整点后1秒内唯一的来源记录，保留其原始毫秒时间，启动补查窗口扩大到72小时；重试耗尽而来源尚无记录时会明确告警。2026-09-23 12:39 CST重启时，OKX启动元数据请求超时曾导致整个collector首次启动失败，此类启动缺口只能补回区块元数据，不能补回当时的实时报价。现已将DEX与CEX等其他来源拆成独立启动和重试分支，并分别使用数据库连接；CEX元数据超时不会停止已运行的DEX分支。12:52 CST重启验收时，DEX先于CEX元数据初始化完成写入新区块。2026-09-28 的当前生产二进制 SHA-256 为 `dd55a3a80fbba9bec3b61a18401f41b1ba436322d4de8012f4889fdca6859a21`。更新未增加外部域名。
 
 Bybit USDT 线性永续已于 2026-09-05 部署，collector unit 设置 `BYBIT_PERP_SYMBOLS=BTCUSDT`。启动时已幂等增加 `instrument.venue_contract_version`：迁移前 Binance、OKX 永续 ID 2、4 保留，新版本分别登记为 ID 5、6，Bybit `BTCUSDT` 登记为 ID 7。首个完整生产分钟的五个当前行情流均有 60 个有效秒；Bybit 公共 ticker 实测产生了指向下一结算时刻的完整资金费率估算。
 
@@ -238,6 +238,14 @@ LIMIT 1 BY instrument_id;
 
 验收采用 [crypto-market-info-perp-soak.service](../deploy/systemd/crypto-market-info-perp-soak.service)，生产服务不变。三家 `*_PERP_SYMBOLS=auto`，现货和收益均禁用，资金费率启用；任意两家共有的规范化 USDT 永续产品在所有符合条件的场内分别采集。字典及其单位依据见 [perpetual-asset-aliases.md](../config/perpetual-asset-aliases.md)。
 
+2026-09-28 旧验收库 `crypto_market_info_perp_soak` 的秒级差量表有 22 个无法完整读取的数据分片（约 21.94 GiB）。逐一隔离并重启 ClickHouse 后，该表可读取的剩余差量为 33,432,284 行。另在本项目生产库和旧验收库中检查了 802 个由 ClickHouse 自动标为 `broken-on-start` 的历史分片：593 个存在空目录、缺失元数据、空数据文件或已证实无法解压的全零压缩头；39 个完整解压时报错；170 个有损坏元数据，其中 18 个逐个在隔离恢复表装载失败。824 个确认不能完整恢复的分片已按用户要求删除，总计约 22.45 GiB；清单和验证结果保存在 `var/recovery/*-2026-09-28.json`。普通 `detached` 分片没有被判定为损坏，仍保留。旧库保留作不完整历史检查；由于缺失秒级差量，不能将其盘口分钟当成完整可回放数据，也不能把新 run 继续写入旧库。
+
+验收服务配置已切换到 `crypto_market_info_perp_soak_20260928` 新库，2026-09-28 13:19:54 UTC 开始的新 run 已写入部分有效分钟，但交易所 WebSocket 重连量很高，并与生产 Binance、Bybit 盘口断流同时出现。为优先保障生产行情，独立验收服务已停止并禁用开机自启；重启验收后必须从新 run 重新计算连续运行时间，并先确认生产五路盘口仍有完整 60/60 分钟。
+
+同日现场直连 Bybit 公共 `orderbook.1000.BTCUSDT` 时，快照在订阅后约 8 秒到达，订阅确认约 13 秒才到；原采集器的 10 秒等待会在收到有效盘口后仍报 `subscribe acknowledgements timed out` 并断开。生产 Bybit 盘口订阅等待已调为 30 秒，继续按 request ID 严格验证确认，并使用现有有界缓冲在确认前保留消息。该修复于 21:42 +08:00 部署，旧二进制保存在 `/home/ubuntu/.local/share/crypto-market-info-collector/collector.rollback-20260928-pre-bybit-ack`。
+
+Binance 永续当时持续报 `Binance snapshot bridge timeout`，生产仍将该路标为无效。公网 1000 档快照实测耗时约 16 秒，原快照请求等待为 20 秒、快照后的差量桥接等待仅 5 秒；现分别调到 35 秒和 30 秒，序列断档仍强制重新取快照，不能因等待变长而沿用旧盘口。2026-09-28 21:54 +08:00 项目状态指示器检查生产五路 BTC 盘口均为最新完整分钟 60/60，生产 collector 零次重启；随后 Binance、Bybit WebSocket 仍出现 TCP 读超时，21:57 +08:00 状态为黄色且有无效秒。网络波动期间继续保留无效标记，不能把这次短时绿色状态写成持续稳定验收。
+
 2026-09-10 的完整目录预检选出 635 组规范化产品、1,529 条场内交易流：Binance 477、Bybit 630、OKX 422，合计 60 条盘口/资金费率 WebSocket。这是该次目录的结果，不是固定白名单，启动时重新计算。独立验收显式设置 `BYBIT_PERP_MAX_INSTRUMENTS=700`、`PERP_MAX_TOTAL_INSTRUMENTS=2000` 和 `MARKET_DATA_MAX_SAMPLE_SOURCES=2100`；程序默认保护上限仍是单家 500、总数 1000、source 1100，不能把验收覆盖直接当作生产容量结论。unit 设置 `MemoryMax=6G` 和 `LimitNOFILE=65536`，异常退出 30 秒后重启。
 
 修复实盘发现的 Binance 单请求字节预算、错误帧解析和 funding 静默 topic 隔离后，全量采集于 2026-09-10 00:24:29 +08:00 重新启动；提交的 run 为 `aa8dceab-bf35-4d99-bc50-c7cf0a40a967`，`started_at=2026-09-09 16:24:36.609 UTC`。该 UUID 仅记录此次核验，重启后检查必须从新日志取得当前 run。此次使用的 mapping revision 为 `1f287a7cfe9fce6090da2a625f2e770afdf88eb8702c8bce2ecca4c7208f888a`。启动空间基线（2026-09-09 16:24:29 UTC，包含先前失败 run metadata）：活跃 part 的 `data_compressed_bytes=83,642`，`bytes_on_disk=109,746`。
@@ -269,7 +277,7 @@ sampler 的 `SampleOverruns` 表示进程启动后跨过秒级截止时间的次
 
 ```bash
 go run ./cmd/perp-check \
-  -database crypto_market_info_perp_soak \
+  -database crypto_market_info_perp_soak_20260928 \
   -run-id '<current-run-id>' -min-duration 24h
 ```
 
@@ -282,6 +290,23 @@ go run ./cmd/perp-check \
 建表命令、查询、成本情景及验收记录见 [DEX 实现说明](dex-arbitrage-implementation.md)。`dex-check`数据库连接启用服务端readonly；可选成本RPC补报只保存报告文件。DEX RPC失败单独退避，不取消CEX、收益或期权分支；既有finalized区块hash出现冲突时仅暂停DEX并记录错误，排查来源后通过现有collector生命周期恢复。
 
 部署验收时连续高度 `26027452..26027477` 已落库，25/26区块为完整58/58报价，最近完整区块的58条状态全为 `ok`；完整区块单次采集耗时约3.9至7.3秒。继续观察到69个连续区块时服务仍为零重启，早期区块已由 `head` 追加修订为 `safe`，证明最终性重检链路在运行；当时Ethereum的 `finalized` 锚点尚未推进到本次启动后的高度。五路生产CEX盘口同期写到最新完整分钟且各有60个有效秒。首份只读报告位于 `var/dex-reports/initial-live/`，使用 `--include-head` 仅为启动验收；日常机会结论继续使用默认finalized口径。
+
+## Reserve r5 研究采集（2026-10-02）
+
+新增独立 user unit `crypto-market-info-reserve.service`，二进制 `/home/ubuntu/crypto-market-info/var/reserve/reserve-data`，工作目录仓库根，隔离库 `crypto_market_info_reserve`，证据 `/home/ubuntu/crypto-market-info/var/reserve/evidence`。默认 HTTPS POST 到 ethereum-rpc.publicnode.com，路由沿用用户配置。
+
+```bash
+systemctl --user status crypto-market-info-reserve.service
+journalctl --user -u crypto-market-info-reserve.service -n 30 --no-pager
+/home/ubuntu/crypto-market-info/var/reserve/reserve-data report
+```
+
+report 默认只读finalized；启动验收可显式 `--finalized-only=false`。后台watch与backfill共享文件锁，回补前停止这一独立unit，完成后重启。当前首个白名单为DFX完整六成分。免费RPC不保证30天历史，拒绝范围保留为missing；完整数据模型、命令与限制见 [Reserve实现](reserve-data-implementation.md)。
+
+Watch主循环对明确的RPC传输/读取超时、截断及HTTP429/5xx保留游标后重新poll/复核，区块头复核每请求最多五个成员。非法响应、证据/DB失败、finalized hash冲突仍退出；启动预检失败仍会由systemd重启。2026-10-02 11:29 UTC部署这一运行修正，短时验收保持active、继续写入，没有自动重启；此前版本曾因公共节点读取超时重启，不能把这次短时观察当成长期无缺口证明。实网验收文件在 `research/2026-10-02-reserve-implementation`。
+
+2026-10-03补齐的[Reserve操作说明](reserve-data-implementation.md)含当前manifest的只读SQL、报告计数口径、RPC环境覆盖、固定高度回补和备份恢复要求。前台export不会修改已运行的systemd环境；回补前停止这一unit，固定from/to及chunk，结束后恢复watch。日志完整而收据未齐时可能已经推进日志游标，Watch没有独立收据重试队列，应通过显式范围回补核验。备份须同时保留五表和原始证据；当前没有自动清理或已验收的自动恢复流程。
+
 
 ## Across 独立研究采集器（2026-10-02）
 
@@ -304,3 +329,40 @@ var/across/bin/across-data report --database crypto_market_info_across_history -
 14:20:53 UTC部署限速修正后，14:23:25已提交Base `50784359..50784870`，跨过原停点；前220份单成员RPC响应无HTTP/RPC错误。14:24:49快照中实时服务0重启，主库558存款事件/733成交事件/403收据，两条链已采到当时最新十几秒内；history在Base阶段，306存款事件/211成交事件/20收据，Arbitrum30日阶段尚未开始。事件包含其他路线，不能当作机会数。限速修正经独立Agent复审和race回归通过，详见上述startup目录；短时验收不代表长期覆盖保证。
 
 命令、RPC环境变量、恢复方式与实测限制见[Across实现说明](across-stablecoin-data-implementation.md)。访问 Base/Arbitrum 公开 RPC 和 `api.binance.com` 行情。实时轮询配置目标1秒；先前90秒测试完整循环约6–14秒，本次启动追赶阶段约12–36秒，需按probe真实时间和coverage评价样本。默认 Arbitrum RPC 对部分历史合约状态返回 `historical state ... is not available`，对应 capture 保留 raw/partial，不伪造完整解码。两个进程仍共享公共 RPC 的访问额度，独立库只隔离 writer 和查询范围。服务不与已有行情、DEX或Reserve采集器共用业务表。
+## LST 独立研究采集（2026-10-02 UTC）
+
+已创建 `crypto_market_info_lst` 七张专项表及 instrument，程序 `var/lst/lst-data`，工作目录仓库根。状态与限速冷却在 `var/lst/state`，原始公开证据在 `var/lst/evidence`。2026-10-03 02:36:08（北京时间）按用户要求安装并启动用户级 `crypto-market-info-lst.service`，启用开机启动；用户管理器已有 `Linger=yes`。unit 源文件为 [crypto-market-info-lst.service](../deploy/systemd/crypto-market-info-lst.service)，安装在 `/home/ubuntu/.config/systemd/user/`，只运行 `watch`，不启动 30/60 日历史回补。补采仅用于断线后的增量日志缺口，旧状态目录和持久限速沿用。失败后等待 60 秒重启，日志进入 journal。
+
+启动核验已连续写入三轮市场批次（24 条报价观测，其中四条完整且及时）和六条资金费观测。首轮本地发送预约过期被标 unknown，后两轮协议状态恢复 ok；服务未重启。实时日志补缺仍被 dRPC 拒绝，保留 failed、不推进覆盖。有限核验详见[常驻启动记录](../research/2026-10-03-lst-drpc/service-startup.md)。
+
+2026-10-03（北京时间）按用户选择将此 LST CLI 的默认 RPC 改为 `https://eth.drpc.org`，无需注册或 API key。`LST_RPC_URL` 仍可覆盖；共享状态目录、排他锁、启动节奏和回补限速沿用，验证见[切换记录](../research/2026-10-03-lst-drpc/validation.md)。
+
+dRPC 的一次实时 `watch --once` 已落库协议状态和报价，但该免费端点按高度查询日志返回 HTTP 400 / code 35，512 块历史回补未通过。程序保存错误与 failed 范围，不把拒绝当作成功空范围，不据这条不一致的范围提示反复拆分重试；未运行完整 30/60 日回补。
+
+```bash
+systemctl --user status crypto-market-info-lst.service
+journalctl --user -u crypto-market-info-lst.service -n 30 --no-pager
+var/lst/lst-data report --out var/lst-reports/latest
+```
+
+不要手工启动第二份 `watch`；同库采集由这个 unit 管理。手动补缺或 probe 前先 `systemctl --user stop crypto-market-info-lst.service`，完成后用 `start` 恢复。`--once` 只有一份市场观测，不触发后台维护或历史回补。来源 URL、严格限速、恢复、只读报告与边界见 [LST 实现说明](lst-redemption-data-implementation.md)，初版数据验证见[记录](../research/2026-10-02-lst-implementation/validation.md)。
+
+数据健康检查使用[只读 SQL](lst-data-health.sql)：最近 15 分钟 market 应持续产生观测，协议/报价可用性按成员状态检查，`partial` 不代表所有成员无效。增量日志覆盖只认 complete/canonical/committed；失败范围与资金费重叠采样不作为新增覆盖或重复现金流。head 观测不会立即进入历史报告。升级、配置覆盖和状态备份见[维护说明](lst-redemption-data-implementation.md#维护配置与恢复)，不要删除状态目录来绕过冷却。
+
+## JustLend keeper 独立研究采集（2026-10-03）
+
+按用户要求已启用常驻用户服务 `crypto-market-info-justlend-keeper.service`，2026-10-03 03:02:31 Asia/Shanghai 首次启动，真实扩展租赁事件修复后03:58:11恢复，检查为 active/running、NRestarts=0。独立库 `crypto_market_info_justlend_keeper` 的五表已建；不接入主盘口 collector。当前二进制 SHA-256 为 `4637bf2cfdd97c572e0b5188674f8d3d8b17e9547466b28f6b1e7d42ed6eb9ce`。四条初版无法跨进程核验的报价提交已备份后撤回，保留全部原值及证据；实际新状态以现场查询为准。
+
+二进制在仓库 `var/justlend-keeper/bin/justlend-keeper-data`，配置 `config/justlend-keeper-tron.json`；状态与原始证据分别在 `var/justlend-keeper/state/`、`var/justlend-keeper/evidence/`。仓库 unit 已复制到用户服务目录并 enable，已有 Linger=yes 使退出登录后继续运行。每次七天时限结束或失败后等60秒恢复，进度与预算保留。
+
+```bash
+systemctl --user status crypto-market-info-justlend-keeper.service
+journalctl --user -u crypto-market-info-justlend-keeper.service -n 30 --no-pager
+var/justlend-keeper/bin/justlend-keeper-data report --days 30
+```
+
+PublicNode `tron-rpc.publicnode.com` 承担只读节点数据，事件分页仍来自 `api.trongrid.io`，TRXUSDT来自 `api.binance.com`。第一请求等五秒，前五分钟全局至少五秒/次，此后至少一秒/次；TronGrid及后台请求仍至少五秒/次，单请求在途，每日总上限40,000次。初始化 Rent/Return 最多60页和固定50样本，watch不暗中回补30日Liquidate历史。429保存来源冷却，401/403保存停用；不通过重启清掉状态。
+
+不要再手动启动一份采集器。恢复来源前先停止此unit，完成后重新start；report只读可以同时执行。历史backfill与watch共用状态时禁止带另一模式的待办切换，单纯停止unit不能排空watch队列，当前没有自动排空命令。模式切换限制、配置、备份及[数据健康SQL](justlend-keeper-data-implementation.md#数据健康检查与排查)见[实现说明](justlend-keeper-data-implementation.md)，独立[代码审核](../discuss/0017-justlend-keeper-data-code-review.md)与[真实验收](../research/2026-10-03-keeper-implementation/validation.md)。
+
+04:07首批实际验收已有9条事件、9份收据、5条只读模拟、45条报价/费用观测，正式独立报告成员及原始证据核验通过。模拟均为TVM revert，source请求成功不被当作合约执行成功。启动五分钟51次已回读请求均HTTP200，最小间隔5.54603秒；其余固定样本继续经统一gate恢复核验。

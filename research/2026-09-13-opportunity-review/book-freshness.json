@@ -1,0 +1,82 @@
+[
+  {
+    "db": "soak",
+    "instrument_id": 0,
+    "minutes": 54282,
+    "first": "2026-09-12 18:33:00",
+    "latest": "2026-09-12 19:11:00",
+    "valid_seconds": 3253656
+  },
+  {
+    "db": "prod",
+    "instrument_id": 4,
+    "minutes": 16385,
+    "first": "2026-08-21 05:42:00",
+    "latest": "2026-09-05 04:18:00",
+    "valid_seconds": 979513
+  },
+  {
+    "db": "prod",
+    "instrument_id": 3,
+    "minutes": 25968,
+    "first": "2026-08-21 05:42:00",
+    "latest": "2026-09-12 19:11:00",
+    "valid_seconds": 1554192
+  },
+  {
+    "db": "prod",
+    "instrument_id": 2,
+    "minutes": 16067,
+    "first": "2026-08-21 05:42:00",
+    "latest": "2026-09-05 04:18:00",
+    "valid_seconds": 953287
+  },
+  {
+    "db": "prod",
+    "instrument_id": 5,
+    "minutes": 9576,
+    "first": "2026-09-05 04:21:00",
+    "latest": "2026-09-12 19:11:00",
+    "valid_seconds": 574248
+  },
+  {
+    "db": "prod",
+    "instrument_id": 1,
+    "minutes": 25828,
+    "first": "2026-08-21 05:42:00",
+    "latest": "2026-09-12 19:11:00",
+    "valid_seconds": 1541757
+  },
+  {
+    "db": "prod",
+    "instrument_id": 6,
+    "minutes": 9576,
+    "first": "2026-09-05 04:21:00",
+    "latest": "2026-09-12 19:11:00",
+    "valid_seconds": 574254
+  },
+  {
+    "db": "prod",
+    "instrument_id": 7,
+    "minutes": 9468,
+    "first": "2026-09-05 04:21:00",
+    "latest": "2026-09-12 19:11:00",
+    "valid_seconds": 560518
+  },
+  {
+    "db": "prod",
+    "instrument_id": 9,
+    "minutes": 2260,
+    "first": "2026-09-05 14:43:00",
+    "latest": "2026-09-07 04:23:00",
+    "valid_seconds": 135580
+  },
+  {
+    "db": "prod",
+    "instrument_id": 8,
+    "minutes": 2260,
+    "first": "2026-09-05 14:43:00",
+    "latest": "2026-09-07 04:23:00",
+    "valid_seconds": 135580
+  }
+]

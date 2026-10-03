@@ -1,0 +1,7 @@
+{
+  "name": "history-binance-AVAX",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=AVAXUSDT&startTime=1786876389000&endTime=1789554789000&limit=1000",
+  "retrieved_at_utc": "2026-09-16T10:33:11.603790+00:00",
+  "sha256": "121c87e4052f82714fb930b803b58a0beb86b24c5555da63d689f45ed651b422",
+  "rows": 93
+}

@@ -1,0 +1,1018 @@
+{
+  "venue": "Bybit",
+  "symbol": "BZUSDT",
+  "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=BZUSDT&limit=200",
+  "fetched_at": "2026-09-12T19:15:06.908449+00:00",
+  "payload_sha256": "9e23d02c2c76c8e7107f4e6158c6cc0abe286c45a6081ee111e322808b82b209",
+  "data": {
+    "retCode": 0,
+    "retMsg": "OK",
+    "result": {
+      "category": "linear",
+      "list": [
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1789228800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1789200000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00249782",
+          "fundingRateTimestamp": "1789171200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00343382",
+          "fundingRateTimestamp": "1789142400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00227032",
+          "fundingRateTimestamp": "1789113600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00263584",
+          "fundingRateTimestamp": "1789084800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00363225",
+          "fundingRateTimestamp": "1789056000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00207329",
+          "fundingRateTimestamp": "1789027200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00276915",
+          "fundingRateTimestamp": "1788998400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00361319",
+          "fundingRateTimestamp": "1788969600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00186857",
+          "fundingRateTimestamp": "1788940800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00278092",
+          "fundingRateTimestamp": "1788912000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00268084",
+          "fundingRateTimestamp": "1788883200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00154935",
+          "fundingRateTimestamp": "1788854400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00002714",
+          "fundingRateTimestamp": "1788825600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00078464",
+          "fundingRateTimestamp": "1788796800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00028578",
+          "fundingRateTimestamp": "1788768000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00023268",
+          "fundingRateTimestamp": "1788739200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788710400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788681600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788652800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788624000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788595200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00004861",
+          "fundingRateTimestamp": "1788566400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00027928",
+          "fundingRateTimestamp": "1788537600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00031191",
+          "fundingRateTimestamp": "1788508800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788480000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.0002604",
+          "fundingRateTimestamp": "1788451200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00033731",
+          "fundingRateTimestamp": "1788422400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00013058",
+          "fundingRateTimestamp": "1788393600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00038043",
+          "fundingRateTimestamp": "1788364800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00045234",
+          "fundingRateTimestamp": "1788336000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00042251",
+          "fundingRateTimestamp": "1788307200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00031315",
+          "fundingRateTimestamp": "1788278400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00010848",
+          "fundingRateTimestamp": "1788249600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788220800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788192000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788163200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788134400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788105600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788076800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788048000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1788019200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787990400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787961600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787932800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787904000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787875200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787846400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787817600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787788800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787760000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00000546",
+          "fundingRateTimestamp": "1787731200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787702400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00002291",
+          "fundingRateTimestamp": "1787673600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787644800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787616000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00000212",
+          "fundingRateTimestamp": "1787587200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00000022",
+          "fundingRateTimestamp": "1787558400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787529600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787500800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787472000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787443200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787414400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787385600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787356800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00014029",
+          "fundingRateTimestamp": "1787328000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00009964",
+          "fundingRateTimestamp": "1787299200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787270400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.0000913",
+          "fundingRateTimestamp": "1787241600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00016061",
+          "fundingRateTimestamp": "1787212800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787184000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00006732",
+          "fundingRateTimestamp": "1787155200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00023062",
+          "fundingRateTimestamp": "1787126400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00008763",
+          "fundingRateTimestamp": "1787097600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00009986",
+          "fundingRateTimestamp": "1787068800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787040000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1787011200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786982400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00012461",
+          "fundingRateTimestamp": "1786953600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786924800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786896000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786867200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786838400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786809600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786780800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00000778",
+          "fundingRateTimestamp": "1786752000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786723200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786694400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00051384",
+          "fundingRateTimestamp": "1786665600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00078371",
+          "fundingRateTimestamp": "1786636800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00057403",
+          "fundingRateTimestamp": "1786608000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00110887",
+          "fundingRateTimestamp": "1786579200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.0017695",
+          "fundingRateTimestamp": "1786550400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.0008502",
+          "fundingRateTimestamp": "1786521600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.001892",
+          "fundingRateTimestamp": "1786492800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00163784",
+          "fundingRateTimestamp": "1786464000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00096567",
+          "fundingRateTimestamp": "1786435200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00152899",
+          "fundingRateTimestamp": "1786406400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00123011",
+          "fundingRateTimestamp": "1786377600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00060774",
+          "fundingRateTimestamp": "1786348800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786320000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786291200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786262400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786233600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786204800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1786176000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00099986",
+          "fundingRateTimestamp": "1786147200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00121711",
+          "fundingRateTimestamp": "1786118400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00094488",
+          "fundingRateTimestamp": "1786089600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00016636",
+          "fundingRateTimestamp": "1786060800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00023419",
+          "fundingRateTimestamp": "1786032000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00007434",
+          "fundingRateTimestamp": "1786003200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785974400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785945600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785916800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785888000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785859200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00006266",
+          "fundingRateTimestamp": "1785830400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785801600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785772800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00007784",
+          "fundingRateTimestamp": "1785744000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785715200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785686400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00024063",
+          "fundingRateTimestamp": "1785657600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785628800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785600000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785571200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785542400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785513600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785484800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785456000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00000215",
+          "fundingRateTimestamp": "1785427200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00024192",
+          "fundingRateTimestamp": "1785398400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785369600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785340800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785312000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785283200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785254400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785225600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785196800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785168000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785139200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785110400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785081600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785052800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1785024000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784995200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784966400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784937600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784908800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784880000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0.00010862",
+          "fundingRateTimestamp": "1784851200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784822400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784793600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784764800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784736000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784707200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784678400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784649600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784620800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784592000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784563200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784534400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784505600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784476800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784448000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0.00005837",
+          "fundingRateTimestamp": "1784419200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784390400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784361600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0.00009811",
+          "fundingRateTimestamp": "1784332800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784304000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784275200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784246400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784217600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784188800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784160000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784131200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784102400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1784073600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00049224",
+          "fundingRateTimestamp": "1784044800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00011858",
+          "fundingRateTimestamp": "1784016000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1783987200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1783958400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1783929600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0.00006571",
+          "fundingRateTimestamp": "1783900800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0.00003141",
+          "fundingRateTimestamp": "1783872000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1783843200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0.00017615",
+          "fundingRateTimestamp": "1783814400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1783785600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1783756800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1783728000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1783699200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1783670400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1783641600000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.00004237",
+          "fundingRateTimestamp": "1783612800000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1783584000000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "-0.0000465",
+          "fundingRateTimestamp": "1783555200000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1783526400000"
+        },
+        {
+          "symbol": "BZUSDT",
+          "fundingRate": "0",
+          "fundingRateTimestamp": "1783497600000"
+        }
+      ]
+    },
+    "retExtInfo": {},
+    "time": 1789240508261
+  }
+}

@@ -1,0 +1,1076 @@
+{
+  "latest_books": [
+    {
+      "instrument_id": 1,
+      "minute_time": "2026-09-26 16:25:00",
+      "valid_bitmap": 1152921504606846975,
+      "stored_depth": 10
+    },
+    {
+      "instrument_id": 3,
+      "minute_time": "2026-09-26 16:25:00",
+      "valid_bitmap": 1152921504606846975,
+      "stored_depth": 10
+    },
+    {
+      "instrument_id": 5,
+      "minute_time": "2026-09-26 16:25:00",
+      "valid_bitmap": 1152921504606846975,
+      "stored_depth": 10
+    },
+    {
+      "instrument_id": 6,
+      "minute_time": "2026-09-26 16:25:00",
+      "valid_bitmap": 1152921504606846975,
+      "stored_depth": 10
+    },
+    {
+      "instrument_id": 7,
+      "minute_time": "2026-09-26 16:25:00",
+      "valid_bitmap": 1152921504606846975,
+      "stored_depth": 10
+    }
+  ],
+  "latest_spot": [
+    {
+      "buy": "Binance",
+      "sell": "OKX",
+      "capacity": {
+        "matched_base_qty": "2.55248451",
+        "buy_notional": "214709.5346643486",
+        "sell_notional": "214678.937893696"
+      },
+      "at_100k": {
+        "base_qty": "1.188808179380692756567986869851420376125",
+        "buy_notional": "100000.0000000000000000000000000000000000",
+        "sell_notional": "99987.31606708628815259922209147974044988",
+        "gross_profit": "-12.68393291371184740077790852025955012",
+        "fee_only_profit": "-212.67124898079813555337713061173929057",
+        "fee_only_net_bps": "-21.24587901906075280253517788329063841900",
+        "filled_budget": true
+      },
+      "positive_capacity": {
+        "base_qty": "0",
+        "buy_notional": "0",
+        "sell_notional": "0",
+        "gross_profit": "0",
+        "fee_only_profit": "0.000",
+        "fee_only_net_bps": null,
+        "filled_budget": false
+      }
+    },
+    {
+      "buy": "OKX",
+      "sell": "Binance",
+      "capacity": {
+        "matched_base_qty": "2.15934",
+        "buy_notional": "181619.928060",
+        "sell_notional": "181638.9626852"
+      },
+      "at_100k": {
+        "base_qty": "1.188933407839826891295818521204627328823",
+        "buy_notional": "100000.0000000000000000000000000000000000",
+        "sell_notional": "100010.5220606593824679879679939126609518",
+        "gross_profit": "10.5220606593824679879679939126609518",
+        "fee_only_profit": "-189.48846140127691448001997408125170915",
+        "fee_only_net_bps": "-18.92991622390378766034165575237279811700",
+        "filled_budget": true
+      },
+      "positive_capacity": {
+        "base_qty": "0",
+        "buy_notional": "0",
+        "sell_notional": "0",
+        "gross_profit": "0",
+        "fee_only_profit": "0.000",
+        "fee_only_net_bps": null,
+        "filled_budget": false
+      }
+    }
+  ],
+  "latest_spot_perp": [
+    {
+      "spot": "Binance",
+      "perp": "Binance",
+      "capacity": {
+        "matched_base_qty": "6.49460",
+        "buy_notional": "546311.9754198",
+        "sell_notional": "546002.970380"
+      },
+      "at_100k": {
+        "base_qty": "1.188808179380692756567986869851420376125",
+        "buy_notional": "100000.0000000000000000000000000000000000",
+        "sell_notional": "99943.46028298865425249762654446986644694",
+        "gross_profit": "-56.53971701134574750237345553013355306",
+        "fee_only_profit": "-206.51144715284007462862226880236848628",
+        "fee_only_net_bps": "-20.63051420108292453832390297725958903900",
+        "filled_budget": true
+      }
+    },
+    {
+      "spot": "Binance",
+      "perp": "OKX",
+      "capacity": {
+        "matched_base_qty": "4.0737",
+        "buy_notional": "342670.926282",
+        "sell_notional": "342466.95055"
+      },
+      "at_100k": {
+        "base_qty": "1.188808179380692756567986869851420376125",
+        "buy_notional": "100000.0000000000000000000000000000000000",
+        "sell_notional": "99940.48826254020252060620657729523789600",
+        "gross_profit": "-59.51173745979747939379342270476210400",
+        "fee_only_profit": "-209.48198159106758065409652599340972295",
+        "fee_only_net_bps": "-20.92727088821853952588376883051046183300",
+        "filled_budget": true
+      }
+    },
+    {
+      "spot": "Binance",
+      "perp": "Bybit",
+      "capacity": {
+        "matched_base_qty": "2.269",
+        "buy_notional": "190863.42434",
+        "sell_notional": "190751.6275"
+      },
+      "at_100k": {
+        "base_qty": "1.188808179380692756567986869851420376125",
+        "buy_notional": "100000.0000000000000000000000000000000000",
+        "sell_notional": "99941.43930908370707481146096679111903230",
+        "gross_profit": "-58.56069091629292518853903320888096770",
+        "fee_only_profit": "-213.52848253628896407968533674061608317",
+        "fee_only_net_bps": "-21.33151673689200440356496870535625206500",
+        "filled_budget": true
+      }
+    },
+    {
+      "spot": "OKX",
+      "perp": "Binance",
+      "capacity": {
+        "matched_base_qty": "7.444",
+        "buy_notional": "626107.3960",
+        "sell_notional": "625819.3002"
+      },
+      "at_100k": {
+        "base_qty": "1.188933407839826891295818521204627328823",
+        "buy_notional": "100000.0000000000000000000000000000000000",
+        "sell_notional": "99953.98827711659869930685182322938092238",
+        "gross_profit": "-46.01172288340130069314817677061907762",
+        "fee_only_profit": "-195.98871702195960004280160268223376808",
+        "fee_only_net_bps": "-19.57929240978617383044971055766571109700",
+        "filled_budget": true
+      }
+    },
+    {
+      "spot": "OKX",
+      "perp": "OKX",
+      "capacity": {
+        "matched_base_qty": "4.0737",
+        "buy_notional": "342634.83330",
+        "sell_notional": "342466.95055"
+      },
+      "at_100k": {
+        "base_qty": "1.188933407839826891295818521204627328823",
+        "buy_notional": "100000.0000000000000000000000000000000000",
+        "sell_notional": "99951.01594359699913207861227692636935406",
+        "gross_profit": "-48.98405640300086792138772307363064594",
+        "fee_only_profit": "-198.95956437479936748742702921209383062",
+        "fee_only_net_bps": "-19.87608035712281393480789502618319986200",
+        "filled_budget": true
+      }
+    },
+    {
+      "spot": "OKX",
+      "perp": "Bybit",
+      "capacity": {
+        "matched_base_qty": "2.269",
+        "buy_notional": "190843.3210",
+        "sell_notional": "190751.6275"
+      },
+      "at_100k": {
+        "base_qty": "1.188933407839826891295818521204627328823",
+        "buy_notional": "100000.0000000000000000000000000000000000",
+        "sell_notional": "99951.96709032327099359164893174333305592",
+        "gross_profit": "-48.03290967672900640835106825666694408",
+        "fee_only_profit": "-203.00649157640680545482647516912577726",
+        "fee_only_net_bps": "-20.28036878885182871676588163527730042600",
+        "filled_budget": true
+      }
+    }
+  ],
+  "historical_spot_spikes": [
+    {
+      "minute_time": "2026-09-21 08:39:00",
+      "positive_seconds": 2,
+      "results": [
+        {
+          "second": 0,
+          "buy": "OKX",
+          "sell": "Binance",
+          "positive_capacity": {
+            "base_qty": "0.02879",
+            "buy_notional": "2409.717242",
+            "sell_notional": "2417.2369110",
+            "gross_profit": "7.5196690",
+            "fee_only_profit": "2.6927148470",
+            "fee_only_net_bps": "11.16323847168547660589871739888485297000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.02879",
+            "buy_notional": "2409.717242",
+            "sell_notional": "2417.2369110",
+            "gross_profit": "7.5196690",
+            "fee_only_profit": "2.6927148470",
+            "fee_only_net_bps": "11.16323847168547660589871739888485297000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 1,
+          "buy": "OKX",
+          "sell": "Binance",
+          "positive_capacity": {
+            "base_qty": "1.36383666",
+            "buy_notional": "114145.724833595",
+            "sell_notional": "114615.6539470032",
+            "gross_profit": "469.9291134082",
+            "fee_only_profit": "241.1677346276018",
+            "fee_only_net_bps": "21.10694974963032696062348702119480635000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "1.194839979570445503745385470054836744203",
+            "buy_notional": "100000.0000000000000000000000000000000000",
+            "sell_notional": "100414.0990255121940934016701910325794774",
+            "gross_profit": "414.0990255121940934016701910325794774",
+            "fee_only_profit": "213.6849264866818993082685208415468979",
+            "fee_only_net_bps": "21.34714550316502490592093115300168810000",
+            "filled_budget": true
+          }
+        }
+      ]
+    },
+    {
+      "minute_time": "2026-09-24 13:56:00",
+      "positive_seconds": 26,
+      "results": [
+        {
+          "second": 0,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "1.24003711",
+            "buy_notional": "104122.1960153700",
+            "sell_notional": "104375.027380755",
+            "gross_profit": "252.8313653850",
+            "fee_only_profit": "44.3341419888750",
+            "fee_only_net_bps": "4.253641762434631550548521812634952850000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "1.190944061357438041135207879285909940810",
+            "buy_notional": "100000.0000000000000000000000000000000000",
+            "sell_notional": "100243.1453068878225255159765145831100313",
+            "gross_profit": "243.1453068878225255159765145831100313",
+            "fee_only_profit": "42.9021615809347029904605380685269213",
+            "fee_only_net_bps": "4.285930227865604694351702104747944190000",
+            "filled_budget": true
+          }
+        },
+        {
+          "second": 1,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.40584426",
+            "buy_notional": "34077.1434858156",
+            "sell_notional": "34158.357116342",
+            "gross_profit": "81.2136305264",
+            "fee_only_profit": "12.9781299242424",
+            "fee_only_net_bps": "3.804651280374948870069501392434580270000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.40584426",
+            "buy_notional": "34077.1434858156",
+            "sell_notional": "34158.357116342",
+            "gross_profit": "81.2136305264",
+            "fee_only_profit": "12.9781299242424",
+            "fee_only_net_bps": "3.804651280374948870069501392434580270000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 2,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.29232220",
+            "buy_notional": "24545.1433845320",
+            "sell_notional": "24602.504434107",
+            "gross_profit": "57.3610495750",
+            "fee_only_profit": "8.2134017563610",
+            "fee_only_net_bps": "3.342900235397278993004910431764352320000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.29232220",
+            "buy_notional": "24545.1433845320",
+            "sell_notional": "24602.504434107",
+            "gross_profit": "57.3610495750",
+            "fee_only_profit": "8.2134017563610",
+            "fee_only_net_bps": "3.342900235397278993004910431764352320000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 3,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.40355925",
+            "buy_notional": "33885.2600210925",
+            "sell_notional": "33966.238304780",
+            "gross_profit": "80.9782836875",
+            "fee_only_profit": "13.1267853616275",
+            "fee_only_net_bps": "3.870022446861767503486546792236082480000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.40355925",
+            "buy_notional": "33885.2600210925",
+            "sell_notional": "33966.238304780",
+            "gross_profit": "80.9782836875",
+            "fee_only_profit": "13.1267853616275",
+            "fee_only_net_bps": "3.870022446861767503486546792236082480000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 4,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.43075057",
+            "buy_notional": "36168.4066681257",
+            "sell_notional": "36254.772011728",
+            "gross_profit": "86.3653436023",
+            "fee_only_profit": "13.9421649224463",
+            "fee_only_net_bps": "3.850940079711927536696176812165749710000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.43075057",
+            "buy_notional": "36168.4066681257",
+            "sell_notional": "36254.772011728",
+            "gross_profit": "86.3653436023",
+            "fee_only_profit": "13.9421649224463",
+            "fee_only_net_bps": "3.850940079711927536696176812165749710000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 5,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.72958528",
+            "buy_notional": "61260.3649163328",
+            "sell_notional": "61408.555551741",
+            "gross_profit": "148.1906354082",
+            "fee_only_profit": "25.5217149401262",
+            "fee_only_net_bps": "4.161943657408278981378286060535572840000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.72958528",
+            "buy_notional": "61260.3649163328",
+            "sell_notional": "61408.555551741",
+            "gross_profit": "148.1906354082",
+            "fee_only_profit": "25.5217149401262",
+            "fee_only_net_bps": "4.161943657408278981378286060535572840000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 6,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.65233287",
+            "buy_notional": "54776.3976172287",
+            "sell_notional": "54906.109352370",
+            "gross_profit": "129.7117351413",
+            "fee_only_profit": "20.0292281717013",
+            "fee_only_net_bps": "3.652890628655560907342260552566127680000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.65233287",
+            "buy_notional": "54776.3976172287",
+            "sell_notional": "54906.109352370",
+            "gross_profit": "129.7117351413",
+            "fee_only_profit": "20.0292281717013",
+            "fee_only_net_bps": "3.652890628655560907342260552566127680000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 7,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.06727",
+            "buy_notional": "5648.9974462",
+            "sell_notional": "5662.250440",
+            "gross_profit": "13.2529938",
+            "fee_only_profit": "1.9417459138",
+            "fee_only_net_bps": "3.433894467410651052646057943782236450000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.06727",
+            "buy_notional": "5648.9974462",
+            "sell_notional": "5662.250440",
+            "gross_profit": "13.2529938",
+            "fee_only_profit": "1.9417459138",
+            "fee_only_net_bps": "3.433894467410651052646057943782236450000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 8,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.41738",
+            "buy_notional": "35051.6419530",
+            "sell_notional": "35135.799684",
+            "gross_profit": "84.1577310",
+            "fee_only_profit": "13.9702893630",
+            "fee_only_net_bps": "3.981648862179917169722200382984732010000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.41738",
+            "buy_notional": "35051.6419530",
+            "sell_notional": "35135.799684",
+            "gross_profit": "84.1577310",
+            "fee_only_profit": "13.9702893630",
+            "fee_only_net_bps": "3.981648862179917169722200382984732010000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 9,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.06565000",
+            "buy_notional": "5513.7491813000",
+            "sell_notional": "5527.856502716",
+            "gross_profit": "14.1073214160",
+            "fee_only_profit": "3.0657157319840",
+            "fee_only_net_bps": "5.554574533952594876071362682144743040000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.06565000",
+            "buy_notional": "5513.7491813000",
+            "sell_notional": "5527.856502716",
+            "gross_profit": "14.1073214160",
+            "fee_only_profit": "3.0657157319840",
+            "fee_only_net_bps": "5.554574533952594876071362682144743040000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 10,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.07495000",
+            "buy_notional": "6294.9859475000",
+            "sell_notional": "6310.928475838",
+            "gross_profit": "15.9425283380",
+            "fee_only_profit": "3.3366139146620",
+            "fee_only_net_bps": "5.295135941251395506744342850700179470000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.07495000",
+            "buy_notional": "6294.9859475000",
+            "sell_notional": "6310.928475838",
+            "gross_profit": "15.9425283380",
+            "fee_only_profit": "3.3366139146620",
+            "fee_only_net_bps": "5.295135941251395506744342850700179470000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 11,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "1.15984916",
+            "buy_notional": "97415.7425468916",
+            "sell_notional": "97656.166849009",
+            "gross_profit": "240.4243021174",
+            "fee_only_profit": "45.3523927214994",
+            "fee_only_net_bps": "4.650899787994196442496508954511803530000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "1.15984916",
+            "buy_notional": "97415.7425468916",
+            "sell_notional": "97656.166849009",
+            "gross_profit": "240.4243021174",
+            "fee_only_profit": "45.3523927214994",
+            "fee_only_net_bps": "4.650899787994196442496508954511803530000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 12,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.70864274",
+            "buy_notional": "59518.9108190274",
+            "sell_notional": "59658.060508559",
+            "gross_profit": "139.1496895316",
+            "fee_only_profit": "19.9727182040136",
+            "fee_only_net_bps": "3.352340485403572378516742231357513160000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.70864274",
+            "buy_notional": "59518.9108190274",
+            "sell_notional": "59658.060508559",
+            "gross_profit": "139.1496895316",
+            "fee_only_profit": "19.9727182040136",
+            "fee_only_net_bps": "3.352340485403572378516742231357513160000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 13,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.55717641",
+            "buy_notional": "46797.2522476641",
+            "sell_notional": "46910.136262554",
+            "gross_profit": "112.8840148899",
+            "fee_only_profit": "19.1766263796819",
+            "fee_only_net_bps": "4.093716615963788800324671317585525300000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.55717641",
+            "buy_notional": "46797.2522476641",
+            "sell_notional": "46910.136262554",
+            "gross_profit": "112.8840148899",
+            "fee_only_profit": "19.1766263796819",
+            "fee_only_net_bps": "4.093716615963788800324671317585525300000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 14,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.55582708",
+            "buy_notional": "46683.9220074708",
+            "sell_notional": "46797.026735535",
+            "gross_profit": "113.1047280642",
+            "fee_only_profit": "19.6237793211942",
+            "fee_only_net_bps": "4.199341936804475740920816467674037380000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.55582708",
+            "buy_notional": "46683.9220074708",
+            "sell_notional": "46797.026735535",
+            "gross_profit": "113.1047280642",
+            "fee_only_profit": "19.6237793211942",
+            "fee_only_net_bps": "4.199341936804475740920816467674037380000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 15,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "1.17984658",
+            "buy_notional": "99095.3260526658",
+            "sell_notional": "99334.431103931",
+            "gross_profit": "239.1050512652",
+            "fee_only_profit": "40.6752941086032",
+            "fee_only_net_bps": "4.100562667058394320532287838209958510000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "1.17984658",
+            "buy_notional": "99095.3260526658",
+            "sell_notional": "99334.431103931",
+            "gross_profit": "239.1050512652",
+            "fee_only_profit": "40.6752941086032",
+            "fee_only_net_bps": "4.100562667058394320532287838209958510000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 16,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "1.39198350",
+            "buy_notional": "116912.7080848350",
+            "sell_notional": "117198.781318529",
+            "gross_profit": "286.0732336940",
+            "fee_only_profit": "51.9617442906360",
+            "fee_only_net_bps": "4.440050641758520430513145906082471970000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "1.190617788948947618889436969944401721109",
+            "buy_notional": "100000.0000000000000000000000000000000000",
+            "sell_notional": "100245.2696156895366666821446979230029857",
+            "gross_profit": "245.2696156895366666821446979230029857",
+            "fee_only_profit": "45.0243460738471300154625532250799827",
+            "fee_only_net_bps": "4.497936670713999002543711610897101170000",
+            "filled_budget": true
+          }
+        },
+        {
+          "second": 17,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.62618400",
+            "buy_notional": "52594.4527898400",
+            "sell_notional": "52714.898600397",
+            "gross_profit": "120.4458105570",
+            "fee_only_profit": "15.1364591667630",
+            "fee_only_net_bps": "2.875082261879745141513432597156275280000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.62618400",
+            "buy_notional": "52594.4527898400",
+            "sell_notional": "52714.898600397",
+            "gross_profit": "120.4458105570",
+            "fee_only_profit": "15.1364591667630",
+            "fee_only_net_bps": "2.875082261879745141513432597156275280000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 18,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.76003290",
+            "buy_notional": "63836.6909371290",
+            "sell_notional": "63984.735434115",
+            "gross_profit": "148.0444969860",
+            "fee_only_profit": "20.2230706147560",
+            "fee_only_net_bps": "3.164773651395282915381421040182600200000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.76003290",
+            "buy_notional": "63836.6909371290",
+            "sell_notional": "63984.735434115",
+            "gross_profit": "148.0444969860",
+            "fee_only_profit": "20.2230706147560",
+            "fee_only_net_bps": "3.164773651395282915381421040182600200000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 19,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.81238526",
+            "buy_notional": "68233.8708817726",
+            "sell_notional": "68392.032982205",
+            "gross_profit": "158.1621004324",
+            "fee_only_profit": "21.5361965684224",
+            "fee_only_net_bps": "3.153079490948696602114649061874389360000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.81238526",
+            "buy_notional": "68233.8708817726",
+            "sell_notional": "68392.032982205",
+            "gross_profit": "158.1621004324",
+            "fee_only_profit": "21.5361965684224",
+            "fee_only_net_bps": "3.153079490948696602114649061874389360000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 20,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.65129174",
+            "buy_notional": "54703.3023389974",
+            "sell_notional": "54830.297661228",
+            "gross_profit": "126.9953222306",
+            "fee_only_profit": "17.4617222303746",
+            "fee_only_net_bps": "3.188889373500644837078221049348744000000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.65129174",
+            "buy_notional": "54703.3023389974",
+            "sell_notional": "54830.297661228",
+            "gross_profit": "126.9953222306",
+            "fee_only_profit": "17.4617222303746",
+            "fee_only_net_bps": "3.188889373500644837078221049348744000000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 21,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.04535",
+            "buy_notional": "3809.4912736",
+            "sell_notional": "3817.980220",
+            "gross_profit": "8.4889464",
+            "fee_only_profit": "0.8614749064",
+            "fee_only_net_bps": "2.259131811305094960415209735756702770000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.04535",
+            "buy_notional": "3809.4912736",
+            "sell_notional": "3817.980220",
+            "gross_profit": "8.4889464",
+            "fee_only_profit": "0.8614749064",
+            "fee_only_net_bps": "2.259131811305094960415209735756702770000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 22,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.89707776",
+            "buy_notional": "75362.9464293888",
+            "sell_notional": "75523.502904814",
+            "gross_profit": "160.5564754252",
+            "fee_only_profit": "9.6700260909972",
+            "fee_only_net_bps": "1.281845546514452337307724773749690060000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.89707776",
+            "buy_notional": "75362.9464293888",
+            "sell_notional": "75523.502904814",
+            "gross_profit": "160.5564754252",
+            "fee_only_profit": "9.6700260909972",
+            "fee_only_net_bps": "1.281845546514452337307724773749690060000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 23,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "1.73081092",
+            "buy_notional": "145404.3522864296",
+            "sell_notional": "145745.194620987",
+            "gross_profit": "340.8423345574",
+            "fee_only_profit": "49.6927876499834",
+            "fee_only_net_bps": "3.414144330954187847979578600227369490000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "1.190343268811173228513292206179833728091",
+            "buy_notional": "100000.0000000000000000000000000000000000",
+            "sell_notional": "100236.4117167645760085361896492986854563",
+            "gross_profit": "236.4117167645760085361896492986854563",
+            "fee_only_profit": "36.1753050478114325276534596493867708",
+            "fee_only_net_bps": "3.613916588192950302462883081856820260000",
+            "filled_budget": true
+          }
+        },
+        {
+          "second": 24,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "0.94424639",
+            "buy_notional": "79325.5537911382",
+            "sell_notional": "79512.823015118",
+            "gross_profit": "187.2692239798",
+            "fee_only_profit": "28.4308471735438",
+            "fee_only_net_bps": "3.580491200048570566253526395099372760000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "0.94424639",
+            "buy_notional": "79325.5537911382",
+            "sell_notional": "79512.823015118",
+            "gross_profit": "187.2692239798",
+            "fee_only_profit": "28.4308471735438",
+            "fee_only_net_bps": "3.580491200048570566253526395099372760000",
+            "filled_budget": false
+          }
+        },
+        {
+          "second": 25,
+          "buy": "Binance",
+          "sell": "OKX",
+          "positive_capacity": {
+            "base_qty": "1.48596397",
+            "buy_notional": "124834.9118220386",
+            "sell_notional": "125131.919117627",
+            "gross_profit": "297.0072955884",
+            "fee_only_profit": "47.0404646487344",
+            "fee_only_net_bps": "3.764449422974681322402806845573963330000",
+            "filled_budget": false
+          },
+          "at_100k": {
+            "base_qty": "1.190343268811173228513292206179833728091",
+            "buy_notional": "100000.0000000000000000000000000000000000",
+            "sell_notional": "100238.3023430214430479072694025357644587",
+            "gross_profit": "238.3023430214430479072694025357644587",
+            "fee_only_profit": "38.0640406784216048593621331332286942",
+            "fee_only_net_bps": "3.802601466375784701234978334987881540000",
+            "filled_budget": true
+          }
+        }
+      ]
+    }
+  ],
+  "stale_perp_pair_capacity": [
+    {
+      "market": "ONE-USDT-PERP",
+      "long": "OKX",
+      "short": "Binance",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "269036",
+        "buy_notional": "541.5711852",
+        "sell_notional": "641.8351557"
+      }
+    },
+    {
+      "market": "KERNEL-USDT-PERP",
+      "long": "Bybit",
+      "short": "Binance",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "76950",
+        "buy_notional": "4088.41851",
+        "sell_notional": "4075.57646"
+      }
+    },
+    {
+      "market": "ONG-USDT-PERP",
+      "long": "Bybit",
+      "short": "Binance",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "7464",
+        "buy_notional": "705.33538",
+        "sell_notional": "703.92984"
+      }
+    },
+    {
+      "market": "TRUST-USDT-PERP",
+      "long": "Binance",
+      "short": "Bybit",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "19573",
+        "buy_notional": "1161.66034",
+        "sell_notional": "1160.22822"
+      }
+    },
+    {
+      "market": "COTI-USDT-PERP",
+      "long": "Bybit",
+      "short": "Binance",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "13081",
+        "buy_notional": "212.240395",
+        "sell_notional": "212.019584"
+      }
+    },
+    {
+      "market": "SOON-USDT-PERP",
+      "long": "Binance",
+      "short": "Bybit",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "82483",
+        "buy_notional": "16284.6674",
+        "sell_notional": "16111.8629"
+      }
+    },
+    {
+      "market": "TRUST-USDT-PERP",
+      "long": "OKX",
+      "short": "Bybit",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "12080",
+        "buy_notional": "718.48970",
+        "sell_notional": "716.27277"
+      }
+    },
+    {
+      "market": "SOON-USDT-PERP",
+      "long": "OKX",
+      "short": "Bybit",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "83802.0",
+        "buy_notional": "16532.13450",
+        "sell_notional": "16368.93600"
+      }
+    },
+    {
+      "market": "ZKC-USDT-PERP",
+      "long": "Binance",
+      "short": "Bybit",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "71440.9",
+        "buy_notional": "2964.639248",
+        "sell_notional": "2956.843910"
+      }
+    },
+    {
+      "market": "BIRB-USDT-PERP",
+      "long": "Binance",
+      "short": "Bybit",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "10044",
+        "buy_notional": "682.64878",
+        "sell_notional": "680.37422"
+      }
+    },
+    {
+      "market": "IOST-USDT-PERP",
+      "long": "OKX",
+      "short": "Binance",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "2087000",
+        "buy_notional": "1907.0751000",
+        "sell_notional": "1904.5962000"
+      }
+    },
+    {
+      "market": "ESP-USDT-PERP",
+      "long": "OKX",
+      "short": "Bybit",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "5400",
+        "buy_notional": "524.13900",
+        "sell_notional": "523.66150"
+      }
+    },
+    {
+      "market": "IOST-USDT-PERP",
+      "long": "Bybit",
+      "short": "Binance",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "628413",
+        "buy_notional": "574.3167483",
+        "sell_notional": "573.4897038"
+      }
+    },
+    {
+      "market": "T-USDT-PERP",
+      "long": "Bybit",
+      "short": "Binance",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "1040070",
+        "buy_notional": "5716.719180",
+        "sell_notional": "5702.038127"
+      }
+    },
+    {
+      "market": "AVA-USDT-PERP",
+      "long": "Bybit",
+      "short": "Binance",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "8989.5",
+        "buy_notional": "2314.49735",
+        "sell_notional": "2306.54429"
+      }
+    },
+    {
+      "market": "ESP-USDT-PERP",
+      "long": "Binance",
+      "short": "Bybit",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "5400",
+        "buy_notional": "523.32859",
+        "sell_notional": "523.66150"
+      }
+    },
+    {
+      "market": "SLX-USDT-PERP",
+      "long": "Binance",
+      "short": "Bybit",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "6753",
+        "buy_notional": "476.05844",
+        "sell_notional": "474.85846"
+      }
+    },
+    {
+      "market": "LSK-USDT-PERP",
+      "long": "Bybit",
+      "short": "Binance",
+      "long_time": "2026-09-25 04:13:00",
+      "short_time": "2026-09-25 04:13:00",
+      "capacity": {
+        "matched_base_qty": "1207.4",
+        "buy_notional": "431.584223",
+        "sell_notional": "430.306288"
+      }
+    }
+  ]
+}

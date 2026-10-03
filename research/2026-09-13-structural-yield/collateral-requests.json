@@ -1,0 +1,26 @@
+[
+  [
+    "depth-STETH_ETH",
+    "https://www.deribit.com/api/v2/public/get_order_book?instrument_name=STETH_ETH&depth=100"
+  ],
+  [
+    "depth-STETH_USDC",
+    "https://www.deribit.com/api/v2/public/get_order_book?instrument_name=STETH_USDC&depth=100"
+  ],
+  [
+    "depth-ETH_USDT",
+    "https://www.deribit.com/api/v2/public/get_order_book?instrument_name=ETH_USDT&depth=100"
+  ],
+  [
+    "depth-BTC_USDT",
+    "https://www.deribit.com/api/v2/public/get_order_book?instrument_name=BTC_USDT&depth=100"
+  ],
+  [
+    "deribit-currencies",
+    "https://www.deribit.com/api/v2/public/get_currencies"
+  ],
+  [
+    "lido-current-apr",
+    "https://eth-api.lido.fi/v1/protocol/steth/apr/sma"
+  ]
+]

@@ -1,0 +1,7 @@
+{
+  "name": "history-binance-SOL",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=SOLUSDT&startTime=1786876389000&endTime=1789554789000&limit=1000",
+  "retrieved_at_utc": "2026-09-16T10:33:09.625849+00:00",
+  "sha256": "1e1de8e7867c65a2be45fc131c9b11237c69ad33ea44c5a15b617d3c4464ebc1",
+  "rows": 93
+}

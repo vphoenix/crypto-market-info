@@ -1,0 +1,125 @@
+{
+  "method": "Fixed 5,000 USDT notional per venue is a funding sensitivity, not a realized constant-coin hedge backtest.",
+  "timestamp_normalization": "Binance fundingTime milliseconds floored to seconds; UTC aligned windows are start-exclusive/end-inclusive.",
+  "input_file_sha256": {
+    "public-funding-binance-ONEUSDT.json": "41ed88960420bd795a99ae57118d83ff1e89b356bbd898cd7867ba4b13736835",
+    "public-funding-okx-ONE-USDT-SWAP.json": "8a572ea1252de925b20758ed999a77446b3648b0c5ff51f880d41afcadb4fcf6",
+    "market-anomaly-followup.json": "d0ed50018004ea274820af418f99e285c9f539c1ef7e5d13d7e961f6664ccf53"
+  },
+  "realized_windows": [
+    {
+      "days": 1,
+      "start_exclusive_utc": "2026-09-11T16:00:00+00:00",
+      "end_inclusive_utc": "2026-09-12T16:00:00+00:00",
+      "binance": {
+        "rows": 3,
+        "sum_pct": "0.01500000",
+        "interval_hours": 8,
+        "min_pct": "0.00500000",
+        "max_pct": "0.00500000"
+      },
+      "okx": {
+        "rows": 6,
+        "sum_pct": "0.6294346243357100",
+        "interval_hours": 4,
+        "min_pct": "0.0410241369160300",
+        "max_pct": "0.1832392241432400"
+      },
+      "long_okx_short_binance_net_pct_each_leg_notional": "-0.6144346243357100",
+      "constant_5000_notional_each_leg_funding_usdt": "-30.7217312167855000"
+    },
+    {
+      "days": 3,
+      "start_exclusive_utc": "2026-09-09T16:00:00+00:00",
+      "end_inclusive_utc": "2026-09-12T16:00:00+00:00",
+      "binance": {
+        "rows": 9,
+        "sum_pct": "0.04500000",
+        "interval_hours": 8,
+        "min_pct": "0.00500000",
+        "max_pct": "0.00500000"
+      },
+      "okx": {
+        "rows": 18,
+        "sum_pct": "0.9495872165932700",
+        "interval_hours": 4,
+        "min_pct": "-0.0389719757537700",
+        "max_pct": "0.1832392241432400"
+      },
+      "long_okx_short_binance_net_pct_each_leg_notional": "-0.9045872165932700",
+      "constant_5000_notional_each_leg_funding_usdt": "-45.2293608296635000"
+    },
+    {
+      "days": 7,
+      "start_exclusive_utc": "2026-09-05T16:00:00+00:00",
+      "end_inclusive_utc": "2026-09-12T16:00:00+00:00",
+      "binance": {
+        "rows": 21,
+        "sum_pct": "0.10500000",
+        "interval_hours": 8,
+        "min_pct": "0.00500000",
+        "max_pct": "0.00500000"
+      },
+      "okx": {
+        "rows": 42,
+        "sum_pct": "1.6372289548962000",
+        "interval_hours": 4,
+        "min_pct": "-0.0389719757537700",
+        "max_pct": "0.2368958038100"
+      },
+      "long_okx_short_binance_net_pct_each_leg_notional": "-1.5322289548962000",
+      "constant_5000_notional_each_leg_funding_usdt": "-76.6114477448100000"
+    }
+  ],
+  "current_api_observations": {
+    "okx": {
+      "url": "https://www.okx.com/api/v5/public/funding-rate?instId=ONE-USDT-SWAP",
+      "started_at": "2026-09-12T19:19:55.685839+00:00",
+      "sha256": "4844fcdfd0b52c73cb444e4530b1f2913b366cb1c62ccb0bcd33698cf60518be",
+      "body": {
+        "code": "0",
+        "data": [
+          {
+            "formulaType": "withRate",
+            "fundingRate": "0.0001133463185531",
+            "fundingTime": "1789243200000",
+            "impactValue": "2000.0000000000000000",
+            "instId": "ONE-USDT-SWAP",
+            "instType": "SWAP",
+            "interestRate": "0.0001000000000000",
+            "maxFundingRate": "0.01",
+            "method": "current_period",
+            "minFundingRate": "-0.01",
+            "nextFundingRate": "",
+            "nextFundingTime": "1789257600000",
+            "premium": "0.0048111197156924",
+            "prevFundingTime": "1789228800000",
+            "settFundingRate": "0.0006767495139744",
+            "settState": "settled",
+            "ts": "1789240742786"
+          }
+        ],
+        "msg": ""
+      },
+      "finished_at": "2026-09-12T19:19:56.725391+00:00"
+    },
+    "binance": {
+      "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=ONEUSDT",
+      "started_at": "2026-09-12T19:19:55.696084+00:00",
+      "sha256": "33d86ee1fdc15b7c10171009ab1b546186224b2d7c97c602ec8d093bfa04b6f1",
+      "body": {
+        "symbol": "ONEUSDT",
+        "markPrice": "0.00067238",
+        "indexPrice": "0.00067330",
+        "estimatedSettlePrice": "0.00067298",
+        "lastFundingRate": "0.00005000",
+        "interestRate": "0.00010000",
+        "nextFundingTime": 1789257600000,
+        "time": 1789240797005
+      },
+      "finished_at": "2026-09-12T19:19:57.829178+00:00"
+    }
+  },
+  "current_if_rates_unchanged_net_daily_pct_leg_notional": "-0.0530077911318600",
+  "current_if_rates_unchanged_net_daily_usdt_5000_each_leg": "-2.6503895565930000"
+}

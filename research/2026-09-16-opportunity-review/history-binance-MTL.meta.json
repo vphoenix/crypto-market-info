@@ -1,0 +1,7 @@
+{
+  "name": "history-binance-MTL",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=MTLUSDT&startTime=1786876389000&endTime=1789554789000&limit=1000",
+  "retrieved_at_utc": "2026-09-16T10:33:14.143455+00:00",
+  "sha256": "733204c2d3639f46aa8cfa7e26128295e033aa5108f4c8915507045ab9c8b6ac",
+  "rows": 158
+}

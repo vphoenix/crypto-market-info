@@ -1,0 +1,6 @@
+MainPID=1621383
+NRestarts=0
+MemoryCurrent=39534592
+MemoryPeak=41988096
+ActiveState=active
+ActiveEnterTimestamp=Fri 2026-10-02 19:29:29 CST

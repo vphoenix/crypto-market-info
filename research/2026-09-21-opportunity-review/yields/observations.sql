@@ -1,0 +1,1 @@
+SELECT * FROM crypto_market_info.yield_observation FINAL ORDER BY yield_route_id,observation_time,tier_no SETTINGS output_format_json_quote_decimals=1 FORMAT JSONEachRow

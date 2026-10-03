@@ -1,0 +1,914 @@
+{
+  "venue": "OKX",
+  "symbol": "SOON",
+  "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=SOON-USDT-SWAP&limit=100",
+  "retrieved_at": "2026-09-21T14:33:10.008936+00:00",
+  "status": 200,
+  "sha256": "21ae778b24be12eafac1b51fb8aaf618b1da2f46bd2f44531f0cf154f31bd6e2",
+  "data": {
+    "code": "0",
+    "data": [
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0004984307061558",
+        "fundingTime": "1789992000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0004984307061558"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789977600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789963200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789948800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789934400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789920000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789905600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789891200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789876800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789862400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789848000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789833600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789819200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789804800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789790400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789776000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789761600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789747200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789732800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789718400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789704000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789689600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789675200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789660800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789646400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789632000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789617600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789603200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789588800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789574400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789560000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789545600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789531200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789516800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789502400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789488000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789473600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789459200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789444800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789430400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789416000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789401600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789387200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789372800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789358400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789344000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789329600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789315200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789300800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789286400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789272000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789257600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789243200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789228800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789214400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789200000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789185600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789171200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789156800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789142400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789128000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789113600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789099200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789084800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789070400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789056000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789041600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000640250691535",
+        "fundingTime": "1789027200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000640250691535"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001199984904917",
+        "fundingTime": "1789012800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001199984904917"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0002822625984869",
+        "fundingTime": "1788998400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0002822625984869"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000876266547039",
+        "fundingTime": "1788984000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000876266547039"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000752105608678",
+        "fundingTime": "1788969600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000752105608678"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000907690332995",
+        "fundingTime": "1788955200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000907690332995"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001014832434842",
+        "fundingTime": "1788940800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001014832434842"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000707291863233",
+        "fundingTime": "1788926400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000707291863233"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000786917660667",
+        "fundingTime": "1788912000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000786917660667"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.000159989012549",
+        "fundingTime": "1788897600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.000159989012549"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001650572339935",
+        "fundingTime": "1788883200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001650572339935"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001115993109382",
+        "fundingTime": "1788868800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001115993109382"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000961396826192",
+        "fundingTime": "1788854400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000961396826192"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788840000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788825600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788811200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788796800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000926310474373",
+        "fundingTime": "1788782400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000926310474373"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001125369955878",
+        "fundingTime": "1788768000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001125369955878"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000938015282752",
+        "fundingTime": "1788753600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000938015282752"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788739200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788724800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788710400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788696000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788681600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000778531172391",
+        "fundingTime": "1788667200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000778531172391"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788652800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788638400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788624000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788609600000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788595200000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788580800000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788566400000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      }
+    ],
+    "msg": ""
+  }
+}

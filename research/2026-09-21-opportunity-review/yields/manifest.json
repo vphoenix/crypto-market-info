@@ -1,0 +1,26 @@
+{
+  "started_at_utc": "2026-09-21 14:31:54.234995+00:00",
+  "finished_at_utc": "2026-09-21 14:31:54.463020+00:00",
+  "files": [
+    {
+      "file": "cutoff.jsonl",
+      "sha256": "40a3a8d138e4c9f3c8da7410878d85ece6cf440833250aade1b074124526b435",
+      "bytes": 37
+    },
+    {
+      "file": "routes.jsonl",
+      "sha256": "8961b54557751178e7bcb82ee58b860ecb1f40413363c7047791dbc5442e9e04",
+      "bytes": 83420
+    },
+    {
+      "file": "observations.jsonl",
+      "sha256": "9de081f72a7f61d9b2f07425df1dd9ffd0070a7292674b29676a7f7cda1c0d1b",
+      "bytes": 11191493
+    },
+    {
+      "file": "instruments.jsonl",
+      "sha256": "43d0c94fe0f3e776b573da4be7fec0440a2f5dc874f09c3e60bfe865be65abca",
+      "bytes": 14204
+    }
+  ]
+}

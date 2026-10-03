@@ -1,0 +1,82 @@
+{
+  "BTC": {
+    "7": {
+      "n": 21,
+      "sum": "0.00104188",
+      "annualized_nominal": "0.05432660",
+      "negative_count": 0,
+      "min": "0.00002185",
+      "max": "0.00009029",
+      "observed_max_settlement_ms_offset": 26
+    },
+    "30": {
+      "n": 90,
+      "sum": "0.00594154",
+      "annualized_nominal": "0.07228873666666666666666666667",
+      "negative_count": 1,
+      "min": "-0.00000150",
+      "max": "0.00010000",
+      "observed_max_settlement_ms_offset": 26
+    }
+  },
+  "SOL": {
+    "7": {
+      "n": 21,
+      "sum": "0.00026303",
+      "annualized_nominal": "0.01371513571428571428571428571",
+      "negative_count": 8,
+      "min": "-0.00008755",
+      "max": "0.00009657",
+      "observed_max_settlement_ms_offset": 26
+    },
+    "30": {
+      "n": 90,
+      "sum": "0.00244231",
+      "annualized_nominal": "0.02971477166666666666666666667",
+      "negative_count": 33,
+      "min": "-0.00012421",
+      "max": "0.00010000",
+      "observed_max_settlement_ms_offset": 26
+    }
+  },
+  "AVAX": {
+    "7": {
+      "n": 21,
+      "sum": "0.00076820",
+      "annualized_nominal": "0.04005614285714285714285714286",
+      "negative_count": 6,
+      "min": "-0.00003066",
+      "max": "0.00010000",
+      "observed_max_settlement_ms_offset": 26
+    },
+    "30": {
+      "n": 90,
+      "sum": "0.00448787",
+      "annualized_nominal": "0.05460241833333333333333333333",
+      "negative_count": 15,
+      "min": "-0.00008161",
+      "max": "0.00010000",
+      "observed_max_settlement_ms_offset": 26
+    }
+  },
+  "TRX": {
+    "7": {
+      "n": 21,
+      "sum": "-0.00247564",
+      "annualized_nominal": "-0.1290869428571428571428571429",
+      "negative_count": 18,
+      "min": "-0.00044696",
+      "max": "0.00002765",
+      "observed_max_settlement_ms_offset": 26
+    },
+    "30": {
+      "n": 90,
+      "sum": "-0.00942277",
+      "annualized_nominal": "-0.1146437016666666666666666667",
+      "negative_count": 49,
+      "min": "-0.00185769",
+      "max": "0.00011577",
+      "observed_max_settlement_ms_offset": 26
+    }
+  }
+}

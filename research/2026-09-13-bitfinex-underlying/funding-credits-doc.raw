@@ -1,0 +1,269 @@
+---
+updatedAt: 2025-06-10T22:01:22.000Z
+---
+
+Fetch the complete documentation index at: https://docs.bitfinex.com/llms.txt. Use this file to discover all available pages before exploring further. Append .md to any documentation page URL to get its markdown version.
+
+# Funding Credits
+
+Funds used in active positions
+
+#### Response data
+
+| Index    | Field                  | Type                                                    | Description                                                               |
+| :------- | :--------------------- | :------------------------------------------------------ | :------------------------------------------------------------------------ |
+| \[0...n] | FUNDING\_CREDIT\_ARRAY | [Funding credit array](#funding-credit-arrays-index-0n) | Each index contains one of the n\` current user's funding credits entries |
+
+#### Funding credit arrays (Index \[0...n])
+
+<HTMLBlock>{`
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[0]</td>
+      <td>ID</td>
+      <td>Integer</td>
+      <td>Loan ID</td>
+    </tr>
+    <tr>
+      <td>[1]</td>
+      <td>SYMBOL</td>
+      <td>String</td>
+      <td>The currency of the loan (fUSD, etc)</td>
+    </tr>
+    <tr>
+      <td>[2]</td>
+      <td>SIDE</td>
+      <td>Int</td>
+      <td>1 if you are the lender, 0 if you are both the lender and borrower, -1 if you're the borrower</td>
+    </tr>
+    <tr>
+      <td>[3]</td>
+      <td>MTS_CREATE</td>
+      <td>Int</td>
+      <td>Millisecond Time Stamp when the loan was created</td>
+    </tr>
+    <tr>
+      <td>[4]</td>
+      <td>MTS_UPDATE</td>
+      <td>Int</td>
+      <td>Millisecond Time Stamp when the loan was updated</td>
+    </tr>
+    <tr>
+      <td>[5]</td>
+      <td>AMOUNT</td>
+      <td>Float</td>
+      <td>Amount of funds provided</td>
+    </tr>
+    <tr>
+      <td>[6]</td>
+      <td>FLAGS</td>
+      <td>Object</td>
+      <td>Future params object (stay tuned)</td>
+    </tr>
+    <tr>
+      <td>[7]</td>
+      <td>STATUS</td>
+      <td>String</td>
+      <td>Loan Status: ACTIVE</td>
+    </tr>
+    <tr>
+      <td>[8]</td>
+      <td>RATE_TYPE</td>
+      <td>String</td>
+      <td>"FIXED" or "VAR" (for FRR)</td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <div class="placeholders">[ . . . ]</div>
+      </td>
+    </tr>
+    <tr>
+      <td>[11]</td>
+      <td>RATE</td>
+      <td>Float</td>
+      <td>Rate of the loan (percentage expressed as decimal number i.e. 1% = 0.01)</td>
+    </tr>
+    <tr>
+      <td>[12]</td>
+      <td>PERIOD</td>
+      <td>Int</td>
+      <td>Period of the loan</td>
+    </tr>
+    <tr>
+      <td>[13]</td>
+      <td>MTS_OPENING</td>
+      <td>Int</td>
+      <td>Millisecond Time Stamp for when the loan was opened</td>
+    </tr>
+    <tr>
+      <td>[14]</td>
+      <td>MTS_LAST_PAYOUT</td>
+      <td>Int</td>
+      <td>Millisecond Time Stamp for when the last payout was made</td>
+    </tr>
+    <tr>
+      <td>[15]</td>
+      <td>NOTIFY</td>
+      <td>Int</td>
+      <td>0 if false, 1 if true</td>
+    </tr>
+    <tr>
+      <td>[16]</td>
+      <td>HIDDEN</td>
+      <td>Int</td>
+      <td>0 if false, 1 if true</td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <div class="placeholders">[ . . . ]</div>
+      </td>
+    </tr>
+    <tr>
+      <td>[18]</td>
+      <td>RENEW</td>
+      <td>Int</td>
+      <td>0 if false, 1 if true</td>
+    </tr>
+        <tr>
+      <td colspan="4">
+        <div class="placeholders">[ . . . ]</div>
+      </td>
+    </tr>
+    <tr>
+      <td>[20]</td>
+      <td>NO_CLOSE</td>
+      <td>Int</td>
+      <td>If funding will be returned when position is closed. 0 if false, 1 if true</td>
+    </tr>
+    <tr>
+      <td>[21]</td>
+      <td>POSITION_PAIR</td>
+      <td>String</td>
+      <td>Pair of the position that the funding was used for</td>
+    </tr>
+  </tbody>
+</table>
+
+<style>
+  td:has(div.placeholders) {
+    background-color: #ebebeb;
+  }
+  
+  .placeholders {
+    height: 10px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 8px;
+  }
+</style>
+`}</HTMLBlock>
+
+**Ratelimit**: 90 req/min
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "api-settings",
+    "version": "2"
+  },
+  "servers": [
+    {
+      "url": "https://api.bitfinex.com/v2"
+    }
+  ],
+  "security": [
+    {}
+  ],
+  "paths": {
+    "/auth/r/funding/credits/{Symbol}": {
+      "post": {
+        "summary": "Funding Credits",
+        "description": "Funds used in active positions",
+        "operationId": "rest-auth-funding-credits",
+        "parameters": [
+          {
+            "name": "Symbol",
+            "in": "path",
+            "description": "Symbol (fUSD, ...) , Omit for all symbols (see example)",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "RAW_BODY": {
+                    "type": "string",
+                    "default": "{}",
+                    "format": "json"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "[\n    [\n    26222883, //ID\n    \"fUST\", //SYMBOL\n    1, //SIDE\n    1574013661000, //MTS_CREATE\n    1574079687000, //MTS_UPDATE\n    350, //AMOUNT\n    null, //FLAGS\n    \"ACTIVE\", //STATUS\n    \"FIXED\", //RATE_TYPE\n    null, //PLACEHOLDER\n    null, //PLACEHOLDER\n    0.0024, //RATE\n    2, //PERIOD\n    1574013661000, //MTS_OPENING\n    1574078487000, //MTS_LAST_PAYOUT\n    0, //NOTIFY\n    null, //HIDDEN\n    null, //PLACEHOLDER\n    0, //RENEW\n    null, //PLACEHOLDER\n    0, //NO_CLOSE\n    \"tBTCUST\" //POSITION_PAIR\n  \t]\n]"
+                  }
+                },
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "array"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+  },
+  "x-readme-fauxas": true
+}
+```

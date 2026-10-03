@@ -1,0 +1,7 @@
+{
+  "name": "okx-swaps-info",
+  "url": "https://www.okx.com/api/v5/public/instruments?instType=SWAP",
+  "retrieved_at_utc": "2026-09-16T10:31:29.582153+00:00",
+  "sha256": "f4601c0593ae19d9f34825cda097f8ea0d5af1d9b2cde897c6cc0e974577a49b",
+  "rows": null
+}

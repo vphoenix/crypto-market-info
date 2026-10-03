@@ -1,0 +1,20 @@
+[Unit]
+Description=JustLend public energy rental keeper data collector
+After=network-online.target crypto-market-info-clickhouse.service
+Wants=network-online.target crypto-market-info-clickhouse.service
+
+[Service]
+Type=simple
+WorkingDirectory=%h/crypto-market-info
+ExecStart=%h/crypto-market-info/var/justlend-keeper/bin/justlend-keeper-data watch --config config/justlend-keeper-tron.json --database crypto_market_info_justlend_keeper --state var/justlend-keeper/state --evidence var/justlend-keeper/evidence --duration 168h
+Restart=always
+RestartSec=60
+KillSignal=SIGTERM
+TimeoutStopSec=30
+Nice=10
+UMask=0077
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

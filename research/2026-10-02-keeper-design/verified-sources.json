@@ -1,0 +1,126 @@
+{
+  "verified_payload_count": 15,
+  "sources": [
+    {
+      "name": "deployed-contract.raw",
+      "sha256": "c8ed221b6024d53f559e68ed72acee849251e6fa6c6f89da65061bc3e8c5b24f",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:01:44.019970+00:00",
+      "received_at": "2026-10-02T14:01:44.580209+00:00",
+      "url": "https://api.trongrid.io/wallet/getcontract"
+    },
+    {
+      "name": "docs-abi.raw",
+      "sha256": "90e27cac233b23db1416edf276b68389cc10c98998de411de71a245e59678de3",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:01:42.671963+00:00",
+      "received_at": "2026-10-02T14:01:43.019352+00:00",
+      "url": "https://docs.justlend.org/developers/abis/energy-market.json"
+    },
+    {
+      "name": "head-after.raw",
+      "sha256": "a89b6b1d82141edbd8dfb3da86919f857579790ee83fc2522fe0f40d17939b3d",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:01:56.265175+00:00",
+      "received_at": "2026-10-02T14:01:57.420100+00:00",
+      "url": "https://api.trongrid.io/wallet/getnowblock"
+    },
+    {
+      "name": "head-before.raw",
+      "sha256": "5b65f48b81257e1bd0d82eacd0f7786ef5c86511b46014fbbd89136f5ac663f5",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:01:45.581383+00:00",
+      "received_at": "2026-10-02T14:01:46.801349+00:00",
+      "url": "https://api.trongrid.io/wallet/getnowblock"
+    },
+    {
+      "name": "implementation-contract.raw",
+      "sha256": "310cf4559113d8a6cd39911d6762c97842ecd5ead9a059caf973237152dd53f8",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:10:29.045975+00:00",
+      "received_at": "2026-10-02T14:10:29.615262+00:00",
+      "url": "https://api.trongrid.io/wallet/getcontract"
+    },
+    {
+      "name": "implementation.raw",
+      "sha256": "c901a1482684dfec86b5826bfea08f5c0ca1a652c371de93ad2b17c2a07b2571",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:01:54.692328+00:00",
+      "received_at": "2026-10-02T14:01:55.264392+00:00",
+      "url": "https://api.trongrid.io/wallet/triggerconstantcontract"
+    },
+    {
+      "name": "light-head-after.raw",
+      "sha256": "9ada2f37da20f280d2bc6a72c6ca7f0a493923b718a9071fb88e49c34167226f",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:10:35.247233+00:00",
+      "received_at": "2026-10-02T14:10:35.767392+00:00",
+      "url": "https://api.trongrid.io/wallet/getblock"
+    },
+    {
+      "name": "light-head-before.raw",
+      "sha256": "58c2aa27a5c97bea7844762ac10522df24cb9c90708f34ec206fbaa8e9e89b04",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:10:32.159661+00:00",
+      "received_at": "2026-10-02T14:10:32.676737+00:00",
+      "url": "https://api.trongrid.io/wallet/getblock"
+    },
+    {
+      "name": "light-solid-head.raw",
+      "sha256": "5c9a4143e62e4aeb397330055cc615a4d50a24c96a06780f0acf270136f45fb6",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:10:36.767619+00:00",
+      "received_at": "2026-10-02T14:10:37.391746+00:00",
+      "url": "https://api.trongrid.io/walletsolidity/getblock"
+    },
+    {
+      "name": "non-owner-simulation.raw",
+      "sha256": "91407963ec2b4e141a4b531ed0b9a998b7273a5557677f3092eed749e3a7352a",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:10:33.677027+00:00",
+      "received_at": "2026-10-02T14:10:34.246743+00:00",
+      "url": "https://api.trongrid.io/wallet/triggerconstantcontract"
+    },
+    {
+      "name": "rent-info.raw",
+      "sha256": "ed2559f47f62da51db7a0d1b89dbc00ed69dd5357cd630848a96bfc8ad1874e9",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:01:51.599852+00:00",
+      "received_at": "2026-10-02T14:01:52.143968+00:00",
+      "url": "https://api.trongrid.io/wallet/triggerconstantcontract"
+    },
+    {
+      "name": "rental.raw",
+      "sha256": "237c423c9ed3eb1432d9cd861e8cf558d7db23bd45a0fd0731056f9c9db35402",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:01:50.022797+00:00",
+      "received_at": "2026-10-02T14:01:50.599436+00:00",
+      "url": "https://api.trongrid.io/wallet/triggerconstantcontract"
+    },
+    {
+      "name": "simulation-caller-account.raw",
+      "sha256": "8f9217abe90cfa7562bdcaf0053399fe1d5453836077990471fa0a8aa78d9d42",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:10:30.615971+00:00",
+      "received_at": "2026-10-02T14:10:31.158923+00:00",
+      "url": "https://api.trongrid.io/wallet/getaccount"
+    },
+    {
+      "name": "simulation.raw",
+      "sha256": "9a3fcebfedcb68837dad5bb6ecc30d5efc5c2f3ee9b8e7449c3f32dd309a2871",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:01:53.144717+00:00",
+      "received_at": "2026-10-02T14:01:53.691842+00:00",
+      "url": "https://api.trongrid.io/wallet/triggerconstantcontract"
+    },
+    {
+      "name": "solid-head.raw",
+      "sha256": "9a7543a963acb244794ab56e7e7a3ef432ea6bd9eef050cda6fdfb17807abc08",
+      "http_status": 200,
+      "started_at": "2026-10-02T14:01:47.804113+00:00",
+      "received_at": "2026-10-02T14:01:49.018019+00:00",
+      "url": "https://api.trongrid.io/walletsolidity/getnowblock"
+    }
+  ],
+  "ddl_sha256": "3c49163efe9cc2cc90040104a8c19388dce4290ee6f7c1a3bc4bebca8ac609a0"
+}

@@ -1,0 +1,1 @@
+SELECT i.exchange,i.market_type,i.exchange_symbol,i.base_asset,i.quote_asset,i.settle_asset, f.* FROM crypto_market_info.funding_rate_hourly AS f FINAL INNER JOIN crypto_market_info.instrument AS i FINAL USING(instrument_id) ORDER BY instrument_id,hour_time

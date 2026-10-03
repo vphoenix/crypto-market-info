@@ -1,0 +1,24 @@
+{
+  "From": "2026-09-26T16:00:00Z",
+  "To": "2026-09-26T16:26:00Z",
+  "Manifest": "0xe5493d29bf16f2d7665e90163eda323e2e7a2847e4bd3e7563db77ac11bfe567",
+  "CapitalUSDT": "1000000000000",
+  "Head": false,
+  "Scenario": null,
+  "Report": {
+    "Blocks": 0,
+    "ExpectedHeights": 0,
+    "QuoteCompleteBlocks": 0,
+    "MissingHeights": 0,
+    "Windows": null,
+    "Routes": null,
+    "Candidates": null,
+    "Warnings": [
+      "all routes share Sky PSM; simultaneous candidates are mutually exclusive",
+      "block-end quotations do not establish inclusion, realized profit or APR",
+      "USDC profits are not USDT returns; entry/exit and idle capital need separate accounting",
+      "missing heights outside the observed endpoints cannot be measured from this report"
+    ]
+  },
+  "Costs": {}
+}

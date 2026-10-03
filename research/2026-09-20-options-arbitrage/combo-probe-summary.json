@@ -1,0 +1,106 @@
+{
+  "currencies": {
+    "BTC": {
+      "available": true,
+      "total": 88,
+      "option_combos": 10,
+      "option_combo_ids": [
+        "BTC-CCAL-22SEP26_21SEP26-82000",
+        "BTC-CCAL-25DEC26_25SEP26-55000",
+        "BTC-CCOND-25DEC26-68000_72000_75000_78000",
+        "BTC-CS-25SEP26-70000_81000",
+        "BTC-CS-25SEP26-80000_85000",
+        "BTC-CS-25SEP26-85000_88000",
+        "BTC-PS-30OCT26-71000_70000",
+        "BTC-PS-9OCT26-82000_80000",
+        "BTC-REV-27NOV26-81000",
+        "BTC-STRG-30OCT26-66000_90000"
+      ],
+      "note": "Catalog is active combos only; count does not imply quotes or depth."
+    },
+    "ETH": {
+      "available": true,
+      "total": 88,
+      "option_combos": 10,
+      "option_combo_ids": [
+        "ETH-CCAL-25DEC26_25SEP26-1400",
+        "ETH-CS-21SEP26-2580_2640",
+        "ETH-CS-25SEP26-2440_2500",
+        "ETH-CS-25SEP26-2800_2900",
+        "ETH-CS-30OCT26-3000_3200",
+        "ETH-ICOND-23SEP26-2420_2460_2740_2800",
+        "ETH-PDIAG-25DEC26_25SEP26-4000_3600",
+        "ETH-PS-23SEP26-2480_2420",
+        "ETH-PS-25SEP26-2550_2440",
+        "ETH-PS-30OCT26-2700_2500"
+      ],
+      "note": "Catalog is active combos only; count does not imply quotes or depth."
+    },
+    "USDC": {
+      "available": true,
+      "total": 34,
+      "option_combos": 34,
+      "option_combo_ids": [
+        "BTC_USDC-CS-25DEC26-80000_82000",
+        "BTC_USDC-CS-25DEC26-86000_88000",
+        "BTC_USDC-PS-25DEC26-66000_54000",
+        "BTC_USDC-PS-25DEC26-68000_54000",
+        "BTC_USDC-PS-25SEP26-70000_65000",
+        "BTC_USDC-PS-30OCT26-67000_54000",
+        "BTC_USDC-PS-30OCT26-72000_62000",
+        "BTC_USDC-PS-30OCT26-72000_67000",
+        "BTC_USDC-STRG-25SEP26-77000_83000",
+        "BTC_USDC-STRG-25SEP26-77000_84000",
+        "ETH_USDC-CS-2OCT26-2700_2800",
+        "ETH_USDC-IBUT-30OCT26-2200_2400_2600",
+        "ETH_USDC-ICOND-30OCT26-1200_1850_3000_3800",
+        "ETH_USDC-PS-30OCT26-2150_2050",
+        "ETH_USDC-PS-30OCT26-2300_2200",
+        "ETH_USDC-PS-30OCT26-2350_2250",
+        "SOL_USDC-CS-25SEP26-110_120",
+        "SOL_USDC-CS-25SEP26-115_130",
+        "SOL_USDC-CS-25SEP26-76_95",
+        "SOL_USDC-CS-30OCT26-130_140",
+        "SOL_USDC-CSR12-25SEP26-76_88",
+        "SOL_USDC-PS-25SEP26-112_108",
+        "SOL_USDC-PS-25SEP26-62_58",
+        "SOL_USDC-PS-25SEP26-98_92",
+        "SOL_USDC-RR-25SEP26-104_115",
+        "SOL_USDC-STRD-30OCT26-101",
+        "XRP_USDC-CS-25DEC26-1d6_2",
+        "XRP_USDC-CS-25DEC26-1d6_2d2",
+        "XRP_USDC-CS-25DEC26-1d7_2d2",
+        "XRP_USDC-CS-25SEP26-1d5_2d5",
+        "XRP_USDC-CS-30OCT26-2d1_2d2",
+        "XRP_USDC-CS-30OCT26-2d3_2d4",
+        "XRP_USDC-CSR12-25DEC26-1d7_2d2",
+        "XRP_USDC-STRG-25DEC26-0d95_1d9"
+      ],
+      "note": "Catalog is active combos only; count does not imply quotes or depth."
+    }
+  },
+  "books": [
+    {
+      "instrument_name": "BTC-CCAL-22SEP26_21SEP26-82000",
+      "source_timestamp": 1789913820056,
+      "bid_levels": 7,
+      "ask_levels": 7,
+      "best_bid_price": "0.0017",
+      "best_bid_amount": "15.0",
+      "best_ask_price": "0.0021",
+      "best_ask_amount": "30.0",
+      "note": "First listed option combo per available currency; selection not representative; independent REST snapshot."
+    },
+    {
+      "instrument_name": "ETH-CCAL-25DEC26_25SEP26-1400",
+      "source_timestamp": 1789913822055,
+      "bid_levels": 6,
+      "ask_levels": 5,
+      "best_bid_price": "0.0092",
+      "best_bid_amount": "400.0",
+      "best_ask_price": "0.0107",
+      "best_ask_amount": "200.0",
+      "note": "First listed option combo per available currency; selection not representative; independent REST snapshot."
+    }
+  ]
+}

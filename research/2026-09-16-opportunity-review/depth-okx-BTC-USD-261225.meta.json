@@ -1,0 +1,7 @@
+{
+  "name": "depth-okx-BTC-USD-261225",
+  "url": "https://www.okx.com/api/v5/market/books?sz=400&instId=BTC-USD-261225",
+  "retrieved_at_utc": "2026-09-16T10:33:30.270596+00:00",
+  "sha256": "c5bf1a78b21da2e83ef2613bd56333080c0834112dbe226ca7c324cee89d2c4c",
+  "rows": null
+}

@@ -1,0 +1,7 @@
+{
+  "name": "history-bybit-ONG",
+  "url": "https://api.bybit.com/v5/market/funding/history?category=linear&limit=200&symbol=ONGUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:27.497125+00:00",
+  "sha256": "98a27382cfff359d02c1c454c2f2da94c71418436634b693b8ddd9dbc59c1741",
+  "rows": null
+}

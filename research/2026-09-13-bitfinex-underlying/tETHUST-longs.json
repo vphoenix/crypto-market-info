@@ -1,0 +1,10 @@
+{
+  "url": "https://api-pub.bitfinex.com/v2/stats1/pos.size:1m:tETHUST:long/last",
+  "requested_at_utc": "2026-09-13T14:10:01.477786+00:00",
+  "received_at_utc": "2026-09-13T14:10:02.002554+00:00",
+  "payload_sha256": "8459a1fd4823068c1b815d3b8205dff621e2627ad3fbe2e616a6bde876eecc5c",
+  "data": [
+    1789308600000,
+    "9712.86519964"
+  ]
+}

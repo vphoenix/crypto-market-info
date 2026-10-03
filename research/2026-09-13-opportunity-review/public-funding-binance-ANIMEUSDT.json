@@ -1,0 +1,3509 @@
+{
+  "venue": "Binance",
+  "symbol": "ANIMEUSDT",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=ANIMEUSDT&limit=1000",
+  "fetched_at": "2026-09-12T19:15:04.322754+00:00",
+  "payload_sha256": "731450f9394b03af558a7830b9de38c7260d321bdfa09d2d06381a6f3b022f16",
+  "data": [
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782028800000,
+      "fundingRate": "-0.00000096",
+      "markPrice": "0.00294600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782043200001,
+      "fundingRate": "-0.00002010",
+      "markPrice": "0.00294900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782057600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00298325",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782072000004,
+      "fundingRate": "-0.00003759",
+      "markPrice": "0.00298600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782086400000,
+      "fundingRate": "-0.00009113",
+      "markPrice": "0.00291618",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782100800000,
+      "fundingRate": "-0.00005106",
+      "markPrice": "0.00296243",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782115200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00288700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782129600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00284000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782144000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00283000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782158400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00277000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782172800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00274548",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782187200000,
+      "fundingRate": "-0.00000888",
+      "markPrice": "0.00273100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782201600005,
+      "fundingRate": "-0.00006776",
+      "markPrice": "0.00264009",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782216000000,
+      "fundingRate": "0.00000410",
+      "markPrice": "0.00262249",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782230400002,
+      "fundingRate": "0.00002129",
+      "markPrice": "0.00266300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782244800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00264592",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782259200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00266087",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782288000005,
+      "fundingRate": "-0.00000121",
+      "markPrice": "0.00279600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782302400005,
+      "fundingRate": "0.00000552",
+      "markPrice": "0.00270800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782316800003,
+      "fundingRate": "0.00000908",
+      "markPrice": "0.00259532",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782331200006,
+      "fundingRate": "0.00001526",
+      "markPrice": "0.00254011",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782345600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00257714",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782360000008,
+      "fundingRate": "0.00000850",
+      "markPrice": "0.00255900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782374400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00259050",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782388800006,
+      "fundingRate": "0.00004404",
+      "markPrice": "0.00258044",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782403200000,
+      "fundingRate": "-0.00000347",
+      "markPrice": "0.00249855",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782417600011,
+      "fundingRate": "-0.00005964",
+      "markPrice": "0.00248600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782432000010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00254100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782446400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00256300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782460800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00259291",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782475200004,
+      "fundingRate": "-0.00000233",
+      "markPrice": "0.00253000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782489600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00265368",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782504000000,
+      "fundingRate": "0.00001505",
+      "markPrice": "0.00263110",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782518400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00263119",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782532800000,
+      "fundingRate": "-0.00007339",
+      "markPrice": "0.00267340",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782547200000,
+      "fundingRate": "-0.00005726",
+      "markPrice": "0.00266300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782561600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00266643",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782576000009,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00268051",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782590400000,
+      "fundingRate": "-0.00011671",
+      "markPrice": "0.00263100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782604800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00261100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782619200002,
+      "fundingRate": "0.00004798",
+      "markPrice": "0.00263000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782633600013,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00263341",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782648000008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00265502",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782662400000,
+      "fundingRate": "0.00004852",
+      "markPrice": "0.00273800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782676800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782691200006,
+      "fundingRate": "0.00002579",
+      "markPrice": "0.00269200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782705600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00283045",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782720000013,
+      "fundingRate": "-0.00006258",
+      "markPrice": "0.00301000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782734400001,
+      "fundingRate": "-0.00094698",
+      "markPrice": "0.00283000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782748800004,
+      "fundingRate": "-0.00034121",
+      "markPrice": "0.00291891",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782763200000,
+      "fundingRate": "-0.00009518",
+      "markPrice": "0.00284500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782777600000,
+      "fundingRate": "-0.00001982",
+      "markPrice": "0.00278889",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782792000000,
+      "fundingRate": "-0.00002776",
+      "markPrice": "0.00273451",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782806400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00273700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782820800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00268135",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782835200005,
+      "fundingRate": "-0.00000674",
+      "markPrice": "0.00268800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782849600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00265635",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782864000000,
+      "fundingRate": "0.00000131",
+      "markPrice": "0.00262946",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782878400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00266500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782892800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00263174",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782907200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00263600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782921600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00268600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782936000000,
+      "fundingRate": "-0.00002986",
+      "markPrice": "0.00264801",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782950400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00270235",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782964800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782979200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00269100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1782993600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271999",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783008000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00269727",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783022400008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00268900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783036800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00270187",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783051200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00270168",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783065600007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00272134",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783080000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00274355",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783094400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00277100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783108800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00281124",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783123200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00281400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783137600006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00282450",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783152000000,
+      "fundingRate": "-0.00000091",
+      "markPrice": "0.00280677",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783166400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00280700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783180800007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00282600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783195200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00282000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783209600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00280900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783224000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00276800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783238400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00278903",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783252800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00274033",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783267200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00275300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783281600000,
+      "fundingRate": "0.00003377",
+      "markPrice": "0.00275449",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783296000000,
+      "fundingRate": "0.00000239",
+      "markPrice": "0.00277400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783310400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00274100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783324800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00272700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783339200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271039",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783353600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00275400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783368000003,
+      "fundingRate": "-0.00006834",
+      "markPrice": "0.00285769",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783382400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00290600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783396800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00280014",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783411200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00275300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783425600010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00277558",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783440000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00276800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783454400000,
+      "fundingRate": "0.00002913",
+      "markPrice": "0.00271851",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783468800000,
+      "fundingRate": "0.00001462",
+      "markPrice": "0.00269500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783483200003,
+      "fundingRate": "-0.00006094",
+      "markPrice": "0.00266100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783497600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00266770",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783512000005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00266928",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783526400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00265400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783540800006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00266800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783555200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00269297",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783569600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00268000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783584000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783598400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00273048",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783612800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783627200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00273105",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783641600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00273800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783656000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00276500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783670400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00278401",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783684800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00277837",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783699200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00279000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783713600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00279116",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783728000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00279000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783742400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00278800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783756800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00278400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783771200008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00281210",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783785600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00282356",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783800000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00284000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783814400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00279036",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783828800000,
+      "fundingRate": "0.00003669",
+      "markPrice": "0.00286800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783843200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00284800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783857600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00283500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783872000000,
+      "fundingRate": "-0.00000702",
+      "markPrice": "0.00283400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783886400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00281500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783900800000,
+      "fundingRate": "-0.00000902",
+      "markPrice": "0.00278852",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783915200000,
+      "fundingRate": "0.00000300",
+      "markPrice": "0.00271887",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783929600001,
+      "fundingRate": "-0.00000847",
+      "markPrice": "0.00273492",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783944000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00273199",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783958400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00272600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783972800000,
+      "fundingRate": "-0.00003304",
+      "markPrice": "0.00269100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1783987200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00270000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784001600000,
+      "fundingRate": "-0.00007336",
+      "markPrice": "0.00269451",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784016000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784030400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00269900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784044800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00278334",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784059200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00277105",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784073600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00278160",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784088000003,
+      "fundingRate": "0.00002835",
+      "markPrice": "0.00276823",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784102400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00275000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784116800003,
+      "fundingRate": "-0.00000952",
+      "markPrice": "0.00277100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784131200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00279100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784145600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00276900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784160000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00276700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784174400003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00278452",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784188800003,
+      "fundingRate": "-0.00004324",
+      "markPrice": "0.00276936",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784203200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00275500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784217600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00275541",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784232000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00272500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784246400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00270149",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784260800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00269400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784275200010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00266200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784289600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00265800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784304000004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00266425",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784318400000,
+      "fundingRate": "0.00001438",
+      "markPrice": "0.00266751",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784332800000,
+      "fundingRate": "-0.00001869",
+      "markPrice": "0.00267549",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784347200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00270300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784361600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00265400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784376000002,
+      "fundingRate": "-0.00001263",
+      "markPrice": "0.00264816",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784390400001,
+      "fundingRate": "0.00002876",
+      "markPrice": "0.00262551",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784404800004,
+      "fundingRate": "-0.00003946",
+      "markPrice": "0.00263242",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784419200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00263297",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784433600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00262183",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784448000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00263900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784462400000,
+      "fundingRate": "-0.00003175",
+      "markPrice": "0.00265600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784476800001,
+      "fundingRate": "-0.00012613",
+      "markPrice": "0.00264100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784491200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00261200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784505600000,
+      "fundingRate": "0.00001333",
+      "markPrice": "0.00264200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784520000000,
+      "fundingRate": "-0.00023602",
+      "markPrice": "0.00263200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784534400001,
+      "fundingRate": "0.00004705",
+      "markPrice": "0.00263300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784548800000,
+      "fundingRate": "0.00003428",
+      "markPrice": "0.00264900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784563200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00267100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784577600002,
+      "fundingRate": "-0.00010353",
+      "markPrice": "0.00267158",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784592000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00270600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784606400000,
+      "fundingRate": "0.00001187",
+      "markPrice": "0.00271852",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784620800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00273900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784635200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00272750",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784649600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00274400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784664000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00274108",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784678400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00275000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784692800008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00272800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784707200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00270200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784721600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271548",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784736000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00272452",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784750400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00272100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784764800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00274400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784779200006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271646",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784793600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00272600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784808000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00272251",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784822400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00269500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784836800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00266000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784851200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00265149",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784865600001,
+      "fundingRate": "-0.00000348",
+      "markPrice": "0.00269706",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784880000000,
+      "fundingRate": "-0.00004939",
+      "markPrice": "0.00271000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784894400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00276838",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784908800008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00270146",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784923200001,
+      "fundingRate": "0.00002345",
+      "markPrice": "0.00269351",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784937600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00269072",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784952000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00269799",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784966400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00265257",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784980800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00264400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1784995200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00266100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785009600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00267400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785024000000,
+      "fundingRate": "-0.00002947",
+      "markPrice": "0.00266900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785038400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00268418",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785052800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00269398",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785067200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00268549",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785081600000,
+      "fundingRate": "0.00002182",
+      "markPrice": "0.00267415",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785096000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00268222",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785110400010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00270390",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785124800000,
+      "fundingRate": "0.00003484",
+      "markPrice": "0.00267966",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785139200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00267137",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785153600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00264600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785168000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00257965",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785182400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00261050",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785196800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00252650",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785211200012,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00249300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785225600000,
+      "fundingRate": "0.00001606",
+      "markPrice": "0.00246401",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785240000001,
+      "fundingRate": "0.00000133",
+      "markPrice": "0.00247400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785254400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00252151",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785268800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00252348",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785283200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00251400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785297600000,
+      "fundingRate": "0.00000216",
+      "markPrice": "0.00243702",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785312000002,
+      "fundingRate": "-0.00006417",
+      "markPrice": "0.00244949",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785326400007,
+      "fundingRate": "-0.00002763",
+      "markPrice": "0.00242146",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785340800000,
+      "fundingRate": "0.00004622",
+      "markPrice": "0.00240900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785355200003,
+      "fundingRate": "0.00000021",
+      "markPrice": "0.00239111",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785369600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00241126",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785384000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00244000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785398400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00245000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785412800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00243485",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785427200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00243151",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785441600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242652",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785456000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00241950",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785470400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00243094",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785484800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00244838",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785499200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785513600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242150",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785528000001,
+      "fundingRate": "0.00001520",
+      "markPrice": "0.00243700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785542400001,
+      "fundingRate": "-0.00002640",
+      "markPrice": "0.00244870",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785556800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00247127",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785571200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00246297",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785585600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00245900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785600000000,
+      "fundingRate": "-0.00017897",
+      "markPrice": "0.00243955",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785614400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00241000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785628800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00241351",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785643200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00244650",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785657600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00243751",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785672000007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242348",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785686400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785700800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00243400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785715200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242650",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785729600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00240200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785744000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00239349",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785758400000,
+      "fundingRate": "-0.00004201",
+      "markPrice": "0.00238224",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785772800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00244098",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785787200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00241061",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785801600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00240900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785816000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242348",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785830400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242035",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785844800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00240300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785859200000,
+      "fundingRate": "0.00003521",
+      "markPrice": "0.00240272",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785873600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00239600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785888000003,
+      "fundingRate": "-0.00014285",
+      "markPrice": "0.00240249",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785902400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00241648",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785916800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242781",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785931200008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00241500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785945600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00241016",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785960000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00241400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785974400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00240858",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1785988800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786003200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00247166",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786017600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00243849",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786032000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00243549",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786046400001,
+      "fundingRate": "0.00002323",
+      "markPrice": "0.00242675",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786060800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00243200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786075200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786089600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00245651",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786104000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00245949",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786118400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00244449",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786132800000,
+      "fundingRate": "0.00000330",
+      "markPrice": "0.00243300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786147200001,
+      "fundingRate": "-0.00019662",
+      "markPrice": "0.00242100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786161600000,
+      "fundingRate": "-0.00002623",
+      "markPrice": "0.00242739",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786176000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00241849",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786190400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00243555",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786204800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00245447",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786219200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00246753",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786233600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00248600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786248000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00255500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786262400005,
+      "fundingRate": "0.00004383",
+      "markPrice": "0.00256500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786276800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00257200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786291200000,
+      "fundingRate": "0.00001957",
+      "markPrice": "0.00257800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786305600000,
+      "fundingRate": "-0.00000858",
+      "markPrice": "0.00259100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786320000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00258300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786334400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00261227",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786348800005,
+      "fundingRate": "-0.00003284",
+      "markPrice": "0.00260300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786363200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00256900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786377600000,
+      "fundingRate": "0.00001068",
+      "markPrice": "0.00254824",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786392000000,
+      "fundingRate": "0.00001680",
+      "markPrice": "0.00252800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786406400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00250354",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786420800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00248250",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786435200006,
+      "fundingRate": "-0.00003648",
+      "markPrice": "0.00247300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786449600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00250500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786464000000,
+      "fundingRate": "0.00003684",
+      "markPrice": "0.00242363",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786478400003,
+      "fundingRate": "0.00004481",
+      "markPrice": "0.00243760",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786492800001,
+      "fundingRate": "-0.00008203",
+      "markPrice": "0.00244000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786507200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00245744",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786521600000,
+      "fundingRate": "-0.00006779",
+      "markPrice": "0.00244161",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786536000000,
+      "fundingRate": "-0.00003330",
+      "markPrice": "0.00245500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786550400000,
+      "fundingRate": "-0.00004838",
+      "markPrice": "0.00242300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786564800001,
+      "fundingRate": "0.00003344",
+      "markPrice": "0.00240900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786579200000,
+      "fundingRate": "0.00000298",
+      "markPrice": "0.00238224",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786593600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00240900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786608000000,
+      "fundingRate": "0.00001026",
+      "markPrice": "0.00241400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786622400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00241000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786636800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00239183",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786651200002,
+      "fundingRate": "-0.00002539",
+      "markPrice": "0.00237850",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786665600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00239971",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786680000001,
+      "fundingRate": "0.00004056",
+      "markPrice": "0.00239800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786694400001,
+      "fundingRate": "-0.00000434",
+      "markPrice": "0.00236700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786708800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00235800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786723200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00238000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786737600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00238117",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786752000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00239200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786766400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00237451",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786780800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00237900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786795200001,
+      "fundingRate": "0.00003014",
+      "markPrice": "0.00243000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786809600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00246806",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786824000003,
+      "fundingRate": "-0.00007025",
+      "markPrice": "0.00243549",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786838400000,
+      "fundingRate": "-0.00003382",
+      "markPrice": "0.00242600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786852800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242173",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786867200002,
+      "fundingRate": "-0.00003866",
+      "markPrice": "0.00242236",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786881600008,
+      "fundingRate": "-0.00002855",
+      "markPrice": "0.00244100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786896000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00245445",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786910400000,
+      "fundingRate": "-0.00007419",
+      "markPrice": "0.00244806",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786924800001,
+      "fundingRate": "0.00003842",
+      "markPrice": "0.00241600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786939200001,
+      "fundingRate": "-0.00001066",
+      "markPrice": "0.00242897",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786953600003,
+      "fundingRate": "-0.00002833",
+      "markPrice": "0.00243048",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786968000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242102",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786982400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00242500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1786996800000,
+      "fundingRate": "-0.00008197",
+      "markPrice": "0.00240500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787011200006,
+      "fundingRate": "-0.00001781",
+      "markPrice": "0.00240100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787025600001,
+      "fundingRate": "0.00003473",
+      "markPrice": "0.00235200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787040000001,
+      "fundingRate": "0.00002022",
+      "markPrice": "0.00236800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787054400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00237511",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787068800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00238300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787083200008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00237200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787097600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00236300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787112000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00236500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787126400000,
+      "fundingRate": "-0.00001799",
+      "markPrice": "0.00237100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787140800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00238049",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787155200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00247636",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787169600009,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00247015",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787184000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00250800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787198400011,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00248750",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787212800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00250878",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787227200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00255104",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787241600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00258454",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787256000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00258200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787270400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00264155",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787284800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00264140",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787299200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00269700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787313600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00278700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787328000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00283400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787342400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00282548",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787356800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00288300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787371200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00301141",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787385600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00301560",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787400000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00295600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787414400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00287100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787428800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00287237",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787443200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00284179",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787457600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00272200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787472000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00273208",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787486400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00283449",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787500800006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00288816",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787515200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00288400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787529600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00287600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787544000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00277158",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787558400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00274738",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787572800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00279910",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787587200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00279423",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787601600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00278700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787616000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00278500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787630400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00279800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787644800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00273618",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787659200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00272147",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787673600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00270819",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787688000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00265700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787702400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00261155",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787716800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00264744",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787731200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00264638",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787745600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00265177",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787760000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00261600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787774400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00263349",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787788800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00268740",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787803200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271064",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787817600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00267700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787832000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00268638",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787846400013,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787860800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00269500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787875200026,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787889600008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00265500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787904000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00266200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787918400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00265853",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787932800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00261660",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787947200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00259400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787961600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00262350",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787976000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00262400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1787990400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00264500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788004800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00261300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788019200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00265611",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788033600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00262900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788048000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00262000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788062400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00262950",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788076800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00264600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788091200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00268805",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788105600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00266400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788120000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00271400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788134400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00270000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788148800002,
+      "fundingRate": "-0.00303510",
+      "markPrice": "0.00286100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788163200002,
+      "fundingRate": "-0.00120414",
+      "markPrice": "0.00287100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788177600003,
+      "fundingRate": "-0.00158917",
+      "markPrice": "0.00294073",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788192000001,
+      "fundingRate": "-0.00327612",
+      "markPrice": "0.00292300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788206400000,
+      "fundingRate": "-0.00137711",
+      "markPrice": "0.00285127",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788220800005,
+      "fundingRate": "-0.00209570",
+      "markPrice": "0.00286713",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788235200007,
+      "fundingRate": "-0.00108385",
+      "markPrice": "0.00280800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788249600000,
+      "fundingRate": "-0.00056483",
+      "markPrice": "0.00282300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788264000001,
+      "fundingRate": "-0.00036881",
+      "markPrice": "0.00280100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788278400000,
+      "fundingRate": "-0.00020602",
+      "markPrice": "0.00275100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788292800000,
+      "fundingRate": "-0.00004782",
+      "markPrice": "0.00272349",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788307200000,
+      "fundingRate": "-0.00007704",
+      "markPrice": "0.00270389",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788321600000,
+      "fundingRate": "-0.00018953",
+      "markPrice": "0.00279200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788336000001,
+      "fundingRate": "-0.00044906",
+      "markPrice": "0.00279800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788350400000,
+      "fundingRate": "-0.00075232",
+      "markPrice": "0.00279100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788364800005,
+      "fundingRate": "-0.00036732",
+      "markPrice": "0.00276758",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788379200000,
+      "fundingRate": "-0.00002081",
+      "markPrice": "0.00272743",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788393600000,
+      "fundingRate": "-0.00006012",
+      "markPrice": "0.00275946",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788408000000,
+      "fundingRate": "-0.00006106",
+      "markPrice": "0.00272800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788422400000,
+      "fundingRate": "0.00004446",
+      "markPrice": "0.00273604",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788436800002,
+      "fundingRate": "0.00002038",
+      "markPrice": "0.00272617",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788451200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00278870",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788465600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00279300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788480000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00275900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788494400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00275100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788508800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00274100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788523200003,
+      "fundingRate": "-0.00008539",
+      "markPrice": "0.00277300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788537600009,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00277600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788552000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00279300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788566400000,
+      "fundingRate": "-0.00004976",
+      "markPrice": "0.00281100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788580800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00285200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788595200000,
+      "fundingRate": "-0.00006555",
+      "markPrice": "0.00284048",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788609600007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00288000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788624000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00287700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788638400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00289049",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788652800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00289751",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788667200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00288551",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788681600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00288531",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788696000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00291405",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788710400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00288179",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788724800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00289200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788739200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00292400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788753600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00290801",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788768000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00290975",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788782400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00290600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788796800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00286115",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788811200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00287626",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788825600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00286071",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788840000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00286700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788854400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00292300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788868800006,
+      "fundingRate": "-0.00001493",
+      "markPrice": "0.00300475",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788883200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00298219",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788897600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00291934",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788912000005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00296377",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788926400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00296361",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788940800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00297500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788955200004,
+      "fundingRate": "-0.00018841",
+      "markPrice": "0.00304765",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788969600002,
+      "fundingRate": "-0.00007985",
+      "markPrice": "0.00301916",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788984000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00302900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1788998400000,
+      "fundingRate": "0.00001057",
+      "markPrice": "0.00306952",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789012800000,
+      "fundingRate": "-0.00002967",
+      "markPrice": "0.00310000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789027200007,
+      "fundingRate": "-0.00524788",
+      "markPrice": "0.00321502",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789041600000,
+      "fundingRate": "-0.00513115",
+      "markPrice": "0.00309000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789056000002,
+      "fundingRate": "-0.00169514",
+      "markPrice": "0.00305350",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789070400000,
+      "fundingRate": "-0.00121153",
+      "markPrice": "0.00292100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789084800008,
+      "fundingRate": "-0.00334011",
+      "markPrice": "0.00289036",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789099200005,
+      "fundingRate": "-0.00198975",
+      "markPrice": "0.00285400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789113600000,
+      "fundingRate": "-0.00141573",
+      "markPrice": "0.00290284",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789128000000,
+      "fundingRate": "-0.00131910",
+      "markPrice": "0.00285800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789142400000,
+      "fundingRate": "-0.00042987",
+      "markPrice": "0.00291684",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789156800004,
+      "fundingRate": "-0.00042713",
+      "markPrice": "0.00290400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789171200001,
+      "fundingRate": "-0.00033847",
+      "markPrice": "0.00291000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789185600002,
+      "fundingRate": "-0.00185524",
+      "markPrice": "0.00298056",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789200000003,
+      "fundingRate": "-0.00103979",
+      "markPrice": "0.00292710",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789214400000,
+      "fundingRate": "-0.00038130",
+      "markPrice": "0.00295600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "fundingTime": 1789228800000,
+      "fundingRate": "-0.00028185",
+      "markPrice": "0.00303700",
+      "rateType": "Regular"
+    }
+  ]
+}

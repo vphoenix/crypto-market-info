@@ -6,12 +6,16 @@
 
 | 路径 | 内容 | 在本项目中的作用 |
 |---|---|---|
-| [`../dex-arbitrage-mvp-design.md`](../dex-arbitrage-mvp-design.md) | Ethereum协议兑换套利最小设计（待实现） | 同块金额报价、Sky规则、5张专项表与机会判断CLI；不含交易执行 |
+| [`../dex-arbitrage-implementation.md`](../dex-arbitrage-implementation.md) | Ethereum 协议兑换数据采集（已上线） | 同块金额报价、Sky 规则、五张专项表和只读报告；不含交易执行 |
+| [`../reserve-data-implementation.md`](../reserve-data-implementation.md) | Reserve 拍卖／篮子申赎（已上线首版） | 完整篮子、拍卖权限、三档金额、共享池标记；历史回补及联合模拟仍有缺口 |
+| [`../across-stablecoin-data-implementation.md`](../across-stablecoin-data-implementation.md) | Across 稳定币中继（已上线首版） | 订单、成交、退款与实时 probe；报告提供费用空间 |
+| [`../lst-redemption-data-implementation.md`](../lst-redemption-data-implementation.md) | LST 折价与官方赎回（已上线首版） | 定额买入、赎回队列、退出报价及对冲数据；未知成本保留 unknown |
+| [`../justlend-keeper-data-implementation.md`](../justlend-keeper-data-implementation.md) | JustLend keeper（已上线首版） | 清理事件、收据、只读模拟和资源费；成功奖励模拟尚未认证 |
 | [`opportunities/opportunity-library.md`](opportunities/opportunity-library.md) | 来源项目迁移时的 `ARB-0001` 至 `ARB-0022` 机会库 | 判断各种套利需要采集哪些市场数据 |
 | [`strategies/arb-0002-perp-funding-rate.md`](strategies/arb-0002-perp-funding-rate.md) | 来源项目的跨平台永续资金费率错位套利设计 | ARB-0002 的策略、计算和风险参考 |
 | [`strategies/arb-0002-settlement-window-collection.md`](strategies/arb-0002-settlement-window-collection.md) | ARB-0002 结算窗口采集规则 | 旧项目的专项窗口采集方案参考 |
 | [`strategies/arb-0009-options-collection-design.md`](strategies/arb-0009-options-collection-design.md) | Deribit 期权采集简化设计 R4（已实现） | 现有机器、固定C/P及期货清单、每秒10档与必要元数据，保存历史供以后分析 |
-| [`strategies/arb-0009-options-live.md`](strategies/arb-0009-options-live.md) | 期权实时采集与查询 | 配置、固定28流自动选择、真实REST/WS到数据库验证；现有常驻服务尚未启用 |
+| [`strategies/arb-0009-options-live.md`](strategies/arb-0009-options-live.md) | 期权实时采集与查询（已上线） | 配置、固定28流自动选择、真实 REST/WS 到数据库验证；接入现有 collector |
 | [`strategies/arb-0009-options-phase-1.md`](strategies/arb-0009-options-phase-1.md) | 期权离线基础实现记录（已完成，保留） | 协议解析、精确规格/规则、10档模型、分钟写入/回放及测试；剩余工作以R4为准 |
 | [`legacy/arb-0009-options-collection-design-r3.md`](legacy/arb-0009-options-collection-design-r3.md) | 期权原R3设计审核存档 | 仅用于核验历史审核；原四阶段部署和全量前置要求已由R4取代 |
 | [`strategies/arb-0016-yield-data.md`](strategies/arb-0016-yield-data.md) | 可对冲本金的收益数据采集 | ARB-0016 的两表数据模型、理论筛选和历史采集规则 |

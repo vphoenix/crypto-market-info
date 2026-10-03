@@ -1,0 +1,31 @@
+{
+  "venue": "OKX",
+  "retrieved_at": "2026-09-21T14:37:10.819528+00:00",
+  "url": "https://www.okx.com/api/v5/public/funding-rate?instId=SOON-USDT-SWAP",
+  "sha256": "2a83d59eeea54731695235ff3366e9f24346e92cc4e78b6eeb7322ff5b3f104e",
+  "data": {
+    "code": "0",
+    "data": [
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001926505510655",
+        "fundingTime": "1790006400000",
+        "impactValue": "4000.0000000000000000",
+        "instId": "SOON-USDT-SWAP",
+        "instType": "SWAP",
+        "interestRate": "0.0001000000000000",
+        "maxFundingRate": "0.01",
+        "method": "current_period",
+        "minFundingRate": "-0.01",
+        "nextFundingRate": "",
+        "nextFundingTime": "1790020800000",
+        "premium": "0.0005381205233544",
+        "prevFundingTime": "1789992000000",
+        "settFundingRate": "0.0004984307061558",
+        "settState": "settled",
+        "ts": "1790001367859"
+      }
+    ],
+    "msg": ""
+  }
+}

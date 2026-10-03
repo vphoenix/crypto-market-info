@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-10-02T11:33:34.669620235Z",
+  "manifest_hash": "0x98cf5cc757bbbe69d9cc8219210cad0490ae70e6a19a4531f6f6aa74afc3a4a9",
+  "captures": 107,
+  "canonical_captures": 107,
+  "finalized_captures": 43,
+  "live_snapshots": 21,
+  "complete_states": 21,
+  "incomplete_states": 0,
+  "log_ranges": 86,
+  "missing_log_ranges": 1,
+  "unique_logs": 0,
+  "unique_receipts": 0,
+  "first_block": 25889149,
+  "last_block": 26104366,
+  "last_available_at": "2026-10-02T11:33:31.769693Z",
+  "quote_quality": {
+    "indicative_overlap": 126
+  },
+  "reasons": {
+    "rpc_http_403": 1
+  },
+  "events": {},
+  "positive_observations": [],
+  "notes": [
+    "Counts are observations, not independent trades or daily profit. Sampling gaps cannot establish opportunity duration.",
+    "Uniswap legs sharing a pool are indicative_overlap; positive rows require combined simulation before profitability conclusions.",
+    "Historical event permissions and upgrades are not reconstructed; raw events and full receipts are retained. No historical executable-opportunity count.",
+    "Net values, when supplied, subtract an explicit assumed transaction gas budget only. USDT capital conversion, hedge, MEV and inclusion costs remain unevaluated."
+  ]
+}

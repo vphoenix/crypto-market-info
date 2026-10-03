@@ -1,0 +1,1018 @@
+{
+  "venue": "Bybit",
+  "symbol": "NEWTUSDT",
+  "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=NEWTUSDT&limit=200",
+  "fetched_at": "2026-09-12T19:15:13.076929+00:00",
+  "payload_sha256": "33ad145d774c63420c940c235c5dbc340ef52f26b8a3c6d3eefb0f653afb71c5",
+  "data": {
+    "retCode": 0,
+    "retMsg": "OK",
+    "result": {
+      "category": "linear",
+      "list": [
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00019365",
+          "fundingRateTimestamp": "1789228800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00000458",
+          "fundingRateTimestamp": "1789214400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.0000498",
+          "fundingRateTimestamp": "1789200000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00004816",
+          "fundingRateTimestamp": "1789185600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1789171200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1789156800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1789142400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00156506",
+          "fundingRateTimestamp": "1789128000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00249038",
+          "fundingRateTimestamp": "1789113600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00572121",
+          "fundingRateTimestamp": "1789099200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.01091124",
+          "fundingRateTimestamp": "1789084800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1789070400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00350174",
+          "fundingRateTimestamp": "1789056000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00570659",
+          "fundingRateTimestamp": "1789041600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00079612",
+          "fundingRateTimestamp": "1789027200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00855714",
+          "fundingRateTimestamp": "1789012800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788998400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788984000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788969600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788955200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788940800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788926400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788912000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788897600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788883200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00002777",
+          "fundingRateTimestamp": "1788868800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788854400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788840000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788825600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788811200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788796800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788782400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788768000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788753600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788739200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788724800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788710400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788696000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788681600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788667200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788652800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00005911",
+          "fundingRateTimestamp": "1788638400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00006547",
+          "fundingRateTimestamp": "1788624000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788609600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788595200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788580800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788566400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00014696",
+          "fundingRateTimestamp": "1788552000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00020134",
+          "fundingRateTimestamp": "1788537600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00000982",
+          "fundingRateTimestamp": "1788523200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00011845",
+          "fundingRateTimestamp": "1788508800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788494400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788480000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788465600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788451200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788436800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788422400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788408000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788393600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788379200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788364800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00000144",
+          "fundingRateTimestamp": "1788350400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788336000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788321600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788307200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788292800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788278400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788264000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788249600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788235200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788220800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788206400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.0000083",
+          "fundingRateTimestamp": "1788192000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00028681",
+          "fundingRateTimestamp": "1788177600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00021311",
+          "fundingRateTimestamp": "1788163200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00007529",
+          "fundingRateTimestamp": "1788148800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788134400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788120000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788105600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788091200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788076800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788062400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788048000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788033600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788019200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1788004800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787990400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787976000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787961600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787947200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787932800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787918400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787904000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787889600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787875200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787860800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787846400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787832000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787817600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787803200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787788800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787774400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787760000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787745600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787731200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787716800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787702400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787688000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787673600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787659200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787644800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787630400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787616000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787601600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787587200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787572800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787558400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787544000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787529600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787515200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787500800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787486400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787472000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787457600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787443200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787428800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787414400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787400000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787385600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787371200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787356800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787342400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787328000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787313600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787299200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787284800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787270400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787256000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787241600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787227200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787212800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787198400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787184000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787169600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787155200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787140800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787126400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787112000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787097600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787083200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787068800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787054400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787040000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787025600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1787011200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00001196",
+          "fundingRateTimestamp": "1786996800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786982400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786968000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786953600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786939200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786924800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786910400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00007528",
+          "fundingRateTimestamp": "1786896000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786881600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786867200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786852800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786838400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786824000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786809600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786795200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786780800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786766400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786752000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786737600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786723200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786708800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786694400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786680000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786665600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786651200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786636800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786622400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786608000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786593600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786579200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "-0.00000963",
+          "fundingRateTimestamp": "1786564800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786550400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786536000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786521600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786507200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786492800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786478400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786464000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786449600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786435200000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786420800000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786406400000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786392000000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786377600000"
+        },
+        {
+          "symbol": "NEWTUSDT",
+          "fundingRate": "0.00005",
+          "fundingRateTimestamp": "1786363200000"
+        }
+      ]
+    },
+    "retExtInfo": {},
+    "time": 1789240514568
+  }
+}

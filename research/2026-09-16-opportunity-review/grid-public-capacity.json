@@ -1,0 +1,264 @@
+{
+  "generated_utc": "2026-09-16T10:37:39.613212+00:00",
+  "sql": "\nSELECT symbol, tupleElement(v,1) AS taker_side, tupleElement(v,4) AS rule_id,\n       count() AS trade_count, toString(sum(tupleElement(v,2))) AS base_volume,\n       toString(sum(tupleElement(v,2)*tupleElement(v,3))) AS quote_volume_in_ticks,\n       min(tupleElement(v,5)) AS first_received_utc, max(tupleElement(v,5)) AS last_received_utc\nFROM (\n SELECT symbol,trade_id,\n        argMin(tuple(taker_side,quantity,price_tick,rule_id,receive_time),tuple(receive_time,batch_id)) AS v\n FROM crypto_grid_trading.trades_raw\n WHERE exchange='binance' AND symbol IN ('USDCUSDT','USD1USDT','FDUSDUSDT','UUSDT')\n   AND receive_time >= '2026-09-15 00:00:00' AND receive_time < '2026-09-16 00:00:00'\n   AND batch_id IN (SELECT batch_id FROM crypto_grid_trading.batch_commits WHERE committed_at >= '2026-09-15 00:00:00')\n GROUP BY symbol,trade_id\n)\nGROUP BY symbol,taker_side,rule_id ORDER BY symbol,taker_side,rule_id\n",
+  "rule_sql": "\nSELECT DISTINCT rule_id,symbol,toString(price_tick_size) AS price_tick_size\nFROM crypto_grid_trading.rule_versions_raw\nWHERE exchange='binance' AND symbol IN ('USDCUSDT','USD1USDT','FDUSDUSDT','UUSDT')\n",
+  "rows": [
+    {
+      "symbol": "USD1USDT",
+      "taker_side": "buy",
+      "rule_id": "72c16acf4b02a4d2e5c873c968370a76",
+      "trade_count": 148719,
+      "base_volume": "81747829",
+      "quote_volume_in_ticks": "8174339210313",
+      "first_received_utc": "2026-09-15 00:00:00.051040246",
+      "last_received_utc": "2026-09-15 23:59:59.130194506",
+      "observed_quote_volume": "81743392.10313"
+    },
+    {
+      "symbol": "USD1USDT",
+      "taker_side": "sell",
+      "rule_id": "72c16acf4b02a4d2e5c873c968370a76",
+      "trade_count": 138144,
+      "base_volume": "82648631",
+      "quote_volume_in_ticks": "8264265722117",
+      "first_received_utc": "2026-09-15 00:00:00.501644186",
+      "last_received_utc": "2026-09-15 23:59:55.085889305",
+      "observed_quote_volume": "82642657.22117"
+    },
+    {
+      "symbol": "FDUSDUSDT",
+      "taker_side": "buy",
+      "rule_id": "504718f5a68ee55257e128b5c16abb31",
+      "trade_count": 11309,
+      "base_volume": "13730750",
+      "quote_volume_in_ticks": "137157706604",
+      "first_received_utc": "2026-09-15 00:00:05.629030451",
+      "last_received_utc": "2026-09-15 23:57:58.147985188",
+      "observed_quote_volume": "13715770.6604"
+    },
+    {
+      "symbol": "FDUSDUSDT",
+      "taker_side": "sell",
+      "rule_id": "504718f5a68ee55257e128b5c16abb31",
+      "trade_count": 19056,
+      "base_volume": "16989271",
+      "quote_volume_in_ticks": "169685024083",
+      "first_received_utc": "2026-09-15 00:00:06.616714445",
+      "last_received_utc": "2026-09-15 23:59:48.343520662",
+      "observed_quote_volume": "16968502.4083"
+    },
+    {
+      "symbol": "UUSDT",
+      "taker_side": "buy",
+      "rule_id": "e3795fb1e2eaf0adc7dd09f1cd2af17b",
+      "trade_count": 19498,
+      "base_volume": "28997332",
+      "quote_volume_in_ticks": "290049566101",
+      "first_received_utc": "2026-09-15 00:00:00.169671956",
+      "last_received_utc": "2026-09-15 23:59:48.160954978",
+      "observed_quote_volume": "29004956.6101"
+    },
+    {
+      "symbol": "UUSDT",
+      "taker_side": "sell",
+      "rule_id": "e3795fb1e2eaf0adc7dd09f1cd2af17b",
+      "trade_count": 12782,
+      "base_volume": "19867971",
+      "quote_volume_in_ticks": "198716127885",
+      "first_received_utc": "2026-09-15 00:00:06.076211535",
+      "last_received_utc": "2026-09-15 23:58:50.568719925",
+      "observed_quote_volume": "19871612.7885"
+    },
+    {
+      "symbol": "USDCUSDT",
+      "taker_side": "buy",
+      "rule_id": "25a297fe3245c107b8fcc3af87d31185",
+      "trade_count": 312724,
+      "base_volume": "1524807726",
+      "quote_volume_in_ticks": "152540237736396",
+      "first_received_utc": "2026-09-15 00:00:00.057779176",
+      "last_received_utc": "2026-09-15 23:59:59.527143031",
+      "observed_quote_volume": "1525402377.36396"
+    },
+    {
+      "symbol": "USDCUSDT",
+      "taker_side": "sell",
+      "rule_id": "25a297fe3245c107b8fcc3af87d31185",
+      "trade_count": 290786,
+      "base_volume": "1718636610",
+      "quote_volume_in_ticks": "171933149078688",
+      "first_received_utc": "2026-09-15 00:00:01.087675488",
+      "last_received_utc": "2026-09-15 23:59:59.110263519",
+      "observed_quote_volume": "1719331490.78688"
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "72c16acf4b02a4d2e5c873c968370a76",
+      "symbol": "USD1USDT",
+      "price_tick_size": "0.00001"
+    },
+    {
+      "rule_id": "504718f5a68ee55257e128b5c16abb31",
+      "symbol": "FDUSDUSDT",
+      "price_tick_size": "0.0001"
+    },
+    {
+      "rule_id": "e3795fb1e2eaf0adc7dd09f1cd2af17b",
+      "symbol": "UUSDT",
+      "price_tick_size": "0.0001"
+    },
+    {
+      "rule_id": "25a297fe3245c107b8fcc3af87d31185",
+      "symbol": "USDCUSDT",
+      "price_tick_size": "0.00001"
+    }
+  ],
+  "thresholds": [
+    {
+      "symbol": "USD1USDT",
+      "total_capital": "100000",
+      "target_apr_pct": "3.00",
+      "assumed_paired_gap": "0.00001",
+      "required_daily_matched_one_side_quote": "821917.8082191780821917808219",
+      "observed_weak_side_quote_volume": "81743392.10313",
+      "necessary_weak_side_share_pct": "1.005485320675487837572424466"
+    },
+    {
+      "symbol": "USD1USDT",
+      "total_capital": "100000",
+      "target_apr_pct": "5.00",
+      "assumed_paired_gap": "0.00001",
+      "required_daily_matched_one_side_quote": "1369863.013698630136986301370",
+      "observed_weak_side_quote_volume": "81743392.10313",
+      "necessary_weak_side_share_pct": "1.675808867792479729287374110"
+    },
+    {
+      "symbol": "USD1USDT",
+      "total_capital": "1000000",
+      "target_apr_pct": "3.00",
+      "assumed_paired_gap": "0.00001",
+      "required_daily_matched_one_side_quote": "8219178.082191780821917808219",
+      "observed_weak_side_quote_volume": "81743392.10313",
+      "necessary_weak_side_share_pct": "10.05485320675487837572424466"
+    },
+    {
+      "symbol": "USD1USDT",
+      "total_capital": "1000000",
+      "target_apr_pct": "5.00",
+      "assumed_paired_gap": "0.00001",
+      "required_daily_matched_one_side_quote": "13698630.13698630136986301370",
+      "observed_weak_side_quote_volume": "81743392.10313",
+      "necessary_weak_side_share_pct": "16.75808867792479729287374110"
+    },
+    {
+      "symbol": "FDUSDUSDT",
+      "total_capital": "100000",
+      "target_apr_pct": "3.00",
+      "assumed_paired_gap": "0.0001",
+      "required_daily_matched_one_side_quote": "82191.78082191780821917808219",
+      "observed_weak_side_quote_volume": "13715770.6604",
+      "necessary_weak_side_share_pct": "0.5992501832887952902387105168"
+    },
+    {
+      "symbol": "FDUSDUSDT",
+      "total_capital": "100000",
+      "target_apr_pct": "5.00",
+      "assumed_paired_gap": "0.0001",
+      "required_daily_matched_one_side_quote": "136986.3013698630136986301370",
+      "observed_weak_side_quote_volume": "13715770.6604",
+      "necessary_weak_side_share_pct": "0.9987503054813254837311841948"
+    },
+    {
+      "symbol": "FDUSDUSDT",
+      "total_capital": "1000000",
+      "target_apr_pct": "3.00",
+      "assumed_paired_gap": "0.0001",
+      "required_daily_matched_one_side_quote": "821917.8082191780821917808219",
+      "observed_weak_side_quote_volume": "13715770.6604",
+      "necessary_weak_side_share_pct": "5.992501832887952902387105168"
+    },
+    {
+      "symbol": "FDUSDUSDT",
+      "total_capital": "1000000",
+      "target_apr_pct": "5.00",
+      "assumed_paired_gap": "0.0001",
+      "required_daily_matched_one_side_quote": "1369863.013698630136986301370",
+      "observed_weak_side_quote_volume": "13715770.6604",
+      "necessary_weak_side_share_pct": "9.987503054813254837311841948"
+    },
+    {
+      "symbol": "UUSDT",
+      "total_capital": "100000",
+      "target_apr_pct": "3.00",
+      "assumed_paired_gap": "0.0001",
+      "required_daily_matched_one_side_quote": "82191.78082191780821917808219",
+      "observed_weak_side_quote_volume": "19871612.7885",
+      "necessary_weak_side_share_pct": "0.4136140417826751486632515519"
+    },
+    {
+      "symbol": "UUSDT",
+      "total_capital": "100000",
+      "target_apr_pct": "5.00",
+      "assumed_paired_gap": "0.0001",
+      "required_daily_matched_one_side_quote": "136986.3013698630136986301370",
+      "observed_weak_side_quote_volume": "19871612.7885",
+      "necessary_weak_side_share_pct": "0.6893567363044585811054192533"
+    },
+    {
+      "symbol": "UUSDT",
+      "total_capital": "1000000",
+      "target_apr_pct": "3.00",
+      "assumed_paired_gap": "0.0001",
+      "required_daily_matched_one_side_quote": "821917.8082191780821917808219",
+      "observed_weak_side_quote_volume": "19871612.7885",
+      "necessary_weak_side_share_pct": "4.136140417826751486632515519"
+    },
+    {
+      "symbol": "UUSDT",
+      "total_capital": "1000000",
+      "target_apr_pct": "5.00",
+      "assumed_paired_gap": "0.0001",
+      "required_daily_matched_one_side_quote": "1369863.013698630136986301370",
+      "observed_weak_side_quote_volume": "19871612.7885",
+      "necessary_weak_side_share_pct": "6.893567363044585811054192533"
+    },
+    {
+      "symbol": "USDCUSDT",
+      "total_capital": "100000",
+      "target_apr_pct": "3.00",
+      "assumed_paired_gap": "0.00001",
+      "required_daily_matched_one_side_quote": "821917.8082191780821917808219",
+      "observed_weak_side_quote_volume": "1525402377.36396",
+      "necessary_weak_side_share_pct": "0.05388203272893346460751939579"
+    },
+    {
+      "symbol": "USDCUSDT",
+      "total_capital": "100000",
+      "target_apr_pct": "5.00",
+      "assumed_paired_gap": "0.00001",
+      "required_daily_matched_one_side_quote": "1369863.013698630136986301370",
+      "observed_weak_side_quote_volume": "1525402377.36396",
+      "necessary_weak_side_share_pct": "0.08980338788155577434586565966"
+    },
+    {
+      "symbol": "USDCUSDT",
+      "total_capital": "1000000",
+      "target_apr_pct": "3.00",
+      "assumed_paired_gap": "0.00001",
+      "required_daily_matched_one_side_quote": "8219178.082191780821917808219",
+      "observed_weak_side_quote_volume": "1525402377.36396",
+      "necessary_weak_side_share_pct": "0.5388203272893346460751939579"
+    },
+    {
+      "symbol": "USDCUSDT",
+      "total_capital": "1000000",
+      "target_apr_pct": "5.00",
+      "assumed_paired_gap": "0.00001",
+      "required_daily_matched_one_side_quote": "13698630.13698630136986301370",
+      "observed_weak_side_quote_volume": "1525402377.36396",
+      "necessary_weak_side_share_pct": "0.8980338788155577434586565966"
+    }
+  ],
+  "caveats": "Public raw events restricted to committed batches then deduplicated by Binance symbol/trade ID; 2026-09-15 UTC only. No private order/account tables. Observed market volume, not queue-fill replay; quality-gap volumes not invented. Near-par one-tick zero-fee capacity necessary condition only; all capital including idle cash counted. Larger gaps reduce required flow but are not guaranteed to fill."
+}

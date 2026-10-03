@@ -1,0 +1,257 @@
+[
+  {
+    "long": "OKX",
+    "short": "Bybit",
+    "first": "2026-09-19 12:01:00",
+    "latest": "2026-09-21 14:34:00",
+    "hourly_common_points": 47,
+    "mid_basis_short_minus_long": "-0.009218950064020486555697823303",
+    "basis_min": "-0.008194622279129321382842509603",
+    "basis_max": "-0.001852341889388727176501720032",
+    "first_basis": "-0.002316602316602316602316602317",
+    "top10": {
+      "OKX": {
+        "bid": "6175.64070",
+        "ask": "13087.94920"
+      },
+      "Bybit": {
+        "bid": "9535.6169",
+        "ask": "6570.4149"
+      }
+    },
+    "sizes": {
+      "1000": {
+        "target_leg_notional": 1000,
+        "equal_base_quantity": "5145",
+        "leg_values_long_buy_short_sell_long_sell_short_buy": [
+          "1005.72230",
+          "994.7051",
+          "1003.09360",
+          "996.1159"
+        ],
+        "enough_top10": true,
+        "capital": "2000.42740",
+        "entry_basis_fraction": "-0.01101484612738257834300809917",
+        "four_trade_fee": "2.099359500",
+        "roundtrip_spread_slippage_cost": "4.03950",
+        "total_roundtrip_friction_fraction_total_capital": "0.003068773953006242565963653567"
+      },
+      "10000": {
+        "target_leg_notional": 10000,
+        "equal_base_quantity": "51453",
+        "leg_values_long_buy_short_sell_long_sell_short_buy": [
+          "10070.95420",
+          null,
+          null,
+          null
+        ],
+        "enough_top10": false
+      },
+      "50000": {
+        "target_leg_notional": 50000,
+        "equal_base_quantity": "257267",
+        "leg_values_long_buy_short_sell_long_sell_short_buy": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "enough_top10": false
+      }
+    },
+    "fixed_quantity_price_pnl": [
+      {
+        "entry": "2026-09-19 12:01:00",
+        "exit": "2026-09-21 14:34:00",
+        "equal_base_quantity": "5153",
+        "capital": "1999.68380",
+        "price_pnl_before_funding": "2.49910",
+        "price_pnl_after_fee_before_funding": "0.398335785",
+        "return_before_funding": "0.0001991993859229144127686587249",
+        "settlements_count": {
+          "OKX": 12,
+          "Bybit": 12
+        },
+        "missing_settlement_price_proxies": [
+          [
+            1220,
+            "2026-09-20T04:00:00+00:00"
+          ],
+          [
+            1219,
+            "2026-09-20T04:00:00+00:00"
+          ]
+        ],
+        "estimated_funding_cash_using_minute_after_settlement_mid": null,
+        "estimated_pnl_after_fee_and_funding": null,
+        "funding_valuation_is_estimate_not_official_mark": true
+      },
+      {
+        "entry": "2026-09-20 08:01:00",
+        "exit": "2026-09-21 14:34:00",
+        "equal_base_quantity": "5351",
+        "capital": "1999.97690",
+        "price_pnl_before_funding": "2.15480",
+        "price_pnl_after_fee_before_funding": "0.013507425",
+        "return_before_funding": "0.000006753790506280347538014064062",
+        "settlements_count": {
+          "OKX": 7,
+          "Bybit": 7
+        },
+        "missing_settlement_price_proxies": [],
+        "estimated_funding_cash_using_minute_after_settlement_mid": "4.509445124403101347550",
+        "estimated_pnl_after_fee_and_funding": "4.522952549403101347550",
+        "funding_valuation_is_estimate_not_official_mark": true
+      },
+      {
+        "entry": "2026-09-21 08:01:00",
+        "exit": "2026-09-21 14:34:00",
+        "equal_base_quantity": "5270",
+        "capital": "2000.57630",
+        "price_pnl_before_funding": "-0.01220",
+        "price_pnl_after_fee_before_funding": "-2.137232730",
+        "return_before_funding": "-0.001068308531896534013723945445",
+        "settlements_count": {
+          "OKX": 1,
+          "Bybit": 1
+        },
+        "missing_settlement_price_proxies": [],
+        "estimated_funding_cash_using_minute_after_settlement_mid": "3.408375375433631863500",
+        "estimated_pnl_after_fee_and_funding": "1.271142645433631863500",
+        "funding_valuation_is_estimate_not_official_mark": true
+      }
+    ]
+  },
+  {
+    "long": "Binance",
+    "short": "Bybit",
+    "first": "2026-09-19 12:01:00",
+    "latest": "2026-09-21 13:01:00",
+    "hourly_common_points": 41,
+    "mid_basis_short_minus_long": "-0.005394297456974055997945029540",
+    "basis_min": "-0.007177646757241732889002819790",
+    "basis_max": "-0.002829945973758682788783123231",
+    "first_basis": "-0.002829945973758682788783123231",
+    "top10": {
+      "Binance": {
+        "bid": "19231.5875",
+        "ask": "19977.2073"
+      },
+      "Bybit": {
+        "bid": "8343.8831",
+        "ask": "7689.7453"
+      }
+    },
+    "sizes": {
+      "1000": {
+        "target_leg_notional": 1000,
+        "equal_base_quantity": "5151",
+        "leg_values_long_buy_short_sell_long_sell_short_buy": [
+          "1003.3923",
+          "995.9057",
+          "1002.3108",
+          "998.3951"
+        ],
+        "enough_top10": true,
+        "capital": "1999.2980",
+        "entry_basis_fraction": "-0.007489228719280467444072869577",
+        "four_trade_fee": "2.099716990",
+        "roundtrip_spread_slippage_cost": "3.5709",
+        "total_roundtrip_friction_fraction_total_capital": "0.002836304037717238750801531337"
+      },
+      "10000": {
+        "target_leg_notional": 10000,
+        "equal_base_quantity": "51513",
+        "leg_values_long_buy_short_sell_long_sell_short_buy": [
+          "10047.1644",
+          null,
+          "10009.5611",
+          null
+        ],
+        "enough_top10": false
+      },
+      "50000": {
+        "target_leg_notional": 50000,
+        "equal_base_quantity": "257566",
+        "leg_values_long_buy_short_sell_long_sell_short_buy": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "enough_top10": false
+      }
+    },
+    "fixed_quantity_price_pnl": [
+      {
+        "entry": "2026-09-19 12:01:00",
+        "exit": "2026-09-21 13:01:00",
+        "equal_base_quantity": "5152",
+        "capital": "1999.6526",
+        "price_pnl_before_funding": "-0.9277",
+        "price_pnl_after_fee_before_funding": "-3.027873115",
+        "return_before_funding": "-0.001514199573965997893834158993",
+        "settlements_count": {
+          "Binance": 12,
+          "Bybit": 12
+        },
+        "missing_settlement_price_proxies": [
+          [
+            1218,
+            "2026-09-20T04:00:00+00:00"
+          ],
+          [
+            1218,
+            "2026-09-20T16:00:00+00:00"
+          ],
+          [
+            1219,
+            "2026-09-20T04:00:00+00:00"
+          ]
+        ],
+        "estimated_funding_cash_using_minute_after_settlement_mid": null,
+        "estimated_pnl_after_fee_and_funding": null,
+        "funding_valuation_is_estimate_not_official_mark": true
+      },
+      {
+        "entry": "2026-09-20 08:01:00",
+        "exit": "2026-09-21 13:01:00",
+        "equal_base_quantity": "5349",
+        "capital": "1999.6031",
+        "price_pnl_before_funding": "-1.4070",
+        "price_pnl_after_fee_before_funding": "-3.547299505",
+        "return_before_funding": "-0.001774001803157836672687694873",
+        "settlements_count": {
+          "Binance": 7,
+          "Bybit": 7
+        },
+        "missing_settlement_price_proxies": [
+          [
+            1218,
+            "2026-09-20T16:00:00+00:00"
+          ]
+        ],
+        "estimated_funding_cash_using_minute_after_settlement_mid": null,
+        "estimated_pnl_after_fee_and_funding": null,
+        "funding_valuation_is_estimate_not_official_mark": true
+      },
+      {
+        "entry": "2026-09-21 08:01:00",
+        "exit": "2026-09-21 13:01:00",
+        "equal_base_quantity": "5269",
+        "capital": "2000.3134",
+        "price_pnl_before_funding": "-3.2687",
+        "price_pnl_after_fee_before_funding": "-5.393015470",
+        "return_before_funding": "-0.002696085258440002451615831799",
+        "settlements_count": {
+          "Binance": 1,
+          "Bybit": 1
+        },
+        "missing_settlement_price_proxies": [],
+        "estimated_funding_cash_using_minute_after_settlement_mid": "3.3023687649920",
+        "estimated_pnl_after_fee_and_funding": "-2.0906467050080",
+        "funding_valuation_is_estimate_not_official_mark": true
+      }
+    ]
+  }
+]

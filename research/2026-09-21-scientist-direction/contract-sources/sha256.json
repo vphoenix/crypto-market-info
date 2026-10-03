@@ -1,0 +1,12 @@
+{
+  "sky-snapshot.json": "01e1e066d8f781be0416af5e121284cea7ce48d23b12664539abb71b81534bbb",
+  "IUniswapV3PoolEvents.sol": "2c2b798ca4288dfdf746bca8516b4e725b79ca6636af3d38a5a64801e50020a7",
+  "IUniswapV3PoolState.sol": "d8d3937703d08d95f7f867a0f49c2aa73c3f3ef5508a54d431e829295f5175ea",
+  "DaiUsds.sol": "2a6d74688e5bff56be0493ba0e5bf845f6cca32e06b4b2c31c4b2d62ee554b79",
+  "chainlog-active.json": "80a4942a13cceaa5a50fe5cae9e509217c23a38213eb1145551e41bdf1674e5e",
+  "UsdsPsmWrapper.sol": "d4fe69aaf8b0a898156fc8a48ff16bfe7f904a0f196a3c21eb7d84f8a1b9ec87",
+  "rpc-preflight.json": "90a86475d3f7ecb7fe3ac8df8d0a020c987dc4cc12c91fe963d7e96533039060",
+  "signatures.json": "53304240e00209ddcc1859597af565f2bcb0d216003d56e3b50dd5d80ebee05a",
+  "DssLitePsm.sol": "502eed38778ac29758959cadbb3d2f36aa3af21144e7374483795581a6279ce8",
+  "IUniswapV3Factory.sol": "17c72e89a7d0eecca7929ca08d97f46e80930ef7024e4ccbc7b294c588477107"
+}

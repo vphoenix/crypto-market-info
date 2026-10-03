@@ -1,0 +1,10 @@
+{
+  "url": "https://api.trongrid.io/wallet/getblock",
+  "request": {
+    "detail": false
+  },
+  "started_at": "2026-10-02T14:10:35.247233+00:00",
+  "received_at": "2026-10-02T14:10:35.767392+00:00",
+  "http_status": 200,
+  "sha256": "9ada2f37da20f280d2bc6a72c6ca7f0a493923b718a9071fb88e49c34167226f"
+}

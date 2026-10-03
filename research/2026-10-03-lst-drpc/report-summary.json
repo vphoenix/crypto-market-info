@@ -1,0 +1,26 @@
+{
+  "manifest_hash": "0xcdb1ab2cd55bf49b022210f1f13548f21b91667ee43253504a4403caf1ebea61",
+  "from_inclusive_utc": "2026-10-02T17:39:00Z",
+  "to_exclusive_utc": "2026-10-02T17:55:00Z",
+  "capture_count": 3,
+  "excluded_capture_count": 3,
+  "quote_rows": 0,
+  "current_gross_discount_quotes": 0,
+  "request_cohort_count": 0,
+  "matched_finalizations_with_continuous_coverage": 0,
+  "right_censored_or_unresolved_requests": 0,
+  "left_censored_claims": 0,
+  "actual_funding_settlements": 0,
+  "conditional_gross_scenarios": 0,
+  "gas_sample_transactions": 0,
+  "gas_sample_total_wei": "",
+  "profit_status": "unknown_costs_and_funding_coverage",
+  "limitations": [
+    "Amounts and prices are observations, not executed fills.",
+    "Current gross discount excludes all gas, trading fees, redemption losses, hedge funding and capital costs.",
+    "Fixed-delay followups do not establish our actual redemption time or amount.",
+    "Actual funding observations are exported; historical settlement schedule and full holding-period coverage are not certified.",
+    "Net profit, APR and capacity across overlapping routes/time samples are not estimated.",
+    "Gas statistics cover only sampled known receipts; they are not total strategy execution cost."
+  ]
+}

@@ -1,0 +1,670 @@
+{
+	"meta":
+	[
+		{
+			"name": "route_id",
+			"type": "LowCardinality(String)"
+		},
+		{
+			"name": "amount_atoms",
+			"type": "String"
+		},
+		{
+			"name": "out_atoms",
+			"type": "Nullable(String)"
+		},
+		{
+			"name": "gross_atoms",
+			"type": "Nullable(String)"
+		},
+		{
+			"name": "status",
+			"type": "LowCardinality(String)"
+		},
+		{
+			"name": "reason",
+			"type": "String"
+		},
+		{
+			"name": "block_number",
+			"type": "UInt64"
+		},
+		{
+			"name": "block_time",
+			"type": "DateTime64(6, 'UTC')"
+		},
+		{
+			"name": "block_hash",
+			"type": "String"
+		}
+	],
+
+	"data":
+	[
+		{
+			"route_id": "dai_usdc_100_psm_first",
+			"amount_atoms": "1000000000",
+			"out_atoms": "999901375",
+			"gross_atoms": "-98625",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_100_psm_first",
+			"amount_atoms": "10000000000",
+			"out_atoms": "9999004265",
+			"gross_atoms": "-995735",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_100_psm_first",
+			"amount_atoms": "50000000000",
+			"out_atoms": "49994810448",
+			"gross_atoms": "-5189552",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_100_psm_first",
+			"amount_atoms": "100000000000",
+			"out_atoms": "99989093706",
+			"gross_atoms": "-10906294",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_100_psm_first",
+			"amount_atoms": "250000000000",
+			"out_atoms": "249968780423",
+			"gross_atoms": "-31219577",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_100_psm_first",
+			"amount_atoms": "500000000000",
+			"out_atoms": "499924194220",
+			"gross_atoms": "-75805780",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_100_psm_first",
+			"amount_atoms": "1000000000000",
+			"out_atoms": "731487033735",
+			"gross_atoms": "-268512966265",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_100_v3_first",
+			"amount_atoms": "1000000000",
+			"out_atoms": "999898413",
+			"gross_atoms": "-101587",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_100_v3_first",
+			"amount_atoms": "10000000000",
+			"out_atoms": "9998974645",
+			"gross_atoms": "-1025355",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_100_v3_first",
+			"amount_atoms": "50000000000",
+			"out_atoms": "49994662346",
+			"gross_atoms": "-5337654",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_100_v3_first",
+			"amount_atoms": "100000000000",
+			"out_atoms": "99988797483",
+			"gross_atoms": "-11202517",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_100_v3_first",
+			"amount_atoms": "250000000000",
+			"out_atoms": "249968039707",
+			"gross_atoms": "-31960293",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_100_v3_first",
+			"amount_atoms": "500000000000",
+			"out_atoms": "499922809061",
+			"gross_atoms": "-77190939",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_100_v3_first",
+			"amount_atoms": "1000000000000",
+			"out_atoms": "651642561438",
+			"gross_atoms": "-348357438562",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_psm_first",
+			"amount_atoms": "1000000000",
+			"out_atoms": "999733655",
+			"gross_atoms": "-266345",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_psm_first",
+			"amount_atoms": "10000000000",
+			"out_atoms": "9997143169",
+			"gross_atoms": "-2856831",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_psm_first",
+			"amount_atoms": "50000000000",
+			"out_atoms": "49981418806",
+			"gross_atoms": "-18581194",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_psm_first",
+			"amount_atoms": "100000000000",
+			"out_atoms": "99952097088",
+			"gross_atoms": "-47902912",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_psm_first",
+			"amount_atoms": "250000000000",
+			"out_atoms": "213737597518",
+			"gross_atoms": "-36262402482",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_psm_first",
+			"amount_atoms": "500000000000",
+			"out_atoms": "213936649212",
+			"gross_atoms": "-286063350788",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_psm_first",
+			"amount_atoms": "1000000000000",
+			"out_atoms": "213957728948",
+			"gross_atoms": "-786042271052",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_v3_first",
+			"amount_atoms": "1000000000",
+			"out_atoms": "999262103",
+			"gross_atoms": "-737897",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_v3_first",
+			"amount_atoms": "10000000000",
+			"out_atoms": "9992427788",
+			"gross_atoms": "-7572212",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_v3_first",
+			"amount_atoms": "50000000000",
+			"out_atoms": "49957817575",
+			"gross_atoms": "-42182425",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_v3_first",
+			"amount_atoms": "100000000000",
+			"out_atoms": "99904140478",
+			"gross_atoms": "-95859522",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_v3_first",
+			"amount_atoms": "250000000000",
+			"out_atoms": "249672213756",
+			"gross_atoms": "-327786244",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_v3_first",
+			"amount_atoms": "500000000000",
+			"out_atoms": "295556773546",
+			"gross_atoms": "-204443226454",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usdc_500_v3_first",
+			"amount_atoms": "1000000000000",
+			"out_atoms": "295595911010",
+			"gross_atoms": "-704404088990",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_dai_first",
+			"amount_atoms": "1000000000",
+			"out_atoms": "996684257",
+			"gross_atoms": "-3315743",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_dai_first",
+			"amount_atoms": "10000000000",
+			"out_atoms": "9964266020",
+			"gross_atoms": "-35733980",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_dai_first",
+			"amount_atoms": "50000000000",
+			"out_atoms": "49764153716",
+			"gross_atoms": "-235846284",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_dai_first",
+			"amount_atoms": "100000000000",
+			"out_atoms": "98965997061",
+			"gross_atoms": "-1034002939",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_dai_first",
+			"amount_atoms": "250000000000",
+			"out_atoms": "98965997061",
+			"gross_atoms": "-151034002939",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_dai_first",
+			"amount_atoms": "500000000000",
+			"out_atoms": "98965997061",
+			"gross_atoms": "-401034002939",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_dai_first",
+			"amount_atoms": "1000000000000",
+			"out_atoms": "98965997061",
+			"gross_atoms": "-901034002939",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_usds_first",
+			"amount_atoms": "1000000000",
+			"out_atoms": "997258526",
+			"gross_atoms": "-2741474",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_usds_first",
+			"amount_atoms": "10000000000",
+			"out_atoms": "9970006431",
+			"gross_atoms": "-29993569",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_usds_first",
+			"amount_atoms": "50000000000",
+			"out_atoms": "49792802744",
+			"gross_atoms": "-207197256",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_usds_first",
+			"amount_atoms": "100000000000",
+			"out_atoms": "99442900558",
+			"gross_atoms": "-557099442",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_usds_first",
+			"amount_atoms": "250000000000",
+			"out_atoms": "108932687087",
+			"gross_atoms": "-141067312913",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_usds_first",
+			"amount_atoms": "500000000000",
+			"out_atoms": "108932687087",
+			"gross_atoms": "-391067312913",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "dai_usds_3000_usds_first",
+			"amount_atoms": "1000000000000",
+			"out_atoms": "108932687087",
+			"gross_atoms": "-891067312913",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_psm_first",
+			"amount_atoms": "1000000000",
+			"out_atoms": "995261490",
+			"gross_atoms": "-4738510",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_psm_first",
+			"amount_atoms": "10000000000",
+			"out_atoms": "6032767159",
+			"gross_atoms": "-3967232841",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_psm_first",
+			"amount_atoms": "50000000000",
+			"out_atoms": "6032785821",
+			"gross_atoms": "-43967214179",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_psm_first",
+			"amount_atoms": "100000000000",
+			"out_atoms": "6032786802",
+			"gross_atoms": "-93967213198",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_psm_first",
+			"amount_atoms": "250000000000",
+			"out_atoms": "6032787332",
+			"gross_atoms": "-243967212668",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_psm_first",
+			"amount_atoms": "500000000000",
+			"out_atoms": "6032787500",
+			"gross_atoms": "-493967212500",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_psm_first",
+			"amount_atoms": "1000000000000",
+			"out_atoms": "6032787582",
+			"gross_atoms": "-993967212418",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_v3_first",
+			"amount_atoms": "1000000000",
+			"out_atoms": "998408383",
+			"gross_atoms": "-1591617",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_v3_first",
+			"amount_atoms": "10000000000",
+			"out_atoms": "9969105933",
+			"gross_atoms": "-30894067",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_v3_first",
+			"amount_atoms": "50000000000",
+			"out_atoms": "11902122521",
+			"gross_atoms": "-38097877479",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_v3_first",
+			"amount_atoms": "100000000000",
+			"out_atoms": "11902123729",
+			"gross_atoms": "-88097876271",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_v3_first",
+			"amount_atoms": "250000000000",
+			"out_atoms": "11902124309",
+			"gross_atoms": "-238097875691",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_v3_first",
+			"amount_atoms": "500000000000",
+			"out_atoms": "11902124483",
+			"gross_atoms": "-488097875517",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		},
+		{
+			"route_id": "usdc_usds_3000_v3_first",
+			"amount_atoms": "1000000000000",
+			"out_atoms": "11902124567",
+			"gross_atoms": "-988097875433",
+			"status": "ok",
+			"reason": "",
+			"block_number": 26062236,
+			"block_time": "2026-09-26 14:30:47.000000",
+			"block_hash": "56B3BED8A05A9BCB30F11FF737287A9F6CF8B3E9A3B1C6F8556F9F6AF78913A0"
+		}
+	],
+
+	"rows": 56,
+
+	"statistics":
+	{
+		"elapsed": 0.04919347,
+		"rows_read": 1748260,
+		"bytes_read": 264923298
+	}
+}

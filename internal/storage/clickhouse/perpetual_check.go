@@ -39,7 +39,7 @@ func OpenReadOnly(ctx context.Context, cfg Config) (*Client, error) {
 		_ = conn.Close()
 		return nil, err
 	}
-	return &Client{conn: conn, database: cfg.Database, writeTimeout: 10 * time.Second, maxAttempts: 1}, nil
+	return &Client{conn: conn, database: cfg.Database, writeTimeout: 10 * time.Second, maxAttempts: 1, readOnly: true}, nil
 }
 
 type PerpetualSourceCheck struct {

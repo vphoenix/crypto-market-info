@@ -1,0 +1,21 @@
+[Unit]
+Description=Public Lido LST research data collector
+After=network-online.target crypto-market-info-clickhouse.service
+Wants=network-online.target crypto-market-info-clickhouse.service
+
+[Service]
+Type=simple
+WorkingDirectory=%h/crypto-market-info
+Environment=LST_RPC_URL=https://eth.drpc.org
+Environment=LST_BINANCE_URL=https://fapi.binance.com
+ExecStart=%h/crypto-market-info/var/lst/lst-data watch --manifest config/lst-lido-ethereum.json --database crypto_market_info_lst --state-dir var/lst/state --evidence var/lst/evidence
+Restart=on-failure
+RestartSec=60
+KillSignal=SIGTERM
+TimeoutStopSec=30
+UMask=0077
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

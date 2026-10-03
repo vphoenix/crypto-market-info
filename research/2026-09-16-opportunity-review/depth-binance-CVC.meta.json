@@ -1,0 +1,7 @@
+{
+  "name": "depth-binance-CVC",
+  "url": "https://fapi.binance.com/fapi/v1/depth?limit=100&symbol=CVCUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:13.534732+00:00",
+  "sha256": "5535bed39f460020dc224e7d57747f0d9c3218be35d6de58cfad741aa78708e2",
+  "rows": null
+}

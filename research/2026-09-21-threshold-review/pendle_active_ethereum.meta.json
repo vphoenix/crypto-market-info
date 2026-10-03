@@ -1,0 +1,12 @@
+{
+  "url": "https://api-v2.pendle.finance/core/v1/1/markets/active?limit=100",
+  "observed_at_utc": "2026-09-21T15:11:44.485493+00:00",
+  "http_status": 200,
+  "sha256": "7b0aa7bf669b82d73fd0a5c2443f01920546a91db6a1d3d51138a032a043d81b",
+  "headers": {
+    "Date": "Mon, 21 Sep 2026 15:11:45 GMT",
+    "Content-Type": "application/json; charset=utf-8",
+    "Last-Modified": null,
+    "Age": null
+  }
+}

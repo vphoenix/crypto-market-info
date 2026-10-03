@@ -1,0 +1,193 @@
+---
+updatedAt: 2025-06-10T21:57:36.000Z
+---
+
+Fetch the complete documentation index at: https://docs.bitfinex.com/llms.txt. Use this file to discover all available pages before exploring further. Append .md to any documentation page URL to get its markdown version.
+
+# API Derivatives Trading
+
+The Bitfinex APIs are designed to allow access to all the features of the Bitfinex platform and are subject to the [API Terms of Service](https://www.bitfinex.com/legal/general/api-terms).\
+The end goal is to allow users to create their own trading platforms and highly customised and advanced trading strategies.\
+Bitfinex APIs can be used to retrieve data and perform derivatives trading\*.
+
+\*The derivatives platform is provided by iFinex Financial Technologies Limited. References to Bitfinex Derivatives on this page are references to iFinex Financial Technologies Limited. Product specifications for our derivative contracts can be found here:\
+[Product Description](https://www.bitfinex.com/legal/derivative/product)\
+[Funding Payment Summary](https://www.bitfinex.com/legal/derivative/funding)
+
+### Retrieving derivatives data from public endpoints
+
+Retrieving data from public endpoints for derivatives functions the same as it does for our other trading pairs. The following endpoints are available:
+
+> 📘 Trading pairs
+>
+> To use these endpoints, where applicable, specify the trading pair as either tBTCF0:USTF0 or ETHF0:USTF0
+
+<Table align={["left","left"]}>
+  <thead>
+    <tr>
+      <th>
+        REST V2
+      </th>
+
+      <th>
+        WS V2
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        * GET [Tickers](/v2/reference#rest-public-tickers)  
+        * GET [Ticker](/v2/reference#rest-public-ticker)  
+        * GET [Trades](/v2/reference#rest-public-trades)  
+        * GET [Book](/v2/reference#rest-public-book)  
+        * GET [Stats](/v2/reference#rest-public-stats)  
+        * GET [Candles](/v2/reference#rest-public-candles)  
+        * GET [Status](/v2/reference#rest-public-derivatives-status)\*  
+        * GET [Liquidations](/v2/reference#rest-public-liquidations)  
+        * GET [Market Average Price](/v2/reference#rest-public-market-average-price)
+      </td>
+
+      <td>
+        * [Ticker](/v2/reference#ws-public-ticker)  
+        * [Trades](/v2/reference#ws-public-trades)  
+        * [Books](/v2/reference#ws-public-books)  
+        * [Raw Books](/v2/reference#ws-public-raw-books)  
+        * [Candles](/v2/reference#ws-public-candles)  
+        * [Status](/v2/reference#ws-public-status)\*
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+
+      </td>
+
+      <td>
+
+      </td>
+    </tr>
+  </tbody>
+</Table>
+
+* The Status endpoints are of particular interest and provide information on the derivative price, spot price, mark price, insurance fund balance, next funding timestamp, next funding accrued, next funding step, current funding, and open interest all from a single endpoint.
+
+### Authenticated derivatives data
+
+Instructions on how to use authenticated endpoints can be found here:
+
+* [Rest Authentication](https://docs.bitfinex.com/docs/rest-auth)
+* [WebSocket Authentication](https://docs.bitfinex.com/docs/ws-auth)
+
+The following authenticated endpoints provide information relevant to trading derivatives:
+
+<Table align={["left","left"]}>
+  <thead>
+    <tr>
+      <th>
+        REST V2
+      </th>
+
+      <th>
+        WS V2
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        Wallets info:  
+
+        * [Wallets](https://docs.bitfinex.com/reference/rest-auth-wallets)  
+
+        Active orders and positions:  
+
+        * [Retrieve Orders](https://docs.bitfinex.com/reference/rest-auth-retrieve-orders)  
+        * [Retrieve Positions](https://docs.bitfinex.com/reference/rest-auth-positions)  
+        * [Positions Audit](https://docs.bitfinex.com/reference/rest-auth-positions-audit)  
+
+        Reports:  
+
+        * [Orders History](https://docs.bitfinex.com/reference/orders-history)  
+        * [Order Trades](https://docs.bitfinex.com/reference/rest-auth-order-trades)  
+        * [Trades](https://docs.bitfinex.com/reference/rest-public-trades)  
+        * [Ledgers](https://docs.bitfinex.com/reference/ledgers) (\*USDt0)  
+        * [Positions History](https://docs.bitfinex.com/reference/rest-auth-positions-history)
+      </td>
+
+      <td>
+        Wallets info:  
+
+        * [Wallets](https://docs.bitfinex.com/reference/ws-auth-wallets)  
+
+        Active orders and positions:  
+
+        * [Orders](https://docs.bitfinex.com/reference/ws-auth-orders)  
+        * [Positions](https://docs.bitfinex.com/reference/ws-auth-positions)  
+
+        Reports:  
+
+        * [Historical Orders (deprecated)](https://docs.bitfinex.com/reference/ws-auth-historical-orders)  
+        * [Trades](https://docs.bitfinex.com/reference/ws-auth-trades)
+      </td>
+    </tr>
+  </tbody>
+</Table>
+
+### Converting funds
+
+Derivatives trading requires USDt0 in your derivatives wallet. Conversion and transfer can be done on the website following these instructions:
+
+* [Knowledge Base: How to convert USDt to USDt0](https://support.bitfinex.com/hc/en-us/articles/360035475154-How-to-convert-USDt-to-USDt0)
+
+Alternatively, the API allows conversion through the following endpoint:
+
+* [Transfer Between Wallets](https://docs.bitfinex.com/reference/rest-auth-transfer)
+
+### Trading derivatives through the API
+
+You can submit, update, and cancel your derivative trades using the following endpoints:
+
+> 📘 Trading pairs
+>
+> To use these endpoints for derivative trading, specify the trading pair as either tBTCF0:USTF0 or ETHF0:USTF0
+
+<Table align={["left","left"]}>
+  <thead>
+    <tr>
+      <th>
+        REST V2
+      </th>
+
+      <th>
+        WS V2
+
+        \*
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        * [Submit Order](https://docs.bitfinex.com/reference/rest-auth-submit-order)  
+        * [Order Update](https://docs.bitfinex.com/reference/rest-auth-update-order)  
+        * [Order Multi-OP](https://docs.bitfinex.com/reference/rest-auth-order-multi)  
+        * [Cancel Order Multi](https://docs.bitfinex.com/reference/rest-auth-order-cancel-multi)  
+        * [Derivative Position Collateral](https://docs.bitfinex.com/reference/rest-auth-deriv-pos-collateral-set)
+      </td>
+
+      <td>
+        * [New Order](https://docs.bitfinex.com/reference/ws-auth-input-order-new)  
+        * [Update Order](https://docs.bitfinex.com/reference/ws-auth-input-order-update)  
+        * [Order Multi-OP](https://docs.bitfinex.com/reference/ws-auth-input-order-multi-op)  
+        * [Cancel Order](https://docs.bitfinex.com/reference/ws-auth-input-order-cancel)  
+        * [Cancel Order Multi](https://docs.bitfinex.com/reference/ws-auth-input-order-cancel-multi)
+      </td>
+    </tr>
+  </tbody>
+</Table>
+
+* See [Input API](https://docs.bitfinex.com/reference/ws-auth-input) for details on placing, updating, and canceling orders through WS.

@@ -1,0 +1,7 @@
+{
+  "name": "history-binance-ONG",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=ONGUSDT&startTime=1786876389000&endTime=1789554789000&limit=1000",
+  "retrieved_at_utc": "2026-09-16T10:33:27.413997+00:00",
+  "sha256": "61154c1aa44d15706825ba8c9d31f6cd39b6744a94eee81bbb334c7d633c455e",
+  "rows": 602
+}

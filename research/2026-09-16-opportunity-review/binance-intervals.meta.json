@@ -1,0 +1,7 @@
+{
+  "name": "binance-intervals",
+  "url": "https://fapi.binance.com/fapi/v1/fundingInfo",
+  "retrieved_at_utc": "2026-09-16T10:31:26.004992+00:00",
+  "sha256": "e776caa9e00a1613ee45a4624237564841065a8434912e17fbaca4974557bf99",
+  "rows": 782
+}

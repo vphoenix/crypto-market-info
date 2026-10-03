@@ -1,0 +1,95 @@
+{
+  "capital_usdt": "1000000",
+  "initial_purchase_budget": "499001.99600798403193612774451097804391217564870259",
+  "spot_cash_spent": "499001.551729423",
+  "separate_margin_cash": "499001.551729423",
+  "remaining_cash_reserve": "1996.896541154",
+  "matched_base_quantity": "44108.6",
+  "contract_base": "1",
+  "contract_lot_size": "0.1",
+  "hedge_contracts": "44108.6",
+  "book_ts_utc": {
+    "spot": "2026-09-21T14:44:42+00:00",
+    "swap": "2026-09-21T14:44:44+00:00"
+  },
+  "book_ts_difference_ms": 1600,
+  "fee_assumptions": {
+    "spot_taker": "0.001",
+    "swap_taker": "0.0005",
+    "other_cost_budget_per_spot_cash": "0.001",
+    "account_fee_tier_verified": false
+  },
+  "legs": {
+    "spot_buy_gross": {
+      "requested_base": "44152.752753",
+      "filled_base": "44152.752753",
+      "missing_base": "0.000000",
+      "complete": true,
+      "quote": "499001.551729423",
+      "vwap": "11.301708741036941887544920386359494626094893168846",
+      "levels": 335,
+      "fee_in_base": "44.152752753",
+      "fee_quote_equivalent_already_in_gross_cash": "499.001551729423",
+      "net_base_after_fee": "44108.600000247",
+      "unhedged_dust_ignored_in_profit": "2.47E-7"
+    },
+    "spot_sell_matched": {
+      "requested_base": "44108.6",
+      "filled_base": "35858.008100",
+      "missing_base": "8250.591900",
+      "complete": false,
+      "quote": "397247.589980262",
+      "vwap": "11.078350723565763263910914226158591335696641777489",
+      "levels": 400,
+      "fee_on_filled_quote": "397.247589980262"
+    },
+    "perp_open_short": {
+      "requested_base": "44108.6",
+      "filled_base": "44108.6",
+      "missing_base": "0.0",
+      "complete": true,
+      "quote": "491939.6375",
+      "vwap": "11.152918875230680638242882340405272441201942478338",
+      "levels": 46,
+      "fee_quote": "245.96981875"
+    },
+    "perp_close_short": {
+      "requested_base": "44108.6",
+      "filled_base": "44108.6",
+      "missing_base": "0.0",
+      "complete": true,
+      "quote": "494194.0675",
+      "vwap": "11.204029769704774125680706256829733884095165115193",
+      "levels": 44,
+      "fee_quote": "247.09703375"
+    }
+  },
+  "visible_spot_exit_missing_fraction": "0.18705177448388749586248486689670495096194392930177",
+  "spot_entry_price_impact_vs_best_ask": "0.0096220065246508743563445047667942313824274762235",
+  "optimistic_bound_not_execution": {
+    "missing_bid_price_upper_bound": "10.608",
+    "full_spot_exit_quote_upper_bound": "484769.868855462",
+    "full_spot_exit_net_quote_upper_bound": "484285.098986606538",
+    "four_leg_friction_lower_bound": "17463.949595316462",
+    "other_cost_budget": "499.001551729423",
+    "staking_income_assumed": "4535.1404379782606318875395514571491718861609853951",
+    "funding_income_assumed": "6435.6428213058114041662500000000000000000000000",
+    "gross_income_assumed": "10970.783259284072036053789551457149171886160985395",
+    "profit_90d_upper_bound": "-6992.167887761812963946210448542850828113839014605",
+    "annualized_90d_upper_bound": "-0.028357125322589574798226297930201561691795013781453",
+    "max_four_leg_friction_for_3pct": "3074.5214335820462963277621541968751992834212593676",
+    "target_3pct_90d_profit": "7397.2602739726027397260273972602739726027397260274"
+  },
+  "savax_state": {
+    "source_time": "2026-09-21 14:27:03.000",
+    "availability": "available",
+    "ratio": "1.285765148773703522",
+    "savax_received_if_stake_matched_base": "34305.331764567197609540342280166281483894940096997",
+    "pool_cash_avax": "12531.208071665159752843",
+    "matched_base_divided_by_pool_cash": "3.5199000565424977491268830813482770260325862392394",
+    "unbonding_seconds": 1296000,
+    "redemption_window_seconds": 172800,
+    "finality": "finalized",
+    "block_height": 95838431
+  }
+}

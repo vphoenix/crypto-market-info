@@ -1,0 +1,113 @@
+{
+  "From": "2026-09-26T14:00:00Z",
+  "To": "2026-09-26T16:00:00Z",
+  "Manifest": "0xe5493d29bf16f2d7665e90163eda323e2e7a2847e4bd3e7563db77ac11bfe567",
+  "CapitalUSDT": "1000000000000",
+  "Head": false,
+  "Scenario": null,
+  "Report": {
+    "Blocks": 154,
+    "ExpectedHeights": 154,
+    "QuoteCompleteBlocks": 102,
+    "MissingHeights": 0,
+    "Windows": null,
+    "Routes": [
+      {
+        "Assessment": "quoted_nonpositive",
+        "Route": "dai_usdc_100_psm_first",
+        "CompleteBlocks": 103,
+        "ConfirmedWindows": 0,
+        "UnknownFragments": 0,
+        "PositiveDates": 0,
+        "MaxDurationSeconds": 0,
+        "BestGross": -98619,
+        "BestAmount": 1000000000
+      },
+      {
+        "Assessment": "quoted_nonpositive",
+        "Route": "dai_usdc_100_v3_first",
+        "CompleteBlocks": 103,
+        "ConfirmedWindows": 0,
+        "UnknownFragments": 0,
+        "PositiveDates": 0,
+        "MaxDurationSeconds": 0,
+        "BestGross": -101587,
+        "BestAmount": 1000000000
+      },
+      {
+        "Assessment": "quoted_nonpositive",
+        "Route": "dai_usdc_500_psm_first",
+        "CompleteBlocks": 103,
+        "ConfirmedWindows": 0,
+        "UnknownFragments": 0,
+        "PositiveDates": 0,
+        "MaxDurationSeconds": 0,
+        "BestGross": -266345,
+        "BestAmount": 1000000000
+      },
+      {
+        "Assessment": "quoted_nonpositive",
+        "Route": "dai_usdc_500_v3_first",
+        "CompleteBlocks": 103,
+        "ConfirmedWindows": 0,
+        "UnknownFragments": 0,
+        "PositiveDates": 0,
+        "MaxDurationSeconds": 0,
+        "BestGross": -737897,
+        "BestAmount": 1000000000
+      },
+      {
+        "Assessment": "quoted_nonpositive",
+        "Route": "dai_usds_3000_dai_first",
+        "CompleteBlocks": 102,
+        "ConfirmedWindows": 0,
+        "UnknownFragments": 0,
+        "PositiveDates": 0,
+        "MaxDurationSeconds": 0,
+        "BestGross": -3315743,
+        "BestAmount": 1000000000
+      },
+      {
+        "Assessment": "quoted_nonpositive",
+        "Route": "dai_usds_3000_usds_first",
+        "CompleteBlocks": 102,
+        "ConfirmedWindows": 0,
+        "UnknownFragments": 0,
+        "PositiveDates": 0,
+        "MaxDurationSeconds": 0,
+        "BestGross": -2741474,
+        "BestAmount": 1000000000
+      },
+      {
+        "Assessment": "quoted_nonpositive",
+        "Route": "usdc_usds_3000_psm_first",
+        "CompleteBlocks": 102,
+        "ConfirmedWindows": 0,
+        "UnknownFragments": 0,
+        "PositiveDates": 0,
+        "MaxDurationSeconds": 0,
+        "BestGross": -4738510,
+        "BestAmount": 1000000000
+      },
+      {
+        "Assessment": "quoted_nonpositive",
+        "Route": "usdc_usds_3000_v3_first",
+        "CompleteBlocks": 103,
+        "ConfirmedWindows": 0,
+        "UnknownFragments": 0,
+        "PositiveDates": 0,
+        "MaxDurationSeconds": 0,
+        "BestGross": -1591617,
+        "BestAmount": 1000000000
+      }
+    ],
+    "Candidates": null,
+    "Warnings": [
+      "all routes share Sky PSM; simultaneous candidates are mutually exclusive",
+      "block-end quotations do not establish inclusion, realized profit or APR",
+      "USDC profits are not USDT returns; entry/exit and idle capital need separate accounting",
+      "missing heights outside the observed endpoints cannot be measured from this report"
+    ]
+  },
+  "Costs": {}
+}

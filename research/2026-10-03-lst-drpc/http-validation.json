@@ -1,0 +1,1676 @@
+{
+  "window_from_utc": "2026-10-02T17:39:00Z",
+  "stats": {
+    "eth.drpc.org": {
+      "responses": 154,
+      "http_status_counts": {
+        "200": 145,
+        "400": 9
+      },
+      "minimum_send_gap_us": 714487,
+      "maximum_rolling_60s_responses": 42,
+      "get_logs_requests": 12,
+      "minimum_get_logs_send_gap_us": 10002069
+    },
+    "fapi.binance.com": {
+      "responses": 8,
+      "http_status_counts": {
+        "200": 8
+      },
+      "minimum_send_gap_us": 5496983,
+      "maximum_rolling_60s_responses": 4,
+      "get_logs_requests": 0,
+      "minimum_get_logs_send_gap_us": null
+    }
+  },
+  "responses": [
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:39:34.185998Z",
+      "received_at": "2026-10-02T17:39:34.965125Z",
+      "http_status": 200,
+      "response_hash": "0x4409c61e2f1e3dbb6b222a5b8f07852fbccc709a22b0203bc15f2e64a22b2eb6",
+      "request_hash": "0xed933d243a64325d04c931222cf350c21eb242af1e0f6aeb0d522c18b55a5cfd",
+      "method": "eth_getBlockByNumber",
+      "id": 1
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:39:36.966834Z",
+      "received_at": "2026-10-02T17:39:37.184241Z",
+      "http_status": 200,
+      "response_hash": "0xa130d159877fe429b33c98df5cd7e7d17e08263c8fd5964717cf6878243e35e7",
+      "request_hash": "0x2377decda7fec11e59cc0f920d602af11999345a0b1398b4a7c13f81953b8347",
+      "method": "eth_chainId",
+      "id": 2
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:39:39.185987Z",
+      "received_at": "2026-10-02T17:39:39.409984Z",
+      "http_status": 200,
+      "response_hash": "0x7c328ef57434d735f3a239a27c95c767f48ca23de177f5b2a96eb87ab417d16e",
+      "request_hash": "0x8213d6bb927c79bd1da52778a7e518232be528760213370062ec249748cb64e0",
+      "method": "eth_call",
+      "id": 3
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:39:41.413137Z",
+      "received_at": "2026-10-02T17:39:41.639073Z",
+      "http_status": 200,
+      "response_hash": "0x99331dc1c7143a15eec633b9d201ec933f8d91831f286a73791bc8313c45196a",
+      "request_hash": "0xfb8ec184a695b0d947d8a9b0f3e2a98164f4b96400fab045fb5a5749af05a29d",
+      "method": "eth_call",
+      "id": 4
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:39:43.640607Z",
+      "received_at": "2026-10-02T17:39:44.104133Z",
+      "http_status": 200,
+      "response_hash": "0x058b327a9cead6714c2728a3aa03d394a9521325974e1ee4a31c5b98790dded8",
+      "request_hash": "0xbcaaeb627e8edf94e0e1e1cdbcdcadc308ea271b4aa177560db7ac74722f476b",
+      "method": "eth_getCode",
+      "id": 5
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:39:46.105596Z",
+      "received_at": "2026-10-02T17:39:46.343502Z",
+      "http_status": 200,
+      "response_hash": "0x5015b7cd66ffc8255fc76530e16f1637dec240466536878fc923d896828b29bb",
+      "request_hash": "0x672d077145da9db97e54e8aa6bacf4c8803c74c4f8ccc8d7154e03a79ca35d57",
+      "method": "eth_getCode",
+      "id": 6
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:39:48.346477Z",
+      "received_at": "2026-10-02T17:39:48.569185Z",
+      "http_status": 200,
+      "response_hash": "0x3064caaa3a4ea8aea0ef333a15248b41a9d625b13f841cdb5cc57e5aa71d0022",
+      "request_hash": "0xe6bbf1541cbf2a345b01cd4685f389846bb5efcacec24c9561b608c023dd3ca6",
+      "method": "eth_getCode",
+      "id": 7
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:39:50.571868Z",
+      "received_at": "2026-10-02T17:39:50.812948Z",
+      "http_status": 200,
+      "response_hash": "0x32c369e8835cbb02af317fb72a3829fcb8c1bbfbca6536d4020ed6a950118fa8",
+      "request_hash": "0xb6df49607558a12f3a0c3290be6e48b5a0769e794d83f4f12db58c3e9358aea2",
+      "method": "eth_getCode",
+      "id": 8
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:39:52.81529Z",
+      "received_at": "2026-10-02T17:39:53.035019Z",
+      "http_status": 200,
+      "response_hash": "0xa571b70c63de1eeab46b57bd3f73d28117ba3ab460fa6ededbbc787af625cdff",
+      "request_hash": "0xe2a016d55c4db99df31dd4cbc60cf42c7827303bbaac092783dfdc25c1d1a28b",
+      "method": "eth_getCode",
+      "id": 9
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:39:55.037445Z",
+      "received_at": "2026-10-02T17:39:55.268247Z",
+      "http_status": 200,
+      "response_hash": "0x540effe0f926760ff19ecc4ca427b579d9b6c2386987ec416b5984e8483b8585",
+      "request_hash": "0x421daa9c491c304deb8ab5c6bd08e5274e4142e5954e702bf217f001371e3c46",
+      "method": "eth_getCode",
+      "id": 10
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:39:57.271105Z",
+      "received_at": "2026-10-02T17:39:57.494866Z",
+      "http_status": 200,
+      "response_hash": "0x0614489092596a1b0451dadd74660f25ec2031103affefda44bb54a86756d9f0",
+      "request_hash": "0x0f8ea356933106c0c596d434b0c51c1e9e45e4cd7de17cfd044d23eaff55043a",
+      "method": "eth_getCode",
+      "id": 11
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:39:59.498652Z",
+      "received_at": "2026-10-02T17:39:59.72706Z",
+      "http_status": 200,
+      "response_hash": "0xedb5227831a7dcd626ec41e5f725a9c4b8cce2585a34a14d0eb1e08b439556c2",
+      "request_hash": "0xcf4dda64f36fb6eb69defb0d65cfae030e44e35f82cf3772953f788c0efab90a",
+      "method": "eth_getCode",
+      "id": 12
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:01.729802Z",
+      "received_at": "2026-10-02T17:40:01.964986Z",
+      "http_status": 200,
+      "response_hash": "0x22cc12b738eeea21e50efc0c0a81416c848ad3f91f395dc5900b0b84acea8f75",
+      "request_hash": "0xef0ac580af0f64b59cf739f8b9bc1d98b4f00c82a5325d57a6038127b5713c70",
+      "method": "eth_getCode",
+      "id": 13
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:03.966974Z",
+      "received_at": "2026-10-02T17:40:04.417269Z",
+      "http_status": 200,
+      "response_hash": "0xb4d6581d87735b91de420968b0438829e169b38aff0ea28176a374b9d19571f4",
+      "request_hash": "0x3b1c703afa5afe74ebddc7d73fadf2bf2f221f25ea178aab2fb0ef38106aec7c",
+      "method": "eth_getCode",
+      "id": 14
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:06.419587Z",
+      "received_at": "2026-10-02T17:40:07.258093Z",
+      "http_status": 200,
+      "response_hash": "0x517bc6d25421e507a6a3859ec42a8f4edaad4f0b0e8bf52ae0984e9b554bd031",
+      "request_hash": "0x62722becd50d42a01a9e23f559235936a43123cadb215a343c1823cc9dca1d18",
+      "method": "eth_call",
+      "id": 15
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:09.260785Z",
+      "received_at": "2026-10-02T17:40:09.482228Z",
+      "http_status": 200,
+      "response_hash": "0x2ff93ae8d3dfc6d38599e2faaad98abdc02e21a1a085cedc918386a1d8767e45",
+      "request_hash": "0x66c62b2e798fafb9eb46261d79fbdf6262f07d3315f52bf937be448a7fe76c52",
+      "method": "eth_call",
+      "id": 16
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:11.486293Z",
+      "received_at": "2026-10-02T17:40:12.016809Z",
+      "http_status": 200,
+      "response_hash": "0xb37d705c803787a9b42faf71635c8ba37469cb3aceef873868127abd7f428f06",
+      "request_hash": "0x036ed064d741b55d9be22251847965dd6600aa99bd93d212a5850dfc65661a52",
+      "method": "eth_call",
+      "id": 17
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:14.019194Z",
+      "received_at": "2026-10-02T17:40:14.849452Z",
+      "http_status": 200,
+      "response_hash": "0x7f7bb6d18db8ce8eded8ff86f54af8ae39cc6b4aa212800d1f3d1bb8824797c6",
+      "request_hash": "0x2e0cec587fcd0184314a2464f4d1b52d2cfaad6c528986b5d348633f5ceb4cf0",
+      "method": "eth_call",
+      "id": 18
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:16.866158Z",
+      "received_at": "2026-10-02T17:40:17.111402Z",
+      "http_status": 200,
+      "response_hash": "0x7f17d5c6a87bfb2788917e4db69c85951cfd06ae0f93378a515d9e042573c12d",
+      "request_hash": "0x555a032b6f59b733f63d6b39b5227b8f9102293e520170545f2d0a3a164b4eb3",
+      "method": "eth_call",
+      "id": 19
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:19.113241Z",
+      "received_at": "2026-10-02T17:40:19.341172Z",
+      "http_status": 200,
+      "response_hash": "0x11abb6273d8c8fbb7eb075416d1f69a5664a516c53edac5ccf2b9200c6da7341",
+      "request_hash": "0x8f4dfbc8bb9d1b5188f69ca334fc9ea6aeaf57925e0194dae4b2afa7df1cee07",
+      "method": "eth_call",
+      "id": 20
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:21.344368Z",
+      "received_at": "2026-10-02T17:40:21.562963Z",
+      "http_status": 200,
+      "response_hash": "0xa5a7b8d6f77ec6823c14ee5227d0e8f68d93fa48b5ee58d66ae93aea052dd7e2",
+      "request_hash": "0xa857696bbde569cc4e2a36c3450e245dd1a6e2415f6f08519c534c2d9f6420e0",
+      "method": "eth_call",
+      "id": 21
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:23.564732Z",
+      "received_at": "2026-10-02T17:40:23.809522Z",
+      "http_status": 200,
+      "response_hash": "0xffc70c51a0d3096be8d56c4f9b65a5756f160ad27387128bd0f40b70298bf7c2",
+      "request_hash": "0xdda4b843ac13488e4e59806485e952305c71c11230adacfb240ee6e0c265c53f",
+      "method": "eth_call",
+      "id": 22
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:25.812425Z",
+      "received_at": "2026-10-02T17:40:26.027739Z",
+      "http_status": 200,
+      "response_hash": "0x31e4bb826cec889e3f5a66e20585f1c0e27fc17888e4dd23f9b1e256ba1b05a5",
+      "request_hash": "0xcb395d1a98f13a024e5b04f075c0a6e54148ff185bdd344af576efc059837a8e",
+      "method": "eth_call",
+      "id": 23
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:28.030407Z",
+      "received_at": "2026-10-02T17:40:28.252609Z",
+      "http_status": 200,
+      "response_hash": "0x54bb26418705919b557630e788272a5deec45fc1154b403a3d7d28e773c6eb1f",
+      "request_hash": "0xe7dc412bc34571e5d1de1d85581ca3232184ffbc813a36c638539e76b639cedf",
+      "method": "eth_call",
+      "id": 24
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:30.257428Z",
+      "received_at": "2026-10-02T17:40:30.476366Z",
+      "http_status": 200,
+      "response_hash": "0xec934df70a3e05adbe5042a8867e05085e024234bc207fc9d2ffa931fd72f87a",
+      "request_hash": "0x103949cb1a72624981ef25aa6280d2f54ffc18f46b9ab6b8cd4699f86dec781c",
+      "method": "eth_call",
+      "id": 25
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:32.47892Z",
+      "received_at": "2026-10-02T17:40:32.697981Z",
+      "http_status": 200,
+      "response_hash": "0x5680464541fcf83c2cb57deff54bd87f77c81206709c0d562f442742c2ac9443",
+      "request_hash": "0xf677f8d351f0077cd8dd5c389341c3215eb9f769633312c915bef031b2ccef12",
+      "method": "eth_call",
+      "id": 26
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:34.701313Z",
+      "received_at": "2026-10-02T17:40:34.911469Z",
+      "http_status": 200,
+      "response_hash": "0xd8f7c63669066e509178f2500c221d02b40475d1d799181f1597b4caffe1e6ef",
+      "request_hash": "0x0d10bc3d18f897f7eb6360cc1dafb471c3bb4b76075998bd361e86c4b0aebef0",
+      "method": "eth_call",
+      "id": 27
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:36.914701Z",
+      "received_at": "2026-10-02T17:40:37.137184Z",
+      "http_status": 200,
+      "response_hash": "0xfbba8cc23734bfe2dd31ab52a025c34c6b2f98c861d42ca823b52e71f4bfb470",
+      "request_hash": "0xdc2f7b9159764e6607d9e8337e9b25976407c4a6f45dbfe470b880464b8785d1",
+      "method": "eth_call",
+      "id": 28
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:39.138785Z",
+      "received_at": "2026-10-02T17:40:39.349312Z",
+      "http_status": 200,
+      "response_hash": "0x0b9baf0752e6c7d88ad87b654a033bcc92afaf8491ac34e3416890c4450a7a50",
+      "request_hash": "0xf9d98e3c76ab6f6380f03534f5c00fe68cb459f4982dbf6cc56e46decc48f533",
+      "method": "eth_call",
+      "id": 29
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:41.352005Z",
+      "received_at": "2026-10-02T17:40:41.573046Z",
+      "http_status": 200,
+      "response_hash": "0x72cdc48186e7dbe28d9bfe94ec180e1754ed6fbf27b0e7bef3a9f8b020c84ac1",
+      "request_hash": "0x734e6e95f6ffa2ef2b594e515dc1c7f5114222e1dc87d92e959e72e4b45f510b",
+      "method": "eth_call",
+      "id": 30
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:43.575772Z",
+      "received_at": "2026-10-02T17:40:43.794604Z",
+      "http_status": 200,
+      "response_hash": "0x8c7159ce11539b59167e299d4db137fe396735492f9f5aa3f5c26bdb66ec6421",
+      "request_hash": "0x70791528e3ccc0f3a1929353261d96e8baa835106f3d974ae6c920fab1c61f22",
+      "method": "eth_call",
+      "id": 31
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:45.796301Z",
+      "received_at": "2026-10-02T17:40:46.011665Z",
+      "http_status": 200,
+      "response_hash": "0x4657acf92bd809f269f0fb7fa4441d55e0f998506b97e02f86e53290b1b00d48",
+      "request_hash": "0xae2b1f3100eb175e5ab570e48d196893eb074f8e0b06372e41faa0e13f0cdbb8",
+      "method": "eth_call",
+      "id": 32
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:48.016012Z",
+      "received_at": "2026-10-02T17:40:48.241509Z",
+      "http_status": 200,
+      "response_hash": "0xa613300d6ba7ad89aec34115177dfcab275197e7b0a0fb3a9acb195055df92c9",
+      "request_hash": "0x5ea5f36373cee05e84f3941c417cb15af6cdaa304cc32fba5c5f06f3908971fb",
+      "method": "eth_call",
+      "id": 33
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:50.243139Z",
+      "received_at": "2026-10-02T17:40:50.471994Z",
+      "http_status": 200,
+      "response_hash": "0x96ca85a070a2673a8fad18b96ee71b95dcc3b2b9d1b389606c3f8c13efc906d4",
+      "request_hash": "0xc8933eca0938d957d14d1f57f615e081542e95f3cf48248ac1f1e2911c32087a",
+      "method": "eth_getBlockByNumber",
+      "id": 34
+    },
+    {
+      "host": "fapi.binance.com",
+      "requested_at": "2026-10-02T17:40:50.475509Z",
+      "received_at": "2026-10-02T17:40:52.067908Z",
+      "http_status": 200,
+      "response_hash": "0xd662d41dba44e94b54e2c5fa20020c55a11e19e01b79dabe7ee36d0e0fb48e6f",
+      "request_hash": "0x23b825a7c4e9d13f2fc4367471f9ddf22d0f195b482e8867c0c037dec35fb2c8",
+      "path": "/fapi/v1/exchangeInfo"
+    },
+    {
+      "host": "fapi.binance.com",
+      "requested_at": "2026-10-02T17:40:57.069298Z",
+      "received_at": "2026-10-02T17:40:58.068891Z",
+      "http_status": 200,
+      "response_hash": "0x408b3d1b78fa7150e058099cade3b2ac0b6e673a26999c4e78a217eb89ee1c89",
+      "request_hash": "0x73f7dc65265b62618c4ded08cf17bf7cf2133deefaeb30777700e33b0416cb5a",
+      "path": "/fapi/v1/fundingInfo"
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:58.100256Z",
+      "received_at": "2026-10-02T17:40:58.328934Z",
+      "http_status": 200,
+      "response_hash": "0x084b7136a7e1b2cd01c0b21d9f3d4c13179c05e54b3ea87c543001291c17ddc4",
+      "request_hash": "0x6bab48a3ee2bd84a3e7181b50413a3e735244c8554a27c23aaf4d61cf0a5ec87",
+      "method": "eth_getBlockByNumber",
+      "id": 35
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:40:59.330317Z",
+      "received_at": "2026-10-02T17:40:59.808168Z",
+      "http_status": 200,
+      "response_hash": "0x81ea024ad72413330be8eea0c485c5e7a5aff174f6b481e8acc8516fe9cdc0db",
+      "request_hash": "0x396355dcc7bd5f2bb2127a35723a5214426232c8f1cf3b50bd0e01b72175ff9b",
+      "method": "eth_getBlockByNumber",
+      "id": 36
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:41:00.810866Z",
+      "received_at": "2026-10-02T17:41:01.052745Z",
+      "http_status": 200,
+      "response_hash": "0xad98d28562f0e9d6ca0b36cffe16cda6fd394a304d1502ab05d19b944e86c2e0",
+      "request_hash": "0x8111b8f9ff6860d19953b4feb1e1b9bb6c09ac32b6f3d3ec0490317ad798d7ad",
+      "method": "eth_getBlockByNumber",
+      "id": 37
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:41:02.054157Z",
+      "received_at": "2026-10-02T17:41:02.271526Z",
+      "http_status": 200,
+      "response_hash": "0xa206a96fbb9982a2445bb1b2effcd8bc68759ab8613af2a4b1077cab16a40735",
+      "request_hash": "0x8d035de743935c9498deae7eec6f28f11ed9e954dcd4f5b473304edb9d89696b",
+      "method": "eth_call",
+      "id": 38
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:41:03.272978Z",
+      "received_at": "2026-10-02T17:41:03.493772Z",
+      "http_status": 200,
+      "response_hash": "0x90f41b7ccd7042d2d15243d33b746049aa0f90db02b2f1ec397c3ae31da46372",
+      "request_hash": "0x8ac7998527ab2eb51b18a0b7052e87f4de8389d8d4ff8704f9c0c2e292863e7a",
+      "method": "eth_call",
+      "id": 39
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:41:04.495638Z",
+      "received_at": "2026-10-02T17:41:04.708741Z",
+      "http_status": 400,
+      "response_hash": "0x5af557e2e9bfe4b45001310381a82b3785b726478db1d2f73734210b40a89eb7",
+      "request_hash": "0xcb1da492eccdda6108ac81cd7d634aa123c3776be0b99356bbb8a85dcbacd8ff",
+      "method": "eth_getLogs",
+      "id": 40,
+      "rpc_error": {
+        "message": "ranges over 10000 blocks are not supported on free plan",
+        "code": 35
+      }
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:45:22.260906Z",
+      "received_at": "2026-10-02T17:45:22.8848Z",
+      "http_status": 200,
+      "response_hash": "0x8582ec67e1353baf85928e54ce63e46fc4eff0619309b6b61bb5fbc0febe8eaf",
+      "request_hash": "0xed933d243a64325d04c931222cf350c21eb242af1e0f6aeb0d522c18b55a5cfd",
+      "method": "eth_getBlockByNumber",
+      "id": 1
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:45:24.889818Z",
+      "received_at": "2026-10-02T17:45:25.112611Z",
+      "http_status": 400,
+      "response_hash": "0x11a3cd9b172956a2f8482183824cb3e2b97f2f8aef31688cda1a064a8cb5cda8",
+      "request_hash": "0xf427adcfcf412b5420d913dbc51b069ddad491548ae8f459396e7f1edbdb735d",
+      "method": "eth_getLogs",
+      "id": 100,
+      "rpc_error": {
+        "message": "Unknown state. First available state is 1",
+        "code": 27
+      }
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:45:34.895945Z",
+      "received_at": "2026-10-02T17:45:35.100713Z",
+      "http_status": 400,
+      "response_hash": "0x311479462c7c4a0a1857f1ec6b569b9ea99a2ec7b2d05150ee49df795816047c",
+      "request_hash": "0xe01d4587e9be0528b9fab2e19466965891d6ce1bb26602838f6761cbfb2a6558",
+      "method": "eth_getLogs",
+      "id": 101,
+      "rpc_error": {
+        "message": "ranges over 10000 blocks are not supported on free plan",
+        "code": 35
+      }
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:45:44.905998Z",
+      "received_at": "2026-10-02T17:45:45.113618Z",
+      "http_status": 400,
+      "response_hash": "0x623eec22c64996612981c13c30f3631af37b3a160d3187c122b4e8585dc19a32",
+      "request_hash": "0x9cfabf1b8612da613b3be383cff7e4a264b74d90164d5040a13bf31d0fb0a17b",
+      "method": "eth_getLogs",
+      "id": 102,
+      "rpc_error": {
+        "message": "ranges over 10000 blocks are not supported on free plan",
+        "code": 35
+      }
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:46:50.240385Z",
+      "received_at": "2026-10-02T17:46:50.797718Z",
+      "http_status": 200,
+      "response_hash": "0xd7d4fbfda99da17ed80ec8279e7b560a2cea6ca529ce885636d018a95d73da42",
+      "request_hash": "0xed933d243a64325d04c931222cf350c21eb242af1e0f6aeb0d522c18b55a5cfd",
+      "method": "eth_getBlockByNumber",
+      "id": 1
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:46:52.799275Z",
+      "received_at": "2026-10-02T17:46:52.986499Z",
+      "http_status": 400,
+      "response_hash": "0xaa0c6456a3ce9b779719de4609eef59bf100a3b68b08b498eb67a3141280d876",
+      "request_hash": "0xaf330c2c6b71625f7d593cba269b9b8879db4f02050ae4e05358d0a123b409f7",
+      "method": "eth_getLogs",
+      "id": 200,
+      "rpc_error": {
+        "message": "ranges over 10000 blocks are not supported on free plan",
+        "code": 35
+      }
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:47:02.806028Z",
+      "received_at": "2026-10-02T17:47:02.995505Z",
+      "http_status": 400,
+      "response_hash": "0x69f3e8c542aa3a7d1416112a1646b3db74cc8a34045e80151f76636100cc2d76",
+      "request_hash": "0xce7e0aa862a4caf85442f779c10a0c83d01100ca636b2074e7732317882de070",
+      "method": "eth_getLogs",
+      "id": 201,
+      "rpc_error": {
+        "message": "ranges over 10000 blocks are not supported on free plan",
+        "code": 35
+      }
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:47:12.808097Z",
+      "received_at": "2026-10-02T17:47:13.089329Z",
+      "http_status": 200,
+      "response_hash": "0xe3be5cbdd0cee96e58b210fde65558d342ed8eec7f99f327f68727507bae6d87",
+      "request_hash": "0xfe80ecea37e03d620ebc25def2fd88828acec761e9880badbbc17073bcec5eed",
+      "method": "eth_getLogs",
+      "id": 202
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:47:22.81813Z",
+      "received_at": "2026-10-02T17:47:23.109364Z",
+      "http_status": 200,
+      "response_hash": "0x8c6bbd9cf8bf03e458421aff4363fa236e15a3a48bd53fb21118fe0616318aeb",
+      "request_hash": "0xb3b07467f9d7669725358d3b8efcc38ed2642646baab822e2d98965992949b75",
+      "method": "eth_getLogs",
+      "id": 203
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:49:18.746219Z",
+      "received_at": "2026-10-02T17:49:19.667367Z",
+      "http_status": 400,
+      "response_hash": "0x2030dd0be9a474909677b07cf88137e915d7da957aee7e204bc2bd6f5a16d488",
+      "request_hash": "0xf800a2d10c2a19093bc7540e2c13a5489cc6583ad7faf6a764f8beeec1c0fb5b",
+      "method": "eth_getLogs",
+      "id": 300,
+      "rpc_error": {
+        "message": "hex string without 0x prefix",
+        "code": -32601
+      }
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:49:28.755668Z",
+      "received_at": "2026-10-02T17:49:28.95863Z",
+      "http_status": 400,
+      "response_hash": "0x622641a9c655e493115d8aba431523871c18dd7faa735ff2bbc99db1b81aed38",
+      "request_hash": "0xa8dd335e1e0784a776d5365b2923fc2c06fae551387010b183990115d2a39510",
+      "method": "eth_getLogs",
+      "id": 301,
+      "rpc_error": {
+        "message": "hex string without 0x prefix",
+        "code": -32601
+      }
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:49:38.766846Z",
+      "received_at": "2026-10-02T17:49:39.061525Z",
+      "http_status": 200,
+      "response_hash": "0x02c55ae79bf6ced8e290bcb3825c05a9397bfb7f28cdfcf889d8fec9bc072e9e",
+      "request_hash": "0x3fac4b097369e6a669724d4df36ee03ace925b0ab3499da7dd1578d72d3f306e",
+      "method": "eth_getLogs",
+      "id": 302
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:50:32.417529Z",
+      "received_at": "2026-10-02T17:50:33.055138Z",
+      "http_status": 200,
+      "response_hash": "0xb21285d6e77b71261de40ea52fcd5b9516476464a54a8f9a3f997542c137e968",
+      "request_hash": "0xed933d243a64325d04c931222cf350c21eb242af1e0f6aeb0d522c18b55a5cfd",
+      "method": "eth_getBlockByNumber",
+      "id": 1
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:50:35.056942Z",
+      "received_at": "2026-10-02T17:50:35.275393Z",
+      "http_status": 200,
+      "response_hash": "0x14a6c7cfe1fed2a6f96c4468c6c0b13b246ab1ae7762b1b3bbaea2f19a58534e",
+      "request_hash": "0x2377decda7fec11e59cc0f920d602af11999345a0b1398b4a7c13f81953b8347",
+      "method": "eth_chainId",
+      "id": 2
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:50:37.277709Z",
+      "received_at": "2026-10-02T17:50:37.510983Z",
+      "http_status": 200,
+      "response_hash": "0x4c152a944af24795eddd70d59b2098483837e6e9fb7112423cbd5a098b693559",
+      "request_hash": "0x19305ff2f4707f27a5bbdc64fef88f05807dba6443c78fe18d1a83ba22acef61",
+      "method": "eth_call",
+      "id": 3
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:50:39.513047Z",
+      "received_at": "2026-10-02T17:50:39.732655Z",
+      "http_status": 200,
+      "response_hash": "0xcc8e895498758d35b2cdd929b71df44f57b58cd95711dda36da384154846a4a3",
+      "request_hash": "0xd42272d41826b214c42cfc29a8c03bcebb1df24cf9373a3d114818fdb99951bc",
+      "method": "eth_call",
+      "id": 4
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:50:41.741545Z",
+      "received_at": "2026-10-02T17:50:42.039102Z",
+      "http_status": 200,
+      "response_hash": "0x4fbbc1f5b560d7c1e731a265f35c79d72fed06c1738fbf97046636a67abe8345",
+      "request_hash": "0x0fb2e510427292e44d0f55943b35f27ffe3a86c456e2ab36758d25cd1a032ab8",
+      "method": "eth_getCode",
+      "id": 5
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:50:44.040864Z",
+      "received_at": "2026-10-02T17:50:44.278888Z",
+      "http_status": 200,
+      "response_hash": "0xf29cc720dfdd1e5ab683ba724b833deb2be842eedd9e8131e56421f9877f2810",
+      "request_hash": "0xeaebf9866ce0eb8555a49d33bdfb5d04d2413e40bf153f36bca4b2a710832530",
+      "method": "eth_getCode",
+      "id": 6
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:50:46.281499Z",
+      "received_at": "2026-10-02T17:50:46.501313Z",
+      "http_status": 200,
+      "response_hash": "0xc118550bd24d5e893810744143ffe2d186cbc9d0df1920e5e19f0494c05a6a97",
+      "request_hash": "0x58ec61c45c15c16608ab5c01a2c832ef0a41aba8f9171644503a444cf638ea01",
+      "method": "eth_getCode",
+      "id": 7
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:50:48.505089Z",
+      "received_at": "2026-10-02T17:50:48.843312Z",
+      "http_status": 200,
+      "response_hash": "0x5a4a821ecf51ef82d727dc8489bfe0c49e54605c6d7914454214a6447d683eb3",
+      "request_hash": "0xfaaa47bcc8ebf9b73d5f1a45a8a47937a8819748efce6f2bfe918afe744817b7",
+      "method": "eth_getCode",
+      "id": 8
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:50:50.845858Z",
+      "received_at": "2026-10-02T17:50:51.070557Z",
+      "http_status": 200,
+      "response_hash": "0x7023101520709fc10848c19d8deee636d52aa7b34d22c0f28c27d61e8626aceb",
+      "request_hash": "0x8380f907c3d8db3cc9e46575e1e22a16dd8e90a8148aa1c8db1c493de8cf88f8",
+      "method": "eth_getCode",
+      "id": 9
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:50:53.073183Z",
+      "received_at": "2026-10-02T17:50:53.303819Z",
+      "http_status": 200,
+      "response_hash": "0xa1983f30c730a53b236f9bd575bb79eae186f15e4d00aaeeda0cb3af11f320c2",
+      "request_hash": "0xab7a3250dc0c1ba7a74b83a64a9ce785f2ca4cdcaee6e0fa22c6a434ac919d89",
+      "method": "eth_getCode",
+      "id": 10
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:50:55.306064Z",
+      "received_at": "2026-10-02T17:50:55.544707Z",
+      "http_status": 200,
+      "response_hash": "0xadefb1cde7a70ffcdd2e3c2cc7e5c7fc7fdc51c6c571b1b94e9bd1142aa64a95",
+      "request_hash": "0x2e9716a3167677e7dd746840225f6cdb5500f791881aecc0138afb77427142a4",
+      "method": "eth_getCode",
+      "id": 11
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:50:57.546211Z",
+      "received_at": "2026-10-02T17:50:57.763284Z",
+      "http_status": 200,
+      "response_hash": "0x1db1d3b0d123a5137d4c235cf04149468c738e0b3568c1a3a1e6e0002e83d592",
+      "request_hash": "0xc9ddf900324bee440eb348494e3f7837c2818ad3f393fec10e15401b8f4f77de",
+      "method": "eth_getCode",
+      "id": 12
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:50:59.766052Z",
+      "received_at": "2026-10-02T17:50:59.993069Z",
+      "http_status": 200,
+      "response_hash": "0x55b0d592a0a68e20face1619772757360e50bd7a3e75d3cd8b24d1e23efd8448",
+      "request_hash": "0xa359c8e7ea1455097028a601dae6857270f9db9093a369b81bf29726afbb22f7",
+      "method": "eth_getCode",
+      "id": 13
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:01.997358Z",
+      "received_at": "2026-10-02T17:51:02.21806Z",
+      "http_status": 200,
+      "response_hash": "0x6bb62de653e3f0ac49618f459d28ecaff670d302de6e06ce9c3d440c0ff6f2ea",
+      "request_hash": "0x30176b74151fb1b0efc27d999b7932b49cee3fd1bb82aa1932a52ced2a3090f9",
+      "method": "eth_getCode",
+      "id": 14
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:04.221301Z",
+      "received_at": "2026-10-02T17:51:04.437556Z",
+      "http_status": 200,
+      "response_hash": "0x2a56ed304e8272e1b1159ea46a94ef35e01d6d855cc47d460049d8e274644a9e",
+      "request_hash": "0x91b7483a7b1ad225c3fe13f3b177bf0003afec2188cb5b47e7df64e116451005",
+      "method": "eth_call",
+      "id": 15
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:06.439977Z",
+      "received_at": "2026-10-02T17:51:06.657876Z",
+      "http_status": 200,
+      "response_hash": "0xa505d4bef981a70028cfbb7f34987e9f69e9346e59a13e6a95a75ce0c7b65d87",
+      "request_hash": "0x380d164cd21c0e686f232aee48552855dc7b4ff8d0d57e486852361fa3aab6fd",
+      "method": "eth_call",
+      "id": 16
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:08.660606Z",
+      "received_at": "2026-10-02T17:51:09.464558Z",
+      "http_status": 200,
+      "response_hash": "0x88196e86e356f9fdea3ded10f865081cfe1e566c8d87a459223bc02d013885a6",
+      "request_hash": "0xc9554078c0066574f56aca1944128ddc9fb5468d5a749269248c2a67e04c3b92",
+      "method": "eth_call",
+      "id": 17
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:11.465858Z",
+      "received_at": "2026-10-02T17:51:11.682771Z",
+      "http_status": 200,
+      "response_hash": "0x15d35f6f08e99783e285473d6ea8527892984e706aec840992bc8934eff412a1",
+      "request_hash": "0x3d697ba37c2af8f5c59d0e68a6f9f71f226d84ca7133f2fb668b7f28615ed711",
+      "method": "eth_call",
+      "id": 18
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:13.686298Z",
+      "received_at": "2026-10-02T17:51:13.909041Z",
+      "http_status": 200,
+      "response_hash": "0x0d0609e0ed7a0846658a87bc7b3e2c59749d760eb636fe65d403f3ed9d255ad6",
+      "request_hash": "0x27528f2f9a22b2ee7c4d482b9e2ab59b067d7718114249d379d7fbdff1874c7e",
+      "method": "eth_call",
+      "id": 19
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:15.912768Z",
+      "received_at": "2026-10-02T17:51:16.134885Z",
+      "http_status": 200,
+      "response_hash": "0x43a32bb1ae121f0e2297bd6056d2a1808fc31c7464a1dea8035386d91fb1aa00",
+      "request_hash": "0xf4afdfb59a1c1218b4c5248f19e857138b276a41a18112a240ade992f61762e9",
+      "method": "eth_call",
+      "id": 20
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:18.13748Z",
+      "received_at": "2026-10-02T17:51:18.352787Z",
+      "http_status": 200,
+      "response_hash": "0x0e968ac019cc374c80d08539c1db331a441b6ff084e195d63505aa3711f6e7f0",
+      "request_hash": "0xa4a0ac48603bcde67359f865f490e3baaefaf19ebc4b6081f3ca188dd4a11a0e",
+      "method": "eth_call",
+      "id": 21
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:20.35533Z",
+      "received_at": "2026-10-02T17:51:20.581936Z",
+      "http_status": 200,
+      "response_hash": "0x52b748ec8fb326ed7e50809dc56f40b81741594bfab8f0c4b88131f58de41e43",
+      "request_hash": "0xbe2499f9079716f3a38e00d3f2649f653263f45e3fc7f63a5d9673402999b4f5",
+      "method": "eth_call",
+      "id": 22
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:22.583478Z",
+      "received_at": "2026-10-02T17:51:22.80221Z",
+      "http_status": 200,
+      "response_hash": "0x04bb214e646206e96ef2d53b4a3e2ab6ab096c1e322a948ea872fe17908f3ccc",
+      "request_hash": "0x34c57f79cafdae40a844efe8dda9ebfa81c0f15d1f904b37e4c92307a7f08fb2",
+      "method": "eth_call",
+      "id": 23
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:24.804502Z",
+      "received_at": "2026-10-02T17:51:25.026234Z",
+      "http_status": 200,
+      "response_hash": "0x12b6e8177c7cd1e73d2610cbcca256e49e79f73163d7cca12dfc8b6683e3e950",
+      "request_hash": "0xcaeebabc65b6a5986f89c3184ade8358d7ad83cf10c5aba0aa9597f3ebb3dc55",
+      "method": "eth_call",
+      "id": 24
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:27.028484Z",
+      "received_at": "2026-10-02T17:51:27.245275Z",
+      "http_status": 200,
+      "response_hash": "0x3f29b0f172f522c2a959dc0cc67870963591c0c0bcabab2bc3b660b756c80ac5",
+      "request_hash": "0x0116b9c1e604eabb156ae3b88be40d12e9503e3aebd053caa53ec8353ed27dc5",
+      "method": "eth_call",
+      "id": 25
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:29.24778Z",
+      "received_at": "2026-10-02T17:51:29.461181Z",
+      "http_status": 200,
+      "response_hash": "0xf1336c251d34e3740c9038554d233b3d297b86f8c4d1e6520e5ad2be17fd897d",
+      "request_hash": "0xa7bb2ad219495519258d55c6003d70190e4db9c4bec83e5fdac4e63b2538042c",
+      "method": "eth_call",
+      "id": 26
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:31.46306Z",
+      "received_at": "2026-10-02T17:51:31.687558Z",
+      "http_status": 200,
+      "response_hash": "0x13f3ea01350037708d5c56cbbbedd12809c3a1dbeda797f60d4a891cfa5bab9f",
+      "request_hash": "0x2abb18946631767af586be0e45169e76210a7d385450094d0b0fada4b85e35a5",
+      "method": "eth_call",
+      "id": 27
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:33.690588Z",
+      "received_at": "2026-10-02T17:51:33.916425Z",
+      "http_status": 200,
+      "response_hash": "0xe4049e0d30e64a58525705a8287deb780e12debafbb33985b30f927e7d8da3c5",
+      "request_hash": "0xddebd302e38ec044261bda366c832f4b5142a833fa3a5c2029213801f2c9b61c",
+      "method": "eth_call",
+      "id": 28
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:35.919474Z",
+      "received_at": "2026-10-02T17:51:36.141486Z",
+      "http_status": 200,
+      "response_hash": "0x4fc68b240efb0d80757be535fe87deb2b32214eda02f3feb5e9fc97b03ddde0f",
+      "request_hash": "0x8bd41654787745fc09941610c35ddf30fb97d1bf4208573a763671fb6be8b8e8",
+      "method": "eth_call",
+      "id": 29
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:38.144805Z",
+      "received_at": "2026-10-02T17:51:38.602537Z",
+      "http_status": 200,
+      "response_hash": "0xff3627a635d745bf95a0f93ac56bcec90a53b895bf2b9e027b13e0df664b6951",
+      "request_hash": "0x00dacdd7373e9e1f08720e494662373af0af18fccc1ae00e037a1c543fc98897",
+      "method": "eth_call",
+      "id": 30
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:40.605364Z",
+      "received_at": "2026-10-02T17:51:40.819239Z",
+      "http_status": 200,
+      "response_hash": "0x4240254197a5e42473d6496e77206b4adfdf651d90524cc66df3f520149a728b",
+      "request_hash": "0x70005792d9ba976587eb13cfa885090ab89cee196680798d271e46b715d8df99",
+      "method": "eth_call",
+      "id": 31
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:42.82075Z",
+      "received_at": "2026-10-02T17:51:43.037894Z",
+      "http_status": 200,
+      "response_hash": "0xfb53237e3f2724dc55b9b263e64daebe04d4945865b4cc6eef3f10bd397652eb",
+      "request_hash": "0x3b85028d7c556408edc2ef2e2bdf59c40787b71f8ded6c6f04ec9b592a03335c",
+      "method": "eth_call",
+      "id": 32
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:45.040323Z",
+      "received_at": "2026-10-02T17:51:45.253998Z",
+      "http_status": 200,
+      "response_hash": "0x8e9487b0400cd9e6daecd00ba10f161a4731e534bfcef2944e00fa69a92bb135",
+      "request_hash": "0x463c27b6c1eb05ff13c5fc9b61d81f80b0f9a4814bc97f15aa4a0ae2a5573884",
+      "method": "eth_call",
+      "id": 33
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:47.257789Z",
+      "received_at": "2026-10-02T17:51:47.487355Z",
+      "http_status": 200,
+      "response_hash": "0x5516fe7089322c334ef89ae3e4a82c8ec6aa2d715c729819dcef3057780f97c0",
+      "request_hash": "0xdbb52de8f6a50a0446f1166e0e64e8cc3d0f7d5f3b3d63f3d6c30019238c8b54",
+      "method": "eth_getBlockByNumber",
+      "id": 34
+    },
+    {
+      "host": "fapi.binance.com",
+      "requested_at": "2026-10-02T17:51:47.492868Z",
+      "received_at": "2026-10-02T17:51:49.062816Z",
+      "http_status": 200,
+      "response_hash": "0x7e5acfe74927a6bf47048c4d9b4f911be262c3dc165e2c0fb101f44961311246",
+      "request_hash": "0x23b825a7c4e9d13f2fc4367471f9ddf22d0f195b482e8867c0c037dec35fb2c8",
+      "path": "/fapi/v1/exchangeInfo"
+    },
+    {
+      "host": "fapi.binance.com",
+      "requested_at": "2026-10-02T17:51:54.065718Z",
+      "received_at": "2026-10-02T17:51:54.56652Z",
+      "http_status": 200,
+      "response_hash": "0x6c6b5496270e58227eb184fde0c807ee4014e4297b57001ca3c88d293f04f503",
+      "request_hash": "0x73f7dc65265b62618c4ded08cf17bf7cf2133deefaeb30777700e33b0416cb5a",
+      "path": "/fapi/v1/fundingInfo"
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:54.878148Z",
+      "received_at": "2026-10-02T17:51:55.10262Z",
+      "http_status": 200,
+      "response_hash": "0xe9e91cb5f2e3b377899ef8f35378f07be651f336e3dab9a5761184aeae73a90f",
+      "request_hash": "0x19f531643520ab9a7bb105c3e888d9013860b1419285cc12121feec152c4b73b",
+      "method": "eth_getBlockByNumber",
+      "id": 35
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:55.604782Z",
+      "received_at": "2026-10-02T17:51:55.81914Z",
+      "http_status": 200,
+      "response_hash": "0x761453d203feaf140a1cd9eabc096388fb4392ed6f9b5fffcf61895469c9ab59",
+      "request_hash": "0x98ca24360a27885ba9af37c99671b66b81d2b26b42664d728528a3d8095a0289",
+      "method": "eth_call",
+      "id": 36
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:56.321646Z",
+      "received_at": "2026-10-02T17:51:56.546611Z",
+      "http_status": 200,
+      "response_hash": "0xfc0a94c08ce5ddbe1f09e03cce53e6b041eb90b80809963a3e5ace700ebc1877",
+      "request_hash": "0x8df6f186c67041915a5c2868c574a2a5bcae6dcc3dd0ef4feda1c6b49bc3add6",
+      "method": "eth_call",
+      "id": 37
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:57.048247Z",
+      "received_at": "2026-10-02T17:51:57.260569Z",
+      "http_status": 200,
+      "response_hash": "0x4d2e3a60fea3a757b570122d182f8c3e9941a041527958fd1a66abd83f2f4991",
+      "request_hash": "0x51e516326acc2793f805a83061fcb96690338867c4fe7a26995844cb5d43c9a1",
+      "method": "eth_call",
+      "id": 38
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:57.762734Z",
+      "received_at": "2026-10-02T17:51:57.981243Z",
+      "http_status": 200,
+      "response_hash": "0x9f9304e57b74cc6aba07b263cf8a8e6ba1693e818ce37f037945d2e3e2952703",
+      "request_hash": "0xbfc7d6c82891441b4fb07abbcd01337b9fdc280b88d3ecaaf7708e27a1d585d5",
+      "method": "eth_call",
+      "id": 39
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:58.482437Z",
+      "received_at": "2026-10-02T17:51:58.695602Z",
+      "http_status": 200,
+      "response_hash": "0xbcf4568266164f64008e3ec62b18eb603e063e40fc099eb502bb63a4763ec476",
+      "request_hash": "0xa97bbfcd3aa99ada222b3810e5a76edb9f40d4ee8504dc8fa5bc45f218087ef8",
+      "method": "eth_call",
+      "id": 40
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:59.197645Z",
+      "received_at": "2026-10-02T17:51:59.419565Z",
+      "http_status": 200,
+      "response_hash": "0xa60d10edc33c79353d1a3cd78280108f238b9bd738290afa809e78dec94c71d2",
+      "request_hash": "0x23d5195615f99219286ce0e1ff80fcc06f952e8931dd568edc699e32a429b35d",
+      "method": "eth_call",
+      "id": 41
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:51:59.921334Z",
+      "received_at": "2026-10-02T17:52:00.139316Z",
+      "http_status": 200,
+      "response_hash": "0x2aab6df92b9a4f349e75401f46f17c5785dd620b1afd44b3ed6fbf0bc086b417",
+      "request_hash": "0x7cc1c65bc49761c3f9d0b1093822f275a54d553ea8cf7a7b6db2ece1c7f0886c",
+      "method": "eth_call",
+      "id": 42
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:00.641504Z",
+      "received_at": "2026-10-02T17:52:00.915818Z",
+      "http_status": 200,
+      "response_hash": "0x2798c9ce97168712f9e0fae5c0657a859eac381e78e8cce9b3eccb6083eba031",
+      "request_hash": "0xb51bf2d1cc8533f4aabff12793faffefd90d8824d38d46afaf50fecad6fc052e",
+      "method": "eth_call",
+      "id": 43
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:01.417305Z",
+      "received_at": "2026-10-02T17:52:01.635158Z",
+      "http_status": 200,
+      "response_hash": "0xab1de9b4b11a152e58317a81d11bfa19b2a46aeedc92aa0af2c69adca54f5265",
+      "request_hash": "0x7b1b51b945c4eee92bbed534ed9736b966a8be3b6038b4a6f67db4fd0f36d787",
+      "method": "eth_call",
+      "id": 44
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:02.138182Z",
+      "received_at": "2026-10-02T17:52:02.356785Z",
+      "http_status": 200,
+      "response_hash": "0xdd9f2a3706302ef6407e9e64e09a7ad2ced9af935d85bd0830f79431927dc204",
+      "request_hash": "0x59034729a8ccf9243301365a4e03eef323a71d91e89948e74648b23fc721808b",
+      "method": "eth_call",
+      "id": 45
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:02.858948Z",
+      "received_at": "2026-10-02T17:52:03.077661Z",
+      "http_status": 200,
+      "response_hash": "0xb1ba838390ec0f62eb653504ef18d138898ff214ffd740a0c2029f6afa32de0d",
+      "request_hash": "0xd63c2a96cf907314c80e6af320363eec420ea0c898216c972ee4d48d649aa1eb",
+      "method": "eth_call",
+      "id": 46
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:03.579815Z",
+      "received_at": "2026-10-02T17:52:03.798104Z",
+      "http_status": 200,
+      "response_hash": "0xd5fe953fe162d5430d50eb90319a3ba2b5e363330ea91ca60f40b5dfdcee2c00",
+      "request_hash": "0x45550de258eea1bb680aa5423406c1946462a0d278e7c42dbcf2c8b463f0ba46",
+      "method": "eth_call",
+      "id": 47
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:04.299659Z",
+      "received_at": "2026-10-02T17:52:04.536319Z",
+      "http_status": 200,
+      "response_hash": "0x0758204ae35df156c087323b4e2f861836a22a9aca6c4809b4bd486f8bf1de85",
+      "request_hash": "0x21401aaeaeb6c82aca2d922e82585071faf33e2535bb3c73d4494c31af5eb841",
+      "method": "eth_call",
+      "id": 48
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:05.038199Z",
+      "received_at": "2026-10-02T17:52:05.257483Z",
+      "http_status": 200,
+      "response_hash": "0x1af99b11b4edc8b25e235c8a5abfb120da495807897f73f7d70ed7e799ffda99",
+      "request_hash": "0x2913ce2e6c6490b5adb82e7fa174eb44d3b615199edbfad8c0589c30337ef7c4",
+      "method": "eth_call",
+      "id": 49
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:05.759078Z",
+      "received_at": "2026-10-02T17:52:05.980204Z",
+      "http_status": 200,
+      "response_hash": "0xf3536439be492169b39dd31098834b4dcbd0e0d8c2bec24fe95c56e86ec65054",
+      "request_hash": "0x286ae1adbabdd4474dbeccdd1c90efef82c785b1aa4ea4d2fa99bb1f86972b8c",
+      "method": "eth_call",
+      "id": 50
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:06.482098Z",
+      "received_at": "2026-10-02T17:52:06.723634Z",
+      "http_status": 200,
+      "response_hash": "0x78582af4e26a951dc887230420cc57a06c73796e14e3a4c48a5ede1c8259c1e7",
+      "request_hash": "0x88dd3684a8ea833937f3ec68c35973c000001fbac8c5cf78b86fafc5cc4ec089",
+      "method": "eth_call",
+      "id": 51
+    },
+    {
+      "host": "fapi.binance.com",
+      "requested_at": "2026-10-02T17:52:06.877682Z",
+      "received_at": "2026-10-02T17:52:07.373704Z",
+      "http_status": 200,
+      "response_hash": "0xef6c5f0e58ab08f23c524dead19e5bbbd5682000a175baec8ec0bd2efc7261d0",
+      "request_hash": "0x5177df038e67a7c425963fe99145cf550101aea17fd51aeab10672cfc1ba80e6",
+      "path": "/fapi/v1/depth?limit=10&symbol=ETHUSDT"
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:07.226233Z",
+      "received_at": "2026-10-02T17:52:07.446589Z",
+      "http_status": 200,
+      "response_hash": "0x1daf980a5fefab1a814a6d712b11b4846e470e8ff41756bfb260a4c1e3f17e63",
+      "request_hash": "0x647d9bca6f4618de261dd844f2507d19b3e95f53c34e01cdbe7eedc8816d36f1",
+      "method": "eth_call",
+      "id": 52
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:08.228419Z",
+      "received_at": "2026-10-02T17:52:08.446281Z",
+      "http_status": 200,
+      "response_hash": "0xad54d582cbd6710a6ffdc5847cb466b4d3138a6778f983311fe502a15d5a58f3",
+      "request_hash": "0x9c278533d8b4286cc575c5660f4764db9c192ceff64423ebff30236a208d537e",
+      "method": "eth_call",
+      "id": 53
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:08.948934Z",
+      "received_at": "2026-10-02T17:52:09.164209Z",
+      "http_status": 200,
+      "response_hash": "0x5c0bfb32d12fb365f3cdd74e821e9bea98be15b40ba24d5a086f48e19fa3db08",
+      "request_hash": "0x2b4ab4f9e58b0e192e714493200666789bbd9f31dbf3e98ad6839c40923e1dcc",
+      "method": "eth_call",
+      "id": 54
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:09.666488Z",
+      "received_at": "2026-10-02T17:52:09.934682Z",
+      "http_status": 200,
+      "response_hash": "0xb2d00331002a5ca9b38e33784908d97e907111e171517da506bcb271321b84b7",
+      "request_hash": "0xa6e6e9d6c72369a16baf13ddd46f82f9ab1c97b36f7503806cc5e90da10c0132",
+      "method": "eth_call",
+      "id": 55
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:10.436452Z",
+      "received_at": "2026-10-02T17:52:10.663907Z",
+      "http_status": 200,
+      "response_hash": "0xfe9562717333907563102f1125faa84c582b1fa6320effb0edf4eebf71c35a64",
+      "request_hash": "0x751c6d70e57cffaaa323c11882945ede3612886afffeeb9669cceeb8b551dc03",
+      "method": "eth_call",
+      "id": 56
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:11.438302Z",
+      "received_at": "2026-10-02T17:52:11.660174Z",
+      "http_status": 200,
+      "response_hash": "0xb4dda356b69f3c881966e0137aa28b17b49347ce3192e0be9024c2d4ee41f656",
+      "request_hash": "0xb3b888671a0f9f0111447556919b2e357ef2dd73bed01b6863e5a2d9e5c874b6",
+      "method": "eth_call",
+      "id": 57
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:12.1614Z",
+      "received_at": "2026-10-02T17:52:12.38385Z",
+      "http_status": 200,
+      "response_hash": "0xc401266718bdd38b30d98918000bcc5ce178563a92b77150533482b985ad1bca",
+      "request_hash": "0xdc2fd93f06f2416f3843a7dcb0d4b861bf5d11bb69b617969b55fa1b31466c96",
+      "method": "eth_call",
+      "id": 58
+    },
+    {
+      "host": "fapi.binance.com",
+      "requested_at": "2026-10-02T17:52:12.374665Z",
+      "received_at": "2026-10-02T17:52:12.859198Z",
+      "http_status": 200,
+      "response_hash": "0xc29879f11df8be5607a7255205d1f73fd5041b24a6a0823852656b8382f68974",
+      "request_hash": "0xe03f5d5c3090cead0f4e9c615f336ccaded7442144c22e9e1e4890ac759d64f5",
+      "path": "/fapi/v1/premiumIndex?symbol=ETHUSDT"
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:12.886299Z",
+      "received_at": "2026-10-02T17:52:13.113907Z",
+      "http_status": 200,
+      "response_hash": "0x968a4a670b62d5f1a848d0d45418a7c3f06207940e4e6d0b7b4bb75a48a09901",
+      "request_hash": "0x839822a0cc535f4c3fe612881056f0a0d1250180b57a56c1644f1802ed7d12ab",
+      "method": "eth_call",
+      "id": 59
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:13.616133Z",
+      "received_at": "2026-10-02T17:52:13.83148Z",
+      "http_status": 200,
+      "response_hash": "0x1a334aa439f99e0eb05b5e843ff60fc99d249bd1cd2e480cac518d122829296f",
+      "request_hash": "0x8a19e4db66c095979cf7b60c74b350576d7d38c2d97071d8c442a7fe54b9b267",
+      "method": "eth_call",
+      "id": 60
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:14.618276Z",
+      "received_at": "2026-10-02T17:52:14.837448Z",
+      "http_status": 200,
+      "response_hash": "0x2631645bcc5624c70c6707830806b9040969ca8eae60f57daf5e51bc9df590c8",
+      "request_hash": "0xb3cc3a14f71fc9107bb038eee901286e2263de263b2a734942cc9b35c2b66f60",
+      "method": "eth_call",
+      "id": 61
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:52:17.342095Z",
+      "received_at": "2026-10-02T17:52:17.571038Z",
+      "http_status": 200,
+      "response_hash": "0xef2f7c15df7d6f8ff0f8349ecb03b00a1b6aaa0720714e69aba35cf942b734ec",
+      "request_hash": "0x27e9db344ad5b8dcc90adb89d8e984a83a319377fb6096cbfdfc8e5eb2b1d956",
+      "method": "eth_getBlockByNumber",
+      "id": 65
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:00.101392Z",
+      "received_at": "2026-10-02T17:53:00.705893Z",
+      "http_status": 200,
+      "response_hash": "0x40a2721cdc6ff769dad001839f21fd762b496ee9295a5b92d881f84e30160624",
+      "request_hash": "0xed933d243a64325d04c931222cf350c21eb242af1e0f6aeb0d522c18b55a5cfd",
+      "method": "eth_getBlockByNumber",
+      "id": 1
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:02.708788Z",
+      "received_at": "2026-10-02T17:53:02.913039Z",
+      "http_status": 200,
+      "response_hash": "0x743df021c08c1e78ed361058dafe32dfae09b75b1c305e0feef2924a26fcbbc3",
+      "request_hash": "0x2377decda7fec11e59cc0f920d602af11999345a0b1398b4a7c13f81953b8347",
+      "method": "eth_chainId",
+      "id": 2
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:04.914426Z",
+      "received_at": "2026-10-02T17:53:05.149054Z",
+      "http_status": 200,
+      "response_hash": "0x1d120b355beb0394b0f5dfe88138f6fa7d4ae875ed6c8ade90a65d00603b1492",
+      "request_hash": "0x23226166287cf7496775d644a54339ca3720fdc9423c739dc6522af3fa480aa3",
+      "method": "eth_call",
+      "id": 3
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:07.163451Z",
+      "received_at": "2026-10-02T17:53:07.436622Z",
+      "http_status": 200,
+      "response_hash": "0xfb91c661d25de4a7b07ac87237a772381f6a4211113a4ed0355912940a18137f",
+      "request_hash": "0xc88bd9ac14a493ac7ff00d1bdbd76a85f9cfcc92cf8ac9f264f5b8fc7a9ccc52",
+      "method": "eth_call",
+      "id": 4
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:09.439925Z",
+      "received_at": "2026-10-02T17:53:09.672496Z",
+      "http_status": 200,
+      "response_hash": "0x56b8a3437338ce718c29987f620de73d201fd8de352c5711330ac15efb855b40",
+      "request_hash": "0x22dc4869ca5d752f64db65935df14c8e3ec3b75167e27a2033508729dad17b16",
+      "method": "eth_getCode",
+      "id": 5
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:11.674706Z",
+      "received_at": "2026-10-02T17:53:11.901619Z",
+      "http_status": 200,
+      "response_hash": "0x0749f4a768667db768038f037ef51f657c942566fc669fa99b41ecabe4ac03d1",
+      "request_hash": "0x759ed28e0a0d147fcca3f4d051c622d6c8e9d65f0a737663715b39744f5bc415",
+      "method": "eth_getCode",
+      "id": 6
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:13.90388Z",
+      "received_at": "2026-10-02T17:53:14.128461Z",
+      "http_status": 200,
+      "response_hash": "0x8662e8e1f5ccdf666fef48d445accce6f836689bb28759a3351d90d1220743aa",
+      "request_hash": "0x87a2bac6792df8dc4c1bad8d1d947a6e759a6aec848b571471bcaeb52cd8886c",
+      "method": "eth_getCode",
+      "id": 7
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:16.130766Z",
+      "received_at": "2026-10-02T17:53:16.359814Z",
+      "http_status": 200,
+      "response_hash": "0xcee5f498c742f809d65c114644436e249ffc0852dd8f6fb0a03b741c37d5b572",
+      "request_hash": "0x8672626ced4a10ba282c051284c5e729b9b14ddabca8f2d282f74cbe41cee26a",
+      "method": "eth_getCode",
+      "id": 8
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:18.36195Z",
+      "received_at": "2026-10-02T17:53:18.574525Z",
+      "http_status": 200,
+      "response_hash": "0x4b474f1301ccc6fd74f37566e2eadd312bfad62da154658bb98c7c9e11a43908",
+      "request_hash": "0x7f76b5df8731f48c5afef66a513c6418dd684a0b10863105407aaf0333e457f2",
+      "method": "eth_getCode",
+      "id": 9
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:20.577367Z",
+      "received_at": "2026-10-02T17:53:20.794293Z",
+      "http_status": 200,
+      "response_hash": "0xf260d18edaed3eb80eed57f13ad964192425761ca771a635837fc2a90e23f108",
+      "request_hash": "0x6eb5c1176fe7235cb1c246835001c4d3abfe5dd8a33ab3822e67a57c7cef7141",
+      "method": "eth_getCode",
+      "id": 10
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:22.796237Z",
+      "received_at": "2026-10-02T17:53:23.031337Z",
+      "http_status": 200,
+      "response_hash": "0xa72c96805921843b5367a9ed8d1cf0d7dd769f1867d3386e3bf0b272a1ddd34b",
+      "request_hash": "0x78975404efc4d282204f4855c713bdc04b0669fc4fdc1b97d14e9e1441311b6e",
+      "method": "eth_getCode",
+      "id": 11
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:25.035174Z",
+      "received_at": "2026-10-02T17:53:25.251893Z",
+      "http_status": 200,
+      "response_hash": "0x08810999ba47d77d0b4854e644111c9b641de57e7dec6a1eb9343c5cf5e6aad3",
+      "request_hash": "0xdb6c87ee2b45a41c4c897820bcf53a87601d22988a5dfc6c37e9401ad70d36a9",
+      "method": "eth_getCode",
+      "id": 12
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:27.254555Z",
+      "received_at": "2026-10-02T17:53:27.467354Z",
+      "http_status": 200,
+      "response_hash": "0xc65fcb92f0e29948a270d10389f5cdc4c7c12f367e7c09e0b817e3fca6abd464",
+      "request_hash": "0x9ac675d598c0fb6649c0d71b568e631f66b2f9ce1a9a60aa3799d7fb5c35251f",
+      "method": "eth_getCode",
+      "id": 13
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:29.470345Z",
+      "received_at": "2026-10-02T17:53:29.690687Z",
+      "http_status": 200,
+      "response_hash": "0xd146303471eb3f291b7a9c56d84e54db884a875158d960dafe27d824c4470fd0",
+      "request_hash": "0xde16de2be9d574c5416961e7325c0c7320ffa8413a6acdac39cb469c6774537c",
+      "method": "eth_getCode",
+      "id": 14
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:31.715762Z",
+      "received_at": "2026-10-02T17:53:31.927181Z",
+      "http_status": 200,
+      "response_hash": "0xcc64294d9a4de75b93b043b8c0c23b7a491e8d970536d9f8a41bef66bdd0cbc2",
+      "request_hash": "0x323009858e65a03baac1d97429e17ff6f888fbae84f41a26cabfe9d7a306d2c1",
+      "method": "eth_call",
+      "id": 15
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:33.931829Z",
+      "received_at": "2026-10-02T17:53:34.142124Z",
+      "http_status": 200,
+      "response_hash": "0x6fb20d6a7ae8694e2ad135062702a7d16c4444ae2b4193468f9c92ac1ed3fbe3",
+      "request_hash": "0x2bc32247af7840efc7dcbbc50032086d36edc5499586684d91e56cc4e29a2ac4",
+      "method": "eth_call",
+      "id": 16
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:36.144948Z",
+      "received_at": "2026-10-02T17:53:36.370143Z",
+      "http_status": 200,
+      "response_hash": "0xdb0f75fcf46385a868dd5c5955d58269b1377f007c12b0397516adbe732ac495",
+      "request_hash": "0x427edbf8d42c46de53df51acd7a92e738e8d94edd332536bbe6371a5fac06f55",
+      "method": "eth_call",
+      "id": 17
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:38.372247Z",
+      "received_at": "2026-10-02T17:53:38.579197Z",
+      "http_status": 200,
+      "response_hash": "0xe7245576dc3657ddb8215a4dc70f2a092731032cc0107c548f766d2cce5bc2f0",
+      "request_hash": "0x33b19b486f122b01a4767ebe0006645c0c693daa1240c0720f150418c5abd745",
+      "method": "eth_call",
+      "id": 18
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:40.582177Z",
+      "received_at": "2026-10-02T17:53:40.803667Z",
+      "http_status": 200,
+      "response_hash": "0x3cec23b03d5faad88066fa938739b71e786b05a36cc43f51298a1d982327edea",
+      "request_hash": "0x6e1bf4f315318f504c1ff78baeb7ade7a5c0e2f8827bd2a3957dfe26da5c5ff2",
+      "method": "eth_call",
+      "id": 19
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:42.806039Z",
+      "received_at": "2026-10-02T17:53:43.024725Z",
+      "http_status": 200,
+      "response_hash": "0xe6c7d4fa282b299e7d298415b0fdd8e2950dfba32e0e8a4de35d34be641f8257",
+      "request_hash": "0xd2acb354f2f2a82fba28e1fe87a36d19552d527aa86fc87c9a2afcd8acc5c247",
+      "method": "eth_call",
+      "id": 20
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:45.02681Z",
+      "received_at": "2026-10-02T17:53:45.238434Z",
+      "http_status": 200,
+      "response_hash": "0xe89a2bde084ac91fca91887e9ddb86308619dc1e2957e7e08ca6382c5a9422cf",
+      "request_hash": "0x8d58c9c965e715175a43628fadac9e3994304b137df2932d0b81c3c333ab9e51",
+      "method": "eth_call",
+      "id": 21
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:47.239851Z",
+      "received_at": "2026-10-02T17:53:47.454353Z",
+      "http_status": 200,
+      "response_hash": "0x8195073d2e43f40ad3575f0d3cdd87ffb8bc1a62c554128f0a8669353ac4dd65",
+      "request_hash": "0xfd867244c2c8318a326466a5de7ffb70c4ec91d8673ccbb69c8716385c0049ea",
+      "method": "eth_call",
+      "id": 22
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:49.457552Z",
+      "received_at": "2026-10-02T17:53:49.669438Z",
+      "http_status": 200,
+      "response_hash": "0xe06f07d99660a073993108133ce9f4594f913d0ede6d1a74b17af68ceb0a3e9f",
+      "request_hash": "0xf243c3b19e0108b127d5847ae97d74ed1240a30f868d3067d7d1d8ef4b476f24",
+      "method": "eth_call",
+      "id": 23
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:51.672565Z",
+      "received_at": "2026-10-02T17:53:51.886514Z",
+      "http_status": 200,
+      "response_hash": "0x54eeff6eeb29abf504713009e19f0a0b6390632d8161c09e9e4dff4405a190ad",
+      "request_hash": "0xdb773691ff51b94f403d05e8e5fc19b07b7ca3de6ca140b4dac632fad3f4d0f4",
+      "method": "eth_call",
+      "id": 24
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:53.888197Z",
+      "received_at": "2026-10-02T17:53:54.101708Z",
+      "http_status": 200,
+      "response_hash": "0xb723100db3f24b4d2fe4244466d38b9f1628bb27d67354c48043a745bf163683",
+      "request_hash": "0x94512b40f233ab6025aca4873050a4567af4385f6447f7dfedb11395dc7ca707",
+      "method": "eth_call",
+      "id": 25
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:56.102969Z",
+      "received_at": "2026-10-02T17:53:56.336988Z",
+      "http_status": 200,
+      "response_hash": "0xc2a051e82dbffda28c15c2599c7145ef156277a292213397a6d92ee76566ac27",
+      "request_hash": "0xe85eb9aedbf0c57a2a46f42d709e273b1157f69a590e387ce048a2f509c0283c",
+      "method": "eth_call",
+      "id": 26
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:53:58.339849Z",
+      "received_at": "2026-10-02T17:53:58.553728Z",
+      "http_status": 200,
+      "response_hash": "0xdc68329ede2e3a6755db93ff3e300d48cda174afc6533a09f4991b4addd5e957",
+      "request_hash": "0x8f8ad7c8ba601ebaf5f76454efe1417c0b9cbedb7c4943020b193da147fd99a9",
+      "method": "eth_call",
+      "id": 27
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:54:00.556269Z",
+      "received_at": "2026-10-02T17:54:00.768691Z",
+      "http_status": 200,
+      "response_hash": "0x32fe1a641e289e49315cf58672f1df68fc45f28ef24764ed7a9e6d20007bf26b",
+      "request_hash": "0xb940729a0eff026a9d075a6e1aea34a09d9c07a04a4d625ce267952c30674587",
+      "method": "eth_call",
+      "id": 28
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:54:02.778449Z",
+      "received_at": "2026-10-02T17:54:03.008696Z",
+      "http_status": 200,
+      "response_hash": "0x4fbd175b577e02d646213daf8f7cab74050516eb34300168e43c5aa9fb982465",
+      "request_hash": "0x6187c2db8e50fafe2bd59419a61e46f19fb4db620555277969173d8437ccf39e",
+      "method": "eth_call",
+      "id": 29
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:54:05.011177Z",
+      "received_at": "2026-10-02T17:54:05.240829Z",
+      "http_status": 200,
+      "response_hash": "0xf3d77e9219ecc81aff5183e47d173626c39dd8675b8b23be361664bc34f8e193",
+      "request_hash": "0xcb9dd68c7a23605b60f6f80fe7891bd30f133cf531c688b2968ee039eb63c4e1",
+      "method": "eth_call",
+      "id": 30
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:54:07.248806Z",
+      "received_at": "2026-10-02T17:54:07.461507Z",
+      "http_status": 200,
+      "response_hash": "0x3496b33d1ddf233846a517f4969a729e8431027486ba0677637f8b5fb34f04ae",
+      "request_hash": "0xf4728e276c53f9ed3bd4a2f99a52cc95bdba9226cccb30db4a8556da0ddb3a6b",
+      "method": "eth_call",
+      "id": 31
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:54:09.464207Z",
+      "received_at": "2026-10-02T17:54:09.670093Z",
+      "http_status": 200,
+      "response_hash": "0xf2ca37046c9951bb1992aa308e9a1ec8b14ea46105b8e8f0087e1347b6483285",
+      "request_hash": "0x5681a134223a1e717cc9b09abd2858a3842684676909147b438820c50742bf7a",
+      "method": "eth_call",
+      "id": 32
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:54:11.672932Z",
+      "received_at": "2026-10-02T17:54:11.886875Z",
+      "http_status": 200,
+      "response_hash": "0x5188849c71cc4f3374df198fbbee0ae7dfda5f503f8f10a930dc3409b6049b4c",
+      "request_hash": "0x06dab4f01f8862dfbd010677a28a39ce325f3f23661bf1fef1a046955c95a713",
+      "method": "eth_call",
+      "id": 33
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:54:13.888508Z",
+      "received_at": "2026-10-02T17:54:14.114495Z",
+      "http_status": 200,
+      "response_hash": "0xf68ecd40207fafaeea4c52ea160fe5a63feaccbbf4a928f5585db9dbb4cb65ec",
+      "request_hash": "0x2c17d46b886396b7578ce5ef6d92ef5525e8f22ff8c3f9f73d4fa21a592c45bc",
+      "method": "eth_getBlockByNumber",
+      "id": 34
+    },
+    {
+      "host": "fapi.binance.com",
+      "requested_at": "2026-10-02T17:54:14.120677Z",
+      "received_at": "2026-10-02T17:54:15.830205Z",
+      "http_status": 200,
+      "response_hash": "0xb614c63e209b5c0fa9e89022d7d741fcf1a9160e38c63d46aeedc1c7083eb614",
+      "request_hash": "0x23b825a7c4e9d13f2fc4367471f9ddf22d0f195b482e8867c0c037dec35fb2c8",
+      "path": "/fapi/v1/exchangeInfo"
+    },
+    {
+      "host": "fapi.binance.com",
+      "requested_at": "2026-10-02T17:54:20.832372Z",
+      "received_at": "2026-10-02T17:54:21.339287Z",
+      "http_status": 200,
+      "response_hash": "0x3161558e20f2fe69df9177bdfc16cfdd4728d9d26fd01726414ae49eb660adb9",
+      "request_hash": "0x73f7dc65265b62618c4ded08cf17bf7cf2133deefaeb30777700e33b0416cb5a",
+      "path": "/fapi/v1/fundingInfo"
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:54:21.348899Z",
+      "received_at": "2026-10-02T17:54:21.569869Z",
+      "http_status": 200,
+      "response_hash": "0xd9bdf25a4ad733bc1bf441bb3f59c0f90a4ff614b64dc9633985ce217c85b37f",
+      "request_hash": "0x6bab48a3ee2bd84a3e7181b50413a3e735244c8554a27c23aaf4d61cf0a5ec87",
+      "method": "eth_getBlockByNumber",
+      "id": 35
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:54:22.571583Z",
+      "received_at": "2026-10-02T17:54:23.022987Z",
+      "http_status": 200,
+      "response_hash": "0x619bbf5a96352dd5ac6766f5a5b55ab2b2e6d7cf22f8ae06963232b3ef7565fc",
+      "request_hash": "0x396355dcc7bd5f2bb2127a35723a5214426232c8f1cf3b50bd0e01b72175ff9b",
+      "method": "eth_getBlockByNumber",
+      "id": 36
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:54:24.025359Z",
+      "received_at": "2026-10-02T17:54:24.47885Z",
+      "http_status": 200,
+      "response_hash": "0x93c08914e3e958d0dbd0fc0f8f86266189ef43e32bdf6f2b7ca3ad06f2d0aabe",
+      "request_hash": "0x8111b8f9ff6860d19953b4feb1e1b9bb6c09ac32b6f3d3ec0490317ad798d7ad",
+      "method": "eth_getBlockByNumber",
+      "id": 37
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:54:25.480434Z",
+      "received_at": "2026-10-02T17:54:25.698971Z",
+      "http_status": 200,
+      "response_hash": "0x2c30b86bdae83ad7a77e46598d4aae0bbd146baf5f9e9085e8c77e4ed217c78d",
+      "request_hash": "0x8d035de743935c9498deae7eec6f28f11ed9e954dcd4f5b473304edb9d89696b",
+      "method": "eth_call",
+      "id": 38
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:54:26.700603Z",
+      "received_at": "2026-10-02T17:54:26.922593Z",
+      "http_status": 200,
+      "response_hash": "0xf2637e9b83172db87c652fe3fbf6b81f874be5819ea6d9bbff970461836a668f",
+      "request_hash": "0x8ac7998527ab2eb51b18a0b7052e87f4de8389d8d4ff8704f9c0c2e292863e7a",
+      "method": "eth_call",
+      "id": 39
+    },
+    {
+      "host": "eth.drpc.org",
+      "requested_at": "2026-10-02T17:54:27.924905Z",
+      "received_at": "2026-10-02T17:54:28.127851Z",
+      "http_status": 400,
+      "response_hash": "0x46f9eeba4116f1c150575c1de83c858d1b43b4406a8b7b0e658ae6d078cb39e4",
+      "request_hash": "0xcb1da492eccdda6108ac81cd7d634aa123c3776be0b99356bbb8a85dcbacd8ff",
+      "method": "eth_getLogs",
+      "id": 40,
+      "rpc_error": {
+        "message": "ranges over 10000 blocks are not supported on free plan",
+        "code": 35
+      }
+    }
+  ]
+}

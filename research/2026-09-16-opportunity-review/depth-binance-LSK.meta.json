@@ -1,0 +1,7 @@
+{
+  "name": "depth-binance-LSK",
+  "url": "https://fapi.binance.com/fapi/v1/depth?limit=100&symbol=LSKUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:18.863219+00:00",
+  "sha256": "7d13360c7d59bfcc116449cd352ace18d740debc462040fe1dc0335363a813e3",
+  "rows": null
+}

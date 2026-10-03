@@ -1,0 +1,7 @@
+{
+  "name": "local-yields",
+  "url": "http://127.0.0.1:8123/?readonly=1&max_execution_time=45&max_threads=2",
+  "retrieved_at_utc": "2026-09-16T10:31:15.690065+00:00",
+  "sha256": "b2dff27cc69fe3048522ccb6d227d46841b2e0fdd86d62c3d73fc24f6b870130",
+  "rows": 149
+}

@@ -1,0 +1,236 @@
+{
+	"meta":
+	[
+		{
+			"name": "block_number",
+			"type": "UInt64"
+		},
+		{
+			"name": "block_hash",
+			"type": "String"
+		},
+		{
+			"name": "block_time",
+			"type": "DateTime64(6, 'UTC')"
+		},
+		{
+			"name": "received_at",
+			"type": "DateTime64(6, 'UTC')"
+		},
+		{
+			"name": "available_at",
+			"type": "DateTime64(6, 'UTC')"
+		},
+		{
+			"name": "capture_mode",
+			"type": "LowCardinality(String)"
+		},
+		{
+			"name": "canonical",
+			"type": "Bool"
+		},
+		{
+			"name": "finality",
+			"type": "LowCardinality(String)"
+		},
+		{
+			"name": "quote_coverage",
+			"type": "LowCardinality(String)"
+		},
+		{
+			"name": "expected_quotes",
+			"type": "UInt32"
+		},
+		{
+			"name": "actual_quotes",
+			"type": "UInt32"
+		},
+		{
+			"name": "committed",
+			"type": "Bool"
+		}
+	],
+
+	"data":
+	[
+		{
+			"block_number": 26062817,
+			"block_hash": "FA98ED8B298D24BD57921887307872943EDB02B537B0CBB4248F565C23EA5DAF",
+			"block_time": "2026-09-26 16:27:59.000000",
+			"received_at": "2026-09-26 16:28:01.579590",
+			"available_at": "2026-09-26 16:28:06.201304",
+			"capture_mode": "live",
+			"canonical": true,
+			"finality": "head",
+			"quote_coverage": "complete",
+			"expected_quotes": 58,
+			"actual_quotes": 58,
+			"committed": true
+		},
+		{
+			"block_number": 26062816,
+			"block_hash": "EB91536615BA2C583FF0FBF2840D9C225D211422F56F9849767A5ED181F8BCEE",
+			"block_time": "2026-09-26 16:27:47.000000",
+			"received_at": "2026-09-26 16:27:51.345280",
+			"available_at": "2026-09-26 16:27:59.084050",
+			"capture_mode": "live",
+			"canonical": true,
+			"finality": "head",
+			"quote_coverage": "partial",
+			"expected_quotes": 58,
+			"actual_quotes": 58,
+			"committed": true
+		},
+		{
+			"block_number": 26062815,
+			"block_hash": "F294E56B1BC095BE32AE894B44E8C4E532DBD11C06A24373C5FBA8ED5132887A",
+			"block_time": "2026-09-26 16:27:35.000000",
+			"received_at": "2026-09-26 16:27:40.135736",
+			"available_at": "2026-09-26 16:27:48.080510",
+			"capture_mode": "live",
+			"canonical": true,
+			"finality": "head",
+			"quote_coverage": "complete",
+			"expected_quotes": 58,
+			"actual_quotes": 58,
+			"committed": true
+		},
+		{
+			"block_number": 26062814,
+			"block_hash": "C1F8297C09793115395B4B2CCC667451A5150F478D5042C66AAB5A13132C5344",
+			"block_time": "2026-09-26 16:27:23.000000",
+			"received_at": "2026-09-26 16:27:30.009772",
+			"available_at": "2026-09-26 16:27:37.656981",
+			"capture_mode": "live",
+			"canonical": true,
+			"finality": "head",
+			"quote_coverage": "complete",
+			"expected_quotes": 58,
+			"actual_quotes": 58,
+			"committed": true
+		},
+		{
+			"block_number": 26062813,
+			"block_hash": "DBC301CE5143710D28D20DC0CAB19550D821617D2940C98A1249B451550A9051",
+			"block_time": "2026-09-26 16:27:11.000000",
+			"received_at": "2026-09-26 16:27:18.257518",
+			"available_at": "2026-09-26 16:27:27.119622",
+			"capture_mode": "live",
+			"canonical": true,
+			"finality": "head",
+			"quote_coverage": "complete",
+			"expected_quotes": 58,
+			"actual_quotes": 58,
+			"committed": true
+		},
+		{
+			"block_number": 26062812,
+			"block_hash": "415F1CDA7CAB4048ED4D54C2157AA0F277CD84C0114C9984490CD3C13BF33022",
+			"block_time": "2026-09-26 16:26:59.000000",
+			"received_at": "2026-09-26 16:27:06.963047",
+			"available_at": "2026-09-26 16:27:15.288648",
+			"capture_mode": "live",
+			"canonical": true,
+			"finality": "head",
+			"quote_coverage": "partial",
+			"expected_quotes": 58,
+			"actual_quotes": 58,
+			"committed": true
+		},
+		{
+			"block_number": 26062811,
+			"block_hash": "2DBE66E11FFAA8EF8754B0767CC2C6AD6475CA99397DAE3FCD1E45C14B476487",
+			"block_time": "2026-09-26 16:26:47.000000",
+			"received_at": "2026-09-26 16:26:55.373364",
+			"available_at": "2026-09-26 16:27:03.144770",
+			"capture_mode": "live",
+			"canonical": true,
+			"finality": "head",
+			"quote_coverage": "partial",
+			"expected_quotes": 58,
+			"actual_quotes": 58,
+			"committed": true
+		},
+		{
+			"block_number": 26062810,
+			"block_hash": "7BCB56972829B8C6ACFA70879BFC41536C55B0ABC22C1423150D535146DE1F01",
+			"block_time": "2026-09-26 16:26:35.000000",
+			"received_at": "2026-09-26 16:27:07.103917",
+			"available_at": "2026-09-26 16:27:16.216111",
+			"capture_mode": "backfill",
+			"canonical": true,
+			"finality": "head",
+			"quote_coverage": "missing",
+			"expected_quotes": 0,
+			"actual_quotes": 0,
+			"committed": true
+		},
+		{
+			"block_number": 26062809,
+			"block_hash": "A8A6976E29B7A460BFA06F20A214617EE7CD09F6BD52000F471CEB2A6E14D705",
+			"block_time": "2026-09-26 16:26:23.000000",
+			"received_at": "2026-09-26 16:26:37.829482",
+			"available_at": "2026-09-26 16:26:52.789998",
+			"capture_mode": "live",
+			"canonical": true,
+			"finality": "head",
+			"quote_coverage": "partial",
+			"expected_quotes": 58,
+			"actual_quotes": 58,
+			"committed": true
+		},
+		{
+			"block_number": 26062808,
+			"block_hash": "120BD8258E764D7AA7D6C5F3128028C9FF7A4523F03856D0C75D0B316E40C6DC",
+			"block_time": "2026-09-26 16:26:11.000000",
+			"received_at": "2026-09-26 16:26:24.259254",
+			"available_at": "2026-09-26 16:26:34.111356",
+			"capture_mode": "live",
+			"canonical": true,
+			"finality": "head",
+			"quote_coverage": "partial",
+			"expected_quotes": 58,
+			"actual_quotes": 58,
+			"committed": true
+		},
+		{
+			"block_number": 26062807,
+			"block_hash": "4F614E7C881ECFA86BF6D166E4B537BFA094004066FDB69A200A946FBEAE23FF",
+			"block_time": "2026-09-26 16:25:59.000000",
+			"received_at": "2026-09-26 16:26:09.953457",
+			"available_at": "2026-09-26 16:26:21.138686",
+			"capture_mode": "live",
+			"canonical": true,
+			"finality": "head",
+			"quote_coverage": "partial",
+			"expected_quotes": 58,
+			"actual_quotes": 58,
+			"committed": true
+		},
+		{
+			"block_number": 26062806,
+			"block_hash": "0BCA4F086FEB55B84589D9529022983729881B8CC24E9F304EA5C0E9CB8CAF00",
+			"block_time": "2026-09-26 16:25:47.000000",
+			"received_at": "2026-09-26 16:25:55.592590",
+			"available_at": "2026-09-26 16:26:04.920975",
+			"capture_mode": "live",
+			"canonical": true,
+			"finality": "head",
+			"quote_coverage": "partial",
+			"expected_quotes": 58,
+			"actual_quotes": 58,
+			"committed": true
+		}
+	],
+
+	"rows": 12,
+
+	"rows_before_limit_at_least": 11739,
+
+	"statistics":
+	{
+		"elapsed": 0.004524343,
+		"rows_read": 15510,
+		"bytes_read": 1427598
+	}
+}

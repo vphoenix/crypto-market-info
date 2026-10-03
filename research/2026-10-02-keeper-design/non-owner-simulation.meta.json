@@ -1,0 +1,14 @@
+{
+  "url": "https://api.trongrid.io/wallet/triggerconstantcontract",
+  "request": {
+    "owner_address": "41020c064bab81eb2ef520f1cc2a26f5f1867e29b3",
+    "contract_address": "41c60a6f5c81431c97ed01b61698b6853557f3afd4",
+    "function_selector": "liquidate(address,address,uint256)",
+    "parameter": "00000000000000000000000066fff827c2d1d2804881e8e74dd465186126f80100000000000000000000000066fff827c2d1d2804881e8e74dd465186126f8010000000000000000000000000000000000000000000000000000000000000001",
+    "visible": false
+  },
+  "started_at": "2026-10-02T14:10:33.677027+00:00",
+  "received_at": "2026-10-02T14:10:34.246743+00:00",
+  "http_status": 200,
+  "sha256": "91407963ec2b4e141a4b531ed0b9a998b7273a5557677f3092eed749e3a7352a"
+}

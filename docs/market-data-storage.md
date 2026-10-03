@@ -4,6 +4,8 @@
 
 这些表在整个采集进程中的位置及以后增加其他数据时的扩展原则见[系统总体架构](architecture.md)。
 
+Reserve 拍卖与篮子申赎已在独立库 `crypto_market_info_reserve` 建表，新增 `reserve_capture`、`reserve_folio_state`、`reserve_route_quote`，复用 `dex_log`／`dex_tx_receipt` 定义。实际结构和不变量见 [DDL](reserve-data-schema.sql) 与 [实现说明](reserve-data-implementation.md)；特别是控制表 `receipt_refs` 固定当时引用集合，后续补收据不会改写旧批语义。
+
 所有时间均为 UTC。盘口快照和差量中的价格、数量均为整数：价格使用 `price_tick`，数量使用 `qty_lot`；不得使用字符串价格或二进制浮点数。用于定义换算单位的元数据使用十进制定点数 `Decimal`。
 
 `instrument_id` 是交易流的唯一标识，必须区分交易所、市场类型、标的、结算币种及合约版本。例如，Binance 现货 `BTCUSDT`、Binance U 本位永续 `BTCUSDT`、OKX 永续 `BTC-USDT-SWAP` 和 Bybit 线性永续 `BTCUSDT` 必须使用不同的 `instrument_id`。其定义保存在 `instrument` 表中，不在各事实表中重复保存。
@@ -371,3 +373,33 @@ member 只有 `run_id UUID`、`instrument_id UInt32`、`canonical_market_key Str
 先归档证据、写事实，再提交capture；读取先取最新revision，再筛canonical/committed并核验六组成员计数/摘要。重试内容不变；重组revision只改canonical/finality/说明，旧成功版本不会重新出现。跨capture按不可变链上事实去重，采集时间和payload格式不同不算协议冲突。capture错误、成功空日志和未知ABI保持不同状态。
 
 原始/更新条款、真实live首见、计划/实际后续probe各自保存；原始响应先收到不代表解码已可用。重启/补采不能制造历史live可见性。聚合退款仅通过同交易Transfer核验地址到账，不伪造逐单归属。整笔gas按交易去重，未知费用/过期价格保留NULL。库存及成本情景只在离线报告计算。已通过[独立代码审核与必要验证](../discuss/0013-across-stablecoin-code-review.md)，完整验收见[记录](../research/2026-10-02-across-implementation/validation.md)。
+
+## LST 折价、官方赎回与对冲（2026-10-02 已实现）
+
+Ethereum Lido stETH/wstETH 与 Binance ETHUSDT 首版设计见 [方案](lst-redemption-data-mvp-design.md)、[七表 DDL](lst-redemption-data-schema.sql)、[独立审核](../discuss/0014-lst-redemption-data-design-review.md)。专项表为 `lst_capture`、`lst_protocol_state`、`lst_quote_observation`、`lst_withdrawal_request`、`lst_withdrawal_finalization`、`lst_withdrawal_claim`、`lst_funding_settlement`，另复用既有 instrument 定义。已在独立库 `crypto_market_info_lst` 建表；入口 `cmd/lst-data`、`InitLSTSchema`，采集连接 `OpenLSTWriter` 只打开现有库，只有显式 `init-schema` 执行 DDL。实现见[运行说明](lst-redemption-data-implementation.md)，代码审核见[0016](../discuss/0016-lst-redemption-data-code-review.md)。
+
+启动与来源限速见[运行说明](lst-redemption-data-implementation.md)：watch不隐式回补历史，初始化缓速，实际RPC单成员均匀发出，Binance只取10档，二分/重试共用额度和持久冷却。2026-10-03 已启动用户级 `crypto-market-info-lst.service` 并启用开机启动，只运行实时 watch，补采限于断线后的日志缺口；实际来源限制和部署状态见[运行文档](runtime-operations.md)。
+
+时间 UTC 微秒，链上原子金额 UInt256，交易深度按 integer tick/lot；mark/index/结算mark独立用1e-8 USDT整数tick，链上/CEX USDT金额分别用1e-6/1e-8单位。当前及同量后续金额报价、请求、finalization范围、claim、actual资金费分别保存；来源缺失与失败锚点为NULL。提交成员数/摘要冻结，canonical/finality取最新revision；同刻路线和金额档不累加容量，队列等待与用户领取拖延分开，unknown不当零成本。
+
+完整DDL已在隔离 `/tmp` 的ClickHouse local通过建表语法检查，公开来源字段验证见 [记录](../research/2026-10-02-lst-design/validation.md)。七表已另经真实 ClickHouse UInt256/NULL/微秒/摘要往返、失败重试及孤块修订集成测试。事实先写、capture 后提交；查询核对完整成员摘要，纯最终性修订不改原批次。失败日志范围不推进游标，成功空日志与失败分开。
+
+`lst_withdrawal_finalization.from_request_id` 保存官方事件原始首 ID，范围为 **[from,to]（两端包含）**；合约发出的是 `lastFinalizedRequestId+1`。`from==to` 是合法单请求完成，匹配不得漏掉首 ID，不对源值减 1。
+
+`partial` 是批次成员完整性状态，不能直接判整批全部可用或全部无效；每条报价分别检查 buy/conversion/exit/hedge/timing 状态。head、canonical、committed 也分别表示不同条件。历史报告先排除未接受的 capture，只有接受的批次才回读并核验成员摘要；健康 SQL 不代替这一步。实际资金费按 instrument/funding_time 去重，重叠窗口不能重复累加现金流。只读检查见 [LST 健康 SQL](lst-data-health.sql)。
+
+## JustLend 能源租单清理 keeper
+
+实际 Rent/Return 扩展 ABI 比旧参考页多 `securityDeposit` 和 `rentIndex`；租赁事件表新增 `security_deposit_sun`、`rent_index` 两个 Nullable(UInt256)。两版按精确 topic、word 数严格区分，扩展字段参与索引页/收据的一致性校验，旧版字段为 NULL，不回填。新增时生产事件事实为零；初版不包含这些字段的非空事件摘要不可混用。`init-schema` 幂等加列，collector 不执行 DDL。原始公开值保留，不据索引推算业务截止时间。
+
+最小采集方案见 [设计](justlend-keeper-data-mvp-design.md)、[五表 DDL](justlend-keeper-data-schema.sql)、[设计审核](../discuss/0015-justlend-keeper-data-design-review.md)、[实现说明](justlend-keeper-data-implementation.md)与[代码审核](../discuss/0017-justlend-keeper-data-code-review.md)。2026-10-03 已实现并建立独立研究库 `crypto_market_info_justlend_keeper`，表为 `jl_keeper_capture`、`jl_keeper_rental_event`、`jl_keeper_tx_receipt`、`jl_keeper_probe`、`jl_keeper_cost_observation`。
+
+来源分流见方案第2.1节：`node_rpc_url=https://tron-rpc.publicnode.com` 直连承担链节点读取和只读模拟，`event_api_url=https://api.trongrid.io` 保留事件分页并单独配置路由，Binance 提供兑换报价。capture.source_id 记录批次主来源；证据 manifest 对事件分页、节点区块／收据等每个实际请求分别保存来源标识及 hash，避免跨来源验证时丢失归属。沿用五表，不因来源分流增加表。
+
+启动与补采限速见方案第7.1节：每次启动前5分钟所有外部请求至少间隔5秒，此后全局至少1秒且单请求在途；TronGrid及所有后台补采请求另受5秒间隔约束。启动检查、分页、补证据和每次HTTP重试均受限，不积攒额度或集中补发错过的轮次；watch不隐式回补30日清理历史。上述约束已在统一发送 gate 实现；进度、每日40,000次预算、来源冷却和401/403停用保存到原子校验状态，重启不清空。运行命令同时受全局进程锁保护。
+
+只完整回补目标能源合约的清理事件与收据；租单变化用于有上限的固定样本。协议金额为 UInt256 sun，资源/费用为有范围校验的整数，BBO价格/数量 Decimal(38,18)，时间 UTC 微秒，TRON地址含0x41前缀21字节，hash32字节。供应商事件下标与receipt日志下标分开，另存块内交易序号；多个奖励共用一笔交易时费用只计一次。模拟按实际本地可用时间记录、明确为 node_latest_unpinned，不冒充固化历史状态。
+
+五表按冻结 capture_started_at 月分区，重试复用 capture_id 及原始成员；部分事实重试和已提交capture均核验原成员。报告核验摘要、证据、同高度固化hash一致性并按规范身份去重，费用未知保留NULL。原始证据独立保存，资源费率／TRX兑换与收益分析分离。五表已通过真实ClickHouse UInt256/Decimal/NULL/嵌套转账/UTC往返及跨月冻结重试。实时成功奖励fixture尚未认证，正模拟输出保留unknown；成本情景不认证净收益，实际验收见[验证记录](../research/2026-10-03-keeper-implementation/validation.md)。
+
+JustLend成员摘要使用带版本域的固定二进制 `jl-keeper-fact-v1`：字段顺序/名称、长度前缀、UTC UnixMicro、NULL标记、整数及无损18位Decimal。每行SHA-256按二进制排序后再SHA-256；manifest记录member_digest_encoding。gob只存本地冻结容器，不作跨进程摘要。不同进程/不同类型注册顺序和来源1/8/18精度均测试。首批四条无法认证的旧报价提交已备份后标uncommitted，保留全部原值、摘要及证据；coverage展示排除原因，不将其计作已认证分析。

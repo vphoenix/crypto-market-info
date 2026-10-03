@@ -1,0 +1,11 @@
+[
+  {
+    "requested_at": "2026-10-02T16:08:58.278381Z",
+    "error": {
+      "code": -32000,
+      "message": "historical state f61564d3515c02327beca8686c6b80ca702e78f3221c1c7925dac053520ab6b9 is not available"
+    },
+    "payload_hash": "f9a63f0f246069977933a1abfb824e70e5f38938a556694f8d62482e266098bb",
+    "request_hash": "0x39ff53327b82ed6ff91b3725891a5eadf3f48c9492803d37a0691cce70952a75"
+  }
+]

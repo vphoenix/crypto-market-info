@@ -1,0 +1,496 @@
+{
+  "btc_actual_8h_rate_summary": {
+    "5": {
+      "n": 7,
+      "min": "-0.0000015",
+      "median": "0.00003562",
+      "max": "0.00006122",
+      "mean": "0.00003160571428571428571428571428571428571429"
+    },
+    "6": {
+      "n": 22,
+      "min": "-0.0000271584359721",
+      "median": "0.0000494967424739",
+      "max": "0.0000965826457979",
+      "mean": "0.00004391497440688636363636363636363636363636"
+    },
+    "7": {
+      "n": 22,
+      "min": "-0.0000221",
+      "median": "0.00002976",
+      "max": "0.00007774",
+      "mean": "0.00003262181818181818181818181818181818181818"
+    }
+  },
+  "btc_matched_actual_funding": {
+    "short_6_long_7": {
+      "first": "2026-09-05 08:00:00.000",
+      "last": "2026-09-12 08:00:00.000",
+      "diff": {
+        "n": 22,
+        "min": "-0.0000346075417752",
+        "median": "0.0000107489714203",
+        "max": "0.000070047509116",
+        "mean": "0.00001129315622506818181818181818181818181818"
+      },
+      "positive_count": 13,
+      "sum_per_leg_notional": "0.0002484494369515",
+      "sample_rate_simple_annualized_per_leg": "0.01236600606644965909090909090909090909091",
+      "sample_rate_simple_annualized_2x_capital": "0.006183003033224829545454545454545454545455",
+      "caution": "Matched observed settlements only; missing settlements excluded, not zero. Not a full-period realized return."
+    },
+    "short_5_long_6": {
+      "first": "2026-09-05 08:00:00.000",
+      "last": "2026-09-11 16:00:00.000",
+      "diff": {
+        "n": 7,
+        "min": "-0.0000385700367402",
+        "median": "-0.0000011607364949",
+        "max": "0.0000320233373449",
+        "mean": "-0.000001803018698071428571428571428571428571429"
+      },
+      "positive_count": 3,
+      "sum_per_leg_notional": "-0.0000126211308865",
+      "sample_rate_simple_annualized_per_leg": "-0.001974305474388214285714285714285714285715",
+      "sample_rate_simple_annualized_2x_capital": "-0.0009871527371941071428571428571428571428575",
+      "caution": "Matched observed settlements only; missing settlements excluded, not zero. Not a full-period realized return."
+    },
+    "short_5_long_7": {
+      "first": "2026-09-05 08:00:00.000",
+      "last": "2026-09-11 16:00:00.000",
+      "diff": {
+        "n": 7,
+        "min": "-0.00002257",
+        "median": "0.00001983",
+        "max": "0.00004117",
+        "mean": "0.000009565714285714285714285714285714285714286"
+      },
+      "positive_count": 5,
+      "sum_per_leg_notional": "0.00006696",
+      "sample_rate_simple_annualized_per_leg": "0.01047445714285714285714285714285714285714",
+      "sample_rate_simple_annualized_2x_capital": "0.00523722857142857142857142857142857142857",
+      "caution": "Matched observed settlements only; missing settlements excluded, not zero. Not a full-period realized return."
+    }
+  },
+  "btc_minute_gross_spread_bps": {
+    "sell_3_buy_1": {
+      "n": 9354,
+      "min": "-6.413550569372979053351628588833256901000",
+      "median": "0.149202284248714851863173088804817010000",
+      "max": "5.684232729393299274465464990399617850000",
+      "mean": "0.1724880344087168492925213509207618934650",
+      "first": [
+        "2026-09-05 08:00:00",
+        "1.209384623954145755436334430477696890000"
+      ],
+      "last": [
+        "2026-09-12 19:12:00",
+        "0.740193505508478586046328335579624020000"
+      ],
+      "count_over_20bps": 0,
+      "caution": "Synchronized valid second-0 best quotes only, gross upper bound; no depth, fees or fill-latency deduction."
+    },
+    "sell_1_buy_3": {
+      "n": 9354,
+      "min": "-5.695205125555440735765216492714684303000",
+      "median": "-0.1632087589531217101287854153662915360000",
+      "max": "6.403370796732592378040464627545924380000",
+      "mean": "-0.1868820188918392701728262869928716682466",
+      "first": [
+        "2026-09-05 08:00:00",
+        "-1.223035209615690977261580261842430416000"
+      ],
+      "last": [
+        "2026-09-12 19:12:00",
+        "-0.7543961072123897246583829999040802200000"
+      ],
+      "count_over_20bps": 0,
+      "caution": "Synchronized valid second-0 best quotes only, gross upper bound; no depth, fees or fill-latency deduction."
+    },
+    "sell_5_buy_1": {
+      "n": 9357,
+      "min": "-11.22112518339986909979744589509992772600",
+      "median": "-4.514749278222500416531831894336129287000",
+      "max": "2.572791968232422068268627421305744310000",
+      "mean": "-4.491306590515543965272984551387301166941",
+      "first": [
+        "2026-09-05 08:00:00",
+        "-4.636810757400957170220634911872995545000"
+      ],
+      "last": [
+        "2026-09-12 19:12:00",
+        "-4.237640226807734672128629297740439416000"
+      ],
+      "count_over_20bps": 0,
+      "caution": "Synchronized valid second-0 best quotes only, gross upper bound; no depth, fees or fill-latency deduction."
+    },
+    "sell_6_buy_3": {
+      "n": 9354,
+      "min": "-14.54479694120078536736591918983155936800",
+      "median": "-4.697351788367116500689326827479889860000",
+      "max": "1.908838050024542203500315542616432630000",
+      "mean": "-4.689547205976088473811339988662467851583",
+      "first": [
+        "2026-09-05 08:00:00",
+        "-5.945832711362436135610144042187815559000"
+      ],
+      "last": [
+        "2026-09-12 19:12:00",
+        "-3.357192298419397571933353899916783110000"
+      ],
+      "count_over_20bps": 0,
+      "caution": "Synchronized valid second-0 best quotes only, gross upper bound; no depth, fees or fill-latency deduction."
+    },
+    "sell_6_buy_7": {
+      "n": 9245,
+      "min": "-8.001003033659793214787508094714296978000",
+      "median": "0.175649463892743418790979647245690940000",
+      "max": "20.72516638158525447931015343939371004000",
+      "mean": "0.1811250209620135857799401125655175683087",
+      "first": [
+        "2026-09-05 08:00:00",
+        "0.790801596666080887706173273416513950000"
+      ],
+      "last": [
+        "2026-09-12 19:12:00",
+        "1.154150402655842724313669549881342960000"
+      ],
+      "count_over_20bps": 1,
+      "caution": "Synchronized valid second-0 best quotes only, gross upper bound; no depth, fees or fill-latency deduction."
+    },
+    "sell_7_buy_6": {
+      "n": 9245,
+      "min": "-20.70745216515609264853977844914400805600",
+      "median": "-0.2007384666341303068663847127620734780000",
+      "max": "7.981527356458633826411482015691398190000",
+      "mean": "-0.2065396549406625940470767925597169614599",
+      "first": [
+        "2026-09-05 08:00:00",
+        "-0.8158408683559174820891550900939346620000"
+      ],
+      "last": [
+        "2026-09-12 19:12:00",
+        "-1.179948652783900832447291304686081792000"
+      ],
+      "count_over_20bps": 0,
+      "caution": "Synchronized valid second-0 best quotes only, gross upper bound; no depth, fees or fill-latency deduction."
+    }
+  },
+  "yield_history": {
+    "JustLend/strx": {
+      "n": 168,
+      "first": "2026-09-05 00:12:27.723",
+      "latest_source_time": "2026-09-12 18:32:11.194",
+      "latest_collected_at": "2026-09-12 18:32:11.194",
+      "last_rate": "0.04028472",
+      "rate_kind": "apy",
+      "rate_range": {
+        "n": 168,
+        "min": "0.02681149",
+        "median": "0.03661965",
+        "max": "0.06733966",
+        "mean": "0.03955510565476190476190476190476190476190"
+      },
+      "latest_source_url": "https://docs.justlend.org/developers/apis/"
+    },
+    "JustLend/jtrx": {
+      "n": 168,
+      "first": "2026-09-05 00:12:27.723",
+      "latest_source_time": "2026-09-12 18:32:11.194",
+      "latest_collected_at": "2026-09-12 18:32:11.194",
+      "last_rate": "0.003211386324624",
+      "rate_kind": "apy",
+      "rate_range": {
+        "n": 168,
+        "min": "0.003211386324624",
+        "median": "0.003310453567584",
+        "max": "0.003522910621968",
+        "mean": "0.003310598894982857142857142857142857142857"
+      },
+      "latest_source_url": "https://docs.justlend.org/developers/apis/"
+    },
+    "JustLend/strx-jstrx": {
+      "n": 168,
+      "first": "2026-09-05 00:12:27.723",
+      "latest_source_time": "2026-09-12 18:32:11.194",
+      "latest_collected_at": "2026-09-12 18:32:11.194",
+      "last_rate": "0.040298698973232",
+      "rate_kind": "apy",
+      "rate_range": {
+        "n": 168,
+        "min": "0.026820298204528",
+        "median": "0.036631489308192",
+        "max": "0.06735267086008",
+        "mean": "0.03956593887488904761904761904761904761905"
+      },
+      "latest_source_url": "https://docs.justlend.org/developers/apis/"
+    },
+    "JustLend/trx-v2-vault": {
+      "n": 168,
+      "first": "2026-09-05 00:12:27.624",
+      "latest_source_time": "2026-09-12 18:32:11.113",
+      "latest_collected_at": "2026-09-12 18:32:11.194",
+      "last_rate": "0.0012406431552733",
+      "rate_kind": "apy",
+      "rate_range": {
+        "n": 168,
+        "min": "0.0012406431552733",
+        "median": "0.001373776972054211",
+        "max": "0.001545463338725741",
+        "mean": "0.001371390378970058494047619047619047619048"
+      },
+      "latest_source_url": "https://docs.justlend.org/developers/apis/"
+    },
+    "Marinade/marinade-native": {
+      "n": 5,
+      "first": "2026-09-05 13:13:41.000",
+      "latest_source_time": "2026-09-11 21:12:04.000",
+      "latest_collected_at": "2026-09-12 18:32:10.257",
+      "last_rate": "0.05358791194120399",
+      "rate_kind": "apy",
+      "rate_range": {
+        "n": 5,
+        "min": "0.05358791194120399",
+        "median": "0.05408597429479958",
+        "max": "0.0551799865293733",
+        "mean": "0.0542548689938786244"
+      },
+      "latest_source_url": "https://apy.marinade.finance/v1/rolling-apy/marinade-native"
+    },
+    "Marinade/msol": {
+      "n": 5,
+      "first": "2026-09-05 16:00:11.000",
+      "latest_source_time": "2026-09-11 22:30:46.000",
+      "latest_collected_at": "2026-09-12 18:32:11.605",
+      "last_rate": "0.05475955567340749",
+      "rate_kind": "apy",
+      "rate_range": {
+        "n": 5,
+        "min": "0.05451312134775741",
+        "median": "0.05475955567340749",
+        "max": "0.05575883792917007",
+        "mean": "0.0549545656325277852"
+      },
+      "latest_source_url": "https://apy.marinade.finance/v1/rolling-apy/liquid-pool-token/MarBmsSgKXdrN1egZf5sqe1TMai9K1rChYNDJgjq7aD"
+    },
+    "BlazeStake/bsol": {
+      "n": 31,
+      "first": "2026-09-05 04:11:53.000",
+      "latest_source_time": "2026-09-12 18:31:58.000",
+      "latest_collected_at": "2026-09-12 18:32:13.065",
+      "last_rate": "0.03722094931029675",
+      "rate_kind": "apr",
+      "rate_range": {
+        "n": 31,
+        "min": "0.036513870752765925",
+        "median": "0.0370749654584088",
+        "max": "0.03722094931029675",
+        "mean": "0.03696496956726063845161290322580645161290"
+      },
+      "latest_source_url": "https://api.mainnet.solana.com"
+    },
+    "Jito/jitosol": {
+      "n": 37,
+      "first": "2026-09-05 03:44:43.000",
+      "latest_source_time": "2026-09-12 18:27:29.000",
+      "latest_collected_at": "2026-09-12 18:32:15.445",
+      "last_rate": "0.04916261761168439",
+      "rate_kind": "apy",
+      "rate_range": {
+        "n": 37,
+        "min": "0.03832172753657326",
+        "median": "0.048631003340786405",
+        "max": "0.049210719827398997",
+        "mean": "0.04715377675291414602702702702702702702703"
+      },
+      "latest_source_url": "https://kobe.mainnet.jito.network/api/v1/stake_pool_stats"
+    },
+    "Kamino/main-sol": {
+      "n": 186,
+      "first": "2026-09-05 00:00:00.000",
+      "latest_source_time": "2026-09-12 17:00:00.000",
+      "latest_collected_at": "2026-09-12 18:32:08.778",
+      "last_rate": "0.04225261224784704",
+      "rate_kind": "apy",
+      "rate_range": {
+        "n": 186,
+        "min": "0.039111334854612156",
+        "median": "0.04650734723544714",
+        "max": "0.05127047528638329",
+        "mean": "0.04608933618657547072580645161290322580645"
+      },
+      "latest_source_url": "https://api.kamino.finance/kamino-market/7u3HeHxYDLhnCoErrtycNokbQYbWGzLs6JSDqGAv5PfF/reserves/d4A2prbA2whesmvHaL88BH6Ewn5N4bTSU2Ze8P6Bc4Q/metrics/history"
+    },
+    "Helius/hsol": {
+      "n": 31,
+      "first": "2026-09-05 04:11:55.000",
+      "latest_source_time": "2026-09-12 18:31:58.000",
+      "latest_collected_at": "2026-09-12 18:32:12.649",
+      "last_rate": "0.03902375353410555",
+      "rate_kind": "apr",
+      "rate_range": {
+        "n": 31,
+        "min": "0.038754807966505312",
+        "median": "0.0391282852806657",
+        "max": "0.046494618596140462",
+        "mean": "0.03937252541691545535483870967741935483871"
+      },
+      "latest_source_url": "https://api.mainnet.solana.com"
+    },
+    "Jupiter/jupsol": {
+      "n": 31,
+      "first": "2026-09-05 04:11:56.000",
+      "latest_source_time": "2026-09-12 18:31:59.000",
+      "latest_collected_at": "2026-09-12 18:32:13.830",
+      "last_rate": "0.036257030624752012",
+      "rate_kind": "apr",
+      "rate_range": {
+        "n": 31,
+        "min": "0.035613588097704975",
+        "median": "0.040910303011372875",
+        "max": "0.04300595209278615",
+        "mean": "0.03998633084889233932258064516129032258065"
+      },
+      "latest_source_url": "https://api.mainnet.solana.com"
+    },
+    "Laine/lainesol": {
+      "n": 31,
+      "first": "2026-09-05 04:11:54.000",
+      "latest_source_time": "2026-09-12 18:31:59.000",
+      "latest_collected_at": "2026-09-12 18:32:13.997",
+      "last_rate": "0.038327602061038425",
+      "rate_kind": "apr",
+      "rate_range": {
+        "n": 31,
+        "min": "0.03808564127493075",
+        "median": "0.038351052933325462",
+        "max": "0.039939699748445025",
+        "mean": "0.03858074948778575529032258064516129032258"
+      },
+      "latest_source_url": "https://api.mainnet.solana.com"
+    },
+    "Save/main-sol": {
+      "n": 39,
+      "first": "2026-09-05 00:00:00.000",
+      "latest_source_time": "2026-09-12 18:30:02.000",
+      "latest_collected_at": "2026-09-12 18:32:08.777",
+      "last_rate": "0.0217",
+      "rate_kind": "apy",
+      "rate_range": {
+        "n": 39,
+        "min": "0.0217",
+        "median": "0.029",
+        "max": "0.03158751641828135",
+        "mean": "0.02906059251444361802564102564102564102564"
+      },
+      "latest_source_url": "https://api.solend.fi/v1/reserves"
+    },
+    "Aave/avalanche-v4-main-wavax-supply": {
+      "n": 94,
+      "first": "2026-09-05 00:00:00.000",
+      "latest_source_time": "2026-09-12 18:00:00.000",
+      "latest_collected_at": "2026-09-12 18:32:08.769",
+      "last_rate": "0.015378827393854859",
+      "rate_kind": "apy",
+      "rate_range": {
+        "n": 94,
+        "min": "0.014358771647487108",
+        "median": "0.014797092031682711",
+        "max": "0.015953297391364466",
+        "mean": "0.01490052078391995936170212765957446808511"
+      },
+      "latest_source_url": "https://api.v4.aave.com/graphql"
+    },
+    "Aave/avalanche-v3-wavax-supply": {
+      "n": 187,
+      "first": "2026-09-05 00:00:00.000",
+      "latest_source_time": "2026-09-12 18:00:00.000",
+      "latest_collected_at": "2026-09-12 18:32:08.769",
+      "last_rate": "0.007330011928114986",
+      "rate_kind": "apy",
+      "rate_range": {
+        "n": 187,
+        "min": "0.002743679007551599",
+        "median": "0.007396843148365532",
+        "max": "0.011280008235189034",
+        "mean": "0.007347611993064974219251336898395721925134"
+      },
+      "latest_source_url": "https://api.v3.aave.com/graphql"
+    },
+    "OKX/simple-earn-flexible-avax": {
+      "n": 187,
+      "first": "2026-09-05 00:00:00.000",
+      "latest_source_time": "2026-09-12 18:00:00.000",
+      "latest_collected_at": "2026-09-12 18:32:08.777",
+      "last_rate": "0.0144",
+      "rate_kind": "apr",
+      "rate_range": {
+        "n": 187,
+        "min": "0.0081",
+        "median": "0.013",
+        "max": "0.0159",
+        "mean": "0.01214278074866310160427807486631016042781"
+      },
+      "latest_source_url": "https://www.okx.com/api/v5/finance/savings/lending-rate-history?ccy=AVAX"
+    },
+    "BENQI/avalanche-qiavax-supply": {
+      "n": 169,
+      "first": "2026-09-05 00:12:22.000",
+      "latest_source_time": "2026-09-12 18:32:08.000",
+      "latest_collected_at": "2026-09-12 18:32:12.136",
+      "last_rate": "0.007863419007216",
+      "rate_kind": "apr",
+      "rate_range": {
+        "n": 169,
+        "min": "0.006079121367264",
+        "median": "0.008811975308544",
+        "max": "0.013950900820368",
+        "mean": "0.009130365858430863905325443786982248520710"
+      },
+      "latest_source_url": "https://docs.benqi.fi/resources/contracts/core-markets"
+    },
+    "Ankr/avalanche-ankravax-staking": {
+      "n": 168,
+      "first": "2026-09-05 00:12:26.000",
+      "latest_source_time": "2026-09-12 18:32:09.000",
+      "latest_collected_at": "2026-09-12 18:32:13.998",
+      "last_rate": null,
+      "rate_kind": "unknown",
+      "rate_range": {},
+      "latest_source_url": "https://www.ankr.com/docs/staking-for-developers/smart-contract-api/avax-api/",
+      "exchange_ratio_realized": {
+        "first_ratio": "1.416299332832773907",
+        "last_ratio": "1.416299332832773907",
+        "elapsed_seconds": "670783.0",
+        "growth": "0",
+        "simple_annualized": "0E+1",
+        "caution": "Underlying coin-denominated historical exchange-ratio growth; not USD profit or forward rate."
+      }
+    },
+    "BENQI/avalanche-savax-staking": {
+      "n": 168,
+      "first": "2026-09-05 00:12:24.000",
+      "latest_source_time": "2026-09-12 18:32:08.000",
+      "latest_collected_at": "2026-09-12 18:32:13.062",
+      "last_rate": null,
+      "rate_kind": "unknown",
+      "rate_range": {},
+      "latest_source_url": "https://docs.benqi.fi/resources/contracts/liquid-staking",
+      "exchange_ratio_realized": {
+        "first_ratio": "1.283082872464383713",
+        "last_ratio": "1.284102026976252627",
+        "elapsed_seconds": "670784.0",
+        "growth": "0.000794301392170757128042057344881003906",
+        "simple_annualized": "0.03734300267075093739554658493370047463807",
+        "caution": "Underlying coin-denominated historical exchange-ratio growth; not USD profit or forward rate."
+      }
+    }
+  },
+  "tron_latest_rate_summary": {
+    "n": 127,
+    "min": "0",
+    "median": "0.02736380061873225",
+    "max": "0.032986966078718275",
+    "mean": "0.02164329180738405712598425196850393700787"
+  }
+}

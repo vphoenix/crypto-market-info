@@ -1,0 +1,12 @@
+{
+  "url": "https://api-pub.bitfinex.com/v2/stats1/credits.size:1m:fUST/hist?end=1789308540000&limit=1&sort=-1",
+  "requested_at_utc": "2026-09-13T14:13:00.990798+00:00",
+  "received_at_utc": "2026-09-13T14:13:01.781248+00:00",
+  "payload_sha256": "2abda2b0da0fce9dcbb763365847075752f184cf5f4299d7ad59343ea7e5d320",
+  "data": [
+    [
+      1789308540000,
+      "361149970.75336576"
+    ]
+  ]
+}

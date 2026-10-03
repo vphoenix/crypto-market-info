@@ -1,0 +1,20 @@
+{
+  "block_hash": "0xc8e259906247529348a8f262f695726a57acbfb976c93bfb07f45cbf2086a2d1",
+  "capture_id": "f162f073-eafb-468e-bbc0-b9bd64557b9f",
+  "manifest_hash": "0xcdb1ab2cd55bf49b022210f1f13548f21b91667ee43253504a4403caf1ebea61",
+  "new_format": "pendingEnvelope version 1 with nullable presence",
+  "new_pending_file_sha256": "dcd52cab49b0275c41eb81a6b81365ede1663abef629e11e93c3d946422e623d",
+  "original_fact_digest_unchanged": "0x61dae9845392ae8041e8a82b465cf4759d2001693ccda5d9be0f6f3abb520e72",
+  "original_file": "failed-initial-pending.gob",
+  "original_file_sha256": "aaffc26dc206ab8672bbc8e16968c550f01844172defa21e23315e88fda0bb5c",
+  "original_protocol_row_hash_unchanged": "0x7cbbb029b4143b33cef2ecccd4e8fba9b8e376c953aeddde5277c276f4b69647",
+  "restored_fields": {
+    "bunker_active": false,
+    "queue_paused": false
+  },
+  "source_payload_hashes": [
+    "0x723c05f504a4380773ba402a0c9e85d838a3922a22bef4efb62b864c1d3b0223",
+    "0xba8b754dbeada61b79535d537fba5bc5f60e86e33c5e8aa5e0b4c5831a3a8f19"
+  ],
+  "verification": "original protocol hash matches exactly; full Validate succeeds; new envelope read-back canonical batch hash unchanged; no Seal, no network, no database write"
+}

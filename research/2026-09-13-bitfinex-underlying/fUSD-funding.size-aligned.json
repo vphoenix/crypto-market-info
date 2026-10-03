@@ -1,0 +1,12 @@
+{
+  "url": "https://api-pub.bitfinex.com/v2/stats1/funding.size:1m:fUSD/hist?end=1789308540000&limit=1&sort=-1",
+  "requested_at_utc": "2026-09-13T14:12:48.389375+00:00",
+  "received_at_utc": "2026-09-13T14:12:48.856446+00:00",
+  "payload_sha256": "9731ef202ea99151d9e7612fc41360d7ef606e737afc8d1ceee7c3e9373ce09b",
+  "data": [
+    [
+      1789308540000,
+      "6174508238.2161875"
+    ]
+  ]
+}

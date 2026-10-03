@@ -1,0 +1,140 @@
+{
+  "scope": "Independent REST responses; not synchronized executable quotes",
+  "errors": [],
+  "groups": [
+    {
+      "source": "deribit-BTC-option-instruments",
+      "assets": {
+        "BTC": {
+          "listed": 968,
+          "summary_present": 968,
+          "positive_uncrossed_two_sided_price": 895,
+          "two_sided_0_2d": 101,
+          "missing_positive_side": 73,
+          "two_sided_2_45d": 384,
+          "two_sided_over_45d": 410
+        }
+      },
+      "unmatched_summary_symbols": 0,
+      "note": "Deribit summary has no quoted sizes; price presence is not liquidity proof."
+    },
+    {
+      "source": "deribit-ETH-option-instruments",
+      "assets": {
+        "ETH": {
+          "listed": 870,
+          "summary_present": 870,
+          "positive_uncrossed_two_sided_price": 797,
+          "two_sided_0_2d": 119,
+          "missing_positive_side": 73,
+          "two_sided_2_45d": 362,
+          "two_sided_over_45d": 316
+        }
+      },
+      "unmatched_summary_symbols": 0,
+      "note": "Deribit summary has no quoted sizes; price presence is not liquidity proof."
+    },
+    {
+      "source": "deribit-USDC-option-instruments",
+      "assets": {
+        "AVAX": {
+          "listed": 436,
+          "summary_present": 436,
+          "missing_positive_side": 202,
+          "positive_uncrossed_two_sided_price": 234,
+          "two_sided_0_2d": 69,
+          "two_sided_2_45d": 133,
+          "two_sided_over_45d": 32
+        },
+        "BTC": {
+          "listed": 634,
+          "summary_present": 634,
+          "positive_uncrossed_two_sided_price": 553,
+          "two_sided_0_2d": 96,
+          "missing_positive_side": 81,
+          "two_sided_2_45d": 342,
+          "two_sided_over_45d": 115
+        },
+        "ETH": {
+          "listed": 606,
+          "summary_present": 606,
+          "positive_uncrossed_two_sided_price": 529,
+          "two_sided_0_2d": 118,
+          "missing_positive_side": 77,
+          "two_sided_2_45d": 323,
+          "two_sided_over_45d": 88
+        },
+        "HYPE": {
+          "listed": 448,
+          "summary_present": 448,
+          "missing_positive_side": 214,
+          "positive_uncrossed_two_sided_price": 234,
+          "two_sided_0_2d": 31,
+          "two_sided_2_45d": 132,
+          "two_sided_over_45d": 71
+        },
+        "SOL": {
+          "listed": 660,
+          "summary_present": 660,
+          "missing_positive_side": 355,
+          "positive_uncrossed_two_sided_price": 305,
+          "two_sided_0_2d": 36,
+          "two_sided_2_45d": 185,
+          "two_sided_over_45d": 84
+        },
+        "TRX": {
+          "listed": 328,
+          "summary_present": 328,
+          "missing_positive_side": 175,
+          "positive_uncrossed_two_sided_price": 153,
+          "two_sided_0_2d": 22,
+          "two_sided_2_45d": 99,
+          "two_sided_over_45d": 32
+        },
+        "XRP": {
+          "listed": 420,
+          "summary_present": 420,
+          "missing_positive_side": 180,
+          "positive_uncrossed_two_sided_price": 240,
+          "two_sided_0_2d": 40,
+          "two_sided_2_45d": 148,
+          "two_sided_over_45d": 52
+        }
+      },
+      "unmatched_summary_symbols": 0,
+      "note": "Deribit summary has no quoted sizes; price presence is not liquidity proof."
+    },
+    {
+      "source": "okx-BTC-option-instruments",
+      "assets": {
+        "BTC": {
+          "listed": 1406,
+          "summary_present": 1406,
+          "positive_uncrossed_two_sided_price": 1203,
+          "two_sided_0_2d": 191,
+          "missing_positive_side": 203,
+          "two_sided_2_45d": 565,
+          "two_sided_over_45d": 447
+        }
+      },
+      "unmatched_summary_symbols": 0,
+      "note": "Ticker size is contracts; normalize contract value."
+    },
+    {
+      "source": "okx-ETH-option-instruments",
+      "assets": {
+        "ETH": {
+          "listed": 1198,
+          "summary_present": 1198,
+          "positive_uncrossed_two_sided_price": 1033,
+          "two_sided_0_2d": 211,
+          "missing_positive_side": 165,
+          "two_sided_2_45d": 469,
+          "two_sided_over_45d": 353
+        }
+      },
+      "unmatched_summary_symbols": 0,
+      "note": "Ticker size is contracts; normalize contract value."
+    }
+  ]
+}

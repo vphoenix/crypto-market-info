@@ -1,0 +1,7 @@
+{
+  "name": "depth-okx-BTC-USDT",
+  "url": "https://www.okx.com/api/v5/market/books?sz=400&instId=BTC-USDT",
+  "retrieved_at_utc": "2026-09-16T10:33:29.741071+00:00",
+  "sha256": "16a81c03cf2b1b41b2904a18c9760fca1f5799b20bf07f2fca27d7c141552836",
+  "rows": null
+}

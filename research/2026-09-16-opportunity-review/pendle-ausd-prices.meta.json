@@ -1,0 +1,7 @@
+{
+  "name": "pendle-ausd-prices",
+  "url": "https://api-v2.pendle.finance/core/v1/sdk/143/markets/0x6f99cf00ee7290ae78a072bb6910ef72d1129fe7/swapping-prices",
+  "retrieved_at_utc": "2026-09-16T10:34:08.061425+00:00",
+  "sha256": "e704ba26f4fa1297c10c3160c5ad83479f453eaad68e11f8c01f80dbb50810a8",
+  "rows": null
+}

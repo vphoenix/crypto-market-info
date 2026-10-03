@@ -1,0 +1,304 @@
+{
+  "as_of_utc": "2026-09-13T14:13:35.976318+00:00",
+  "assets_count": 32,
+  "assets": [
+    "ADA",
+    "ALG",
+    "APT",
+    "AVAX",
+    "BCHN",
+    "BTC",
+    "DOGE",
+    "DOT",
+    "DSH",
+    "ETC",
+    "ETH",
+    "EUR",
+    "FIL",
+    "GBP",
+    "IOT",
+    "LEO",
+    "LINK",
+    "LTC",
+    "MXNT",
+    "SHIB",
+    "SOL",
+    "SUI",
+    "TRX",
+    "TRY",
+    "UNI",
+    "USD",
+    "UST",
+    "XAUT",
+    "XLM",
+    "XMR",
+    "XRP",
+    "ZEC"
+  ],
+  "pairs_count": 62,
+  "pairs": [
+    {
+      "pair": "BTCUSD",
+      "initial_margin": "0.1",
+      "maintenance_margin": "0.05",
+      "max_position_equity_multiple": "1E+1"
+    },
+    {
+      "pair": "BTCUST",
+      "initial_margin": "0.1",
+      "maintenance_margin": "0.05",
+      "max_position_equity_multiple": "1E+1"
+    },
+    {
+      "pair": "ETHUSD",
+      "initial_margin": "0.2",
+      "maintenance_margin": "0.1",
+      "max_position_equity_multiple": "5"
+    },
+    {
+      "pair": "ETHUST",
+      "initial_margin": "0.2",
+      "maintenance_margin": "0.1",
+      "max_position_equity_multiple": "5"
+    },
+    {
+      "pair": "LTCUSD",
+      "initial_margin": "0.2",
+      "maintenance_margin": "0.1",
+      "max_position_equity_multiple": "5"
+    },
+    {
+      "pair": "XRPUSD",
+      "initial_margin": "0.2",
+      "maintenance_margin": "0.1",
+      "max_position_equity_multiple": "5"
+    },
+    {
+      "pair": "XRPUST",
+      "initial_margin": "0.3",
+      "maintenance_margin": "0.15",
+      "max_position_equity_multiple": "3.333333333333333333333333333"
+    },
+    {
+      "pair": "SOLUSD",
+      "initial_margin": "0.3",
+      "maintenance_margin": "0.15",
+      "max_position_equity_multiple": "3.333333333333333333333333333"
+    },
+    {
+      "pair": "ADAUSD",
+      "initial_margin": "0.3",
+      "maintenance_margin": "0.15",
+      "max_position_equity_multiple": "3.333333333333333333333333333"
+    },
+    {
+      "pair": "XLMUSD",
+      "initial_margin": "0.5",
+      "maintenance_margin": "0.25",
+      "max_position_equity_multiple": "2"
+    }
+  ],
+  "haircuts": [
+    {
+      "symbol": "ADA",
+      "raw_config_field": "ADA_haircut",
+      "recognized_fraction": "0.3",
+      "discount_fraction": "0.7"
+    },
+    {
+      "symbol": "ALG",
+      "raw_config_field": "ALG_haircut",
+      "recognized_fraction": "0.25",
+      "discount_fraction": "0.75"
+    },
+    {
+      "symbol": "APT",
+      "raw_config_field": "APT_haircut",
+      "recognized_fraction": "0.6",
+      "discount_fraction": "0.4"
+    },
+    {
+      "symbol": "AVAX",
+      "raw_config_field": "AVAX_haircut",
+      "recognized_fraction": "0.2",
+      "discount_fraction": "0.8"
+    },
+    {
+      "symbol": "BCHN",
+      "raw_config_field": "BCHN_haircut",
+      "recognized_fraction": "0.5",
+      "discount_fraction": "0.5"
+    },
+    {
+      "symbol": "BTC",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "DOGE",
+      "raw_config_field": "DOGE_haircut",
+      "recognized_fraction": "0.2",
+      "discount_fraction": "0.8"
+    },
+    {
+      "symbol": "DOT",
+      "raw_config_field": "DOT_haircut",
+      "recognized_fraction": "0.3",
+      "discount_fraction": "0.7"
+    },
+    {
+      "symbol": "DSH",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "ETC",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "ETH",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "EUR",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "FIL",
+      "raw_config_field": "FIL_haircut",
+      "recognized_fraction": "0.3",
+      "discount_fraction": "0.7"
+    },
+    {
+      "symbol": "GBP",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "IOT",
+      "raw_config_field": "IOT_haircut",
+      "recognized_fraction": "0.1",
+      "discount_fraction": "0.9"
+    },
+    {
+      "symbol": "LEO",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "LINK",
+      "raw_config_field": "LINK_haircut",
+      "recognized_fraction": "0.1",
+      "discount_fraction": "0.9"
+    },
+    {
+      "symbol": "LTC",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "MXNT",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "SHIB",
+      "raw_config_field": "SHIB_haircut",
+      "recognized_fraction": "0.1",
+      "discount_fraction": "0.9"
+    },
+    {
+      "symbol": "SOL",
+      "raw_config_field": "SOL_haircut",
+      "recognized_fraction": "0.7",
+      "discount_fraction": "0.3"
+    },
+    {
+      "symbol": "SUI",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "TRX",
+      "raw_config_field": "TRX_haircut",
+      "recognized_fraction": "0.3",
+      "discount_fraction": "0.7"
+    },
+    {
+      "symbol": "TRY",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "UNI",
+      "raw_config_field": "UNI_haircut",
+      "recognized_fraction": "0.1",
+      "discount_fraction": "0.9"
+    },
+    {
+      "symbol": "USD",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "UST",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "XAUT",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "XLM",
+      "raw_config_field": "XLM_haircut",
+      "recognized_fraction": "0.3",
+      "discount_fraction": "0.7"
+    },
+    {
+      "symbol": "XMR",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    },
+    {
+      "symbol": "XRP",
+      "raw_config_field": "XRP_haircut",
+      "recognized_fraction": "0.5",
+      "discount_fraction": "0.5"
+    },
+    {
+      "symbol": "ZEC",
+      "raw_config_field": "base_haircut",
+      "recognized_fraction": "1",
+      "discount_fraction": "0"
+    }
+  ],
+  "numeric_method": "json parse_float=str; all arithmetic Decimal; configured haircut interpreted as recognized fraction, checked against official SOL/XRP/ADA examples.",
+  "stylized_btc_borrow": {
+    "collateral_usd": "1000",
+    "loan_usd": "900",
+    "ltv": "0.9",
+    "maintenance": "0.05",
+    "liquidation_value_ignoring_buffer_fees": "947.3684210526315789473684211",
+    "zero_equity_value": "900"
+  }
+}

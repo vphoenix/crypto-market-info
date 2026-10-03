@@ -1,0 +1,7 @@
+{
+  "name": "history-bybit-CVC",
+  "url": "https://api.bybit.com/v5/market/funding/history?category=linear&limit=200&symbol=CVCUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:12.619778+00:00",
+  "sha256": "6bd1ef97d26f7187f1af1992a29a37990708164c532226cf5d779f930ce19fa3",
+  "rows": null
+}

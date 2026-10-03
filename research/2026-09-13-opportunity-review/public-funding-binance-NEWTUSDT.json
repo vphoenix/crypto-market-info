@@ -1,0 +1,3509 @@
+{
+  "venue": "Binance",
+  "symbol": "NEWTUSDT",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=NEWTUSDT&limit=1000",
+  "fetched_at": "2026-09-12T19:15:11.683516+00:00",
+  "payload_sha256": "cefaaa7da68c41f509650b90916a757f198efe25c3877c9a96f8e9d38cd811f7",
+  "data": [
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782028800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.05247000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782043200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.05213000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782057600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.05261552",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782072000004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.05256000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782086400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.05052218",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782100800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.05099467",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782115200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.05122000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782129600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.05176217",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782144000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.05175000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782158400000,
+      "fundingRate": "0.00004569",
+      "markPrice": "0.05156195",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782172800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.05129000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782187200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.05233000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782201600005,
+      "fundingRate": "-0.00000276",
+      "markPrice": "0.05032000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782216000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04957000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782230400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04970983",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782244800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.05021643",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782259200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.05026000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782288000005,
+      "fundingRate": "-0.00009586",
+      "markPrice": "0.05264000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782302400005,
+      "fundingRate": "-0.00033013",
+      "markPrice": "0.05393000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782316800003,
+      "fundingRate": "0.00004647",
+      "markPrice": "0.04986649",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782331200006,
+      "fundingRate": "0.00002627",
+      "markPrice": "0.04852000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782345600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04973000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782360000008,
+      "fundingRate": "-0.00000498",
+      "markPrice": "0.04732000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782374400000,
+      "fundingRate": "-0.00014159",
+      "markPrice": "0.04820059",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782388800006,
+      "fundingRate": "-0.00044608",
+      "markPrice": "0.04830000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782403200000,
+      "fundingRate": "-0.00009271",
+      "markPrice": "0.04685000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782417600011,
+      "fundingRate": "-0.00017318",
+      "markPrice": "0.04631427",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782432000010,
+      "fundingRate": "-0.00014168",
+      "markPrice": "0.04706000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782446400001,
+      "fundingRate": "-0.00004811",
+      "markPrice": "0.04632250",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782460800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04710000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782475200004,
+      "fundingRate": "-0.00056535",
+      "markPrice": "0.04631000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782489600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04760417",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782504000000,
+      "fundingRate": "-0.00037676",
+      "markPrice": "0.04769088",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782518400000,
+      "fundingRate": "-0.00007779",
+      "markPrice": "0.04778000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782532800000,
+      "fundingRate": "-0.00028560",
+      "markPrice": "0.04738178",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782547200000,
+      "fundingRate": "-0.00017058",
+      "markPrice": "0.04773000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782561600001,
+      "fundingRate": "-0.00049172",
+      "markPrice": "0.04726531",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782576000009,
+      "fundingRate": "-0.00003117",
+      "markPrice": "0.04776000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782590400000,
+      "fundingRate": "-0.00040990",
+      "markPrice": "0.04723000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782604800000,
+      "fundingRate": "-0.00034283",
+      "markPrice": "0.04715000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782619200002,
+      "fundingRate": "-0.00039406",
+      "markPrice": "0.04745270",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782633600013,
+      "fundingRate": "-0.00028616",
+      "markPrice": "0.04760000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782648000008,
+      "fundingRate": "-0.00011598",
+      "markPrice": "0.04794931",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782662400000,
+      "fundingRate": "-0.00010268",
+      "markPrice": "0.04772000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782676800003,
+      "fundingRate": "-0.00048421",
+      "markPrice": "0.04726900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782691200006,
+      "fundingRate": "-0.00030788",
+      "markPrice": "0.04741917",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782705600000,
+      "fundingRate": "-0.00011104",
+      "markPrice": "0.04777000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782720000013,
+      "fundingRate": "-0.00007365",
+      "markPrice": "0.04735190",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782734400001,
+      "fundingRate": "-0.00133637",
+      "markPrice": "0.04887000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782748800004,
+      "fundingRate": "-0.00036991",
+      "markPrice": "0.04871575",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782763200000,
+      "fundingRate": "-0.00038586",
+      "markPrice": "0.04895267",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782777600000,
+      "fundingRate": "-0.00069984",
+      "markPrice": "0.04867000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782792000000,
+      "fundingRate": "-0.00032854",
+      "markPrice": "0.04747000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782806400000,
+      "fundingRate": "-0.00001368",
+      "markPrice": "0.04704000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782820800002,
+      "fundingRate": "-0.00013928",
+      "markPrice": "0.04669000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782835200005,
+      "fundingRate": "-0.00070369",
+      "markPrice": "0.04734000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782849600003,
+      "fundingRate": "-0.00021789",
+      "markPrice": "0.04715827",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782864000000,
+      "fundingRate": "-0.00053423",
+      "markPrice": "0.04736226",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782878400001,
+      "fundingRate": "-0.00011579",
+      "markPrice": "0.04714000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782892800000,
+      "fundingRate": "-0.00036952",
+      "markPrice": "0.04638000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782907200000,
+      "fundingRate": "-0.00000914",
+      "markPrice": "0.04646000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782921600000,
+      "fundingRate": "-0.00007804",
+      "markPrice": "0.04780342",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782936000000,
+      "fundingRate": "-0.00068490",
+      "markPrice": "0.04721000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782950400000,
+      "fundingRate": "-0.00052910",
+      "markPrice": "0.04785250",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782964800003,
+      "fundingRate": "-0.00069062",
+      "markPrice": "0.04846000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782979200000,
+      "fundingRate": "-0.00062194",
+      "markPrice": "0.04874000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1782993600005,
+      "fundingRate": "-0.00085055",
+      "markPrice": "0.04951000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783008000000,
+      "fundingRate": "-0.00022884",
+      "markPrice": "0.04917000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783022400008,
+      "fundingRate": "-0.00031023",
+      "markPrice": "0.04916000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783036800000,
+      "fundingRate": "-0.00003383",
+      "markPrice": "0.04905000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783051200000,
+      "fundingRate": "-0.00145934",
+      "markPrice": "0.05047850",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783065600007,
+      "fundingRate": "-0.00076002",
+      "markPrice": "0.05002000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783080000002,
+      "fundingRate": "-0.00000003",
+      "markPrice": "0.05051656",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783094400000,
+      "fundingRate": "-0.00010904",
+      "markPrice": "0.05038000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783108800001,
+      "fundingRate": "-0.00039461",
+      "markPrice": "0.05070156",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783123200000,
+      "fundingRate": "-0.00028022",
+      "markPrice": "0.05075004",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783137600006,
+      "fundingRate": "-0.00050813",
+      "markPrice": "0.05060000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783152000000,
+      "fundingRate": "-0.00013427",
+      "markPrice": "0.05010810",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783166400000,
+      "fundingRate": "-0.00077742",
+      "markPrice": "0.05052000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783180800007,
+      "fundingRate": "-0.00067741",
+      "markPrice": "0.05146000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783195200000,
+      "fundingRate": "-0.00165364",
+      "markPrice": "0.05204000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783209600003,
+      "fundingRate": "-0.00116568",
+      "markPrice": "0.05179000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783224000002,
+      "fundingRate": "-0.00088806",
+      "markPrice": "0.05049000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783238400001,
+      "fundingRate": "-0.00042465",
+      "markPrice": "0.05083000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783252800000,
+      "fundingRate": "-0.00121376",
+      "markPrice": "0.05074215",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783267200000,
+      "fundingRate": "-0.00199068",
+      "markPrice": "0.05106000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783281600000,
+      "fundingRate": "-0.00115239",
+      "markPrice": "0.05187847",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783296000000,
+      "fundingRate": "-0.00120345",
+      "markPrice": "0.05151815",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783310400000,
+      "fundingRate": "-0.00050320",
+      "markPrice": "0.05060344",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783324800000,
+      "fundingRate": "-0.00044244",
+      "markPrice": "0.04994000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783339200002,
+      "fundingRate": "-0.00020431",
+      "markPrice": "0.04969000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783353600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04999812",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783368000003,
+      "fundingRate": "0.00004948",
+      "markPrice": "0.05000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783382400000,
+      "fundingRate": "-0.00017837",
+      "markPrice": "0.05032000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783396800000,
+      "fundingRate": "-0.00006428",
+      "markPrice": "0.04883000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783411200000,
+      "fundingRate": "-0.00008870",
+      "markPrice": "0.04856000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783425600010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04879500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783440000000,
+      "fundingRate": "-0.00002153",
+      "markPrice": "0.04897000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783454400000,
+      "fundingRate": "-0.00040452",
+      "markPrice": "0.04816000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783468800000,
+      "fundingRate": "-0.00038817",
+      "markPrice": "0.04739000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783483200003,
+      "fundingRate": "-0.00026783",
+      "markPrice": "0.04657946",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783497600000,
+      "fundingRate": "-0.00018695",
+      "markPrice": "0.04652944",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783512000005,
+      "fundingRate": "-0.00028978",
+      "markPrice": "0.04613000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783526400000,
+      "fundingRate": "-0.00057719",
+      "markPrice": "0.04561000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783540800006,
+      "fundingRate": "0.00001988",
+      "markPrice": "0.04596000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783555200000,
+      "fundingRate": "0.00000634",
+      "markPrice": "0.04629089",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783569600002,
+      "fundingRate": "-0.00021441",
+      "markPrice": "0.04625253",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783584000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04678000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783598400002,
+      "fundingRate": "-0.00007545",
+      "markPrice": "0.04665000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783612800001,
+      "fundingRate": "-0.00010244",
+      "markPrice": "0.04741000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783627200000,
+      "fundingRate": "-0.00052318",
+      "markPrice": "0.04785000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783641600000,
+      "fundingRate": "-0.00055938",
+      "markPrice": "0.04777000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783656000000,
+      "fundingRate": "-0.00030469",
+      "markPrice": "0.04782000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783670400005,
+      "fundingRate": "-0.00000526",
+      "markPrice": "0.04770000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783684800002,
+      "fundingRate": "-0.00013782",
+      "markPrice": "0.04790000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783699200005,
+      "fundingRate": "-0.00033436",
+      "markPrice": "0.04795000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783713600000,
+      "fundingRate": "-0.00061292",
+      "markPrice": "0.04778000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783728000000,
+      "fundingRate": "-0.00082101",
+      "markPrice": "0.04805000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783742400000,
+      "fundingRate": "-0.00055814",
+      "markPrice": "0.04797624",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783756800000,
+      "fundingRate": "-0.00061118",
+      "markPrice": "0.04790000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783771200008,
+      "fundingRate": "-0.00054162",
+      "markPrice": "0.04859510",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783785600000,
+      "fundingRate": "-0.00025194",
+      "markPrice": "0.04845300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783800000000,
+      "fundingRate": "-0.00012076",
+      "markPrice": "0.04853000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783814400000,
+      "fundingRate": "-0.00101611",
+      "markPrice": "0.04743000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783828800000,
+      "fundingRate": "-0.00040332",
+      "markPrice": "0.04762767",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783843200003,
+      "fundingRate": "-0.00074454",
+      "markPrice": "0.04734000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783857600000,
+      "fundingRate": "-0.00100853",
+      "markPrice": "0.04741000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783872000000,
+      "fundingRate": "-0.00099042",
+      "markPrice": "0.04740000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783886400002,
+      "fundingRate": "-0.00130421",
+      "markPrice": "0.04733000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783900800000,
+      "fundingRate": "-0.00205318",
+      "markPrice": "0.04708000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783915200000,
+      "fundingRate": "-0.00194011",
+      "markPrice": "0.04557454",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783929600001,
+      "fundingRate": "-0.00090597",
+      "markPrice": "0.04595000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783944000000,
+      "fundingRate": "-0.00118045",
+      "markPrice": "0.04611000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783958400004,
+      "fundingRate": "-0.00134750",
+      "markPrice": "0.04608000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783972800000,
+      "fundingRate": "-0.00157696",
+      "markPrice": "0.04546000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1783987200000,
+      "fundingRate": "-0.00144497",
+      "markPrice": "0.04588000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784001600000,
+      "fundingRate": "-0.00154452",
+      "markPrice": "0.04541000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784016000002,
+      "fundingRate": "-0.00047864",
+      "markPrice": "0.04536000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784030400001,
+      "fundingRate": "-0.00022531",
+      "markPrice": "0.04507000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784044800001,
+      "fundingRate": "-0.00006818",
+      "markPrice": "0.04674860",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784059200000,
+      "fundingRate": "-0.00243014",
+      "markPrice": "0.04677000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784073600005,
+      "fundingRate": "-0.00323226",
+      "markPrice": "0.04772000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784088000003,
+      "fundingRate": "-0.00007693",
+      "markPrice": "0.04572000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784102400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04579000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784116800003,
+      "fundingRate": "-0.00004762",
+      "markPrice": "0.04560000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784131200000,
+      "fundingRate": "0.00004218",
+      "markPrice": "0.04649000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784145600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04583000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784160000000,
+      "fundingRate": "0.00002937",
+      "markPrice": "0.04603000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784174400003,
+      "fundingRate": "-0.00006716",
+      "markPrice": "0.04585000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784188800003,
+      "fundingRate": "-0.00013180",
+      "markPrice": "0.04537000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784203200001,
+      "fundingRate": "0.00004621",
+      "markPrice": "0.04513000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784217600002,
+      "fundingRate": "0.00000472",
+      "markPrice": "0.04527131",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784232000002,
+      "fundingRate": "-0.00031764",
+      "markPrice": "0.04498000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784246400000,
+      "fundingRate": "-0.00058352",
+      "markPrice": "0.04456000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784260800000,
+      "fundingRate": "-0.00004517",
+      "markPrice": "0.04434983",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784275200010,
+      "fundingRate": "-0.00003305",
+      "markPrice": "0.04347000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784289600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04414000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784304000004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04372000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784318400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04349931",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784332800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04342000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784347200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04287471",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784361600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04273000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784376000002,
+      "fundingRate": "0.00001513",
+      "markPrice": "0.04284000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784390400001,
+      "fundingRate": "0.00004175",
+      "markPrice": "0.04301467",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784404800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04331000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784419200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04368000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784433600000,
+      "fundingRate": "-0.00007793",
+      "markPrice": "0.04417959",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784448000000,
+      "fundingRate": "-0.00010514",
+      "markPrice": "0.04458000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784462400000,
+      "fundingRate": "0.00003686",
+      "markPrice": "0.04444541",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784476800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04467000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784491200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04447375",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784505600000,
+      "fundingRate": "0.00003862",
+      "markPrice": "0.04424000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784520000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04432000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784534400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04485000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784548800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04462167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784563200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04486162",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784577600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04469043",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784592000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04464562",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784606400000,
+      "fundingRate": "-0.00001583",
+      "markPrice": "0.04612428",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784620800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04626508",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784635200000,
+      "fundingRate": "-0.00013406",
+      "markPrice": "0.04526000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784649600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04530000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784664000000,
+      "fundingRate": "0.00001580",
+      "markPrice": "0.04508333",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784678400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04530000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784692800008,
+      "fundingRate": "-0.00013259",
+      "markPrice": "0.04518000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784707200000,
+      "fundingRate": "-0.00005714",
+      "markPrice": "0.04460000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784721600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04488970",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784736000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04590000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784750400000,
+      "fundingRate": "-0.00002564",
+      "markPrice": "0.04528475",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784764800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04547000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784779200006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04508000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784793600000,
+      "fundingRate": "-0.00009562",
+      "markPrice": "0.04596550",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784808000000,
+      "fundingRate": "-0.00016184",
+      "markPrice": "0.04606350",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784822400000,
+      "fundingRate": "-0.00035431",
+      "markPrice": "0.04532000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784836800000,
+      "fundingRate": "-0.00050824",
+      "markPrice": "0.04519000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784851200000,
+      "fundingRate": "-0.00014047",
+      "markPrice": "0.04560000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784865600001,
+      "fundingRate": "-0.00003042",
+      "markPrice": "0.04583000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784880000000,
+      "fundingRate": "0.00000723",
+      "markPrice": "0.04632431",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784894400000,
+      "fundingRate": "0.00001441",
+      "markPrice": "0.04665250",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784908800008,
+      "fundingRate": "-0.00004877",
+      "markPrice": "0.04618133",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784923200001,
+      "fundingRate": "-0.00023658",
+      "markPrice": "0.04585183",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784937600002,
+      "fundingRate": "-0.00004525",
+      "markPrice": "0.04588000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784952000000,
+      "fundingRate": "0.00001970",
+      "markPrice": "0.04618186",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784966400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04573000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784980800000,
+      "fundingRate": "-0.00018487",
+      "markPrice": "0.04548000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1784995200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04593596",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785009600003,
+      "fundingRate": "-0.00008926",
+      "markPrice": "0.04542200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785024000000,
+      "fundingRate": "-0.00019405",
+      "markPrice": "0.04523000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785038400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04465500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785052800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04433431",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785067200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04396338",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785081600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04486311",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785096000000,
+      "fundingRate": "-0.00001460",
+      "markPrice": "0.04418000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785110400010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04446662",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785124800000,
+      "fundingRate": "-0.00000048",
+      "markPrice": "0.04369000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785139200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04333000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785153600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04282100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785168000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04180093",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785182400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04213371",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785196800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04236850",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785211200012,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04124281",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785225600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04110444",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785240000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04141219",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785254400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04187288",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785268800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04164000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785283200000,
+      "fundingRate": "-0.00002556",
+      "markPrice": "0.04155346",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785297600000,
+      "fundingRate": "0.00000168",
+      "markPrice": "0.03980446",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785312000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04001000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785326400007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03980000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785340800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03932000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785355200003,
+      "fundingRate": "0.00003588",
+      "markPrice": "0.03931000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785369600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03954694",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785384000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04010000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785398400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04001260",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785412800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04047000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785427200000,
+      "fundingRate": "0.00003088",
+      "markPrice": "0.04048000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785441600003,
+      "fundingRate": "-0.00008805",
+      "markPrice": "0.03999488",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785456000003,
+      "fundingRate": "0.00003463",
+      "markPrice": "0.03963374",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785470400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03986000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785484800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04003826",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785499200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03999000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785513600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04021562",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785528000001,
+      "fundingRate": "-0.00015866",
+      "markPrice": "0.04020883",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785542400001,
+      "fundingRate": "0.00001960",
+      "markPrice": "0.04027810",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785556800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04042547",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785571200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04019929",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785585600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04024494",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785600000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04041312",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785614400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03982000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785628800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04002500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785643200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04012000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785657600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03990500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785672000007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04008000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785686400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04001294",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785700800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03999000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785715200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03994584",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785729600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03926042",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785744000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03895867",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785758400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03871134",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785772800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03964000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785787200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03959000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785801600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03948238",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785816000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03957000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785830400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03929233",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785844800002,
+      "fundingRate": "-0.00000512",
+      "markPrice": "0.03896000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785859200000,
+      "fundingRate": "0.00004365",
+      "markPrice": "0.03897890",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785873600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03893048",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785888000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03868000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785902400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03934821",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785916800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03992000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785931200008,
+      "fundingRate": "0.00002992",
+      "markPrice": "0.03940500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785945600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03940931",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785960000000,
+      "fundingRate": "0.00002770",
+      "markPrice": "0.03918575",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785974400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03903000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1785988800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03920746",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786003200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03984000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786017600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03945291",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786032000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03973000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786046400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03944000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786060800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03949719",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786075200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03984000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786089600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03981406",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786104000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03957445",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786118400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03933029",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786132800000,
+      "fundingRate": "0.00000453",
+      "markPrice": "0.03921007",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786147200001,
+      "fundingRate": "-0.00012869",
+      "markPrice": "0.03889000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786161600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03916000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786176000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03939000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786190400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03925781",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786204800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03959000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786219200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03961000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786233600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03947000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786248000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03938000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786262400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03986930",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786276800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03951697",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786291200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04033000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786305600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04025850",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786320000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03931000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786334400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03923000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786348800005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03925500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786363200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03953000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786377600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03905867",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786392000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03921028",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786406400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03894477",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786420800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03890000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786435200006,
+      "fundingRate": "-0.00004540",
+      "markPrice": "0.03870778",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786449600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04001000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786464000000,
+      "fundingRate": "-0.00007989",
+      "markPrice": "0.03792250",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786478400003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03830509",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786492800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03819080",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786507200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03869000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786521600000,
+      "fundingRate": "-0.00002428",
+      "markPrice": "0.03849067",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786536000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03858000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786550400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03789103",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786564800001,
+      "fundingRate": "-0.00007134",
+      "markPrice": "0.03775000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786579200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03737000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786593600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03773000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786608000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03781781",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786622400000,
+      "fundingRate": "0.00002567",
+      "markPrice": "0.03757000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786636800000,
+      "fundingRate": "0.00004066",
+      "markPrice": "0.03768000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786651200002,
+      "fundingRate": "0.00003517",
+      "markPrice": "0.03755016",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786665600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03766500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786680000001,
+      "fundingRate": "-0.00007684",
+      "markPrice": "0.03740000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786694400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03704000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786708800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03683500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786723200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03708000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786737600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03715706",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786752000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03719000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786766400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03703023",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786780800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03725000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786795200001,
+      "fundingRate": "-0.00000881",
+      "markPrice": "0.03837300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786809600000,
+      "fundingRate": "-0.00004883",
+      "markPrice": "0.03780883",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786824000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03743000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786838400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03723590",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786852800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03753062",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786867200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03729890",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786881600008,
+      "fundingRate": "-0.00007666",
+      "markPrice": "0.03708894",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786896000000,
+      "fundingRate": "-0.00001687",
+      "markPrice": "0.03719000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786910400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03817366",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786924800001,
+      "fundingRate": "0.00002047",
+      "markPrice": "0.03715000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786939200001,
+      "fundingRate": "-0.00015150",
+      "markPrice": "0.03799164",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786953600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03723514",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786968000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03693009",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786982400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03720888",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1786996800000,
+      "fundingRate": "-0.00014371",
+      "markPrice": "0.03701000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787011200006,
+      "fundingRate": "0.00004512",
+      "markPrice": "0.03626000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787025600001,
+      "fundingRate": "0.00001558",
+      "markPrice": "0.03535000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787040000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03569000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787054400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03619000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787068800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03630000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787083200008,
+      "fundingRate": "0.00003795",
+      "markPrice": "0.03613435",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787097600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03593000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787112000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03593048",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787126400000,
+      "fundingRate": "0.00004676",
+      "markPrice": "0.03577788",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787140800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03593750",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787155200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03778000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787169600009,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03773500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787184000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03834688",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787198400011,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03787500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787212800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03825000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787227200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03885032",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787241600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03952000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787256000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03954994",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787270400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04033138",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787284800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04033000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787299200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04109000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787313600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04274635",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787328000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04334453",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787342400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04314000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787356800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04398000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787371200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04561000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787385600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04466875",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787400000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04446916",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787414400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04405700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787428800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04391749",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787443200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04328000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787457600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04169000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787472000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04203477",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787486400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04324000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787500800006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04402783",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787515200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04444000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787529600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04415750",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787544000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04231998",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787558400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04216000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787572800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04310000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787587200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04304000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787601600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04259685",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787616000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04246000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787630400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04253906",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787644800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04218683",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787659200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04262347",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787673600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04204000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787688000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04172250",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787702400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787716800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04105988",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787731200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04078571",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787745600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04111000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787760000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04032212",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787774400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04065388",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787788800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04147000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787803200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04130000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787817600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04105000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787832000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04161931",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787846400013,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04186233",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787860800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04160000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787875200026,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04229000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787889600008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04131000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787904000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04153034",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787918400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04137500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787932800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04090494",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787947200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04027229",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787961600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04067400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787976000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04144000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1787990400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04095901",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788004800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04053556",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788019200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04135000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788033600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04091500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788048000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04102000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788062400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04134000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788076800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04184094",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788091200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04244595",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788105600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04221086",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788120000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04199733",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788134400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04037000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788148800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04196000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788163200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04234000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788177600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04237525",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788192000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04141300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788206400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04115000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788220800005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04129431",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788235200007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04147589",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788249600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04110308",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788264000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04075000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788278400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04064000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788292800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04015000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788307200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04016750",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788321600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04044000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788336000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04080000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788350400000,
+      "fundingRate": "0.00001994",
+      "markPrice": "0.04008000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788364800005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03978896",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788379200000,
+      "fundingRate": "-0.00005835",
+      "markPrice": "0.03965517",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788393600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.03998500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788408000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04008000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788422400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04018333",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788436800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04023000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788451200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04166000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788465600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04164000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788480000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04178000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788494400000,
+      "fundingRate": "-0.00010134",
+      "markPrice": "0.04165000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788508800000,
+      "fundingRate": "0.00000618",
+      "markPrice": "0.04157013",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788523200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04219000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788537600009,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04232488",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788552000000,
+      "fundingRate": "-0.00000058",
+      "markPrice": "0.04230241",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788566400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04285000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788580800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04298000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788595200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04308225",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788609600007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04357171",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788624000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04382000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788638400000,
+      "fundingRate": "0.00001051",
+      "markPrice": "0.04391032",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788652800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04438899",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788667200005,
+      "fundingRate": "0.00002145",
+      "markPrice": "0.04434158",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788681600000,
+      "fundingRate": "-0.00000585",
+      "markPrice": "0.04394338",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788696000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04480000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788710400004,
+      "fundingRate": "-0.00003555",
+      "markPrice": "0.04498000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788724800000,
+      "fundingRate": "-0.00002772",
+      "markPrice": "0.04463591",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788739200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04512500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788753600001,
+      "fundingRate": "-0.00000447",
+      "markPrice": "0.04517867",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788768000000,
+      "fundingRate": "0.00000286",
+      "markPrice": "0.04431283",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788782400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04466461",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788796800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04351267",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788811200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04402906",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788825600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04374125",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788840000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04439748",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788854400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04580600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788868800006,
+      "fundingRate": "0.00004872",
+      "markPrice": "0.04554262",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788883200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04521000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788897600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04425000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788912000005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04459000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788926400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04538682",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788940800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04442254",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788955200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04459625",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788969600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04436662",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788984000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04351171",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1788998400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.04304000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789012800000,
+      "fundingRate": "-0.00664345",
+      "markPrice": "0.04607000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789027200007,
+      "fundingRate": "-0.00087789",
+      "markPrice": "0.04397415",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789041600000,
+      "fundingRate": "-0.00506716",
+      "markPrice": "0.04551000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789056000002,
+      "fundingRate": "-0.00479420",
+      "markPrice": "0.04398417",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789070400000,
+      "fundingRate": "-0.00040518",
+      "markPrice": "0.04368207",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789084800008,
+      "fundingRate": "-0.00768504",
+      "markPrice": "0.04408598",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789099200005,
+      "fundingRate": "-0.00476390",
+      "markPrice": "0.04085530",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789113600000,
+      "fundingRate": "-0.00191602",
+      "markPrice": "0.04206398",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789128000000,
+      "fundingRate": "-0.00206877",
+      "markPrice": "0.04157000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789142400000,
+      "fundingRate": "-0.00016916",
+      "markPrice": "0.04322000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789156800004,
+      "fundingRate": "-0.00000824",
+      "markPrice": "0.04341000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789171200001,
+      "fundingRate": "-0.00008664",
+      "markPrice": "0.04305000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789185600002,
+      "fundingRate": "-0.00037660",
+      "markPrice": "0.04187000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789200000003,
+      "fundingRate": "-0.00020900",
+      "markPrice": "0.04236062",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789214400000,
+      "fundingRate": "-0.00035916",
+      "markPrice": "0.04268000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "fundingTime": 1789228800000,
+      "fundingRate": "-0.00036930",
+      "markPrice": "0.04378151",
+      "rateType": "Regular"
+    }
+  ]
+}

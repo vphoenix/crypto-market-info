@@ -1,0 +1,142 @@
+{
+	"meta":
+	[
+		{
+			"name": "finality",
+			"type": "LowCardinality(String)"
+		},
+		{
+			"name": "capture_mode",
+			"type": "LowCardinality(String)"
+		},
+		{
+			"name": "quote_coverage",
+			"type": "LowCardinality(String)"
+		},
+		{
+			"name": "canonical",
+			"type": "Bool"
+		},
+		{
+			"name": "committed",
+			"type": "Bool"
+		},
+		{
+			"name": "blocks",
+			"type": "UInt64"
+		},
+		{
+			"name": "first_utc",
+			"type": "DateTime64(6, 'UTC')"
+		},
+		{
+			"name": "latest_utc",
+			"type": "DateTime64(6, 'UTC')"
+		},
+		{
+			"name": "first_height",
+			"type": "UInt64"
+		},
+		{
+			"name": "last_height",
+			"type": "UInt64"
+		}
+	],
+
+	"data":
+	[
+		{
+			"finality": "finalized",
+			"capture_mode": "backfill",
+			"quote_coverage": "missing",
+			"canonical": true,
+			"committed": true,
+			"blocks": 201,
+			"first_utc": "2026-09-25 04:14:35.000000",
+			"latest_utc": "2026-09-26 14:23:11.000000",
+			"first_height": 26052011,
+			"last_height": 26062198
+		},
+		{
+			"finality": "finalized",
+			"capture_mode": "live",
+			"quote_coverage": "complete",
+			"canonical": true,
+			"committed": true,
+			"blocks": 10213,
+			"first_utc": "2026-09-25 01:07:47.000000",
+			"latest_utc": "2026-09-26 14:30:47.000000",
+			"first_height": 26051083,
+			"last_height": 26062236
+		},
+		{
+			"finality": "finalized",
+			"capture_mode": "live",
+			"quote_coverage": "partial",
+			"canonical": true,
+			"committed": true,
+			"blocks": 740,
+			"first_utc": "2026-09-25 01:18:23.000000",
+			"latest_utc": "2026-09-26 14:30:35.000000",
+			"first_height": 26051136,
+			"last_height": 26062235
+		},
+		{
+			"finality": "head",
+			"capture_mode": "backfill",
+			"quote_coverage": "missing",
+			"canonical": true,
+			"committed": true,
+			"blocks": 48,
+			"first_utc": "2026-09-26 14:30:59.000000",
+			"latest_utc": "2026-09-26 16:26:35.000000",
+			"first_height": 26062237,
+			"last_height": 26062810
+		},
+		{
+			"finality": "head",
+			"capture_mode": "live",
+			"quote_coverage": "complete",
+			"canonical": true,
+			"committed": true,
+			"blocks": 381,
+			"first_utc": "2026-09-26 14:31:11.000000",
+			"latest_utc": "2026-09-26 16:27:59.000000",
+			"first_height": 26062238,
+			"last_height": 26062817
+		},
+		{
+			"finality": "head",
+			"capture_mode": "live",
+			"quote_coverage": "partial",
+			"canonical": true,
+			"committed": true,
+			"blocks": 152,
+			"first_utc": "2026-09-26 14:31:35.000000",
+			"latest_utc": "2026-09-26 16:27:47.000000",
+			"first_height": 26062240,
+			"last_height": 26062816
+		},
+		{
+			"finality": "orphaned",
+			"capture_mode": "live",
+			"quote_coverage": "complete",
+			"canonical": false,
+			"committed": true,
+			"blocks": 4,
+			"first_utc": "2026-09-25 02:24:23.000000",
+			"latest_utc": "2026-09-26 11:15:35.000000",
+			"first_height": 26051464,
+			"last_height": 26061264
+		}
+	],
+
+	"rows": 7,
+
+	"statistics":
+	{
+		"elapsed": 0.004827156,
+		"rows_read": 14467,
+		"bytes_read": 1461799
+	}
+}

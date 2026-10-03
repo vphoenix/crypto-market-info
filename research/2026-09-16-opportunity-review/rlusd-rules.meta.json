@@ -1,0 +1,7 @@
+{
+  "name": "rlusd-rules",
+  "url": "https://data-api.binance.vision/api/v3/exchangeInfo?symbol=RLUSDUSDT",
+  "retrieved_at_utc": "2026-09-16T10:40:08.581572+00:00",
+  "sha256": "bda06cf88c8901a64f46a6f781e68109b8ec10c4c9ebe3a9a15a6cecd7da7b3e",
+  "rows": null
+}

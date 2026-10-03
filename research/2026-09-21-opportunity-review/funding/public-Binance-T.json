@@ -1,0 +1,3510 @@
+{
+  "venue": "Binance",
+  "symbol": "T",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=TUSDT&limit=1000",
+  "retrieved_at": "2026-09-21T14:33:04.138409+00:00",
+  "status": 200,
+  "sha256": "600ba4bae500f59099afefdaa0309d50f99f2fc3f2af789e250df2db85785808",
+  "data": [
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785124800000,
+      "fundingRate": "-0.00392413",
+      "markPrice": "0.00364102",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785139200000,
+      "fundingRate": "-0.00141057",
+      "markPrice": "0.00362414",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785153600000,
+      "fundingRate": "-0.00110207",
+      "markPrice": "0.00358000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785168000001,
+      "fundingRate": "-0.00094842",
+      "markPrice": "0.00345200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785182400004,
+      "fundingRate": "-0.00177115",
+      "markPrice": "0.00343900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785196800000,
+      "fundingRate": "-0.00132519",
+      "markPrice": "0.00345952",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785211200012,
+      "fundingRate": "-0.00074999",
+      "markPrice": "0.00342353",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785225600000,
+      "fundingRate": "-0.00062077",
+      "markPrice": "0.00350754",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785240000001,
+      "fundingRate": "-0.00033750",
+      "markPrice": "0.00352900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785254400000,
+      "fundingRate": "-0.00031107",
+      "markPrice": "0.00355100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785268800000,
+      "fundingRate": "-0.00119117",
+      "markPrice": "0.00356403",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785283200000,
+      "fundingRate": "-0.00133188",
+      "markPrice": "0.00350900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785297600000,
+      "fundingRate": "-0.00131918",
+      "markPrice": "0.00345045",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785312000002,
+      "fundingRate": "-0.00111738",
+      "markPrice": "0.00343917",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785326400007,
+      "fundingRate": "-0.00143774",
+      "markPrice": "0.00339837",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785340800000,
+      "fundingRate": "-0.00087941",
+      "markPrice": "0.00339700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785355200003,
+      "fundingRate": "-0.00122199",
+      "markPrice": "0.00331313",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785369600000,
+      "fundingRate": "-0.00065483",
+      "markPrice": "0.00340300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785384000001,
+      "fundingRate": "-0.00090592",
+      "markPrice": "0.00339200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785398400000,
+      "fundingRate": "-0.00048249",
+      "markPrice": "0.00336300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785412800000,
+      "fundingRate": "-0.00057677",
+      "markPrice": "0.00333800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785427200000,
+      "fundingRate": "-0.00054302",
+      "markPrice": "0.00332553",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785441600003,
+      "fundingRate": "-0.00128347",
+      "markPrice": "0.00322364",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785456000003,
+      "fundingRate": "-0.00148158",
+      "markPrice": "0.00323900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785470400000,
+      "fundingRate": "-0.00168146",
+      "markPrice": "0.00329000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785484800000,
+      "fundingRate": "-0.00114268",
+      "markPrice": "0.00327700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785499200000,
+      "fundingRate": "-0.00033523",
+      "markPrice": "0.00335739",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785513600000,
+      "fundingRate": "-0.00093715",
+      "markPrice": "0.00338400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785528000001,
+      "fundingRate": "-0.00034596",
+      "markPrice": "0.00345800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785542400001,
+      "fundingRate": "-0.00118848",
+      "markPrice": "0.00338700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785556800000,
+      "fundingRate": "-0.00061090",
+      "markPrice": "0.00340550",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785571200000,
+      "fundingRate": "-0.00055137",
+      "markPrice": "0.00339450",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785585600000,
+      "fundingRate": "-0.00027729",
+      "markPrice": "0.00340400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785600000000,
+      "fundingRate": "-0.00014316",
+      "markPrice": "0.00339000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785614400000,
+      "fundingRate": "-0.00000505",
+      "markPrice": "0.00335400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785628800000,
+      "fundingRate": "-0.00043590",
+      "markPrice": "0.00335900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785643200000,
+      "fundingRate": "-0.00031287",
+      "markPrice": "0.00337775",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785657600000,
+      "fundingRate": "-0.00031845",
+      "markPrice": "0.00333000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785672000007,
+      "fundingRate": "-0.00022349",
+      "markPrice": "0.00330557",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785686400000,
+      "fundingRate": "-0.00015084",
+      "markPrice": "0.00327660",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785700800002,
+      "fundingRate": "-0.00031482",
+      "markPrice": "0.00326450",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785715200000,
+      "fundingRate": "-0.00064965",
+      "markPrice": "0.00324300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785729600000,
+      "fundingRate": "-0.00014387",
+      "markPrice": "0.00326112",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785744000000,
+      "fundingRate": "-0.00004476",
+      "markPrice": "0.00336600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785758400000,
+      "fundingRate": "-0.00051625",
+      "markPrice": "0.00339600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785772800000,
+      "fundingRate": "-0.00104211",
+      "markPrice": "0.00343100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785787200003,
+      "fundingRate": "-0.00117244",
+      "markPrice": "0.00338600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785801600004,
+      "fundingRate": "-0.00071309",
+      "markPrice": "0.00337573",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785816000002,
+      "fundingRate": "-0.00060829",
+      "markPrice": "0.00337179",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785830400002,
+      "fundingRate": "-0.00032197",
+      "markPrice": "0.00333420",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785844800002,
+      "fundingRate": "-0.00031226",
+      "markPrice": "0.00333300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785859200000,
+      "fundingRate": "-0.00015686",
+      "markPrice": "0.00336000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785873600000,
+      "fundingRate": "-0.00022261",
+      "markPrice": "0.00336028",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785888000003,
+      "fundingRate": "-0.00019370",
+      "markPrice": "0.00336400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785902400001,
+      "fundingRate": "-0.00007991",
+      "markPrice": "0.00341206",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785916800004,
+      "fundingRate": "-0.00013933",
+      "markPrice": "0.00339000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785931200008,
+      "fundingRate": "-0.00016952",
+      "markPrice": "0.00336463",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785945600000,
+      "fundingRate": "-0.00022846",
+      "markPrice": "0.00334025",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785960000000,
+      "fundingRate": "-0.00008773",
+      "markPrice": "0.00336074",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785974400002,
+      "fundingRate": "-0.00018754",
+      "markPrice": "0.00337100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1785988800000,
+      "fundingRate": "0.00004721",
+      "markPrice": "0.00347719",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786003200000,
+      "fundingRate": "-0.00016227",
+      "markPrice": "0.00349500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786017600000,
+      "fundingRate": "-0.00013613",
+      "markPrice": "0.00349400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786032000000,
+      "fundingRate": "-0.00003535",
+      "markPrice": "0.00353717",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786046400001,
+      "fundingRate": "-0.00011739",
+      "markPrice": "0.00354242",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786060800000,
+      "fundingRate": "-0.00029640",
+      "markPrice": "0.00355300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786075200000,
+      "fundingRate": "-0.00009944",
+      "markPrice": "0.00354700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786089600000,
+      "fundingRate": "-0.00018160",
+      "markPrice": "0.00353187",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786104000000,
+      "fundingRate": "-0.00012320",
+      "markPrice": "0.00356825",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786118400000,
+      "fundingRate": "0.00002850",
+      "markPrice": "0.00355500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786132800000,
+      "fundingRate": "-0.00021656",
+      "markPrice": "0.00354900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786147200001,
+      "fundingRate": "-0.00000882",
+      "markPrice": "0.00356500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786161600000,
+      "fundingRate": "-0.00012883",
+      "markPrice": "0.00359600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786176000000,
+      "fundingRate": "-0.00026160",
+      "markPrice": "0.00358700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786190400001,
+      "fundingRate": "-0.00031875",
+      "markPrice": "0.00360300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786204800002,
+      "fundingRate": "-0.00004570",
+      "markPrice": "0.00362300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786219200000,
+      "fundingRate": "-0.00030639",
+      "markPrice": "0.00366900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786233600000,
+      "fundingRate": "-0.00030343",
+      "markPrice": "0.00371068",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786248000000,
+      "fundingRate": "-0.00011591",
+      "markPrice": "0.00367700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786262400005,
+      "fundingRate": "-0.00004057",
+      "markPrice": "0.00372138",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786276800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00364739",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786291200000,
+      "fundingRate": "-0.00019145",
+      "markPrice": "0.00364611",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786305600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00365171",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786320000001,
+      "fundingRate": "-0.00000658",
+      "markPrice": "0.00364700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786334400000,
+      "fundingRate": "-0.00004227",
+      "markPrice": "0.00366326",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786348800005,
+      "fundingRate": "-0.00018533",
+      "markPrice": "0.00361500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786363200000,
+      "fundingRate": "0.00000520",
+      "markPrice": "0.00361051",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786377600000,
+      "fundingRate": "-0.00012273",
+      "markPrice": "0.00356400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786392000000,
+      "fundingRate": "-0.00025343",
+      "markPrice": "0.00354900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786406400000,
+      "fundingRate": "-0.00015867",
+      "markPrice": "0.00352319",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786420800000,
+      "fundingRate": "-0.00017250",
+      "markPrice": "0.00356009",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786435200006,
+      "fundingRate": "-0.00000084",
+      "markPrice": "0.00348745",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786449600001,
+      "fundingRate": "-0.00005120",
+      "markPrice": "0.00351600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786464000000,
+      "fundingRate": "-0.00008782",
+      "markPrice": "0.00345298",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786478400003,
+      "fundingRate": "0.00003621",
+      "markPrice": "0.00345169",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786492800001,
+      "fundingRate": "-0.00027951",
+      "markPrice": "0.00344500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786507200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00345000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786521600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00343103",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786536000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00342600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786550400000,
+      "fundingRate": "-0.00028055",
+      "markPrice": "0.00341200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786564800001,
+      "fundingRate": "-0.00025251",
+      "markPrice": "0.00339497",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786579200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00337800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786593600000,
+      "fundingRate": "-0.00000087",
+      "markPrice": "0.00342851",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786608000000,
+      "fundingRate": "-0.00002061",
+      "markPrice": "0.00342020",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786622400000,
+      "fundingRate": "0.00004352",
+      "markPrice": "0.00341300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786636800000,
+      "fundingRate": "0.00002392",
+      "markPrice": "0.00337623",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786651200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00336878",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786665600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00337400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786680000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00335650",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786694400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00334305",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786708800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00333834",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786723200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00336109",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786737600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00335800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786752000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00336842",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786766400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00334950",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786780800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00336200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786795200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00343423",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786809600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00343300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786824000003,
+      "fundingRate": "0.00003155",
+      "markPrice": "0.00339033",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786838400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00338000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786852800001,
+      "fundingRate": "-0.00003096",
+      "markPrice": "0.00335550",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786867200002,
+      "fundingRate": "-0.00001765",
+      "markPrice": "0.00334600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786881600008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00334160",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786896000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00335651",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786910400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00333400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786924800001,
+      "fundingRate": "-0.00001148",
+      "markPrice": "0.00329859",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786939200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00332851",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786953600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00332600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786968000002,
+      "fundingRate": "-0.00003680",
+      "markPrice": "0.00331203",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786982400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00333758",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1786996800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00331900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787011200006,
+      "fundingRate": "-0.00017130",
+      "markPrice": "0.00330500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787025600001,
+      "fundingRate": "-0.00008636",
+      "markPrice": "0.00322200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787040000001,
+      "fundingRate": "-0.00012182",
+      "markPrice": "0.00321841",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787054400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00324000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787068800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00324500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787083200008,
+      "fundingRate": "0.00004072",
+      "markPrice": "0.00325000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787097600000,
+      "fundingRate": "0.00004729",
+      "markPrice": "0.00324400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787112000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00324500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787126400000,
+      "fundingRate": "-0.00008624",
+      "markPrice": "0.00323800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787140800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00324910",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787155200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00333324",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787169600009,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00334245",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787184000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00343146",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787198400011,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00341070",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787212800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00343665",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787227200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00350081",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787241600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00356600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787256000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00354800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787270400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00361435",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787284800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00363122",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787299200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00372486",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787313600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00383368",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787328000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00387931",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787342400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00385059",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787356800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00394882",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787371200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00406691",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787385600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00395002",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787400000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00382300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787414400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00382439",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787428800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00384900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787443200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00380900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787457600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00367102",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787472000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00365539",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787486400002,
+      "fundingRate": "0.00005181",
+      "markPrice": "0.00379000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787500800006,
+      "fundingRate": "0.00008868",
+      "markPrice": "0.00382000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787515200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00383200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787529600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00385128",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787544000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00371157",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787558400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00370069",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787572800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00377667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787587200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376702",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787601600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00372800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787616000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00372300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787630400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787644800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00373800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787659200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376078",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787673600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00373977",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787688000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00370000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787702400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00362255",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787716800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00366168",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787731200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00365600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787745600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00366560",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787760000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00363135",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787774400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00365126",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787788800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00375200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787803200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00368600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787817600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00368900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787832000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00371100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787846400013,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00374780",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787860800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00370887",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787875200026,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00376500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787889600008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00369148",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787904000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00367467",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787918400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00368600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787932800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00365067",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787947200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00360436",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787961600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00366600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787976000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00366200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1787990400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00364600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788004800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00362900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788019200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00369365",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788033600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00366400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788048000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00366167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788062400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00365850",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788076800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00367208",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788091200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00374400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788105600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00371566",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788120000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00370437",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788134400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00355100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788148800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00361800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788163200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00364837",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788177600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00362233",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788192000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00358426",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788206400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00357216",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788220800005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00359600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788235200007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00362381",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788249600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00362900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788264000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00365700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788278400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00364422",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788292800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00359730",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788307200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00361960",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788321600000,
+      "fundingRate": "0.00002989",
+      "markPrice": "0.00370974",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788336000001,
+      "fundingRate": "-0.00986414",
+      "markPrice": "0.00425446",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788350400000,
+      "fundingRate": "-0.02000000",
+      "markPrice": "0.00548000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788354000000,
+      "fundingRate": "-0.00697976",
+      "markPrice": "0.00565700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788357600002,
+      "fundingRate": "-0.00464262",
+      "markPrice": "0.00544687",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788361200004,
+      "fundingRate": "-0.00296505",
+      "markPrice": "0.00525600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788364800005,
+      "fundingRate": "-0.00356539",
+      "markPrice": "0.00503277",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788368400000,
+      "fundingRate": "-0.00272376",
+      "markPrice": "0.00499634",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788372000003,
+      "fundingRate": "-0.00248857",
+      "markPrice": "0.00484072",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788375600000,
+      "fundingRate": "-0.00224951",
+      "markPrice": "0.00498016",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788379200000,
+      "fundingRate": "-0.00571951",
+      "markPrice": "0.00511534",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788382800004,
+      "fundingRate": "-0.00518370",
+      "markPrice": "0.00502400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788386400001,
+      "fundingRate": "-0.00507006",
+      "markPrice": "0.00500582",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788390000002,
+      "fundingRate": "-0.00514888",
+      "markPrice": "0.00499085",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788393600000,
+      "fundingRate": "-0.00529034",
+      "markPrice": "0.00507113",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788397200000,
+      "fundingRate": "-0.00570483",
+      "markPrice": "0.00489200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788400800001,
+      "fundingRate": "-0.00508313",
+      "markPrice": "0.00503100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788404400004,
+      "fundingRate": "-0.00374666",
+      "markPrice": "0.00496400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788408000000,
+      "fundingRate": "-0.00296837",
+      "markPrice": "0.00466044",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788411600002,
+      "fundingRate": "-0.00258130",
+      "markPrice": "0.00472700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788415200001,
+      "fundingRate": "-0.00285450",
+      "markPrice": "0.00468506",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788418800000,
+      "fundingRate": "-0.00240698",
+      "markPrice": "0.00456155",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788422400000,
+      "fundingRate": "-0.00131734",
+      "markPrice": "0.00445593",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788426000001,
+      "fundingRate": "-0.00150617",
+      "markPrice": "0.00448600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788429600002,
+      "fundingRate": "-0.00118450",
+      "markPrice": "0.00439600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788433200007,
+      "fundingRate": "-0.00108165",
+      "markPrice": "0.00440656",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788436800002,
+      "fundingRate": "-0.00087183",
+      "markPrice": "0.00443700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788440400000,
+      "fundingRate": "-0.00201896",
+      "markPrice": "0.00450970",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788444000005,
+      "fundingRate": "-0.00170756",
+      "markPrice": "0.00455300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788447600000,
+      "fundingRate": "-0.00099720",
+      "markPrice": "0.00455922",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788451200000,
+      "fundingRate": "-0.00063426",
+      "markPrice": "0.00454514",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788454800000,
+      "fundingRate": "-0.00057452",
+      "markPrice": "0.00452417",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788458400000,
+      "fundingRate": "-0.00041294",
+      "markPrice": "0.00450200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788462000000,
+      "fundingRate": "-0.00043961",
+      "markPrice": "0.00451810",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788465600000,
+      "fundingRate": "-0.00059493",
+      "markPrice": "0.00452100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788469200000,
+      "fundingRate": "-0.00127202",
+      "markPrice": "0.00454390",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788472800000,
+      "fundingRate": "-0.00115651",
+      "markPrice": "0.00454489",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788476400000,
+      "fundingRate": "-0.00146976",
+      "markPrice": "0.00449327",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788480000000,
+      "fundingRate": "-0.00149895",
+      "markPrice": "0.00455000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788483600000,
+      "fundingRate": "-0.00149331",
+      "markPrice": "0.00438900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788487200000,
+      "fundingRate": "-0.00075466",
+      "markPrice": "0.00431500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788490800005,
+      "fundingRate": "-0.00070792",
+      "markPrice": "0.00435529",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788494400000,
+      "fundingRate": "-0.00110096",
+      "markPrice": "0.00435748",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788498000005,
+      "fundingRate": "-0.00122383",
+      "markPrice": "0.00434115",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788501600003,
+      "fundingRate": "-0.00091845",
+      "markPrice": "0.00430400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788505200000,
+      "fundingRate": "-0.00059763",
+      "markPrice": "0.00435900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788508800000,
+      "fundingRate": "-0.00049824",
+      "markPrice": "0.00431570",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788512400007,
+      "fundingRate": "-0.00045077",
+      "markPrice": "0.00433165",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788516000000,
+      "fundingRate": "-0.00074262",
+      "markPrice": "0.00430400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788519600003,
+      "fundingRate": "-0.00089444",
+      "markPrice": "0.00430300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788523200003,
+      "fundingRate": "-0.00156982",
+      "markPrice": "0.00442200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788526800002,
+      "fundingRate": "-0.00079934",
+      "markPrice": "0.00430500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788530400000,
+      "fundingRate": "-0.00060295",
+      "markPrice": "0.00431600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788534000000,
+      "fundingRate": "-0.00049599",
+      "markPrice": "0.00429200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788537600009,
+      "fundingRate": "-0.00039030",
+      "markPrice": "0.00434564",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788541200001,
+      "fundingRate": "-0.00026880",
+      "markPrice": "0.00429817",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788544800001,
+      "fundingRate": "-0.00020874",
+      "markPrice": "0.00431079",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788548400002,
+      "fundingRate": "-0.00025563",
+      "markPrice": "0.00432032",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788552000000,
+      "fundingRate": "-0.00028825",
+      "markPrice": "0.00428619",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788555600000,
+      "fundingRate": "-0.00036114",
+      "markPrice": "0.00428700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788559200000,
+      "fundingRate": "-0.00030793",
+      "markPrice": "0.00424288",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788562800007,
+      "fundingRate": "-0.00024639",
+      "markPrice": "0.00421048",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788566400000,
+      "fundingRate": "-0.00040361",
+      "markPrice": "0.00426427",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788570000001,
+      "fundingRate": "-0.00034485",
+      "markPrice": "0.00421333",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788573600002,
+      "fundingRate": "-0.00030470",
+      "markPrice": "0.00417800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788577200000,
+      "fundingRate": "-0.00022860",
+      "markPrice": "0.00420900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788580800001,
+      "fundingRate": "-0.00024451",
+      "markPrice": "0.00424200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788584400007,
+      "fundingRate": "-0.00032569",
+      "markPrice": "0.00428100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788588000005,
+      "fundingRate": "-0.00034519",
+      "markPrice": "0.00428400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788591600000,
+      "fundingRate": "-0.00027751",
+      "markPrice": "0.00422200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788595200000,
+      "fundingRate": "-0.00024047",
+      "markPrice": "0.00420600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788598800002,
+      "fundingRate": "-0.00012470",
+      "markPrice": "0.00424200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788602400005,
+      "fundingRate": "-0.00012818",
+      "markPrice": "0.00424350",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788606000002,
+      "fundingRate": "-0.00003802",
+      "markPrice": "0.00424533",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788609600007,
+      "fundingRate": "-0.00013181",
+      "markPrice": "0.00429522",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788613200000,
+      "fundingRate": "-0.00020009",
+      "markPrice": "0.00435200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788616800000,
+      "fundingRate": "-0.00016164",
+      "markPrice": "0.00427072",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788620400000,
+      "fundingRate": "-0.00013951",
+      "markPrice": "0.00423980",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788624000001,
+      "fundingRate": "-0.00012001",
+      "markPrice": "0.00427900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788627600000,
+      "fundingRate": "-0.00014808",
+      "markPrice": "0.00425500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788631200002,
+      "fundingRate": "-0.00016106",
+      "markPrice": "0.00424400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788634800000,
+      "fundingRate": "-0.00016587",
+      "markPrice": "0.00422850",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788638400000,
+      "fundingRate": "-0.00006761",
+      "markPrice": "0.00424400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788642000000,
+      "fundingRate": "-0.00000160",
+      "markPrice": "0.00425800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788645600000,
+      "fundingRate": "-0.00004343",
+      "markPrice": "0.00429800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788649200003,
+      "fundingRate": "-0.00002263",
+      "markPrice": "0.00431631",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788652800000,
+      "fundingRate": "-0.00011007",
+      "markPrice": "0.00431800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788667200005,
+      "fundingRate": "-0.00648302",
+      "markPrice": "0.00457130",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788681600000,
+      "fundingRate": "-0.00405703",
+      "markPrice": "0.00454400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788696000001,
+      "fundingRate": "-0.00237914",
+      "markPrice": "0.00454000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788710400004,
+      "fundingRate": "-0.00094140",
+      "markPrice": "0.00450300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788724800000,
+      "fundingRate": "-0.00143835",
+      "markPrice": "0.00446700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788739200004,
+      "fundingRate": "-0.00296013",
+      "markPrice": "0.00450680",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788753600001,
+      "fundingRate": "-0.00467212",
+      "markPrice": "0.00459900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788768000000,
+      "fundingRate": "-0.00166548",
+      "markPrice": "0.00438196",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788782400000,
+      "fundingRate": "-0.00129972",
+      "markPrice": "0.00440123",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788796800003,
+      "fundingRate": "-0.00100719",
+      "markPrice": "0.00436000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788811200000,
+      "fundingRate": "-0.00107553",
+      "markPrice": "0.00440400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788825600004,
+      "fundingRate": "-0.00176582",
+      "markPrice": "0.00440300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788840000000,
+      "fundingRate": "-0.00308352",
+      "markPrice": "0.00442700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788854400002,
+      "fundingRate": "-0.00177863",
+      "markPrice": "0.00438800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788868800006,
+      "fundingRate": "-0.00147164",
+      "markPrice": "0.00438200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788883200001,
+      "fundingRate": "-0.00053967",
+      "markPrice": "0.00443500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788897600002,
+      "fundingRate": "-0.00104235",
+      "markPrice": "0.00436800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788912000005,
+      "fundingRate": "-0.00131885",
+      "markPrice": "0.00438000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788926400004,
+      "fundingRate": "-0.00046873",
+      "markPrice": "0.00426331",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788940800004,
+      "fundingRate": "-0.00053960",
+      "markPrice": "0.00439700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788955200004,
+      "fundingRate": "-0.00034387",
+      "markPrice": "0.00436352",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788969600002,
+      "fundingRate": "-0.00065824",
+      "markPrice": "0.00440200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788984000000,
+      "fundingRate": "-0.00025635",
+      "markPrice": "0.00436456",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1788998400000,
+      "fundingRate": "-0.00072449",
+      "markPrice": "0.00434350",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789012800000,
+      "fundingRate": "-0.00030018",
+      "markPrice": "0.00423400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789027200007,
+      "fundingRate": "-0.00011630",
+      "markPrice": "0.00418050",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789041600000,
+      "fundingRate": "-0.00005509",
+      "markPrice": "0.00417157",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789056000002,
+      "fundingRate": "0.00003262",
+      "markPrice": "0.00421900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789070400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00420803",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789084800008,
+      "fundingRate": "-0.00001327",
+      "markPrice": "0.00420104",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789099200005,
+      "fundingRate": "-0.00012158",
+      "markPrice": "0.00420000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789113600000,
+      "fundingRate": "-0.00014869",
+      "markPrice": "0.00424014",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789128000000,
+      "fundingRate": "-0.00001832",
+      "markPrice": "0.00416500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789142400000,
+      "fundingRate": "-0.00000652",
+      "markPrice": "0.00422834",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789156800004,
+      "fundingRate": "0.00003087",
+      "markPrice": "0.00424800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789171200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00427000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789185600002,
+      "fundingRate": "-0.00002824",
+      "markPrice": "0.00429672",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789200000003,
+      "fundingRate": "0.00004162",
+      "markPrice": "0.00429500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789214400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00435100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789228800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00437100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789243200000,
+      "fundingRate": "-0.00004600",
+      "markPrice": "0.00437135",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789257600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00434300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789272000007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00436050",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789286400000,
+      "fundingRate": "0.00002166",
+      "markPrice": "0.00438300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789300800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00431300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789315200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00437900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789329600000,
+      "fundingRate": "-0.00010343",
+      "markPrice": "0.00443623",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789344000000,
+      "fundingRate": "0.00003100",
+      "markPrice": "0.00439300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789358400000,
+      "fundingRate": "-0.00002206",
+      "markPrice": "0.00446400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789372800000,
+      "fundingRate": "-0.00085213",
+      "markPrice": "0.00461010",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789387200002,
+      "fundingRate": "-0.02000000",
+      "markPrice": "0.00532834",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789390800000,
+      "fundingRate": "-0.00390100",
+      "markPrice": "0.00493900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789394400001,
+      "fundingRate": "-0.00350126",
+      "markPrice": "0.00521900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789398000003,
+      "fundingRate": "-0.00290419",
+      "markPrice": "0.00513202",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789401600000,
+      "fundingRate": "-0.00194909",
+      "markPrice": "0.00496026",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789405200001,
+      "fundingRate": "-0.00134607",
+      "markPrice": "0.00495400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789408800000,
+      "fundingRate": "-0.00082252",
+      "markPrice": "0.00482300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789412400006,
+      "fundingRate": "-0.00043561",
+      "markPrice": "0.00478800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789416000008,
+      "fundingRate": "-0.00057675",
+      "markPrice": "0.00481300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789419600001,
+      "fundingRate": "-0.00070849",
+      "markPrice": "0.00478872",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789423200002,
+      "fundingRate": "-0.00088270",
+      "markPrice": "0.00483700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789426800000,
+      "fundingRate": "-0.00176224",
+      "markPrice": "0.00480700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789430400000,
+      "fundingRate": "-0.00361936",
+      "markPrice": "0.00487654",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789434000002,
+      "fundingRate": "-0.00676623",
+      "markPrice": "0.00525595",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789437600000,
+      "fundingRate": "-0.00485353",
+      "markPrice": "0.00498800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789441200002,
+      "fundingRate": "-0.00503371",
+      "markPrice": "0.00497070",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789444800001,
+      "fundingRate": "-0.00369685",
+      "markPrice": "0.00473700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789448400001,
+      "fundingRate": "-0.00200495",
+      "markPrice": "0.00469700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789452000000,
+      "fundingRate": "-0.00153466",
+      "markPrice": "0.00472107",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789455600000,
+      "fundingRate": "-0.00200429",
+      "markPrice": "0.00476000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789459200005,
+      "fundingRate": "-0.00407728",
+      "markPrice": "0.00478400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789462800000,
+      "fundingRate": "-0.00168364",
+      "markPrice": "0.00469400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789466400000,
+      "fundingRate": "-0.00146467",
+      "markPrice": "0.00468700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789470000002,
+      "fundingRate": "-0.00110429",
+      "markPrice": "0.00467400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789473600005,
+      "fundingRate": "-0.00097864",
+      "markPrice": "0.00470200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789477200000,
+      "fundingRate": "-0.00090485",
+      "markPrice": "0.00470900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789480800002,
+      "fundingRate": "-0.00059761",
+      "markPrice": "0.00465200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789484400001,
+      "fundingRate": "-0.00053901",
+      "markPrice": "0.00464300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789488000001,
+      "fundingRate": "-0.00033852",
+      "markPrice": "0.00464800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789491600001,
+      "fundingRate": "-0.00036872",
+      "markPrice": "0.00465468",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789495200005,
+      "fundingRate": "-0.00035057",
+      "markPrice": "0.00463597",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789498800000,
+      "fundingRate": "-0.00030640",
+      "markPrice": "0.00458300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789502400000,
+      "fundingRate": "-0.00018838",
+      "markPrice": "0.00459932",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789506000000,
+      "fundingRate": "-0.00022729",
+      "markPrice": "0.00451100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789509600002,
+      "fundingRate": "-0.00035489",
+      "markPrice": "0.00443800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789513200002,
+      "fundingRate": "-0.00047852",
+      "markPrice": "0.00449221",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789516800001,
+      "fundingRate": "-0.00065396",
+      "markPrice": "0.00443205",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789520400000,
+      "fundingRate": "-0.00024371",
+      "markPrice": "0.00441937",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789524000000,
+      "fundingRate": "-0.00037023",
+      "markPrice": "0.00437400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789527600000,
+      "fundingRate": "-0.00022532",
+      "markPrice": "0.00436239",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789531200002,
+      "fundingRate": "-0.00012642",
+      "markPrice": "0.00433824",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789534800000,
+      "fundingRate": "-0.00008972",
+      "markPrice": "0.00434805",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789538400006,
+      "fundingRate": "-0.00009725",
+      "markPrice": "0.00441958",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789542000000,
+      "fundingRate": "-0.00024847",
+      "markPrice": "0.00447900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789545600002,
+      "fundingRate": "-0.00044661",
+      "markPrice": "0.00441600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789549200000,
+      "fundingRate": "-0.00029662",
+      "markPrice": "0.00440000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789552800000,
+      "fundingRate": "-0.00017497",
+      "markPrice": "0.00438407",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789556400001,
+      "fundingRate": "-0.00015240",
+      "markPrice": "0.00435900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789560000002,
+      "fundingRate": "-0.00005157",
+      "markPrice": "0.00434747",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789563600000,
+      "fundingRate": "-0.00011000",
+      "markPrice": "0.00433400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789567200007,
+      "fundingRate": "-0.00005621",
+      "markPrice": "0.00431900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789570800000,
+      "fundingRate": "-0.00016619",
+      "markPrice": "0.00429700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789574400001,
+      "fundingRate": "-0.00005171",
+      "markPrice": "0.00428724",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789578000000,
+      "fundingRate": "0.00001250",
+      "markPrice": "0.00431600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789581600000,
+      "fundingRate": "-0.00008681",
+      "markPrice": "0.00428701",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789585200002,
+      "fundingRate": "-0.00010679",
+      "markPrice": "0.00430700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789588800000,
+      "fundingRate": "-0.00002214",
+      "markPrice": "0.00430389",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789592400006,
+      "fundingRate": "0.00000301",
+      "markPrice": "0.00436200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789596000000,
+      "fundingRate": "-0.00008802",
+      "markPrice": "0.00438300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789599600003,
+      "fundingRate": "-0.00006214",
+      "markPrice": "0.00437309",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789603200000,
+      "fundingRate": "-0.00002513",
+      "markPrice": "0.00445133",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789606800001,
+      "fundingRate": "-0.00168377",
+      "markPrice": "0.00450450",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789610400002,
+      "fundingRate": "-0.00061978",
+      "markPrice": "0.00446800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789614000000,
+      "fundingRate": "-0.00036178",
+      "markPrice": "0.00445106",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789617600004,
+      "fundingRate": "-0.00033248",
+      "markPrice": "0.00447996",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789621200000,
+      "fundingRate": "-0.00039263",
+      "markPrice": "0.00444500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789624800002,
+      "fundingRate": "-0.00026726",
+      "markPrice": "0.00444601",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789628400002,
+      "fundingRate": "-0.00020802",
+      "markPrice": "0.00448500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789632000003,
+      "fundingRate": "-0.00026132",
+      "markPrice": "0.00448400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789635600000,
+      "fundingRate": "-0.00020126",
+      "markPrice": "0.00451347",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789639200000,
+      "fundingRate": "-0.00023703",
+      "markPrice": "0.00442600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789642800000,
+      "fundingRate": "-0.00016188",
+      "markPrice": "0.00441600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789646400000,
+      "fundingRate": "-0.00013408",
+      "markPrice": "0.00439600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789650000001,
+      "fundingRate": "-0.00013563",
+      "markPrice": "0.00441991",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789653600000,
+      "fundingRate": "-0.00041528",
+      "markPrice": "0.00445800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789657200000,
+      "fundingRate": "-0.00039359",
+      "markPrice": "0.00443657",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789660800000,
+      "fundingRate": "-0.00019179",
+      "markPrice": "0.00441700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789664400000,
+      "fundingRate": "-0.00013865",
+      "markPrice": "0.00441100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789668000006,
+      "fundingRate": "-0.00020564",
+      "markPrice": "0.00441000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789671600002,
+      "fundingRate": "-0.00016991",
+      "markPrice": "0.00441300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789675200001,
+      "fundingRate": "-0.00019367",
+      "markPrice": "0.00441000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789678800002,
+      "fundingRate": "-0.00021583",
+      "markPrice": "0.00440900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789682400004,
+      "fundingRate": "-0.00030705",
+      "markPrice": "0.00439800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789686000001,
+      "fundingRate": "-0.00029906",
+      "markPrice": "0.00440500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789689600003,
+      "fundingRate": "-0.00055782",
+      "markPrice": "0.00443300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789693200000,
+      "fundingRate": "-0.00063958",
+      "markPrice": "0.00442800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789696800000,
+      "fundingRate": "-0.00040740",
+      "markPrice": "0.00443500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789700400002,
+      "fundingRate": "-0.00029669",
+      "markPrice": "0.00442911",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789704000000,
+      "fundingRate": "-0.00020542",
+      "markPrice": "0.00446100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789707600004,
+      "fundingRate": "-0.00018883",
+      "markPrice": "0.00444817",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789711200005,
+      "fundingRate": "-0.00017791",
+      "markPrice": "0.00443300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789714800000,
+      "fundingRate": "-0.00007982",
+      "markPrice": "0.00443649",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789718400006,
+      "fundingRate": "-0.00056953",
+      "markPrice": "0.00459000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789722000000,
+      "fundingRate": "-0.00091170",
+      "markPrice": "0.00471527",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789725600000,
+      "fundingRate": "-0.00052583",
+      "markPrice": "0.00456828",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789729200000,
+      "fundingRate": "-0.00018985",
+      "markPrice": "0.00460400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789732800000,
+      "fundingRate": "-0.00016779",
+      "markPrice": "0.00461611",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789736400001,
+      "fundingRate": "-0.00017050",
+      "markPrice": "0.00459800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789740000001,
+      "fundingRate": "-0.00003655",
+      "markPrice": "0.00464400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789743600005,
+      "fundingRate": "-0.00012932",
+      "markPrice": "0.00469025",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789747200000,
+      "fundingRate": "-0.00022746",
+      "markPrice": "0.00470800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789750800002,
+      "fundingRate": "-0.00044939",
+      "markPrice": "0.00481084",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789754400005,
+      "fundingRate": "-0.00059162",
+      "markPrice": "0.00477400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789758000002,
+      "fundingRate": "-0.00015688",
+      "markPrice": "0.00479200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789761600001,
+      "fundingRate": "-0.00006336",
+      "markPrice": "0.00475700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789765200009,
+      "fundingRate": "-0.00001997",
+      "markPrice": "0.00475700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789768800001,
+      "fundingRate": "-0.00003630",
+      "markPrice": "0.00476400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789772400000,
+      "fundingRate": "-0.00005213",
+      "markPrice": "0.00477063",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789776000000,
+      "fundingRate": "-0.00006690",
+      "markPrice": "0.00480800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789779600000,
+      "fundingRate": "-0.00001111",
+      "markPrice": "0.00474938",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789783200000,
+      "fundingRate": "-0.00003545",
+      "markPrice": "0.00469808",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789786800007,
+      "fundingRate": "-0.00002333",
+      "markPrice": "0.00479900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789790400000,
+      "fundingRate": "-0.00016344",
+      "markPrice": "0.00481126",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789794000002,
+      "fundingRate": "-0.00023284",
+      "markPrice": "0.00481657",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789797600000,
+      "fundingRate": "-0.00033758",
+      "markPrice": "0.00471772",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789801200000,
+      "fundingRate": "-0.00013649",
+      "markPrice": "0.00474300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789804800002,
+      "fundingRate": "-0.00014632",
+      "markPrice": "0.00470700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789808400004,
+      "fundingRate": "-0.00003597",
+      "markPrice": "0.00472900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789812000002,
+      "fundingRate": "-0.00001353",
+      "markPrice": "0.00476842",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789815600000,
+      "fundingRate": "-0.00003606",
+      "markPrice": "0.00476000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789819200000,
+      "fundingRate": "0.00001250",
+      "markPrice": "0.00479077",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789822800003,
+      "fundingRate": "-0.00002540",
+      "markPrice": "0.00479600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789826400004,
+      "fundingRate": "-0.00002939",
+      "markPrice": "0.00478450",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789830000000,
+      "fundingRate": "-0.00006372",
+      "markPrice": "0.00477906",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789833600000,
+      "fundingRate": "-0.00009401",
+      "markPrice": "0.00481100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789837200000,
+      "fundingRate": "-0.00003416",
+      "markPrice": "0.00487200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789840800000,
+      "fundingRate": "0.00000949",
+      "markPrice": "0.00486000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789844400006,
+      "fundingRate": "-0.00002776",
+      "markPrice": "0.00484800",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789848000000,
+      "fundingRate": "0.00000251",
+      "markPrice": "0.00483448",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789851600001,
+      "fundingRate": "0.00000554",
+      "markPrice": "0.00483913",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789855200000,
+      "fundingRate": "0.00001250",
+      "markPrice": "0.00480819",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789862400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.00485300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789876800000,
+      "fundingRate": "-0.00004926",
+      "markPrice": "0.00485440",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789891200000,
+      "fundingRate": "-0.00707351",
+      "markPrice": "0.00531502",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789905600004,
+      "fundingRate": "-0.00432543",
+      "markPrice": "0.00507688",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789920000000,
+      "fundingRate": "-0.00171259",
+      "markPrice": "0.00498864",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789934400000,
+      "fundingRate": "-0.00183008",
+      "markPrice": "0.00507200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789948800007,
+      "fundingRate": "-0.00248174",
+      "markPrice": "0.00511400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789963200002,
+      "fundingRate": "-0.00144941",
+      "markPrice": "0.00505419",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789977600004,
+      "fundingRate": "-0.00085881",
+      "markPrice": "0.00506000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "TUSDT",
+      "fundingTime": 1789992000000,
+      "fundingRate": "-0.00088867",
+      "markPrice": "0.00513200",
+      "rateType": "Regular"
+    }
+  ]
+}

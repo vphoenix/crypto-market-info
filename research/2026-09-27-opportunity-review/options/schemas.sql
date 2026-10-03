@@ -1,0 +1,1 @@
+SELECT table,name,type FROM system.columns WHERE database='crypto_market_info' AND table IN ('instrument','derivative_contract_spec','derivative_trading_rule','derivative_book_minute','derivative_book_second_delta','derivative_book_quality_minute','options_live_minute_commit','options_index_minute') ORDER BY table,position FORMAT JSONEachRow

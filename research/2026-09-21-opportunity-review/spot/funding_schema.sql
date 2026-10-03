@@ -1,0 +1,1 @@
+DESCRIBE TABLE crypto_market_info.funding_rate_hourly

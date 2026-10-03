@@ -1,0 +1,7 @@
+{
+  "name": "depth-bybit-LSK",
+  "url": "https://api.bybit.com/v5/market/orderbook?category=linear&limit=200&symbol=LSKUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:19.847119+00:00",
+  "sha256": "a6051a5d29e77ef69de0c28787db7c1051ec3f83e606e7138ab0fccacd34d5cd",
+  "rows": null
+}

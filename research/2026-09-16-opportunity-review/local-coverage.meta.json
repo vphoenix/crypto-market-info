@@ -1,0 +1,7 @@
+{
+  "name": "local-coverage",
+  "url": "http://127.0.0.1:8123/?readonly=1&max_execution_time=45&max_threads=2",
+  "retrieved_at_utc": "2026-09-16T10:31:15.822824+00:00",
+  "sha256": "399e7c0bb27810aad0f6aae85b3922fa2556f7fd0cc5f44383a62e2b56718bd9",
+  "rows": 9
+}

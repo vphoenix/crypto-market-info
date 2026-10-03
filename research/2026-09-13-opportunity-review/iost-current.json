@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Bybit-ticker",
+    "url": "https://api.bybit.com/v5/market/tickers?category=linear&symbol=IOSTUSDT",
+    "fetched_at": "2026-09-12T19:22:27.091870+00:00",
+    "payload_sha256": "1a3212c505fe9a7e75affab4a2892162e3a2427ea5ac09e8e640a78cc1eece10",
+    "data": {
+      "retCode": 0,
+      "retMsg": "OK",
+      "result": {
+        "category": "linear",
+        "list": [
+          {
+            "symbol": "IOSTUSDT",
+            "lastPrice": "0.0008747",
+            "indexPrice": "0.0008785",
+            "markPrice": "0.0008747",
+            "prevPrice24h": "0.0008838",
+            "price24hPcnt": "-0.010296",
+            "highPrice24h": "0.0009351",
+            "lowPrice24h": "0.0008462",
+            "prevPrice1h": "0.0008660",
+            "openInterest": "4150774732",
+            "openInterestValue": "3630682.66",
+            "singleOpenInterest": "2075387366",
+            "singleOpenInterestValue": "1815341.33",
+            "turnover24h": "11689316.8845",
+            "volume24h": "13190979694.0000",
+            "fundingRate": "-0.00219168",
+            "nextFundingTime": "1789243200000",
+            "predictedDeliveryPrice": "",
+            "basisRate": "",
+            "deliveryFeeRate": "",
+            "deliveryTime": "0",
+            "ask1Size": "57872",
+            "bid1Price": "0.0008741",
+            "ask1Price": "0.0008747",
+            "bid1Size": "1550260",
+            "basis": "",
+            "preOpenPrice": "",
+            "preQty": "",
+            "curPreListingPhase": "",
+            "fundingIntervalHour": "1",
+            "basisRateYear": "",
+            "fundingCap": "0.02"
+          }
+        ]
+      },
+      "retExtInfo": {},
+      "time": 1789240948491
+    }
+  },
+  {
+    "name": "OKX-funding",
+    "url": "https://www.okx.com/api/v5/public/funding-rate?instId=IOST-USDT-SWAP",
+    "fetched_at": "2026-09-12T19:22:27.092706+00:00",
+    "payload_sha256": "e3fe918f5a113abe0c089e34f4057053c59967c9c564c41880e169f88e285280",
+    "data": {
+      "code": "0",
+      "data": [
+        {
+          "formulaType": "withRate",
+          "fundingRate": "-0.0040750830990355",
+          "fundingTime": "1789243200000",
+          "impactValue": "2000.0000000000000000",
+          "instId": "IOST-USDT-SWAP",
+          "instType": "SWAP",
+          "interestRate": "0.0001000000000000",
+          "maxFundingRate": "0.01",
+          "method": "current_period",
+          "minFundingRate": "-0.01",
+          "nextFundingRate": "",
+          "nextFundingTime": "1789257600000",
+          "premium": "-0.0095804751236326",
+          "prevFundingTime": "1789228800000",
+          "settFundingRate": "-0.0039290875051888",
+          "settState": "settled",
+          "ts": "1789240942367"
+        }
+      ],
+      "msg": ""
+    }
+  },
+  {
+    "name": "OKX-mark",
+    "url": "https://www.okx.com/api/v5/public/mark-price?instType=SWAP&instId=IOST-USDT-SWAP",
+    "fetched_at": "2026-09-12T19:22:27.095055+00:00",
+    "payload_sha256": "c0026bd5e23926f34aae373d86788d8870191b64f3b9f909d20efb5c90fba746",
+    "data": {
+      "code": "0",
+      "data": [
+        {
+          "instId": "IOST-USDT-SWAP",
+          "instType": "SWAP",
+          "markPx": "0.0008685",
+          "ts": "1789240947962"
+        }
+      ],
+      "msg": ""
+    }
+  }
+]

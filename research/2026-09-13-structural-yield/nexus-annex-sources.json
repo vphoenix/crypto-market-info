@@ -1,0 +1,23 @@
+[
+  {
+    "name": "usds",
+    "url": "https://api.nexusmutual.io/ipfs/QmXL6mHEHJwtW3QLMBvXKL8vqwM4kdsK1dUS9mUhVqEgCa",
+    "at": "2026-09-13T13:54:02.318246+00:00",
+    "sha256": "e434592c2e4299d2d49b59b2f09552b6e4fcc8975bf189e6ae1005f01cf05bd9",
+    "raw_path": "research/2026-09-13-structural-yield/nexus-usds-annex.pdf"
+  },
+  {
+    "name": "usde-old",
+    "url": "https://api.nexusmutual.io/ipfs/QmUVa9Dsm7aW6kRv5zaBf389Bw61r9gMVUYTiM6vosNiqW",
+    "at": "2026-09-13T13:54:02.319268+00:00",
+    "sha256": "ed683d702c8f7b019babfa00bfb1bff8d8e19f8ff6b41a73876c2a678bff4bae",
+    "raw_path": "research/2026-09-13-structural-yield/nexus-usde-old-annex.pdf"
+  },
+  {
+    "name": "usde",
+    "url": "https://api.nexusmutual.io/ipfs/QmVPqHBpDVh2hk64LS7hXPm6BVK5a7UeHdRGpH5SqmU6SM",
+    "at": "2026-09-13T13:54:02.319702+00:00",
+    "sha256": "ee4984798b65080c2cb93fc693feecd3b3224afd054ede91a02cba27c5418a81",
+    "raw_path": "research/2026-09-13-structural-yield/nexus-usde-annex.pdf"
+  }
+]

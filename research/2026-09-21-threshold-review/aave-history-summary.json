@@ -1,0 +1,50 @@
+{
+  "usdc_LAST_WEEK": {
+    "points": 168,
+    "earliest": "2026-09-14T16:00:00+00:00",
+    "latest": "2026-09-21T15:00:00+00:00",
+    "interval_seconds": [
+      3600
+    ],
+    "arithmetic_mean_source_avg_apy_pct": "3.950546347823903511088453225",
+    "min_source_avg_apy_pct": "3.015399775422384857218671000",
+    "max_source_avg_apy_pct": "10.98237817197105451391705110",
+    "note": "Source avgRate sample mean; not realized index growth, not a forecast, not post-entry-million net yield."
+  },
+  "usdc_LAST_MONTH": {
+    "points": 181,
+    "earliest": "2026-08-22T15:00:00+00:00",
+    "latest": "2026-09-21T15:00:00+00:00",
+    "interval_seconds": [
+      14400
+    ],
+    "arithmetic_mean_source_avg_apy_pct": "3.800495663100570393898277030",
+    "min_source_avg_apy_pct": "3.123011199274466996725598000",
+    "max_source_avg_apy_pct": "6.111377349560305269917560400",
+    "note": "Source avgRate sample mean; not realized index growth, not a forecast, not post-entry-million net yield."
+  },
+  "usdt_LAST_WEEK": {
+    "points": 168,
+    "earliest": "2026-09-14T16:00:00+00:00",
+    "latest": "2026-09-21T15:00:00+00:00",
+    "interval_seconds": [
+      3600
+    ],
+    "arithmetic_mean_source_avg_apy_pct": "3.413380388692454235048106834",
+    "min_source_avg_apy_pct": "2.328560308136611138808731700",
+    "max_source_avg_apy_pct": "4.646007132078428299562527200",
+    "note": "Source avgRate sample mean; not realized index growth, not a forecast, not post-entry-million net yield."
+  },
+  "usdt_LAST_MONTH": {
+    "points": 181,
+    "earliest": "2026-08-22T15:00:00+00:00",
+    "latest": "2026-09-21T15:00:00+00:00",
+    "interval_seconds": [
+      14400
+    ],
+    "arithmetic_mean_source_avg_apy_pct": "3.505506296851192026975411027",
+    "min_source_avg_apy_pct": "3.010728107296667821040937900",
+    "max_source_avg_apy_pct": "4.289546516530600432785176800",
+    "note": "Source avgRate sample mean; not realized index growth, not a forecast, not post-entry-million net yield."
+  }
+}

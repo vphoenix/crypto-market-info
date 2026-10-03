@@ -1,0 +1,7 @@
+{
+  "name": "local-btc-spot-minutes",
+  "url": "http://127.0.0.1:8123/?readonly=1&max_execution_time=30&max_threads=2",
+  "retrieved_at_utc": "2026-09-16T10:36:42.418745+00:00",
+  "sha256": "fc8793cafe76bd13a16fe17d001ee06bb035884c3d711abc17d231920835c6e4",
+  "rows": 2875
+}

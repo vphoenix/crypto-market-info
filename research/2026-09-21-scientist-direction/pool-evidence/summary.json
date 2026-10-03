@@ -1,0 +1,387 @@
+{
+  "chain_id": 1,
+  "block_number": 26026824,
+  "block_hash": "0xb82563fe24bbe9c5b51b788916ca0234032c9d255d25bd8dabbc88a59fb5a67a",
+  "block_time_utc": "2026-09-21T15:37:35+00:00",
+  "finality_at_request": "latest/unfinalized",
+  "factory": "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+  "tokens": {
+    "USDC": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "DAI": "0x6b175474e89094c44da98b954eedeac495271d0f",
+    "USDS": "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+    "USDT": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    "WETH": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+  },
+  "pools": [
+    {
+      "pair": [
+        "USDC",
+        "DAI"
+      ],
+      "fee_pips": 100,
+      "purpose": "strategy",
+      "address": "0x5777d92f208679db4b9778590fa3cab3ac9e2168",
+      "exists": true,
+      "state": {
+        "token0": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "fee": "100",
+        "tickSpacing": "1",
+        "slot0": {
+          "sqrt_price_x96": "79227474893338435293478",
+          "tick": -276325,
+          "raw_words": [
+            "79227474893338435293478",
+            "115792089237316195423570985008687907853269984665640564039457584007913129363611",
+            "154",
+            "300",
+            "300",
+            "68",
+            "1"
+          ]
+        },
+        "liquidity": "9494380560155720854598"
+      }
+    },
+    {
+      "pair": [
+        "USDC",
+        "DAI"
+      ],
+      "fee_pips": 500,
+      "purpose": "strategy",
+      "address": "0x6c6bc977e13df9b0de53b251522280bb72383700",
+      "exists": true,
+      "state": {
+        "token0": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "fee": "500",
+        "tickSpacing": "10",
+        "slot0": {
+          "sqrt_price_x96": "79232078197869708472218",
+          "tick": -276324,
+          "raw_words": [
+            "79232078197869708472218",
+            "115792089237316195423570985008687907853269984665640564039457584007913129363612",
+            "21",
+            "300",
+            "300",
+            "68",
+            "1"
+          ]
+        },
+        "liquidity": "465075865399973497172"
+      }
+    },
+    {
+      "pair": [
+        "USDC",
+        "DAI"
+      ],
+      "fee_pips": 3000,
+      "purpose": "strategy",
+      "address": "0xa63b490aa077f541c9d64bfc1cc0db2a752157b5",
+      "exists": true,
+      "state": {
+        "token0": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "fee": "3000",
+        "tickSpacing": "60",
+        "slot0": {
+          "sqrt_price_x96": "79180030946267208998966",
+          "tick": -276337,
+          "raw_words": [
+            "79180030946267208998966",
+            "115792089237316195423570985008687907853269984665640564039457584007913129363599",
+            "8",
+            "51",
+            "51",
+            "102",
+            "1"
+          ]
+        },
+        "liquidity": "2369566537092320"
+      }
+    },
+    {
+      "pair": [
+        "USDC",
+        "DAI"
+      ],
+      "fee_pips": 10000,
+      "purpose": "strategy",
+      "address": "0x6958686b6348c3d6d5f2dca3106a5c09c156873a",
+      "exists": true,
+      "state": {
+        "token0": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "token1": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "fee": "10000",
+        "tickSpacing": "200",
+        "slot0": {
+          "sqrt_price_x96": "79525826776398422865872",
+          "tick": -276250,
+          "raw_words": [
+            "79525826776398422865872",
+            "115792089237316195423570985008687907853269984665640564039457584007913129363686",
+            "0",
+            "1",
+            "1",
+            "102",
+            "1"
+          ]
+        },
+        "liquidity": "162769808593875"
+      }
+    },
+    {
+      "pair": [
+        "USDC",
+        "USDS"
+      ],
+      "fee_pips": 100,
+      "purpose": "strategy",
+      "address": "0x4eb5db0134fac94e66da89764d58a9f709d53a8f",
+      "exists": true,
+      "state": {
+        "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "token1": "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+        "fee": "100",
+        "tickSpacing": "1",
+        "slot0": {
+          "sqrt_price_x96": "79224934356618970567952259530314546",
+          "tick": 276323,
+          "raw_words": [
+            "79224934356618970567952259530314546",
+            "276323",
+            "0",
+            "1",
+            "1",
+            "68",
+            "1"
+          ]
+        },
+        "liquidity": "0"
+      }
+    },
+    {
+      "pair": [
+        "USDC",
+        "USDS"
+      ],
+      "fee_pips": 500,
+      "purpose": "strategy",
+      "address": "0x8aee53b873176d9f938d24a53a8ae5cf36276464",
+      "exists": true,
+      "state": {
+        "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "token1": "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+        "fee": "500",
+        "tickSpacing": "10",
+        "slot0": {
+          "sqrt_price_x96": "79215572092564859896910087030191947",
+          "tick": 276320,
+          "raw_words": [
+            "79215572092564859896910087030191947",
+            "276320",
+            "4",
+            "10",
+            "10",
+            "68",
+            "1"
+          ]
+        },
+        "liquidity": "0"
+      }
+    },
+    {
+      "pair": [
+        "USDC",
+        "USDS"
+      ],
+      "fee_pips": 3000,
+      "purpose": "strategy",
+      "address": "0xa66a2770bc0e0c65b63b5a3bb4560e90f95d6146",
+      "exists": true,
+      "state": {
+        "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "token1": "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+        "fee": "3000",
+        "tickSpacing": "60",
+        "slot0": {
+          "sqrt_price_x96": "79254960852297144537687358562566449",
+          "tick": 276330,
+          "raw_words": [
+            "79254960852297144537687358562566449",
+            "276330",
+            "287",
+            "360",
+            "360",
+            "102",
+            "1"
+          ]
+        },
+        "liquidity": "5976035482817496433"
+      }
+    },
+    {
+      "pair": [
+        "USDC",
+        "USDS"
+      ],
+      "fee_pips": 10000,
+      "purpose": "strategy",
+      "address": "0x0000000000000000000000000000000000000000",
+      "exists": false
+    },
+    {
+      "pair": [
+        "DAI",
+        "USDS"
+      ],
+      "fee_pips": 100,
+      "purpose": "strategy",
+      "address": "0x0000000000000000000000000000000000000000",
+      "exists": false
+    },
+    {
+      "pair": [
+        "DAI",
+        "USDS"
+      ],
+      "fee_pips": 500,
+      "purpose": "strategy",
+      "address": "0x0000000000000000000000000000000000000000",
+      "exists": false
+    },
+    {
+      "pair": [
+        "DAI",
+        "USDS"
+      ],
+      "fee_pips": 3000,
+      "purpose": "strategy",
+      "address": "0xe9f1e2ef814f5686c30ce6fb7103d0f780836c67",
+      "exists": true,
+      "state": {
+        "token0": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "token1": "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+        "fee": "3000",
+        "tickSpacing": "60",
+        "slot0": {
+          "sqrt_price_x96": "79214255952521709598322188609",
+          "tick": -4,
+          "raw_words": [
+            "79214255952521709598322188609",
+            "115792089237316195423570985008687907853269984665640564039457584007913129639932",
+            "0",
+            "1",
+            "1",
+            "102",
+            "1"
+          ]
+        },
+        "liquidity": "34695070093161996031380325"
+      }
+    },
+    {
+      "pair": [
+        "DAI",
+        "USDS"
+      ],
+      "fee_pips": 10000,
+      "purpose": "strategy",
+      "address": "0x0000000000000000000000000000000000000000",
+      "exists": false
+    },
+    {
+      "pair": [
+        "USDC",
+        "USDT"
+      ],
+      "fee_pips": 100,
+      "purpose": "settlement_reference",
+      "address": "0x3416cf6c708da44db2624d63ea0aaef7113527c6",
+      "exists": true,
+      "state": {
+        "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "token1": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "fee": "100",
+        "tickSpacing": "1",
+        "slot0": {
+          "sqrt_price_x96": "79234614661634825623924388583",
+          "tick": 1,
+          "raw_words": [
+            "79234614661634825623924388583",
+            "1",
+            "4",
+            "180",
+            "180",
+            "68",
+            "1"
+          ]
+        },
+        "liquidity": "40824547698652209"
+      }
+    },
+    {
+      "pair": [
+        "USDC",
+        "USDT"
+      ],
+      "fee_pips": 500,
+      "purpose": "settlement_reference",
+      "address": "0x7858e59e0c01ea06df3af3d20ac7b0003275d4bf",
+      "exists": true,
+      "state": {
+        "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "token1": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "fee": "500",
+        "tickSpacing": "10",
+        "slot0": {
+          "sqrt_price_x96": "79224609343279017822286665406",
+          "tick": -1,
+          "raw_words": [
+            "79224609343279017822286665406",
+            "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+            "134",
+            "300",
+            "300",
+            "68",
+            "1"
+          ]
+        },
+        "liquidity": "208047428251368"
+      }
+    },
+    {
+      "pair": [
+        "USDC",
+        "WETH"
+      ],
+      "fee_pips": 500,
+      "purpose": "gas_reference",
+      "address": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+      "exists": true,
+      "state": {
+        "token0": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "token1": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "fee": "500",
+        "tickSpacing": "10",
+        "slot0": {
+          "sqrt_price_x96": "1514211435513247533158170188540359",
+          "tick": 197171,
+          "raw_words": [
+            "1514211435513247533158170188540359",
+            "197171",
+            "589",
+            "723",
+            "723",
+            "68",
+            "1"
+          ]
+        },
+        "liquidity": "2835112974563738193"
+      }
+    }
+  ]
+}

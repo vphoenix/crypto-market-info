@@ -1,0 +1,22 @@
+[
+  [
+    "refresh-ETH-25JUN27",
+    "https://www.deribit.com/api/v2/public/get_order_book?instrument_name=ETH-25JUN27&depth=100"
+  ],
+  [
+    "refresh-ETH-25DEC26",
+    "https://www.deribit.com/api/v2/public/get_order_book?instrument_name=ETH-25DEC26&depth=100"
+  ],
+  [
+    "refresh-STETH_USDC",
+    "https://www.deribit.com/api/v2/public/get_order_book?instrument_name=STETH_USDC&depth=100"
+  ],
+  [
+    "refresh-STETH_ETH",
+    "https://www.deribit.com/api/v2/public/get_order_book?instrument_name=STETH_ETH&depth=100"
+  ],
+  [
+    "refresh-ETH_USDC",
+    "https://www.deribit.com/api/v2/public/get_order_book?instrument_name=ETH_USDC&depth=100"
+  ]
+]

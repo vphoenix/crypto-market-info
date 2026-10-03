@@ -1,0 +1,65 @@
+[
+  {
+    "instrument_id": 1,
+    "first": "2026-08-21 05:42:00",
+    "last": "2026-09-21 14:29:00",
+    "minutes": 37663,
+    "valid_seconds": 2251079
+  },
+  {
+    "instrument_id": 2,
+    "first": "2026-08-21 05:42:00",
+    "last": "2026-09-05 04:18:00",
+    "minutes": 16067,
+    "valid_seconds": 953287
+  },
+  {
+    "instrument_id": 3,
+    "first": "2026-08-21 05:42:00",
+    "last": "2026-09-21 14:29:00",
+    "minutes": 37819,
+    "valid_seconds": 2264310
+  },
+  {
+    "instrument_id": 4,
+    "first": "2026-08-21 05:42:00",
+    "last": "2026-09-05 04:18:00",
+    "minutes": 16385,
+    "valid_seconds": 979513
+  },
+  {
+    "instrument_id": 5,
+    "first": "2026-09-05 04:21:00",
+    "last": "2026-09-21 14:29:00",
+    "minutes": 21397,
+    "valid_seconds": 1282426
+  },
+  {
+    "instrument_id": 6,
+    "first": "2026-09-05 04:21:00",
+    "last": "2026-09-21 14:29:00",
+    "minutes": 21428,
+    "valid_seconds": 1284346
+  },
+  {
+    "instrument_id": 7,
+    "first": "2026-09-05 04:21:00",
+    "last": "2026-09-21 14:29:00",
+    "minutes": 21170,
+    "valid_seconds": 1261296
+  },
+  {
+    "instrument_id": 8,
+    "first": "2026-09-05 14:43:00",
+    "last": "2026-09-07 04:23:00",
+    "minutes": 2260,
+    "valid_seconds": 135580
+  },
+  {
+    "instrument_id": 9,
+    "first": "2026-09-05 14:43:00",
+    "last": "2026-09-07 04:23:00",
+    "minutes": 2260,
+    "valid_seconds": 135580
+  }
+]

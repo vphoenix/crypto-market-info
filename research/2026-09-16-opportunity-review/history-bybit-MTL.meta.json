@@ -1,0 +1,7 @@
+{
+  "name": "history-bybit-MTL",
+  "url": "https://api.bybit.com/v5/market/funding/history?category=linear&limit=200&symbol=MTLUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:15.128462+00:00",
+  "sha256": "de5c347b829f2310eda11d1199c35268890e531f6c7313c7a9d6f2774f1f07c0",
+  "rows": null
+}

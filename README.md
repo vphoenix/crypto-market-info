@@ -8,9 +8,11 @@
 - Ethereum Uniswap v3＋Sky 协议兑换状态、56档闭环报价及日志/回执（默认关闭；[采集与判断说明](docs/dex-arbitrage-implementation.md)）；
 - Deribit BTC/ETH 币本位与 USDC 期权、同到期期货的每秒10档、元数据与指数（默认关闭；[使用说明](docs/arbitrage/strategies/arb-0009-options-live.md)）；
 - Binance、OKX 和 Bybit 永续资金费率；
+- JustLend 能源租单清理 keeper 的事件、收据、只读模拟和资源／兑换成本，使用独立命令与五表研究库（[实现与运行说明](docs/justlend-keeper-data-implementation.md)）；
 - JustLend TRX 收益、TRON 原生质押，以及 SOL 第一、第二阶段收益（LST、原生质押、Kamino 和 Save）；
 - AVAX 第一阶段：OKX 公开出借 APR、Aave V3/V4 WAVAX 基础存款历史 APY；
-- AVAX 第二阶段：BENQI sAVAX、Ankr ankrAVAX 兑换率，以及 BENQI AVAX 基础借贷 APR、同块现金和退出规则（已部署；实际运行状态见运行说明）。
+- AVAX 第二阶段：BENQI sAVAX、Ankr ankrAVAX 兑换率，以及 BENQI AVAX 基础借贷 APR、同块现金和退出规则（已部署；实际运行状态见运行说明）；
+- Ethereum Lido stETH/wstETH 定额报价、官方赎回队列和 Binance ETHUSDT 对冲观测（独立研究库与常驻服务；[运行及数据边界](docs/lst-redemption-data-implementation.md)）。
 
 以后还可能增加其他 CEX、DEX、收益协议、链状态、桥和二层流通状态、借贷费率、指数价格、手续费或 gas 等公开数据。当前六张表不是最终边界；不同语义的数据应建立自己的定类型模型和表，不能全部塞入盘口或收益表。
 
@@ -21,6 +23,8 @@
 ## 当前机器的运行方式
 
 当前长期采集使用**宿主机原生 ClickHouse + 编译后的 collector + 用户级 systemd 开机服务**，不是 Docker Compose。`ubuntu` 用户已启用 linger，因此机器启动后无需登录就会拉起数据库和采集器。实际路径、启用的数据源、检查命令和重启注意事项见[当前部署与运行说明](docs/runtime-operations.md)。`docker compose ps` 为空不代表数据库未运行；在这台机器上不要直接执行下面的开发环境启动命令。
+
+LST 由 `crypto-market-info-lst.service` 独立运行 `lst-data watch`，写入 `crypto_market_info_lst`。当前以实时采集为主，只尝试恢复断线日志缺口，不运行 30/60 日回补；dRPC 日志查询的已知拒绝仍保留为失败，不能把事件缺口当作没有赎回活动。
 
 ## 可选的本地开发环境
 
@@ -199,10 +203,14 @@ JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer�
 ## 文档
 
 - [Ethereum DEX 采集与判断](docs/dex-arbitrage-implementation.md)：五表、固定路线、只读报告及成本情景。
+- [Reserve 拍卖与篮子申赎](docs/reserve-data-implementation.md)：DFX 六成分、三档金额、五表、查询和回补边界。
+- [Across 稳定币中继](docs/across-stablecoin-data-implementation.md)：Base／Arbitrum USDC、七表、实时 probe 与独立历史回补。
+- [JustLend keeper](docs/justlend-keeper-data-implementation.md)：TRON 租赁清理事件、收据、只读模拟与资源成本。
+- [LST 采集运行说明](docs/lst-redemption-data-implementation.md)：独立七表、常驻服务、限速、断线恢复、健康查询与当前来源限制。
 
 - [当前部署与运行说明](docs/runtime-operations.md)：实际运行服务、路径、配置、上游接口、只读检查和维护注意事项。
-- [系统总体架构](docs/architecture.md)：盘口、资金费率和收益三类采集分支、启动和失败边界、健康判断及未来数据扩展原则。
-- [市场数据与存储设计](docs/market-data-storage.md)：六张核心表及三张共有集合元数据表的数据字典。
+- [系统总体架构](docs/architecture.md)：主 collector 与独立研究采集器的关系、启动和失败边界、健康判断及扩展原则。
+- [市场数据与存储设计](docs/market-data-storage.md)：核心表、集合元数据及期权、DEX、研究专项表的字典和不变量。
 - [行情采集程序设计](docs/implementation-design.md)：旧代码复用、采集流程、ClickHouse 写入和实现顺序。
 - [Bybit USDT 线性永续采集设计](docs/bybit-usdt-perpetual-market-data.md)：产品筛选、1000 档序列、稀疏 ticker、限流和版本迁移的精确定义。
 - [USDT 线性永续共有交易对自动采集设计](docs/perpetual-common-universe.md)：启动时自动发现任意至少两家共有的永续交易对、异名字典、分片订阅和容量保护。

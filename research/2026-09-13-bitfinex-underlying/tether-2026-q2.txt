@@ -1,0 +1,488 @@
+TETHER INTERNATIONAL, S.A. DE C.V.
+ASSURANCE REPORT ACCORDING TO ISAE 3000R ON
+THE FINANCIALS FIGURES AND RESERVES REPORT
+
+
+
+
+LBG/MRD/git – RC187322026DV0171
+                                                                                         Tel: +39 02 58.20.10                              Viale Abruzzi, 94
+                                                                                         www.bdo.it                                        20131 - Milano
+
+
+
+
+ASSURANCE REPORT ACCORDING TO ISAE 3000R ON THE FINANCIALS FIGURES AND
+RESERVES REPORT
+
+
+To the Board of Directors of
+TETHER INTERNATIONAL, S.A. de C.V.
+
+We have been engaged by Tether Global Investments Fund SICAF SA to perform a reasonable assurance
+engagement on the Financials Figures and Reserves Report of Tether International, S.A. de C.V. (the
+“Company”) as at 30 June 2026, a copy of which has been attached to this report.
+
+
+Board of Director’s Responsibility for the Financials Figures and Reserves Report
+The Board of Director is responsible for the preparation of the Financials Figures and Reserves Report in
+compliance with the criteria, including Management’s Key Accounting Policies, set out in the Financials
+Figures and Reserves Report and for such internal control as Board of Directors determines is necessary to
+enable the preparation of the Financials Figures and Reserves Report that is free from material
+misstatement, whether due to fraud or error.
+
+
+Practitioner's Independence and quality control
+We have complied with the independence and all other ethical requirements of the Code of Ethics for
+Professional Accountants issued by the International Ethics Standards Board for Accountants, which is founded
+on fundamental principles of integrity, objectivity, professional competence and due care, confidentiality
+and professional behaviour.
+Our company applies International Standard on Quality Management 1, Quality Management for Firms that
+Perform Audits or Reviews of Financial Statements, or Other Assurance or Related Services Engagements
+(ISQM1) and, accordingly, maintains a system of quality control that includes directives and procedures
+concerning compliance with ethical requirements, professional standards and applicable legal and regulatory
+requirements.
+
+
+Practitioner’s responsibility
+Our responsibility is to express our conclusion based on the procedures performed about the compliance of
+the Financials Figures and Reserves Report with the criteria, including Management’s Key Accounting Policies,
+set out therein.
+We carried out our work in accordance with the criteria established in the International Standard on
+Assurance Engagements 3000 (Revised) ~ Assurance Engagements Other than Audits or Reviews of Historical
+Financial Information (“ISAE 3000 Revised"), issued by the International Auditing and Assurance Standards
+Board (IAASB) for reasonable assurance engagements. This standard requires that we plan and perform the
+engagement to obtain reasonable assurance whether the Financials Figures and Reserves Report is free from
+material misstatement.
+The procedures performed on the Financials Figures and Reserves Report are based on our professional
+judgement and include inquiries, primarily of the company’s personnel responsible for the preparation of the
+information presented in the Financials Figures and Reserves Report, analysis of documents, recalculations
+and other procedures aimed to obtain evidence, as appropriate.
+
+
+
+
+Bari, Bologna, Milano, Padova, Roma, Torino
+
+BDO Advisory Services S.r.l. - Sede Legale: Viale Abruzzi, 94 – 20131 Milano – Capitale Sociale Euro 987.000 i.v.
+Codice Fiscale, Partita IVA e Registro Imprese di Milano n. 12149120961– R.E.A. Milano 2643982
+Soggetta all’attività di direzione e coordinamento da parte di WeHolding S.r.l.
+BDO Advisory Services S.r.l. è membro di BDO International Limited, società di diritto inglese (company limited by guarantee), e fa parte della rete
+internazionale BDO, network di società indipendenti.
+000                                                                                                                                                            Page 1 of 3
+Specifically, we carried out the following procedures:
+     ▪    obtain an understanding of internal control over the preparation of the subject matter information
+          relevant to the engagement;
+     ▪    perform enquiries with the management on the business operation of the last quarter, identifying
+          material changes;
+     ▪    compare financial data between the current Financials Figures and Reserves Report and the ones of
+          the previous periods and discussion of possible significant differences;
+     ▪    obtain confirmation letters directly from banks and depositaries and verify the reconciliations
+          performed by management between the amounts in the accounting ledger/system and the bank
+          statement to confirm the existence of the assets disclosed in the Financials Figures and Reserves
+          Report;
+     ▪    obtain reports from a specialized provider relating to inventory and quality testing, on sample basis,
+          of precious metals and performing inventory procedures in order to confirm the existence of assets
+          disclosed in the Financials Figures and Reserves Report;
+     ▪    verify, for a significant sample, the correct valuation of the assets disclosed in the Financials Figures
+          and Reserves Report in accordance with the criteria described in the Management’s Key accounting
+          policies;
+     ▪    verify the reconciliations performed by management between the accounting ledger/system and the
+          ledgers on the various blockchains relating to assets and liabilities as at 30 June 2026;
+     ▪    verify, for a sample of outstanding secured loans, the existence of the collateral through the analysis
+          of the contract and of the transactions;
+     ▪    verify the correctness of the disclosures included in the Financials Figures and Reserves Report,
+          excluding the Notes.
+
+
+Conclusion
+In our opinion, the Financials Figures and Reserves Report, as prepared by the Board of Directors of the
+Company as of 30 June 2026, is, in all material respects, fairly presented in accordance with the criteria,
+including Management’s Key Accounting Policies, set out therein.
+
+
+Emphasis of Matter
+We draw attention to the following in the accompanying Financials Figures and Reserves Report:
+     ▪    The reporting date is limited to a point in time as of 30 June 2026. We did not perform procedures or
+          provide any assurance at any other date or time in this report.
+     ▪    Management’s Key Accounting Policies provide mainly the following:
+           - financial investments are valued at fair value in line with IFRS 9;
+           - investments in precious metals are valued at fair value;
+           - intangible digital assets are valued at fair value;
+           - secured loans are over collateralized and regularly monitored and are measured at amortised cost
+             (notional value for short-term secured loans) and adjusted for any expected credit loss allowance
+             (“ECL”) in line with IFRS 9;
+           - Tether tokens issued have been classified as refund liabilities in line with IFRS 9, which are
+             repayable on demand, and are recorded at the contractual redemption value of the tokens;
+           - other assets and other liabilities are valued at amortised cost (notional value for short-term assets
+             and liabilities) less any expected credit losses.
+
+
+
+
+TETHER INTERNATIONAL, S.A. DE C.V. | Assurance Report according to ISAE 3000R                             Page 2 of 3
+     ▪    The Board of Directors has applied a going concern basis of accounting to value the Company’s assets.
+          The going concern assessment requires significant judgment with regards to the Company’s liquidity,
+          market and credit risks. We do not provide any assurance in respect of such assessment.
+     ▪    The valuation of the assets of the Company is based on normal trading conditions and does not reflect
+          unexpected and extraordinary market conditions, or the case of key custodians or counterparties
+          experiencing substantial illiquidity, which may result in delayed realisable values. No provision for
+          expected credit losses was identified by management at the reporting date.
+     ▪    At the reporting date, Tether International, S.A. de C.V. is defendant in an ongoing civil litigation
+          proceeding, for which the outcome cannot yet be reasonably and reliably estimated by the Board of
+          Directors and its counsels and therefore no provision is recognised by management.
+     ▪    The digital tokens issued by Tether International, S.A. de C.V. allow holders to transact and settle
+          transactions in a rapid manner, which may be pseudonymous, and may be verified by the sender and
+          the recipient. The digital asset industry is nascent and innovating rapidly. Accordingly, any users of
+          digital assets, including those tokens issued by the Company, should first inform themselves of the
+          general risks and uncertainties of the industry, including as to evolving legal and regulatory
+          requirements. Users of Tether tokens should familiarize themselves with the risk disclosures, as they
+          may be changed and updated from time to time.
+Our opinion is not modified in respect of these matters.
+
+
+Basis of Accounting
+Without modifying our conclusion, we draw attention to the Management’s Key Accounting Policies included
+in the Financials Figures and Reserves Report, which describe the basis of accounting. The Financials Figures
+and Reserves Report is prepared by the Board of Directors of Tether International, S.A. de C.V. for
+transparency purposes. As a result, the Financials Figures and Reserves Report may not be suitable for
+another purpose.
+
+
+Scope limitations
+Our opinion is limited solely to the Financials Figures and Reserves Report and the corresponding total assets
+and total liabilities as of 30 June 2026. Activity prior to and after this time and date was not considered when
+testing the balances and information described above. In addition, we have not performed any procedures or
+provided any level of assurance on the financial or non-financial activity on dates or times other than that
+noted within this report.
+The Notes to the Financials Figures and Reserves Report are provided by the Board of Directors of the
+Company for additional information only, and this information has not been subject to the scope of our
+assurance engagement and, accordingly, we do not express an opinion or provide any assurance on it. Our
+responsibility is to read the other information in the Notes, and, in doing so, consider whether the other
+information is materially inconsistent with the Financials Figures and Reserves Report or our knowledge
+obtained in the course of the engagement, or otherwise appears to be materially misstated.
+
+
+
+Milan, 31 July 2026
+
+
+                                                                                BDO Advisory Services S.r.l.
+
+
+                                                                                       Lelio Bigogno
+                                                                                          Partner
+
+
+
+
+TETHER INTERNATIONAL, S.A. DE C.V. | Assurance Report according to ISAE 3000R                           Page 3 of 3
+        Financial
+Figures & Reserves Report
+This report includes financial information for and in respect of Tether International, S.A. de C.V.
+(ES) (the “Company”). This report does not represent the financial statements of the Company
+but discloses financial information extracted from its accounting records.
+
+The assets owned by the Company are considered to be reserves backing the fiat-denominated
+Tether tokens in circulation (the “Reserves”). The Reserves include all assets owned by the
+Company, including assets held in excess of those required to meet applicable regulatory reserve
+and liquidity requirements. Additional details are provided about the Reserves in the dedicated
+section below.
+
+Key financial figures as of 30 June 2026 and its comparative as of 31 December 2025 at 11:59 PM
+UTC are:
+
+
+
+    FINANCIAL FIGURES                                    30 June 2026                             31 December 2025
+
+
+
+    In US$ Millions                           Total         Total                                      Total
+                                                                            Equity   Total Assets                    Equity
+                                             Assets       Liabilities                                Liabilities
+
+    Tether International, S.A. de C.V. 1     187,751       (183,642)         4,110      192,878       (186,540)       6,338
+
+
+
+
+The value of the assets composing the Reserves as of 30 June 2026, exceeds the value of the
+liabilities of the Company issuing fiat-denominated Tether tokens by US$4,109,529,196.
+
+
+
+
+    CHANGE IN NET EQUITY                                                     During the period
+                                           As of beginning of                                                    As of
+                                               the period:                                                 end of the period:
+                                           31 December 2025                                                 30 June 2026
+    In US$ Millions                                                                      Net capital
+                                                                  Financial result
+                                                                                         movements
+
+    Tether International, S.A. de C.V.           6,338                   (3,171)             943                   4,110
+
+
+
+
+1
+    Figures are presented rounded; totals may not sum exactly due to rounding
+
+                                    Financial Figures and Reserves Report as of 30 June 2026
+                                              Authorized & approved on 31 July 2026
+
+
+
+
+                                                                Page 1
+Management’s Key Accounting Policies:
+
+  ●   This report is prepared using the recognition and measurement principles of IFRS as
+      issued by the IASB but does not contain sufficient information in terms of general
+      presentation, required primary statements, and disclosures to comply with IFRS.
+  ●   Management has applied a going concern basis of accounting to value the Company’s
+      assets.
+  ●   Financial investments are valued at fair value in line with IFRS 9.
+  ●   Investments in precious metals are valued at fair value.
+  ●   Intangible digital assets are valued at fair value.
+  ●   Secured loans are over collateralized and regularly monitored and are measured at
+      amortized cost (notional value for short-term secured loans) and adjusted for any
+      expected credit loss allowance (“ECL”) in line with IFRS 9.
+  ●   Tether tokens issued have been classified as refund liabilities in line with IFRS 9, which are
+      repayable on demand, and are recorded at the contractual redemption value of the tokens.
+  ●   Other assets and other liabilities are valued at amortized cost (notional value for short-
+      term assets and liabilities) less any ECL.
+  ●   The valuation of the assets of the Company is based on normal trading conditions and
+      does not reflect unexpected and extraordinary market conditions, or the case of key
+      custodians or counterparties experiencing substantial illiquidity, which may result in
+      delayed realizable values. No provision for ECL was identified by management at the
+      reporting date.
+
+
+
+
+                         Financial Figures and Reserves Report as of 30 June 2026
+                                   Authorized & approved on 31 July 2026
+
+
+
+
+                                                 Page 2
+                        Fiat denominated Tether tokens
+                                Reserves report
+     ●    Reporting Date: The reporting date is limited to a point in time as of 30 June 2026 at 11:59
+          PM UTC.
+
+     ●    The Reserves for Tether tokens in circulation amount to US$ 187,751,426,411
+
+     ●    The liabilities of the Company amount to US$ 183,641,897,215 of which US$
+          183,622,105,630 relates to digital tokens issued 2.
+
+     ●    The value of the assets composing the Reserves as of 30 June 2026 exceed the
+          value of the liabilities of the Company by US$ 4,109,529,196
+
+     ●    Key accounting policies: The policies disclosed above are applicable for the Reserves’
+          reporting.
+
+     ●    Outstanding Litigation: At the date stated above, the Company is a defendant in one civil
+          litigation proceeding, the outcome of which cannot yet be reasonably reliably estimated
+          by Company’s management and its counsel. No provision is recognized in the Financial
+          Figures and Reserves Report. The case is in the courts of New York. It is a class action
+          alleging a variety of claims relating to the drop in the price of bitcoin in 2017 and 2018.
+
+
+
+
+2
+  The liabilities related to digital tokens issued comprises the amount related to the total digital tokens issued less digital tokens
+held by the Company but not in its treasury wallet. Digital tokens in the treasury wallet are authorized but not yet issued and
+are not considered liabilities. The total gross contractual redemption value related to all digital tokens issued is equal to US$
+184,588,527,295. The amount related to digital tokens held by the Company but not in its treasury wallet is equal to US$
+808,077,231. The digital tokens held by the Company do not form any part of the assets or liabilities of the Company. As per
+its definition, contractual redemption value of the token takes into consideration the redemption fee of 10 basis points.
+
+                                   Financial Figures and Reserves Report as of 30 June 2026
+                                             Authorized & approved on 31 July 2026
+
+
+
+
+                                                               Page 3
+Assets at 30 June 2026
+
+At the reporting date, the breakdown of the Reserves backing the fiat-denominated Tether
+tokens in circulation is as follows:
+
+
+         Asset Category                                                                                US$
+
+          1.   Cash & Cash Equivalent & Other Short-Term Deposits:
+
+                  U.S. Treasury Bills 3                                                              114,960,963,604
+
+                  Overnight Reverse Repurchase Agreements 4                                           18,625,552,412
+
+                  Term Reverse Repurchase Agreements 5                                                 6,993,428,950
+
+                  Non-US Treasury Bills 6                                                                 22,374,689
+
+                  Cash & Bank Deposits 7                                                                  40,307,440
+
+         Subtotal: Cash Equivalent & Other Short-Term Deposits                                     140,642,627,095
+
+          2.   Corporate Bonds 8                                                                             8,711,171
+
+          3. Precious Metals 9                                                                         18,838,357,171
+
+          4. Bitcoin 10                                                                                5,801,630,681
+
+          5. Public Equities 11                                                                        3,761,438,892
+
+          6. Other Investments 12                                                                       5,244,911,675
+
+          7.   Secured Loans 13                                                                       13,453,749,726
+
+         Total Assets (1+2+3+4+5+6+7)                                                               187,751,426,411
+
+
+
+
+3
+   The “U.S. Treasury Bills” category comprises U.S. Treasury Bills with a weighted average maturity of less than 90 days.
+4
+   The “Overnight Reverse-Repurchase Agreements” category comprises Reverse-Repurchase Agreements with a maturity of
+1 day fully collateralized by US Treasuries, where the ultimate issuer or guarantor has a rating of at least A-3.
+5
+   The “Term Reverse-Repurchase Agreements” category comprises fully collateralized Reverse-Repurchase Agreements with
+a residual average maturity of less than 90 days, where the ultimate issuer or guarantor has a rating of at least A-3.
+6
+   The “Non-US Treasury Bills” have a weighted average maturity of less than 360 days.
+7
+   The “Cash & Bank Deposits” category comprises cash deposits at financial institutions.
+8
+   The “Corporate Bonds” have a residual average maturity of more than 360 days.
+9
+   The “Precious Metals” category comprises LBMA standard physical gold bars owned by the Company valued using an XAU
+price of US$ 4,008.02/Oz closing price as published by Bloomberg on 30 June 2026.
+10
+    The “Bitcoin” category comprises Bitcoins held on-chain in wallets controlled by the Company valued using a BTC price of
+US$ 58,642.15/Bitcoin closing price as published by Bloomberg on 30 June 2026.
+11
+   The “Public Equities” category comprises indirect gold, bitcoin, and other asset exposure, which are traded on active markets
+and are valued at their respective closing prices as published by Bloomberg on 30 June 2026.
+12
+    The “Other Investments” category comprises other investments within the Reserves that do not meet any of the criteria set
+out in the other categories.
+13
+     The “Secured Loans” category comprises loans over collateralized by assets, subject to margin call and liquidation
+mechanisms designed to maintain collateral coverage.
+
+                                   Financial Figures and Reserves Report as of 30 June 2026
+                                             Authorized & approved on 31 July 2026
+
+
+
+
+                                                            Page 4
+Other Information
+     ●   Cash and Cash Equivalent and other short-term deposits: At the reporting date, the value
+         of US treasuries provided as collateral for the Overnight Reverse Repurchase Agreement
+         activity, is as follows:
+
+                                                                                 Fair value of the US
+                                                Fair value                   Treasuries Collateralizing
+         In USD                                                                     the exposure 14
+
+         Overnight Reverse
+                                             18,625,552,412                         18,595,845,698
+         Repurchase Agreement
+
+
+
+
+     ●   Risks Associated with Digital Tokens: The digital tokens issued by the Company allow
+         holders to transact and settle transactions in a rapid manner, which may be pseudonymous,
+         and may be verified by the sender and the recipient. The digital asset industry is nascent
+         and innovating rapidly. Accordingly, any users of digital assets, including those tokens
+         issued by the Company, should first inform themselves of the general risks and
+         uncertainties of the industry, including as to evolving legal and regulatory requirements.
+         Users of Tether tokens should familiarize themselves with the risk disclosures, as they may
+         be changed and updated from time to time, available at the “Risk Disclosure Statement” tabs
+         at https://tether.to/legal/.
+
+
+
+
+Authorized and approved by the Board of Directors on 31 July 2026 and signed on behalf of the
+Board of Directors by Giancarlo Devasini, as Chairman of the Board of Directors:
+
+
+
+
+Giancarlo Devasini
+
+
+
+
+ Overnight Reverse Repurchase agreements are marked to market every morning, with adjustment to collateral as needed.
+14
+
+Any difference is due to intraday movements in collateral value.
+
+                               Financial Figures and Reserves Report as of 30 June 2026
+                                         Authorized & approved on 31 July 2026
+
+
+
+
+                                                       Page 5
+                         Notes to the Financial Figures
+                             and Reserves Report
+                   (no assurance provided by the independent auditor on these notes)
+
+     1.   Responsibilities of Management:
+
+          Management is responsible for the preparation and fair presentation of this Financial
+          Figures and Reserves Report, and for such internal control as management determines is
+          necessary to enable its preparation free from material misstatement.
+
+     2. Background Information:
+
+
+          2.1.   The Company is an El Salvador Sociedad Anónima de Capital Variable. The Company
+                 is registered as a Money Services Business with the Financial Crimes Enforcement
+                 Network of the U.S. Department of the Treasury. Following the Company’s relocation
+                 to El Salvador, the Company reports to the Financial Investigation Unit of El Salvador
+                 pursuant to applicable law.
+
+          2.2.   The Company is an authorized Stablecoin Issuer and Digital Assets Service Provider
+                 under the Digital Asset Issuance Law of El Salvador and is subject to the regulatory
+                 requirements specified by the National Commission of Digital Assets of El Salvador.
+
+          2.3.   Tether tokens are stablecoin utility tokens that facilitate commercial transactions and
+                 activity in various marketplaces. As of the reporting date, Tether tokens are available
+                 on 13 discrete blockchains 15, all as approved by the Company. The total number of
+                 authorized and issued tokens is made publicly available by the Company. All Tether
+                 tokens are backed by an equivalent amount of assets held in Reserves. The use of
+                 fiat-denominated Tether tokens is governed by Tether’s terms of service, as they may
+                 be changed and updated from time to time, available at https://tether.to/legal/
+
+
+
+
+15
+  Tether tokens are currently issued on the Ethereum, Tron, Ton, Liquid, Solana, Avalanche, Tezos, Near, Cosmos, Celo, Kaia,
+Aptos, and Polkadot Asset Hub blockchains. On 1 September 2025, the Company ceased to be obligated to accept redemption
+of all remaining USD₮ on the Kusama, Bitcoin Cash SLP, Omni layer (Bitcoin), EOS and Algorand blockchains. On 27 November
+2025, the Company ceased to be obligated to accept redemption of all remaining EUR₮. On 20 February 2026, the Company
+announced that, effective 20 February 2027, it will no longer be obligated to accept redemptions of CNH₮.
+
+                                 Financial Figures and Reserves Report as of 30 June 2026
+                                           Authorized & approved on 31 July 2026
+
+
+
+
+                                                          Page 6
+

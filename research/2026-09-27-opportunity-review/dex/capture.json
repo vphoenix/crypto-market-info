@@ -1,0 +1,26 @@
+[
+  {
+    "name": "coverage",
+    "captured_at_utc": "2026-09-26T16:28:10.699438+00:00",
+    "http_status": 200,
+    "sha256": "576274a8263bf6b8b0c443ab113816d3dacb8387101702cef4936ede30bcfa68"
+  },
+  {
+    "name": "latest",
+    "captured_at_utc": "2026-09-26T16:28:10.721237+00:00",
+    "http_status": 200,
+    "sha256": "a6ea1f0187ed9a4a96e9ba2165d13b2c3cec25e7907c5c82c2255085c09dc99f"
+  },
+  {
+    "name": "size_summary",
+    "captured_at_utc": "2026-09-26T16:28:10.727506+00:00",
+    "http_status": 200,
+    "sha256": "afb6abd613bf5441cddbf2d307b43817b4bd6c44146a4f85f0920dc81f22328b"
+  },
+  {
+    "name": "latest_sizes",
+    "captured_at_utc": "2026-09-26T16:28:11.247804+00:00",
+    "http_status": 200,
+    "sha256": "b83c6011a8090f60998d6fe9870912f599ab42cdc0854fc8c147659cf76919cc"
+  }
+]

@@ -1,0 +1,61 @@
+[
+  {
+    "name": "chbank-account-terms.pdf",
+    "url": "https://www.chbank.com/data/media/document/account_terms_2024_eng.pdf",
+    "status": 200,
+    "bytes": 945950,
+    "sha256": "501d477bae417e1e881ed0f56e2080848bf94e8d5569b4f90b380f9ce5b2b231",
+    "fetched_at": "2026-09-13T13:48:13.219939+00:00"
+  },
+  {
+    "name": "chbank-deposit-protection.pdf",
+    "url": "https://www.chbank.com/en/pdf/tools/deposit_protection.pdf",
+    "status": 200,
+    "bytes": 149665,
+    "sha256": "93fef94f5fa6ae368e7d8697570af6cc86a390753943babe7d87fb63a79d48e8",
+    "fetched_at": "2026-09-13T13:48:12.846004+00:00"
+  },
+  {
+    "name": "chbank-fees.pdf",
+    "url": "https://www.chbank.com/data/media/document/20190520-173820090.pdf",
+    "status": "OBSOLETE: actual effective date 2009-07-01; do not use for current costs",
+    "bytes": 247295,
+    "sha256": "8f3e9b3102f332982002facdd155ef8c9df1c4e6f1ce9fbd8b6652c72919736f",
+    "fetched_at": "2026-09-13T13:48:12.869078+00:00"
+  },
+  {
+    "name": "dps-member-list.xls",
+    "url": "https://www.dps.org.hk/wp-content/uploads/2026/08/ListofSchemeMembers_Last-updated-14-Aug-2026.xls",
+    "status": 200,
+    "bytes": 47104,
+    "sha256": "5e45f724730e176534f30e31588d45334add33440ac6a9c4ddb84b850033fa21",
+    "fetched_at": "2026-09-13T13:48:13.443376+00:00"
+  },
+  {
+    "name": "chbank-fees-2023.pdf",
+    "url": "https://www.chbank.com/data/media/document/service_charge_20230103.pdf",
+    "sha256": "ccb1044d4741112e13fa79fdabcc820c417cc839e347de437d5272eb95e6916b",
+    "fetched_at": "2026-09-13T13:52:01.675158+00:00",
+    "verification": "PDF has outlined/scanned text; rendered and visually read with view_image; 2023 p2 remittance fees, 2024 p2 audit letter only"
+  },
+  {
+    "name": "chbank-fees-amendment-2024.pdf",
+    "url": "https://www.chbank.com/data/media/document/PBMD_SC04_0124E.pdf",
+    "sha256": "ae476a1dd47b5a5eeb4a55a7c385906fb2d9df2473d611235d45f7ecf1f34a94",
+    "fetched_at": "2026-09-13T13:52:01.130930+00:00",
+    "verification": "PDF has outlined/scanned text; rendered and visually read with view_image; 2023 p2 remittance fees, 2024 p2 audit letter only"
+  },
+  {
+    "name": "chbank-fees-amendment-2025.html",
+    "url": "https://www.chbank.com/tc/personal/footer/about-ch-bank/corporate-news/news-releases/news_20250915.shtml",
+    "sha256": "9417ad7ada7c02147175af24f2b811b95857c357a62576857e486ea7e89dce5c",
+    "fetched_at": "2026-09-13T13:52:00.307563+00:00"
+  },
+  {
+    "name": "chbank-new-customer.html",
+    "url": "https://www.chbank.com/offer/nfs2/index.html",
+    "sha256": "516352a6f3ddc957ef87be677554ebdfaf4dbe1cf71002ebb77f6b58ed9491ae",
+    "archive_written_at_utc": "2026-09-13T13:46:15.493786+00:00",
+    "status": "current Sep2026 offer; Chinese prevails; English USD heading typo"
+  }
+]

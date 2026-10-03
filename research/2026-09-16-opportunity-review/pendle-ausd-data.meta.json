@@ -1,0 +1,7 @@
+{
+  "name": "pendle-ausd-data",
+  "url": "https://api-v2.pendle.finance/core/v2/143/markets/0x6f99cf00ee7290ae78a072bb6910ef72d1129fe7/data",
+  "retrieved_at_utc": "2026-09-16T10:34:08.060975+00:00",
+  "sha256": "d6b17ee6a9551da782b0e422faecfb0b837c03c9c4da1c875b04167f422eb0b5",
+  "rows": null
+}

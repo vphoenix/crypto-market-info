@@ -1,0 +1,558 @@
+{
+  "generated_at_utc": "2026-09-12T19:28:18.216573+00:00",
+  "note": "File hashes preserve these research artifacts. Public HTTP response hashes and source times are stored separately in source snapshot records. File write time is not market source time.",
+  "files": [
+    {
+      "file": "analyze-funding-books.py",
+      "bytes": 2852,
+      "sha256": "5e5c50b35142ad3237d23cb3d8f244022398dd3e6c81e085e9674c04560db435",
+      "file_written_at_utc": "2026-09-12T19:22:40.204805+00:00"
+    },
+    {
+      "file": "analyze-funding.py",
+      "bytes": 2517,
+      "sha256": "ae1c6db31265ffd824406e308280fbfcf45946c1031387b48a4bdab76f1ec8bf",
+      "file_written_at_utc": "2026-09-12T19:26:04.397658+00:00"
+    },
+    {
+      "file": "analyze_local.py",
+      "bytes": 4054,
+      "sha256": "eb133b2843016f06a55de5eaaf3426bd3f292157bdff35e726113f092941faeb",
+      "file_written_at_utc": "2026-09-12T19:15:01.478466+00:00"
+    },
+    {
+      "file": "analyze_one_funding.py",
+      "bytes": 2992,
+      "sha256": "ee7a57371ed648071fb3598286aa40bb788126820793b0f9b061f72e7050d824",
+      "file_written_at_utc": "2026-09-12T19:22:23.076793+00:00"
+    },
+    {
+      "file": "analyze_public_funding.py",
+      "bytes": 1573,
+      "sha256": "06a2b8fa8b7ff1dfbb8a050bbea992570cb52dcd9781cd8abfc1f85347a3233b",
+      "file_written_at_utc": "2026-09-12T19:26:22.919111+00:00"
+    },
+    {
+      "file": "binance-funding-intervals.json",
+      "bytes": 179310,
+      "sha256": "bd76e2582d00488313ea0d6045aaf175555c171f578372980e65a03286f4630d",
+      "file_written_at_utc": "2026-09-12T19:23:52.758779+00:00"
+    },
+    {
+      "file": "book-freshness.json",
+      "bytes": 1741,
+      "sha256": "140945578001fa6d64f21c95d33411f81b4d71d35c8f9e8c31df288d1d2c3b8c",
+      "file_written_at_utc": "2026-09-12T19:12:26.883457+00:00"
+    },
+    {
+      "file": "book-freshness.sql",
+      "bytes": 402,
+      "sha256": "9aff636223ae340badbebada11f797f1961c296575e0fde9767c5003d294db64",
+      "file_written_at_utc": "2026-09-12T19:12:37.819699+00:00"
+    },
+    {
+      "file": "btc-book.json",
+      "bytes": 10364182,
+      "sha256": "ee853c8119036ec49a93f1dbe31c9f74063f7bb65eff56debd7e38381feadef8",
+      "file_written_at_utc": "2026-09-12T19:13:58.896484+00:00"
+    },
+    {
+      "file": "btc-book.sql",
+      "bytes": 281,
+      "sha256": "85cc5eabd327fee61882e4cd4af9996228ceab13910f57ad0f688838fd0ca791",
+      "file_written_at_utc": "2026-09-12T19:13:54.171185+00:00"
+    },
+    {
+      "file": "check_dated_depth.py",
+      "bytes": 2945,
+      "sha256": "73613e91db63fd7a530da5a536e4f7055c27d0faf5465690333ddd9f67740785",
+      "file_written_at_utc": "2026-09-12T19:14:55.104655+00:00"
+    },
+    {
+      "file": "external-verification.md",
+      "bytes": 9310,
+      "sha256": "3392d36641b6e150bd456e7b41f8ed4a1cb308f2331ecd290c86874814db60c3",
+      "file_written_at_utc": "2026-09-12T19:19:03.484527+00:00"
+    },
+    {
+      "file": "fetch-funding-current.py",
+      "bytes": 966,
+      "sha256": "34f2969b6bc544a465bb4eda5d222a96be28478ba55076aff228572d30798f3e",
+      "file_written_at_utc": "2026-09-12T19:19:11.439462+00:00"
+    },
+    {
+      "file": "fetch-funding.py",
+      "bytes": 1893,
+      "sha256": "1c69422674a7103688747272f2d8c4f97dc4065eeb81c7041837e25be764fab5",
+      "file_written_at_utc": "2026-09-12T19:19:35.399618+00:00"
+    },
+    {
+      "file": "fetch-iost-current.py",
+      "bytes": 1022,
+      "sha256": "cbdf14964236bfca4304e41ec26f9d64dd2ff6b5236bddc0196ea8e6960e22a3",
+      "file_written_at_utc": "2026-09-12T19:22:27.050064+00:00"
+    },
+    {
+      "file": "fetch_dated_futures.py",
+      "bytes": 2306,
+      "sha256": "bc1d74ebae9d75857ba1404b36df13730c4cdc46d9f081dc7270c639163232a1",
+      "file_written_at_utc": "2026-09-12T19:13:39.535261+00:00"
+    },
+    {
+      "file": "funding-analysis.txt",
+      "bytes": 15408,
+      "sha256": "39cd6f02e69491ca8aabf70b977f33cabb015a81e1d98c8f9e04be9a8764a4a4",
+      "file_written_at_utc": "2026-09-12T19:17:22.563841+00:00"
+    },
+    {
+      "file": "funding-books-analysis.txt",
+      "bytes": 5687,
+      "sha256": "87ac0f1acc4f5ee86de6d2120e3e997c83869889c90c50611c7335db27b16e2b",
+      "file_written_at_utc": "2026-09-12T19:22:40.270134+00:00"
+    },
+    {
+      "file": "funding-candidate-current.json",
+      "bytes": 11505,
+      "sha256": "a737be0ab0bc7aa5904eb4cda715187676ea00738d1e5eb49ea1a4f56bd4acb6",
+      "file_written_at_utc": "2026-09-12T19:19:33.781579+00:00"
+    },
+    {
+      "file": "funding-complete-window-analysis.txt",
+      "bytes": 20318,
+      "sha256": "2df0274e0f7a8dceea1bdac547dbcfd6f1d08c5a1d8f6d40e07fd96c67f95913",
+      "file_written_at_utc": "2026-09-12T19:26:04.450520+00:00"
+    },
+    {
+      "file": "funding-conditional-scenarios.json",
+      "bytes": 2501,
+      "sha256": "03cb059f8b8192df2b262a28f048f7c678101e8f2c413376219e5fbda51d272d",
+      "file_written_at_utc": "2026-09-12T19:23:21.016667+00:00"
+    },
+    {
+      "file": "funding-meta.json",
+      "bytes": 191,
+      "sha256": "2c4b3862e10f4029bc2499a7af5097b82ce5b130ce7abf410c4e1e4ff0f6b5a0",
+      "file_written_at_utc": "2026-09-12T19:14:38.729172+00:00"
+    },
+    {
+      "file": "funding-meta.sql",
+      "bytes": 188,
+      "sha256": "05d4de17783656d7bf7e172eb0120a76f1d4d2c4e1fe4bea9abf48d607eb6563",
+      "file_written_at_utc": "2026-09-12T19:14:38.623929+00:00"
+    },
+    {
+      "file": "funding-verification.md",
+      "bytes": 11191,
+      "sha256": "344d52ad6b2c556e068267b963aac35a257b5ac1c2db91573ce1bd895aa19ba2",
+      "file_written_at_utc": "2026-09-12T19:28:17.957108+00:00"
+    },
+    {
+      "file": "funding.json",
+      "bytes": 354614,
+      "sha256": "d4a45c7208ad961adfe35b0c29664aee09699b0bcde11bb7ec81e39ddb3414d9",
+      "file_written_at_utc": "2026-09-12T19:12:42.469844+00:00"
+    },
+    {
+      "file": "funding.sql",
+      "bytes": 258,
+      "sha256": "713ef9a8f3b045b02a8197a3ebe4b14fce945be626c0d4c5539b2ed4971968df",
+      "file_written_at_utc": "2026-09-12T19:12:37.821882+00:00"
+    },
+    {
+      "file": "grid-public-current.json",
+      "bytes": 9009,
+      "sha256": "5ef3efa90327e85d1f2e054550880c5298f0757ff27aad213707018e35540d37",
+      "file_written_at_utc": "2026-09-12T19:13:35.011213+00:00"
+    },
+    {
+      "file": "grid-validation.json",
+      "bytes": 23261,
+      "sha256": "db1894c64ddb2cbd35a1b8823547b865638a1798b6477e5f1e8f0896497ad25d",
+      "file_written_at_utc": "2026-09-12T19:14:20.569785+00:00"
+    },
+    {
+      "file": "grid-verification.md",
+      "bytes": 10783,
+      "sha256": "4fc274fd71b05314a4882df0e9d9484960679d27f588ba395b0d15051502a4a4",
+      "file_written_at_utc": "2026-09-12T19:17:11.474948+00:00"
+    },
+    {
+      "file": "instruments.json",
+      "bytes": 3267,
+      "sha256": "55afc0547435f5d4810891a6c38bf52d15e5fffb02bb43364092efbfeded8e01",
+      "file_written_at_utc": "2026-09-12T19:12:22.853183+00:00"
+    },
+    {
+      "file": "instruments.sql",
+      "bytes": 50,
+      "sha256": "4e5e221025487f297408d8c7d646a763d5caca812766f898f7e2bf4158917601",
+      "file_written_at_utc": "2026-09-12T19:12:37.819307+00:00"
+    },
+    {
+      "file": "iost-current.json",
+      "bytes": 3283,
+      "sha256": "02bf8274207ad13176dffc3088d5c51e72ec88c3a038edcff474e172791ba90f",
+      "file_written_at_utc": "2026-09-12T19:22:28.894906+00:00"
+    },
+    {
+      "file": "local-analysis.json",
+      "bytes": 18313,
+      "sha256": "56b168d2fa6320f8b86bc8d245036c1f9f840d6bd31cee6ef9dce2824ba21c9f",
+      "file_written_at_utc": "2026-09-12T19:15:01.743695+00:00"
+    },
+    {
+      "file": "market-anomaly-followup.json",
+      "bytes": 916804,
+      "sha256": "d0ed50018004ea274820af418f99e285c9f539c1ef7e5d13d7e961f6664ccf53",
+      "file_written_at_utc": "2026-09-12T19:19:59.877818+00:00"
+    },
+    {
+      "file": "market-anomaly-public.json",
+      "bytes": 2159325,
+      "sha256": "85e0f6efb8d0cb2d340de382b9e6383694335145860ee70ba3ea114a6d363959",
+      "file_written_at_utc": "2026-09-12T19:18:37.017500+00:00"
+    },
+    {
+      "file": "market-anomaly-validation.json",
+      "bytes": 8811,
+      "sha256": "bc3b65b1fe4b4d42a114d78da78d573d00dfa886e398fde8d0f52c7cee669464",
+      "file_written_at_utc": "2026-09-12T19:22:58.965735+00:00"
+    },
+    {
+      "file": "market-anomaly-verification.md",
+      "bytes": 8253,
+      "sha256": "a3251535ee45e3ac74e0c7859e5ee9e417d647dde2edca641dda62bcd159c2d8",
+      "file_written_at_utc": "2026-09-12T19:22:59.096529+00:00"
+    },
+    {
+      "file": "market-identity-conflicts.json",
+      "bytes": 801,
+      "sha256": "cac6a9dbce059378a19a6201b8a22e34a195a19546bb146edb3fe585433cfb25",
+      "file_written_at_utc": "2026-09-12T19:20:50.346087+00:00"
+    },
+    {
+      "file": "official-okx-to-list-perpetual-futures-for-bb-rdw-and-lunr-equities.html",
+      "bytes": 70916,
+      "sha256": "6db17d57ea2a7986f5a19c97ab27853ea43a67cad89e8717a24375af0a03189a",
+      "file_written_at_utc": "2026-09-12T19:19:59.866009+00:00"
+    },
+    {
+      "file": "official-okx-to-list-perpetual-futures-for-qnt-equity.html",
+      "bytes": 69843,
+      "sha256": "1e7c905e147b2bf06f8a285967c6ba3e668eb31674f554354e8e15039bb2ac93",
+      "file_written_at_utc": "2026-09-12T19:19:58.955458+00:00"
+    },
+    {
+      "file": "okx-dated-depth-raw.json",
+      "bytes": 190495,
+      "sha256": "746470a89e9f46b49f59526dc9366cc7a1b36ee6e014d4ede1df6b7b2ffa7168",
+      "file_written_at_utc": "2026-09-12T19:15:02.054164+00:00"
+    },
+    {
+      "file": "okx-dated-depth-screen.json",
+      "bytes": 7768,
+      "sha256": "92416fd2b54cd88e1b500070bfaf1be1d51ddbac37565e5893f8b712ac4552ee",
+      "file_written_at_utc": "2026-09-12T19:15:02.054478+00:00"
+    },
+    {
+      "file": "okx-dated-futures-raw.json",
+      "bytes": 477668,
+      "sha256": "6a8d750b18f4cd452e89aca01db12fa3923007f858701ad29e531896678da481",
+      "file_written_at_utc": "2026-09-12T19:13:43.644716+00:00"
+    },
+    {
+      "file": "okx-dated-futures-screen.json",
+      "bytes": 6650,
+      "sha256": "404ce7c00823b38bd0d44984ec4edc2034382ea0bc4a02bb3dc390919124c074",
+      "file_written_at_utc": "2026-09-12T19:13:43.645066+00:00"
+    },
+    {
+      "file": "one-funding-analysis.json",
+      "bytes": 4621,
+      "sha256": "e377e223575efc4ea737fb5b844a2e2c62d5ed07751a650864e0ea23793899e3",
+      "file_written_at_utc": "2026-09-12T19:22:23.175917+00:00"
+    },
+    {
+      "file": "one-funding-verification.md",
+      "bytes": 7428,
+      "sha256": "6348a5fa7d9d0ceec2acd6f1bdef6179141e08f67eb13623d256727674290970",
+      "file_written_at_utc": "2026-09-12T19:23:51.773755+00:00"
+    },
+    {
+      "file": "public-funding-AVAXUSDT.json",
+      "bytes": 11455,
+      "sha256": "18d7673a212ef1931cae6ce3cd0df4fefed58aaf084629fb1fc6b46ea9302eab",
+      "file_written_at_utc": "2026-09-12T19:16:41.823734+00:00"
+    },
+    {
+      "file": "public-funding-BTCUSDT.json",
+      "bytes": 11720,
+      "sha256": "cd5609c38b78240444de0073c762e56c1deadf3fdb8efcac848ec3d5f7d09088",
+      "file_written_at_utc": "2026-09-12T19:16:37.487794+00:00"
+    },
+    {
+      "file": "public-funding-SOLUSDT.json",
+      "bytes": 11521,
+      "sha256": "87f5ae33e203401944ed169fc92109a12ee6a4b0f37b6c60979f2fcabd69b2da",
+      "file_written_at_utc": "2026-09-12T19:16:39.655895+00:00"
+    },
+    {
+      "file": "public-funding-TRXUSDT.json",
+      "bytes": 11396,
+      "sha256": "f16fec42f1d1beea3f66cbad62ade926e7f78afa7e5b0c55d8e225259e7098a4",
+      "file_written_at_utc": "2026-09-12T19:16:43.978809+00:00"
+    },
+    {
+      "file": "public-funding-analysis.json",
+      "bytes": 2060,
+      "sha256": "6ccc81ecd76ef251ff90db2ae2280ec1ca53e65707421e11827d1acadea018ab",
+      "file_written_at_utc": "2026-09-12T19:26:23.011148+00:00"
+    },
+    {
+      "file": "public-funding-binance-ANIMEUSDT.json",
+      "bytes": 87401,
+      "sha256": "2dbbbb17eefad598cd2863eb08d2a0324ec80843cdeec20de6a3b1c37fb60d74",
+      "file_written_at_utc": "2026-09-12T19:15:07.066093+00:00"
+    },
+    {
+      "file": "public-funding-binance-BLURUSDT.json",
+      "bytes": 86905,
+      "sha256": "25f69a1eced41115b0596197129f46a792f1a8d82092cae83b203da320fe9bf6",
+      "file_written_at_utc": "2026-09-12T19:15:06.908076+00:00"
+    },
+    {
+      "file": "public-funding-binance-DEXEUSDT.json",
+      "bytes": 87210,
+      "sha256": "49beb04ea0f00ea676895437504e1e309d3b0d63add034e9862dacb985c79054",
+      "file_written_at_utc": "2026-09-12T19:15:39.569471+00:00"
+    },
+    {
+      "file": "public-funding-binance-IOSTUSDT.json",
+      "bytes": 86888,
+      "sha256": "9229660b47a6e1d1271f0a582d4c1dbaeee081714a8f597ef879f7a94cfcda57",
+      "file_written_at_utc": "2026-09-12T19:15:11.683138+00:00"
+    },
+    {
+      "file": "public-funding-binance-LSKUSDT.json",
+      "bytes": 86407,
+      "sha256": "606673e6d47b3a7408bb9ed0e817b2c7265151398e54c29e088ec00e44cba98e",
+      "file_written_at_utc": "2026-09-12T19:15:13.076534+00:00"
+    },
+    {
+      "file": "public-funding-binance-NEWTUSDT.json",
+      "bytes": 86972,
+      "sha256": "4bb465b994a57729b777744ae2416e6e5be63a85c57107c0d940e2e8263180bb",
+      "file_written_at_utc": "2026-09-12T19:15:14.286819+00:00"
+    },
+    {
+      "file": "public-funding-binance-ONEUSDT.json",
+      "bytes": 86329,
+      "sha256": "41ed88960420bd795a99ae57118d83ff1e89b356bbd898cd7867ba4b13736835",
+      "file_written_at_utc": "2026-09-12T19:15:15.610098+00:00"
+    },
+    {
+      "file": "public-funding-binance-ONGUSDT.json",
+      "bytes": 86769,
+      "sha256": "377199453678ca316d5f9853c1b9f3813aa521b6827785f2315b7ae570392c72",
+      "file_written_at_utc": "2026-09-12T19:15:17.351144+00:00"
+    },
+    {
+      "file": "public-funding-binance-RVNUSDT.json",
+      "bytes": 86502,
+      "sha256": "b7e28203c29763e52925769cf9ef66135867587b2db8899ee2f072e0b5d23af2",
+      "file_written_at_utc": "2026-09-12T19:15:17.947224+00:00"
+    },
+    {
+      "file": "public-funding-bybit-ANIMEUSDT.json",
+      "bytes": 28763,
+      "sha256": "fa755e70da33f7d62352ef5b658bec233f6d40bb20d0974eb49708bb890b5a85",
+      "file_written_at_utc": "2026-09-12T19:15:06.143555+00:00"
+    },
+    {
+      "file": "public-funding-bybit-BLURUSDT.json",
+      "bytes": 28551,
+      "sha256": "ae2fa4acb02cfc52521a8262b57a92e3dc6b3bfc6a4f0bf6d87ce32561425722",
+      "file_written_at_utc": "2026-09-12T19:15:07.652280+00:00"
+    },
+    {
+      "file": "public-funding-bybit-BZUSDT.json",
+      "bytes": 27389,
+      "sha256": "fd6519ba78facd5a18c2860f5e2565ad5267e1ed8662f225dffae2260317f526",
+      "file_written_at_utc": "2026-09-12T19:15:08.664999+00:00"
+    },
+    {
+      "file": "public-funding-bybit-DEXEUSDT.json",
+      "bytes": 28526,
+      "sha256": "9d6ddb1d1494609ddec9d1b41b17e2a671db6465308321dcfec4b579f4246a75",
+      "file_written_at_utc": "2026-09-12T19:15:09.371575+00:00"
+    },
+    {
+      "file": "public-funding-bybit-ICXUSDT.json",
+      "bytes": 28217,
+      "sha256": "64b353e0e589c2e62bde381395e6186d4681b1d33e9cffcb19d144fdeb0f46cb",
+      "file_written_at_utc": "2026-09-12T19:15:09.765115+00:00"
+    },
+    {
+      "file": "public-funding-bybit-IOSTUSDT.json",
+      "bytes": 28564,
+      "sha256": "0807e5e4d8230060ea630a1b78c35a0423a5cb623bc35b44d457480dcda3040d",
+      "file_written_at_utc": "2026-09-12T19:15:11.391563+00:00"
+    },
+    {
+      "file": "public-funding-bybit-LSKUSDT.json",
+      "bytes": 28415,
+      "sha256": "b03a6544d9baa73a1e954413e5faf8005adf0d4cece029b3124a93da670a4782",
+      "file_written_at_utc": "2026-09-12T19:15:13.121765+00:00"
+    },
+    {
+      "file": "public-funding-bybit-NEWTUSDT.json",
+      "bytes": 28368,
+      "sha256": "7a289373df70f5f5b88abe4a5fedce401afe8065d6ae40943c7153becc81c27c",
+      "file_written_at_utc": "2026-09-12T19:15:14.970700+00:00"
+    },
+    {
+      "file": "public-funding-bybit-ONGUSDT.json",
+      "bytes": 28768,
+      "sha256": "b9506500d5b64668db2452ff000ad83767f64f20612ade9642b361eeb78d675c",
+      "file_written_at_utc": "2026-09-12T19:15:16.968135+00:00"
+    },
+    {
+      "file": "public-funding-bybit-RVNUSDT.json",
+      "bytes": 28599,
+      "sha256": "2a0f16efda0aa723a5484d6584b5ef3f90d48f1035b1a63bf0a87c8c7e1f9314",
+      "file_written_at_utc": "2026-09-12T19:15:19.288056+00:00"
+    },
+    {
+      "file": "public-funding-manifest.json",
+      "bytes": 1365,
+      "sha256": "1604378faa2abe7cf03890c48f44f62946db03d72af10514250d20c96e2e3b54",
+      "file_written_at_utc": "2026-09-12T19:16:43.978963+00:00"
+    },
+    {
+      "file": "public-funding-okx-ANIME-USDT-SWAP.json",
+      "bytes": 27890,
+      "sha256": "6be724438bed497af24ac321068be5390b7d6f22db0115bb33efb37bcfcad295",
+      "file_written_at_utc": "2026-09-12T19:19:36.618566+00:00"
+    },
+    {
+      "file": "public-funding-okx-BLUR-USDT-SWAP.json",
+      "bytes": 26984,
+      "sha256": "df38b2a9ada910852f4f453f2be93aa447ee4048a304763d88f298a68d6e1bda",
+      "file_written_at_utc": "2026-09-12T19:19:36.618566+00:00"
+    },
+    {
+      "file": "public-funding-okx-BZ-USDT-SWAP.json",
+      "bytes": 27456,
+      "sha256": "75ab0cfff0791517d059fa05633c0cb9a08aca422153304ca1647ae04fc36f53",
+      "file_written_at_utc": "2026-09-12T19:19:36.607335+00:00"
+    },
+    {
+      "file": "public-funding-okx-ICX-USDT-SWAP.json",
+      "bytes": 27550,
+      "sha256": "618f29fc0319aa969b46822841b1c0450a2cab8c1acb7e0775b28fe4dbae0654",
+      "file_written_at_utc": "2026-09-12T19:19:36.615083+00:00"
+    },
+    {
+      "file": "public-funding-okx-IOST-USDT-SWAP.json",
+      "bytes": 27148,
+      "sha256": "d5c345ed0b81016178480994ee9dc75f362932ef56ab8a727e2cfb880440737c",
+      "file_written_at_utc": "2026-09-12T19:19:37.658913+00:00"
+    },
+    {
+      "file": "public-funding-okx-ONE-USDT-SWAP.json",
+      "bytes": 28032,
+      "sha256": "8a572ea1252de925b20758ed999a77446b3648b0c5ff51f880d41afcadb4fcf6",
+      "file_written_at_utc": "2026-09-12T19:19:37.666319+00:00"
+    },
+    {
+      "file": "public-funding-okx-RVN-USDT-SWAP.json",
+      "bytes": 28608,
+      "sha256": "bc0b3bb0c5d7c245eb13aea1fb003768930be52b045cfbc9b0b1bd9549e6c75a",
+      "file_written_at_utc": "2026-09-12T19:19:37.661211+00:00"
+    },
+    {
+      "file": "public_funding.py",
+      "bytes": 1281,
+      "sha256": "fc00893dbe699b6574e8c86112ec3e2ab7d3d3fd96f320ca752932bdbe659746",
+      "file_written_at_utc": "2026-09-12T19:16:31.761463+00:00"
+    },
+    {
+      "file": "query.py",
+      "bytes": 782,
+      "sha256": "4a1a69d7a4a440f5b4bc479df9f097332b1a0e448f01cae30b430f4809dcefbd",
+      "file_written_at_utc": "2026-09-12T19:12:19.914280+00:00"
+    },
+    {
+      "file": "report.md",
+      "bytes": 12112,
+      "sha256": "849bf0dd98f2f88a05b65db158564ea3b8e3402b39090292254f4a9a329f080b",
+      "file_written_at_utc": "2026-09-12T19:27:35.964591+00:00"
+    },
+    {
+      "file": "soak-candidate-books.json",
+      "bytes": 5763262,
+      "sha256": "e49be08fb3cfa473c75234f6acbec6bd4d6c6167449223dab04d6394a345cea9",
+      "file_written_at_utc": "2026-09-12T19:15:22.527888+00:00"
+    },
+    {
+      "file": "soak-candidate-books.sql",
+      "bytes": 616,
+      "sha256": "e3ebf356f7022c8032202b3d5dfeb3fc80b3aaa663eb4f18e17ee4fcd200146f",
+      "file_written_at_utc": "2026-09-12T19:15:20.920929+00:00"
+    },
+    {
+      "file": "soak-current-books.json",
+      "bytes": 1053795,
+      "sha256": "e49a310874574bf20d4e3f38d3d0521854e44c0d39868478d45cca3aa5d8e896",
+      "file_written_at_utc": "2026-09-12T19:16:31.630465+00:00"
+    },
+    {
+      "file": "soak-current-books.sql",
+      "bytes": 872,
+      "sha256": "4db2bf377617221588379d5abdb8f0662e6da4244e7aad648269dd0eeb69d301",
+      "file_written_at_utc": "2026-09-12T19:16:27.399533+00:00"
+    },
+    {
+      "file": "soak-current-spreads.json",
+      "bytes": 471029,
+      "sha256": "a560dde3ee4b28f56aa33ba7f0213cc9e0ed040dcdb07fed9ceebdc2dcb8d419",
+      "file_written_at_utc": "2026-09-12T19:17:20.605821+00:00"
+    },
+    {
+      "file": "soak-funding.json",
+      "bytes": 14029966,
+      "sha256": "2e9b8e7aebcfda2e0eac4c90cede771d6118f8610249a7720fe5098e38b9f2c7",
+      "file_written_at_utc": "2026-09-12T19:12:42.216667+00:00"
+    },
+    {
+      "file": "soak-funding.sql",
+      "bytes": 539,
+      "sha256": "f485d45b206410d1f8a5e43d47cf0ac6a3d197001b008ba13b6673a047eabac0",
+      "file_written_at_utc": "2026-09-12T19:12:37.821803+00:00"
+    },
+    {
+      "file": "yield-history.json",
+      "bytes": 9412008,
+      "sha256": "67a3174f3e83fde7b09cfc497735f1885e2088bc51689b2203f0504d3364adf3",
+      "file_written_at_utc": "2026-09-12T19:12:44.526811+00:00"
+    },
+    {
+      "file": "yield-history.sql",
+      "bytes": 261,
+      "sha256": "fd1b0d77cb2026bff10d53049503a77cf63182927b78afe4a3039eb27c2a4c44",
+      "file_written_at_utc": "2026-09-12T19:12:37.819578+00:00"
+    },
+    {
+      "file": "yield-latest.json",
+      "bytes": 235064,
+      "sha256": "e7306eaa85dd84602d47226962c03a4cc1e16726aa76fb37a68df306721b0701",
+      "file_written_at_utc": "2026-09-12T19:12:42.548688+00:00"
+    },
+    {
+      "file": "yield-latest.sql",
+      "bytes": 289,
+      "sha256": "a6762b60b27a1f8deb6a532c51af9e1b729e145da90c7636222ed6c94b68de3a",
+      "file_written_at_utc": "2026-09-12T19:12:37.821599+00:00"
+    }
+  ]
+}

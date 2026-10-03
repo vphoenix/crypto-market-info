@@ -1,0 +1,33 @@
+{
+  "assumptions": {
+    "usd_hkd": "7.8",
+    "chbank_apr": "0.04",
+    "syfe_apr": "0.041",
+    "cost_scenario_upfront": "50",
+    "term_years": "1"
+  },
+  "calculations": [
+    {
+      "capital_usd": "10000",
+      "sc_float_usd": "2564.102564102564102564102564",
+      "sc_bonus_usd": "205.1282051282051282051282051",
+      "sc_chbank_year1_before_cost": "502.5641025641025641025641025",
+      "sc_chbank_year1_cost50": "450.5641025641025641025641025",
+      "syfe_before_cost": "410.000",
+      "syfe_cost50": "357.950",
+      "chbank_all_in_max_upfront_cost_to_net_3_5": "48.07692307692307692307692308"
+    },
+    {
+      "capital_usd": "100000",
+      "sc_float_usd": "2564.102564102564102564102564",
+      "sc_bonus_usd": "205.1282051282051282051282051",
+      "sc_chbank_year1_before_cost": "4102.564102564102564102564103",
+      "sc_chbank_year1_cost50": "4050.564102564102564102564103",
+      "syfe_before_cost": "4100.000",
+      "syfe_cost50": "4047.950",
+      "chbank_all_in_max_upfront_cost_to_net_3_5": "480.7692307692307692307692308"
+    }
+  ],
+  "chbank_97000_insurance_hkd_at_7_85": "791908.0000",
+  "chbank_97000_gross_year_interest": "3880.00"
+}

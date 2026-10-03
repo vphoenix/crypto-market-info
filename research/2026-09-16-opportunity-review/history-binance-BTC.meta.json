@@ -1,0 +1,7 @@
+{
+  "name": "history-binance-BTC",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=BTCUSDT&startTime=1786876389000&endTime=1789554789000&limit=1000",
+  "retrieved_at_utc": "2026-09-16T10:33:09.624835+00:00",
+  "sha256": "12cc9c7f3e843ec4f87ef8a8f6fe9d5311486bb15668da3d79a397c43d94dc6e",
+  "rows": 93
+}

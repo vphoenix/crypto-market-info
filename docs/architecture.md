@@ -8,11 +8,16 @@
 
 - Binance、OKX 现货及永续 L2 盘口，以及 Bybit USDT 线性永续 L2 盘口；
 - Binance、OKX 和 Bybit 永续资金费率；
+- Deribit 期权、同到期期货及指数的公开实时观测；
+- Ethereum AMM／Sky 固定路线状态、金额报价、规则、日志和收据；
+- Reserve 拍卖／篮子申赎和 Across 稳定币中继的独立研究采集；
 - JustLend TRX 收益产品；
+- JustLend 能源租单清理 keeper 的公开事件、收据、只读模拟和资源／兑换成本（独立研究库与常驻命令）；
 - TRON 原生质押收益；
 - SOL 的 bSOL、JitoSOL、mSOL、laineSOL、JupSOL、hSOL、配置白名单验证者和 Marinade Native 收益；
 - Kamino Main SOL、Save Main SOL 的基础存款收益；
-- AVAX 的 OKX 公开出借 APR、Aave V3/V4 WAVAX 基础存款历史 APY，以及 BENQI sAVAX、Ankr ankrAVAX、BENQI AVAX 基础借贷的链上观测（默认关闭，实际启用范围以运行说明为准）。
+- AVAX 的 OKX 公开出借 APR、Aave V3/V4 WAVAX 基础存款历史 APY，以及 BENQI sAVAX、Ankr ankrAVAX、BENQI AVAX 基础借贷的链上观测（默认关闭，实际启用范围以运行说明为准）；
+- 独立的 Ethereum Lido stETH/wstETH 定额报价、赎回事件与 Binance ETHUSDT 对冲/实际资金费观测，运行在 `crypto-market-info-lst.service`。
 
 项目以后还可能增加其他 CEX、DEX、收益协议、链状态、桥和二层流通状态、借贷费率、指数或标记价格、手续费及 gas 等公开数据。当前六张核心表及三张永续集合元数据表不是最终边界；新数据必须有与语义一致的定类型模型。
 
@@ -20,7 +25,7 @@
 
 ## 2. 当前运行结构
 
-每个采集数据库只有一个 `collector` 写入进程；扩容验收使用独立库和独立 systemd unit。宿主机服务的路径及实际启用配置见[当前部署与运行说明](runtime-operations.md)；下面描述程序内部结构，不表示使用 Docker 部署：
+每个采集数据库只由对应的采集服务管理写入；扩容验收和专项研究使用独立库与 systemd unit。宿主机服务的路径及实际启用配置见[当前部署与运行说明](runtime-operations.md)；下面先描述主 `cmd/collector` 的内部结构，不表示使用 Docker 部署：
 
 ```text
 cmd/collector：配置、启动顺序、生命周期
@@ -48,6 +53,13 @@ cmd/collector：配置、启动顺序、生命周期
 │  ├─ 原生质押 API：Marinade Native、白名单验证者（可选）
 │  └─ 借贷 API 与身份校验：Kamino Main SOL、Save Main SOL
 │
+├─ Deribit 期权／期货／指数
+│  └─ 规格与规则校验 → 有序市场入口 → 每秒采样 → 分钟批次提交
+│
+├─ Ethereum DEX
+│  └─ RPC → 同 hash 状态与报价 → 完整性校验 → DEX writer
+│     └─ 增量日志、收据与最终性维护
+│
 └─ AVAX 收益（每个来源独立、每小时 Runner → yield writer）
    ├─ OKX AVAX：公共出借历史，串行分页
    ├─ Aave V3/V4 WAVAX：分别校验市场身份与固定 LAST_WEEK 曲线
@@ -55,7 +67,54 @@ cmd/collector：配置、启动顺序、生命周期
       └─ 共用 C-chain RPC 与 gate；每条路线独立固定 finalized block hash
 ```
 
-所有分支共用 ClickHouse Client、schema 初始化、HTTP 重试工具和结构化日志。
+主 collector 的分支复用 ClickHouse、公开 HTTP／RPC 和定点数工具；连接、启动失败和采集重试按具体分支隔离。实际恢复边界见[运行说明](runtime-operations.md)，不能由复用工具推断所有任务共用一个重试周期。
+
+Reserve 与 Across 是并列的独立进程：
+
+```text
+cmd/reserve-data → 固定 r5／池白名单与同 hash 调用
+  → 完整篮子、拍卖权限、金额报价、日志及收据
+  → 原始证据 + 三张 reserve_* 表 + dex_log／dex_tx_receipt
+  → crypto_market_info_reserve → 默认 finalized 的只读 JSON 报告
+
+cmd/across-data → Base／Arbitrum RPC + 公开币安价格
+  → 订单、更新、成交、退款、实际 live probe 与收据
+  → 原始证据 + 七张 across_* 表
+  → 实时库 crypto_market_info_across／历史库 crypto_market_info_across_history
+  → 各自只读 CSV／JSON 报告
+```
+
+各库按单 writer 管理；Reserve 写命令沿用同一 evidence 目录锁，Across 实时和历史任务分库运行。它们独立于主 collector，但共享宿主机数据库、磁盘及部分上游额度。公开 HTTPS／RPC 接口提供链数据，当前没有本机 P2P 全节点。回补恢复链上事实，不能补造错过的实时 Quoter 报价或抢单可见时间。完整语义见 [Reserve](reserve-data-implementation.md) 和 [Across](across-stablecoin-data-implementation.md)。
+
+LST 是并列的独立链路，不在主 collector 内启动：
+
+```text
+crypto-market-info-lst.service → cmd/lst-data watch
+  → 共享持久限速 gate（dRPC / Binance，单来源串行）
+  → 身份校验、协议状态、定额报价、增量事件、实际资金费 collector
+  → 分钟市场循环与串行低频维护
+  → 冻结成员及证据摘要 → pending 批次 → OpenLSTWriter
+  → crypto_market_info_lst：instrument 与七张 lst_* 表
+
+cmd/lst-data report → 只读本地库 → 最终性筛选及已接受批次校验 → CSV / JSON
+```
+
+此 CLI 的 `init-schema` 才执行专项 DDL，`watch` 打开已有库。市场、资金费、日志和最终性维护分别保存状态；单个来源任务失败不会伪造其他任务的数据，写库失败则留下原 pending 待恢复。所有联网/写入模式共享 `var/lst/state` 的排他锁和持久额度，`report` 不占采集锁、不联网。其 gate 不约束同出口的其他进程。
+
+当前部署只运行实时 `watch`，从持久日志游标尝试补断线缺口；错过的历史报价保留缺失。dRPC 的按高度日志查询仍失败，因此事件、队列等待和基于完整日志日的 gas 样本尚不能靠运行时间自动补齐。详细频率、恢复和运维见 [LST 运行说明](lst-redemption-data-implementation.md)。
+
+JustLend keeper 是与上述主 collector 并列的低频采集链路，由独立用户服务运行，写入 `crypto_market_info_justlend_keeper`，不复用收益表或盘口表：
+
+```text
+cmd/justlend-keeper-data
+  → PublicNode / TronGrid / Binance 只读适配器 + 全部请求共用发送 gate
+  → 严格解析、固化事件／收据核验、latest 模拟范围标注
+  → 单进程调度 + 持久化游标／限速／固定样本
+  → SHA-256 原始证据 + 冻结批次 + 五表 writer
+  → report：只读数据库、核验成员及证据、导出 CSV/JSON
+```
+
+其初始化、停止、来源阻断与写入失败独立于主 collector。keeper 的源码、命令和限制见[实现说明](justlend-keeper-data-implementation.md)，部署路径见[运行说明](runtime-operations.md#justlend-keeper-独立研究采集2026-10-03)。
 
 不使用 Redis、Kafka 或跨进程实时状态。盘口的当前 L2 只存在于内存；ClickHouse 保存已经结束的分钟、资金费率及低频收益快照。
 
@@ -71,6 +130,9 @@ cmd/collector：配置、启动顺序、生命周期
 
 ```text
 cmd/collector/                 入口与进程生命周期
+cmd/reserve-data/              独立 Reserve 采集与报告入口
+cmd/across-data/               独立 Across 实时／历史采集与报告入口
+cmd/lst-data/                  独立 LST 采集与只读报告入口
 internal/config/               环境变量配置
 internal/universe/             通用共有集合、规范化身份和精确版本别名
 internal/exchange/             公共 HTTP、限频及交易所适配器
@@ -78,13 +140,18 @@ internal/orderbook/            本地 L2 状态
 internal/sampler/              秒级采样和分钟缓冲
 internal/funding/              资金费率调度与确认
 internal/yield/                收益模型、Runner 和来源采集器
+internal/optionslive/          Deribit 实时任务与分钟提交
+internal/dex/                  Ethereum 固定路线、RPC 与链上事实
+internal/reserve/              Reserve 完整篮子、拍卖与报价
+internal/across/               Across 订单、成交、退款与 probe
+internal/lst/                  LST 类型、来源适配、持久 gate、collector、runner 和报告
 internal/storage/clickhouse/   核心事实与集合元数据、登记、写入和查询
 internal/replay/               盘口恢复
 ```
 
 ## 4. 启动与退出顺序
 
-正常启动依次执行：
+主 `cmd/collector` 正常启动依次执行：
 
 1. 加载三态 symbol 配置及版本别名字典；完整读取所有已启用永续目录；
 2. 统一选择至少两家共有的规范化交易对，计算分片、FD、缓存、采样和写入预算；任何不完整或超限都在数据库写入前失败；
@@ -112,9 +179,13 @@ yield_route 1 ── N yield_observation
 
 盘口、资金费率和收益是独立事实，不在写入时合并。尤其不能把永续资金费率加入 `yield_observation.rate`；需要研究对冲后收益时，由查询或分析层按时间和资产身份组合。
 
+期权、DEX 和研究采集器另有专项表，完整关系见[数据字典](market-data-storage.md)。有 capture 提交表的分支，先解析最新修订，再筛 canonical／committed／所需最终性，并校验成员计数和摘要。共享收据引用、重试身份、去重规则各有专项不变量；事实行本身不足以证明该批可用于分析。
+
+LST 的七张专项表在独立研究库中，通过 `capture_id` 关联公共完整性元数据、协议状态、报价、三类赎回事件及实际资金费。金额为 UInt256，CEX 价格/数量为整数 tick/lot，资金费为 Decimal；同刻报价、后续同量报价、赎回兑付和费用只在报告/分析层组合。字段与不变量见[数据字典的 LST 段](market-data-storage.md#lst-折价官方赎回与对冲2026-10-02-已实现)。
+
 ## 6. 运行状态判断
 
-“进程存在”不等于“数据正常”。最低检查应包括：
+“进程存在”不等于“数据正常”。主 collector 的最低检查应包括：
 
 - ClickHouse 可连接且九张表存在；
 - 每个启用 instrument 的最新 `minute_time` 持续前进；
@@ -228,6 +299,8 @@ AVAX 默认不启用；启用后按[第一阶段验收查询](arbitrage/strategi
 
 `missing_payload_hashes` 应为 `0`。bSOL、laineSOL、JupSOL、hSOL 每轮各一条且有 `finalized` 锚点；Save 当前点有 `finalized_anchor`，历史点无锚点；JitoSOL、mSOL、Marinade Native、验证者和 Kamino 的 API 历史点无锚点是预期行为。历史窗口每轮重取，查询使用 `FINAL`，观测条数不应作为固定常量；日志中的 `routes` 字段实际计数为批次观测条数，不是去重后的产品数。
 
+LST 独立服务应另查其 unit、最近 market 时间、协议与报价成员状态，以及 complete/canonical/committed 的增量日志覆盖。[健康 SQL](lst-data-health.sql) 只读研究库；head 与 partial 可以用于运行状态检查，但不意味着已满足历史报告的最终性条件或已获利。来源拒绝时事件数为零也不意味着链上没有事件，详见[LST 异常解释](lst-redemption-data-implementation.md#健康检查与异常解释)。
+
 ## 7. 增加其他数据时
 
 新增数据先判断其语义，而不是先决定复用哪张表：
@@ -243,9 +316,12 @@ AVAX 默认不启用；启用后按[第一阶段验收查询](arbitrage/strategi
 ## 8. 文档分工
 
 - [当前部署与运行说明](runtime-operations.md)：宿主机服务、路径、启用配置、连接和维护方式。
+- [Reserve 实现与查询](reserve-data-implementation.md)：五表、同块完整篮子、采样、回补恢复和报告口径。
+- [Across 实现与查询](across-stablecoin-data-implementation.md)：独立实时／历史库、probe 可见性、退款核验和费用空间。
 - [行情采集程序设计](implementation-design.md)：盘口和资金费率的具体实现。
 - [Bybit USDT 线性永续采集设计](bybit-usdt-perpetual-market-data.md)：Bybit 产品身份、盘口序列、资金费率和限流细节。
-- [市场数据存储数据字典](market-data-storage.md)：当前六张表及编码不变量。
+- [市场数据存储数据字典](market-data-storage.md)：核心表、集合元数据及专项研究表的字段和不变量。
+- [LST 采集运行说明](lst-redemption-data-implementation.md)：独立服务、七表、来源限制、断线恢复与只读健康检查。
 - [ARB-0016 收益数据采集设计](arbitrage/strategies/arb-0016-yield-data.md)：通用收益模型和理论筛选。
 - [ARB-0016 TRX 收益采集实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)：JustLend 与 TRON 采集细节。
 - [ARB-0016 SOL 收益采集第一阶段实现设计](arbitrage/strategies/arb-0016-sol-yield-phase-1.md)：SOL 第一阶段五类 Runner、来源校验和历史写入细节。
@@ -253,3 +329,4 @@ AVAX 默认不启用；启用后按[第一阶段验收查询](arbitrage/strategi
 - [ARB-0016 AVAX 收益采集第一阶段实现设计](arbitrage/strategies/arb-0016-avax-yield-phase-1.md)：三个独立历史来源、严格利率单位、分页完整性及重试写入。
 - [ARB-0016 AVAX 收益采集第二阶段实现设计](arbitrage/strategies/arb-0016-avax-yield-phase-2.md)：三个链上来源、同块锚点、整数换算和两列兼容迁移。
 - [套利机会与策略资料](arbitrage/README.md)：数据为何采集，不参与采集进程运行。
+- [JustLend keeper 实现与运行说明](justlend-keeper-data-implementation.md)：独立五表采集器、发送预算、状态恢复、健康查询及报告口径；[目标设计](justlend-keeper-data-mvp-design.md)另列已实现与待验收部分。

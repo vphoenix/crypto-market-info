@@ -1,0 +1,1011 @@
+{
+  "retCode": 0,
+  "retMsg": "OK",
+  "result": {
+    "category": "linear",
+    "list": [
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0105267",
+        "fundingRateTimestamp": "1789545600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.00003341",
+        "fundingRateTimestamp": "1789516800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789495200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00013476",
+        "fundingRateTimestamp": "1789491600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00017842",
+        "fundingRateTimestamp": "1789488000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00005994",
+        "fundingRateTimestamp": "1789484400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789480800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00010731",
+        "fundingRateTimestamp": "1789477200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00016105",
+        "fundingRateTimestamp": "1789473600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00007971",
+        "fundingRateTimestamp": "1789470000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00022467",
+        "fundingRateTimestamp": "1789466400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0001931",
+        "fundingRateTimestamp": "1789462800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00014266",
+        "fundingRateTimestamp": "1789459200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789455600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789452000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00007489",
+        "fundingRateTimestamp": "1789448400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00015914",
+        "fundingRateTimestamp": "1789444800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00014284",
+        "fundingRateTimestamp": "1789441200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00025329",
+        "fundingRateTimestamp": "1789437600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00003921",
+        "fundingRateTimestamp": "1789434000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00050211",
+        "fundingRateTimestamp": "1789430400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0006334",
+        "fundingRateTimestamp": "1789426800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00039474",
+        "fundingRateTimestamp": "1789423200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0002465",
+        "fundingRateTimestamp": "1789419600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0005667",
+        "fundingRateTimestamp": "1789416000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00042137",
+        "fundingRateTimestamp": "1789412400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00067238",
+        "fundingRateTimestamp": "1789408800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00083438",
+        "fundingRateTimestamp": "1789405200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00083661",
+        "fundingRateTimestamp": "1789401600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00063012",
+        "fundingRateTimestamp": "1789398000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00003231",
+        "fundingRateTimestamp": "1789394400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00053982",
+        "fundingRateTimestamp": "1789390800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789387200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789383600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789380000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00019516",
+        "fundingRateTimestamp": "1789376400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00050823",
+        "fundingRateTimestamp": "1789372800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00048741",
+        "fundingRateTimestamp": "1789369200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0003887",
+        "fundingRateTimestamp": "1789365600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789362000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00016926",
+        "fundingRateTimestamp": "1789358400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789354800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00128534",
+        "fundingRateTimestamp": "1789351200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00277669",
+        "fundingRateTimestamp": "1789347600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00277931",
+        "fundingRateTimestamp": "1789344000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00303872",
+        "fundingRateTimestamp": "1789340400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00168816",
+        "fundingRateTimestamp": "1789336800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00152005",
+        "fundingRateTimestamp": "1789333200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789329600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789326000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789322400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00039914",
+        "fundingRateTimestamp": "1789318800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00044535",
+        "fundingRateTimestamp": "1789315200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00139488",
+        "fundingRateTimestamp": "1789311600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00121586",
+        "fundingRateTimestamp": "1789308000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0008724",
+        "fundingRateTimestamp": "1789304400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00098762",
+        "fundingRateTimestamp": "1789300800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0011633",
+        "fundingRateTimestamp": "1789297200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00139854",
+        "fundingRateTimestamp": "1789293600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00170649",
+        "fundingRateTimestamp": "1789290000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00089709",
+        "fundingRateTimestamp": "1789286400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00088239",
+        "fundingRateTimestamp": "1789282800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0001746",
+        "fundingRateTimestamp": "1789279200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00094444",
+        "fundingRateTimestamp": "1789275600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00179529",
+        "fundingRateTimestamp": "1789272000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00116947",
+        "fundingRateTimestamp": "1789268400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0010307",
+        "fundingRateTimestamp": "1789264800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00117549",
+        "fundingRateTimestamp": "1789261200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00093175",
+        "fundingRateTimestamp": "1789257600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00079279",
+        "fundingRateTimestamp": "1789254000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00190034",
+        "fundingRateTimestamp": "1789250400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00128674",
+        "fundingRateTimestamp": "1789246800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00136673",
+        "fundingRateTimestamp": "1789243200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00126894",
+        "fundingRateTimestamp": "1789239600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00096073",
+        "fundingRateTimestamp": "1789236000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0007461",
+        "fundingRateTimestamp": "1789232400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00105346",
+        "fundingRateTimestamp": "1789228800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00125227",
+        "fundingRateTimestamp": "1789225200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00190983",
+        "fundingRateTimestamp": "1789221600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0021766",
+        "fundingRateTimestamp": "1789218000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00202128",
+        "fundingRateTimestamp": "1789214400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00204278",
+        "fundingRateTimestamp": "1789210800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00140024",
+        "fundingRateTimestamp": "1789207200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00146273",
+        "fundingRateTimestamp": "1789203600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00086543",
+        "fundingRateTimestamp": "1789200000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00054367",
+        "fundingRateTimestamp": "1789196400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00051247",
+        "fundingRateTimestamp": "1789192800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00041793",
+        "fundingRateTimestamp": "1789189200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00095117",
+        "fundingRateTimestamp": "1789185600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00163833",
+        "fundingRateTimestamp": "1789182000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00152813",
+        "fundingRateTimestamp": "1789178400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00285213",
+        "fundingRateTimestamp": "1789174800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00206136",
+        "fundingRateTimestamp": "1789171200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00251116",
+        "fundingRateTimestamp": "1789167600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00210584",
+        "fundingRateTimestamp": "1789164000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00146898",
+        "fundingRateTimestamp": "1789160400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00084908",
+        "fundingRateTimestamp": "1789156800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00078604",
+        "fundingRateTimestamp": "1789153200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00092738",
+        "fundingRateTimestamp": "1789149600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00075813",
+        "fundingRateTimestamp": "1789146000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0006623",
+        "fundingRateTimestamp": "1789142400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789138800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789135200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789131600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.00000976",
+        "fundingRateTimestamp": "1789128000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789124400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00041111",
+        "fundingRateTimestamp": "1789120800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00018618",
+        "fundingRateTimestamp": "1789117200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00017113",
+        "fundingRateTimestamp": "1789113600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00027125",
+        "fundingRateTimestamp": "1789110000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00015675",
+        "fundingRateTimestamp": "1789106400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00000862",
+        "fundingRateTimestamp": "1789102800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0003696",
+        "fundingRateTimestamp": "1789099200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00027975",
+        "fundingRateTimestamp": "1789095600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00059002",
+        "fundingRateTimestamp": "1789092000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0020416",
+        "fundingRateTimestamp": "1789088400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00333906",
+        "fundingRateTimestamp": "1789084800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0033004",
+        "fundingRateTimestamp": "1789081200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00225994",
+        "fundingRateTimestamp": "1789077600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00187607",
+        "fundingRateTimestamp": "1789074000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00191585",
+        "fundingRateTimestamp": "1789070400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00190931",
+        "fundingRateTimestamp": "1789066800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.0000627",
+        "fundingRateTimestamp": "1789063200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00079413",
+        "fundingRateTimestamp": "1789059600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00084393",
+        "fundingRateTimestamp": "1789056000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00159185",
+        "fundingRateTimestamp": "1789052400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00114398",
+        "fundingRateTimestamp": "1789048800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00428402",
+        "fundingRateTimestamp": "1789045200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00234708",
+        "fundingRateTimestamp": "1789041600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00196405",
+        "fundingRateTimestamp": "1789038000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00106048",
+        "fundingRateTimestamp": "1789034400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789030800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789027200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789023600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789020000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0000125",
+        "fundingRateTimestamp": "1789016400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.02",
+        "fundingRateTimestamp": "1789012800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.02",
+        "fundingRateTimestamp": "1789009200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.02",
+        "fundingRateTimestamp": "1789005600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.02",
+        "fundingRateTimestamp": "1789002000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.02",
+        "fundingRateTimestamp": "1788998400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "-0.00344792",
+        "fundingRateTimestamp": "1788969600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788940800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.00009895",
+        "fundingRateTimestamp": "1788912000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788883200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788854400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788825600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788796800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788768000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788739200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788710400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788681600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788652800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788624000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788595200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788566400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788537600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788508800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788480000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788451200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788422400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788393600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788364800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788336000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788307200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788278400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788249600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788220800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788192000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788163200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788134400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788105600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788076800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788048000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1788019200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787990400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787961600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787932800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787904000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787875200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787846400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787817600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787788800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787760000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787731200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787702400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787673600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787644800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787616000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787587200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787558400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787529600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787500800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787472000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0001",
+        "fundingRateTimestamp": "1787443200000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.00016332",
+        "fundingRateTimestamp": "1787414400000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.0003439",
+        "fundingRateTimestamp": "1787385600000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.00035838",
+        "fundingRateTimestamp": "1787356800000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.00038312",
+        "fundingRateTimestamp": "1787328000000"
+      },
+      {
+        "symbol": "IOSTUSDT",
+        "fundingRate": "0.00104854",
+        "fundingRateTimestamp": "1787299200000"
+      }
+    ]
+  },
+  "retExtInfo": {},
+  "time": 1789554802245
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "url": "https://api-v2.pendle.finance/core/docs-json",
+    "at": "2026-09-13T13:46:32.814101+00:00",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://api-v2.pendle.finance/core/swagger.json",
+    "at": "2026-09-13T13:46:32.814503+00:00",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://api-v2.pendle.finance/core/v3/1/markets/0x9c560ebaf78e596cbcc27411d633a74d628dd7dc/historical-data",
+    "at": "2026-09-13T13:46:32.814803+00:00",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://api-v2.pendle.finance/core/v2/markets/all?limit=100&skip=0",
+    "at": "2026-09-13T13:46:32.815851+00:00",
+    "error": "HTTP Error 403: Forbidden"
+  }
+]

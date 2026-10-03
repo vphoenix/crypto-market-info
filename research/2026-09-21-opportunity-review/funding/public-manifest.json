@@ -1,0 +1,114 @@
+[
+  {
+    "venue": "Binance",
+    "symbol": "LSK",
+    "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=LSKUSDT&limit=1000",
+    "retrieved_at": "2026-09-21T14:32:58.084724+00:00",
+    "status": 200,
+    "sha256": "96949e46484c8bcbe0c9d9b573f76eb9b55797110f5330700bae3e4201331f23"
+  },
+  {
+    "venue": "Bybit",
+    "symbol": "LSK",
+    "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=LSKUSDT&limit=200",
+    "retrieved_at": "2026-09-21T14:32:58.085331+00:00",
+    "status": 200,
+    "sha256": "6c55a4b209b141c385d64575bd2f616a89bbb534f77c23bceb8f34a4a6da899b"
+  },
+  {
+    "venue": "Binance",
+    "symbol": "IOST",
+    "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=IOSTUSDT&limit=1000",
+    "retrieved_at": "2026-09-21T14:32:58.086020+00:00",
+    "status": 200,
+    "sha256": "51fddbaa1bf89f318adcf8b8898dafae66478a7409db82a814f36b2e202ac9ea"
+  },
+  {
+    "venue": "Bybit",
+    "symbol": "IOST",
+    "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=IOSTUSDT&limit=200",
+    "retrieved_at": "2026-09-21T14:33:01.193708+00:00",
+    "status": 200,
+    "sha256": "d013e00b5573761d7cc477460803c3104cac4a0302185e5f76369fb3244683d9"
+  },
+  {
+    "venue": "Binance",
+    "symbol": "ONG",
+    "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=ONGUSDT&limit=1000",
+    "retrieved_at": "2026-09-21T14:33:01.644963+00:00",
+    "status": 200,
+    "sha256": "c4b2fe32008a0cf85598a0c3f284033d467e62f9afefabb2d69a4f5eaecdd4c5"
+  },
+  {
+    "venue": "Bybit",
+    "symbol": "ONG",
+    "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=ONGUSDT&limit=200",
+    "retrieved_at": "2026-09-21T14:33:03.035070+00:00",
+    "status": 200,
+    "sha256": "5bfeabbdd4b054ba108652bb1e03fe91d89ef4812a77ed33b2e14e8d8955cee7"
+  },
+  {
+    "venue": "Binance",
+    "symbol": "T",
+    "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=TUSDT&limit=1000",
+    "retrieved_at": "2026-09-21T14:33:04.138409+00:00",
+    "status": 200,
+    "sha256": "600ba4bae500f59099afefdaa0309d50f99f2fc3f2af789e250df2db85785808"
+  },
+  {
+    "venue": "Bybit",
+    "symbol": "T",
+    "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=TUSDT&limit=200",
+    "retrieved_at": "2026-09-21T14:33:05.476825+00:00",
+    "status": 200,
+    "sha256": "263ff66617134df377ed9ae27b14a6d8fb5d13ef56bd3c9dd3341982137d6fac"
+  },
+  {
+    "venue": "Binance",
+    "symbol": "SOON",
+    "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=SOONUSDT&limit=1000",
+    "retrieved_at": "2026-09-21T14:33:05.832898+00:00",
+    "status": 200,
+    "sha256": "ea25ff8520998e9deb00d04e7f4c7ba253a4a7245a0194ce41538cc5abfd93c4"
+  },
+  {
+    "venue": "Bybit",
+    "symbol": "SOON",
+    "url": "https://api.bybit.com/v5/market/funding/history?category=linear&symbol=SOONUSDT&limit=200",
+    "retrieved_at": "2026-09-21T14:33:07.765420+00:00",
+    "status": 200,
+    "sha256": "9c7a50eb411bcb21594876863974630a8f58333abdf1f7fde9f2eee2527d91ed"
+  },
+  {
+    "venue": "OKX",
+    "symbol": "IOST",
+    "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=IOST-USDT-SWAP&limit=100",
+    "retrieved_at": "2026-09-21T14:33:08.271623+00:00",
+    "status": 200,
+    "sha256": "1b5906f455bcdf4f530d4017ab858963e72959879d05df75ad5cb8559ba3f2a1"
+  },
+  {
+    "venue": "OKX",
+    "symbol": "SOON",
+    "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=SOON-USDT-SWAP&limit=100",
+    "retrieved_at": "2026-09-21T14:33:10.008936+00:00",
+    "status": 200,
+    "sha256": "21ae778b24be12eafac1b51fb8aaf618b1da2f46bd2f44531f0cf154f31bd6e2"
+  },
+  {
+    "venue": "OKX",
+    "symbol": "ONE",
+    "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=ONE-USDT-SWAP&limit=100",
+    "retrieved_at": "2026-09-21T14:33:10.404311+00:00",
+    "status": 200,
+    "sha256": "eb2a2c3d8424eb4ac650cf2b71d948d58413dc5b3ba26c44dbce5b4389c10506"
+  },
+  {
+    "venue": "Binance",
+    "symbol": "ONE",
+    "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=ONEUSDT&limit=1000",
+    "retrieved_at": "2026-09-21T14:33:11.616575+00:00",
+    "status": 200,
+    "sha256": "1122b2c214452e67ba70be2a08d327c6af173ec879dcfe00a617e098ab6eedad"
+  }
+]

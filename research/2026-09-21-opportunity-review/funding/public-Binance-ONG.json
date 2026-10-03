@@ -1,0 +1,3510 @@
+{
+  "venue": "Binance",
+  "symbol": "ONG",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=ONGUSDT&limit=1000",
+  "retrieved_at": "2026-09-21T14:33:01.644963+00:00",
+  "status": 200,
+  "sha256": "c4b2fe32008a0cf85598a0c3f284033d467e62f9afefabb2d69a4f5eaecdd4c5",
+  "data": [
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787702400000,
+      "fundingRate": "0.00002280",
+      "markPrice": "0.09494984",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787716800000,
+      "fundingRate": "0.00001105",
+      "markPrice": "0.10189880",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787731200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10803000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787745600000,
+      "fundingRate": "0.00004656",
+      "markPrice": "0.09518513",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787760000000,
+      "fundingRate": "-0.01499460",
+      "markPrice": "0.16154729",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787774400000,
+      "fundingRate": "-0.02000000",
+      "markPrice": "0.16320580",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787778000004,
+      "fundingRate": "-0.00871992",
+      "markPrice": "0.15995000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787781600004,
+      "fundingRate": "-0.01446946",
+      "markPrice": "0.17570000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787785200000,
+      "fundingRate": "-0.01499138",
+      "markPrice": "0.19826022",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787788800000,
+      "fundingRate": "-0.01991822",
+      "markPrice": "0.20071979",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787792400000,
+      "fundingRate": "-0.01843473",
+      "markPrice": "0.15410425",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787796000001,
+      "fundingRate": "-0.01343252",
+      "markPrice": "0.13699000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787799600001,
+      "fundingRate": "-0.01761473",
+      "markPrice": "0.10978574",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787803200000,
+      "fundingRate": "-0.00327077",
+      "markPrice": "0.11590021",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787806800003,
+      "fundingRate": "-0.00173705",
+      "markPrice": "0.11787939",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787810400000,
+      "fundingRate": "-0.00263539",
+      "markPrice": "0.11852000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787814000000,
+      "fundingRate": "-0.00214253",
+      "markPrice": "0.12036000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787817600000,
+      "fundingRate": "-0.00112918",
+      "markPrice": "0.11790617",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787821200001,
+      "fundingRate": "-0.00101675",
+      "markPrice": "0.11828013",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787824800000,
+      "fundingRate": "-0.00084210",
+      "markPrice": "0.11734928",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787828400001,
+      "fundingRate": "-0.00098252",
+      "markPrice": "0.11797405",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787832000000,
+      "fundingRate": "-0.00102318",
+      "markPrice": "0.11841000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787835600002,
+      "fundingRate": "-0.00082258",
+      "markPrice": "0.11716000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787839200003,
+      "fundingRate": "-0.00090485",
+      "markPrice": "0.12215000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787842800001,
+      "fundingRate": "-0.00275429",
+      "markPrice": "0.12606000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787846400013,
+      "fundingRate": "-0.00118900",
+      "markPrice": "0.12539775",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787850000000,
+      "fundingRate": "-0.00139838",
+      "markPrice": "0.12493000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787853600001,
+      "fundingRate": "-0.00123634",
+      "markPrice": "0.13142000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787857200000,
+      "fundingRate": "-0.00116408",
+      "markPrice": "0.12764000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787860800000,
+      "fundingRate": "-0.00130556",
+      "markPrice": "0.13029525",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787864400000,
+      "fundingRate": "-0.00097633",
+      "markPrice": "0.12487000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787868000000,
+      "fundingRate": "-0.00142664",
+      "markPrice": "0.12720000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787871600000,
+      "fundingRate": "-0.00161097",
+      "markPrice": "0.12512275",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787875200026,
+      "fundingRate": "-0.00325413",
+      "markPrice": "0.12199000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787878800000,
+      "fundingRate": "-0.00379489",
+      "markPrice": "0.13016000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787882400000,
+      "fundingRate": "-0.00235208",
+      "markPrice": "0.12529000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787886000000,
+      "fundingRate": "-0.00257197",
+      "markPrice": "0.11668000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787889600008,
+      "fundingRate": "-0.00240895",
+      "markPrice": "0.12061000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787893200004,
+      "fundingRate": "-0.00182600",
+      "markPrice": "0.11825000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787896800001,
+      "fundingRate": "-0.00159948",
+      "markPrice": "0.11802899",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787900400004,
+      "fundingRate": "-0.00151607",
+      "markPrice": "0.11505430",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787904000000,
+      "fundingRate": "-0.00097868",
+      "markPrice": "0.10874000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787907600001,
+      "fundingRate": "-0.00117821",
+      "markPrice": "0.11086114",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787911200003,
+      "fundingRate": "-0.00126325",
+      "markPrice": "0.11063000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787914800002,
+      "fundingRate": "-0.00111438",
+      "markPrice": "0.11168000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787918400004,
+      "fundingRate": "-0.00120215",
+      "markPrice": "0.11386000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787922000005,
+      "fundingRate": "-0.00160838",
+      "markPrice": "0.11161000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787925600002,
+      "fundingRate": "-0.00226144",
+      "markPrice": "0.11056000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787929200000,
+      "fundingRate": "-0.00157981",
+      "markPrice": "0.10892000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787932800001,
+      "fundingRate": "-0.00165740",
+      "markPrice": "0.10838000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787936400005,
+      "fundingRate": "-0.00162317",
+      "markPrice": "0.10781000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787940000000,
+      "fundingRate": "-0.00153838",
+      "markPrice": "0.11267943",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787943600002,
+      "fundingRate": "-0.00154984",
+      "markPrice": "0.11198000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787947200000,
+      "fundingRate": "-0.00144837",
+      "markPrice": "0.11012000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787950800000,
+      "fundingRate": "-0.00146244",
+      "markPrice": "0.11099000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787954400001,
+      "fundingRate": "-0.00137388",
+      "markPrice": "0.11193017",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787958000000,
+      "fundingRate": "-0.00124516",
+      "markPrice": "0.11165680",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787961600000,
+      "fundingRate": "-0.00135087",
+      "markPrice": "0.11533000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787965200004,
+      "fundingRate": "-0.00241218",
+      "markPrice": "0.11673000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787968800001,
+      "fundingRate": "-0.00110527",
+      "markPrice": "0.11574841",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787972400003,
+      "fundingRate": "-0.00095458",
+      "markPrice": "0.11407000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787976000000,
+      "fundingRate": "-0.00087018",
+      "markPrice": "0.11421000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787979600000,
+      "fundingRate": "-0.00073185",
+      "markPrice": "0.12006000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787983200000,
+      "fundingRate": "-0.00061350",
+      "markPrice": "0.11792000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787986800000,
+      "fundingRate": "-0.00041220",
+      "markPrice": "0.11725000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787990400000,
+      "fundingRate": "-0.00057814",
+      "markPrice": "0.12535000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787994000000,
+      "fundingRate": "-0.00118034",
+      "markPrice": "0.12809000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1787997600000,
+      "fundingRate": "-0.00093059",
+      "markPrice": "0.13039058",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788001200006,
+      "fundingRate": "-0.00077559",
+      "markPrice": "0.12170059",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788004800000,
+      "fundingRate": "-0.00145806",
+      "markPrice": "0.12560000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788008400003,
+      "fundingRate": "-0.00157502",
+      "markPrice": "0.12828000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788012000000,
+      "fundingRate": "-0.00121847",
+      "markPrice": "0.12473000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788015600000,
+      "fundingRate": "-0.00104463",
+      "markPrice": "0.12311000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788019200002,
+      "fundingRate": "-0.00078976",
+      "markPrice": "0.12119000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788022800005,
+      "fundingRate": "-0.00049432",
+      "markPrice": "0.11900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788026400001,
+      "fundingRate": "-0.00055198",
+      "markPrice": "0.12163455",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788030000003,
+      "fundingRate": "-0.00078187",
+      "markPrice": "0.12040210",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788033600002,
+      "fundingRate": "-0.00067652",
+      "markPrice": "0.12026000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788037200000,
+      "fundingRate": "-0.00075443",
+      "markPrice": "0.12170481",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788040800002,
+      "fundingRate": "-0.00130892",
+      "markPrice": "0.12265000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788044400000,
+      "fundingRate": "-0.00153971",
+      "markPrice": "0.12406847",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788048000000,
+      "fundingRate": "-0.00179314",
+      "markPrice": "0.12325000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788051600002,
+      "fundingRate": "-0.00180612",
+      "markPrice": "0.12145000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788055200000,
+      "fundingRate": "-0.00163283",
+      "markPrice": "0.12138000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788058800000,
+      "fundingRate": "-0.00150801",
+      "markPrice": "0.11987000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788062400000,
+      "fundingRate": "-0.00130548",
+      "markPrice": "0.11665364",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788066000000,
+      "fundingRate": "-0.00090379",
+      "markPrice": "0.11606251",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788069600005,
+      "fundingRate": "-0.00082473",
+      "markPrice": "0.11669000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788073200000,
+      "fundingRate": "-0.00090175",
+      "markPrice": "0.11724713",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788076800000,
+      "fundingRate": "-0.00128675",
+      "markPrice": "0.11652000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788080400000,
+      "fundingRate": "-0.00132893",
+      "markPrice": "0.11560441",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788084000001,
+      "fundingRate": "-0.00104988",
+      "markPrice": "0.11302784",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788087600000,
+      "fundingRate": "-0.00061642",
+      "markPrice": "0.11264000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788091200000,
+      "fundingRate": "-0.00064289",
+      "markPrice": "0.11197000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788094800000,
+      "fundingRate": "-0.00056260",
+      "markPrice": "0.11287820",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788098400003,
+      "fundingRate": "-0.00054422",
+      "markPrice": "0.11246948",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788102000003,
+      "fundingRate": "-0.00064669",
+      "markPrice": "0.11158000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788105600001,
+      "fundingRate": "-0.00047231",
+      "markPrice": "0.11069917",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788109200000,
+      "fundingRate": "-0.00044423",
+      "markPrice": "0.11158000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788112800008,
+      "fundingRate": "-0.00040917",
+      "markPrice": "0.11107044",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788116400000,
+      "fundingRate": "-0.00048467",
+      "markPrice": "0.11051372",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788120000000,
+      "fundingRate": "-0.00082336",
+      "markPrice": "0.10958000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788123600003,
+      "fundingRate": "-0.00093415",
+      "markPrice": "0.10848500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788127200000,
+      "fundingRate": "-0.00084366",
+      "markPrice": "0.10559000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788130800000,
+      "fundingRate": "-0.00099111",
+      "markPrice": "0.10591000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788134400002,
+      "fundingRate": "-0.00111044",
+      "markPrice": "0.10281678",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788138000002,
+      "fundingRate": "-0.00258762",
+      "markPrice": "0.10419000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788141600007,
+      "fundingRate": "-0.00305328",
+      "markPrice": "0.09764000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788145200000,
+      "fundingRate": "-0.00178286",
+      "markPrice": "0.09346000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788148800002,
+      "fundingRate": "-0.00143850",
+      "markPrice": "0.09494000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788152400000,
+      "fundingRate": "-0.00104286",
+      "markPrice": "0.09432166",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788156000000,
+      "fundingRate": "-0.00066477",
+      "markPrice": "0.09445319",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788159600000,
+      "fundingRate": "-0.00057227",
+      "markPrice": "0.09391000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788163200002,
+      "fundingRate": "-0.00096569",
+      "markPrice": "0.09525221",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788166800000,
+      "fundingRate": "-0.00105599",
+      "markPrice": "0.09477912",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788170400000,
+      "fundingRate": "-0.00130015",
+      "markPrice": "0.09366000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788174000004,
+      "fundingRate": "-0.00111854",
+      "markPrice": "0.09384000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788177600003,
+      "fundingRate": "-0.00102179",
+      "markPrice": "0.09355141",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788181200002,
+      "fundingRate": "-0.00110224",
+      "markPrice": "0.09306377",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788184800001,
+      "fundingRate": "-0.00092362",
+      "markPrice": "0.09213000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788188400003,
+      "fundingRate": "-0.00052603",
+      "markPrice": "0.09255000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788192000001,
+      "fundingRate": "-0.00062060",
+      "markPrice": "0.09381000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788195600002,
+      "fundingRate": "-0.00060828",
+      "markPrice": "0.09187433",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788199200002,
+      "fundingRate": "-0.00067753",
+      "markPrice": "0.09094833",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788202800003,
+      "fundingRate": "-0.00059537",
+      "markPrice": "0.09082000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788206400000,
+      "fundingRate": "-0.00092329",
+      "markPrice": "0.09090717",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788210000000,
+      "fundingRate": "-0.00093724",
+      "markPrice": "0.08987796",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788213600001,
+      "fundingRate": "-0.00091962",
+      "markPrice": "0.09004000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788217200000,
+      "fundingRate": "-0.00182318",
+      "markPrice": "0.08921000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788220800005,
+      "fundingRate": "-0.00241426",
+      "markPrice": "0.08724000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788224400000,
+      "fundingRate": "-0.00312854",
+      "markPrice": "0.08914000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788228000002,
+      "fundingRate": "-0.00247992",
+      "markPrice": "0.08944000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788231600000,
+      "fundingRate": "-0.00167201",
+      "markPrice": "0.09146000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788235200007,
+      "fundingRate": "-0.00106360",
+      "markPrice": "0.09227000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788238800000,
+      "fundingRate": "-0.00087703",
+      "markPrice": "0.09113000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788242400000,
+      "fundingRate": "-0.00127084",
+      "markPrice": "0.10042919",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788246000002,
+      "fundingRate": "-0.00360404",
+      "markPrice": "0.10872605",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788249600000,
+      "fundingRate": "-0.00392696",
+      "markPrice": "0.10619672",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788253200000,
+      "fundingRate": "-0.00422912",
+      "markPrice": "0.10539000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788256800000,
+      "fundingRate": "-0.00446307",
+      "markPrice": "0.10611752",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788260400000,
+      "fundingRate": "-0.00472362",
+      "markPrice": "0.12112000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788264000001,
+      "fundingRate": "-0.00390196",
+      "markPrice": "0.11080756",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788267600005,
+      "fundingRate": "-0.00407269",
+      "markPrice": "0.11113000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788271200000,
+      "fundingRate": "-0.00350973",
+      "markPrice": "0.11249000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788274800000,
+      "fundingRate": "-0.00261671",
+      "markPrice": "0.11270000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788278400000,
+      "fundingRate": "-0.00271839",
+      "markPrice": "0.10894000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788282000002,
+      "fundingRate": "-0.00177489",
+      "markPrice": "0.11044000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788285600000,
+      "fundingRate": "-0.00197679",
+      "markPrice": "0.11253000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788289200000,
+      "fundingRate": "-0.00132852",
+      "markPrice": "0.11273000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788292800000,
+      "fundingRate": "-0.00140246",
+      "markPrice": "0.11274000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788296400002,
+      "fundingRate": "-0.00122028",
+      "markPrice": "0.11336823",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788300000000,
+      "fundingRate": "-0.00147672",
+      "markPrice": "0.11098596",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788303600000,
+      "fundingRate": "-0.00094407",
+      "markPrice": "0.10928615",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788307200000,
+      "fundingRate": "-0.00072228",
+      "markPrice": "0.10756308",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788310800003,
+      "fundingRate": "-0.00185974",
+      "markPrice": "0.10854497",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788314400000,
+      "fundingRate": "-0.00152089",
+      "markPrice": "0.10191450",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788318000001,
+      "fundingRate": "-0.00080329",
+      "markPrice": "0.10260322",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788321600000,
+      "fundingRate": "-0.00106130",
+      "markPrice": "0.10321000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788325200000,
+      "fundingRate": "-0.00065090",
+      "markPrice": "0.10070290",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788328800000,
+      "fundingRate": "-0.00087295",
+      "markPrice": "0.10170000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788332400005,
+      "fundingRate": "-0.00074121",
+      "markPrice": "0.09908527",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788336000001,
+      "fundingRate": "-0.00074577",
+      "markPrice": "0.10013000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788339600000,
+      "fundingRate": "-0.00100850",
+      "markPrice": "0.09985000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788343200000,
+      "fundingRate": "-0.00112890",
+      "markPrice": "0.09951718",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788346800001,
+      "fundingRate": "-0.00116526",
+      "markPrice": "0.09793969",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788350400000,
+      "fundingRate": "-0.00071824",
+      "markPrice": "0.09925000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788354000000,
+      "fundingRate": "-0.00079913",
+      "markPrice": "0.09913442",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788357600002,
+      "fundingRate": "-0.00050610",
+      "markPrice": "0.10040992",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788361200004,
+      "fundingRate": "-0.00055765",
+      "markPrice": "0.09960000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788364800005,
+      "fundingRate": "-0.00065770",
+      "markPrice": "0.09972505",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788368400000,
+      "fundingRate": "-0.00051380",
+      "markPrice": "0.09856000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788372000003,
+      "fundingRate": "-0.00058624",
+      "markPrice": "0.09931501",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788375600000,
+      "fundingRate": "-0.00053099",
+      "markPrice": "0.09836400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788379200000,
+      "fundingRate": "-0.00060422",
+      "markPrice": "0.09844054",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788382800004,
+      "fundingRate": "-0.00061395",
+      "markPrice": "0.09845000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788386400001,
+      "fundingRate": "-0.00053014",
+      "markPrice": "0.09714050",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788390000002,
+      "fundingRate": "-0.00050981",
+      "markPrice": "0.09739000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788393600000,
+      "fundingRate": "-0.00050163",
+      "markPrice": "0.09615000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788397200000,
+      "fundingRate": "-0.00051663",
+      "markPrice": "0.09439000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788400800001,
+      "fundingRate": "-0.00057865",
+      "markPrice": "0.09493000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788404400004,
+      "fundingRate": "-0.00074420",
+      "markPrice": "0.09483000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788408000000,
+      "fundingRate": "-0.00078899",
+      "markPrice": "0.09396377",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788411600002,
+      "fundingRate": "-0.00082754",
+      "markPrice": "0.09500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788415200001,
+      "fundingRate": "-0.00052552",
+      "markPrice": "0.09361000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788418800000,
+      "fundingRate": "-0.00044293",
+      "markPrice": "0.09335077",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788422400000,
+      "fundingRate": "-0.00040426",
+      "markPrice": "0.09319000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788426000001,
+      "fundingRate": "-0.00030946",
+      "markPrice": "0.09340953",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788429600002,
+      "fundingRate": "-0.00040963",
+      "markPrice": "0.09398000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788433200007,
+      "fundingRate": "-0.00044214",
+      "markPrice": "0.09484000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788436800002,
+      "fundingRate": "-0.00045925",
+      "markPrice": "0.09468409",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788440400000,
+      "fundingRate": "-0.00129557",
+      "markPrice": "0.10007613",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788444000005,
+      "fundingRate": "-0.00269550",
+      "markPrice": "0.10065000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788447600000,
+      "fundingRate": "-0.00103301",
+      "markPrice": "0.09792407",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788451200000,
+      "fundingRate": "-0.00044154",
+      "markPrice": "0.09783021",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788454800000,
+      "fundingRate": "-0.00064448",
+      "markPrice": "0.09624000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788458400000,
+      "fundingRate": "-0.00134345",
+      "markPrice": "0.09871364",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788462000000,
+      "fundingRate": "-0.00120215",
+      "markPrice": "0.09860000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788465600000,
+      "fundingRate": "-0.00075173",
+      "markPrice": "0.09717000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788469200000,
+      "fundingRate": "-0.00097905",
+      "markPrice": "0.09808232",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788472800000,
+      "fundingRate": "-0.00213308",
+      "markPrice": "0.09907000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788476400000,
+      "fundingRate": "-0.00206141",
+      "markPrice": "0.09979000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788480000000,
+      "fundingRate": "-0.00236609",
+      "markPrice": "0.09935000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788483600000,
+      "fundingRate": "-0.00224433",
+      "markPrice": "0.09850000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788487200000,
+      "fundingRate": "-0.00211458",
+      "markPrice": "0.09831000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788490800005,
+      "fundingRate": "-0.00192397",
+      "markPrice": "0.09901109",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788494400000,
+      "fundingRate": "-0.00178259",
+      "markPrice": "0.10115000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788498000005,
+      "fundingRate": "-0.00200125",
+      "markPrice": "0.10072878",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788501600003,
+      "fundingRate": "-0.00196202",
+      "markPrice": "0.10061773",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788505200000,
+      "fundingRate": "-0.00198075",
+      "markPrice": "0.10088000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788508800000,
+      "fundingRate": "-0.00185061",
+      "markPrice": "0.09975000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788512400007,
+      "fundingRate": "-0.00163410",
+      "markPrice": "0.09897000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788516000000,
+      "fundingRate": "-0.00188126",
+      "markPrice": "0.09966038",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788519600003,
+      "fundingRate": "-0.00153061",
+      "markPrice": "0.09762401",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788523200003,
+      "fundingRate": "-0.00107409",
+      "markPrice": "0.09666000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788526800002,
+      "fundingRate": "-0.00121097",
+      "markPrice": "0.09646000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788530400000,
+      "fundingRate": "-0.00102287",
+      "markPrice": "0.09520000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788534000000,
+      "fundingRate": "-0.00108525",
+      "markPrice": "0.09457000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788537600009,
+      "fundingRate": "-0.00093836",
+      "markPrice": "0.09535000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788541200001,
+      "fundingRate": "-0.00102744",
+      "markPrice": "0.09621000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788544800001,
+      "fundingRate": "-0.00111003",
+      "markPrice": "0.09612915",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788548400002,
+      "fundingRate": "-0.00088351",
+      "markPrice": "0.09659946",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788552000000,
+      "fundingRate": "-0.00086427",
+      "markPrice": "0.09601847",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788555600000,
+      "fundingRate": "-0.00088451",
+      "markPrice": "0.09676000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788559200000,
+      "fundingRate": "-0.00078678",
+      "markPrice": "0.09644627",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788562800007,
+      "fundingRate": "-0.00080632",
+      "markPrice": "0.09546000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788566400000,
+      "fundingRate": "-0.00124107",
+      "markPrice": "0.09555895",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788570000001,
+      "fundingRate": "-0.00146259",
+      "markPrice": "0.09618290",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788573600002,
+      "fundingRate": "-0.00146119",
+      "markPrice": "0.09638000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788577200000,
+      "fundingRate": "-0.00139020",
+      "markPrice": "0.09505000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788580800001,
+      "fundingRate": "-0.00129826",
+      "markPrice": "0.09580000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788584400007,
+      "fundingRate": "-0.00091145",
+      "markPrice": "0.09655000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788588000005,
+      "fundingRate": "-0.00067121",
+      "markPrice": "0.09643000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788591600000,
+      "fundingRate": "-0.00063751",
+      "markPrice": "0.09619000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788595200000,
+      "fundingRate": "-0.00065425",
+      "markPrice": "0.09519154",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788598800002,
+      "fundingRate": "-0.00078701",
+      "markPrice": "0.09479000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788602400005,
+      "fundingRate": "-0.00054331",
+      "markPrice": "0.09495415",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788606000002,
+      "fundingRate": "-0.00065346",
+      "markPrice": "0.09423095",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788609600007,
+      "fundingRate": "-0.00062263",
+      "markPrice": "0.09476552",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788613200000,
+      "fundingRate": "-0.00069320",
+      "markPrice": "0.09488056",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788616800000,
+      "fundingRate": "-0.00073263",
+      "markPrice": "0.09447000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788620400000,
+      "fundingRate": "-0.00065534",
+      "markPrice": "0.09458840",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788624000001,
+      "fundingRate": "-0.00060477",
+      "markPrice": "0.09447000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788627600000,
+      "fundingRate": "-0.00058343",
+      "markPrice": "0.09387000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788631200002,
+      "fundingRate": "-0.00082808",
+      "markPrice": "0.09314279",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788634800000,
+      "fundingRate": "-0.00101891",
+      "markPrice": "0.09293300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788638400000,
+      "fundingRate": "-0.00127148",
+      "markPrice": "0.09442000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788642000000,
+      "fundingRate": "-0.00078346",
+      "markPrice": "0.09466000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788645600000,
+      "fundingRate": "-0.00056936",
+      "markPrice": "0.09472246",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788649200003,
+      "fundingRate": "-0.00100003",
+      "markPrice": "0.09453000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788652800000,
+      "fundingRate": "-0.00095931",
+      "markPrice": "0.09466000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788656400004,
+      "fundingRate": "-0.00143282",
+      "markPrice": "0.09424425",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788660000000,
+      "fundingRate": "-0.00121107",
+      "markPrice": "0.09513000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788663600002,
+      "fundingRate": "-0.00109037",
+      "markPrice": "0.09455481",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788667200005,
+      "fundingRate": "-0.00074457",
+      "markPrice": "0.09480000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788670800000,
+      "fundingRate": "-0.00056356",
+      "markPrice": "0.09416000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788674400001,
+      "fundingRate": "-0.00052355",
+      "markPrice": "0.09380000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788678000001,
+      "fundingRate": "-0.00080265",
+      "markPrice": "0.09378000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788681600000,
+      "fundingRate": "-0.00050913",
+      "markPrice": "0.09356452",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788685200000,
+      "fundingRate": "-0.00044077",
+      "markPrice": "0.09479131",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788688800000,
+      "fundingRate": "-0.00029515",
+      "markPrice": "0.09450000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788692400003,
+      "fundingRate": "-0.00044022",
+      "markPrice": "0.09455060",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788696000001,
+      "fundingRate": "-0.00033617",
+      "markPrice": "0.09472000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788699600005,
+      "fundingRate": "-0.00048529",
+      "markPrice": "0.09345000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788703200000,
+      "fundingRate": "-0.00059791",
+      "markPrice": "0.09355000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788706800000,
+      "fundingRate": "-0.00061096",
+      "markPrice": "0.09197000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788710400004,
+      "fundingRate": "-0.00055506",
+      "markPrice": "0.09164000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788714000005,
+      "fundingRate": "-0.00073436",
+      "markPrice": "0.09149000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788717600007,
+      "fundingRate": "-0.00076894",
+      "markPrice": "0.09212074",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788721200000,
+      "fundingRate": "-0.00096424",
+      "markPrice": "0.09135000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788724800000,
+      "fundingRate": "-0.00092532",
+      "markPrice": "0.09187588",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788728400000,
+      "fundingRate": "-0.00084336",
+      "markPrice": "0.09174000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788732000006,
+      "fundingRate": "-0.00079326",
+      "markPrice": "0.09231000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788735600004,
+      "fundingRate": "-0.00080481",
+      "markPrice": "0.09229370",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788739200004,
+      "fundingRate": "-0.00106318",
+      "markPrice": "0.09321000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788742800002,
+      "fundingRate": "-0.00088745",
+      "markPrice": "0.09223000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788746400000,
+      "fundingRate": "-0.00091535",
+      "markPrice": "0.09141000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788750000002,
+      "fundingRate": "-0.00102688",
+      "markPrice": "0.09196000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788753600001,
+      "fundingRate": "-0.00071220",
+      "markPrice": "0.09134000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788757200001,
+      "fundingRate": "-0.00060065",
+      "markPrice": "0.09262641",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788760800003,
+      "fundingRate": "-0.00042042",
+      "markPrice": "0.09313155",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788764400000,
+      "fundingRate": "-0.00049764",
+      "markPrice": "0.09374000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788768000000,
+      "fundingRate": "-0.00051752",
+      "markPrice": "0.09361553",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788771600000,
+      "fundingRate": "-0.00041644",
+      "markPrice": "0.09349000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788775200001,
+      "fundingRate": "-0.00034276",
+      "markPrice": "0.09350000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788778800000,
+      "fundingRate": "-0.00046629",
+      "markPrice": "0.09332000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788782400000,
+      "fundingRate": "-0.00050147",
+      "markPrice": "0.09241826",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788786000001,
+      "fundingRate": "-0.00047981",
+      "markPrice": "0.09269555",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788789600006,
+      "fundingRate": "-0.00056448",
+      "markPrice": "0.09203000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788793200001,
+      "fundingRate": "-0.00043751",
+      "markPrice": "0.09256000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788796800003,
+      "fundingRate": "-0.00051863",
+      "markPrice": "0.09259000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788800400002,
+      "fundingRate": "-0.00053643",
+      "markPrice": "0.09360000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788804000002,
+      "fundingRate": "-0.00043912",
+      "markPrice": "0.09370000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788807600000,
+      "fundingRate": "-0.00060786",
+      "markPrice": "0.09311000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788811200000,
+      "fundingRate": "-0.00057029",
+      "markPrice": "0.09343000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788814800001,
+      "fundingRate": "-0.00096284",
+      "markPrice": "0.09268000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788818400000,
+      "fundingRate": "-0.00074149",
+      "markPrice": "0.09345000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788822000001,
+      "fundingRate": "-0.00074741",
+      "markPrice": "0.09196000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788825600004,
+      "fundingRate": "-0.00092651",
+      "markPrice": "0.09303514",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788829200000,
+      "fundingRate": "-0.00212579",
+      "markPrice": "0.09659000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788832800000,
+      "fundingRate": "-0.00169756",
+      "markPrice": "0.09416214",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788836400002,
+      "fundingRate": "-0.00213185",
+      "markPrice": "0.09435000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788840000000,
+      "fundingRate": "-0.00171943",
+      "markPrice": "0.09341576",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788843600000,
+      "fundingRate": "-0.00172085",
+      "markPrice": "0.09423000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788847200005,
+      "fundingRate": "-0.00140064",
+      "markPrice": "0.09363665",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788850800004,
+      "fundingRate": "-0.00132926",
+      "markPrice": "0.09437181",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788854400002,
+      "fundingRate": "-0.00072143",
+      "markPrice": "0.09491185",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788858000000,
+      "fundingRate": "-0.00089993",
+      "markPrice": "0.09318000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788861600000,
+      "fundingRate": "-0.00068369",
+      "markPrice": "0.09333000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788865200004,
+      "fundingRate": "-0.00053127",
+      "markPrice": "0.09358831",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788868800006,
+      "fundingRate": "-0.00049511",
+      "markPrice": "0.09303000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788872400000,
+      "fundingRate": "-0.00066510",
+      "markPrice": "0.09257000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788876000000,
+      "fundingRate": "-0.00083640",
+      "markPrice": "0.09183000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788879600001,
+      "fundingRate": "-0.00070540",
+      "markPrice": "0.09206605",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788883200001,
+      "fundingRate": "-0.00048648",
+      "markPrice": "0.09260000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788886800000,
+      "fundingRate": "-0.00060644",
+      "markPrice": "0.09264077",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788890400000,
+      "fundingRate": "-0.00066011",
+      "markPrice": "0.09180001",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788894000003,
+      "fundingRate": "-0.00095288",
+      "markPrice": "0.09097000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788897600002,
+      "fundingRate": "-0.00147656",
+      "markPrice": "0.09082000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788901200000,
+      "fundingRate": "-0.00132550",
+      "markPrice": "0.09192000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788904800005,
+      "fundingRate": "-0.00093611",
+      "markPrice": "0.09205000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788908400000,
+      "fundingRate": "-0.00080465",
+      "markPrice": "0.09222000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788912000005,
+      "fundingRate": "-0.00135352",
+      "markPrice": "0.09245894",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788915600000,
+      "fundingRate": "-0.00187613",
+      "markPrice": "0.09168000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788919200004,
+      "fundingRate": "-0.00138211",
+      "markPrice": "0.09312794",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788922800000,
+      "fundingRate": "-0.00083349",
+      "markPrice": "0.09321128",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788926400004,
+      "fundingRate": "-0.00050993",
+      "markPrice": "0.09325000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788930000000,
+      "fundingRate": "-0.00030631",
+      "markPrice": "0.09339000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788933600001,
+      "fundingRate": "-0.00041893",
+      "markPrice": "0.09463000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788937200007,
+      "fundingRate": "-0.00034972",
+      "markPrice": "0.09440000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788940800004,
+      "fundingRate": "-0.00044703",
+      "markPrice": "0.09472747",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788944400001,
+      "fundingRate": "-0.00036707",
+      "markPrice": "0.09485000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788948000005,
+      "fundingRate": "-0.00036470",
+      "markPrice": "0.09484294",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788951600000,
+      "fundingRate": "-0.00030726",
+      "markPrice": "0.09499450",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788955200004,
+      "fundingRate": "-0.00026729",
+      "markPrice": "0.09510102",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788958800000,
+      "fundingRate": "-0.00019688",
+      "markPrice": "0.09442572",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788962400000,
+      "fundingRate": "-0.00038100",
+      "markPrice": "0.09465000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788966000002,
+      "fundingRate": "-0.00026297",
+      "markPrice": "0.09568000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788969600002,
+      "fundingRate": "-0.00016281",
+      "markPrice": "0.09478000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788973200000,
+      "fundingRate": "-0.00011300",
+      "markPrice": "0.09457000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788976800003,
+      "fundingRate": "-0.00011297",
+      "markPrice": "0.09395000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788980400001,
+      "fundingRate": "-0.00021453",
+      "markPrice": "0.09313000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788984000000,
+      "fundingRate": "-0.00042797",
+      "markPrice": "0.09167000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788987600002,
+      "fundingRate": "-0.00037521",
+      "markPrice": "0.09161000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788991200000,
+      "fundingRate": "-0.00061323",
+      "markPrice": "0.08776000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788994800000,
+      "fundingRate": "-0.00179453",
+      "markPrice": "0.08150000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1788998400000,
+      "fundingRate": "-0.00139881",
+      "markPrice": "0.08096397",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789002000004,
+      "fundingRate": "-0.00141931",
+      "markPrice": "0.07973000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789005600004,
+      "fundingRate": "-0.00093721",
+      "markPrice": "0.07855000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789009200004,
+      "fundingRate": "-0.00053157",
+      "markPrice": "0.07840000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789012800000,
+      "fundingRate": "-0.00039370",
+      "markPrice": "0.07839000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789016400005,
+      "fundingRate": "-0.00049803",
+      "markPrice": "0.07926889",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789020000003,
+      "fundingRate": "-0.00061888",
+      "markPrice": "0.07997000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789023600000,
+      "fundingRate": "-0.00052698",
+      "markPrice": "0.08039871",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789027200007,
+      "fundingRate": "-0.00062249",
+      "markPrice": "0.07925487",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789030800002,
+      "fundingRate": "-0.00040548",
+      "markPrice": "0.07952000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789034400000,
+      "fundingRate": "-0.00038935",
+      "markPrice": "0.08003000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789038000000,
+      "fundingRate": "-0.00035298",
+      "markPrice": "0.07901000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789041600000,
+      "fundingRate": "-0.00028268",
+      "markPrice": "0.07878605",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789045200000,
+      "fundingRate": "-0.00037795",
+      "markPrice": "0.07906000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789048800002,
+      "fundingRate": "-0.00033910",
+      "markPrice": "0.07916269",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789052400005,
+      "fundingRate": "-0.00047352",
+      "markPrice": "0.08073792",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789056000002,
+      "fundingRate": "-0.00039839",
+      "markPrice": "0.07961641",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789059600003,
+      "fundingRate": "-0.00041974",
+      "markPrice": "0.07817130",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789063200000,
+      "fundingRate": "-0.00063160",
+      "markPrice": "0.07920000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789066800004,
+      "fundingRate": "-0.00037990",
+      "markPrice": "0.07901405",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789070400000,
+      "fundingRate": "-0.00042255",
+      "markPrice": "0.07867002",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789074000000,
+      "fundingRate": "-0.00042687",
+      "markPrice": "0.07941000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789077600003,
+      "fundingRate": "-0.00125862",
+      "markPrice": "0.08030286",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789081200007,
+      "fundingRate": "-0.00101467",
+      "markPrice": "0.08028000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789084800008,
+      "fundingRate": "-0.00066501",
+      "markPrice": "0.07886000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789088400000,
+      "fundingRate": "-0.00102424",
+      "markPrice": "0.07849000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789092000000,
+      "fundingRate": "-0.00110033",
+      "markPrice": "0.07924000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789095600000,
+      "fundingRate": "-0.00118996",
+      "markPrice": "0.07966000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789099200005,
+      "fundingRate": "-0.00118555",
+      "markPrice": "0.08010000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789102800002,
+      "fundingRate": "-0.00125565",
+      "markPrice": "0.08174736",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789106400003,
+      "fundingRate": "-0.00154142",
+      "markPrice": "0.08123095",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789110000000,
+      "fundingRate": "-0.00134555",
+      "markPrice": "0.08199507",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789113600000,
+      "fundingRate": "-0.00133249",
+      "markPrice": "0.08037000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789117200004,
+      "fundingRate": "-0.00109107",
+      "markPrice": "0.08096357",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789120800002,
+      "fundingRate": "-0.00144335",
+      "markPrice": "0.08179000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789124400010,
+      "fundingRate": "-0.00081775",
+      "markPrice": "0.07951000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789128000000,
+      "fundingRate": "-0.00131866",
+      "markPrice": "0.08114000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789131600004,
+      "fundingRate": "-0.00094413",
+      "markPrice": "0.08225000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789135200000,
+      "fundingRate": "-0.00100279",
+      "markPrice": "0.08341000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789138800000,
+      "fundingRate": "-0.00084176",
+      "markPrice": "0.08332000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789142400000,
+      "fundingRate": "-0.00084068",
+      "markPrice": "0.08323760",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789146000006,
+      "fundingRate": "-0.00062406",
+      "markPrice": "0.08284069",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789149600001,
+      "fundingRate": "-0.00074352",
+      "markPrice": "0.08225718",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789153200000,
+      "fundingRate": "-0.00066165",
+      "markPrice": "0.08187022",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789156800004,
+      "fundingRate": "-0.00068334",
+      "markPrice": "0.08200144",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789160400001,
+      "fundingRate": "-0.00065402",
+      "markPrice": "0.08220000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789164000000,
+      "fundingRate": "-0.00066091",
+      "markPrice": "0.08221000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789167600000,
+      "fundingRate": "-0.00068657",
+      "markPrice": "0.08253000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789171200001,
+      "fundingRate": "-0.00056546",
+      "markPrice": "0.08228000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789174800000,
+      "fundingRate": "-0.00065151",
+      "markPrice": "0.08163000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789178400000,
+      "fundingRate": "-0.00071621",
+      "markPrice": "0.08199726",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789182000005,
+      "fundingRate": "-0.00072662",
+      "markPrice": "0.08263000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789185600002,
+      "fundingRate": "-0.00069353",
+      "markPrice": "0.08219000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789189200001,
+      "fundingRate": "-0.00068816",
+      "markPrice": "0.08273701",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789192800002,
+      "fundingRate": "-0.00048832",
+      "markPrice": "0.08198000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789196400007,
+      "fundingRate": "-0.00047731",
+      "markPrice": "0.08164161",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789200000003,
+      "fundingRate": "-0.00043930",
+      "markPrice": "0.08198911",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789203600001,
+      "fundingRate": "-0.00039642",
+      "markPrice": "0.08176500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789207200000,
+      "fundingRate": "-0.00039523",
+      "markPrice": "0.08183000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789210800000,
+      "fundingRate": "-0.00034744",
+      "markPrice": "0.08214667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789214400000,
+      "fundingRate": "-0.00037647",
+      "markPrice": "0.08226380",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789218000000,
+      "fundingRate": "-0.00026985",
+      "markPrice": "0.08238037",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789221600005,
+      "fundingRate": "-0.00025566",
+      "markPrice": "0.08209070",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789225200000,
+      "fundingRate": "-0.00022288",
+      "markPrice": "0.08206000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789228800000,
+      "fundingRate": "-0.00024461",
+      "markPrice": "0.08164195",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789232400000,
+      "fundingRate": "-0.00034967",
+      "markPrice": "0.08114000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789236000000,
+      "fundingRate": "-0.00046546",
+      "markPrice": "0.08116908",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789239600001,
+      "fundingRate": "-0.00050881",
+      "markPrice": "0.08075000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789243200000,
+      "fundingRate": "-0.00051262",
+      "markPrice": "0.08083870",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789246800000,
+      "fundingRate": "-0.00042512",
+      "markPrice": "0.08100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789250400000,
+      "fundingRate": "-0.00049997",
+      "markPrice": "0.08085528",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789254000005,
+      "fundingRate": "-0.00050697",
+      "markPrice": "0.08088000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789257600002,
+      "fundingRate": "-0.00068470",
+      "markPrice": "0.08135000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789261200001,
+      "fundingRate": "-0.00069507",
+      "markPrice": "0.08079000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789264800000,
+      "fundingRate": "-0.00057416",
+      "markPrice": "0.08029000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789268400000,
+      "fundingRate": "-0.00041867",
+      "markPrice": "0.07959519",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789272000007,
+      "fundingRate": "-0.00045169",
+      "markPrice": "0.07921000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789275600001,
+      "fundingRate": "-0.00045731",
+      "markPrice": "0.07933663",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789279200000,
+      "fundingRate": "-0.00040748",
+      "markPrice": "0.07958929",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789282800000,
+      "fundingRate": "-0.00057936",
+      "markPrice": "0.07921000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789286400000,
+      "fundingRate": "-0.00030173",
+      "markPrice": "0.07830000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789290000000,
+      "fundingRate": "-0.00022869",
+      "markPrice": "0.07787003",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789293600000,
+      "fundingRate": "-0.00012337",
+      "markPrice": "0.07818837",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789297200007,
+      "fundingRate": "-0.00014001",
+      "markPrice": "0.07781945",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789300800001,
+      "fundingRate": "-0.00021143",
+      "markPrice": "0.07815000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789304400001,
+      "fundingRate": "-0.00023335",
+      "markPrice": "0.07793000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789308000000,
+      "fundingRate": "-0.00027192",
+      "markPrice": "0.07874105",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789311600000,
+      "fundingRate": "-0.00015383",
+      "markPrice": "0.07954528",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789315200000,
+      "fundingRate": "-0.00026576",
+      "markPrice": "0.07773000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789318800002,
+      "fundingRate": "-0.00027408",
+      "markPrice": "0.07808000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789322400000,
+      "fundingRate": "-0.00023286",
+      "markPrice": "0.07860000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789326000001,
+      "fundingRate": "-0.00018192",
+      "markPrice": "0.07834000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789329600000,
+      "fundingRate": "-0.00036326",
+      "markPrice": "0.07776000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789333200001,
+      "fundingRate": "-0.00034430",
+      "markPrice": "0.07785780",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789336800000,
+      "fundingRate": "-0.00044747",
+      "markPrice": "0.07725000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789340400002,
+      "fundingRate": "-0.00087969",
+      "markPrice": "0.07653241",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789344000000,
+      "fundingRate": "-0.00056906",
+      "markPrice": "0.07784331",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789347600002,
+      "fundingRate": "-0.00026378",
+      "markPrice": "0.07555830",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789351200006,
+      "fundingRate": "-0.00013846",
+      "markPrice": "0.07706207",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789354800001,
+      "fundingRate": "-0.00010324",
+      "markPrice": "0.07865313",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789358400000,
+      "fundingRate": "-0.00016986",
+      "markPrice": "0.07856296",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789362000003,
+      "fundingRate": "-0.00011038",
+      "markPrice": "0.07781293",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789365600000,
+      "fundingRate": "-0.00009842",
+      "markPrice": "0.07795000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789369200000,
+      "fundingRate": "-0.00011517",
+      "markPrice": "0.07734000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789372800000,
+      "fundingRate": "-0.00011117",
+      "markPrice": "0.07704000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789376400000,
+      "fundingRate": "-0.00009407",
+      "markPrice": "0.07716000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789380000000,
+      "fundingRate": "-0.00012342",
+      "markPrice": "0.07711000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789383600000,
+      "fundingRate": "-0.00009609",
+      "markPrice": "0.07690000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789387200002,
+      "fundingRate": "-0.00007673",
+      "markPrice": "0.07686297",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789390800000,
+      "fundingRate": "-0.00004115",
+      "markPrice": "0.07585000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789394400001,
+      "fundingRate": "-0.00010880",
+      "markPrice": "0.07646883",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789398000003,
+      "fundingRate": "-0.00012266",
+      "markPrice": "0.07667000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789401600000,
+      "fundingRate": "-0.00007470",
+      "markPrice": "0.07789000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789405200001,
+      "fundingRate": "-0.00003758",
+      "markPrice": "0.07834333",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789416000008,
+      "fundingRate": "-0.00021996",
+      "markPrice": "0.07790457",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789430400000,
+      "fundingRate": "-0.00037170",
+      "markPrice": "0.07722000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789444800001,
+      "fundingRate": "-0.00060699",
+      "markPrice": "0.07812053",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789459200005,
+      "fundingRate": "-0.00026801",
+      "markPrice": "0.07722069",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789473600005,
+      "fundingRate": "-0.00026881",
+      "markPrice": "0.07700848",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789488000001,
+      "fundingRate": "-0.00016583",
+      "markPrice": "0.07607000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789502400000,
+      "fundingRate": "-0.00008537",
+      "markPrice": "0.07570000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789516800001,
+      "fundingRate": "-0.00017178",
+      "markPrice": "0.07444765",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789531200002,
+      "fundingRate": "-0.00025397",
+      "markPrice": "0.07416983",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789545600002,
+      "fundingRate": "-0.00026363",
+      "markPrice": "0.07378000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789560000002,
+      "fundingRate": "-0.00032387",
+      "markPrice": "0.07654000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789574400001,
+      "fundingRate": "-0.00027858",
+      "markPrice": "0.07480000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789588800000,
+      "fundingRate": "-0.00025093",
+      "markPrice": "0.07589063",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789603200000,
+      "fundingRate": "-0.00025704",
+      "markPrice": "0.07617372",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789617600004,
+      "fundingRate": "-0.00062939",
+      "markPrice": "0.07578000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789632000003,
+      "fundingRate": "-0.00049516",
+      "markPrice": "0.07540730",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789646400000,
+      "fundingRate": "-0.00026913",
+      "markPrice": "0.07488000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789660800000,
+      "fundingRate": "-0.00024414",
+      "markPrice": "0.07560452",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789675200001,
+      "fundingRate": "-0.00026398",
+      "markPrice": "0.07523220",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789689600003,
+      "fundingRate": "-0.00026262",
+      "markPrice": "0.07556313",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789704000000,
+      "fundingRate": "-0.00014762",
+      "markPrice": "0.07595000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789718400006,
+      "fundingRate": "-0.00076283",
+      "markPrice": "0.07690000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789732800000,
+      "fundingRate": "-0.00079964",
+      "markPrice": "0.07666000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789747200000,
+      "fundingRate": "-0.00028861",
+      "markPrice": "0.07907000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789761600001,
+      "fundingRate": "-0.00035529",
+      "markPrice": "0.07912461",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789776000000,
+      "fundingRate": "-0.00051701",
+      "markPrice": "0.07940000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789790400000,
+      "fundingRate": "-0.00044794",
+      "markPrice": "0.07958486",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789804800002,
+      "fundingRate": "-0.00126036",
+      "markPrice": "0.07846413",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789819200000,
+      "fundingRate": "-0.00081728",
+      "markPrice": "0.08007000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789833600000,
+      "fundingRate": "-0.00055073",
+      "markPrice": "0.07956000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789848000000,
+      "fundingRate": "-0.00052366",
+      "markPrice": "0.08022000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789862400000,
+      "fundingRate": "-0.00096061",
+      "markPrice": "0.08027000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789876800000,
+      "fundingRate": "-0.01126342",
+      "markPrice": "0.08716000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789891200000,
+      "fundingRate": "-0.00849569",
+      "markPrice": "0.08957000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789905600004,
+      "fundingRate": "-0.01160787",
+      "markPrice": "0.08407180",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789920000000,
+      "fundingRate": "-0.00431154",
+      "markPrice": "0.08544000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789934400000,
+      "fundingRate": "-0.00359330",
+      "markPrice": "0.08488197",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789948800007,
+      "fundingRate": "-0.00656542",
+      "markPrice": "0.08588000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789963200002,
+      "fundingRate": "-0.00341169",
+      "markPrice": "0.08579406",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789977600004,
+      "fundingRate": "-0.00241318",
+      "markPrice": "0.08600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "fundingTime": 1789992000000,
+      "fundingRate": "-0.00232592",
+      "markPrice": "0.08833288",
+      "rateType": "Regular"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+SELECT instrument_id,min(minute_time) AS first,max(minute_time) AS last,count() AS minutes,sum(bitCount(valid_bitmap)) AS valid_seconds FROM crypto_market_info.order_book_minute FINAL GROUP BY instrument_id FORMAT JSONEachRow

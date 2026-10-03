@@ -1,0 +1,4 @@
+2026/10/02 17:54:28 explicit_logs status=failed requests=0 finalized=0 claims=0
+2026/10/02 17:54:28 http_stats=map[eth.drpc.org:{40 40 39 0 false} fapi.binance.com:{2 1 1 0 false}]
+2026/10/02 17:54:28 source_http_400
+rpc_error_35

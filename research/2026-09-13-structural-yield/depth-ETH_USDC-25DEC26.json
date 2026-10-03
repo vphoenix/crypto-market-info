@@ -1,0 +1,92 @@
+{
+  "name": "depth-ETH_USDC-25DEC26",
+  "url": "https://www.deribit.com/api/v2/public/get_order_book?instrument_name=ETH_USDC-25DEC26&depth=100",
+  "requested_at": "2026-09-13T13:44:24.765107+00:00",
+  "received_at": "2026-09-13T13:44:25.221959+00:00",
+  "payload_sha256": "4daae0b8a3e06e97301fe0c7a4830e243902c0779bdf1feaaf630a4e262278d8",
+  "data": {
+    "jsonrpc": "2.0",
+    "result": {
+      "timestamp": 1789307064227,
+      "state": "open",
+      "stats": {
+        "high": "2554.75",
+        "low": "2551.25",
+        "price_change": "-0.137",
+        "volume": "18.295",
+        "volume_usd": "46694.49",
+        "volume_notional": "46702.12975"
+      },
+      "change_id": 188823498513,
+      "index_price": "2475.68",
+      "instrument_name": "ETH_USDC-25DEC26",
+      "bids": [
+        [
+          "2502.75",
+          "8.391"
+        ],
+        [
+          "2502.5",
+          "8.07"
+        ],
+        [
+          "2478.0",
+          "0.404"
+        ],
+        [
+          "2466.0",
+          "10.0"
+        ],
+        [
+          "2440.0",
+          "10.0"
+        ],
+        [
+          "2430.0",
+          "1.0"
+        ],
+        [
+          "2420.0",
+          "1.0"
+        ],
+        [
+          "2410.0",
+          "1.0"
+        ],
+        [
+          "2316.0",
+          "0.086"
+        ],
+        [
+          "2143.0",
+          "0.205"
+        ]
+      ],
+      "asks": [
+        [
+          "2503.75",
+          "8.388"
+        ],
+        [
+          "2504.0",
+          "8.07"
+        ]
+      ],
+      "last_price": "2551.25",
+      "settlement_price": "2544.17",
+      "min_price": "2464.75",
+      "max_price": "2540.25",
+      "open_interest": "212.3",
+      "mark_price": "2502.47",
+      "estimated_delivery_price": "2475.68",
+      "best_ask_price": "2503.75",
+      "best_bid_price": "2502.75",
+      "best_ask_amount": "8.388",
+      "best_bid_amount": "8.391"
+    },
+    "usIn": 1789307065075527,
+    "usOut": 1789307065075785,
+    "usDiff": 258,
+    "testnet": false
+  }
+}

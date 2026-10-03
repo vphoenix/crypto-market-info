@@ -1,0 +1,7 @@
+{
+  "name": "bybit-tickers",
+  "url": "https://api.bybit.com/v5/market/tickers?category=linear",
+  "retrieved_at_utc": "2026-09-16T10:31:27.980201+00:00",
+  "sha256": "6697d4ad0195c6206fb3dd957bb0712177d5d67955d46f8e4dde0c2ac23d6ec5",
+  "rows": null
+}

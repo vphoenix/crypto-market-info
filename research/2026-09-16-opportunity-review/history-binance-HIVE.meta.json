@@ -1,0 +1,7 @@
+{
+  "name": "history-binance-HIVE",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=HIVEUSDT&startTime=1786876389000&endTime=1789554789000&limit=1000",
+  "retrieved_at_utc": "2026-09-16T10:33:24.623612+00:00",
+  "sha256": "40c1d91b6e3744496843a8bf606a0fc23729286d668f55a762b018e36ea07be2",
+  "rows": 186
+}

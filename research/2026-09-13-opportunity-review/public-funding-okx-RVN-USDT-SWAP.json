@@ -1,0 +1,913 @@
+{
+  "venue": "OKX",
+  "symbol": "RVN-USDT-SWAP",
+  "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=RVN-USDT-SWAP&limit=100",
+  "fetched_at": "2026-09-12T19:19:36.620793+00:00",
+  "payload_sha256": "0ac716c2029aef988bc7f353934003a34321a3ff13f18d787e231b80b0ca795e",
+  "data": {
+    "code": "0",
+    "data": [
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.001360106159479",
+        "fundingTime": "1789228800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.001360106159479"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0014564119560549",
+        "fundingTime": "1789214400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0014564119560549"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0012488710352793",
+        "fundingTime": "1789200000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0012488710352793"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0012114164126355",
+        "fundingTime": "1789185600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0012114164126355"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0011912298393385",
+        "fundingTime": "1789171200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0011912298393385"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.000712911706081",
+        "fundingTime": "1789156800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.000712911706081"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0014154702978379",
+        "fundingTime": "1789142400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0014154702978379"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0031578214504895",
+        "fundingTime": "1789128000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0031578214504895"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0024234183098018",
+        "fundingTime": "1789113600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0024234183098018"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0023750377968089",
+        "fundingTime": "1789099200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0023750377968089"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0040682579096222",
+        "fundingTime": "1789084800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0040682579096222"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0021917734217147",
+        "fundingTime": "1789070400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0021917734217147"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.01",
+        "fundingTime": "1789056000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.01"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0002712889961329",
+        "fundingTime": "1789027200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0002712889961329"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0005354820244712",
+        "fundingTime": "1788998400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0005354820244712"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0004410883043232",
+        "fundingTime": "1788969600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0004410883043232"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000266820768324",
+        "fundingTime": "1788940800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000266820768324"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0002260930714935",
+        "fundingTime": "1788912000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0002260930714935"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000209079926205",
+        "fundingTime": "1788883200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000209079926205"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0006146662839428",
+        "fundingTime": "1788854400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0006146662839428"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0006161151153036",
+        "fundingTime": "1788825600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0006161151153036"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0004283817021906",
+        "fundingTime": "1788796800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0004283817021906"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0002401332633692",
+        "fundingTime": "1788768000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0002401332633692"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0003010116349863",
+        "fundingTime": "1788739200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0003010116349863"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0005214052596436",
+        "fundingTime": "1788710400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0005214052596436"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0002321035116364",
+        "fundingTime": "1788681600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0002321035116364"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0001786601663007",
+        "fundingTime": "1788652800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0001786601663007"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0004932959051766",
+        "fundingTime": "1788624000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0004932959051766"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0000538744071191",
+        "fundingTime": "1788595200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0000538744071191"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0000274747384608",
+        "fundingTime": "1788566400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0000274747384608"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0004693240431109",
+        "fundingTime": "1788537600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0004693240431109"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0004522053965263",
+        "fundingTime": "1788508800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0004522053965263"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0007244454456291",
+        "fundingTime": "1788480000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0007244454456291"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0003016817505943",
+        "fundingTime": "1788451200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0003016817505943"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0009521641816361",
+        "fundingTime": "1788422400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0009521641816361"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0008387790696329",
+        "fundingTime": "1788393600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0008387790696329"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0007174511864804",
+        "fundingTime": "1788364800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0007174511864804"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0012540798659171",
+        "fundingTime": "1788336000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0012540798659171"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0006782925903576",
+        "fundingTime": "1788307200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0006782925903576"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0014660095211892",
+        "fundingTime": "1788278400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0014660095211892"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0012573238449753",
+        "fundingTime": "1788249600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0012573238449753"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000199901115997",
+        "fundingTime": "1788220800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000199901115997"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0008253051434907",
+        "fundingTime": "1788192000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0008253051434907"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0008316501351433",
+        "fundingTime": "1788163200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0008316501351433"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0005429003032347",
+        "fundingTime": "1788134400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0005429003032347"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0019392806721983",
+        "fundingTime": "1788105600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0019392806721983"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000097646636848",
+        "fundingTime": "1788076800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000097646636848"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0021285537525816",
+        "fundingTime": "1788048000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0021285537525816"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0011229193910433",
+        "fundingTime": "1788019200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0011229193910433"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0009627853086238",
+        "fundingTime": "1787990400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0009627853086238"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0006836258187096",
+        "fundingTime": "1787961600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0006836258187096"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0009902258417794",
+        "fundingTime": "1787932800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0009902258417794"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0010978920264849",
+        "fundingTime": "1787904000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0010978920264849"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0010072137228732",
+        "fundingTime": "1787875200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0010072137228732"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0012946360930754",
+        "fundingTime": "1787846400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0012946360930754"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0009714079872377",
+        "fundingTime": "1787817600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0009714079872377"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0005834547448121",
+        "fundingTime": "1787788800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0005834547448121"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0010977760928738",
+        "fundingTime": "1787760000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0010977760928738"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0008293197050029",
+        "fundingTime": "1787731200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0008293197050029"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0009543872276797",
+        "fundingTime": "1787702400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0009543872276797"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0013782976962168",
+        "fundingTime": "1787673600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0013782976962168"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0010833540288231",
+        "fundingTime": "1787644800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0010833540288231"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0007868087030936",
+        "fundingTime": "1787616000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0007868087030936"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0011471146605569",
+        "fundingTime": "1787587200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0011471146605569"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0014927573364992",
+        "fundingTime": "1787558400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0014927573364992"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0018808858148239",
+        "fundingTime": "1787529600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0018808858148239"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0015180060866605",
+        "fundingTime": "1787500800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0015180060866605"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0013777781848648",
+        "fundingTime": "1787472000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0013777781848648"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.001587140094621",
+        "fundingTime": "1787443200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.001587140094621"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0012732899646189",
+        "fundingTime": "1787414400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0012732899646189"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0010442832119799",
+        "fundingTime": "1787385600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0010442832119799"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0018153025271505",
+        "fundingTime": "1787356800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0018153025271505"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0019900804035067",
+        "fundingTime": "1787328000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0019900804035067"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0020590436627469",
+        "fundingTime": "1787299200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0020590436627469"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0019703976181783",
+        "fundingTime": "1787270400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0019703976181783"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0024171613305626",
+        "fundingTime": "1787241600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0024171613305626"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.001478302737969",
+        "fundingTime": "1787212800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.001478302737969"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0019335943409174",
+        "fundingTime": "1787184000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0019335943409174"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0024653302299237",
+        "fundingTime": "1787155200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0024653302299237"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0020441660782426",
+        "fundingTime": "1787126400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0020441660782426"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0016952095000089",
+        "fundingTime": "1787097600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0016952095000089"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0025877265611201",
+        "fundingTime": "1787068800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0025877265611201"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0016419396806349",
+        "fundingTime": "1787040000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0016419396806349"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0019760608607029",
+        "fundingTime": "1787011200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0019760608607029"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0013000625517364",
+        "fundingTime": "1786982400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0013000625517364"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0025750577820824",
+        "fundingTime": "1786953600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0025750577820824"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.000703196979956",
+        "fundingTime": "1786924800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.000703196979956"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0012177425175292",
+        "fundingTime": "1786896000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0012177425175292"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0010215391812495",
+        "fundingTime": "1786867200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0010215391812495"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0014542952715105",
+        "fundingTime": "1786838400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0014542952715105"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0015669834391874",
+        "fundingTime": "1786809600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0015669834391874"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0016897968345707",
+        "fundingTime": "1786780800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0016897968345707"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0008014162857897",
+        "fundingTime": "1786752000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0008014162857897"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0015251903987171",
+        "fundingTime": "1786723200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0015251903987171"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0006782899642417",
+        "fundingTime": "1786694400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0006782899642417"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0006619240762758",
+        "fundingTime": "1786665600000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0006619240762758"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0002871481774672",
+        "fundingTime": "1786636800000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0002871481774672"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0022429603889774",
+        "fundingTime": "1786608000000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0022429603889774"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.001157091610899",
+        "fundingTime": "1786579200000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.001157091610899"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0029447074308772",
+        "fundingTime": "1786550400000",
+        "instId": "RVN-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0029447074308772"
+      }
+    ],
+    "msg": ""
+  }
+}

@@ -1,0 +1,1866 @@
+{
+  "end_utc": "2026-09-21T08:01:00+00:00",
+  "audit": [
+    {
+      "symbol": "T",
+      "venue": "Bybit",
+      "ids": [
+        1285
+      ],
+      "public_count_7d": 70,
+      "local_count_7d": 64,
+      "missing_local_7d": 6,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-09-01T08:00:00+00:00",
+      "official_last": "2026-09-21T12:00:00+00:00",
+      "official_gap_hours_7d": {
+        "1": 37,
+        "3": 1,
+        "4": 31
+      }
+    },
+    {
+      "symbol": "SOON",
+      "venue": "Binance",
+      "ids": [
+        1218
+      ],
+      "public_count_7d": 42,
+      "local_count_7d": 18,
+      "missing_local_7d": 24,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-06-30T08:00:00+00:00",
+      "official_last": "2026-09-21T12:00:00+00:00",
+      "official_gap_hours_7d": {
+        "3.9997222222222222222222222222222222222": 14,
+        "4": 27
+      }
+    },
+    {
+      "symbol": "ONG",
+      "venue": "Bybit",
+      "ids": [
+        958
+      ],
+      "public_count_7d": 42,
+      "local_count_7d": 35,
+      "missing_local_7d": 7,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-09-02T23:00:00+00:00",
+      "official_last": "2026-09-21T12:00:00+00:00",
+      "official_gap_hours_7d": {
+        "4": 41
+      }
+    },
+    {
+      "symbol": "ONE",
+      "venue": "Binance",
+      "ids": [
+        955
+      ],
+      "public_count_7d": 91,
+      "local_count_7d": 41,
+      "missing_local_7d": 50,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-05-03T08:00:00.003000+00:00",
+      "official_last": "2026-09-21T14:00:00.001000+00:00",
+      "official_gap_hours_7d": {
+        "8": 6,
+        "7.9997222222222222222222222222222222222": 4,
+        "0.99972222222222222222222222222222222222": 25,
+        "1": 55
+      }
+    },
+    {
+      "symbol": "T",
+      "venue": "Binance",
+      "ids": [
+        1284
+      ],
+      "public_count_7d": 140,
+      "local_count_7d": 58,
+      "missing_local_7d": 82,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-07-27T04:00:00+00:00",
+      "official_last": "2026-09-21T12:00:00+00:00",
+      "official_gap_hours_7d": {
+        "0.99972222222222222222222222222222222222": 46,
+        "1": 84,
+        "2": 1,
+        "4": 6,
+        "3.9997222222222222222222222222222222222": 2
+      }
+    },
+    {
+      "symbol": "ONE",
+      "venue": "OKX",
+      "ids": [
+        956
+      ],
+      "public_count_7d": 94,
+      "local_count_7d": 101,
+      "missing_local_7d": 14,
+      "unexplained_local_7d": 21,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-09-17T11:00:00+00:00",
+      "official_last": "2026-09-21T14:00:00+00:00",
+      "official_gap_hours_7d": {
+        "1": 93
+      }
+    },
+    {
+      "symbol": "SOON",
+      "venue": "Bybit",
+      "ids": [
+        1219
+      ],
+      "public_count_7d": 42,
+      "local_count_7d": 35,
+      "missing_local_7d": 7,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-08-19T08:00:00+00:00",
+      "official_last": "2026-09-21T12:00:00+00:00",
+      "official_gap_hours_7d": {
+        "4": 41
+      }
+    },
+    {
+      "symbol": "SOON",
+      "venue": "OKX",
+      "ids": [
+        1220
+      ],
+      "public_count_7d": 42,
+      "local_count_7d": 40,
+      "missing_local_7d": 2,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-09-05T00:00:00+00:00",
+      "official_last": "2026-09-21T12:00:00+00:00",
+      "official_gap_hours_7d": {
+        "4": 41
+      }
+    },
+    {
+      "symbol": "IOST",
+      "venue": "Binance",
+      "ids": [
+        674
+      ],
+      "public_count_7d": 67,
+      "local_count_7d": 30,
+      "missing_local_7d": 37,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-05-24T00:00:00.011000+00:00",
+      "official_last": "2026-09-21T12:00:00+00:00",
+      "official_gap_hours_7d": {
+        "1": 21,
+        "0.99972222222222222222222222222222222222": 11,
+        "2.9997222222222222222222222222222222222": 1,
+        "4": 23,
+        "3.9997222222222222222222222222222222222": 10
+      }
+    },
+    {
+      "symbol": "BTC",
+      "venue": "Binance",
+      "ids": [
+        276
+      ],
+      "public_count_7d": 21,
+      "local_count_7d": 9,
+      "missing_local_7d": 12,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-04-08T00:00:00+00:00",
+      "official_last": "2026-09-21T08:00:00.004000+00:00",
+      "official_gap_hours_7d": {
+        "8": 13,
+        "7.9997222222222222222222222222222222222": 7
+      }
+    },
+    {
+      "symbol": "IOST",
+      "venue": "OKX",
+      "ids": [
+        676
+      ],
+      "public_count_7d": 42,
+      "local_count_7d": 40,
+      "missing_local_7d": 2,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-09-03T00:00:00+00:00",
+      "official_last": "2026-09-21T12:00:00+00:00",
+      "official_gap_hours_7d": {
+        "4": 41
+      }
+    },
+    {
+      "symbol": "LSK",
+      "venue": "Binance",
+      "ids": [
+        777
+      ],
+      "public_count_7d": 168,
+      "local_count_7d": 77,
+      "missing_local_7d": 91,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-07-24T16:00:00.008000+00:00",
+      "official_last": "2026-09-21T14:00:00.001000+00:00",
+      "official_gap_hours_7d": {
+        "1": 112,
+        "0.99972222222222222222222222222222222222": 55
+      }
+    },
+    {
+      "symbol": "IOST",
+      "venue": "Bybit",
+      "ids": [
+        675
+      ],
+      "public_count_7d": 51,
+      "local_count_7d": 46,
+      "missing_local_7d": 5,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-08-26T08:00:00+00:00",
+      "official_last": "2026-09-21T08:00:00+00:00",
+      "official_gap_hours_7d": {
+        "1": 33,
+        "6": 1,
+        "8": 16
+      }
+    },
+    {
+      "symbol": "LSK",
+      "venue": "Bybit",
+      "ids": [
+        778
+      ],
+      "public_count_7d": 168,
+      "local_count_7d": 147,
+      "missing_local_7d": 21,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-09-12T16:00:00+00:00",
+      "official_last": "2026-09-21T14:00:00+00:00",
+      "official_gap_hours_7d": {
+        "1": 167
+      }
+    },
+    {
+      "symbol": "ONG",
+      "venue": "Binance",
+      "ids": [
+        957
+      ],
+      "public_count_7d": 49,
+      "local_count_7d": 22,
+      "missing_local_7d": 27,
+      "unexplained_local_7d": 0,
+      "conflicting_values_7d": 0,
+      "official_first": "2026-08-26T00:00:00+00:00",
+      "official_last": "2026-09-21T12:00:00+00:00",
+      "official_gap_hours_7d": {
+        "1": 6,
+        "0.99972222222222222222222222222222222222": 2,
+        "3": 1,
+        "3.9997222222222222222222222222222222222": 13,
+        "4": 26
+      }
+    }
+  ],
+  "pairs": [
+    {
+      "symbol": "ONE",
+      "long": "OKX",
+      "short": "Binance",
+      "windows": {
+        "1": {
+          "long": {
+            "count": 24,
+            "sum": "-0.1340875258648839",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 24,
+            "sum": "-0.02432444",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.1097630858648839",
+          "gross_total_capital_apr": "20.03176317034131175",
+          "after_taker_fees_apr": "19.66676317034131175"
+        },
+        "3": {
+          "long": {
+            "count": 72,
+            "sum": "-0.1981686095599208",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 72,
+            "sum": "-0.06657874",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.1315898695599208",
+          "gross_total_capital_apr": "8.0050503982285153333333333333333333333",
+          "after_taker_fees_apr": "7.8833837315618486666666666666666666667"
+        },
+        "7": {
+          "long": {
+            "count": 94,
+            "sum": "-0.2528735517237575",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 91,
+            "sum": "-0.11769584",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": false,
+          "spread_on_single_leg_notional": "0.1351777117237575",
+          "gross_total_capital_apr": "3.52427605565510625",
+          "after_taker_fees_apr": "3.4721331985122491071428571428571428571"
+        },
+        "11": {
+          "long": {
+            "count": 94,
+            "sum": "-0.2528735517237575",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 103,
+            "sum": "-0.11709584",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": false,
+          "spread_on_single_leg_notional": "0.1357777117237575",
+          "gross_total_capital_apr": "2.2526756717805221590909090909090909091",
+          "after_taker_fees_apr": "2.2194938535987039772727272727272727273"
+        },
+        "30": {
+          "long": {
+            "count": 94,
+            "sum": "-0.2528735517237575",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 160,
+            "sum": "-0.11424584",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": false,
+          "spread_on_single_leg_notional": "0.1386277117237575",
+          "gross_total_capital_apr": "0.843318579652858125",
+          "after_taker_fees_apr": "0.83115191298619145833333333333333333333"
+        }
+      },
+      "daily": [
+        {
+          "end": "2026-09-21T08:01:00+00:00",
+          "spread": "0.1097630858648839"
+        },
+        {
+          "end": "2026-09-20T08:01:00+00:00",
+          "spread": "0.0279789963495932"
+        },
+        {
+          "end": "2026-09-19T08:01:00+00:00",
+          "spread": "-0.0061522126545563"
+        },
+        {
+          "end": "2026-09-18T08:01:00+00:00",
+          "spread": "0.0031378421638367"
+        },
+        {
+          "end": "2026-09-17T08:01:00+00:00",
+          "spread": "0.00015000"
+        },
+        {
+          "end": "2026-09-16T08:01:00+00:00",
+          "spread": "0.00015000"
+        },
+        {
+          "end": "2026-09-15T08:01:00+00:00",
+          "spread": "0.00015000"
+        }
+      ],
+      "positive_days": 6,
+      "largest_day_share": "0.81199100402875826845193426541228520951",
+      "fee_on_leg_notional": "0.0020"
+    },
+    {
+      "symbol": "LSK",
+      "long": "Bybit",
+      "short": "Binance",
+      "windows": {
+        "1": {
+          "long": {
+            "count": 24,
+            "sum": "-0.02141379",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 24,
+            "sum": "-0.02036328",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00105051",
+          "gross_total_capital_apr": "0.191718075",
+          "after_taker_fees_apr": "-0.191531925"
+        },
+        "3": {
+          "long": {
+            "count": 72,
+            "sum": "-0.10789301",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 72,
+            "sum": "-0.10604690",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00184611",
+          "gross_total_capital_apr": "0.112305025",
+          "after_taker_fees_apr": "-0.015444975"
+        },
+        "7": {
+          "long": {
+            "count": 168,
+            "sum": "-0.53055173",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 168,
+            "sum": "-0.42034666",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.11020507",
+          "gross_total_capital_apr": "2.8732036107142857142857142857142857143",
+          "after_taker_fees_apr": "2.8184536107142857142857142857142857143"
+        },
+        "11": {
+          "long": {
+            "count": 194,
+            "sum": "-0.72118360",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 207,
+            "sum": "-0.59425836",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": false,
+          "spread_on_single_leg_notional": "0.12692524",
+          "gross_total_capital_apr": "2.1058051181818181818181818181818181818",
+          "after_taker_fees_apr": "2.0709642090909090909090909090909090909"
+        },
+        "30": {
+          "long": {
+            "count": 194,
+            "sum": "-0.72118360",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 321,
+            "sum": "-0.60498791",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": false,
+          "spread_on_single_leg_notional": "0.11619569",
+          "gross_total_capital_apr": "0.70685711416666666666666666666666666667",
+          "after_taker_fees_apr": "0.69408211416666666666666666666666666667"
+        }
+      },
+      "daily": [
+        {
+          "end": "2026-09-21T08:01:00+00:00",
+          "spread": "0.00105051"
+        },
+        {
+          "end": "2026-09-20T08:01:00+00:00",
+          "spread": "-0.00298696"
+        },
+        {
+          "end": "2026-09-19T08:01:00+00:00",
+          "spread": "0.00378256"
+        },
+        {
+          "end": "2026-09-18T08:01:00+00:00",
+          "spread": "0.07818722"
+        },
+        {
+          "end": "2026-09-17T08:01:00+00:00",
+          "spread": "-0.00241743"
+        },
+        {
+          "end": "2026-09-16T08:01:00+00:00",
+          "spread": "-0.01280859"
+        },
+        {
+          "end": "2026-09-15T08:01:00+00:00",
+          "spread": "0.04539776"
+        }
+      ],
+      "positive_days": 4,
+      "largest_day_share": "0.70947026302873361452426825734968454718",
+      "fee_on_leg_notional": "0.00210"
+    },
+    {
+      "symbol": "IOST",
+      "long": "Binance",
+      "short": "Bybit",
+      "windows": {
+        "1": {
+          "long": {
+            "count": 6,
+            "sum": "-0.00806555",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 3,
+            "sum": "-0.00942232",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "-0.00135677",
+          "gross_total_capital_apr": "-0.247610525",
+          "after_taker_fees_apr": "-0.630860525"
+        },
+        "3": {
+          "long": {
+            "count": 18,
+            "sum": "-0.02425895",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 9,
+            "sum": "-0.02540019",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "-0.00114124",
+          "gross_total_capital_apr": "-0.069425433333333333333333333333333333333",
+          "after_taker_fees_apr": "-0.19717543333333333333333333333333333333"
+        },
+        "7": {
+          "long": {
+            "count": 67,
+            "sum": "-0.09784373",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 51,
+            "sum": "-0.08115322",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.01669051",
+          "gross_total_capital_apr": "0.43514543928571428571428571428571428571",
+          "after_taker_fees_apr": "0.38039543928571428571428571428571428571"
+        },
+        "11": {
+          "long": {
+            "count": 163,
+            "sum": "-0.19856756",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 147,
+            "sum": "-0.19050508",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00806248",
+          "gross_total_capital_apr": "0.13376387272727272727272727272727272727",
+          "after_taker_fees_apr": "0.098922963636363636363636363636363636364"
+        },
+        "30": {
+          "long": {
+            "count": 227,
+            "sum": "-0.26611607",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 200,
+            "sum": "-0.28960405",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": false,
+          "spread_on_single_leg_notional": "-0.02348798",
+          "gross_total_capital_apr": "-0.14288521166666666666666666666666666667",
+          "after_taker_fees_apr": "-0.15566021166666666666666666666666666667"
+        }
+      },
+      "daily": [
+        {
+          "end": "2026-09-21T08:01:00+00:00",
+          "spread": "-0.00135677"
+        },
+        {
+          "end": "2026-09-20T08:01:00+00:00",
+          "spread": "-0.00042910"
+        },
+        {
+          "end": "2026-09-19T08:01:00+00:00",
+          "spread": "0.00064463"
+        },
+        {
+          "end": "2026-09-18T08:01:00+00:00",
+          "spread": "0.00491454"
+        },
+        {
+          "end": "2026-09-17T08:01:00+00:00",
+          "spread": "0.00894026"
+        },
+        {
+          "end": "2026-09-16T08:01:00+00:00",
+          "spread": "0.00122817"
+        },
+        {
+          "end": "2026-09-15T08:01:00+00:00",
+          "spread": "0.00274878"
+        }
+      ],
+      "positive_days": 5,
+      "largest_day_share": "0.53564930011126083025623542959442221957",
+      "fee_on_leg_notional": "0.00210"
+    },
+    {
+      "symbol": "IOST",
+      "long": "OKX",
+      "short": "Bybit",
+      "windows": {
+        "1": {
+          "long": {
+            "count": 6,
+            "sum": "-0.0086786050586070",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 3,
+            "sum": "-0.00942232",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "-0.0007437149413930",
+          "gross_total_capital_apr": "-0.1357279768042225",
+          "after_taker_fees_apr": "-0.5189779768042225"
+        },
+        "3": {
+          "long": {
+            "count": 18,
+            "sum": "-0.0254293327976707",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 9,
+            "sum": "-0.02540019",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.0000291427976707",
+          "gross_total_capital_apr": "0.0017728535249675833333333333333333333333",
+          "after_taker_fees_apr": "-0.12597714647503241666666666666666666667"
+        },
+        "7": {
+          "long": {
+            "count": 42,
+            "sum": "-0.0975501794371135",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 51,
+            "sum": "-0.08115322",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.0163969594371135",
+          "gross_total_capital_apr": "0.42749215675331625",
+          "after_taker_fees_apr": "0.37274215675331625"
+        },
+        "11": {
+          "long": {
+            "count": 74,
+            "sum": "-0.1863268021465583",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 147,
+            "sum": "-0.19050508",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "-0.0041782778534417",
+          "gross_total_capital_apr": "-0.069321428023010022727272727272727272727",
+          "after_taker_fees_apr": "-0.10416233711391911363636363636363636364"
+        },
+        "30": {
+          "long": {
+            "count": 99,
+            "sum": "-0.2143904207087948",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 200,
+            "sum": "-0.28960405",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": false,
+          "spread_on_single_leg_notional": "-0.0752136292912052",
+          "gross_total_capital_apr": "-0.45754957818816496666666666666666666667",
+          "after_taker_fees_apr": "-0.47032457818816496666666666666666666667"
+        }
+      },
+      "daily": [
+        {
+          "end": "2026-09-21T08:01:00+00:00",
+          "spread": "-0.0007437149413930"
+        },
+        {
+          "end": "2026-09-20T08:01:00+00:00",
+          "spread": "0.0000252034128882"
+        },
+        {
+          "end": "2026-09-19T08:01:00+00:00",
+          "spread": "0.0007476543261755"
+        },
+        {
+          "end": "2026-09-18T08:01:00+00:00",
+          "spread": "0.0037993780890117"
+        },
+        {
+          "end": "2026-09-17T08:01:00+00:00",
+          "spread": "0.0088700782965644"
+        },
+        {
+          "end": "2026-09-16T08:01:00+00:00",
+          "spread": "0.0017969858805551"
+        },
+        {
+          "end": "2026-09-15T08:01:00+00:00",
+          "spread": "0.0019013743733116"
+        }
+      ],
+      "positive_days": 6,
+      "largest_day_share": "0.54095872656045780669545654856034914528",
+      "fee_on_leg_notional": "0.00210"
+    },
+    {
+      "symbol": "SOON",
+      "long": "OKX",
+      "short": "Bybit",
+      "windows": {
+        "1": {
+          "long": {
+            "count": 6,
+            "sum": "0.00030",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 6,
+            "sum": "0.00133618",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": true,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00103618",
+          "gross_total_capital_apr": "0.18910285",
+          "after_taker_fees_apr": "-0.19414715"
+        },
+        "3": {
+          "long": {
+            "count": 18,
+            "sum": "0.00090",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 18,
+            "sum": "0.00668482",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": true,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00578482",
+          "gross_total_capital_apr": "0.35190988333333333333333333333333333333",
+          "after_taker_fees_apr": "0.22415988333333333333333333333333333333"
+        },
+        "7": {
+          "long": {
+            "count": 42,
+            "sum": "0.00210",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 42,
+            "sum": "0.01025292",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": true,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00815292",
+          "gross_total_capital_apr": "0.21255827142857142857142857142857142857",
+          "after_taker_fees_apr": "0.15780827142857142857142857142857142857"
+        },
+        "11": {
+          "long": {
+            "count": 66,
+            "sum": "0.00330",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 66,
+            "sum": "0.01334050",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": true,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.01004050",
+          "gross_total_capital_apr": "0.16658102272727272727272727272727272727",
+          "after_taker_fees_apr": "0.13174011363636363636363636363636363636"
+        },
+        "30": {
+          "long": {
+            "count": 99,
+            "sum": "0.0059804045315168",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": false,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 180,
+            "sum": "0.02900180",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": false,
+          "history_covers_boundaries": false,
+          "spread_on_single_leg_notional": "0.0230213954684832",
+          "gross_total_capital_apr": "0.1400468224332728",
+          "after_taker_fees_apr": "0.1272718224332728"
+        }
+      },
+      "daily": [
+        {
+          "end": "2026-09-21T08:01:00+00:00",
+          "spread": "0.00103618"
+        },
+        {
+          "end": "2026-09-20T08:01:00+00:00",
+          "spread": "0.00220879"
+        },
+        {
+          "end": "2026-09-19T08:01:00+00:00",
+          "spread": "0.00253985"
+        },
+        {
+          "end": "2026-09-18T08:01:00+00:00",
+          "spread": "0.00108155"
+        },
+        {
+          "end": "2026-09-17T08:01:00+00:00",
+          "spread": "0.00000"
+        },
+        {
+          "end": "2026-09-16T08:01:00+00:00",
+          "spread": "0.00000"
+        },
+        {
+          "end": "2026-09-15T08:01:00+00:00",
+          "spread": "0.00128655"
+        }
+      ],
+      "positive_days": 5,
+      "largest_day_share": "0.31152642243515206821605020041899098728",
+      "fee_on_leg_notional": "0.00210"
+    },
+    {
+      "symbol": "SOON",
+      "long": "Binance",
+      "short": "Bybit",
+      "windows": {
+        "1": {
+          "long": {
+            "count": 6,
+            "sum": "0.00038720",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 6,
+            "sum": "0.00133618",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": true,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00094898",
+          "gross_total_capital_apr": "0.17318885",
+          "after_taker_fees_apr": "-0.21006115"
+        },
+        "3": {
+          "long": {
+            "count": 18,
+            "sum": "0.00238001",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 18,
+            "sum": "0.00668482",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": true,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00430481",
+          "gross_total_capital_apr": "0.26187594166666666666666666666666666667",
+          "after_taker_fees_apr": "0.13412594166666666666666666666666666667"
+        },
+        "7": {
+          "long": {
+            "count": 42,
+            "sum": "0.00401225",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 42,
+            "sum": "0.01025292",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": true,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00624067",
+          "gross_total_capital_apr": "0.16270318214285714285714285714285714286",
+          "after_taker_fees_apr": "0.10795318214285714285714285714285714286"
+        },
+        "11": {
+          "long": {
+            "count": 66,
+            "sum": "0.00596235",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 66,
+            "sum": "0.01334050",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": true,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00737815",
+          "gross_total_capital_apr": "0.12241021590909090909090909090909090909",
+          "after_taker_fees_apr": "0.087569306818181818181818181818181818182"
+        },
+        "30": {
+          "long": {
+            "count": 180,
+            "sum": "0.01892248",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 180,
+            "sum": "0.02900180",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": true,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.01007932",
+          "gross_total_capital_apr": "0.061315863333333333333333333333333333333",
+          "after_taker_fees_apr": "0.048540863333333333333333333333333333333"
+        }
+      },
+      "daily": [
+        {
+          "end": "2026-09-21T08:01:00+00:00",
+          "spread": "0.00094898"
+        },
+        {
+          "end": "2026-09-20T08:01:00+00:00",
+          "spread": "0.00173464"
+        },
+        {
+          "end": "2026-09-19T08:01:00+00:00",
+          "spread": "0.00162119"
+        },
+        {
+          "end": "2026-09-18T08:01:00+00:00",
+          "spread": "0.00108155"
+        },
+        {
+          "end": "2026-09-17T08:01:00+00:00",
+          "spread": "0E-8"
+        },
+        {
+          "end": "2026-09-16T08:01:00+00:00",
+          "spread": "-0.00020035"
+        },
+        {
+          "end": "2026-09-15T08:01:00+00:00",
+          "spread": "0.00105466"
+        }
+      ],
+      "positive_days": 5,
+      "largest_day_share": "0.27795733470925397433288412942841073154",
+      "fee_on_leg_notional": "0.00210"
+    },
+    {
+      "symbol": "T",
+      "long": "Binance",
+      "short": "Bybit",
+      "windows": {
+        "1": {
+          "long": {
+            "count": 6,
+            "sum": "-0.01265806",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 6,
+            "sum": "-0.01011318",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00254488",
+          "gross_total_capital_apr": "0.46444060",
+          "after_taker_fees_apr": "0.08119060"
+        },
+        "3": {
+          "long": {
+            "count": 47,
+            "sum": "-0.02493040",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 18,
+            "sum": "-0.02484401",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00008639",
+          "gross_total_capital_apr": "0.0052553916666666666666666666666666666667",
+          "after_taker_fees_apr": "-0.12249460833333333333333333333333333333"
+        },
+        "7": {
+          "long": {
+            "count": 140,
+            "sum": "-0.12178445",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 70,
+            "sum": "-0.11612697",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00565748",
+          "gross_total_capital_apr": "0.14749858571428571428571428571428571429",
+          "after_taker_fees_apr": "0.092748585714285714285714285714285714286"
+        },
+        "11": {
+          "long": {
+            "count": 164,
+            "sum": "-0.12264201",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 94,
+            "sum": "-0.11673560",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00590641",
+          "gross_total_capital_apr": "0.097992711363636363636363636363636363636",
+          "after_taker_fees_apr": "0.063151802272727272727272727272727272727"
+        },
+        "30": {
+          "long": {
+            "count": 341,
+            "sum": "-0.30739230",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 199,
+            "sum": "-0.32690156",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": false,
+          "spread_on_single_leg_notional": "-0.01950926",
+          "gross_total_capital_apr": "-0.11868133166666666666666666666666666667",
+          "after_taker_fees_apr": "-0.13145633166666666666666666666666666667"
+        }
+      },
+      "daily": [
+        {
+          "end": "2026-09-21T08:01:00+00:00",
+          "spread": "0.00254488"
+        },
+        {
+          "end": "2026-09-20T08:01:00+00:00",
+          "spread": "-0.00433113"
+        },
+        {
+          "end": "2026-09-19T08:01:00+00:00",
+          "spread": "0.00187264"
+        },
+        {
+          "end": "2026-09-18T08:01:00+00:00",
+          "spread": "-0.00058988"
+        },
+        {
+          "end": "2026-09-17T08:01:00+00:00",
+          "spread": "0.00289284"
+        },
+        {
+          "end": "2026-09-16T08:01:00+00:00",
+          "spread": "0.00964920"
+        },
+        {
+          "end": "2026-09-15T08:01:00+00:00",
+          "spread": "-0.00638107"
+        }
+      ],
+      "positive_days": 4,
+      "largest_day_share": "1.7055650218825342732099804153085826198",
+      "fee_on_leg_notional": "0.00210"
+    },
+    {
+      "symbol": "SOON",
+      "long": "OKX",
+      "short": "Binance",
+      "windows": {
+        "1": {
+          "long": {
+            "count": 6,
+            "sum": "0.00030",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 6,
+            "sum": "0.00038720",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": true,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00008720",
+          "gross_total_capital_apr": "0.01591400",
+          "after_taker_fees_apr": "-0.34908600"
+        },
+        "3": {
+          "long": {
+            "count": 18,
+            "sum": "0.00090",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 18,
+            "sum": "0.00238001",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": true,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00148001",
+          "gross_total_capital_apr": "0.090033941666666666666666666666666666667",
+          "after_taker_fees_apr": "-0.031632725"
+        },
+        "7": {
+          "long": {
+            "count": 42,
+            "sum": "0.00210",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 42,
+            "sum": "0.00401225",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": true,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00191225",
+          "gross_total_capital_apr": "0.049855089285714285714285714285714285714",
+          "after_taker_fees_apr": "-0.0022877678571428571428571428571428571429"
+        },
+        "11": {
+          "long": {
+            "count": 66,
+            "sum": "0.00330",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 66,
+            "sum": "0.00596235",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": true,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00266235",
+          "gross_total_capital_apr": "0.044170806818181818181818181818181818182",
+          "after_taker_fees_apr": "0.010988988636363636363636363636363636364"
+        },
+        "30": {
+          "long": {
+            "count": 99,
+            "sum": "0.0059804045315168",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": false,
+            "schedule_hours": 4
+          },
+          "short": {
+            "count": 180,
+            "sum": "0.01892248",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": true,
+            "schedule_hours": 4
+          },
+          "complete": false,
+          "history_covers_boundaries": false,
+          "spread_on_single_leg_notional": "0.0129420754684832",
+          "gross_total_capital_apr": "0.078730959099939466666666666666666666667",
+          "after_taker_fees_apr": "0.0665642924332728"
+        }
+      },
+      "daily": [
+        {
+          "end": "2026-09-21T08:01:00+00:00",
+          "spread": "0.00008720"
+        },
+        {
+          "end": "2026-09-20T08:01:00+00:00",
+          "spread": "0.00047415"
+        },
+        {
+          "end": "2026-09-19T08:01:00+00:00",
+          "spread": "0.00091866"
+        },
+        {
+          "end": "2026-09-18T08:01:00+00:00",
+          "spread": "0E-8"
+        },
+        {
+          "end": "2026-09-17T08:01:00+00:00",
+          "spread": "0E-8"
+        },
+        {
+          "end": "2026-09-16T08:01:00+00:00",
+          "spread": "0.00020035"
+        },
+        {
+          "end": "2026-09-15T08:01:00+00:00",
+          "spread": "0.00023189"
+        }
+      ],
+      "positive_days": 5,
+      "largest_day_share": "0.48040789645705320956987841547914760099",
+      "fee_on_leg_notional": "0.0020"
+    },
+    {
+      "symbol": "ONG",
+      "long": "Bybit",
+      "short": "Binance",
+      "windows": {
+        "1": {
+          "long": {
+            "count": 6,
+            "sum": "-0.03200188",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 6,
+            "sum": "-0.03190300",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00009888",
+          "gross_total_capital_apr": "0.01804560",
+          "after_taker_fees_apr": "-0.36520440"
+        },
+        "3": {
+          "long": {
+            "count": 18,
+            "sum": "-0.06366473",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 18,
+            "sum": "-0.05818324",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00548149",
+          "gross_total_capital_apr": "0.33345730833333333333333333333333333333",
+          "after_taker_fees_apr": "0.20570730833333333333333333333333333333"
+        },
+        "7": {
+          "long": {
+            "count": 42,
+            "sum": "-0.06711361",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 49,
+            "sum": "-0.06581978",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.00129383",
+          "gross_total_capital_apr": "0.033731996428571428571428571428571428571",
+          "after_taker_fees_apr": "-0.021018003571428571428571428571428571429"
+        },
+        "11": {
+          "long": {
+            "count": 66,
+            "sum": "-0.10384306",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 145,
+            "sum": "-0.11887289",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "-0.01502983",
+          "gross_total_capital_apr": "-0.24935854318181818181818181818181818182",
+          "after_taker_fees_apr": "-0.28419945227272727272727272727272727273"
+        },
+        "30": {
+          "long": {
+            "count": 199,
+            "sum": "-0.25082438",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 499,
+            "sum": "-0.64394253",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": false,
+          "spread_on_single_leg_notional": "-0.39311815",
+          "gross_total_capital_apr": "-2.3914687458333333333333333333333333333",
+          "after_taker_fees_apr": "-2.4042437458333333333333333333333333333"
+        }
+      },
+      "daily": [
+        {
+          "end": "2026-09-21T08:01:00+00:00",
+          "spread": "0.00009888"
+        },
+        {
+          "end": "2026-09-20T08:01:00+00:00",
+          "spread": "0.00624728"
+        },
+        {
+          "end": "2026-09-19T08:01:00+00:00",
+          "spread": "-0.00086467"
+        },
+        {
+          "end": "2026-09-18T08:01:00+00:00",
+          "spread": "-0.00189918"
+        },
+        {
+          "end": "2026-09-17T08:01:00+00:00",
+          "spread": "-0.00139968"
+        },
+        {
+          "end": "2026-09-16T08:01:00+00:00",
+          "spread": "-0.00070875"
+        },
+        {
+          "end": "2026-09-15T08:01:00+00:00",
+          "spread": "-0.00018005"
+        }
+      ],
+      "positive_days": 2,
+      "largest_day_share": "4.8285168839801210359939095553511666911",
+      "fee_on_leg_notional": "0.00210"
+    },
+    {
+      "symbol": "IOST",
+      "long": "Binance",
+      "short": "OKX",
+      "windows": {
+        "1": {
+          "long": {
+            "count": 6,
+            "sum": "-0.00806555",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 6,
+            "sum": "-0.0086786050586070",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "-0.0006130550586070",
+          "gross_total_capital_apr": "-0.1118825481957775",
+          "after_taker_fees_apr": "-0.4768825481957775"
+        },
+        "3": {
+          "long": {
+            "count": 18,
+            "sum": "-0.02425895",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 18,
+            "sum": "-0.0254293327976707",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "-0.0011703827976707",
+          "gross_total_capital_apr": "-0.071198286858300916666666666666666666667",
+          "after_taker_fees_apr": "-0.19286495352496758333333333333333333333"
+        },
+        "7": {
+          "long": {
+            "count": 67,
+            "sum": "-0.09784373",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 42,
+            "sum": "-0.0975501794371135",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.0002935505628865",
+          "gross_total_capital_apr": "0.0076532825323980357142857142857142857143",
+          "after_taker_fees_apr": "-0.044489574610459107142857142857142857143"
+        },
+        "11": {
+          "long": {
+            "count": 163,
+            "sum": "-0.19856756",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 74,
+            "sum": "-0.1863268021465583",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": true,
+          "spread_on_single_leg_notional": "0.0122407578534417",
+          "gross_total_capital_apr": "0.20308530075028275",
+          "after_taker_fees_apr": "0.16990348256846456818181818181818181818"
+        },
+        "30": {
+          "long": {
+            "count": 227,
+            "sum": "-0.26611607",
+            "reaches_start": true,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "short": {
+            "count": 99,
+            "sum": "-0.2143904207087948",
+            "reaches_start": false,
+            "reaches_end": true,
+            "constant_schedule_verified": null,
+            "schedule_hours": null
+          },
+          "complete": false,
+          "history_covers_boundaries": false,
+          "spread_on_single_leg_notional": "0.0517256492912052",
+          "gross_total_capital_apr": "0.3146643665214983",
+          "after_taker_fees_apr": "0.30249769985483163333333333333333333333"
+        }
+      },
+      "daily": [
+        {
+          "end": "2026-09-21T08:01:00+00:00",
+          "spread": "-0.0006130550586070"
+        },
+        {
+          "end": "2026-09-20T08:01:00+00:00",
+          "spread": "-0.0004543034128882"
+        },
+        {
+          "end": "2026-09-19T08:01:00+00:00",
+          "spread": "-0.0001030243261755"
+        },
+        {
+          "end": "2026-09-18T08:01:00+00:00",
+          "spread": "0.0011151619109883"
+        },
+        {
+          "end": "2026-09-17T08:01:00+00:00",
+          "spread": "0.0000701817034356"
+        },
+        {
+          "end": "2026-09-16T08:01:00+00:00",
+          "spread": "-0.0005688158805551"
+        },
+        {
+          "end": "2026-09-15T08:01:00+00:00",
+          "spread": "0.0008474056266884"
+        }
+      ],
+      "positive_days": 3,
+      "largest_day_share": "3.7988750558774173389750469256421348647",
+      "fee_on_leg_notional": "0.0020"
+    }
+  ],
+  "btc_spot_short_perp": {
+    "3": {
+      "count": 9,
+      "sum": "0.00075220",
+      "reaches_start": true,
+      "reaches_end": true,
+      "constant_schedule_verified": true,
+      "schedule_hours": 8,
+      "gross_two_capital_apr": "0.045758833333333333333333333333333333333",
+      "after_spot_10bp_perp_5bp_roundtrip_apr": "-0.13674116666666666666666666666666666667"
+    },
+    "7": {
+      "count": 21,
+      "sum": "0.00147838",
+      "reaches_start": true,
+      "reaches_end": true,
+      "constant_schedule_verified": true,
+      "schedule_hours": 8,
+      "gross_two_capital_apr": "0.038543478571428571428571428571428571429",
+      "after_spot_10bp_perp_5bp_roundtrip_apr": "-0.039670807142857142857142857142857142857"
+    },
+    "30": {
+      "count": 90,
+      "sum": "0.00612929",
+      "reaches_start": true,
+      "reaches_end": true,
+      "constant_schedule_verified": true,
+      "schedule_hours": 8,
+      "gross_two_capital_apr": "0.037286514166666666666666666666666666667",
+      "after_spot_10bp_perp_5bp_roundtrip_apr": "0.019036514166666666666666666666666666667"
+    }
+  }
+}

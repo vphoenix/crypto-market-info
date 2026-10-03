@@ -1,0 +1,425 @@
+{
+  "created_at_utc": "2026-09-13T14:17:20.184555+00:00",
+  "files": [
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/analyze-demand.py",
+      "sha256": "5260a4fb16c7f7eb8a79ef2b7ad5c9b82baaf6d70320917a08d791a98ce3fd1d",
+      "bytes": 9742
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/demand-analysis.json",
+      "sha256": "2d4d9b40487f0c8bb34f221045dc8cc226cbfa1d67cb87e60959bd5fc4086964",
+      "bytes": 385920
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-book-raw.json",
+      "sha256": "8f29efaeb670a24d90f692d6f34f3d3a426d12b5d78ac1827ff7a0e94cd8ee05",
+      "bytes": 28541
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-book-raw.raw.json",
+      "sha256": "59f22e45c2d1e6ef8380c22c085eaff5a046ac52046225de37bd183f47aae332",
+      "bytes": 13863
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-book.json",
+      "sha256": "ae8222831dc2283b954af959dc40bf4186528a38993ef575cd653d02bfaff22d",
+      "bytes": 25538
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-book.raw.json",
+      "sha256": "dce44b522d856dda6e0b88dd0c41b3b7dd3f612d04a57fea4f2a015518b5332d",
+      "bytes": 11162
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-candles-p120.json",
+      "sha256": "db7c4b03aec8a7ccf693fc3ac4b2b43cf45ccc7108c05a9ed2750e6cf76eddd7",
+      "bytes": 12736
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-candles-p120.raw.json",
+      "sha256": "205f241e561220f9f0a5352f6f054db84217481a406307fa8376579309e37bbd",
+      "bytes": 6740
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-candles-p2.json",
+      "sha256": "2e686bef524f31c44655d9725bc98bbce8563ba65b8f07e8c42a50838b418aff",
+      "bytes": 12827
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-candles-p2.raw.json",
+      "sha256": "8a79b7bd36202e6e265e4ecb1fc48f527c8744b6e07aad75b392075566d623a9",
+      "bytes": 6833
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-candles-p30.json",
+      "sha256": "4f28da762004205684af287997f9d6528197ee2a17a98b1d774c8a4f344a6f98",
+      "bytes": 12643
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-candles-p30.raw.json",
+      "sha256": "7bbe3e652fc5b8bd2fc8fcbac4e0c646e2f66004a3ba86a788aa9df2c7d49eca",
+      "bytes": 6648
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-credits.size-aligned.json",
+      "sha256": "c2af16013fb4b6934964e9f134e34c4c73583020b1484e4570beddf5620a6122",
+      "bytes": 393
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-credits.size-aligned.raw.json",
+      "sha256": "c121ef32bff8b9c9666bedb601d72af522237460f87825bf84669a8c69e93299",
+      "bytes": 35
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-funding.size-aligned.json",
+      "sha256": "0bb5687a79bf63fdea90f3ea9f32315dce0cc87df5c5267b5c823a0cc29d5fb2",
+      "bytes": 394
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-funding.size-aligned.raw.json",
+      "sha256": "9731ef202ea99151d9e7612fc41360d7ef606e737afc8d1ceee7c3e9373ce09b",
+      "bytes": 36
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-stats.json",
+      "sha256": "38c45a851de935a040a55ab3b9e55e9c20effcdd742000a96cfc6cbb99154806",
+      "bytes": 733
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-stats.raw.json",
+      "sha256": "d5fcd36fe13c2f1c4dca62124c0244fc64c4a9b3c891adb9b5b404bae16e146f",
+      "bytes": 228
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-ticker.json",
+      "sha256": "31fffdc06d8d1349b7646a1369b0f39e3c7cd26e5fc17bdc70a59765f1a1c8d9",
+      "bytes": 588
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-ticker.raw.json",
+      "sha256": "b9a9dffe4cc969487cf1a0ad23280a3e4c843fc6c0e4dd5e5d7df721d852adc1",
+      "bytes": 202
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-24h.json",
+      "sha256": "3be3d25b9e4459c9b27e3bc7703678f593f913dee0caa6d978b1ba1e7dabb7aa",
+      "bytes": 8547252
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page1.json",
+      "sha256": "0b9f21362bef1a380a8eb2bd8613b9693f665aa827a5a7d381f07dab42a42540",
+      "bytes": 963904
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page1.raw.json",
+      "sha256": "818a889e4a653fb0a442b922f2acc6c23e185e5b18977e1b013c2927a308674e",
+      "bytes": 482638
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page2.json",
+      "sha256": "2afd7a8e5417305a666f91f81e568aa02ef28057f0cbc48ad909cfaf52431c7e",
+      "bytes": 964462
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page2.raw.json",
+      "sha256": "459ef6dc0afb77ebf0ae62296b7387afe0798eae1cdbfa7a7f5e22a52cc2e0e4",
+      "bytes": 481396
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page3.json",
+      "sha256": "9793c6114b925829a8eee88a162c9149daee873653ebc71a74ce38a981144b52",
+      "bytes": 964605
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page3.raw.json",
+      "sha256": "4d23cf4240b7947dd54fc3db8918f7cdcdd13b0a9d14c95adff3e2b874cf804e",
+      "bytes": 481185
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page4.json",
+      "sha256": "a9bd016db2a0cea39d7801e9372c23748094ef1b70c5a3c31946ae544bf0af5f",
+      "bytes": 965481
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page4.raw.json",
+      "sha256": "8a6a61537f0987b80bc64bd7d477e42179d10cd33569f675714bbd3d50709615",
+      "bytes": 482879
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page5.json",
+      "sha256": "8106cabf0af5de58f9b20d046c43db94d1c422d4b56e5af378422aeb8578bb54",
+      "bytes": 965721
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page5.raw.json",
+      "sha256": "9f5a712eaf7a627852793858bf6580cb2949f7a7c8ffd4ca6e01384f50f63423",
+      "bytes": 484911
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page6.json",
+      "sha256": "fd77b77fd291d9767566ce50395435210aa6efb7ce6eb578794e4e7c338e5384",
+      "bytes": 968704
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page6.raw.json",
+      "sha256": "ef3009fa12df8735aaead7d9f18e0f2d74e4a2e35a3cc4a9e7e5606ae091cbbe",
+      "bytes": 485276
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page7.json",
+      "sha256": "cd917d52c1c1da3798289f656215dc36dba5e2c42d542406a3cb28500ffc9b08",
+      "bytes": 965679
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page7.raw.json",
+      "sha256": "ac19c678eb0dda73562139a2f4fa8e9a65f9a1dd68df8442162d390aa1d6cf61",
+      "bytes": 481643
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page8.json",
+      "sha256": "d5a4d748fb3a2f422967b75ce33b2e4a0285fdd4ce7c7ed21d7f73d94a37bd51",
+      "bytes": 964265
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page8.raw.json",
+      "sha256": "8d320347a1fb9b0152d0f30a7d746c5ae290a5120db450425bb65aa279760a1b",
+      "bytes": 484481
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page9.json",
+      "sha256": "aa1f3519aee663b3bbc81f21227f6feaea1e795c753caa52a8972b678b5264c2",
+      "bytes": 861841
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUSD-trades-page9.raw.json",
+      "sha256": "b01618a4f0aa2cd199b892288fc62137d4d5a3b214a5e00afa6e42311238f15f",
+      "bytes": 432416
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-book-raw.json",
+      "sha256": "53b06c6943e1588e46969f3518689ee5dc923729f518ff9091350d85bb86bc21",
+      "bytes": 27004
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-book-raw.raw.json",
+      "sha256": "2080282787e788e9ea7a2a51390e03d7e60f3fefb6381b0ef7cb0f7647a81c11",
+      "bytes": 12582
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-book.json",
+      "sha256": "5c8727ac78e8fc2aa34054617daed029ecf7df4d8299166877f42a6a50671ae6",
+      "bytes": 20163
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-book.raw.json",
+      "sha256": "564015c7488d085cd603cb19954616a3f55fbddf7099531fd99a42640f8fc188",
+      "bytes": 8111
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-candles-p120.json",
+      "sha256": "d3332b120e9487ef8805d288967961b49c110f403d47574d74d0d9259d115102",
+      "bytes": 12750
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-candles-p120.raw.json",
+      "sha256": "f592b7392c8d5cb55f6f526228a268b4c04af050a98d4b55cd768bc621f5be5a",
+      "bytes": 6754
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-candles-p2.json",
+      "sha256": "2927b7b6af394eeb27edddd232eefdeb5eec17950db94a09f53d9b0d3be2e10d",
+      "bytes": 12737
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-candles-p2.raw.json",
+      "sha256": "79f02549f073c3555839caf9572fd09a338a3c732cd5e2f238f4a8902fab47b3",
+      "bytes": 6743
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-candles-p30.json",
+      "sha256": "cb1a83657ee7e4bdfcc9aebc860a6c38a9d6d0812901f214f78cf4c498df8ec7",
+      "bytes": 12385
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-candles-p30.raw.json",
+      "sha256": "4821c2737c10516fb87fcd09126642e3cc849169269c6147e9a91842c785f1b2",
+      "bytes": 6390
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-credits.size-aligned.json",
+      "sha256": "9d37177ec965cd70bb0e699ad23eaacf91d6ad611ee42298f9c16bf938b805b1",
+      "bytes": 394
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-credits.size-aligned.raw.json",
+      "sha256": "2abda2b0da0fce9dcbb763365847075752f184cf5f4299d7ad59343ea7e5d320",
+      "bytes": 36
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-funding.size-aligned.json",
+      "sha256": "491aee7fec17a658b21b2666e701da61bc86456e52aee1c71ed46c67c62b88cb",
+      "bytes": 394
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-funding.size-aligned.raw.json",
+      "sha256": "5bf600eb5298d9a975610ab5dc5072ec503885b3837c658c167b7f98bb9000bd",
+      "bytes": 36
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-stats.json",
+      "sha256": "53c20a2bbf3ded0a79fac1b6c7bbb9f244078127def6b292da23df6d09809d2d",
+      "bytes": 736
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-stats.raw.json",
+      "sha256": "8d8ae65ef9ce7176436c1b36b20faeab7f7b3c94040c5d0cc2680da539402bd0",
+      "bytes": 231
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-ticker.json",
+      "sha256": "50d744225ca9d37f4a30d1f0595b384930111b80452b295eb7a07ebdbad9958a",
+      "bytes": 594
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-ticker.raw.json",
+      "sha256": "e35d3c4cf0d3d4276f34aa13f7df8eb8859f85e7d825868b34f304ef258846f7",
+      "bytes": 208
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-trades-24h.json",
+      "sha256": "9723fdd24318c9309d3d8472d10b26d91d6beaab10034a75a534ea1c7f47abfd",
+      "bytes": 1093159
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-trades-page1.json",
+      "sha256": "31d89a89338c166dd790a7a46e99f710bc4b5a7f9380dde871f2b82849a36c4a",
+      "bytes": 972979
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-trades-page1.raw.json",
+      "sha256": "1294bd3e37ae93be4fd8b2822e7d3dc52a84325bc1dc80d79a66ce0a6ce36fc1",
+      "bytes": 489479
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-trades-page2.json",
+      "sha256": "6ed6c44d22dbc6d18609458775f2e7cbfb68f44188a3728d46ebd65e34ae797b",
+      "bytes": 121767
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fUST-trades-page2.raw.json",
+      "sha256": "66ea14d56076b9509d26d0f9559d8b5b15585c3a7b52ed82063b8d749101264d",
+      "bytes": 61209
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/fetch-demand.py",
+      "sha256": "aa878bc2e450caed300c0b4f0f111fd0b2f81b0521b1d390050865e54d57097e",
+      "bytes": 4342
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/funding-demand-verification.md",
+      "sha256": "cfa81a23d5884ce264c3252cb823f3ce42e2b3cb29923dbfbe050d2effdfa197",
+      "bytes": 12824
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tBTCUSD-credits.json",
+      "sha256": "ab17f433fd8ad122bc15603e1c1e5ad23fa39434e314df5dbb3d7a965acb2a79",
+      "bytes": 355
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tBTCUSD-credits.raw.json",
+      "sha256": "2a3a968cda73d8c8a507beb0f9abffa1517d529f64de4b3adc29fb3d2ab853ee",
+      "bytes": 33
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tBTCUSD-longs.json",
+      "sha256": "ad5f44149eec5f02201f9b623a8cb1f205826f0771ac1e1f1247a8615b54d572",
+      "bytes": 344
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tBTCUSD-longs.raw.json",
+      "sha256": "434ba4bcce15c5c411e6cda13cd42fe5c4c8ea8ca5026886e8f110e48dcc8189",
+      "bytes": 30
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tBTCUST-credits.json",
+      "sha256": "da027bfc9732f661837c28d7f92933181e313c45bce91d67e60d23fc2344855b",
+      "bytes": 356
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tBTCUST-credits.raw.json",
+      "sha256": "39ce161b774fd64f55aaabb997475fd19aab06210539d035dc3e2847475c8c54",
+      "bytes": 34
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tBTCUST-longs.json",
+      "sha256": "a0a831441705b77f2eb528bd31f593a095c387fb453321042b123d9ead138f40",
+      "bytes": 343
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tBTCUST-longs.raw.json",
+      "sha256": "0e294e5dc03d886d2370e1cdb3e225f6c2f1023dfdc6e00af7025f76606a4906",
+      "bytes": 29
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tETHUSD-credits.json",
+      "sha256": "e2cbe77142f5606747bd630761f12a0604afc925de94dec2fe62d4eabb7938e8",
+      "bytes": 354
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tETHUSD-credits.raw.json",
+      "sha256": "29abfc4c9467a81de2d7b26f31b5913d1b43b689761704420a0e3e62f4cf3c03",
+      "bytes": 32
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tETHUSD-longs.json",
+      "sha256": "81a9859987ce9392c77902c38b11a0a92003bdbd3a9569f070802fabbee49b1a",
+      "bytes": 345
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tETHUSD-longs.raw.json",
+      "sha256": "b9bdeacc841e5a34fd8c0d7bb40e574cb8cafe1e4af23d0334f552bd3f0ae815",
+      "bytes": 31
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tETHUST-credits.json",
+      "sha256": "70d3d6127bd6d2db04c402efac7d0692a3a1d48775935afd7dcd02d107fff809",
+      "bytes": 355
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tETHUST-credits.raw.json",
+      "sha256": "aead77252bd560dfd406949272988e6aa7ed620445f500eb131de6ae825c587b",
+      "bytes": 33
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tETHUST-longs.json",
+      "sha256": "c8201218ea93f95acb040a38e8daf459460edc5cf1263e55d383160170855e36",
+      "bytes": 343
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-bitfinex-underlying/tETHUST-longs.raw.json",
+      "sha256": "8459a1fd4823068c1b815d3b8205dff621e2627ad3fbe2e616a6bde876eecc5c",
+      "bytes": 29
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-structural-yield/bitfinex-fUSD-90d.json",
+      "sha256": "a7007d243c01e93468583608ac1a49adc9fd55d0acc927ef4050ad473d92a1b3",
+      "bytes": 474243
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-structural-yield/bitfinex-fUSD-book.json",
+      "sha256": "64bc6477438d0203b25f9cbd8802a50067edda4aeea616671adec7d1101023e9",
+      "bytes": 13923
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-structural-yield/bitfinex-fUST-90d.json",
+      "sha256": "8c46987a74d2f3c0a9e892847481e02b40cf0815b181096dd06fc4dbf425b950",
+      "bytes": 472289
+    },
+    {
+      "path": "/home/ubuntu/crypto-market-info/research/2026-09-13-structural-yield/bitfinex-fUST-book.json",
+      "sha256": "5ba1d56cd1e99cc2b5bcf51f71fddb060b38a5012e31fe99f705f68ce3808026",
+      "bytes": 9734
+    }
+  ]
+}

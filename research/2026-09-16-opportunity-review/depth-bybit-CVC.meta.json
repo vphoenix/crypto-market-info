@@ -1,0 +1,7 @@
+{
+  "name": "depth-bybit-CVC",
+  "url": "https://api.bybit.com/v5/market/orderbook?category=linear&limit=200&symbol=CVCUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:13.576349+00:00",
+  "sha256": "3f0687a9029b136b14895f7b9a4073d0d4255915108b8603f3751f76b4af33a2",
+  "rows": null
+}

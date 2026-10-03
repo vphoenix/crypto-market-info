@@ -1,0 +1,3509 @@
+{
+  "venue": "Binance",
+  "symbol": "BLURUSDT",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=BLURUSDT&limit=1000",
+  "fetched_at": "2026-09-12T19:15:04.323842+00:00",
+  "payload_sha256": "126c50dd85c8b01d31438138f180f67118ab730873ce0d3ef263f40469aef623",
+  "data": [
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782028800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01568469",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782043200001,
+      "fundingRate": "-0.00003524",
+      "markPrice": "0.01556000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782057600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01565000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782072000004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01581000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782086400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01544000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782100800000,
+      "fundingRate": "-0.00022572",
+      "markPrice": "0.01556000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782115200000,
+      "fundingRate": "-0.00003654",
+      "markPrice": "0.01562000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782129600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01572500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782144000002,
+      "fundingRate": "0.00000158",
+      "markPrice": "0.01563000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782158400000,
+      "fundingRate": "0.00001054",
+      "markPrice": "0.01540000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782172800003,
+      "fundingRate": "0.00004062",
+      "markPrice": "0.01514365",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782187200000,
+      "fundingRate": "0.00001815",
+      "markPrice": "0.01516506",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782201600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01469218",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782216000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01474492",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782230400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01487072",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782244800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01506490",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782259200005,
+      "fundingRate": "-0.00003649",
+      "markPrice": "0.01524498",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782288000005,
+      "fundingRate": "0.00001608",
+      "markPrice": "0.01533346",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782302400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01545402",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782316800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01495147",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782331200006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01461013",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782345600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01470000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782360000008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01439000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782374400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01454000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782388800006,
+      "fundingRate": "-0.00001486",
+      "markPrice": "0.01449000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782403200000,
+      "fundingRate": "0.00000739",
+      "markPrice": "0.01411000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782417600011,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01389000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782432000010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01397000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782446400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01410027",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782460800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01441000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782475200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01412716",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782489600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01444702",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782504000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01472840",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782518400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01466401",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782532800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01473681",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782547200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01455217",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782561600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01505640",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782576000009,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01492121",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782590400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01458503",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782604800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01449502",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782619200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01471000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782633600013,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01477303",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782648000008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01490464",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782662400000,
+      "fundingRate": "-0.00000901",
+      "markPrice": "0.01484041",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782676800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01455930",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782691200006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01459494",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782705600000,
+      "fundingRate": "0.00003878",
+      "markPrice": "0.01466422",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782720000013,
+      "fundingRate": "0.00002541",
+      "markPrice": "0.01482000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782734400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01470000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782748800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01467000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782763200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01478000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782777600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01474000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782792000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01456000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782806400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01453000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782820800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01423000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782835200005,
+      "fundingRate": "-0.00000080",
+      "markPrice": "0.01436473",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782849600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01437000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782864000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01420485",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782878400001,
+      "fundingRate": "-0.00001818",
+      "markPrice": "0.01448000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782892800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01418424",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782907200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01424822",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782921600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01478503",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782936000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01474731",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782950400000,
+      "fundingRate": "0.00004908",
+      "markPrice": "0.01477441",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782964800003,
+      "fundingRate": "-0.00015254",
+      "markPrice": "0.01513014",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782979200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01525072",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1782993600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01519497",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783008000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01509487",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783022400008,
+      "fundingRate": "0.00004089",
+      "markPrice": "0.01491345",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783036800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01506000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783051200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01503000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783065600007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01519493",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783080000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01531513",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783094400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01530706",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783108800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01548469",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783123200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01556434",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783137600006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01562000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783152000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01551000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783166400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01551000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783180800007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01556665",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783195200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01563508",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783209600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01544024",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783224000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01520000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783238400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01519000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783252800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01488522",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783267200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01501000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783281600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783296000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01513000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783310400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01497000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783324800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01501263",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783339200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01478753",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783353600000,
+      "fundingRate": "-0.00026451",
+      "markPrice": "0.01649997",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783368000003,
+      "fundingRate": "-0.00925432",
+      "markPrice": "0.01989290",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783382400000,
+      "fundingRate": "-0.01065417",
+      "markPrice": "0.02109846",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783396800000,
+      "fundingRate": "-0.00614444",
+      "markPrice": "0.01937000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783411200000,
+      "fundingRate": "-0.00447302",
+      "markPrice": "0.02002000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783425600010,
+      "fundingRate": "-0.01487595",
+      "markPrice": "0.02455000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783440000000,
+      "fundingRate": "-0.01355749",
+      "markPrice": "0.02353424",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783454400000,
+      "fundingRate": "-0.00964400",
+      "markPrice": "0.02147171",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783468800000,
+      "fundingRate": "-0.00443278",
+      "markPrice": "0.02001000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783483200003,
+      "fundingRate": "-0.00385099",
+      "markPrice": "0.01941231",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783497600000,
+      "fundingRate": "-0.00195759",
+      "markPrice": "0.01935000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783512000005,
+      "fundingRate": "-0.00115548",
+      "markPrice": "0.01859237",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783526400000,
+      "fundingRate": "-0.00088459",
+      "markPrice": "0.01830000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783540800006,
+      "fundingRate": "-0.00033724",
+      "markPrice": "0.01844480",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783555200000,
+      "fundingRate": "-0.00016199",
+      "markPrice": "0.01833000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783569600002,
+      "fundingRate": "-0.00010894",
+      "markPrice": "0.01788815",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783584000001,
+      "fundingRate": "-0.00032203",
+      "markPrice": "0.01835024",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783598400002,
+      "fundingRate": "-0.00011674",
+      "markPrice": "0.01869076",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783612800001,
+      "fundingRate": "-0.00002252",
+      "markPrice": "0.01866000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783627200000,
+      "fundingRate": "0.00000463",
+      "markPrice": "0.01839000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783641600000,
+      "fundingRate": "-0.00003716",
+      "markPrice": "0.01837000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783656000000,
+      "fundingRate": "-0.00014939",
+      "markPrice": "0.01819041",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783670400005,
+      "fundingRate": "-0.00008640",
+      "markPrice": "0.01773000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783684800002,
+      "fundingRate": "-0.00016007",
+      "markPrice": "0.01802000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783699200005,
+      "fundingRate": "-0.00010375",
+      "markPrice": "0.01810319",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783713600000,
+      "fundingRate": "-0.00002041",
+      "markPrice": "0.01839000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783728000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01891098",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783742400000,
+      "fundingRate": "-0.00006390",
+      "markPrice": "0.01829000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783756800000,
+      "fundingRate": "0.00003219",
+      "markPrice": "0.01803000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783771200008,
+      "fundingRate": "-0.00012538",
+      "markPrice": "0.01772000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783785600000,
+      "fundingRate": "-0.00009551",
+      "markPrice": "0.01742845",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783800000000,
+      "fundingRate": "-0.00018825",
+      "markPrice": "0.01752000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783814400000,
+      "fundingRate": "-0.00013121",
+      "markPrice": "0.01698000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783828800000,
+      "fundingRate": "-0.00008783",
+      "markPrice": "0.01692463",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783843200003,
+      "fundingRate": "-0.00015949",
+      "markPrice": "0.01720225",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783857600000,
+      "fundingRate": "-0.00004125",
+      "markPrice": "0.01713014",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783872000000,
+      "fundingRate": "-0.00003633",
+      "markPrice": "0.01697158",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783886400002,
+      "fundingRate": "-0.00011929",
+      "markPrice": "0.01705179",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783900800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01677000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783915200000,
+      "fundingRate": "-0.00008884",
+      "markPrice": "0.01670000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783929600001,
+      "fundingRate": "-0.00007416",
+      "markPrice": "0.01753068",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783944000000,
+      "fundingRate": "-0.00045986",
+      "markPrice": "0.01817000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783958400004,
+      "fundingRate": "0.00001890",
+      "markPrice": "0.01733487",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783972800000,
+      "fundingRate": "-0.00018954",
+      "markPrice": "0.01689000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1783987200000,
+      "fundingRate": "0.00002902",
+      "markPrice": "0.01693000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784001600000,
+      "fundingRate": "-0.00036636",
+      "markPrice": "0.01657594",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784016000002,
+      "fundingRate": "-0.00010938",
+      "markPrice": "0.01638000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784030400001,
+      "fundingRate": "-0.00008717",
+      "markPrice": "0.01657000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784044800001,
+      "fundingRate": "-0.00029832",
+      "markPrice": "0.01651137",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784059200000,
+      "fundingRate": "-0.00034290",
+      "markPrice": "0.01629499",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784073600005,
+      "fundingRate": "-0.00051882",
+      "markPrice": "0.01623487",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784088000003,
+      "fundingRate": "-0.00012465",
+      "markPrice": "0.01647165",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784102400002,
+      "fundingRate": "-0.00021871",
+      "markPrice": "0.01614455",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784116800003,
+      "fundingRate": "-0.00003577",
+      "markPrice": "0.01618000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784131200000,
+      "fundingRate": "-0.00013204",
+      "markPrice": "0.01607508",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784145600002,
+      "fundingRate": "-0.00004959",
+      "markPrice": "0.01636500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784160000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01644098",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784174400003,
+      "fundingRate": "0.00000805",
+      "markPrice": "0.01682000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784188800003,
+      "fundingRate": "-0.00003379",
+      "markPrice": "0.01674000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784203200001,
+      "fundingRate": "-0.00001611",
+      "markPrice": "0.01684000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784217600002,
+      "fundingRate": "-0.00005914",
+      "markPrice": "0.01641269",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784232000002,
+      "fundingRate": "-0.00003055",
+      "markPrice": "0.01599000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784246400000,
+      "fundingRate": "-0.00004955",
+      "markPrice": "0.01590000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784260800000,
+      "fundingRate": "-0.00007883",
+      "markPrice": "0.01575000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784275200010,
+      "fundingRate": "-0.00016119",
+      "markPrice": "0.01565492",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784289600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01569505",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784304000004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01605924",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784318400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01598000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784332800000,
+      "fundingRate": "-0.00000009",
+      "markPrice": "0.01590000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784347200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01577000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784361600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01547509",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784376000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01541000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784390400001,
+      "fundingRate": "-0.00000301",
+      "markPrice": "0.01545000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784404800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01524000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784419200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01564000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784433600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01569496",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784448000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01596000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784462400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01559504",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784476800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01558000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784491200004,
+      "fundingRate": "0.00002899",
+      "markPrice": "0.01543844",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784505600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01545403",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784520000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01536000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784534400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01526464",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784548800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01547502",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784563200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01590000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784577600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01582000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784592000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01574492",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784606400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01571000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784620800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01576000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784635200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01555000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784649600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01554558",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784664000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01552000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784678400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01556085",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784692800008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01565966",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784707200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01564494",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784721600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01625000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784736000001,
+      "fundingRate": "-0.00130452",
+      "markPrice": "0.01612841",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784750400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01585000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784764800000,
+      "fundingRate": "-0.00005257",
+      "markPrice": "0.01577000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784779200006,
+      "fundingRate": "-0.00011128",
+      "markPrice": "0.01549000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784793600000,
+      "fundingRate": "-0.00009048",
+      "markPrice": "0.01532508",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784808000000,
+      "fundingRate": "-0.00012903",
+      "markPrice": "0.01536511",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784822400000,
+      "fundingRate": "-0.00009174",
+      "markPrice": "0.01539486",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784836800000,
+      "fundingRate": "0.00002916",
+      "markPrice": "0.01526047",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784851200000,
+      "fundingRate": "0.00002781",
+      "markPrice": "0.01521491",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784865600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01543000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784880000000,
+      "fundingRate": "0.00002359",
+      "markPrice": "0.01557000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784894400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01557096",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784908800008,
+      "fundingRate": "-0.00006836",
+      "markPrice": "0.01517496",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784923200001,
+      "fundingRate": "0.00004130",
+      "markPrice": "0.01528321",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784937600002,
+      "fundingRate": "0.00002964",
+      "markPrice": "0.01520000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784952000000,
+      "fundingRate": "-0.00001744",
+      "markPrice": "0.01477318",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784966400000,
+      "fundingRate": "-0.00022886",
+      "markPrice": "0.01458000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784980800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01485000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1784995200000,
+      "fundingRate": "-0.00006213",
+      "markPrice": "0.01499304",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785009600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01478000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785024000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01477000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785038400000,
+      "fundingRate": "0.00001014",
+      "markPrice": "0.01458000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785052800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01490516",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785067200000,
+      "fundingRate": "-0.00015789",
+      "markPrice": "0.01480493",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785081600000,
+      "fundingRate": "0.00002949",
+      "markPrice": "0.01487000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785096000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01520340",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785110400010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01540000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785124800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01540442",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785139200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01518022",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785153600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01507000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785168000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01470228",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785182400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01460000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785196800000,
+      "fundingRate": "0.00002961",
+      "markPrice": "0.01427425",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785211200012,
+      "fundingRate": "0.00000118",
+      "markPrice": "0.01431272",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785225600000,
+      "fundingRate": "-0.00000960",
+      "markPrice": "0.01431507",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785240000001,
+      "fundingRate": "-0.00001610",
+      "markPrice": "0.01456430",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785254400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01462026",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785268800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01465502",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785283200000,
+      "fundingRate": "-0.00006706",
+      "markPrice": "0.01466000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785297600000,
+      "fundingRate": "0.00000743",
+      "markPrice": "0.01423000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785312000002,
+      "fundingRate": "-0.00005795",
+      "markPrice": "0.01421247",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785326400007,
+      "fundingRate": "-0.00005159",
+      "markPrice": "0.01404000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785340800000,
+      "fundingRate": "0.00003217",
+      "markPrice": "0.01383898",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785355200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01390000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785369600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785384000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01418498",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785398400000,
+      "fundingRate": "0.00003126",
+      "markPrice": "0.01425132",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785412800000,
+      "fundingRate": "-0.00002158",
+      "markPrice": "0.01443000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785427200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01428000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785441600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01443368",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785456000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01418497",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785470400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01409484",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785484800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01407000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785499200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01409000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785513600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01442000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785528000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01447000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785542400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01427000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785556800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01430378",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785571200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01420232",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785585600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01407495",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785600000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01398495",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785614400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01385000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785628800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01382703",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785643200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01395500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785657600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01389000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785672000007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01385726",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785686400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01397000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785700800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01393498",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785715200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01393000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785729600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01383505",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785744000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01373000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785758400000,
+      "fundingRate": "-0.00002861",
+      "markPrice": "0.01353496",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785772800000,
+      "fundingRate": "-0.00007434",
+      "markPrice": "0.01353581",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785787200003,
+      "fundingRate": "0.00003503",
+      "markPrice": "0.01350502",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785801600004,
+      "fundingRate": "-0.00008251",
+      "markPrice": "0.01339000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785816000002,
+      "fundingRate": "0.00002549",
+      "markPrice": "0.01357615",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785830400002,
+      "fundingRate": "-0.00016004",
+      "markPrice": "0.01344670",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785844800002,
+      "fundingRate": "-0.00001469",
+      "markPrice": "0.01342000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785859200000,
+      "fundingRate": "-0.00004199",
+      "markPrice": "0.01340000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785873600000,
+      "fundingRate": "0.00001766",
+      "markPrice": "0.01357139",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785888000003,
+      "fundingRate": "-0.00016160",
+      "markPrice": "0.01353000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785902400001,
+      "fundingRate": "0.00003953",
+      "markPrice": "0.01355000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785916800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01352882",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785931200008,
+      "fundingRate": "0.00003341",
+      "markPrice": "0.01348503",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785945600000,
+      "fundingRate": "0.00001000",
+      "markPrice": "0.01347510",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785960000000,
+      "fundingRate": "-0.00002761",
+      "markPrice": "0.01357000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785974400002,
+      "fundingRate": "-0.00002879",
+      "markPrice": "0.01359497",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1785988800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01380000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786003200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786017600000,
+      "fundingRate": "-0.00006785",
+      "markPrice": "0.01386497",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786032000000,
+      "fundingRate": "-0.00010101",
+      "markPrice": "0.01389000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786046400001,
+      "fundingRate": "-0.00004205",
+      "markPrice": "0.01380000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786060800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01369493",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786075200000,
+      "fundingRate": "-0.00016716",
+      "markPrice": "0.01354000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786089600000,
+      "fundingRate": "0.00002387",
+      "markPrice": "0.01355238",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786104000000,
+      "fundingRate": "-0.00003486",
+      "markPrice": "0.01353509",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786118400000,
+      "fundingRate": "-0.00008366",
+      "markPrice": "0.01356000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786132800000,
+      "fundingRate": "-0.00006019",
+      "markPrice": "0.01343000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786147200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01347000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786161600000,
+      "fundingRate": "-0.00015478",
+      "markPrice": "0.01355000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786176000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01358496",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786190400001,
+      "fundingRate": "0.00000320",
+      "markPrice": "0.01363000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786204800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01374492",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786219200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01385494",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786233600000,
+      "fundingRate": "-0.00002286",
+      "markPrice": "0.01377000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786248000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01371517",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786262400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01387905",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786276800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01386507",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786291200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01383000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786305600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01394622",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786320000001,
+      "fundingRate": "-0.00001447",
+      "markPrice": "0.01368504",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786334400000,
+      "fundingRate": "0.00000754",
+      "markPrice": "0.01385000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786348800005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01387314",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786363200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01384616",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786377600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01388000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786392000000,
+      "fundingRate": "-0.00000567",
+      "markPrice": "0.01374490",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786406400000,
+      "fundingRate": "-0.00001769",
+      "markPrice": "0.01361000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786420800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01367000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786435200006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01346000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786449600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01360341",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786464000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01326813",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786478400003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01338503",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786492800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01348618",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786507200000,
+      "fundingRate": "-0.00013164",
+      "markPrice": "0.01360502",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786521600000,
+      "fundingRate": "0.00001200",
+      "markPrice": "0.01356000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786536000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01360000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786550400000,
+      "fundingRate": "-0.00001902",
+      "markPrice": "0.01345000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786564800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01325488",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786579200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01311000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786593600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01336492",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786608000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01330000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786622400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01326503",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786636800000,
+      "fundingRate": "-0.00003169",
+      "markPrice": "0.01316965",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786651200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01307504",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786665600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01313508",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786680000001,
+      "fundingRate": "0.00001952",
+      "markPrice": "0.01297491",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786694400001,
+      "fundingRate": "0.00000545",
+      "markPrice": "0.01290000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786708800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01288510",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786723200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01303502",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786737600000,
+      "fundingRate": "-0.00005293",
+      "markPrice": "0.01315494",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786752000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01315658",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786766400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01308000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786780800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01307000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786795200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01317000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786809600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01321000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786824000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01316494",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786838400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01312500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786852800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01307453",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786867200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01314506",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786881600008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01312000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786896000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01323000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786910400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01318000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786924800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01294506",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786939200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01312000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786953600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01308467",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786968000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01312000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786982400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01312000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1786996800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01312504",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787011200006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01311000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787025600001,
+      "fundingRate": "0.00001589",
+      "markPrice": "0.01282505",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787040000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01293493",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787054400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01323495",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787068800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01318503",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787083200008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01310000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787097600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01311503",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787112000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01324000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787126400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01310915",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787140800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01314000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787155200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01355000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787169600009,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01357837",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787184000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01384839",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787198400011,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01380359",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787212800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01409967",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787227200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01421590",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787241600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01424492",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787256000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01425504",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787270400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01443035",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787284800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01455000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787299200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01484399",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787313600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01530000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787328000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01549681",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787342400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01531762",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787356800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01640502",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787371200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01719645",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787385600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01679139",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787400000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01699828",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787414400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01626664",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787428800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01632576",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787443200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01602876",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787457600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01559625",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787472000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01571962",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787486400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01637000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787500800006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01661000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787515200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01680490",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787529600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01666364",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787544000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01616830",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787558400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01629691",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787572800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01646491",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787587200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01675174",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787601600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01654962",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787616000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01658736",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787630400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01678404",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787644800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01645000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787659200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01651187",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787673600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01668000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787688000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01677000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787702400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01627000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787716800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01683498",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787731200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01631453",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787745600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01586000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787760000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01586011",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787774400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01615888",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787788800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01636280",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787803200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01611116",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787817600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01616000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787832000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01616506",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787846400013,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01634529",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787860800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01623000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787875200026,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01649000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787889600008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01603204",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787904000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01601506",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787918400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01613492",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787932800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01619117",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787947200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01591393",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787961600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01622507",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787976000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01611000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1787990400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01602512",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788004800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01598503",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788019200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01620919",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788033600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01605000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788048000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01605000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788062400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01593000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788076800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01586508",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788091200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01609000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788105600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01628690",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788120000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01632216",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788134400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01556000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788148800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01571350",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788163200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01594504",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788177600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01572543",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788192000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01563000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788206400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01559495",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788220800005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01558512",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788235200007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01578000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788249600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01582000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788264000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01568742",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788278400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01567000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788292800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01533944",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788307200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01535000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788321600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01550000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788336000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01554490",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788350400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01574971",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788364800005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01557236",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788379200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01562505",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788393600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01574500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788408000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01602000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788422400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01658000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788436800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01610471",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788451200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01656116",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788465600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01660993",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788480000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01652147",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788494400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01646000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788508800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01658550",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788523200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01642310",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788537600009,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01633508",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788552000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01636808",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788566400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01639000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788580800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01646502",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788595200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01668488",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788609600007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01680125",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788624000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01682497",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788638400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01672574",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788652800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01690000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788667200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01697505",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788681600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01702260",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788696000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01733000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788710400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01752488",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788724800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01743591",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788739200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01762386",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788753600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01736506",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788768000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01733504",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788782400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01758000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788796800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01736082",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788811200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01739541",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788825600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01731698",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788840000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01738490",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788854400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01737000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788868800006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01747000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788883200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01773000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788897600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01731663",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788912000005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01733498",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788926400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01724494",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788940800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01775488",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788955200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01782400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788969600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01860012",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788984000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01788000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1788998400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01741700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789012800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01745000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789027200007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01727007",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789041600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01707534",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789056000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01619000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789070400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01629000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789084800008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01599000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789099200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01767000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789113600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01719350",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789128000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.01701922",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789142400000,
+      "fundingRate": "-0.00299289",
+      "markPrice": "0.02045455",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789156800004,
+      "fundingRate": "-0.00105412",
+      "markPrice": "0.01772259",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789171200001,
+      "fundingRate": "-0.00077081",
+      "markPrice": "0.01765982",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789185600002,
+      "fundingRate": "-0.00013832",
+      "markPrice": "0.01710374",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789200000003,
+      "fundingRate": "0.00000291",
+      "markPrice": "0.01711000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789214400000,
+      "fundingRate": "-0.00023306",
+      "markPrice": "0.01743000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "fundingTime": 1789228800000,
+      "fundingRate": "-0.00029402",
+      "markPrice": "0.01751531",
+      "rateType": "Regular"
+    }
+  ]
+}

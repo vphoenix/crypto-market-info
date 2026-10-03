@@ -1,0 +1,32 @@
+2026-10-02T19:29:29+08:00 UbuntuAI systemd[1794]: Stopping crypto-market-info-reserve.service - Public Reserve r5 research data collector...
+2026-10-02T19:29:29+08:00 UbuntuAI reserve-data[1619929]: 2026/10/02 11:29:29 reconcile_retry: rpc_response_read_failed
+2026-10-02T19:29:29+08:00 UbuntuAI systemd[1794]: Stopped crypto-market-info-reserve.service - Public Reserve r5 research data collector.
+2026-10-02T19:29:29+08:00 UbuntuAI systemd[1794]: crypto-market-info-reserve.service: Consumed 3.265s CPU time.
+2026-10-02T19:29:29+08:00 UbuntuAI systemd[1794]: Started crypto-market-info-reserve.service - Public Reserve r5 research data collector.
+2026-10-02T19:29:55+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:29:55 logs blocks=26104347..26104347 count=0 coverage=complete
+2026-10-02T19:29:59+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:29:59 snapshot block=26104347 states=1 quotes=13 coverage=complete rpc_evidence=0xda7e5731b3a37a016737f2668676e7fc76b54546e734cec32a37315777641a25
+2026-10-02T19:30:12+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:30:12 logs blocks=26104348..26104348 count=0 coverage=complete
+2026-10-02T19:30:21+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:30:21 logs blocks=26104349..26104350 count=0 coverage=complete
+2026-10-02T19:30:32+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:30:32 logs blocks=26104351..26104351 count=0 coverage=complete
+2026-10-02T19:30:42+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:30:42 logs blocks=26104352..26104352 count=0 coverage=complete
+2026-10-02T19:30:57+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:30:57 logs blocks=26104353..26104353 count=0 coverage=complete
+2026-10-02T19:31:07+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:31:07 logs blocks=26104354..26104354 count=0 coverage=complete
+2026-10-02T19:31:10+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:31:10 snapshot block=26104354 states=1 quotes=13 coverage=complete rpc_evidence=0xc65892029fb479dbbfe9c313d3b2c15f9e13468f254c149be15a53a3f3e4526b
+2026-10-02T19:31:27+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:31:27 logs blocks=26104355..26104355 count=0 coverage=complete
+2026-10-02T19:31:35+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:31:35 logs blocks=26104356..26104356 count=0 coverage=complete
+2026-10-02T19:31:41+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:31:41 logs blocks=26104357..26104357 count=0 coverage=complete
+2026-10-02T19:31:55+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:31:55 logs blocks=26104358..26104358 count=0 coverage=complete
+2026-10-02T19:32:07+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:32:07 logs blocks=26104359..26104359 count=0 coverage=complete
+2026-10-02T19:32:19+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:32:19 logs blocks=26104360..26104360 count=0 coverage=complete
+2026-10-02T19:32:22+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:32:22 snapshot block=26104360 states=1 quotes=13 coverage=complete rpc_evidence=0x8d78ac13661986842ac98fc6bfcd8ee116d063c70e0f36309ba966de7f85d355
+2026-10-02T19:32:34+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:32:34 logs blocks=26104361..26104361 count=0 coverage=complete
+2026-10-02T19:32:41+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:32:41 logs blocks=26104362..26104362 count=0 coverage=complete
+2026-10-02T19:33:00+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:33:00 logs blocks=26104363..26104363 count=0 coverage=complete
+2026-10-02T19:33:09+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:33:09 logs blocks=26104364..26104364 count=0 coverage=complete
+2026-10-02T19:33:20+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:33:20 logs blocks=26104365..26104365 count=0 coverage=complete
+2026-10-02T19:33:31+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:33:31 logs blocks=26104366..26104366 count=0 coverage=complete
+2026-10-02T19:33:36+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:33:36 snapshot block=26104366 states=1 quotes=13 coverage=complete rpc_evidence=0x72e9b3f60f68d693bfd1c50322cc1f255e3d3458e536a68a54f705dbfa15395b
+2026-10-02T19:33:55+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:33:55 logs blocks=26104367..26104367 count=0 coverage=complete
+2026-10-02T19:34:03+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:34:03 logs blocks=26104368..26104368 count=0 coverage=complete
+2026-10-02T19:34:11+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:34:11 logs blocks=26104369..26104369 count=0 coverage=complete
+2026-10-02T19:34:33+08:00 UbuntuAI reserve-data[1621383]: 2026/10/02 11:34:33 logs blocks=26104371..26104371 count=0 coverage=complete

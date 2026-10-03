@@ -1,0 +1,6 @@
+{
+  "query_time_utc": "2026-09-26T16:27:02.135467+00:00",
+  "database": "crypto_market_info",
+  "endpoint": "http://127.0.0.1:8123/",
+  "read_only": true
+}

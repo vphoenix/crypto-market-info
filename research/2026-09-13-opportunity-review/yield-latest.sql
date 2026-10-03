@@ -1,0 +1,1 @@
+SELECT r.provider,r.product_code,r.yield_type,r.deposit_asset_key,r.source_url,o.* FROM crypto_market_info.yield_route AS r FINAL INNER JOIN (SELECT * FROM crypto_market_info.yield_observation FINAL ORDER BY observation_time DESC LIMIT 1 BY yield_route_id,tier_no) o USING(yield_route_id)

@@ -1,0 +1,7 @@
+{
+  "name": "binance-premium",
+  "url": "https://fapi.binance.com/fapi/v1/premiumIndex",
+  "retrieved_at_utc": "2026-09-16T10:31:26.004355+00:00",
+  "sha256": "7c4cfb18420c184da7d9cbf15e2917b7d54ef5866d9c2e6dd1784af1408a15d3",
+  "rows": 900
+}

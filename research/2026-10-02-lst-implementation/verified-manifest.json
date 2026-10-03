@@ -1,0 +1,41 @@
+{
+  "chain_id": 1,
+  "abi_version": "lido-v4.0.1",
+  "deployment_source": "https://raw.githubusercontent.com/lidofinance/core/v4.0.1/deployed-mainnet.json",
+  "addresses": {
+    "curve": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+    "factory": "0x1F98431c8aD98523631AE4a59f267346ea31F984",
+    "queue": "0x889edC2eDab5f40e902b864aD4d7AdE8E412F9B1",
+    "queue_impl": "0xE42C659Dc09109566720EA8b2De186c2Be7D94D9",
+    "quoter": "0x61fFE014bA17989E743c5F6cB21bF9697530B21e",
+    "steth": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+    "steth_impl": "0x028271E30a695c0527A0C50cA30603feD004cDb0",
+    "usdt": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+    "weth": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "wsteth": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0"
+  },
+  "code_hashes": {
+    "curve": "0xe2c45ce8268580c40b4c12c574f8a210375ab92998c1555451fef63630e96b35",
+    "factory": "0x4d7b8525cd5d14343fa67a732fba5b24cddba11620ca88392f4ec6c52f91fd69",
+    "queue": "0x9bc25fa4b2f98d56db4aa4156a6dc98360ccd4ef9c7bc7f891797b0024272100",
+    "queue_impl": "0x7606999c03ae51ffb1d29b8b80a0d0cf85912f32f088ba1a52c45df312c36e64",
+    "quoter": "0x06148f47d0f41a68d3bc970030a7150e5d608cfbc28d372440a2e41ce543d92b",
+    "steth": "0xb9c1c929064cd21734c102a698e68bf617feefcfa5a9f62407c45401546736bf",
+    "steth_impl": "0xb74d1082863f9295e1691cb1c609062dbfd0e388ae52f0243017801b7556e488",
+    "usdt": "0xb44fb4e949d0f78f87f79ee46428f23a2a5713ce6fc6e0beb3dda78c2ac1ea55",
+    "weth": "0xd0a06b12ac47863b5c7be4185c2deaad1c61557033f56c7d4ea74429cbb25e23",
+    "wsteth": "0x630181884786c962140041cffa3acffbf39d8c93bde1a62b7b55046e57400557"
+  },
+  "pools": {
+    "usdt_weth_500": "0x11b815efB8f581194ae79006d24E0d814B7697F6",
+    "weth_wsteth_100": "0x109830a1AAaD605BbF02a9dFA7B0B92EC2FB7dAa"
+  },
+  "budgets_usdt_raw": [
+    "10000000000",
+    "50000000000",
+    "100000000000",
+    "250000000000"
+  ],
+  "max_log_blocks": 512,
+  "max_logs": 10000
+}

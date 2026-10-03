@@ -1,0 +1,178 @@
+[
+  {
+    "url": "https://data-api.binance.vision/api/v3/ticker/bookTicker?symbol=USDCUSDT",
+    "started_at": "2026-09-12T19:13:31.738880+00:00",
+    "sha256": "2b3269d5f0e9c82a9c68c0ea4fcc713654b3ee654a4351f831865f3af71088ee",
+    "body": {
+      "symbol": "USDCUSDT",
+      "bidPrice": "1.00005000",
+      "bidQty": "940922.00000000",
+      "askPrice": "1.00006000",
+      "askQty": "1194187.00000000"
+    },
+    "raw": "{\"symbol\":\"USDCUSDT\",\"bidPrice\":\"1.00005000\",\"bidQty\":\"940922.00000000\",\"askPrice\":\"1.00006000\",\"askQty\":\"1194187.00000000\"}",
+    "finished_at": "2026-09-12T19:13:33.475619+00:00"
+  },
+  {
+    "url": "https://data-api.binance.vision/api/v3/ticker/24hr?symbol=USDCUSDT",
+    "started_at": "2026-09-12T19:13:33.475635+00:00",
+    "sha256": "a116b0e0c95c46662f675c64fd00cf7b01e8c6019a4aec2a8eb61e705a23ba8d",
+    "body": {
+      "symbol": "USDCUSDT",
+      "priceChange": "-0.00009000",
+      "priceChangePercent": "-0.009",
+      "weightedAvgPrice": "1.00009122",
+      "prevClosePrice": "1.00015000",
+      "lastPrice": "1.00006000",
+      "lastQty": "504.00000000",
+      "bidPrice": "1.00005000",
+      "bidQty": "924980.00000000",
+      "askPrice": "1.00006000",
+      "askQty": "1178131.00000000",
+      "openPrice": "1.00015000",
+      "highPrice": "1.00020000",
+      "lowPrice": "0.99998000",
+      "volume": "1103448237.00000000",
+      "quoteVolume": "1103548896.75997000",
+      "openTime": 1789154014420,
+      "closeTime": 1789240414420,
+      "firstId": 485049888,
+      "lastId": 485371700,
+      "count": 321813
+    },
+    "raw": "{\"symbol\":\"USDCUSDT\",\"priceChange\":\"-0.00009000\",\"priceChangePercent\":\"-0.009\",\"weightedAvgPrice\":\"1.00009122\",\"prevClosePrice\":\"1.00015000\",\"lastPrice\":\"1.00006000\",\"lastQty\":\"504.00000000\",\"bidPrice\":\"1.00005000\",\"bidQty\":\"924980.00000000\",\"askPrice\":\"1.00006000\",\"askQty\":\"1178131.00000000\",\"openPrice\":\"1.00015000\",\"highPrice\":\"1.00020000\",\"lowPrice\":\"0.99998000\",\"volume\":\"1103448237.00000000\",\"quoteVolume\":\"1103548896.75997000\",\"openTime\":1789154014420,\"closeTime\":1789240414420,\"firstId\":485049888,\"lastId\":485371700,\"count\":321813}",
+    "finished_at": "2026-09-12T19:13:35.010830+00:00"
+  },
+  {
+    "url": "https://data-api.binance.vision/api/v3/ticker/bookTicker?symbol=USD1USDT",
+    "started_at": "2026-09-12T19:13:31.739337+00:00",
+    "sha256": "14a1eb520cd05c22ea9223323e32455669e4208c20c13fcf8978b757985d54c6",
+    "body": {
+      "symbol": "USD1USDT",
+      "bidPrice": "0.99999000",
+      "bidQty": "8234.00000000",
+      "askPrice": "1.00000000",
+      "askQty": "23532.00000000"
+    },
+    "raw": "{\"symbol\":\"USD1USDT\",\"bidPrice\":\"0.99999000\",\"bidQty\":\"8234.00000000\",\"askPrice\":\"1.00000000\",\"askQty\":\"23532.00000000\"}",
+    "finished_at": "2026-09-12T19:13:33.476006+00:00"
+  },
+  {
+    "url": "https://data-api.binance.vision/api/v3/ticker/24hr?symbol=USD1USDT",
+    "started_at": "2026-09-12T19:13:33.476013+00:00",
+    "sha256": "affef1807ee6013b8c7f88c04d87cb1aac58434774daa5634291e512afcbeb25",
+    "body": {
+      "symbol": "USD1USDT",
+      "priceChange": "-0.00001000",
+      "priceChangePercent": "-0.001",
+      "weightedAvgPrice": "0.99999836",
+      "prevClosePrice": "1.00001000",
+      "lastPrice": "1.00000000",
+      "lastQty": "2000.00000000",
+      "bidPrice": "0.99999000",
+      "bidQty": "8234.00000000",
+      "askPrice": "1.00000000",
+      "askQty": "23532.00000000",
+      "openPrice": "1.00001000",
+      "highPrice": "1.00012000",
+      "lowPrice": "0.99991000",
+      "volume": "101774036.00000000",
+      "quoteVolume": "101773869.27420000",
+      "openTime": 1789154007868,
+      "closeTime": 1789240407868,
+      "firstId": 42757989,
+      "lastId": 42938478,
+      "count": 180490
+    },
+    "raw": "{\"symbol\":\"USD1USDT\",\"priceChange\":\"-0.00001000\",\"priceChangePercent\":\"-0.001\",\"weightedAvgPrice\":\"0.99999836\",\"prevClosePrice\":\"1.00001000\",\"lastPrice\":\"1.00000000\",\"lastQty\":\"2000.00000000\",\"bidPrice\":\"0.99999000\",\"bidQty\":\"8234.00000000\",\"askPrice\":\"1.00000000\",\"askQty\":\"23532.00000000\",\"openPrice\":\"1.00001000\",\"highPrice\":\"1.00012000\",\"lowPrice\":\"0.99991000\",\"volume\":\"101774036.00000000\",\"quoteVolume\":\"101773869.27420000\",\"openTime\":1789154007868,\"closeTime\":1789240407868,\"firstId\":42757989,\"lastId\":42938478,\"count\":180490}",
+    "finished_at": "2026-09-12T19:13:35.010742+00:00"
+  },
+  {
+    "url": "https://data-api.binance.vision/api/v3/ticker/bookTicker?symbol=FDUSDUSDT",
+    "started_at": "2026-09-12T19:13:31.739885+00:00",
+    "sha256": "1d8076e61cf6dc16fe91440a5b747d64cba337ddc288cf951d4413f60c918a28",
+    "body": {
+      "symbol": "FDUSDUSDT",
+      "bidPrice": "0.99870000",
+      "bidQty": "80315.00000000",
+      "askPrice": "0.99880000",
+      "askQty": "861981.00000000"
+    },
+    "raw": "{\"symbol\":\"FDUSDUSDT\",\"bidPrice\":\"0.99870000\",\"bidQty\":\"80315.00000000\",\"askPrice\":\"0.99880000\",\"askQty\":\"861981.00000000\"}",
+    "finished_at": "2026-09-12T19:13:33.477009+00:00"
+  },
+  {
+    "url": "https://data-api.binance.vision/api/v3/ticker/24hr?symbol=FDUSDUSDT",
+    "started_at": "2026-09-12T19:13:33.477015+00:00",
+    "sha256": "595286ec2e4d6e64f441988c61a1ef4980a9ba22d619a2a3da40cff9bffa96e9",
+    "body": {
+      "symbol": "FDUSDUSDT",
+      "priceChange": "-0.00020000",
+      "priceChangePercent": "-0.020",
+      "weightedAvgPrice": "0.99883171",
+      "prevClosePrice": "0.99880000",
+      "lastPrice": "0.99870000",
+      "lastQty": "2335.00000000",
+      "bidPrice": "0.99870000",
+      "bidQty": "78771.00000000",
+      "askPrice": "0.99880000",
+      "askQty": "861981.00000000",
+      "openPrice": "0.99890000",
+      "highPrice": "0.99910000",
+      "lowPrice": "0.99870000",
+      "volume": "13363225.00000000",
+      "quoteVolume": "13347612.85450000",
+      "openTime": 1789154014205,
+      "closeTime": 1789240414205,
+      "firstId": 342391168,
+      "lastId": 342402897,
+      "count": 11730
+    },
+    "raw": "{\"symbol\":\"FDUSDUSDT\",\"priceChange\":\"-0.00020000\",\"priceChangePercent\":\"-0.020\",\"weightedAvgPrice\":\"0.99883171\",\"prevClosePrice\":\"0.99880000\",\"lastPrice\":\"0.99870000\",\"lastQty\":\"2335.00000000\",\"bidPrice\":\"0.99870000\",\"bidQty\":\"78771.00000000\",\"askPrice\":\"0.99880000\",\"askQty\":\"861981.00000000\",\"openPrice\":\"0.99890000\",\"highPrice\":\"0.99910000\",\"lowPrice\":\"0.99870000\",\"volume\":\"13363225.00000000\",\"quoteVolume\":\"13347612.85450000\",\"openTime\":1789154014205,\"closeTime\":1789240414205,\"firstId\":342391168,\"lastId\":342402897,\"count\":11730}",
+    "finished_at": "2026-09-12T19:13:35.008985+00:00"
+  },
+  {
+    "url": "https://data-api.binance.vision/api/v3/ticker/bookTicker?symbol=FDUSDUSDC",
+    "started_at": "2026-09-12T19:13:31.740406+00:00",
+    "sha256": "889e98465c260cdf1caead2f7da4fc8d83956c84a0653fb38e5425facac6e8be",
+    "body": {
+      "symbol": "FDUSDUSDC",
+      "bidPrice": "0.99860000",
+      "bidQty": "98036.00000000",
+      "askPrice": "0.99870000",
+      "askQty": "117942.00000000"
+    },
+    "raw": "{\"symbol\":\"FDUSDUSDC\",\"bidPrice\":\"0.99860000\",\"bidQty\":\"98036.00000000\",\"askPrice\":\"0.99870000\",\"askQty\":\"117942.00000000\"}",
+    "finished_at": "2026-09-12T19:13:33.476606+00:00"
+  },
+  {
+    "url": "https://data-api.binance.vision/api/v3/ticker/24hr?symbol=FDUSDUSDC",
+    "started_at": "2026-09-12T19:13:33.476613+00:00",
+    "sha256": "0c2a01985cb38f254fa9073f906742911b2c8ae73b0f1d2dc563c15ac5a8a411",
+    "body": {
+      "symbol": "FDUSDUSDC",
+      "priceChange": "-0.00020000",
+      "priceChangePercent": "-0.020",
+      "weightedAvgPrice": "0.99874136",
+      "prevClosePrice": "0.99880000",
+      "lastPrice": "0.99860000",
+      "lastQty": "27725.00000000",
+      "bidPrice": "0.99860000",
+      "bidQty": "98036.00000000",
+      "askPrice": "0.99870000",
+      "askQty": "117942.00000000",
+      "openPrice": "0.99880000",
+      "highPrice": "0.99900000",
+      "lowPrice": "0.99850000",
+      "volume": "2746457.00000000",
+      "quoteVolume": "2743000.18750000",
+      "openTime": 1789153921158,
+      "closeTime": 1789240321158,
+      "firstId": 50422239,
+      "lastId": 50426722,
+      "count": 4484
+    },
+    "raw": "{\"symbol\":\"FDUSDUSDC\",\"priceChange\":\"-0.00020000\",\"priceChangePercent\":\"-0.020\",\"weightedAvgPrice\":\"0.99874136\",\"prevClosePrice\":\"0.99880000\",\"lastPrice\":\"0.99860000\",\"lastQty\":\"27725.00000000\",\"bidPrice\":\"0.99860000\",\"bidQty\":\"98036.00000000\",\"askPrice\":\"0.99870000\",\"askQty\":\"117942.00000000\",\"openPrice\":\"0.99880000\",\"highPrice\":\"0.99900000\",\"lowPrice\":\"0.99850000\",\"volume\":\"2746457.00000000\",\"quoteVolume\":\"2743000.18750000\",\"openTime\":1789153921158,\"closeTime\":1789240321158,\"firstId\":50422239,\"lastId\":50426722,\"count\":4484}",
+    "finished_at": "2026-09-12T19:13:35.009752+00:00"
+  }
+]

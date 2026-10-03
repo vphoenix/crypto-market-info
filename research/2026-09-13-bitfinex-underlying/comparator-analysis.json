@@ -1,0 +1,57 @@
+{
+  "okx": {
+    "usdt": {
+      "source_url": "https://www.okx.com/api/v5/finance/savings/lending-rate-history?ccy=USDT&limit=100",
+      "retrieved_at_utc": "2026-09-13T14:07:09.110131+00:00",
+      "latest_observation_utc": "2026-09-13T14:00:00+00:00",
+      "latest_borrow_apr": "0.035",
+      "latest_lending_apr_reported": "0.0289",
+      "last24_observation_mean_borrow_apr": "0.035",
+      "last24_observation_mean_lending_apr": "0.02894583333333333333333333333333333333333",
+      "note": "Official public rate fields; not personal account return, executable borrow allowance or approved collateral LTV. No additional 15% deducted from the published lendingRate."
+    },
+    "usdc": {
+      "source_url": "https://www.okx.com/api/v5/finance/savings/lending-rate-history?ccy=USDC&limit=100",
+      "retrieved_at_utc": "2026-09-13T14:07:09.110965+00:00",
+      "latest_observation_utc": "2026-09-13T14:00:00+00:00",
+      "latest_borrow_apr": "0.035",
+      "latest_lending_apr_reported": "0.0239",
+      "last24_observation_mean_borrow_apr": "0.035",
+      "last24_observation_mean_lending_apr": "0.02355416666666666666666666666666666666667",
+      "note": "Official public rate fields; not personal account return, executable borrow allowance or approved collateral LTV. No additional 15% deducted from the published lendingRate."
+    }
+  },
+  "illustrative_scenarios": {
+    "borrow_short_term": {
+      "borrowed": "10000",
+      "gross_apr": "0.10",
+      "days": "7",
+      "interest_cost": "19.17808219178082191780821917808219178082",
+      "note": "Cost illustration only; excludes fees and loan eligibility."
+    },
+    "collateral_gap": {
+      "initial_collateral_value": "1000",
+      "loan_principal": "900",
+      "sale_value_after_15pct_drop": "850",
+      "shortfall": "50",
+      "loss_fraction_of_loan": "0.05555555555555555555555555555555555555556",
+      "note": "Hypothetical failed/late liquidation, ignores interest/fees; not actual default probability or normal liquidation trigger."
+    },
+    "borrow_low_lend_high": {
+      "own_collateral_capital": "100000",
+      "loan_ratio_assumed": "0.70",
+      "loan": "70000",
+      "borrow_apr_assumed": "0.035",
+      "lend_apr_after_platform_fee_assumed": "0.082875",
+      "annual_spread_income": "3351.250000",
+      "own_capital_return": "0.0335125",
+      "note": "Not an available product quote. Collateral yield assumed zero solely for arithmetic; all fees, changing rates, liquidation and platform losses excluded."
+    },
+    "loss_vs_interest": {
+      "one_off_loss_fraction": "0.20",
+      "annual_interest_assumed": "0.082875",
+      "years_of_simple_interest_erased": "2.413273001508295625942684766214177978884",
+      "note": "Stress example, not an estimate of event likelihood or expected loss."
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "history-binance-CVC",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=CVCUSDT&startTime=1786876389000&endTime=1789554789000&limit=1000",
+  "retrieved_at_utc": "2026-09-16T10:33:11.905046+00:00",
+  "sha256": "fb7ab1b0035cd9e00795efa19bcbf6988b9b4aaebee608edde34b7ea5037dce1",
+  "rows": 186
+}

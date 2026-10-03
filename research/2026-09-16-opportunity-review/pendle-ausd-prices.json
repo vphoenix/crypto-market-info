@@ -1,0 +1,8 @@
+{
+  "underlyingToken": "0x00000000efe302beaa2b3e6e1b18d08d69a9012a",
+  "underlyingTokenToPtRate": "1.003557",
+  "ptToUnderlyingTokenRate": "0.9963",
+  "underlyingTokenToYtRate": "270.249197",
+  "ytToUnderlyingTokenRate": "0.003558",
+  "impliedApy": "0.06347281394437822"
+}

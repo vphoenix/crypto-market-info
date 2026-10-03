@@ -1,0 +1,611 @@
+創興銀行「全新客戶」定期優惠
+a{
+            color: orange;
+        }
+        th, td{
+            padding: 5px 0px 5px 10px;
+            /*border: 1px solid black;*/
+			border:0;
+			valign:top;
+			vertical-align:top;
+        }
+        table{
+            width: 100%;
+            /*border: 1px solid black;*/
+			border:0;
+        }
+        .programGenerateList{
+           /* text-align: left;*/
+            text-align: justify;
+        }
+        
+    /*computer*/
+    @media only screen and (min-width: 961px){
+        .programGenerateList{
+            /*text-align: left;*/
+            padding-right: 50px;
+        }
+        .programGenerateListfirstIndentNumber{
+            float: left;font-weight: ;padding-bottom:3px;padding-top:3px;margin-left:40px;
+        }
+        .programGenerateListfirstIndentContent{
+            margin-left:70px;font-weight: ;padding-bottom:3px;padding-top:3px;
+        }
+        p.high {
+            padding-bottom: 20px;
+        }
+        
+        .plan-item {
+            background: #faf9f3;
+            border-radius: 40px;
+            padding: 25px 55px 5px 55px;
+            position: relative;
+            text-align: center;
+        }
+
+        .plan-item .plan-item-list{
+            padding-left: 40px;
+        }
+        
+        table {
+            /*font-size: 13px;*/
+			font-size: 15px;
+        }
+        .numlist-first-indent{
+            float: left;
+            padding-left: 0px;
+
+        }
+        .numlist-first-indent-text{
+            margin-left: 30px;
+            padding-bottom: 10px;
+        }
+        ol.numlist-second-indent{
+            list-style-type: lower-roman;
+            padding-left: 14px;
+        }
+        .langOption{
+            background-color: #f3f3f3;
+            padding-left: 10px;
+        }
+        .langOption:hover{
+            background-color: #d9d9d9;
+        }
+
+        .headerLang:hover{
+            background-color: #f3f3f3;
+        }
+
+        .langOptionMother{
+            border-radius: 6px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        body{
+            background-color: #545454;
+            font-size: 15px;
+            letter-spacing: 1px;
+            font-family: arial;
+            text-align: justify;
+        }
+        .content-wraper{
+            padding-left:80px;
+            padding-right: 80px;
+        }
+        .langOption-wraper{
+            float: right;
+            width: 120px;
+            position: relative;
+            right: 20px;
+            top: 20px;
+            z-index: 1;
+        }
+        .note{
+            padding-left: 40px;
+            padding-top: 40px;
+            padding-right: 40px;
+        }
+        .box-img{
+            width: 30px;
+            height: 30px;
+            margin: 0px;  
+        }
+        th{
+            vertical-align: middle !important;
+        }
+        .banner{
+            
+            margin-left: -80px;
+            margin-right: -80px;
+            padding-bottom: 40px;
+        }
+        .downloadAppWraper{
+            width: 50%;
+        }
+        .custom-download-app{
+            float: left;
+            display: block;
+            margin-top: 0px;
+        }
+        .custom-download-app-two{
+            margin-left: 300px;
+            display: block;
+        }
+		
+		.card-face img {
+			height:100px;
+		}
+		
+		.add-1 {
+			margin-top:30px;
+		}
+		
+		.add-1e {
+			margin-top:0px;
+		}
+		
+		.add-3 {
+			margin-top:15px;
+		}
+		
+		
+		.add-3e {
+			margin-top:10px;
+		}
+		
+		.add-2{
+			margin-top:0px;
+		}
+		
+		.add-ed {
+			width:335px; 
+			float:left;
+		}
+		
+    }
+
+
+
+
+
+    /*mobile*/
+    @media only screen and (max-width: 960px) {
+        .programGenerateList{
+            padding-right: 10px;
+        }
+        .programGenerateListfirstIndentNumber{
+            float: left;font-weight: ;padding-bottom:3px;padding-top:3px;margin-left:0px;
+        }
+        .programGenerateListfirstIndentContent{
+            margin-left:20px;font-weight: ;padding-bottom:3px;padding-top:3px;
+        }
+        p.high {
+            padding-bottom: 20px;
+        }
+        
+        .plan-item {
+            background: #faf9f3;
+            border-radius: 40px;
+            padding: 25px 35px 5px 35px;
+            position: relative;
+            text-align: center;
+        }
+        .plan-item ol{
+            padding-left: 20px;
+        }
+        
+        table {
+            /*font-size: 13px;*/
+			font-size: 15px;
+			
+        }
+        .numlist-first-indent{
+            float: left;
+            padding-left: 0px;
+
+        }
+        .numlist-first-indent-text{
+            margin-left: 20px;
+            padding-bottom: 10px;
+        }
+        ol.numlist-second-indent{
+            list-style-type: lower-roman;
+            padding-left: 14px;
+        }
+        .langOption{
+            background-color: #f3f3f3;
+            padding-left: 10px;
+        }
+        .langOption:hover{
+            background-color: #d9d9d9;
+        }
+
+        .headerLang:hover{
+            background-color: #f3f3f3;
+        }
+
+        .langOptionMother{
+            border-radius: 6px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        body{
+            background-color: white;
+            font-size: 15px;
+            letter-spacing: 1px;
+            font-family: arial;
+            text-align: justify;
+        }
+        .content-wraper{
+            padding-left:40px;
+            padding-right: 40px;
+        }
+        .langOption-wraper{
+            float: right;
+            width: 120px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            z-index: 1;
+        }
+        .note{
+            padding-left: 0px;
+            padding-top: 40px;
+        }
+        .box-img{
+            width: 30px;
+            height: 30px;
+            margin: 0px;
+        }
+        th{
+            vertical-align: middle !important;
+        }
+        .box-th{
+            
+            padding: 0px !important;
+        }
+        .banner{
+            
+            margin-left: -40px;
+            /*margin-right: -40px;*/
+            padding-bottom: 40px;
+        }
+        .downloadAppWraper{
+
+        }
+        
+		.card-face img {
+			height:50px;
+		}
+		
+		.line-break {
+			clear:both;
+		}
+		
+		.add-ed {
+			text-align:left;
+		}
+    }
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M286BB6Q');
+繁
+简
+Eng
+「全新客戶」定期優惠：合資格「全新客戶」開立指定貨幣定期存款，可享優惠定期存款利率。
+條款及細則
+1.
+本推廣由2026年9月2日至2026年9月30日（包括首尾兩天）（「推廣期」）。
+2.
+客戶於推廣期內成功完成任何2個或以上「指定項目」，並於創興銀行有限公司（「本行」）開立指定貨幣定期存款，可享以下推廣優惠:
+a)	3個月港元定期存款：
+i.	存款額為500,000港元至10,000,000港元，可享3.05%年利率優惠。
+ii.	存款額為20,000港元至499,999港元，可享2.95%年利率優惠。
+b) 1個月港元定期存款：
+i. 存款額為500,000港元至10,000,000港元，可享2.65%年利率優惠。
+ii.	存款額為20,000港元至499,999港元，可享2.60%年利率優惠。
+c)	6個月/9個月/12個月美元定期存款：存款額為3,000美元至1,250,000美元，可享4.0%年利率優惠。
+d)	3個月澳元定期存款：存款額為3,800澳元至190,000澳元，可享4.5%年利率優惠。
+3.
+此推廣優惠只適用於推廣期內於本行成功開立個人賬戶之「全新客戶」。「全新客戶」指於開戶前12個月內於本行並未持有單名及/或聯名賬戶（只持有信用卡賬戶者除外）之客戶。
+4.
+「指定項目」指：
+i.	成功啟動本行數碼服務（例如：網上銀行及流動理財）；或
+ii.	成功申請創興信用卡；或
+iii.	成功開立投資賬戶及完成投資風險及脆弱客戶評估問卷
+1
+；或
+iv.	成功完成外幣兌換交易金額累計達HK$1,000（或等值港幣）或以上。
+5.
+實際特優年利率將根據本行不時訂定為準。詳情請向本行任何本地分行職員查詢。
+6.
+每位合資格全新客戶於推廣期內只可享此優惠1次。如為聯名賬戶，該賬戶持有人將被視作一名合資格全新客戶，只有其中一名賬戶持有人可享此推廣優惠。
+7.
+本行有權隨時暫停、更改或終止本推廣及相關獎賞及不時修訂本條款及細則，而無須任何通知。本行對本推廣、獎賞資格和兌換之所有事宜，包括但不限於客戶的相關奬賞均有最終決定權，並具約束力。更新之條款及細則可於本行任何本地分行索取。如有任何爭議，本行保留最終決定權。
+8.
+本推廣之相關資料、條款及細則受香港特別行政區（「香港」）法律所管轄，並按其詮釋，但香港條例第623章《合約（第三者權利）條例》不適用於此推廣、優惠、獎賞或其條款及細則。
+9.
+除明文另行規定外，本推廣須同時受本行不時修訂之「賬戶章則」約束，其最新版本可於本行任何本地分行或本行網站www.chbank.com索取。就條款間如有任何歧異，其淩駕性優先次序為：本條款及細則、「賬戶章則」。
+10.
+如本條款及細則之中、英文版本有任何歧異，概以中文版本為準。
+11.
+本推廣僅適用於本行香港分行，不可與其他本行優惠同時使用。
+12.
+有關推廣條款及細則，請參閱相關連結。請注意，此等資料只在以下渠道及於推廣期內可供查閱及下載，恕本行未能以紙張形式提供。閣下如有需要，請儲存有關資料以供日後參考，否則推廣期過後或未能夠再次查閱或下載。
+借定唔借，還得到先好借！
+外幣買賣及投資涉及風險。
+風險披露聲明
+•
+本宣傳品之內容僅供參考，並不構成任何方式之招攬、邀請及建議。
+•
+投資涉及風險，過往業績並不代表將來表現。投資產品價格可升可跌，甚至變得毫無價值。 投資者在作出任何投資決定前，應考慮本身的投資目標、投資經驗、財務狀況、風險承受程度 及其他相關條件，並細閱有關銷售文件及風險披露聲明。如有任何疑問，應諮詢獨立的法律及財務顧問意見。以上內容只供參考之用，並不構成亦不應視為要約或游說買賣任何投資產品或服務。投資產品並不保本及有別於一般定期存款，故不應被視為一般定期存款之代替品。投資者不應只單憑本宣傳品而作出投資決定。本宣傳品由創興銀行有限公司刊發，內容並未經香港證券及期貨事務監察委員會或任何監管機構審閱。
+•
+外幣兌換受匯率波動而產生獲利機會及虧損風險。客戶如將外幣兌換成為港幣或其他外幣時，可能受外幣匯率的波動而獲利或蒙受虧損，甚至損失全部本金。因此，客戶應慎重考慮該項目是否適合客戶的財務狀況。人民幣目前並未能自由兌換，而香港各銀行進行人民幣兌換受有關規管當局或有關機構不時釐定之規則、指引、規定及條款所規限。
+1
+有關「投資風險及脆弱客戶評估問卷」
+「投資風險及脆弱客戶評估問卷」由創興銀行有限公司 (「本行」) 提供以協助客戶了解及評估客戶可承受的投資風險程度和投資需要。問卷的分析結果是根據客戶所提供的資料而評估得出，客戶所提供資料之準確性及完整性或會影響投資風險級別的結果，並僅供一般資料及參考之用，並不可被視為對任何投資產品的銷售或購買邀請、亦絕不能被當為構成任何投資或其他意見、建議、陳述、保證或任何具法律後果之說明。
+客戶服務熱線 : 3768 6888
+網站：www.chbank.com
+越秀集團成員
+「全新客户」定期优惠：合资格「全新客户」开立指定货币定期存款，可享优惠定期存款利率。
+条款及细则
+1.
+本推广由2026年9月2日至2026年9月30日（包括首尾两天）（「推广期」）。
+2.
+客户于推广期内成功完成任何2个或以上「指定项目」，并于创兴银行有限公司（「本行」）开立指定货币定期存款，可享以下推广优惠:
+a)	3个月港元定期存款：
+i.	存款额为500,000港元至10,000,000港元，可享3.05%年利率优惠。
+ii.	存款额为20,000港元至499,999港元，可享2.95%年利率优惠。
+b) 1个月港元定期存款：
+i.	存款额为500,000港元至10,000,000港元，可享2.65%年利率优惠。
+ii.	存款额为20,000港元至499,999港元，可享2.60%年利率优惠。
+c)	6个月/9个月/12个月美元定期存款：存款额为3,000美元至1,250,000美元，可享4.0%年利率优惠。
+d)	3个月澳元定期存款：存款额为3,800澳元至190,000澳元，可享4.5%年利率优惠。
+3.
+此推广优惠只适用于推广期内于本行成功开立个人账户之「全新客户」。「全新客户」指于开户前12个月内于本行并未持有单名及/或联名账户（只持有信用卡账户者除外）之客户。
+4.
+「指定项目」指：
+i.	成功启动本行数码服务（例如：网上银行及流动理财）；或
+ii.	成功申请创兴信用卡；或
+iii.	成功开立投资账户及完成投资风险及脆弱客户评估问卷
+1
+；或
+iv.	成功完成外币兑换交易金额累计达HK$1,000（或等值港币）或以上。
+5.
+实际特优年利率将根据本行不时订定为准。详情请向本行任何本地分行职员查询。
+6.
+每位合资格全新客户于推广期内只可享此优惠1次。如为联名账户，该账户持有人将被视作一名合资格全新客户，只有其中一名账户持有人可享此推广优惠。
+7.
+本行有权随时暂停、更改或终止本推广及相关奖赏及不时修订本条款及细则，而无须任何通知。本行对本推广、奖赏资格和兑换之所有事宜，包括但不限于客户的相关奬赏均有最终决定权，并具约束力。更新之条款及细则可于本行任何本地分行索取。如有任何争议，本行保留最终决定权。
+8.
+本推广之相关资料、条款及细则受香港特别行政区（「香港」）法律所管辖，并按其诠释，但香港条例第623章《合约（第三者权利）条例》不适用于此推广、优惠、奖赏或其条款及细则。
+9.
+除明文另行规定外，本推广须同时受本行不时修订之「账户章则」约束，其最新版本可于本行任何本地分行或本行网站www.chbank.com索取。就条款间如有任何歧异，其凌驾性优先次序为：本条款及细则、「账户章则」。
+10.
+如本条款及细则之中、英文版本有任何歧异，概以中文版本为准。
+11.
+本推广仅适用于本行香港分行，不可与其他本行优惠同时使用。
+12.
+有关推广条款及细则，请参阅相关连结。请注意，此等资料只在以下渠道及于推广期内可供查阅及下载，恕本行未能以纸张形式提供。阁下如有需要，请储存有关数据以供日后参考，否则推广期过后或未能够再次查阅或下载。
+借定唔借，还得到先好借！
+外币买卖及投资涉及风险。
+风险披露声明
+•
+本宣传品之内容仅供参考，并不构成任何方式之招揽、邀请及建议。
+•
+投资涉及风险，过往业绩并不代表将来表现。投资产品价格可升可跌，甚至变得毫无价值。 投资者在作出任何投资决定前，应考虑本身的投资目标、投资经验、财务状况、风险承受程度 及其他相关条件，并细阅有关销售文件及风险披露声明。如有任何疑问，应咨询独立的法律及财务顾问意见。以上内容只供参考之用，并不构成亦不应视为要约或游说买卖任何投资产品或服务。投资产品并不保本及有别于一般定期存款，故不应被视为一般定期存款之代替品。投资者不应只单凭本宣传品而作出投资决定。本宣传品由创兴银行有限公司刊发，内容并未经香港证券及期货事务监察委员会或任何监管机构审阅。
+•
+外币兑换受汇率波动而产生获利机会及亏损风险。客户如将外币兑换成为港币或其他外币时，可能受外币汇率的波动而获利或蒙受亏损，甚至损失全部本金。因此，客户应慎重考虑该项目是否适合客户的财务状况。人民币目前并未能自由兑换，而香港各银行进行人民币兑换受有关规管当局或有关机构不时厘定之规则、指引、规定及条款所规限。
+1
+有关「投资风险及脆弱客户评估问卷」
+「投资风险及脆弱客户评估问卷」由创兴银行有限公司 (「本行」) 提供以协助客户了解及评估客户可承受的投资风险程度和投资需要。问卷的分析结果是根据客户所提供的资料而评估得出，客户所提供数据之准确性及完整性或会影响投资风险级别的结果，并仅供一般数据及参考之用，并不可被视为对任何投资产品的销售或购买邀请、亦绝不能被当为构成任何投资或其他意见、建议、陈述、保证或任何具法律后果之说明。
+客户服务热线 : 3768 6888
+网站：www.chbank.com
+越秀集团成员
+Preferential Time Deposit Offer for New Customers: Eligible “New Customers” who place a time deposit in designated currencies can enjoy preferential deposit interest rates.
+Terms & Conditions
+1.
+The promotion is valid from 2 September 2026 to 30 September 2026 (both dates inclusive) (“Promotion Period”).
+2.
+During the Promotion Period, customers who successfully complete any two or more “Designated Items” and place a time deposit in designated currencies with Chong Hing Bank Limited (the “Bank”) will be entitled to:
+a)	For 3-month HKD Time Deposit:
+i)
+For deposit amount HK$500,000 to HK$10,000,000, enjoy a preferential interest rate of 3.05% p.a.
+ii)
+For deposit amount HK$20,000 to HK$499,999, enjoy a preferential interest rate of 2.95% p.a.
+b)  For 1-month HKD Time Deposit:
+i)
+For deposit amount HK$500,000 to HK$10,000,000, enjoy a preferential interest rate of 2.65% p.a.
+ii)
+For deposit amount HK$20,000 to HK$499,999, enjoy a preferential interest rate of 2.60% p.a.
+c)	For 6-month/9-month/12-month HKD Time Deposit: For deposit amount US$3,000 to US$1,2500,000, enjoy a preferential interest rate of 4.0% p.a.
+d)	For 3-month AUD Time Deposit: For deposit amount AUD3,800 to AUD190,000, enjoy a preferential interest rate of 4.5% p.a.
+3.
+The Promotional Offer is only applicable to “New Customers” who have opened personal account successfully at the Bank within the Promotion Period. "New Customer" refers to the customer who has not held any single name and/or joint name account (except credit card account) with the Bank in the past 12 months upon account opening.
+4.
+"Designated Items" means:
+i.	Activates the Bank’s Digital Banking Services (i.e. Internet Banking, Mobile Banking) successfully; or
+ii.	Apply for Chong Hing Credit Card successfully; or
+iii.	Open a new Investment Account and has completed the Investment Profile Questionnaire and Vulnerable Customer Assessment successfully
+1
+; or
+iv. Completes the foreign exchange transaction with accumulated amount at HK$1,000 (or HKD equivalent) or above successfully.
+5.
+The actual rates will be subject to the quotes by the Bank from time to time. Terms and Conditions apply. For details, please contact our staff at any local branch of the Bank.
+6.
+Each Eligible Customer can enjoy this offer once only during the Promotion Period. In the case of a joint name account, the holders of such account will be regarded as one eligible New Customer and only one of the account holders can enjoy this Promotional Offer.
+7.
+The Bank reserves the right to suspend, vary or terminate the promotion and the related rewards, and to amend these terms and conditions at any time and without any notice. The decision of the Bank on all matters relating to the promotion and eligibility, including but not limited to the relevant rewards to the customers, shall be final and binding. For the updated terms and conditions, please visit any local branch of the Bank. In case of any disputes, the Bank’s records shall be final and conclusive.
+8.
+The promotional materials thereof, terms and conditions are construed in accordance with, and are governed by the laws of Hong Kong Special Administrative Region (“Hong Kong”) but the Contracts (Rights of Third Parties) Ordinance (Cap. 623 of the Laws of Hong Kong) shall not apply to this promotion, its offer, rewards or these terms and conditions.
+9.
+Unless otherwise expressly provided, the Bank’s Account Terms subject to change from time to time by the Bank shall also apply to the above promotion, the updated copies of which are available at any local branch of the Bank or its website (www.chbank.com). In case of any inconsistencies among their provisions, the priority shall be in the descending order of: these terms and conditions, the Account Terms.
+10.
+In case of any inconsistencies between the Chinese and English versions of these terms and conditions, the Chinese version shall prevail.
+11.
+This promotion is only applicable in the Bank’s branches in Hong Kong, and cannot be used in conjunction with other promotions of the Bank.
+12.
+Please refer to the relevant link for the terms and conditions of the promotion. Please note that the information would only be available for access and download through below channel during the promotion period, and no paper-based format could be provided by the Bank.  Where needed, please save the relevant information for future reference, otherwise you may not be able to access or download it again subsequent to the expiry of the promotion period.
+To borrow or not to borrow? Borrow only if you can repay!
+Investment involves risks.
+•
+This promotional material is for reference only and does not constitute any offer or solicitation to subscribe or redeem, invitation, or advice.
+•
+Investment involves risks. Past performance is not indicative of future performance. The price of investment products may move up or down, and may become valueless. Investors should consider their own investment objective, financial position, risk tolerance level and relevant circumstances, and read the relevant offering documents and risk disclosure statement before making any investment decision. If investors have any doubt, they should seek independent legal and professional advice. The above offer by itself is not and should not be considered as an offer or solicitation to deal in any of the investment products or services. Investment product is not capital protected and is not a normal time deposit, and thus should not be considered as a normal time deposit or its alternative. Investors should not make investment decisions based on the information of this promotional material alone. This promotional material is issued by Chong Hing Bank Limited. It has not been reviewed by the Securities and Futures Commission of Hong Kong or any regulatory authorities.
+•
+Foreign currency exchange are subject to exchange rate fluctuation which may provide opportunities and risks. The fluctuation in the exchange rate of foreign currencies may result in gains or losses in the case where the customer converts foreign currency to HK dollars or other foreign currencies and even suffer loss in principal in total. You should therefore carefully consider whether such trading is suitable in light of your own financial position. RMB is not freely convertible and conversion of RMB through banks in Hong Kong is subject to the rules, regulations and guidelines from the relevant regulatory authorities or entities from time to time.
+1
+For the “Investment Profile Questionnaire and Vulnerable Customer Assessment”:
+The “Investment Profile Questionnaire and Vulnerable Customer Assessment" is provided by Chong Hing Bank Limited (the "Bank") to help customers understand and assess the degree of investment risk they are prepared to accept and investment needs. The result of this questionnaire is derived from the information provided by customers, the accuracy and completeness of the provided information may affect the assessment result and is for general information and reference only. It is not an offer to sell or a solicitation for an offer to buy any financial products, and must not be taken to constitute any investment or other advice, proposal, representation, warranty or any statement carrying legal effect.
+Foreign currency exchange are subject to exchange rate fluctuation which may provide opportunities and risks. The fluctuation in the exchange rate of foreign currencies may result in gains or losses in the case where the customer converts foreign currency to HK dollars or other foreign currencies and even suffer loss in principal in total. You should therefore carefully consider whether such trading is suitable in light of your own financial position. RMB is not freely convertible and conversion of RMB through banks in Hong Kong is subject to the rules, regulations and guidelines from the relevant regulatory authorities or entities from time to time.
+Customer Services Hotline: 3768 6888
+Website: www.chbank.com
+A Member of Yuexiu Group
+var langlist = ['語言','语言','Language']
+    var currentLang = 0;
+    var langClicked = false;
+
+    var langLabel = document.getElementById('langLabel');
+    var langOption = document.getElementById('langOption');
+    langLabel.children[0].innerHTML = langlist[currentLang];
+    document.getElementById('TC').style.display = "block";
+        document.getElementById('SC').style.display = "none";
+        document.getElementById('EN').style.display = "none";
+
+    langOption.style.display = "none";
+
+    langLabel.addEventListener('click',function(){
+        if(langClicked==false){
+            langOption.style.display = "block";
+            langClicked=true;
+        }
+        else if(langClicked==true){
+            langOption.style.display = "none";
+            langClicked=false;
+        }
+        
+    });
+
+    document.getElementById('langTC').addEventListener('click',function(){
+        currentLang=0;
+        langLabel.children[0].innerHTML = langlist[currentLang];
+        document.getElementById('TC').style.display = "block";
+        document.getElementById('SC').style.display = "none";
+        document.getElementById('EN').style.display = "none";
+    });
+
+    document.getElementById('langSC').addEventListener('click',function(){
+        currentLang=1;
+        langLabel.children[0].innerHTML = langlist[currentLang];
+        document.getElementById('TC').style.display = "none";
+        document.getElementById('SC').style.display = "block";
+        document.getElementById('EN').style.display = "none";
+    });
+
+    document.getElementById('langEN').addEventListener('click',function(){
+        currentLang=2;
+        langLabel.children[0].innerHTML = langlist[currentLang];
+        document.getElementById('TC').style.display = "none";
+        document.getElementById('SC').style.display = "none";
+        document.getElementById('EN').style.display = "block";
+    });
+/*function getParameterByName(name) {
+                                        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                                        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                                        results = regex.exec(location.search);
+                                        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+                                    }*/
+
+                                    document.addEventListener("DOMContentLoaded", function(event) {
+                                        var url = window.location.href;
+                                        var preSelected = url.substr(url.indexOf("lang")+5,2);
+                                        /*var preSelected = getParameterByName('tab');*/
+
+                                        if (preSelected == 'tc') {
+                                            currentLang=0;
+        langLabel.children[0].innerHTML = langlist[currentLang];
+        document.getElementById('TC').style.display = "block";
+        document.getElementById('SC').style.display = "none";
+        document.getElementById('EN').style.display = "none";
+                                        } else if (preSelected == 'sc') {
+                                            currentLang=1;
+        langLabel.children[0].innerHTML = langlist[currentLang];
+        document.getElementById('TC').style.display = "none";
+        document.getElementById('SC').style.display = "block";
+        document.getElementById('EN').style.display = "none";
+                                        } else if (preSelected == 'en') {
+                                            currentLang=2;
+        langLabel.children[0].innerHTML = langlist[currentLang];
+        document.getElementById('TC').style.display = "none";
+        document.getElementById('SC').style.display = "none";
+        document.getElementById('EN').style.display = "block";
+                                        }
+                                        
+                                    
+                                    });
+
+                                    /*var bulletText = document.getElementsByClassName("bulletText");
+                                    for(var i=0; i<bulletText.length; i++){
+                                        bulletText[i].style.width = bulletText[i].parentElement.offsetWidth - 30 + "px";
+
+
+                                    }*/
+
+                                    var mainContent = document.getElementsByClassName("programGenerateList");
+
+var firstIndent = ["1. ","2. ","3. ","4. ","5. ","6. ","7. ","8. ","9. ","10. ","11. ","12. ","13. ","14. ","15. ","16. ","17. ","18. ","19. "];
+
+var secondIndent = ["1.1","1.2","1.3","1.4","1.5","1.6","1.7","1.8","1.9","2.1","2.2","2.3","2.4","2.5","2.6","2.7","2.8","2.9","3.1","3.2","3.3","3.4","3.5","3.6","3.7","3.8","3.9","4.1","4.2","4.3","4.4","4.5","4.6","4.7","4.8","4.9","5.1","5.2","5.3","5.4","5.5","5.6","5.7","5.8","5.9","6.1","6.2","6.3","6.4","6.5","6.6","6.7","6.8","6.9","7.1","7.2","7.3","7.4","7.5","7.6","7.7","7.8","7.9","8.1","8.2","8.3","8.4","8.5","8.6","8.7","8.8","8.9","9.1","9.2","9.3","9.4","9.5","9.6","9.7","9.8","9.9","10.1","10.2","10.3","10.4","10.5","10.6","10.7","10.8","10.9","11.1","11.2","11.3","11.4","11.5","11.6","11.7","11.8","11.9","12.1","12.2","12.3","12.4","12.5","12.6","12.7","12.8","12.9","13.1","13.2","13.3","13.4","13.5","13.6","13.7","13.8","13.9","14.1","14.2","14.3","14.4","14.5","14.6","14.7","14.8","14.9","15.1","15.2","15.3","15.4","15.5","15.6","15.7","15.8","15.9","16.1","16.2","16.3","16.4","16.5","16.6","16.7","16.8","16.9","17.1","17.2","17.3","17.4","17.5","17.6","17.7","17.8","17.9","18.1","18.2","18.3","18.4","18.5","18.6","18.7","18.8","18.9","19.1","19.2","19.3","19.4","19.5","19.6","19.7","19.8","19.9"];
+
+var thirdIndent = ["(a)","(b)","(c)","(d)","(e)","(f)","(g)","(h)","(i)","(j)","(k)","(l)","(m)","(n)","(o)","(p)","(q)","(r)","(s)","(t)","(u)","(v)","(w)","(x)","(y)","(z)","（1）","（2）","（3）","（4）","（5）","（6）","（7）","（8）","（9）"];
+
+var fourthIndent = ["(1)","(2)","(3)","(4)","(5)","(6)","(7)","(8)","(9)","(10)","(11)","(12)","(13)","(14)","(15)","(16)","(17)","(18)","(19)"];
+
+var fifthIndent = ["(i)","(ii)","(iii)","(iv)","(v)","(vi)","(vii)"];
+
+var numberOfBr = 0;
+var bold = "";
+var br = "";
+for(var i = 0; i<numberOfBr; i++){
+  br = br + "<br />";
+}
+
+var firstIndentNumberMargin = "40";
+var firstIndentContentMargin = "70";
+var firstIndentTopBottomPadding = "3";
+var fifthIndentNumberMargin = "57";
+var fifthIndentContentMargin = "100";
+
+
+
+for(var m = 0; m < mainContent.length; m++){
+  var sourceText = mainContent[m].innerHTML;
+  var splittedSourceText = sourceText.trim().split("\n");
+  var result = sourceText;
+  var finalText = "";
+
+  var splittedResult, finalResult = [];
+  
+  for(var j = 0; j < splittedSourceText.length; j++){
+    var b = "\n" + splittedSourceText[j].trim();
+    //first indent
+    for(var k = 0; k < firstIndent.length; k++){
+      if(b.indexOf("\n"+firstIndent[k]) > -1){
+        var a =b.split("\n"+firstIndent[k]);
+        finalText = finalText + "<div style='font-weight: "+bold+";' class='programGenerateListfirstIndentNumber'>"+firstIndent[k]+"</div><div style='font-weight: "+bold+";' class='programGenerateListfirstIndentContent'>"+ a[a.length-1] + "</div>";
+      }
+    }
+    //fifth indent
+    for(var k = 0; k < fifthIndent.length; k++){
+      if(b.indexOf("\n"+fifthIndent[k]) > -1){
+        var a =b.split("\n"+fifthIndent[k]);
+        finalText = finalText + "</div><div style='float: left;margin-left:"+fifthIndentNumberMargin+"px"+";padding-bottom:5px;padding-top:5px;'>"+fifthIndent[k]+"</div><div style='margin-left:"+fifthIndentContentMargin+"px"+";padding-bottom:5px;padding-top:5px;'>"+ a[a.length-1] + "</div>";
+      }
+    }
+  }
+  
+  mainContent[m].innerHTML = finalText;
+  console.log(splittedSourceText);
+}

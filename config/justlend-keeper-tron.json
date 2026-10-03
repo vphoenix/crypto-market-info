@@ -1,0 +1,10 @@
+{
+  "node_rpc_url": "https://tron-rpc.publicnode.com",
+  "event_api_url": "https://api.trongrid.io",
+  "quote_api_url": "https://api.binance.com",
+  "callers": [
+    "41020c064bab81eb2ef520f1cc2a26f5f1867e29b3",
+    "4166fff827c2d1d2804881e8e74dd465186126f801"
+  ],
+  "daily_budget": 40000
+}

@@ -1,0 +1,152 @@
+{
+  "fUSD": {
+    "first_utc": "2026-06-15T13:05:00+00:00",
+    "last_utc": "2026-09-13T13:05:00+00:00",
+    "history": {
+      "7": {
+        "hours": 168,
+        "mean_frr_gross_apr": "0.1128368169642857142857142857142857142857",
+        "mean_after_15pct_interest_fee_apr": "0.09591129441964285714285714285714285714286",
+        "min_net_apr": "0.0951226500",
+        "p10_net_apr": "0.0951226500",
+        "median_net_apr": "0.0962550625",
+        "max_net_apr": "0.0962550625",
+        "fraction_hours_net_above_3_5pct": "1",
+        "hypothetical_period_simple_return_at_frr": "0.0018393946875000000000000000000000000000",
+        "note": "FRR benchmark, not an achievable fill or realised lender return; no idle-capital, transfer, tax or principal losses."
+      },
+      "30": {
+        "hours": 720,
+        "mean_frr_gross_apr": "0.1140683552083333333333333333333333333333",
+        "mean_after_15pct_interest_fee_apr": "0.09695810192708333333333333333333333333333",
+        "min_net_apr": "0.0951226500",
+        "p10_net_apr": "0.0962550625",
+        "median_net_apr": "0.0962550625",
+        "max_net_apr": "0.1007847125",
+        "fraction_hours_net_above_3_5pct": "1",
+        "hypothetical_period_simple_return_at_frr": "0.007969159062500000000000000000000000000",
+        "note": "FRR benchmark, not an achievable fill or realised lender return; no idle-capital, transfer, tax or principal losses."
+      },
+      "90": {
+        "hours": 2160,
+        "mean_frr_gross_apr": "0.1256157554398148148148148148148148148148",
+        "mean_after_15pct_interest_fee_apr": "0.1067733921238425925925925925925925925926",
+        "min_net_apr": "0.0951226500",
+        "p10_net_apr": "0.0962550625",
+        "median_net_apr": "0.1075791875",
+        "max_net_apr": "0.1189033125",
+        "fraction_hours_net_above_3_5pct": "1",
+        "hypothetical_period_simple_return_at_frr": "0.02632768572916666666666666666666666666667",
+        "note": "FRR benchmark, not an achievable fill or realised lender return; no idle-capital, transfer, tax or principal losses."
+      }
+    },
+    "current_ticker_frr_gross_apr": "0.1124240000000000040",
+    "current_ticker_frr_net_apr": "0.095560400000000003400",
+    "visible_borrow_bid_total": "25890556.33784674",
+    "capacity": [
+      {
+        "amount": "10000",
+        "unfilled": "0",
+        "matched_daily_gross_interest": "2.739726027397260000",
+        "annualized_after_interest_fee_if_fully_deployed": "0.08499999999999999150",
+        "used_borrow_bids": [
+          {
+            "amount": "10000",
+            "max_days": 120,
+            "daily_rate": "0.000273972602739726"
+          }
+        ],
+        "note": "Snapshot executable-side estimate; borrower may repay early, no locked yield for full displayed duration."
+      },
+      {
+        "amount": "100000",
+        "unfilled": "0",
+        "matched_daily_gross_interest": "27.397260273972600000",
+        "annualized_after_interest_fee_if_fully_deployed": "0.08499999999999999150",
+        "used_borrow_bids": [
+          {
+            "amount": "100000",
+            "max_days": 120,
+            "daily_rate": "0.000273972602739726"
+          }
+        ],
+        "note": "Snapshot executable-side estimate; borrower may repay early, no locked yield for full displayed duration."
+      }
+    ]
+  },
+  "fUST": {
+    "first_utc": "2026-06-15T13:05:00+00:00",
+    "last_utc": "2026-09-13T13:05:00+00:00",
+    "history": {
+      "7": {
+        "hours": 168,
+        "mean_frr_gross_apr": "0.08899905803571428571428571428571428571429",
+        "mean_after_15pct_interest_fee_apr": "0.07564919933035714285714285714285714285714",
+        "min_net_apr": "0.0747392250",
+        "p10_net_apr": "0.0747392250",
+        "median_net_apr": "0.0758716375",
+        "max_net_apr": "0.0758716375",
+        "fraction_hours_net_above_3_5pct": "1",
+        "hypothetical_period_simple_return_at_frr": "0.0014508065625000000000000000000000000000",
+        "note": "FRR benchmark, not an achievable fill or realised lender return; no idle-capital, transfer, tax or principal losses."
+      },
+      "30": {
+        "hours": 720,
+        "mean_frr_gross_apr": "0.08842809375",
+        "mean_after_15pct_interest_fee_apr": "0.0751638796875",
+        "min_net_apr": "0.0713419875",
+        "p10_net_apr": "0.0736068125",
+        "median_net_apr": "0.0758716375",
+        "max_net_apr": "0.0770040500",
+        "fraction_hours_net_above_3_5pct": "1",
+        "hypothetical_period_simple_return_at_frr": "0.0061778531250",
+        "note": "FRR benchmark, not an achievable fill or realised lender return; no idle-capital, transfer, tax or principal losses."
+      },
+      "90": {
+        "hours": 2160,
+        "mean_frr_gross_apr": "0.09597997754629629629629629629629629629630",
+        "mean_after_15pct_interest_fee_apr": "0.08158298091435185185185185185185185185185",
+        "min_net_apr": "0.0702095750",
+        "p10_net_apr": "0.0724744000",
+        "median_net_apr": "0.0781364625",
+        "max_net_apr": "0.4348464000",
+        "fraction_hours_net_above_3_5pct": "1",
+        "hypothetical_period_simple_return_at_frr": "0.02011635145833333333333333333333333333333",
+        "note": "FRR benchmark, not an achievable fill or realised lender return; no idle-capital, transfer, tax or principal losses."
+      }
+    },
+    "current_ticker_frr_gross_apr": "0.0897149999999999980",
+    "current_ticker_frr_net_apr": "0.076257749999999998300",
+    "visible_borrow_bid_total": "15537013.91031308",
+    "capacity": [
+      {
+        "amount": "10000",
+        "unfilled": "0",
+        "matched_daily_gross_interest": "2.6712328767123290000",
+        "annualized_after_interest_fee_if_fully_deployed": "0.082875000000000007225",
+        "used_borrow_bids": [
+          {
+            "amount": "10000",
+            "max_days": 120,
+            "daily_rate": "0.0002671232876712329"
+          }
+        ],
+        "note": "Snapshot executable-side estimate; borrower may repay early, no locked yield for full displayed duration."
+      },
+      {
+        "amount": "100000",
+        "unfilled": "0",
+        "matched_daily_gross_interest": "26.7123287671232900000",
+        "annualized_after_interest_fee_if_fully_deployed": "0.082875000000000007225",
+        "used_borrow_bids": [
+          {
+            "amount": "100000",
+            "max_days": 120,
+            "daily_rate": "0.0002671232876712329"
+          }
+        ],
+        "note": "Snapshot executable-side estimate; borrower may repay early, no locked yield for full displayed duration."
+      }
+    ]
+  }
+}

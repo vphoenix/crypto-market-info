@@ -1,0 +1,3510 @@
+{
+  "venue": "Binance",
+  "symbol": "SOON",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=SOONUSDT&limit=1000",
+  "retrieved_at": "2026-09-21T14:33:05.832898+00:00",
+  "status": 200,
+  "sha256": "ea25ff8520998e9deb00d04e7f4c7ba253a4a7245a0194ce41538cc5abfd93c4",
+  "data": [
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782806400000,
+      "fundingRate": "0.00008612",
+      "markPrice": "0.17334667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782820800002,
+      "fundingRate": "0.00023230",
+      "markPrice": "0.17000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782835200005,
+      "fundingRate": "0.00008541",
+      "markPrice": "0.16720000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782849600003,
+      "fundingRate": "0.00012837",
+      "markPrice": "0.16466125",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782864000000,
+      "fundingRate": "0.00036920",
+      "markPrice": "0.16408810",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782878400001,
+      "fundingRate": "0.00055444",
+      "markPrice": "0.16380000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782892800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16356175",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782907200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16349975",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782921600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16560000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782936000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16240000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782950400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16396670",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782964800003,
+      "fundingRate": "0.00026155",
+      "markPrice": "0.16774192",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782979200000,
+      "fundingRate": "0.00006234",
+      "markPrice": "0.16429532",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1782993600005,
+      "fundingRate": "0.00071097",
+      "markPrice": "0.16570000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783008000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16620000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783022400008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16504756",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783036800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16627615",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783051200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16894553",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783065600007,
+      "fundingRate": "0.00008902",
+      "markPrice": "0.17035802",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783080000002,
+      "fundingRate": "0.00071455",
+      "markPrice": "0.17780000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783094400000,
+      "fundingRate": "0.00014771",
+      "markPrice": "0.17594957",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783108800001,
+      "fundingRate": "0.00021247",
+      "markPrice": "0.17686206",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783123200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17534739",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783137600006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17378520",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783152000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17595636",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783166400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17195855",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783180800007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17580000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783195200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17499744",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783209600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17285080",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783224000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16893924",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783238400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17047126",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783252800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16936928",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783267200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17127489",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783281600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17596283",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783296000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17650000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783310400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17475673",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783324800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17302349",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783339200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17197451",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783353600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17196809",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783368000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17080000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783382400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17070000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783396800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16793623",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783411200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16694060",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783425600010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16776138",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783440000000,
+      "fundingRate": "0.00026733",
+      "markPrice": "0.16595457",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783454400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16638213",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783468800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16456240",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783483200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16760000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783497600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17050000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783512000005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17283336",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783526400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16825152",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783540800006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16754013",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783555200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16730000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783569600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16690000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783584000001,
+      "fundingRate": "0.00026464",
+      "markPrice": "0.16850000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783598400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16764174",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783612800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16540000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783627200000,
+      "fundingRate": "0.00030226",
+      "markPrice": "0.16793544",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783641600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16770000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783656000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16930000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783670400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16905366",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783684800002,
+      "fundingRate": "0.00007261",
+      "markPrice": "0.17105435",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783699200005,
+      "fundingRate": "0.00064801",
+      "markPrice": "0.17425441",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783713600000,
+      "fundingRate": "0.00005173",
+      "markPrice": "0.17793788",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783728000000,
+      "fundingRate": "-0.00002898",
+      "markPrice": "0.17556917",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783742400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17353557",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783756800000,
+      "fundingRate": "0.00015359",
+      "markPrice": "0.17420000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783771200008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17190000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783785600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16980276",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783800000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16930000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783814400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16700410",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783828800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16855629",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783843200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16593155",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783857600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16747348",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783872000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16890000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783886400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16669873",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783900800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16496645",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783915200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.15843848",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783929600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16450000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783944000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16455596",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783958400004,
+      "fundingRate": "0.00016972",
+      "markPrice": "0.17150000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783972800000,
+      "fundingRate": "0.00024249",
+      "markPrice": "0.17490000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1783987200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17523268",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784001600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17160000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784016000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17291265",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784030400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16804770",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784044800001,
+      "fundingRate": "0.00005954",
+      "markPrice": "0.16830000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784059200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16460000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784073600005,
+      "fundingRate": "0.00018063",
+      "markPrice": "0.16673826",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784088000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16626377",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784102400002,
+      "fundingRate": "0.00028984",
+      "markPrice": "0.16720000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784116800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16434755",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784131200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16780000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784145600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16520000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784160000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16614691",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784174400003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16530000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784188800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16453853",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784203200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16520000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784217600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16414255",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784232000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16420000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784246400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16370000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784260800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16375042",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784275200010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16380000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784289600004,
+      "fundingRate": "0.00007831",
+      "markPrice": "0.16904798",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784304000004,
+      "fundingRate": "0.00017851",
+      "markPrice": "0.16896432",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784318400000,
+      "fundingRate": "0.00006010",
+      "markPrice": "0.16480000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784332800000,
+      "fundingRate": "0.00036745",
+      "markPrice": "0.16510000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784347200000,
+      "fundingRate": "0.00005648",
+      "markPrice": "0.16490000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784361600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16390000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784376000002,
+      "fundingRate": "0.00024983",
+      "markPrice": "0.16480000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784390400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16216094",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784404800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16526451",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784419200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16380000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784433600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16340000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784448000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16320000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784462400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16094813",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784476800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16166137",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784491200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.15845192",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784505600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.15940000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784520000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.15776134",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784534400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.15835930",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784548800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16024861",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784563200004,
+      "fundingRate": "0.00005181",
+      "markPrice": "0.16195373",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784577600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16145796",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784592000001,
+      "fundingRate": "0.00013306",
+      "markPrice": "0.16344835",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784606400000,
+      "fundingRate": "0.00011563",
+      "markPrice": "0.16464558",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784620800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16409968",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784635200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16355951",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784649600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16410000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784664000000,
+      "fundingRate": "0.00009993",
+      "markPrice": "0.16380000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784678400000,
+      "fundingRate": "0.00025319",
+      "markPrice": "0.16459234",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784692800008,
+      "fundingRate": "0.00032425",
+      "markPrice": "0.16510000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784707200000,
+      "fundingRate": "0.00016614",
+      "markPrice": "0.16430000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784721600000,
+      "fundingRate": "0.00015573",
+      "markPrice": "0.16470000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784736000001,
+      "fundingRate": "0.00031130",
+      "markPrice": "0.16436149",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784750400000,
+      "fundingRate": "0.00006847",
+      "markPrice": "0.16339584",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784764800000,
+      "fundingRate": "0.00009288",
+      "markPrice": "0.16245194",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784779200006,
+      "fundingRate": "0.00023253",
+      "markPrice": "0.16395302",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784793600000,
+      "fundingRate": "0.00055196",
+      "markPrice": "0.16635284",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784808000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16760000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784822400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16660000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784836800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784851200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16520000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784865600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16750000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784880000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16828272",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784894400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16989187",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784908800008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17060000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784923200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16730000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784937600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16450000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784952000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16980000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784966400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16930182",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784980800000,
+      "fundingRate": "0.00011761",
+      "markPrice": "0.17350000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1784995200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17116509",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785009600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17010000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785024000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16999387",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785038400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16872612",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785052800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.16810000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785067200000,
+      "fundingRate": "0.00015630",
+      "markPrice": "0.17390000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785081600000,
+      "fundingRate": "0.00050245",
+      "markPrice": "0.18811662",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785096000000,
+      "fundingRate": "0.00027548",
+      "markPrice": "0.19850000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785110400010,
+      "fundingRate": "0.00033830",
+      "markPrice": "0.20520000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785124800000,
+      "fundingRate": "0.00040115",
+      "markPrice": "0.19070000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785139200000,
+      "fundingRate": "0.00034786",
+      "markPrice": "0.20938948",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785153600000,
+      "fundingRate": "0.00039574",
+      "markPrice": "0.20626677",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785168000001,
+      "fundingRate": "0.00007611",
+      "markPrice": "0.21130000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785182400004,
+      "fundingRate": "0.00034608",
+      "markPrice": "0.23619165",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785196800000,
+      "fundingRate": "0.00031682",
+      "markPrice": "0.23720000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785211200012,
+      "fundingRate": "0.00017796",
+      "markPrice": "0.23871312",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785225600000,
+      "fundingRate": "0.00028613",
+      "markPrice": "0.23810000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785240000001,
+      "fundingRate": "0.00028955",
+      "markPrice": "0.25962257",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785254400000,
+      "fundingRate": "0.00044218",
+      "markPrice": "0.28960000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785268800000,
+      "fundingRate": "0.00019804",
+      "markPrice": "0.27337371",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785283200000,
+      "fundingRate": "0.00014108",
+      "markPrice": "0.27890422",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785297600000,
+      "fundingRate": "0.00010426",
+      "markPrice": "0.25510000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785312000002,
+      "fundingRate": "0.00018807",
+      "markPrice": "0.25510000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785326400007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22546266",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785340800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21229380",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785355200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19780000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785369600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19926013",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785384000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19392019",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785398400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20690000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785412800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21570000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785427200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21250000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785441600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20376648",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785456000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20540484",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785470400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19960000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785484800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19940000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785499200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20966411",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785513600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21310000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785528000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21534410",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785542400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22340000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785556800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21927014",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785571200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22401896",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785585600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22580000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785600000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22796299",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785614400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22580000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785628800000,
+      "fundingRate": "0.00006634",
+      "markPrice": "0.22460000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785643200000,
+      "fundingRate": "0.00007019",
+      "markPrice": "0.22122402",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785657600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22305703",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785672000007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22540000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785686400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22490310",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785700800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22504024",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785715200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22520000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785729600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21660000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785744000000,
+      "fundingRate": "0.00008649",
+      "markPrice": "0.21020000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785758400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20505791",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785772800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21240000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785787200003,
+      "fundingRate": "0.00023620",
+      "markPrice": "0.20888731",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785801600004,
+      "fundingRate": "0.00017072",
+      "markPrice": "0.21510000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785816000002,
+      "fundingRate": "0.00009175",
+      "markPrice": "0.20960000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785830400002,
+      "fundingRate": "0.00026521",
+      "markPrice": "0.22500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785844800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22650000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785859200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22499976",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785873600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22069411",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785888000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22150000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785902400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21464072",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785916800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22094001",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785931200008,
+      "fundingRate": "0.00006031",
+      "markPrice": "0.22430000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785945600000,
+      "fundingRate": "0.00010013",
+      "markPrice": "0.22070000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785960000000,
+      "fundingRate": "0.00008546",
+      "markPrice": "0.22430000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785974400002,
+      "fundingRate": "0.00030748",
+      "markPrice": "0.22580000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1785988800000,
+      "fundingRate": "0.00014533",
+      "markPrice": "0.21610000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786003200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21350000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786017600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21510000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786032000000,
+      "fundingRate": "0.00020327",
+      "markPrice": "0.22310000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786046400001,
+      "fundingRate": "0.00026735",
+      "markPrice": "0.22068272",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786060800000,
+      "fundingRate": "0.00050510",
+      "markPrice": "0.21890000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786075200000,
+      "fundingRate": "0.00026240",
+      "markPrice": "0.21735982",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786089600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21660000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786104000000,
+      "fundingRate": "0.00028667",
+      "markPrice": "0.22190000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786118400000,
+      "fundingRate": "0.00016350",
+      "markPrice": "0.21405165",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786132800000,
+      "fundingRate": "0.00013427",
+      "markPrice": "0.21130000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786147200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20623082",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786161600000,
+      "fundingRate": "0.00008861",
+      "markPrice": "0.20170000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786176000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20320000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786190400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786204800002,
+      "fundingRate": "0.00017841",
+      "markPrice": "0.21865491",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786219200000,
+      "fundingRate": "0.00008031",
+      "markPrice": "0.21838225",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786233600000,
+      "fundingRate": "0.00014957",
+      "markPrice": "0.21950000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786248000000,
+      "fundingRate": "0.00031026",
+      "markPrice": "0.22516479",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786262400005,
+      "fundingRate": "0.00006191",
+      "markPrice": "0.22510000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786276800000,
+      "fundingRate": "0.00027235",
+      "markPrice": "0.21980000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786291200000,
+      "fundingRate": "0.00021806",
+      "markPrice": "0.21740000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786305600000,
+      "fundingRate": "0.00022602",
+      "markPrice": "0.21586805",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786320000001,
+      "fundingRate": "0.00033923",
+      "markPrice": "0.21680000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786334400000,
+      "fundingRate": "0.00020106",
+      "markPrice": "0.21891954",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786348800005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22340000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786363200000,
+      "fundingRate": "0.00014215",
+      "markPrice": "0.23130000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786377600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22180000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786392000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21892666",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786406400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22270000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786420800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.22305040",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786435200006,
+      "fundingRate": "0.00005715",
+      "markPrice": "0.21860000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786449600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21491470",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786464000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21830000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786478400003,
+      "fundingRate": "0.00014415",
+      "markPrice": "0.21840000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786492800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21360000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786507200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21634290",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786521600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21153897",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786536000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21120855",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786550400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21756262",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786564800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21446595",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786579200000,
+      "fundingRate": "0.00006615",
+      "markPrice": "0.21508273",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786593600000,
+      "fundingRate": "0.00006355",
+      "markPrice": "0.21634107",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786608000000,
+      "fundingRate": "0.00020017",
+      "markPrice": "0.21302462",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786622400000,
+      "fundingRate": "0.00012649",
+      "markPrice": "0.21204379",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786636800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20760000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786651200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20660000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786665600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786680000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20470000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786694400001,
+      "fundingRate": "0.00009342",
+      "markPrice": "0.20500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786708800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20011489",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786723200001,
+      "fundingRate": "0.00016153",
+      "markPrice": "0.20240000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786737600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20383220",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786752000003,
+      "fundingRate": "0.00013410",
+      "markPrice": "0.20199922",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786766400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20049932",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786780800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19930000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786795200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20040000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786809600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20059484",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786824000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20057824",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786838400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19750000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786852800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19450000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786867200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19290000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786881600008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19540000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786896000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19245503",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786910400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19106570",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786924800001,
+      "fundingRate": "0.00016221",
+      "markPrice": "0.19085418",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786939200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19699889",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786953600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20241478",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786968000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20027394",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786982400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19994916",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1786996800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19715877",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787011200006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19780000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787025600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19514243",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787040000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19496811",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787054400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19780000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787068800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19480000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787083200008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19530000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787097600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19510000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787112000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19353651",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787126400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20573248",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787140800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20110000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787155200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20064090",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787169600009,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20113828",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787184000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20130000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787198400011,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20110000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787212800000,
+      "fundingRate": "0.00011056",
+      "markPrice": "0.19760000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787227200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20280000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787241600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787256000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19910000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787270400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20150000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787284800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787299200000,
+      "fundingRate": "0.00007101",
+      "markPrice": "0.20790000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787313600000,
+      "fundingRate": "0.00046274",
+      "markPrice": "0.20810000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787328000001,
+      "fundingRate": "0.00027017",
+      "markPrice": "0.20770000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787342400000,
+      "fundingRate": "0.00005494",
+      "markPrice": "0.20407346",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787356800000,
+      "fundingRate": "0.00023012",
+      "markPrice": "0.21070000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787371200004,
+      "fundingRate": "0.00034939",
+      "markPrice": "0.21630000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787385600000,
+      "fundingRate": "0.00014896",
+      "markPrice": "0.20420000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787400000002,
+      "fundingRate": "0.00007809",
+      "markPrice": "0.19830000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787414400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19560000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787428800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19405165",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787443200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19113518",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787457600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19069533",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787472000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19380000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787486400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19530000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787500800006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19367314",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787515200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19694207",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787529600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19723337",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787544000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787558400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19390000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787572800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19330000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787587200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19207018",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787601600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19317637",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787616000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19355824",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787630400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19304042",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787644800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19250000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787659200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19326976",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787673600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19589284",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787688000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19440000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787702400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19480000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787716800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19505944",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787731200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19560000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787745600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19760000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787760000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19534712",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787774400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20450000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787788800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20340000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787803200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20170000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787817600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20660000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787832000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20570000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787846400013,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20419532",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787860800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20544795",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787875200026,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20903622",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787889600008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20930000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787904000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20396642",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787918400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20520000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787932800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20534255",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787947200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20580000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787961600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20480000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787976000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20930000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1787990400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.21130000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788004800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20510000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788019200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20473931",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788033600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20123110",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788048000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20082344",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788062400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20209003",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788076800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20526897",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788091200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20538273",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788105600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20544742",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788120000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20410000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788134400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19860000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788148800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20014849",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788163200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.20090000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788177600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19920000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788192000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19525470",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788206400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19620000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788220800005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19725295",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788235200007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19663964",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788249600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19416723",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788264000001,
+      "fundingRate": "0.00020988",
+      "markPrice": "0.18980000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788278400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19030000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788292800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18440000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788307200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18360000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788321600000,
+      "fundingRate": "0.00005498",
+      "markPrice": "0.18415546",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788336000001,
+      "fundingRate": "0.00014242",
+      "markPrice": "0.18386739",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788350400000,
+      "fundingRate": "0.00012988",
+      "markPrice": "0.18410000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788364800005,
+      "fundingRate": "0.00016335",
+      "markPrice": "0.18840000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788379200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18720000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788393600000,
+      "fundingRate": "0.00027725",
+      "markPrice": "0.18899348",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788408000000,
+      "fundingRate": "0.00032392",
+      "markPrice": "0.18920000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788422400000,
+      "fundingRate": "0.00016166",
+      "markPrice": "0.18886025",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788436800002,
+      "fundingRate": "0.00006023",
+      "markPrice": "0.19049321",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788451200000,
+      "fundingRate": "0.00035530",
+      "markPrice": "0.19451509",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788465600000,
+      "fundingRate": "0.00033777",
+      "markPrice": "0.19320000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788480000000,
+      "fundingRate": "0.00021130",
+      "markPrice": "0.19347917",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788494400000,
+      "fundingRate": "0.00012784",
+      "markPrice": "0.19100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788508800000,
+      "fundingRate": "0.00025435",
+      "markPrice": "0.19006782",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788523200003,
+      "fundingRate": "0.00021873",
+      "markPrice": "0.19150000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788537600009,
+      "fundingRate": "0.00006621",
+      "markPrice": "0.18700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788552000000,
+      "fundingRate": "0.00009191",
+      "markPrice": "0.18810000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788566400000,
+      "fundingRate": "0.00008033",
+      "markPrice": "0.18830000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788580800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18940000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788595200000,
+      "fundingRate": "0.00015108",
+      "markPrice": "0.18860000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788609600007,
+      "fundingRate": "0.00018905",
+      "markPrice": "0.18955452",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788624000001,
+      "fundingRate": "0.00026540",
+      "markPrice": "0.19080000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788638400000,
+      "fundingRate": "0.00025158",
+      "markPrice": "0.18968187",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788652800000,
+      "fundingRate": "0.00046140",
+      "markPrice": "0.19097041",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788667200005,
+      "fundingRate": "0.00043990",
+      "markPrice": "0.19354501",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788681600000,
+      "fundingRate": "0.00018858",
+      "markPrice": "0.19246957",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788696000001,
+      "fundingRate": "0.00008895",
+      "markPrice": "0.19220000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788710400004,
+      "fundingRate": "0.00020798",
+      "markPrice": "0.19050000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788724800000,
+      "fundingRate": "0.00024260",
+      "markPrice": "0.18895402",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788739200004,
+      "fundingRate": "0.00019163",
+      "markPrice": "0.19070000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788753600001,
+      "fundingRate": "0.00015414",
+      "markPrice": "0.19070000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788768000000,
+      "fundingRate": "0.00012556",
+      "markPrice": "0.18810907",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788782400000,
+      "fundingRate": "0.00032472",
+      "markPrice": "0.18974905",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788796800003,
+      "fundingRate": "0.00017613",
+      "markPrice": "0.18930000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788811200000,
+      "fundingRate": "0.00023341",
+      "markPrice": "0.19075295",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788825600004,
+      "fundingRate": "0.00011314",
+      "markPrice": "0.19050000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788840000000,
+      "fundingRate": "0.00034353",
+      "markPrice": "0.19364292",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788854400002,
+      "fundingRate": "0.00009304",
+      "markPrice": "0.19364011",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788868800006,
+      "fundingRate": "0.00017511",
+      "markPrice": "0.18850000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788883200001,
+      "fundingRate": "0.00032648",
+      "markPrice": "0.19143729",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788897600002,
+      "fundingRate": "0.00038456",
+      "markPrice": "0.18323739",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788912000005,
+      "fundingRate": "0.00018284",
+      "markPrice": "0.18979347",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788926400004,
+      "fundingRate": "0.00025343",
+      "markPrice": "0.18484128",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788940800004,
+      "fundingRate": "0.00031687",
+      "markPrice": "0.18700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788955200004,
+      "fundingRate": "0.00019644",
+      "markPrice": "0.18790000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788969600002,
+      "fundingRate": "0.00008151",
+      "markPrice": "0.18620000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788984000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18790000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1788998400000,
+      "fundingRate": "0.00010567",
+      "markPrice": "0.18530000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789012800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18450000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789027200007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17830000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789041600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17863207",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789056000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17586618",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789070400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17375090",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789084800008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17263993",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789099200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17424904",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789113600000,
+      "fundingRate": "0.00005034",
+      "markPrice": "0.17810000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789128000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17694951",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789142400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18028638",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789156800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17984693",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789171200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18225968",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789185600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18260000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789200000003,
+      "fundingRate": "0.00013282",
+      "markPrice": "0.18109374",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789214400000,
+      "fundingRate": "0.00011113",
+      "markPrice": "0.18090000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789228800000,
+      "fundingRate": "0.00009792",
+      "markPrice": "0.18073217",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789243200000,
+      "fundingRate": "0.00012265",
+      "markPrice": "0.18154318",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789257600002,
+      "fundingRate": "0.00012429",
+      "markPrice": "0.18054906",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789272000007,
+      "fundingRate": "0.00019522",
+      "markPrice": "0.18395342",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789286400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18150000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789300800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18060000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789315200000,
+      "fundingRate": "0.00025817",
+      "markPrice": "0.18470000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789329600000,
+      "fundingRate": "0.00010756",
+      "markPrice": "0.18498591",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789344000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18184992",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789358400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18346849",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789372800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18265481",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789387200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18320000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789401600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18070000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789416000008,
+      "fundingRate": "0.00006821",
+      "markPrice": "0.18075234",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789430400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18081108",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789444800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789459200005,
+      "fundingRate": "0.00026368",
+      "markPrice": "0.17935623",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789473600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17860000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789488000001,
+      "fundingRate": "0.00025035",
+      "markPrice": "0.17920000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789502400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18020000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789516800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17840000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789531200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17617354",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789545600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17462197",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789560000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17690000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789574400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17543610",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789588800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789603200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18032980",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789617600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17974388",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789632000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18136851",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789646400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18025155",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789660800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.17960000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789675200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789689600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18190000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789704000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18503899",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789718400006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18447256",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789732800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18364593",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789747200000,
+      "fundingRate": "0.00024877",
+      "markPrice": "0.18982004",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789761600001,
+      "fundingRate": "0.00006144",
+      "markPrice": "0.18914232",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789776000000,
+      "fundingRate": "0.00023013",
+      "markPrice": "0.19259313",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789790400000,
+      "fundingRate": "0.00036991",
+      "markPrice": "0.19102788",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789804800002,
+      "fundingRate": "0.00025841",
+      "markPrice": "0.19004919",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789819200000,
+      "fundingRate": "0.00039323",
+      "markPrice": "0.19422845",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789833600000,
+      "fundingRate": "0.00006378",
+      "markPrice": "0.19097682",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789848000000,
+      "fundingRate": "0.00016152",
+      "markPrice": "0.19230000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789862400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19310000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789876800000,
+      "fundingRate": "0.00005562",
+      "markPrice": "0.18930000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789891200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18720000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789905600004,
+      "fundingRate": "0.00013720",
+      "markPrice": "0.18670000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789920000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18546986",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789934400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18836056",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789948800007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.18890000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789963200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19160000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789977600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.19030000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "fundingTime": 1789992000000,
+      "fundingRate": "0.00060146",
+      "markPrice": "0.19540000",
+      "rateType": "Regular"
+    }
+  ]
+}

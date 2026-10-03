@@ -1,0 +1,914 @@
+{
+  "venue": "OKX",
+  "symbol": "IOST",
+  "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=IOST-USDT-SWAP&limit=100",
+  "retrieved_at": "2026-09-21T14:33:08.271623+00:00",
+  "status": 200,
+  "sha256": "1b5906f455bcdf4f530d4017ab858963e72959879d05df75ad5cb8559ba3f2a1",
+  "data": {
+    "code": "0",
+    "data": [
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0013063077871046",
+        "fundingTime": "1789992000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0013063077871046"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0011546237679148",
+        "fundingTime": "1789977600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0011546237679148"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0011766585933664",
+        "fundingTime": "1789963200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0011766585933664"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0015110056166872",
+        "fundingTime": "1789948800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0015110056166872"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0013293340356043",
+        "fundingTime": "1789934400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0013293340356043"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0017724445260238",
+        "fundingTime": "1789920000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0017724445260238"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0017345385190105",
+        "fundingTime": "1789905600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0017345385190105"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0020761111587453",
+        "fundingTime": "1789891200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0020761111587453"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.000337834673723",
+        "fundingTime": "1789876800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.000337834673723"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0003583967261469",
+        "fundingTime": "1789862400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0003583967261469"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0003107177189415",
+        "fundingTime": "1789848000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0003107177189415"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0004378810849205",
+        "fundingTime": "1789833600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0004378810849205"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.000651502050411",
+        "fundingTime": "1789819200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.000651502050411"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0017551344627838",
+        "fundingTime": "1789804800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0017551344627838"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0018817186274095",
+        "fundingTime": "1789790400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0018817186274095"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0022392804713133",
+        "fundingTime": "1789776000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0022392804713133"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.002000848218084",
+        "fundingTime": "1789761600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.002000848218084"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0023331567807746",
+        "fundingTime": "1789747200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0023331567807746"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0023681457658103",
+        "fundingTime": "1789732800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0023681457658103"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0035226327438419",
+        "fundingTime": "1789718400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0035226327438419"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0048246579774282",
+        "fundingTime": "1789704000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0048246579774282"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0030962560151188",
+        "fundingTime": "1789689600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0030962560151188"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0017423405699351",
+        "fundingTime": "1789675200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0017423405699351"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0012790378871992",
+        "fundingTime": "1789660800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0012790378871992"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0035761728954885",
+        "fundingTime": "1789646400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0035761728954885"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0041306942894041",
+        "fundingTime": "1789632000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0041306942894041"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.007766848340993",
+        "fundingTime": "1789617600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.007766848340993"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0055609292359644",
+        "fundingTime": "1789603200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0055609292359644"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.003741690187328",
+        "fundingTime": "1789588800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.003741690187328"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0058898062738177",
+        "fundingTime": "1789574400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0058898062738177"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0044290399690572",
+        "fundingTime": "1789560000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0044290399690572"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0093613218240803",
+        "fundingTime": "1789545600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0093613218240803"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0010274740811109",
+        "fundingTime": "1789531200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0010274740811109"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0005027661008475",
+        "fundingTime": "1789516800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0005027661008475"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0005820704937687",
+        "fundingTime": "1789502400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0005820704937687"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0007630526234719",
+        "fundingTime": "1789488000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0007630526234719"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0011675507572758",
+        "fundingTime": "1789473600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0011675507572758"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0005707259331911",
+        "fundingTime": "1789459200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0005707259331911"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0006111194600842",
+        "fundingTime": "1789444800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0006111194600842"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0019632898642891",
+        "fundingTime": "1789430400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0019632898642891"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.002176280114634",
+        "fundingTime": "1789416000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.002176280114634"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0024956376726665",
+        "fundingTime": "1789401600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0024956376726665"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0013394513284467",
+        "fundingTime": "1789387200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0013394513284467"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0025739419010636",
+        "fundingTime": "1789372800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0025739419010636"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0032035506584368",
+        "fundingTime": "1789358400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0032035506584368"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0045420123007332",
+        "fundingTime": "1789344000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0045420123007332"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0016632330852283",
+        "fundingTime": "1789329600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0016632330852283"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0031045484214061",
+        "fundingTime": "1789315200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0031045484214061"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0025066630949225",
+        "fundingTime": "1789300800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0025066630949225"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0021837741326394",
+        "fundingTime": "1789286400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0021837741326394"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0031891364204291",
+        "fundingTime": "1789272000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0031891364204291"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0039004072190712",
+        "fundingTime": "1789257600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0039004072190712"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0042435220019897",
+        "fundingTime": "1789243200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0042435220019897"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0039290875051888",
+        "fundingTime": "1789228800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0039290875051888"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0043685120653838",
+        "fundingTime": "1789214400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0043685120653838"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0023963627233509",
+        "fundingTime": "1789200000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0023963627233509"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0029468500857086",
+        "fundingTime": "1789185600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0029468500857086"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0040994300302636",
+        "fundingTime": "1789171200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0040994300302636"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.002557742666228",
+        "fundingTime": "1789156800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.002557742666228"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0011018116830429",
+        "fundingTime": "1789142400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0011018116830429"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0005158046019262",
+        "fundingTime": "1789135200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0005158046019262"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0009285826390508",
+        "fundingTime": "1789128000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0009285826390508"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0018639505811482",
+        "fundingTime": "1789120800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0018639505811482"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0011644221258357",
+        "fundingTime": "1789113600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0011644221258357"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0013206118628456",
+        "fundingTime": "1789106400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0013206118628456"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0015758400417447",
+        "fundingTime": "1789099200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0015758400417447"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0023540366208832",
+        "fundingTime": "1789092000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0023540366208832"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0041417686729786",
+        "fundingTime": "1789084800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0041417686729786"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0037347213208688",
+        "fundingTime": "1789077600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0037347213208688"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0034971296770533",
+        "fundingTime": "1789070400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0034971296770533"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0023608367513409",
+        "fundingTime": "1789063200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0023608367513409"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0030906529455036",
+        "fundingTime": "1789056000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0030906529455036"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0041848048968636",
+        "fundingTime": "1789048800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0041848048968636"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0038629903972045",
+        "fundingTime": "1789041600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0038629903972045"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0016698835791106",
+        "fundingTime": "1789034400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0016698835791106"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0006199810887721",
+        "fundingTime": "1789027200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0006199810887721"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0017505247002858",
+        "fundingTime": "1789020000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0017505247002858"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.01",
+        "fundingTime": "1789012800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.01"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.01",
+        "fundingTime": "1788998400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.01"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0066918841008572",
+        "fundingTime": "1788969600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0066918841008572"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0001572338406257",
+        "fundingTime": "1788940800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0001572338406257"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000842787221643",
+        "fundingTime": "1788912000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000842787221643"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.000076201203566",
+        "fundingTime": "1788883200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.000076201203566"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.000041219403106",
+        "fundingTime": "1788854400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.000041219403106"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0001672403727142",
+        "fundingTime": "1788825600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0001672403727142"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000321244124301",
+        "fundingTime": "1788796800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000321244124301"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000035156185989",
+        "fundingTime": "1788768000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000035156185989"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0000316550126348",
+        "fundingTime": "1788739200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0000316550126348"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001",
+        "fundingTime": "1788710400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001",
+        "fundingTime": "1788681600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001",
+        "fundingTime": "1788652800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001",
+        "fundingTime": "1788624000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001",
+        "fundingTime": "1788595200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001",
+        "fundingTime": "1788566400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001",
+        "fundingTime": "1788537600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001",
+        "fundingTime": "1788508800000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001",
+        "fundingTime": "1788480000000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001",
+        "fundingTime": "1788451200000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001",
+        "fundingTime": "1788422400000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0001",
+        "fundingTime": "1788393600000",
+        "instId": "IOST-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0001"
+      }
+    ],
+    "msg": ""
+  }
+}

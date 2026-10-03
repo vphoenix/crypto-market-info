@@ -1,0 +1,7 @@
+{
+  "name": "okx-spot-tickers",
+  "url": "https://www.okx.com/api/v5/market/tickers?instType=SPOT",
+  "retrieved_at_utc": "2026-09-16T10:31:29.963606+00:00",
+  "sha256": "40c3e832fa44edc4eaf16a58216a2aad190eed4cb96e2e6eec6e7c8d13e575a9",
+  "rows": null
+}

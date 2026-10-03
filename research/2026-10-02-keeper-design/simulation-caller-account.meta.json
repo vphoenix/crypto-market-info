@@ -1,0 +1,11 @@
+{
+  "url": "https://api.trongrid.io/wallet/getaccount",
+  "request": {
+    "address": "41020c064bab81eb2ef520f1cc2a26f5f1867e29b3",
+    "visible": false
+  },
+  "started_at": "2026-10-02T14:10:30.615971+00:00",
+  "received_at": "2026-10-02T14:10:31.158923+00:00",
+  "http_status": 200,
+  "sha256": "8f9217abe90cfa7562bdcaf0053399fe1d5453836077990471fa0a8aa78d9d42"
+}

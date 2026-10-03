@@ -1,0 +1,347 @@
+[
+  {
+    "venue": "Binance",
+    "symbol": "IOSTUSDT",
+    "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=IOSTUSDT",
+    "fetched_at": "2026-09-12T19:19:11.478957+00:00",
+    "payload_sha256": "b650cc5be49fe3e225c7f395fada78f7c837f469c6c69f7790970371eefc83f3",
+    "data": {
+      "symbol": "IOSTUSDT",
+      "markPrice": "0.00086550",
+      "indexPrice": "0.00087772",
+      "estimatedSettlePrice": "0.00086901",
+      "lastFundingRate": "-0.00126865",
+      "interestRate": "0.00010000",
+      "nextFundingTime": 1789243200000,
+      "time": 1789240753000
+    }
+  },
+  {
+    "venue": "Bybit",
+    "symbol": "IOSTUSDT",
+    "url": "https://api.bybit.com/v5/market/tickers?category=linear&symbol=IOSTUSDT",
+    "fetched_at": "2026-09-12T19:19:11.479309+00:00",
+    "payload_sha256": "9fc3638516f5fb2b82f5978c7220125507accdb68f2aafb98e75647eaa6f16cb",
+    "data": {
+      "retCode": 0,
+      "retMsg": "OK",
+      "result": {
+        "category": "linear",
+        "list": [
+          {
+            "symbol": "IOSTUSDT",
+            "lastPrice": "0.0008739",
+            "indexPrice": "0.0008777",
+            "markPrice": "0.0008750",
+            "prevPrice24h": "0.0008846",
+            "price24hPcnt": "-0.012095",
+            "highPrice24h": "0.0009351",
+            "lowPrice24h": "0.0008462",
+            "prevPrice1h": "0.0008657",
+            "openInterest": "4150321459",
+            "openInterestValue": "3631531.28",
+            "singleOpenInterest": "2075160730",
+            "singleOpenInterestValue": "1815765.64",
+            "turnover24h": "11705020.6605",
+            "volume24h": "13208684971.0000",
+            "fundingRate": "-0.00177957",
+            "nextFundingTime": "1789243200000",
+            "predictedDeliveryPrice": "",
+            "basisRate": "",
+            "deliveryFeeRate": "",
+            "deliveryTime": "0",
+            "ask1Size": "1163754",
+            "bid1Price": "0.0008736",
+            "ask1Price": "0.0008740",
+            "bid1Size": "149955",
+            "basis": "",
+            "preOpenPrice": "",
+            "preQty": "",
+            "curPreListingPhase": "",
+            "fundingIntervalHour": "1",
+            "basisRateYear": "",
+            "fundingCap": "0.02"
+          }
+        ]
+      },
+      "retExtInfo": {},
+      "time": 1789240752845
+    }
+  },
+  {
+    "venue": "Binance",
+    "symbol": "ONGUSDT",
+    "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=ONGUSDT",
+    "fetched_at": "2026-09-12T19:19:11.479611+00:00",
+    "payload_sha256": "e05e04f8b7b1c1a0b67e3ab35cef4fd92e31a2d477ce97c49b0d36084555c78b",
+    "data": {
+      "symbol": "ONGUSDT",
+      "markPrice": "0.08092000",
+      "indexPrice": "0.08131520",
+      "estimatedSettlePrice": "0.08124840",
+      "lastFundingRate": "-0.00052344",
+      "interestRate": "0.00010000",
+      "nextFundingTime": 1789243200000,
+      "time": 1789240773000
+    }
+  },
+  {
+    "venue": "Bybit",
+    "symbol": "ONGUSDT",
+    "url": "https://api.bybit.com/v5/market/tickers?category=linear&symbol=ONGUSDT",
+    "fetched_at": "2026-09-12T19:19:11.479984+00:00",
+    "payload_sha256": "ea09dec97ae3bb1eb3010332cd550fdc15de48f166f0b8e79e9b1578a92f1d48",
+    "data": {
+      "retCode": 0,
+      "retMsg": "OK",
+      "result": {
+        "category": "linear",
+        "list": [
+          {
+            "symbol": "ONGUSDT",
+            "lastPrice": "0.08130",
+            "indexPrice": "0.08135",
+            "markPrice": "0.08130",
+            "prevPrice24h": "0.08211",
+            "price24hPcnt": "-0.009864",
+            "highPrice24h": "0.08346",
+            "lowPrice24h": "0.08094",
+            "prevPrice1h": "0.08142",
+            "openInterest": "25851041",
+            "openInterestValue": "2101689.63",
+            "singleOpenInterest": "12925521",
+            "singleOpenInterestValue": "1050844.86",
+            "turnover24h": "1241016.8596",
+            "volume24h": "15075761.0000",
+            "fundingRate": "-0.00050174",
+            "nextFundingTime": "1789243200000",
+            "predictedDeliveryPrice": "",
+            "basisRate": "",
+            "deliveryFeeRate": "",
+            "deliveryTime": "0",
+            "ask1Size": "650",
+            "bid1Price": "0.08128",
+            "ask1Price": "0.08129",
+            "bid1Size": "47",
+            "basis": "",
+            "preOpenPrice": "",
+            "preQty": "",
+            "curPreListingPhase": "",
+            "fundingIntervalHour": "4",
+            "basisRateYear": "",
+            "fundingCap": "0.025"
+          }
+        ]
+      },
+      "retExtInfo": {},
+      "time": 1789240753210
+    }
+  },
+  {
+    "venue": "Binance",
+    "symbol": "LSKUSDT",
+    "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=LSKUSDT",
+    "fetched_at": "2026-09-12T19:19:13.232825+00:00",
+    "payload_sha256": "bf8fb2d34ae6ecf1fc2bf14e260cf03c2394da33f968cc4aa822a744e220a6c1",
+    "data": {
+      "symbol": "LSKUSDT",
+      "markPrice": "0.25819405",
+      "indexPrice": "0.25848100",
+      "estimatedSettlePrice": "0.26144366",
+      "lastFundingRate": "-0.00323617",
+      "interestRate": "0.00010000",
+      "nextFundingTime": 1789243200000,
+      "time": 1789240754000
+    }
+  },
+  {
+    "venue": "Bybit",
+    "symbol": "LSKUSDT",
+    "url": "https://api.bybit.com/v5/market/tickers?category=linear&symbol=LSKUSDT",
+    "fetched_at": "2026-09-12T19:19:13.592813+00:00",
+    "payload_sha256": "71aa3286e3aa0a33bd6b13df0c5038bef07e405515d18ae278b552dc5c46b1a6",
+    "data": {
+      "retCode": 0,
+      "retMsg": "OK",
+      "result": {
+        "category": "linear",
+        "list": [
+          {
+            "symbol": "LSKUSDT",
+            "lastPrice": "0.25995",
+            "indexPrice": "0.25898",
+            "markPrice": "0.25951",
+            "prevPrice24h": "0.11936",
+            "price24hPcnt": "1.177865",
+            "highPrice24h": "0.27400",
+            "lowPrice24h": "0.11913",
+            "prevPrice1h": "0.25125",
+            "openInterest": "52287116.7",
+            "openInterestValue": "13569029.65",
+            "singleOpenInterest": "26143558.4",
+            "singleOpenInterestValue": "6784514.84",
+            "turnover24h": "141302273.6211",
+            "volume24h": "641464594.7000",
+            "fundingRate": "-0.00224821",
+            "nextFundingTime": "1789243200000",
+            "predictedDeliveryPrice": "",
+            "basisRate": "",
+            "deliveryFeeRate": "",
+            "deliveryTime": "0",
+            "ask1Size": "239.1",
+            "bid1Price": "0.25971",
+            "ask1Price": "0.25981",
+            "bid1Size": "240.3",
+            "basis": "",
+            "preOpenPrice": "",
+            "preQty": "",
+            "curPreListingPhase": "",
+            "fundingIntervalHour": "4",
+            "basisRateYear": "",
+            "fundingCap": "0.02"
+          }
+        ]
+      },
+      "retExtInfo": {},
+      "time": 1789240754912
+    }
+  },
+  {
+    "venue": "Binance",
+    "symbol": "BLURUSDT",
+    "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=BLURUSDT",
+    "fetched_at": "2026-09-12T19:19:13.668053+00:00",
+    "payload_sha256": "866798456e0bf5a172fec598274454b28d46c97e5da314d7830160a75b8f670b",
+    "data": {
+      "symbol": "BLURUSDT",
+      "markPrice": "0.01688491",
+      "indexPrice": "0.01690617",
+      "estimatedSettlePrice": "0.01692430",
+      "lastFundingRate": "-0.00011474",
+      "interestRate": "0.00010000",
+      "nextFundingTime": 1789243200000,
+      "time": 1789240755000
+    }
+  },
+  {
+    "venue": "Bybit",
+    "symbol": "BLURUSDT",
+    "url": "https://api.bybit.com/v5/market/tickers?category=linear&symbol=BLURUSDT",
+    "fetched_at": "2026-09-12T19:19:15.313461+00:00",
+    "payload_sha256": "76290aa27e413d58fadeac1e12f01e597ba8b785a0f3c4972fde390a05dbeeeb",
+    "data": {
+      "retCode": 0,
+      "retMsg": "OK",
+      "result": {
+        "category": "linear",
+        "list": [
+          {
+            "symbol": "BLURUSDT",
+            "lastPrice": "0.016893",
+            "indexPrice": "0.016905",
+            "markPrice": "0.016893",
+            "prevPrice24h": "0.018419",
+            "price24hPcnt": "-0.082849",
+            "highPrice24h": "0.018480",
+            "lowPrice24h": "0.016862",
+            "prevPrice1h": "0.017055",
+            "openInterest": "101724486",
+            "openInterestValue": "1718431.74",
+            "singleOpenInterest": "50862243",
+            "singleOpenInterestValue": "859215.87",
+            "turnover24h": "2597348.7576",
+            "volume24h": "148172354.0000",
+            "fundingRate": "-0.00001486",
+            "nextFundingTime": "1789257600000",
+            "predictedDeliveryPrice": "",
+            "basisRate": "",
+            "deliveryFeeRate": "",
+            "deliveryTime": "0",
+            "ask1Size": "568",
+            "bid1Price": "0.016888",
+            "ask1Price": "0.016897",
+            "bid1Size": "682",
+            "basis": "",
+            "preOpenPrice": "",
+            "preQty": "",
+            "curPreListingPhase": "",
+            "fundingIntervalHour": "8",
+            "basisRateYear": "",
+            "fundingCap": "0.02"
+          }
+        ]
+      },
+      "retExtInfo": {},
+      "time": 1789240756997
+    }
+  },
+  {
+    "venue": "Binance",
+    "symbol": "NEWTUSDT",
+    "url": "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=NEWTUSDT",
+    "fetched_at": "2026-09-12T19:19:15.433349+00:00",
+    "payload_sha256": "d309cf2285c6c782b42a39340f2971b66da5c0a4ce83afcf6b215b60581cecb5",
+    "data": {
+      "symbol": "NEWTUSDT",
+      "markPrice": "0.04335724",
+      "indexPrice": "0.04347750",
+      "estimatedSettlePrice": "0.04346343",
+      "lastFundingRate": "-0.00036059",
+      "interestRate": "0.00010000",
+      "nextFundingTime": 1789243200000,
+      "time": 1789240757000
+    }
+  },
+  {
+    "venue": "Bybit",
+    "symbol": "NEWTUSDT",
+    "url": "https://api.bybit.com/v5/market/tickers?category=linear&symbol=NEWTUSDT",
+    "fetched_at": "2026-09-12T19:19:15.799367+00:00",
+    "payload_sha256": "84d322092aea6e8c80ca7ad1be154e9060e2249921d3081f529249ff480cbf4d",
+    "data": {
+      "retCode": 0,
+      "retMsg": "OK",
+      "result": {
+        "category": "linear",
+        "list": [
+          {
+            "symbol": "NEWTUSDT",
+            "lastPrice": "0.04340",
+            "indexPrice": "0.04344",
+            "markPrice": "0.04342",
+            "prevPrice24h": "0.04364",
+            "price24hPcnt": "-0.005499",
+            "highPrice24h": "0.04473",
+            "lowPrice24h": "0.04171",
+            "prevPrice1h": "0.04340",
+            "openInterest": "19051616",
+            "openInterestValue": "827221.17",
+            "singleOpenInterest": "9525808",
+            "singleOpenInterestValue": "413610.58",
+            "turnover24h": "550211.1321",
+            "volume24h": "12731898.0000",
+            "fundingRate": "-0.00000518",
+            "nextFundingTime": "1789243200000",
+            "predictedDeliveryPrice": "",
+            "basisRate": "",
+            "deliveryFeeRate": "",
+            "deliveryTime": "0",
+            "ask1Size": "663",
+            "bid1Price": "0.04341",
+            "ask1Price": "0.04342",
+            "bid1Size": "184",
+            "basis": "",
+            "preOpenPrice": "",
+            "preQty": "",
+            "curPreListingPhase": "Finished",
+            "fundingIntervalHour": "4",
+            "basisRateYear": "",
+            "fundingCap": "0.025"
+          }
+        ]
+      },
+      "retExtInfo": {},
+      "time": 1789240757128
+    }
+  }
+]

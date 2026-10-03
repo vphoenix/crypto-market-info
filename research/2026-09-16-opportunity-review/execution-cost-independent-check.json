@@ -1,0 +1,38 @@
+{
+  "CVC": {
+    "100000": {
+      "spread_slippage": "1998.0594300",
+      "fees": "105.05488567750",
+      "total_friction": "2103.11431567750",
+      "verified": true
+    },
+    "1000000": {
+      "insufficient_visible_depth": true
+    },
+    "past_day_50k_static_notional_funding_usdt": "227.26400000"
+  },
+  "MTL": {
+    "100000": {
+      "spread_slippage": "1727.52050",
+      "fees": "105.0879119110",
+      "total_friction": "1832.6084119110",
+      "verified": true
+    },
+    "1000000": {
+      "insufficient_visible_depth": true
+    },
+    "past_day_50k_static_notional_funding_usdt": "389.94950000"
+  },
+  "IOST": {
+    "100000": {
+      "spread_slippage": "1181.10870460",
+      "fees": "105.133479834035",
+      "total_friction": "1286.242184434035",
+      "verified": true
+    },
+    "1000000": {
+      "insufficient_visible_depth": true
+    },
+    "past_day_50k_static_notional_funding_usdt": "61.40850000"
+  }
+}

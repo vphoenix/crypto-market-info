@@ -1,0 +1,913 @@
+{
+  "venue": "OKX",
+  "symbol": "BLUR-USDT-SWAP",
+  "url": "https://www.okx.com/api/v5/public/funding-rate-history?instId=BLUR-USDT-SWAP&limit=100",
+  "fetched_at": "2026-09-12T19:19:35.521953+00:00",
+  "payload_sha256": "faa19c3569c500f5679c09babcd503df02eb5febec793f9425b782414a845d75",
+  "data": {
+    "code": "0",
+    "data": [
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0001900002169134",
+        "fundingTime": "1789228800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0001900002169134"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.000314603479433",
+        "fundingTime": "1789214400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.000314603479433"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000400725396653",
+        "fundingTime": "1789200000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000400725396653"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0000543183418821",
+        "fundingTime": "1789185600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0000543183418821"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0006008199081194",
+        "fundingTime": "1789171200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0006008199081194"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0009191955950267",
+        "fundingTime": "1789156800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0009191955950267"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0031029606876144",
+        "fundingTime": "1789142400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0031029606876144"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000209580378463",
+        "fundingTime": "1789128000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000209580378463"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0000645262504927",
+        "fundingTime": "1789113600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0000645262504927"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789099200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0003543477549513",
+        "fundingTime": "1789084800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0003543477549513"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0002831318879468",
+        "fundingTime": "1789070400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0002831318879468"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0001848285746602",
+        "fundingTime": "1789056000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0001848285746602"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789041600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0000395806072547",
+        "fundingTime": "1789027200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0000395806072547"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1789012800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788998400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788984000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788969600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788955200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788940800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788926400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788912000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788897600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788883200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788868800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788854400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788840000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788825600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788811200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788796800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788782400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788768000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000425974508832",
+        "fundingTime": "1788753600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000425974508832"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788739200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788724800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788710400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788696000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788681600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788667200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788652800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788638400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788624000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788609600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788595200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788580800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788566400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788552000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788537600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788523200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788508800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788494400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788480000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788465600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788451200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788436800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788422400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788408000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000475305569567",
+        "fundingTime": "1788393600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000475305569567"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788379200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788364800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000269995829628",
+        "fundingTime": "1788350400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000269995829628"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0000223723564024",
+        "fundingTime": "1788336000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0000223723564024"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788321600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788307200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788292800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788278400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788264000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788249600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0000450705985718",
+        "fundingTime": "1788235200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0000450705985718"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000208944662506",
+        "fundingTime": "1788220800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000208944662506"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0000719777007041",
+        "fundingTime": "1788206400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0000719777007041"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788192000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000455610648837",
+        "fundingTime": "1788177600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000455610648837"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788163200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000162418295369",
+        "fundingTime": "1788148800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000162418295369"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788134400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788120000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788105600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788091200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0000999937832665",
+        "fundingTime": "1788076800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0000999937832665"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788062400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0000179120680792",
+        "fundingTime": "1788048000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0000179120680792"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "-0.0000683113034968",
+        "fundingTime": "1788033600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "-0.0000683113034968"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1788019200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000343677647698",
+        "fundingTime": "1788004800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000343677647698"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1787990400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1787976000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1787961600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.0000436209888792",
+        "fundingTime": "1787947200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.0000436209888792"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1787932800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1787918400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1787904000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1787889600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1787875200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1787860800000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1787846400000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1787832000000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1787817600000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      },
+      {
+        "formulaType": "withRate",
+        "fundingRate": "0.00005",
+        "fundingTime": "1787803200000",
+        "instId": "BLUR-USDT-SWAP",
+        "instType": "SWAP",
+        "method": "current_period",
+        "realizedRate": "0.00005"
+      }
+    ],
+    "msg": ""
+  }
+}

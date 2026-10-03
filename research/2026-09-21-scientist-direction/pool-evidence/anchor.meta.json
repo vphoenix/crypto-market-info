@@ -1,0 +1,23 @@
+{
+  "endpoint": "https://ethereum-rpc.publicnode.com",
+  "observed_at_utc": "2026-09-21T15:37:40.677093+00:00",
+  "http_status": 200,
+  "sha256": "796d8cc09ea9c1705ac0acc045b95605aa53f830be650194dbd12792b42b9157",
+  "requests": [
+    {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "eth_chainId",
+      "params": []
+    },
+    {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "eth_getBlockByNumber",
+      "params": [
+        "latest",
+        false
+      ]
+    }
+  ]
+}

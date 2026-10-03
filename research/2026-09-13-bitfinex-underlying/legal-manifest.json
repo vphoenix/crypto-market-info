@@ -1,0 +1,50 @@
+[
+  {
+    "name": "exchange-terms-api",
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:legal:terms:tos",
+    "requested_at": "2026-09-13T14:12:10.983742+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:12:11.386221+00:00",
+    "sha256": "0b9afe9cc38426064a796a299cd9c65e36805bc27b99ac91a30ecd547e8a0e73",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/exchange-terms-api.raw",
+    "preview": "## Terms of Service\n\n**IMPORTANT: By creating or funding an Account or accessing or using any of the Services (each as defined below), you acknowledge that you have read, understand, and completely agree to these Terms of Service, as updated and amended from time to time. If you do not agree to be bound by these Terms of Service or with any subsequent amendments, changes or updates, you may not access or use any of the Services, and if you do access or use any of the Services, you will be bound by these Terms of Service, as updated and amended from time to time; your only recourse in the case of your unwillingness to be bound by these Terms of Service is to stop using all of the Services. These Terms of Service were last updated on August 12, 2026.**\n\n**Only eligible Persons are permitted "
+  },
+  {
+    "name": "derivatives-terms-api",
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:legal:terms:derivatives",
+    "requested_at": "2026-09-13T14:12:10.984433+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:12:11.556110+00:00",
+    "sha256": "d2d3d76a09a8e8be1d428426d9b970d8a7e53cf461b4152b7427788a204eb3d8",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/derivatives-terms-api.raw",
+    "preview": "## Derivatives Terms of Service\n\nLast updated April 6, 2026\n\n**NOTICE OF CHANGE IN COUNTERPARTY: Prior to 7 January 2025, the Derivative Services were provided by iFinex Financial Technologies Limited (\u201cBFXD Seychelles\u201d), and the Derivative Terms of Service between BFXD Seychelles and users of the Derivative Services prior to 7 January 2025 (\u201cSeychelles Users\u201d) constituted a contract between Seychelles Users and Bitfinex Seychelles (\u201cSeychelles Terms\u201d). As of and with effect from 7 January 2025, (1) the Derivative Services will be provided by Bitfinex Derivatives El Salvador, S.A. de C.V. (\u201cBFXD\u201d), an entity incorporated under the laws of El Salvador; (2) BFXD Seychelles assigns, grants, conveys and transfers to BFXD all of BFXD Seychelles\u2019 rights, title and interest in and to the Seychell"
+  },
+  {
+    "name": "risk-statement-api",
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:legal:terms:rds",
+    "requested_at": "2026-09-13T14:12:10.984927+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:12:11.362406+00:00",
+    "sha256": "f44965fa6c7b1582029033a420cb88549440e59b35d5fbf0d8b0adad42dabccd",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/risk-statement-api.raw",
+    "preview": "## Risk Disclosure Statement\n\nTrading in Digital Tokens (as defined in the\u00a0[Terms of Service](/legal/exchange/terms)), engaging in related leverage transactions and delegating to another account holder the right to utilize Services on your behalf entails significant risks of financial loss. You should not commit funds to trading in or leveraging Digital Tokens that you are not prepared to lose entirely. Market prices for Digital Tokens can be volatile and highly unpredictable. Whether the future market price for a Digital Token will move up or down is a speculation and unknowable. The leverage available in trading Digital Tokens allows you to establish a larger market position than an unleveraged position and therefore exposes you to a risk of greater loss than an unleveraged position.\n\nYo"
+  },
+  {
+    "name": "termination-json",
+    "url": "https://support.bitfinex.com/api/v2/help_center/en-us/articles/360035477394.json",
+    "requested_at": "2026-09-13T14:12:10.985404+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:12:11.573645+00:00",
+    "sha256": "47aa5469d1f9dfc885c3a193c9fda58475ecf176ec8369326f3b42ca80b5af1c",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/termination-json.raw"
+  },
+  {
+    "name": "currency-map",
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:map:currency:sym",
+    "requested_at": "2026-09-13T14:12:10.985879+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:12:11.431481+00:00",
+    "sha256": "4018f8227fd412219a11f241e84b0811212f8595d51fdcfde2db26cacf432f40",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/currency-map.raw"
+  }
+]

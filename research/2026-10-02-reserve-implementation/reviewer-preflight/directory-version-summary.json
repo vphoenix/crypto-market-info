@@ -1,0 +1,65 @@
+{
+  "checked_at_utc": "2026-10-02T10:20:34.668634+00:00",
+  "block_number": 26104004,
+  "block_hash": "0xfb74afa2bd38069c899be18781780adbfa1803bc80fd2a6f4b95750b905eb36e",
+  "directory_sha256": "86066239a2edd9badb978bfa6bd57c98acc6d6508fc1ee4b1e153da6f17365b0",
+  "version_payload_sha256": "dabdc46b10f21ab0968a444381cb5c828f8ad269745c64402c32f044a5e632ff",
+  "rows": [
+    {
+      "address": "0x323c03c48660fE31186fa82c289b0766d331Ce21",
+      "symbol": "OPEN",
+      "directory_status": "active",
+      "directory_basket_count": 10,
+      "version": "4.0.0"
+    },
+    {
+      "address": "0x4E3B170DcBe704b248df5f56D488114acE01B1C5",
+      "symbol": "BED",
+      "directory_status": "deprecated",
+      "directory_basket_count": 3,
+      "version": "5.0.0"
+    },
+    {
+      "address": "0x9a1741E151233a82Cf69209A2F1bC7442B1fB29C",
+      "symbol": "DGI",
+      "directory_status": "active",
+      "directory_basket_count": 7,
+      "version": "4.0.0"
+    },
+    {
+      "address": "0xF91384484F4717314798E8975BCd904A35fc2BF1",
+      "symbol": "SMEL",
+      "directory_status": "deprecated",
+      "directory_basket_count": 5,
+      "version": "5.0.0"
+    },
+    {
+      "address": "0x188D12Eb13a5Eadd0867074ce8354B1AD6f4790b",
+      "symbol": "DFX",
+      "directory_status": "active",
+      "directory_basket_count": 6,
+      "version": "5.0.0"
+    },
+    {
+      "address": "0xe4a10951f962e6cB93Cb843a4ef05d2F99DB1F94",
+      "symbol": "ixEdel",
+      "directory_status": "active",
+      "directory_basket_count": 7,
+      "version": "5.0.0"
+    },
+    {
+      "address": "0xA5cdea03B11042fc10B52aF9eCa48bb17A2107d2",
+      "symbol": "mvRWA",
+      "directory_status": "deprecated",
+      "directory_basket_count": 6,
+      "version": "4.0.0"
+    },
+    {
+      "address": "0x20d81101D254729a6E689418526bE31e2c544290",
+      "symbol": "mvDEFI",
+      "directory_status": "deprecated",
+      "directory_basket_count": 8,
+      "version": "4.0.0"
+    }
+  ]
+}

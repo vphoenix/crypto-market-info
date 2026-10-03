@@ -1,0 +1,68 @@
+[
+  {
+    "asset": "ONG",
+    "hours": 4,
+    "quantity": "61850",
+    "capital": "9994.05047",
+    "funding_if_rates_marks_constant": "7.9561116868200",
+    "cost_assuming_exit_current_depth": "31.4222065910",
+    "net_scenario": "-23.4660949041800",
+    "net_capital_pct": "-0.2348006443895815146909099009",
+    "additional_adverse_basis_pct_of_5000_notional_break_even": "-0.469321898083600"
+  },
+  {
+    "asset": "ONG",
+    "hours": 8,
+    "quantity": "61850",
+    "capital": "9994.05047",
+    "funding_if_rates_marks_constant": "15.9122233736400",
+    "cost_assuming_exit_current_depth": "31.4222065910",
+    "net_scenario": "-15.5099832173600",
+    "net_capital_pct": "-0.1551921642172775619373072868",
+    "additional_adverse_basis_pct_of_5000_notional_break_even": "-0.310199664347200"
+  },
+  {
+    "asset": "ONG",
+    "hours": 24,
+    "quantity": "61850",
+    "capital": "9994.05047",
+    "funding_if_rates_marks_constant": "47.7366701209200",
+    "cost_assuming_exit_current_depth": "31.4222065910",
+    "net_scenario": "16.3144635299200",
+    "net_capital_pct": "0.1632417564719382490771031698",
+    "additional_adverse_basis_pct_of_5000_notional_break_even": "0.326289270598400"
+  },
+  {
+    "asset": "IOST",
+    "hours": 4,
+    "quantity": "5751000",
+    "capital": "10007.5125421",
+    "funding_if_rates_marks_constant": "23.74611083711658010575000",
+    "cost_assuming_exit_current_depth": "49.581213474455",
+    "net_scenario": "-25.83510263733841989425000",
+    "net_capital_pct": "-0.2581570847766044479414792379",
+    "additional_adverse_basis_pct_of_5000_notional_break_even": "-0.51670205274676839788500"
+  },
+  {
+    "asset": "IOST",
+    "hours": 8,
+    "quantity": "5751000",
+    "capital": "10007.5125421",
+    "funding_if_rates_marks_constant": "47.49222167423316021150000",
+    "cost_assuming_exit_current_depth": "49.581213474455",
+    "net_scenario": "-2.08899180022183978850000",
+    "net_capital_pct": "-0.02087423614443435740593015030",
+    "additional_adverse_basis_pct_of_5000_notional_break_even": "-0.04177983600443679577000"
+  },
+  {
+    "asset": "IOST",
+    "hours": 24,
+    "quantity": "5751000",
+    "capital": "10007.5125421",
+    "funding_if_rates_marks_constant": "142.47666502269948063450000",
+    "cost_assuming_exit_current_depth": "49.581213474455",
+    "net_scenario": "92.89545154824448063450000",
+    "net_capital_pct": "0.9282571583842460047362662001",
+    "additional_adverse_basis_pct_of_5000_notional_break_even": "1.85790903096488961269000"
+  }
+]

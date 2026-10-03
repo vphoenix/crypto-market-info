@@ -1,0 +1,1007 @@
+Relevant Information Document
+Date: February 20th, 2026
+
+
+Disclaimer
+
+This document comprises a Relevant Information Document (the “RID”) relating to Tether
+fiat-denominated tokens (“Tether Tokens”) issued by Tether International Sociedad
+Anonima De Capital Variable (“Tether International” or “Tether International, S.A. de
+C.V.”) a company incorporated and in effect under the Laws of El Salvador, whose registered
+address is Edificio Torre Futura, Oficina 6, Nivel 11, entre 87 y 89 avenida norte, Colonia
+Escalón, San Salvador, El Salvador (together, “Tether”, “we”, “us” and “our'') and has been
+prepared in accordance with Article 22 of the Law for the Issuance of Digital Assets (the
+“Law”). The RID has been submitted to the El Salvador National Commission of Digital
+Assets (the “CNAD”) pursuant to Tether's application to be registered as a stablecoin1
+issuer; Tether has successfully obtained authorization as a stablecoin issuer under Article 5
+of the Regulations for the Issuance of Public Offerings of Stable Coins (the “Regulations'').
+However, while Tether Tokens subject to this offering are registered in the Public Registry of
+the CNAD, their registration does not imply certification regarding the quality of the token or
+the solvency of Tether. It is incumbent upon prospective customers to thoroughly review all
+information about Tether Tokens and the associated risks contained herein.
+
+Prospective purchasers of Tether Tokens must also consult the terms of services available
+at https://tether.to/en/legal/ (the “Terms”).
+
+In the event of any inconsistency between this RID and the Terms, the Terms shall
+prevail.
+
+The RID relates only to the facts as of the date set out above. Except as required by the
+CNAD, Tether undertakes no obligation to update or revise publicly any statements herein,
+whether as a result of new information, developments, future events or otherwise.
+
+Apart from the responsibilities and liabilities, if any, which may be imposed on Tether by the
+CNAD, the regulatory regime established thereunder or under the regulatory regime of any
+other applicable jurisdiction where exclusion of liability under the relevant regulatory
+
+1
+ For the purpose of this RID, stablecoin shall have the meaning given to it under Article 5(e) of the
+Law, which states: 'Stablecoin is a type of digital asset designed to minimize price volatility and that
+references, represents, or is backed by an asset or basket of assets’.
+
+
+                                                                                                       1
+regime would be illegal, void or unenforceable, neither Tether, nor any of its Related
+Parties2, nor their or any of their respective Related Parties’ shareholders, directors,
+officers, employees, contractors, agents, partners, advisors, attorneys and representatives
+(“Associates”) accept any responsibility whatsoever for the contents of this RID including
+its accuracy, completeness, verification, and sufficiency or for any other statement made or
+purported to be made by them, or on their behalf, in connection with the Tether tokens.
+Except to the extent that Tether is responsible for the content of this RID as set out in the
+Regulation for the Registry of Issuers and Issuances promulgated by CNAD, Tether and its
+Associates waive and disclaim, to the fullest extent permitted by applicable law, all and any
+liability whether arising in tort, contract, or otherwise which they might otherwise be found
+to have in respect of this RID or any such statement. Except to the extent that Tether is
+responsible for the content of this RID as set out in the Regulation for the Registry of Issuers
+and Issuances promulgated by CNAD, no representation or warranty, express or implied, is
+made by Tether or any of its Associates regarding the content of this RID nor may any of its
+content be relied upon as a promise or representation, whether or not to the past or future.
+
+The distribution of this RID in certain jurisdictions may be restricted by law and therefore
+persons into whose possession this RID comes should inform themselves about and
+observe any such restrictions in relation to the Tether Tokens or this RID, including those in
+the paragraphs that follow. Any failure to comply with these restrictions may constitute a
+violation of the laws of any such jurisdiction. Except in El Salvador, no action has been taken
+or will be taken in any jurisdiction that would permit possession or distribution of this RID in
+any country or jurisdiction where action for that purpose is required. Accordingly, this RID
+may not be distributed or published in any jurisdiction where to do so would breach any
+laws related to digital assets, securities laws or regulations of any such jurisdiction or give
+rise to an obligation to obtain any consent, approval or permission, or to make any
+application, filing or registration. Failure to comply with these restrictions may constitute a
+violation of the laws related to digital assets, securities laws or regulations of such
+jurisdictions. This RID may not be used for the purpose of, and does not constitute, an offer
+or solicitation by anyone in any jurisdiction or in any circumstances in which such offer or
+solicitation is unlawful or not authorized or would impose any unfulfilled registration,
+qualification, publication or approval requirements on Tether or its Associates or to any
+person to whom it is unlawful to make such offer or solicitation.
+
+Tether is under no obligation to assess the suitability of the Tether Tokens for purchasers
+and any comment or statement which may be made by Tether or any of its Associates as to
+2
+  For the purpose of this RID, Related Parties means, in relation to a person, directly or indirectly controlling,
+controlled by, or under common control with such person, with “control” in such context meaning the ability to
+direct the management or policies of a person through ownership of voting shares or other securities, pursuant
+to a written agreement or otherwise.
+
+
+                                                                                                                2
+the suitability of Tether Tokens should under no circumstances be considered as investment
+or legal advice and should not be received or relied upon as such. Purchasers of Tether
+Tokens should make their own assessment of the suitability of Tether Tokens to their needs.
+The contents of this RID must not be construed as legal, business or tax advice. Each
+prospective purchaser should consult their own lawyer, independent financial adviser or tax
+adviser for legal, financial or tax advice in relation to any dealing or proposed dealing in
+Tether Tokens. Purchasers must inform themselves as to: (i) the legal requirements within
+their own countries for the purchase, holding, transfer, redemption or other disposal of
+Tether Tokens; (ii) any foreign exchange or other regulatory restrictions applicable to the
+purchase, holding, transfer or other disposal of Tether Tokens which they might encounter;
+and (iii) the income and other tax consequences which may apply in their own countries as
+a result of the purchase, holding, transfer or other disposal of Tether Tokens. Purchasers
+must rely on their own representatives, including their own legal advisers, financial advisers,
+tax advisers and accountants, as to legal, financial, business, tax, or any other related
+matters concerning Tether and the Tether Tokens. Neither Tether, its Associates, nor any of
+their respective representatives is making any representation to any purchaser of Tether
+Tokens regarding the legality of the purchase, holding, transfer, redemption or other
+disposal of Tether Tokens by such purchaser under the laws applicable to such purchaser.
+
+Forward looking statements
+
+This RID contains forward-looking statements that reflect Tether's current expectations and
+views of future events. You can identify some of these forward-looking statements by words
+or phrases such as “may,” “will,” “expect,” “anticipate,” “aim,” “estimate,” “intend,”
+“plan,” “believe,” “is/are likely to,” “potential,” “continue” or other similar expressions,
+but the absence of these words does not mean that a statement is not forward-looking.
+Tether has based these forward-looking statements largely on its current expectations and
+projections about future events that Tether believes may affect its financial condition,
+results of operations, business strategy and financial needs. These forward-looking
+statements involve various risks and uncertainties, and Tether's expectations may later be
+found to be incorrect. Tether's actual results could be materially different from its
+expectations. Accordingly, forward-looking statements should not be relied upon as
+representing Tether’s views as of any subsequent date, and Tether does not undertake any
+obligation to update forward-looking statements to reflect events or circumstances after the
+date they were made, whether as a result of new information, future events or otherwise,
+except as may be required under applicable laws. You should read thoroughly this RID and
+the documents referred to herein with the understanding that actual future results may be
+materially different from and worse than what we expect. All forward-looking statements
+
+
+
+
+                                                                                             3
+are qualified by these cautionary statements. You should not place reliance on these
+forward-looking statements.
+
+Third Party and Website Information
+
+Where third party information has been used in this RID, the source of such information has
+been identified. Neither Tether nor any of its Associates accepts any responsibility for the
+accuracy or completeness of such third-party information. This RID refers to the tether.to
+website (the “Tether Website”). The contents of the Tether Website do not form part of, and
+are not incorporated by reference into, this RID, unless expressly stated otherwise within
+this RID.
+
+Capitalized Terms
+
+Where capitalized terms are used in this RID but are not defined in this RID, such terms shall
+have the meaning given to them in the Terms as stated on the Tether Website.
+
+
+Company Information
+
+Tether International is a Salvadoran company registered in El Salvador Commercial Registry
+and having its registered office in Edificio Torre Futura, Oficina 6, Nivel 11, entre 87 y 89
+avenida norte, Colonia Escalón, San Salvador, El Salvador; is a Stablecoin Issuer authorized
+by the CNAD and Digital Assets Service Provider (DASP) authorized by the CNAD with the
+Registration Number PSAD – 0028.
+
+Tether International is wholly owned by Tether Global Investment Fund, Sociedad de
+Inversión de Capital Fijo, Sociedad Anónima (“Tether Global Investment Fund, SICAF,
+S.A.)” and Tether Operations Sociedad Anonima De Capital Variable (“Tether Operations”
+or “Tether Operations, S.A. de C.V.”); both incorporated and in effect under the Laws of El
+Salvador.
+
+
+Summary of the Tether Tokens
+
+Tether is a blockchain-enabled platform launched in 2014 and designed to facilitate the use
+of Fiat in a digital manner. Tether has made headway by giving customers the ability to
+transact with traditional currencies across the blockchain, without the inherent volatility and
+complexity typically associated with a digital currency.
+
+
+
+
+                                                                                             4
+Tether’s Fiat-denominated tokens are digital assets issued on various blockchains. Each
+Tether Token issued and in circulation is backed by an amount of assets (“Reserves”) held
+by Tether. Subject to the Terms, Tether Tokens may be redeemed for the underlying Fiat
+currency.
+
+Tether International will issue the following Fiat-denominated Tether Tokens:3
+
+    ●​ USD₮ - being Tether Tokens denominated in U.S. dollars; and
+    ●​ MXN₮ - being Tether Tokens denominated in Mexican pesos
+
+Tether International is the customer-facing entity that issues and redeems Fiat-denominated
+Tether Tokens. Subject to the Terms and onboarding procedures, users who have
+successfully completed Tether's 'Know-Your-Customer' ("KYC") verification process (“KYC
+Verified Customers”) can purchase and redeem (the “Services”) Tether Tokens through
+the Tether Website at https://app.tether.to. KYC Verified Customers purchasing or selling
+Tether Tokens directly through the Tether Website are doing so in what is referred to as the
+“Primary Market”. Our obligations exist only with respect to those users and transactions
+taking place in the Primary Market.
+
+Tether Tokens may also be purchased from the Secondary Market. The “Secondary
+Market” refers to any transaction in Tether Tokens other than with users and transactions
+taking place in the Primary Market, described above. Secondary Market transactions are
+subject to the terms of Secondary Market participants.
+
+Examples of Secondary Markets include exchanges that support Tether Tokens. Users can
+also transact and store Tether Tokens with any supported blockchain wallet. Tether does
+not control these wallets, nor does it control the blockchains on which Tether Tokens are
+transacted.
+
+
+
+
+3
+  Tether International has stopped issuing CNH₮ being Tether tokens denominated in Chinese Offshore yuan
+as of February 20, 2026. Starting February 20, 2027, Tether International will no longer be obligated to accept
+redemption of CNH₮.
+
+
+                                                                                                             5
+Table of Contents
+
+Disclaimer​                                                                     1
+Company Information​                                                           4
+Summary of the Tether Tokens​                                                  5
+1. Company Information​                                                        10
+   1.1. Organizational Structure & Management​                                 10
+   1.2. Key Management & Hiring Policy​                                        10
+   1.3. Attestation​                                                           11
+   1.4. Contact Details​                                                       11
+2. Description of the characteristics of the Tether Tokens​                    11
+   2.1. Overview of the Tether Tokens​                                         11
+   2.2. Main Application​                                                      12
+      For Exchanges​                                                           13
+      For Individuals​                                                         14
+      For Merchants​                                                           14
+   2.3. Number of Stablecoins issued​                                          15
+   2.4. Customer Types​                                                        15
+   2.5. Digital Assets Service Providers & Platforms​                          16
+   2.6. Purchase & Redemptions​                                                16
+      Purchasing Tether Tokens​                                                16
+      Redemptions of Tether Tokens​                                            17
+   2.7. Restrictions on Transferability​                                       17
+3. Safeguarding Arrangements​                                                  18
+4. Risk Disclosure​                                                            19
+5. Compliance & Risk Management​                                               26
+   Risk Management​                                                            26
+   Reserve Management​                                                         26
+   Conflicts of Interest​                                                      26
+   Cybersecurity​                                                              27
+   Wallets Used by Tether​                                                     27
+   Smart Contract Audits​                                                      27
+   Relationship with Bitfinex​                                                 28
+   Anti-Money Laundering, Countering the Financing of Terrorism, and Counter
+   Proliferation and Sanction measures (“Anti-Financial Crime”)​               28
+   Ongoing Monitoring​                                                         29
+   Suspicious Transactions/Activity and Reporting​                             29
+
+
+                                                                                6
+   Termination of the Relationships​                                 29
+6. Information on the underlying technology and standards applied​   29
+   6.1. Protocols and platforms​                                     29
+   6.2. Tether Technology Stack​                                     30
+   6.3. Secondary platforms​                                         30
+   6.4. Tether token life cycle​                                     31
+7. Dispute Resolution​                                               31
+   7.1. Complaints Handling Procedure​                               31
+   7.2. Mandatory Resolution of Disputes Through Arbitration​        32
+8. Tax Regime​                                                       33
+9. Certifier​                                                        33
+
+
+
+
+                                                                      7
+I, the undersigned hereby affirm that to the best of my information, knowledge, and belief,
+but without personal liability, that the contents of this RID and any attachments provided
+with this RID are true, correct and not misleading.
+
+For and on behalf of Tether International, S.A. de C.V.
+
+Paolo Ardoino
+Chief Executive Officer and Attorney
+February 20, 2026
+
+
+
+
+                                                                                         8
+1. Company Information
+
+1.1. Organizational Structure & Management
+
+Tether International is wholly owned by Tether Global Investment Fund, Sociedad de
+Inversión de Capital Fijo, Sociedad Anónima and Tether Operations, S.A. de C.V., both
+incorporated and in effect under the Laws of El Salvador.
+
+
+
+
+Recognizing the importance of corporate governance, we endeavor to pursue corporate
+governance practices that support transparency, accountability, and ethical conduct. Our
+governance framework includes well-defined reporting lines that facilitate clear
+communication and decision-making.
+
+Tether has furnished all pertinent information and documentation related to its directors and
+senior officers to the CNAD as part of its applications for Stablecoin Issuer and Digital
+Assets Service Provider licenses.
+
+1.2. Key Management & Hiring Policy
+
+Tether is led and managed by a senior management team with extensive experience in
+financial services, technology, and compliance. The following link sets forth details of
+Tether’s key management personnel: https://tether.to/en/about-us.
+
+Personnel and contractors with specific roles and skills are engaged by Tether depending
+on operational needs. Relevant personnel relationships are managed in compliance with the
+Laws and Regulations in force in El Salvador, so as to secure the selection and retention of
+the best personnel for each role, and to provide the greatest support to the business.
+
+
+
+
+                                                                                           9
+1.3. Attestation
+
+As part of Tether’s continued commitment to transparency and to comply with our
+regulatory obligations in El Salvador, we publish reports on our Reserves quarterly,
+available on the Tether’s Transparency page https://tether.to/en/transparency/ (the
+“Transparency Page”). In addition, Independent Auditors’ Reports on those Reserve
+reports are prepared by an independent third party accounting firm, as of the end of each
+quarter. The reports on our Reserves provide information about the Reserves including a
+breakdown of the assets included in the Reserves and a comparison of the value of the
+Reserves to the amount required to redeem each of the issued Tether Tokens.
+
+Reserves reports are not financial statements but selected financial information extracted
+from accounting records. Information presented is of those entities stated in the relevant
+report, and includes assets and liabilities of entities that do not issue or redeem Tether
+Tokens. The reports include estimates and assumptions further described in the Reserves
+reports. Reported information may be affected if assumptions change or if actual
+circumstances differ from those in the estimates and assumptions
+
+1.4. Contact Details
+
+For any inquiries, please reach out to us on support@tether.to or through our contact page
+at https://cs.tether.to. This page is designed to ensure seamless interactions with Tether. It
+features an intuitive interface that allows users to submit their inquiries and complaints
+efficiently. To enhance the precision and efficiency of our response, we organize the
+submission process by categories. This categorization ensures that each inquiry or
+complaint is directed to the appropriate department, enabling us to address such
+communications with precision and care. We aim to provide an accessible, user-friendly
+platform to ensure your concerns and questions are acknowledged and resolved promptly.
+
+
+2. Description of the characteristics of the Tether Tokens
+
+2.1. Overview of the Tether Tokens
+
+Tether Tokens are digital assets issued on various blockchains. Each Tether Token issued
+and in circulation is backed by Reserves held by Tether. Subject to the Terms, Tether Tokens
+may be redeemed for the underlying Fiat currency.
+
+Tether International will issue the following Fiat-denominated Tether Tokens:
+
+
+
+
+                                                                                           10
+   ●​ USD₮ - being Tether Tokens denominated in U.S. dollars; and
+   ●​ MXN₮ - being Tether Tokens denominated in Mexican pesos
+
+Tether International is the customer-facing entity that issues and redeems Fiat-denominated
+Tether Tokens. Subject to the Terms and onboarding procedures, KYC Verified Customers
+can purchase and redeem Tether Tokens through the Tether Website. KYC Verified
+Customers purchasing or selling Tether Tokens directly through the Tether Website are
+doing so in what is referred to as the Primary Market. Our obligations exist only with respect
+to those users and transactions taking place in the Primary Market.
+
+Tether Tokens may also be purchased from the Secondary Market. Secondary Market
+transactions are subject to the terms of Secondary Market participants.
+
+Examples of Secondary Markets include exchanges that support Tether Tokens. Users can
+also transact and store Tether Tokens with any supported blockchain wallet. Tether does
+not control these wallets, nor does it control the blockchains on which the Tether Tokens
+are transacted.
+
+2.2. Main Application
+
+In this section, we summarize and discuss the main applications of Tether Tokens across
+the blockchain ecosystem and for other consumers globally. We break up the beneficiaries
+into three user groups: (i) exchanges, (ii) individuals, and (iii) merchants.
+
+We believe that the main benefits of Tether Tokens, applicable to all groups are as follows:
+
+   ●​ properties of different blockchains are bestowed upon other asset classes, such as
+      lower costs, faster settlement, and decreased barrier to entry relative to traditional
+      cross-border transactions.
+   ●​ less volatile, familiar unit of account compared to other digital assets.
+   ●​ multiple blockchains are supported.
+   ●​ high liquidity.
+   ●​ can be denominated in different currencies.
+
+For Exchanges
+
+For exchange operators, accepting Fiat deposits and withdrawals using legacy financial
+systems can be complicated, risky, slow, and expensive. Some issues may include:
+
+
+
+
+                                                                                               11
+   ●​   identifying the right payment providers for the exchange.
+   ●​   irreversible transaction and minimal fraud protection.
+   ●​   liaising with banks to coordinate compliance, and security, and build trust.
+   ●​   prohibitive costs for small value transfers.
+   ●​   long delays for international wire transfers to clear.
+   ●​   poor and unfavorable currency conversion fees.
+   ●​   barriers to onboarding.
+
+By accepting Tether Tokens, we believe an exchange can reduce the above complications
+and gain additional benefits, such as:
+
+   ●​ accepting digital assets as a deposit/withdrawal/storage method rather than using a
+      legacy bank or payment provider.
+   ●​ allowing users to move funds in and out of an exchange more freely, quickly, and
+      cheaply.
+   ●​ easily adding other Tether Tokens pegged to other Fiat currencies as trading pairs to
+      the platform.
+   ●​ securing customer assets through familiar digital asset ­processes, including
+      multi­signature security, cold and hot wallets, HD wallets, etc.
+   ●​ conducting audits more easily in a purely digital asset environment.
+   ●​ helping their customers move funds between digital asset markets and the
+      traditional financial system.
+
+For Individuals
+
+There are many types of individual digital asset users in the world today, including traders
+looking to earn profits daily; long-term holders looking to store their digital assets securely;
+those looking to remit payments globally more more freely, quickly, and cheaply; those in
+developing countries looking for access to financial services for the first time or looking for
+a store of value in environments where the local currency is devaluing or is unstable;
+developers looking to create new technologies; and those who have found many uses for
+the different digital assets in the market. For each of these individuals, we believe Tether
+Tokens are useful in many ways, including:
+
+   ●​ transacting in Fiat-denominated value without any middlemen/intermediaries.
+   ●​ allowing for cold storage of Fiat-denominated value by securing one’s own private
+      keys.
+   ●​ mitigating the risk of storing Fiat on exchanges.
+   ●​ allowing for the movement of digital assets/Fiat in and out of exchanges easily.
+
+
+
+                                                                                             12
+   ●​ easily enhancing applications that work with digital assets to also support Tether
+      Tokens.
+   ●​ allowing for the movement of funds between digital asset markets and the traditional
+      financial system.
+   ●​ providing liquidity to enter into or out of digital asset trades without facing
+      unpredictable volatility.
+   ●​ acquiring stable Fiat-denominated value in jurisdictions where such liquidity is low.
+
+For Merchants
+
+The lack of global, inexpensive, ubiquitous payment solutions continues to restrict
+merchants around the world. The following are ways in which we believe Tether Tokens may
+assist merchants:
+
+   ●​ allowing merchants to price goods in Fiat value rather than digital assets (no moving
+      conversion rates/purchase windows).
+   ●​ avoiding conversion from digital assets to Fiat and associated fees.
+   ●​ prevent chargebacks and reduce fees.
+   ●​ provide novel services because of Fiat-like digital asset features.
+   ●​ offer decentralization, transparency, and the ability to remove intermediaries.
+
+2.3. Number of Stablecoins issued
+
+Tether Tokens are available on various blockchains, all as determined by Tether. The
+blockchain on which Tether Tokens are available are identified on Tether’s Transparency
+Page. The number of Tether Tokens in circulation changes based on purchases and
+redemptions of Tether Tokens in the Primary Market. Tether typically publishes daily
+updates regarding the number of Tether Tokens in circulation on Tether’s Transparency
+Page. The information provided is based on the information available to Tether, which may
+be delayed. Accordingly, the information available on Tether’s Transparency Page may not
+reflect the Tether Tokens in circulation at the time the information is reviewed.
+
+This issuance does not have any maximum or a minimum number of tokens required to
+launch the Services in El Salvador.
+
+2.4. Customer Types
+
+As of February 16th, 2026 Tether has 819 customers (“Existing Customers”) who are Tether
+International’s KYC Verified Customers. Subject to the Terms and onboarding procedures,
+
+
+
+                                                                                         13
+only KYC Verified Customers can purchase Tether Tokens through the Tether Website. The
+current minimum purchase amount of Tether Tokens through the Tether Website is
+US$100,000, or its equivalent in any other accepted currency. Purchases of Tether Tokens
+through the Tether Website are currently subject to a fee of the greater of 0.1% or $1,000 for
+redemption and 0.1% for acquisitions. Fees are subject to change at the discretion of Tether.
+
+To be eligible to purchase Tether Tokens from Tether, a prospective customer must agree to
+the Terms, complete the account verification process through the Tether Website and
+submit documents requested by Tether to complete its anti-money laundering,
+counter-terrorist financing, counter-proliferation, sanction measures, and other checks.
+Tether maintains the sole discretion to approve or reject requests to become a KYC Verified
+Customer.
+
+A verification fee of USDT150 (payable in USDT tokens) applies for any applications to be a
+KYC Verified Customer; except that Existing Customers will not be required to pay the
+verification fee. The fee helps offset a portion of the incurred costs from the execution of
+the verification process. The fee is non-refundable; however, upon successful verification, it
+will be credited back to the KYC Verified Customer for use on redemptions. This amount is
+intended to ensure that only those serious about establishing an account apply.
+
+Prohibited Persons as defined in the Terms are prohibited from purchasing Tether
+Tokens from Tether, or from otherwise using the Services available through the Tether
+Website.
+
+2.5. Digital Assets Service Providers & Platforms
+
+Tether International has applied for and successfully obtained the DASP license under
+Article (7) of the Digital Asset Service Providers Regulations. Consequently, KYC Verified
+Customers can purchase and redeem Tether Tokens directly through the Tether Website.
+
+Tether Tokens may also be purchased and sold on the Secondary Market, including from
+exchanges and over-the-counter platforms that support Tether Tokens outside El Salvador.
+User(s) can also transact and store Tether Tokens with any supported blockchain wallet.
+Due to the decentralized nature of the blockchains on which Tether Tokens function,
+third-party platforms can list Tether Tokens without the need for approval from Tether to do
+so. While exchanges, wallets, and merchants are encouraged to reach out to Tether about
+integrating Tether Tokens, it is not possible to keep track of and list all Secondary Market
+participants
+
+
+
+
+                                                                                            14
+2.6. Purchase & Redemptions
+
+Purchasing Tether Tokens
+
+Subject to the Terms and onboarding procedures, KYC Verified Customers can purchase
+Tether Tokens through the Tether Website. The current minimum purchase amount of Tether
+Tokens through the Tether Website is US$100,000, or its equivalent in any other accepted
+currency. Purchases of Tether Tokens through the Tether Website are subject to a 0.1% fee.
+Fees are subject to change at the discretion of Tether.
+
+To be eligible to purchase Tether Tokens from Tether, a prospective customer must agree to
+the Terms, complete the account verification process through the Tether Website and
+submit documents requested by Tether to complete its anti-money laundering, counter
+terrorist financing, counter proliferation and sanction measures and other checks. Tether
+maintains the sole discretion to approve or reject requests to become a KYC Verified
+Customer.
+
+Redemptions of Tether Tokens
+
+Subject to the Terms and onboarding procedures, KYC Verified Customers can redeem
+Tether Tokens through the Tether Website. The current minimum redemption amount of
+Tether Tokens through the Tether Website is Tether Tokens with a value of US$100,000.
+Redemptions of Tether Tokens are subject to a fee of the greater of US$1,000 or 0.1% of the
+Tether Tokens to be redeemed. Fees are subject to change at the discretion of Tether.
+
+The amount paid to a KYC Verified Customer by Tether in respect of any redemption shall
+be the amount of the face value of the Tether Tokens received for redemption, in the
+applicable Fiat currency, less fees. Holders of Tether Tokens are not entitled to any
+increases in value of the Reserves in excess of the face value of the Tether Tokens (less
+fees).
+
+To be eligible to redeem Tether Tokens from Tether, a prospective customer must agree to
+the Terms, complete the account verification process through the Tether Website and
+submit documents requested by Tether to complete its anti-money laundering, counter
+terrorist financing, counter proliferation and sanction measures and other checks. Tether
+maintains the sole discretion to approve or reject requests to become a KYC Verified
+Customer.
+
+
+
+
+                                                                                         15
+Tether Tokens may also be sold on the Secondary Markets, including at exchanges that
+support Tether Tokens. The restrictions and verification requirements for these services will
+be determined by their operators.
+
+2.7. Restrictions on Transferability
+
+Tether is committed to adhering to all applicable government laws and regulations. This
+includes the regulations and economic sanctions with respect to certain high-risk
+jurisdictions. As part of this, Tether Tokens cannot be purchased or redeemed by Prohibited
+Persons. The definition of “Prohibited Persons” is available on https://tether.to/en/legal/.
+
+Tether retains the discretion to approve or reject any application to become a KYC Verified
+Customer, and to suspend or terminate access to the Services in accordance with the
+Terms.
+
+Furthermore, Tether may delay or suspend redemption under various circumstances, in
+accordance with its Terms, including in the following cases:
+
+   ●​ if Tether determines that a KYC Verified Customer has engaged in a Prohibited Use
+      (as defined in the Terms);
+   ●​ when Tether is directed to do so by any government (including any court, law
+      enforcement agency, tribunal, or regulatory body);
+   ●​ if a KYC Verified Customer’s account or wallet is subject to pending litigation,
+      investigation, or government proceedings; or
+   ●​ when Tether believes that someone is attempting to gain unauthorized access to a
+      KYC Verified Customer’s account or wallet or that the Tether Tokens have been
+      obtained by or used in fraud, theft or other criminal activities.
+
+Additionally, in certain circumstances and at the behest of law enforcement, regulatory or
+government agencies, Tether may take steps to attempt to freeze the Tether Tokens held in
+external wallets for which Tether does not hold private keys.
+
+Further restrictions on the use of, and ability to restrict, Tether Tokens are set out in the
+Terms, which must be read in full alongside this RID.
+
+Other restrictions on transferability
+
+Tether Tokens may also be purchased and sold on the Secondary Market from exchanges
+and other operators and may be held in third-party wallets and other custody solutions. The
+
+
+
+                                                                                           16
+restrictions and verification requirements are subject to the standards set by such
+providers, which may include restrictions on transferability that are more onerous than
+those imposed by Tether.
+
+
+3. Safeguarding Arrangements
+
+As outlined in sections (6.2. & 6.4.), once a KYC Verified Customer submits a request to
+acquire Tether Tokens on the Tether Website and sends Fiat funds, Tether transfers the
+equivalent number of Tether Tokens to that KYC Verified Customer. Tether then holds or
+invests the funds it received from selling Tether Tokens in a basket of Reserves. The
+composition of Reserves is subject to change at Tether's sole discretion. More information
+on the breakdown of the Reserves is available on the Reports & Reserves page available at
+the Transparency Page. Except as required by the CNAD, Tether does not commit to update
+the information at any particular interval or time, regardless of any changes in the number of
+Tether Tokens in circulation or the value or composition of the Reserves.
+
+The purpose of those Reserves is to ensure that Tether Tokens are backed to meet
+customers’ redemption requests. Tether primarily holds the Reserves with various third
+parties including banks and licensed financial institutions. Furthermore, Tether typically
+provides daily updates as to the number of Tether Tokens in circulation and publishes
+quarterly reports providing information on its Reserves that are held to back Tether Tokens
+in circulation. The information provided is based on the information available to Tether,
+which may be delayed. Accordingly, the information available on the Transparency Page
+may not reflect the Tether Tokens in circulation at the time the information is reviewed.
+
+Post sale, Tether’s only obligation to its KYC Verified Customers is to redeem Tether Tokens
+through the Tether Website subject to the Terms.
+
+4. Risk Disclosure
+
+No person should use the Services or purchase or hold Tether Tokens unless they
+understand the Tether Token and its risks. The risks associated with the Tether Tokens are
+subject to change and KYC Verified Customers and prospective customers must carefully
+review and understand the risks associated with Tether Tokens as described on the Risk
+Disclosure on the Tether Website before using the Services.
+
+This Risk Disclosure Statement discusses some of the principal risks of Tether Tokens, but it
+does not and cannot describe every risk or consideration associated with Tether Tokens
+and the Services.
+
+
+                                                                                            17
+Please review the Risk Disclosure on​
+https://tether.to/en/legal/?tab=risk-disclosure-statement
+
+5. Compliance & Risk Management
+
+Risk Management
+
+Recognizing the importance of having adequate risk management policies and procedures
+to ensure the integrity and continuity of Tether Tokens, Tether has implemented an
+Enterprise Risk Management (ERM) system aimed at identifying and addressing potential
+risks to our operations. Through this framework, we systematically assess vulnerabilities
+and implement appropriate policies and procedures to mitigate these risks.
+
+Reserve Management
+
+Tether has implemented reserve management and liquidity arrangements to effectively
+manage financial risks within Tether and mitigate fluctuations, market volatility, and
+unexpected financial demands. These measures include allocation of investments, and
+monitoring of potential liquidity needs.
+
+Conflicts of Interest
+
+Tether personnel are informed of their duties to identify, manage, and, where possible, avoid
+conflicts of interest as stated in our conflicts of interest policy and supporting documents. ​
+
+Tether may also explore further measures to mitigate the risks associated with a conflict of
+interest, such as temporary or permanent withdrawal of oversight of a given matter or
+activity from the personnel concerned, discontinuing its involvement in the transaction or
+event, or disclosing the nature of such conflict to the affected customer or party. Except as
+required by the CNAD, disclosure of conflicts of interest is subject to Tether’s conflicts of
+interest policy and procedures.
+
+Cybersecurity
+
+
+
+
+                                                                                            18
+Tether adheres to NIST and ISO 27001 security standards as the core framework for our
+information security program. Our internal policies and procedures are developed and
+maintained in alignment with these recognized standards and industry best practices. This
+approach allows us to manage cyber security risks and safeguard the confidentiality,
+integrity and availability of our information assets.
+
+To support the effectiveness and maturity of our security controls, Tether engages
+independent external security auditors to perform security audits at least annually. These
+assessments provide thorough evaluation of our security posture. Any identified findings
+are carefully reviewed, documented and addressed through our risk management and
+remediation processes.
+
+Security is paramount to Tether. We recognize that information security is an ongoing and
+evolving responsibility. Therefore, we treat security as a continuous process of assessment
+and adaptation to emerging threats. Through this ongoing commitment, we strive to
+maintain a strong and resilient security posture.
+
+Wallets Used by Tether
+
+The Tether Website does not provide a wallet service, and only KYC Verified Customers may
+buy or redeem Tether Tokens directly through the Tether Website, using Fiat bank transfers
+and the customer’s own wallet.
+
+Tether utilizes wallets to, among other matters, receive Tether Tokens for redemptions and
+to transmit Tether Tokens upon purchase. Wallets utilized by Tether consist of online
+software wallets and offline hardware wallets which have security and safety features
+provided by the supplier of the relevant hardware wallet and software wallet technologies
+and systems.
+
+Smart Contract Audits
+
+We conduct smart contract reviews through constant and ongoing testing. These reviews
+are conducted at two levels. The first ensures that operating procedures are consistent and
+accurate, and that any issues identified are addressed in a timely and effective manner. The
+second level involves testing in a live environment and ensuring that only those with
+administrative permissions are able to amend or make decisions on privileged functions,
+such as minting, freezing, unfreezing, revoking, burning, or other functions that form the
+basis of the smart contract.
+
+
+
+
+                                                                                         19
+Relationship with Bitfinex
+
+The Bitfinex platform (available at Bitfinex.com) is operated by subsidiaries of iFinex Inc.
+(iFinex Inc. and its subsidiaries, the “Bitfinex Group”). Tether and the Bitfinex Group share
+members of management and other personnel, and have a number of common
+shareholders. Tether receives support services from the Bitfinex Group and Tether utilizes
+services available on the Bitfinex platform. Tether Tokens trade on the Secondary Market
+available on the Bitfinex platform, subject to the terms of that platform.
+
+Anti-Money Laundering, Countering the Financing of Terrorism, and Counter
+Proliferation and Sanction measures (“Anti-Financial Crime”)
+
+Tether’s current Anti-Financial Crime compliance landscape is shaped by standard-setting
+organizations such as The Financial Action Task Force ("FATF") and enhanced by aspects
+from The Wolfsberg Group of International Financial Institutions, The Bank Secrecy Act of
+1970, the BVI Anti-money Laundering Regulations, Revised Edition 2020, Proliferation
+Financing (Prohibition) Act, No. 20 of 2021, and Counter Terrorism Act, No. 33 of 2021, and El
+Salvador Money Laundering Act and Regulation for the prevention, detection and control of
+money and assets laundering, terrorism financing and mass destruction weapons
+proliferation financing issued by the Financial Investigation Unit of El Salvador’s General
+Attorney Office.
+
+Customer Onboarding
+
+Tether requires all prospective customers to successfully complete its customer verification
+process prior to being permitted to purchase or redeem any Tether Tokens. Customer
+verification processes are governed by written policies and procedures for verifying
+customers and conducting risk-based enhanced due diligence processes on customers.
+Compliance team members are trained on and required to follow those policies and
+procedures in connection with all customer verifications.
+
+Verification processes use financial industry standard vendors and tools to verify
+prospective customers’ information and screen their names against sanctions, politically
+exposed persons, and law enforcement lists. As a part of this process, all prospective
+customers are screened for adverse media using open source intelligence (“OSINT”) by
+trained analysts.
+
+
+
+
+                                                                                           20
+Ongoing Monitoring
+
+Tether uses Chainalysis’s industry-leading investigation tool Reactor. Reactor is an
+investigatory tool that assists Tether in linking real-world illicit activity to digital asset
+addresses and transactions using Chainalysis’ reference data set. Tether currently uses the
+Reactor tool to screen counterparty digital asset wallet addresses for risk-scoring purposes,
+enhanced due diligence measures and for the purpose of investigations.
+
+All KYC Verified Customers undergo automated ongoing name screening and periodic
+ongoing monitoring using OSINT screening for adverse media.
+
+Tether screens media platforms regularly for articles relating to crime involving digital
+assets and relevant names are screened against Tether’s KYC Verified Customers.
+Potentially positive hits related to Tether’s KYC Verified Customers are escalated for
+investigation.
+
+Suspicious Transactions/Activity and Reporting
+
+Tether engages an investigations team, many members of which are drawn from
+international financial institutions whose role is to review unusual or suspicious activity and
+file Attempted Suspicious Activity and Suspicious Activity Reports (“ “SAR”) with the
+relevant Financial Intelligence Unit, including in the United States, as applicable. Tether may,
+in certain circumstances, temporarily restrict access to, and/or terminate customer
+relationships with KYC Verified Customers in the event that they are believed to be engaged
+in suspicious activity or to be in breach of any of the Terms.
+
+Termination of the Relationships
+
+In connection with customer investigations conducted by Tether’s Compliance Team, Tether
+will assess if a customer relationship should be terminated or placed on enhanced
+monitoring.
+
+
+6. Information on the underlying technology and standards applied
+
+6.1. Protocols and platforms
+
+Tether Tokens exist on multiple blockchains and networks and are treated equally under the
+Terms. Tether Tokens are currently supported on various blockchains, including Tron,
+
+
+                                                                                             21
+Ethereum, Solana, Avalanche, Ton, all of which are disclosed on Tether’s Transparency
+Page.
+
+6.2. Tether Technology Stack
+
+The stack has three layers, each with many features, and can be described as follows:
+
+   1.​ The first layer is the native blockchain. Tether uses each blockchain’s native
+       transaction system to support the tokenization system for that blockchain.
+   2.​ The second layer is the tokenization system for that blockchain. Each blockchain’s
+       tokenization system allows Tether to
+           a.​ track and report the circulation of Tether Tokens; and
+           b.​ enable users to transact and store Tether Tokens and other assets/tokens in a
+                   i.​ peer-to-peer, pseudonymous, cryptographically secure environment;
+                  ii.​ supported blockchain wallet/software; and
+                 iii.​ multi­signature and offline cold storage ­supporting system.
+   3.​ The third layer is Tether, it is responsible for:
+           a.​ Accepting Fiat deposits and issuing the corresponding Tether Tokens
+           b.​ Sending Fiat withdrawals and revoking the corresponding Tether Tokens;
+           c.​ Publicly reporting attestations of Reserves; and
+           d.​ Operating the Tether Website, an online platform that allows eligible, KYC
+               Verified Customers to acquire and redeem Tether Tokens directly with Tether.
+
+6.3. Secondary platforms
+
+Tether serves its KYC Verified Customers through the Tether Website. The purpose of
+becoming a KYC Verified Customer is to participate in the issuance and redemption of
+Tether Tokens directly with Tether through the Tether Website at the pegged 1:1 rate (minus
+fees), with a minimum transaction value of US$100,000. This is referred to as the Primary
+Market, and it consists only of Tether and its KYC Verified Customers. Once these
+customers have acquired newly issued Tether Tokens (e.g. USD₮), Tether Tokens can then
+be exchanged in the Secondary Market with a much wider variety of trading pairs.
+
+Tether Tokens may be purchased and sold on the Secondary Market from exchanges and
+over-the-counter platforms that support Tether Tokens. Users can also transact and store
+Tether Tokens with any supported blockchain wallet. Due to the decentralized nature of the
+blockchains on which Tether Tokens function, third-party platforms can list Tether Tokens
+without the need for approval from Tether to do so. While exchanges, wallets, and
+
+
+
+
+                                                                                         22
+merchants are encouraged to reach out to Tether about integrating Tether Tokens, it is not
+possible to keep track of and list all Secondary Market participants.
+
+6.4. Tether Token life cycle
+
+There are six steps in the lifecycle of a Tether Token that is purchased and redeemed
+through the Tether website:
+
+   ●​ Step 1 - KYC Verified Customer submits a request to acquire Tether Tokens on the
+      Tether Website and sends Fiat funds.
+   ●​ Step 2​­- Fiat funds deposited are held or invested into the Reserves.
+   ●​ Step 3 - Tether transfers the equivalent number of Tether Tokens to the KYC Verified
+      Customer. Tether Tokens enter circulation (Amount of Fiat currency deposited by
+      user, less fees = amount of Tether Tokens issued to the user)
+   ●​ Step 4 - If a KYC Verified Customer wishes to redeem,​ the user deposits Tether
+      Tokens with Tether through the Tether Website.
+   ●​ Step 5 - Tether removes the Tether Tokens from circulation and uses a
+      corresponding portion of the Reserves to facilitate the redemption.
+   ●​ Step 6 - ​­Fiat currency is sent to the KYC Verified Customer’s bank account (Amount
+      of Fiat currency paid to a user = amount of Tether Tokens redeemed by the user, less
+      fees).
+
+Tether may freeze, burn, or block the transfer of Tether Tokens, in accordance with the
+Terms, which must be read in full alongside this RID.
+
+
+7. Dispute Resolution
+
+7.1. Complaints Handling Procedure
+
+All complaints must be submitted through our customer support page https://cs.tether.to.
+We are committed to handling all complaints in accordance with our complaints handling
+procedure, which is designed to ensure a thorough review and resolution of all concerns
+raised. We are committed to addressing complaints with due diligence and in compliance
+with applicable legal and regulatory requirements.
+
+
+
+
+                                                                                       23
+7.2. Mandatory Resolution of Disputes Through Arbitration
+
+Except for excluded claims described in the following paragraph, any dispute, claim or
+controversy arising out of or relating to this RID or the accuracy, completeness, verification,
+sufficiency, interpretation or validity thereof, shall be governed by the Laws of the BVI and
+will be subject to and finally resolved by confidential, binding arbitration on an individual
+basis and not in a class, representative or consolidated action or proceeding and in
+accordance with the International Institute for Conflict Prevention and Resolution
+International Non-Administered Arbitration Rules, as amended from time to time (the “CPR
+Rules”).
+
+Arbitration will be conducted through the use of videoconferencing technology (unless both
+parties agree that an in-person hearing is appropriate given the nature of the dispute) before
+a sole arbitrator. The sole arbitrator must be a Legal Practitioner in England and Wales or the
+BVI with at least fifteen (15) years of experience in commercial disputes, that holds a current
+practising certificate. If an arbitrator cannot be jointly appointed by the arbitration parties
+within thirty (30) days of the commencement of the arbitration, an arbitrator meeting the
+above qualifications will be selected by the International Institute for Conflict Prevent and
+Resolution. Judgment upon the award rendered by the arbitrator may be entered by any
+court having jurisdiction thereof.
+
+If the arbitral parties do not promptly agree on the seat of arbitration if an in-person hearing
+is selected, the seat will be London, United Kingdom. The language of the arbitral
+proceedings will be English. No discovery shall be conducted except by agreement of the
+parties or after approval by the arbitrator, who shall attempt to minimize the burden of
+discovery. The arbitrator may award any relief that a court of competent jurisdiction could
+award, including attorneys’ fees when authorized by Laws, and the arbitral decision may be
+enforced in court. For claims less than U.S.$15,000, Tether will reimburse you for all
+initiating filing fees in the event that the claim is successful. The prevailing party, as
+determined by the arbitrator, will be entitled to its costs of the arbitration (including the
+arbitrator’s fees) and its reasonable attorney’s fees and costs.
+
+The following claims and causes of action will be excluded from arbitration as described in
+the paragraph above: causes of action or claims in which either party seeks injunctive or
+other equitable relief for the alleged unlawful use of its intellectual property, including
+without limitation copyrights, trademarks, trade names, trade secrets, or patents or its
+confidential information or private data. Nothing in this section (7.2) will prevent Tether from
+seeking any other form of injunctive relief in any court of competent jurisdiction, whether or
+not interim relief has also been sought from the Arbitrator.
+
+
+
+
+                                                                                             24
+The arbitrator will have the power to hear and determine challenges to its jurisdiction,
+including any objections with respect to the existence, scope, enforceability or validity of
+the arbitration provisions of this RID. This authority extends to jurisdictional challenges with
+respect to both the subject matter of the dispute and the parties to the arbitration. For the
+purposes of challenges to the jurisdiction of the arbitrator, each clause within this section
+(7.2) will be considered as separable from any contract of which it forms a part. Any
+challenges to the jurisdiction of the arbitrator, except challenges based on the award itself,
+will be made not later than the notice of defense or, with respect to a counterclaim, the reply
+to the counterclaim; provided, however, that if a claim or counterclaim is later added or
+amended such a challenge may be made not later than the response to such claim or
+counterclaim as provided under the CPR Rules.
+
+8. Tax Regime
+
+As per Article (36) of the Law, Tether falls under the scope of such Law; thus, the Tether
+Tokens’ nominal value and the yields or income from the tokens shall be exempt from all
+kinds of levies, duties, taxes, rates and contributions, of any kind and nature, present or
+future, whether ordinary or extraordinary or even special in El Salvador jurisdiction. The
+capital gain or ordinary income obtained from the purchase and sale or any other means of
+transfer of the Tether Tokens, including debt forgiveness, shall be also exempt from any
+kind of taxation in El Salvador.
+
+Holders of Tether Tokens should consult with their own tax advisers with respect to the tax
+consequences of acquiring, holding or redeeming Tether Tokens under the relevant
+legislation and regulations.
+
+
+9. Certifier
+
+This RID was certified by TR Capital, S.A. de C.V., a Salvadoran company incorporated on
+May 13, 2017, and registered in the Companies Registry of the Registry of Commerce under
+number 21 of Book 3736, with Registration Number 2017088178 and Tax Identification
+Number 0614-130517-102-0 (the “Certifier”).
+
+The Certifier was authorized as a Digital Asset Issuance Certifier by resolution
+CNAD-044-2023/04, duly registered under entry number CERT-0003.
+
+The Certifier's report has been submitted to the National Commission for Digital Assets in
+compliance with the provisions of the Regulation of Registration of Issuers and Public and
+Private Issuances, and it has received a favorable judgment.
+
+
+                                                                                             25
+10. External Counsel
+
+Tether has retained the legal services of Dentons El Salvador to navigate the intricate
+landscape of local laws and regulations effectively. Dentons is a well-established and
+registered law firm known for its legal compliance and guidance expertise.
+
+
+
+
+                                                                                    26
+

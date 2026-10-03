@@ -1,0 +1,107 @@
+{"table":"derivative_book_minute","name":"id","type":"UInt64"}
+{"table":"derivative_book_minute","name":"instrument_id","type":"UInt32"}
+{"table":"derivative_book_minute","name":"minute_time","type":"DateTime('UTC')"}
+{"table":"derivative_book_minute","name":"batch_id","type":"FixedString(64)"}
+{"table":"derivative_book_minute","name":"encoding_version","type":"UInt8"}
+{"table":"derivative_book_minute","name":"stored_depth","type":"UInt8"}
+{"table":"derivative_book_minute","name":"signed","type":"Bool"}
+{"table":"derivative_book_minute","name":"valid_bitmap","type":"UInt64"}
+{"table":"derivative_book_minute","name":"delta_bitmap","type":"UInt64"}
+{"table":"derivative_book_minute","name":"bid_prices","type":"Array(Int64)"}
+{"table":"derivative_book_minute","name":"bid_qtys","type":"Array(UInt64)"}
+{"table":"derivative_book_minute","name":"ask_prices","type":"Array(Int64)"}
+{"table":"derivative_book_minute","name":"ask_qtys","type":"Array(UInt64)"}
+{"table":"derivative_book_quality_minute","name":"instrument_id","type":"UInt32"}
+{"table":"derivative_book_quality_minute","name":"minute_time","type":"DateTime('UTC')"}
+{"table":"derivative_book_quality_minute","name":"batch_id","type":"FixedString(64)"}
+{"table":"derivative_book_quality_minute","name":"signed","type":"Bool"}
+{"table":"derivative_book_quality_minute","name":"row_hash","type":"FixedString(64)"}
+{"table":"derivative_book_quality_minute","name":"sampled_bitmap","type":"UInt64"}
+{"table":"derivative_book_quality_minute","name":"stream_valid_bitmap","type":"UInt64"}
+{"table":"derivative_book_quality_minute","name":"replay_valid_bitmap","type":"UInt64"}
+{"table":"derivative_book_quality_minute","name":"market_known_bitmap","type":"UInt64"}
+{"table":"derivative_book_quality_minute","name":"market_open_bitmap","type":"UInt64"}
+{"table":"derivative_book_quality_minute","name":"source_times","type":"Array(Nullable(DateTime64(6, 'UTC')))"}
+{"table":"derivative_book_quality_minute","name":"received_times","type":"Array(Nullable(DateTime64(6, 'UTC')))"}
+{"table":"derivative_book_quality_minute","name":"captured_times","type":"Array(Nullable(DateTime64(6, 'UTC')))"}
+{"table":"derivative_book_quality_minute","name":"last_snapshot_times","type":"Array(Nullable(DateTime64(6, 'UTC')))"}
+{"table":"derivative_book_quality_minute","name":"connection_confirmed_times","type":"Array(Nullable(DateTime64(6, 'UTC')))"}
+{"table":"derivative_book_quality_minute","name":"rule_published_times","type":"Array(Nullable(DateTime64(6, 'UTC')))"}
+{"table":"derivative_book_quality_minute","name":"market_state_times","type":"Array(Nullable(DateTime64(6, 'UTC')))"}
+{"table":"derivative_book_quality_minute","name":"connection_epochs","type":"Array(Nullable(UUID))"}
+{"table":"derivative_book_quality_minute","name":"change_ids","type":"Array(UInt64)"}
+{"table":"derivative_book_quality_minute","name":"trading_rule_ids","type":"Array(Nullable(FixedString(64)))"}
+{"table":"derivative_book_quality_minute","name":"market_state_bases","type":"Array(UInt8)"}
+{"table":"derivative_book_quality_minute","name":"reasons","type":"Array(UInt8)"}
+{"table":"derivative_book_quality_minute","name":"bid_level_counts","type":"Array(UInt8)"}
+{"table":"derivative_book_quality_minute","name":"ask_level_counts","type":"Array(UInt8)"}
+{"table":"derivative_book_second_delta","name":"minute_id","type":"UInt64"}
+{"table":"derivative_book_second_delta","name":"second_offset","type":"UInt8"}
+{"table":"derivative_book_second_delta","name":"batch_id","type":"FixedString(64)"}
+{"table":"derivative_book_second_delta","name":"bid_change_prices","type":"Array(Int64)"}
+{"table":"derivative_book_second_delta","name":"bid_change_qtys","type":"Array(UInt64)"}
+{"table":"derivative_book_second_delta","name":"ask_change_prices","type":"Array(Int64)"}
+{"table":"derivative_book_second_delta","name":"ask_change_qtys","type":"Array(UInt64)"}
+{"table":"derivative_contract_spec","name":"instrument_id","type":"UInt32"}
+{"table":"derivative_contract_spec","name":"native_instrument_id","type":"UInt64"}
+{"table":"derivative_contract_spec","name":"creation_time","type":"DateTime64(3, 'UTC')"}
+{"table":"derivative_contract_spec","name":"definition_hash","type":"FixedString(64)"}
+{"table":"derivative_contract_spec","name":"normalization_version","type":"String"}
+{"table":"derivative_contract_spec","name":"source_instrument_type","type":"LowCardinality(String)"}
+{"table":"derivative_contract_spec","name":"native_amount_kind","type":"LowCardinality(String)"}
+{"table":"derivative_contract_spec","name":"native_amount_currency","type":"LowCardinality(String)"}
+{"table":"derivative_contract_spec","name":"source_contract_size","type":"Decimal(38, 18)"}
+{"table":"derivative_contract_spec","name":"index_id","type":"String"}
+{"table":"derivative_contract_spec","name":"settlement_semantics_id","type":"String"}
+{"table":"derivative_contract_spec","name":"option_type","type":"Nullable(String)"}
+{"table":"derivative_contract_spec","name":"strike","type":"Nullable(Decimal(38, 18))"}
+{"table":"derivative_contract_spec","name":"strike_currency","type":"Nullable(String)"}
+{"table":"derivative_contract_spec","name":"leg_instrument_ids","type":"Array(UInt32)"}
+{"table":"derivative_contract_spec","name":"leg_signed_ratios","type":"Array(Int32)"}
+{"table":"derivative_contract_spec","name":"leg_amount_per_combo","type":"Array(Decimal(38, 18))"}
+{"table":"derivative_contract_spec","name":"definition_evidence_hash","type":"FixedString(64)"}
+{"table":"derivative_trading_rule","name":"trading_rule_id","type":"FixedString(64)"}
+{"table":"derivative_trading_rule","name":"instrument_id","type":"UInt32"}
+{"table":"derivative_trading_rule","name":"source_tick_size","type":"Decimal(38, 18)"}
+{"table":"derivative_trading_rule","name":"min_trade_amount","type":"Decimal(38, 18)"}
+{"table":"derivative_trading_rule","name":"amount_step","type":"Decimal(38, 18)"}
+{"table":"derivative_trading_rule","name":"band_above_prices","type":"Array(Decimal(38, 18))"}
+{"table":"derivative_trading_rule","name":"band_tick_sizes","type":"Array(Decimal(38, 18))"}
+{"table":"derivative_trading_rule","name":"observed_at","type":"DateTime64(6, 'UTC')"}
+{"table":"derivative_trading_rule","name":"known_from","type":"DateTime64(6, 'UTC')"}
+{"table":"derivative_trading_rule","name":"effective_from","type":"DateTime64(6, 'UTC')"}
+{"table":"derivative_trading_rule","name":"effective_time_basis","type":"LowCardinality(String)"}
+{"table":"derivative_trading_rule","name":"source_url","type":"String"}
+{"table":"derivative_trading_rule","name":"payload_hash","type":"FixedString(64)"}
+{"table":"instrument","name":"instrument_id","type":"UInt32"}
+{"table":"instrument","name":"exchange","type":"String"}
+{"table":"instrument","name":"market_type","type":"LowCardinality(String)"}
+{"table":"instrument","name":"exchange_symbol","type":"String"}
+{"table":"instrument","name":"venue_contract_version","type":"String"}
+{"table":"instrument","name":"base_asset","type":"LowCardinality(String)"}
+{"table":"instrument","name":"quote_asset","type":"LowCardinality(String)"}
+{"table":"instrument","name":"settle_asset","type":"Nullable(String)"}
+{"table":"instrument","name":"contract_multiplier","type":"Decimal(38, 18)"}
+{"table":"instrument","name":"price_tick_size","type":"Decimal(38, 18)"}
+{"table":"instrument","name":"quantity_step_size","type":"Decimal(38, 18)"}
+{"table":"instrument","name":"expiry_time","type":"Nullable(DateTime('UTC'))"}
+{"table":"options_index_minute","name":"index_id","type":"LowCardinality(String)"}
+{"table":"options_index_minute","name":"minute_time","type":"DateTime64(0, 'UTC')"}
+{"table":"options_index_minute","name":"batch_id","type":"FixedString(64)"}
+{"table":"options_index_minute","name":"row_hash","type":"FixedString(64)"}
+{"table":"options_index_minute","name":"prices","type":"Array(Nullable(Decimal(38, 18)))"}
+{"table":"options_index_minute","name":"source_times","type":"Array(Nullable(DateTime64(6, 'UTC')))"}
+{"table":"options_index_minute","name":"received_times","type":"Array(Nullable(DateTime64(6, 'UTC')))"}
+{"table":"options_index_minute","name":"epochs","type":"Array(UUID)"}
+{"table":"options_index_minute","name":"states","type":"Array(UInt8)"}
+{"table":"options_live_minute_commit","name":"run_id","type":"UUID"}
+{"table":"options_live_minute_commit","name":"minute_time","type":"DateTime64(0, 'UTC')"}
+{"table":"options_live_minute_commit","name":"batch_id","type":"FixedString(64)"}
+{"table":"options_live_minute_commit","name":"run_hash","type":"FixedString(64)"}
+{"table":"options_live_minute_commit","name":"prepared_at","type":"DateTime64(6, 'UTC')"}
+{"table":"options_live_minute_commit","name":"instrument_ids","type":"Array(UInt32)"}
+{"table":"options_live_minute_commit","name":"member_hashes","type":"Array(FixedString(64))"}
+{"table":"options_live_minute_commit","name":"anchor_count","type":"UInt32"}
+{"table":"options_live_minute_commit","name":"delta_count","type":"UInt32"}
+{"table":"options_live_minute_commit","name":"index_ids","type":"Array(String)"}
+{"table":"options_live_minute_commit","name":"index_hashes","type":"Array(FixedString(64))"}

@@ -8,7 +8,7 @@ StartLimitIntervalSec=0
 [Service]
 Type=simple
 WorkingDirectory=/home/ubuntu/crypto-market-info
-Environment=CLICKHOUSE_DATABASE=crypto_market_info_perp_soak
+Environment=CLICKHOUSE_DATABASE=crypto_market_info_perp_soak_20260928
 Environment=BINANCE_SPOT_SYMBOLS=-
 Environment=OKX_SPOT_SYMBOLS=-
 Environment=BINANCE_PERP_SYMBOLS=auto

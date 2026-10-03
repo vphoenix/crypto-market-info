@@ -1,0 +1,3510 @@
+{
+  "venue": "Binance",
+  "symbol": "LSK",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=LSKUSDT&limit=1000",
+  "retrieved_at": "2026-09-21T14:32:58.084724+00:00",
+  "status": 200,
+  "sha256": "96949e46484c8bcbe0c9d9b573f76eb9b55797110f5330700bae3e4201331f23",
+  "data": [
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1784908800008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08175000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1784923200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08160000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1784937600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08125000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1784952000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08062710",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1784966400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07964785",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1784980800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07801742",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1784995200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07894323",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785009600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07985000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785024000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07975000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785038400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08090000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785052800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08130000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785067200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08150000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785081600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08090000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785096000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08000387",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785110400010,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08080000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785124800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08020000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785139200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08030000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785153600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07901097",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785168000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07655000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785182400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07691935",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785196800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07535000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785211200012,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07501009",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785225600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07520000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785240000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07434542",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785254400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07520000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785268800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07470000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785283200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07455000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785297600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07225000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785312000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07220000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785326400007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07210000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785340800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07210667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785355200003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07154000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785369600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07151355",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785384000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07230000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785398400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07243767",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785412800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07284367",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785427200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07311032",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785441600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07282567",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785456000003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07227550",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785470400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07257000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785484800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785499200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07212272",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785513600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07223085",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785528000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07235242",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785542400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07263733",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785556800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07297939",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785571200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07346000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785585600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07309500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785600000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07194833",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785614400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07083000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785628800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07123667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785643200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07227000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785657600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07231000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785672000007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07268500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785686400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07203500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785700800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07212033",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785715200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07182500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785729600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07048583",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785744000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07072167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785758400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07127000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785772800000,
+      "fundingRate": "-0.00019254",
+      "markPrice": "0.07500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785787200003,
+      "fundingRate": "0.00002432",
+      "markPrice": "0.07473483",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785801600004,
+      "fundingRate": "-0.00002943",
+      "markPrice": "0.07432500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785816000002,
+      "fundingRate": "-0.00044543",
+      "markPrice": "0.07334000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785830400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07239206",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785844800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07184000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785859200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07189500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785873600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07224609",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785888000003,
+      "fundingRate": "-0.00018561",
+      "markPrice": "0.07189000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785902400001,
+      "fundingRate": "0.00002094",
+      "markPrice": "0.07246500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785916800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07415700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785931200008,
+      "fundingRate": "-0.00000060",
+      "markPrice": "0.07383600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785945600000,
+      "fundingRate": "-0.00005119",
+      "markPrice": "0.07412534",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785960000000,
+      "fundingRate": "-0.00003911",
+      "markPrice": "0.07424133",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785974400002,
+      "fundingRate": "-0.00003832",
+      "markPrice": "0.07361587",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1785988800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07418778",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786003200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07563866",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786017600000,
+      "fundingRate": "-0.00000363",
+      "markPrice": "0.07449000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786032000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07484583",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786046400001,
+      "fundingRate": "-0.00011184",
+      "markPrice": "0.07504233",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786060800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07562500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786075200000,
+      "fundingRate": "-0.00002078",
+      "markPrice": "0.07515500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786089600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07542500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786104000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07476017",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786118400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07492000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786132800000,
+      "fundingRate": "0.00000010",
+      "markPrice": "0.07483483",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786147200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07451217",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786161600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07425667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786176000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07485000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786190400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07532750",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786204800002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07598650",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786219200000,
+      "fundingRate": "0.00001722",
+      "markPrice": "0.07627500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786233600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07579845",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786248000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07623000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786262400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07650650",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786276800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07720000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786291200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07725000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786305600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07780000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786320000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07659371",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786334400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07642000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786348800005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07676500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786363200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07708000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786377600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07644167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786392000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07817637",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786406400000,
+      "fundingRate": "-0.00002914",
+      "markPrice": "0.07712067",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786420800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07714417",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786435200006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07590000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786449600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07645000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786464000000,
+      "fundingRate": "-0.00013075",
+      "markPrice": "0.07518000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786478400003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08329000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786492800001,
+      "fundingRate": "-0.00111069",
+      "markPrice": "0.08206000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786507200000,
+      "fundingRate": "-0.00036448",
+      "markPrice": "0.08426296",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786521600000,
+      "fundingRate": "-0.00016323",
+      "markPrice": "0.07753000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786536000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08080345",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786550400000,
+      "fundingRate": "-0.00088950",
+      "markPrice": "0.08134489",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786564800001,
+      "fundingRate": "-0.00004603",
+      "markPrice": "0.08123000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786579200000,
+      "fundingRate": "-0.00026737",
+      "markPrice": "0.07959739",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786593600000,
+      "fundingRate": "-0.00139695",
+      "markPrice": "0.07923152",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786608000000,
+      "fundingRate": "-0.00040895",
+      "markPrice": "0.07878900",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786622400000,
+      "fundingRate": "-0.00047202",
+      "markPrice": "0.07777000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786636800000,
+      "fundingRate": "-0.00029201",
+      "markPrice": "0.07839000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786651200002,
+      "fundingRate": "-0.00023432",
+      "markPrice": "0.07764867",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786665600000,
+      "fundingRate": "-0.00046083",
+      "markPrice": "0.07784577",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786680000001,
+      "fundingRate": "-0.00043161",
+      "markPrice": "0.07588383",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786694400001,
+      "fundingRate": "-0.00058946",
+      "markPrice": "0.07394000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786708800002,
+      "fundingRate": "-0.00079634",
+      "markPrice": "0.07528662",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786723200001,
+      "fundingRate": "-0.00001577",
+      "markPrice": "0.07613000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786737600000,
+      "fundingRate": "-0.00009662",
+      "markPrice": "0.07776000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786752000003,
+      "fundingRate": "-0.00007692",
+      "markPrice": "0.07832000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786766400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07843000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786780800002,
+      "fundingRate": "0.00000790",
+      "markPrice": "0.07858000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786795200001,
+      "fundingRate": "0.00003447",
+      "markPrice": "0.07671500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786809600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07636000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786824000003,
+      "fundingRate": "-0.00000888",
+      "markPrice": "0.07587000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786838400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07540500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786852800001,
+      "fundingRate": "-0.00007270",
+      "markPrice": "0.07463000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786867200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07627725",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786881600008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07740581",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786896000000,
+      "fundingRate": "-0.00015748",
+      "markPrice": "0.07742000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786910400000,
+      "fundingRate": "-0.00010450",
+      "markPrice": "0.07830000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786924800001,
+      "fundingRate": "-0.00012415",
+      "markPrice": "0.07733000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786939200001,
+      "fundingRate": "-0.00036171",
+      "markPrice": "0.07713000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786953600003,
+      "fundingRate": "-0.00013658",
+      "markPrice": "0.07680000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786968000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786982400005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07803103",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1786996800000,
+      "fundingRate": "-0.00004986",
+      "markPrice": "0.07782000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787011200006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07812000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787025600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07814235",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787040000001,
+      "fundingRate": "-0.00001387",
+      "markPrice": "0.07839167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787054400000,
+      "fundingRate": "0.00000120",
+      "markPrice": "0.07823073",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787068800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07928000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787083200008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07936000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787097600000,
+      "fundingRate": "-0.00000957",
+      "markPrice": "0.07944000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787112000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07926000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787126400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.07997000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787140800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08073242",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787155200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08231000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787169600009,
+      "fundingRate": "0.00001759",
+      "markPrice": "0.08243363",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787184000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08287500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787198400011,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08269000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787212800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08326050",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787227200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08363000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787241600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08313000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787256000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08329000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787270400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08340000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787284800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08328000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787299200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08444000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787313600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08605085",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787328000001,
+      "fundingRate": "-0.00014663",
+      "markPrice": "0.09013000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787342400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08947000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787356800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09108417",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787371200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09336217",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787385600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09210309",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787400000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08996695",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787414400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08963000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787428800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08963000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787443200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08868000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787457600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08604235",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787472000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08717000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787486400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09047483",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787500800006,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09194000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787515200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09303519",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787529600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09293699",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787544000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09082000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787558400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09120563",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787572800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09508250",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787587200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09334070",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787601600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09250153",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787616000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09232000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787630400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09331172",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787644800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09362367",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787659200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09265017",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787673600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.08826000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787688000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09169000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787702400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09033700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787716800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09236575",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787731200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09876238",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787745600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.09747484",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787760000000,
+      "fundingRate": "-0.00450163",
+      "markPrice": "0.09976309",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787774400000,
+      "fundingRate": "-0.00025782",
+      "markPrice": "0.10010113",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787788800000,
+      "fundingRate": "-0.00051557",
+      "markPrice": "0.10543533",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787803200000,
+      "fundingRate": "-0.00088547",
+      "markPrice": "0.09774100",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787817600000,
+      "fundingRate": "-0.00008141",
+      "markPrice": "0.09764541",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787832000000,
+      "fundingRate": "-0.00008788",
+      "markPrice": "0.09773000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787846400013,
+      "fundingRate": "0.00002294",
+      "markPrice": "0.09713000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787860800000,
+      "fundingRate": "0.00004640",
+      "markPrice": "0.09555000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787875200026,
+      "fundingRate": "-0.00009762",
+      "markPrice": "0.09658000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787889600008,
+      "fundingRate": "-0.00005856",
+      "markPrice": "0.09597017",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787904000000,
+      "fundingRate": "-0.00009631",
+      "markPrice": "0.09516750",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787918400004,
+      "fundingRate": "-0.00009506",
+      "markPrice": "0.09599000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787932800001,
+      "fundingRate": "-0.00007231",
+      "markPrice": "0.09590700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787947200000,
+      "fundingRate": "-0.00027032",
+      "markPrice": "0.09874000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787961600000,
+      "fundingRate": "-0.00025574",
+      "markPrice": "0.09961600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787976000000,
+      "fundingRate": "-0.00045101",
+      "markPrice": "0.10248888",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1787990400000,
+      "fundingRate": "-0.00069670",
+      "markPrice": "0.10114000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788004800000,
+      "fundingRate": "-0.00010577",
+      "markPrice": "0.10094648",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788019200002,
+      "fundingRate": "0.00001749",
+      "markPrice": "0.10125600",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788033600002,
+      "fundingRate": "-0.00023317",
+      "markPrice": "0.10184000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788048000000,
+      "fundingRate": "-0.00016428",
+      "markPrice": "0.10163183",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788062400000,
+      "fundingRate": "-0.00001383",
+      "markPrice": "0.10198226",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788076800000,
+      "fundingRate": "-0.00013621",
+      "markPrice": "0.10018400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788091200000,
+      "fundingRate": "0.00002837",
+      "markPrice": "0.10252000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788105600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10308000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788120000000,
+      "fundingRate": "-0.00012660",
+      "markPrice": "0.10414000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788134400002,
+      "fundingRate": "-0.00000235",
+      "markPrice": "0.10299000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788148800002,
+      "fundingRate": "-0.00011556",
+      "markPrice": "0.10293200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788163200002,
+      "fundingRate": "-0.00002881",
+      "markPrice": "0.10205865",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788177600003,
+      "fundingRate": "-0.00011307",
+      "markPrice": "0.10105000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788192000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10242968",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788206400000,
+      "fundingRate": "-0.00008687",
+      "markPrice": "0.10128200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788220800005,
+      "fundingRate": "-0.00030742",
+      "markPrice": "0.10110000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788235200007,
+      "fundingRate": "0.00002607",
+      "markPrice": "0.10047000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788249600000,
+      "fundingRate": "0.00002068",
+      "markPrice": "0.09958000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788264000001,
+      "fundingRate": "-0.00007292",
+      "markPrice": "0.09910945",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788278400000,
+      "fundingRate": "-0.00004828",
+      "markPrice": "0.10132000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788292800000,
+      "fundingRate": "-0.00012645",
+      "markPrice": "0.09970559",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788307200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10160000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788321600000,
+      "fundingRate": "-0.00038331",
+      "markPrice": "0.10014167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788336000001,
+      "fundingRate": "-0.00029920",
+      "markPrice": "0.10029994",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788350400000,
+      "fundingRate": "-0.00026145",
+      "markPrice": "0.09952000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788364800005,
+      "fundingRate": "-0.00003041",
+      "markPrice": "0.10003000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788379200000,
+      "fundingRate": "-0.00023862",
+      "markPrice": "0.09883300",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788393600000,
+      "fundingRate": "-0.00034670",
+      "markPrice": "0.09849000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788408000000,
+      "fundingRate": "-0.00003808",
+      "markPrice": "0.10043665",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788422400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10100067",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788436800002,
+      "fundingRate": "-0.00019651",
+      "markPrice": "0.10138000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788451200000,
+      "fundingRate": "0.00001003",
+      "markPrice": "0.10422373",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788465600000,
+      "fundingRate": "-0.00010936",
+      "markPrice": "0.10378302",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788480000000,
+      "fundingRate": "-0.00064491",
+      "markPrice": "0.10357400",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788494400000,
+      "fundingRate": "-0.00026926",
+      "markPrice": "0.10216000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788508800000,
+      "fundingRate": "-0.00031374",
+      "markPrice": "0.10258783",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788523200003,
+      "fundingRate": "-0.00000144",
+      "markPrice": "0.10214596",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788537600009,
+      "fundingRate": "-0.00000966",
+      "markPrice": "0.10254190",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788552000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10243387",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788566400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10223000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788580800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10189000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788595200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10257000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788609600007,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10292000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788624000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10256953",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788638400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10249000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788652800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10355000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788667200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10387200",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788681600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10349000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788696000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10370500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788710400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10323500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788724800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10314000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788739200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10363534",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788753600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10323000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788768000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10416150",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788782400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10257097",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788796800003,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10153226",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788811200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10235391",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788825600004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10251215",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788840000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10280467",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788854400002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10172000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788868800006,
+      "fundingRate": "-0.00000700",
+      "markPrice": "0.10308000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788883200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10322000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788897600002,
+      "fundingRate": "-0.00007941",
+      "markPrice": "0.10208000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788912000005,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10312296",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788926400004,
+      "fundingRate": "0.00004463",
+      "markPrice": "0.10348054",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788940800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10506067",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788955200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.10934000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788969600002,
+      "fundingRate": "0.00000416",
+      "markPrice": "0.11243235",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788984000000,
+      "fundingRate": "-0.00004559",
+      "markPrice": "0.11384033",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1788998400000,
+      "fundingRate": "-0.00015448",
+      "markPrice": "0.11609567",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789012800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.11318000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789027200007,
+      "fundingRate": "-0.00021619",
+      "markPrice": "0.11480000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789041600000,
+      "fundingRate": "-0.00282557",
+      "markPrice": "0.10785031",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789056000002,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.11002000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789070400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.11378000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789084800008,
+      "fundingRate": "0.00005000",
+      "markPrice": "0.11770384",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789099200005,
+      "fundingRate": "-0.00008411",
+      "markPrice": "0.12472000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789113600000,
+      "fundingRate": "-0.00436410",
+      "markPrice": "0.13522821",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789128000000,
+      "fundingRate": "-0.00199302",
+      "markPrice": "0.12704000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789142400000,
+      "fundingRate": "-0.00069460",
+      "markPrice": "0.12141355",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789156800004,
+      "fundingRate": "-0.00012315",
+      "markPrice": "0.12626351",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789171200001,
+      "fundingRate": "-0.00070932",
+      "markPrice": "0.14057396",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789185600002,
+      "fundingRate": "-0.00519110",
+      "markPrice": "0.19992063",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789200000003,
+      "fundingRate": "-0.00311191",
+      "markPrice": "0.19746517",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789214400000,
+      "fundingRate": "-0.00376959",
+      "markPrice": "0.21229764",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789228800000,
+      "fundingRate": "-0.00653568",
+      "markPrice": "0.25561840",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789243200000,
+      "fundingRate": "-0.00204850",
+      "markPrice": "0.25429700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789257600002,
+      "fundingRate": "-0.00161508",
+      "markPrice": "0.32562000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789272000007,
+      "fundingRate": "-0.01900873",
+      "markPrice": "1.16830067",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789286400000,
+      "fundingRate": "-0.00735784",
+      "markPrice": "0.77110000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789300800001,
+      "fundingRate": "-0.02000000",
+      "markPrice": "0.82878000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789304400001,
+      "fundingRate": "-0.01359196",
+      "markPrice": "0.91849000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789308000000,
+      "fundingRate": "-0.00756097",
+      "markPrice": "0.93684000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789311600000,
+      "fundingRate": "-0.00373055",
+      "markPrice": "0.85369000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789315200000,
+      "fundingRate": "-0.00440261",
+      "markPrice": "0.92953281",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789318800002,
+      "fundingRate": "-0.00324461",
+      "markPrice": "0.99545422",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789322400000,
+      "fundingRate": "-0.00169693",
+      "markPrice": "0.95647000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789326000001,
+      "fundingRate": "-0.00113479",
+      "markPrice": "0.95811117",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789329600000,
+      "fundingRate": "-0.00199030",
+      "markPrice": "0.95890471",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789333200001,
+      "fundingRate": "-0.00108475",
+      "markPrice": "0.93284623",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789336800000,
+      "fundingRate": "-0.00086764",
+      "markPrice": "0.99913000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789340400002,
+      "fundingRate": "-0.00074909",
+      "markPrice": "0.95126463",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789344000000,
+      "fundingRate": "-0.00146710",
+      "markPrice": "0.78156000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789347600002,
+      "fundingRate": "-0.00225341",
+      "markPrice": "0.70541000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789351200006,
+      "fundingRate": "-0.00388541",
+      "markPrice": "0.84528969",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789354800001,
+      "fundingRate": "-0.00651094",
+      "markPrice": "0.79978010",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789358400000,
+      "fundingRate": "-0.00674482",
+      "markPrice": "0.77908853",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789362000003,
+      "fundingRate": "-0.00725111",
+      "markPrice": "0.83889000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789365600000,
+      "fundingRate": "-0.00823825",
+      "markPrice": "0.83269000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789369200000,
+      "fundingRate": "-0.00806237",
+      "markPrice": "0.87400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789372800000,
+      "fundingRate": "-0.01016179",
+      "markPrice": "0.92000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789376400000,
+      "fundingRate": "-0.01540436",
+      "markPrice": "0.96496000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789380000000,
+      "fundingRate": "-0.01318237",
+      "markPrice": "0.87550000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789383600000,
+      "fundingRate": "-0.01517790",
+      "markPrice": "0.78525368",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789387200002,
+      "fundingRate": "-0.01045856",
+      "markPrice": "0.72492689",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789390800000,
+      "fundingRate": "-0.01293227",
+      "markPrice": "0.60761000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789394400001,
+      "fundingRate": "-0.01389546",
+      "markPrice": "0.53869662",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789398000003,
+      "fundingRate": "-0.00754728",
+      "markPrice": "0.41973000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789401600000,
+      "fundingRate": "-0.00529943",
+      "markPrice": "0.41798000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789405200001,
+      "fundingRate": "-0.00329380",
+      "markPrice": "0.45467000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789408800000,
+      "fundingRate": "-0.00145257",
+      "markPrice": "0.41647000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789412400006,
+      "fundingRate": "-0.00160455",
+      "markPrice": "0.44148000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789416000008,
+      "fundingRate": "-0.00130268",
+      "markPrice": "0.41003581",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789419600001,
+      "fundingRate": "-0.00118466",
+      "markPrice": "0.40808000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789423200002,
+      "fundingRate": "-0.00196612",
+      "markPrice": "0.39641556",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789426800000,
+      "fundingRate": "-0.00261752",
+      "markPrice": "0.38048000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789430400000,
+      "fundingRate": "-0.00263861",
+      "markPrice": "0.37747000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789434000002,
+      "fundingRate": "-0.00396932",
+      "markPrice": "0.38277000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789437600000,
+      "fundingRate": "-0.00322329",
+      "markPrice": "0.38554000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789441200002,
+      "fundingRate": "-0.00247297",
+      "markPrice": "0.37525062",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789444800001,
+      "fundingRate": "-0.00268803",
+      "markPrice": "0.36506000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789448400001,
+      "fundingRate": "-0.00239260",
+      "markPrice": "0.37254065",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789452000000,
+      "fundingRate": "-0.00232173",
+      "markPrice": "0.40370845",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789455600000,
+      "fundingRate": "-0.00210300",
+      "markPrice": "0.44928323",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789459200005,
+      "fundingRate": "-0.00383025",
+      "markPrice": "0.42802577",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789462800000,
+      "fundingRate": "-0.00386724",
+      "markPrice": "0.41806610",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789466400000,
+      "fundingRate": "-0.00230003",
+      "markPrice": "0.38940000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789470000002,
+      "fundingRate": "-0.00220578",
+      "markPrice": "0.37286000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789473600005,
+      "fundingRate": "-0.00249647",
+      "markPrice": "0.37670421",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789477200000,
+      "fundingRate": "-0.00237214",
+      "markPrice": "0.37364216",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789480800002,
+      "fundingRate": "-0.00193506",
+      "markPrice": "0.37641000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789484400001,
+      "fundingRate": "-0.00203138",
+      "markPrice": "0.41022000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789488000001,
+      "fundingRate": "-0.00157342",
+      "markPrice": "0.41497873",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789491600001,
+      "fundingRate": "-0.00129348",
+      "markPrice": "0.42178000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789495200005,
+      "fundingRate": "-0.00092788",
+      "markPrice": "0.40154077",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789498800000,
+      "fundingRate": "-0.00151407",
+      "markPrice": "0.39153000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789502400000,
+      "fundingRate": "-0.00158087",
+      "markPrice": "0.38509909",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789506000000,
+      "fundingRate": "-0.00148248",
+      "markPrice": "0.38238282",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789509600002,
+      "fundingRate": "-0.00155423",
+      "markPrice": "0.37250249",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789513200002,
+      "fundingRate": "-0.00191951",
+      "markPrice": "0.37401000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789516800001,
+      "fundingRate": "-0.00266488",
+      "markPrice": "0.34094767",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789520400000,
+      "fundingRate": "-0.00387317",
+      "markPrice": "0.37962000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789524000000,
+      "fundingRate": "-0.00282880",
+      "markPrice": "0.37829822",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789527600000,
+      "fundingRate": "-0.00219662",
+      "markPrice": "0.42185000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789531200002,
+      "fundingRate": "-0.00094173",
+      "markPrice": "0.49603000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789534800000,
+      "fundingRate": "-0.00080394",
+      "markPrice": "0.54131000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789538400006,
+      "fundingRate": "-0.00071804",
+      "markPrice": "0.49202166",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789542000000,
+      "fundingRate": "-0.00096666",
+      "markPrice": "0.49311000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789545600002,
+      "fundingRate": "-0.00099889",
+      "markPrice": "0.51157770",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789549200000,
+      "fundingRate": "-0.00105878",
+      "markPrice": "0.52657208",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789552800000,
+      "fundingRate": "-0.00077955",
+      "markPrice": "0.54608000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789556400001,
+      "fundingRate": "-0.00076232",
+      "markPrice": "0.61290000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789560000002,
+      "fundingRate": "-0.00069910",
+      "markPrice": "0.66776000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789563600000,
+      "fundingRate": "-0.00055651",
+      "markPrice": "0.61407000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789567200007,
+      "fundingRate": "-0.00046841",
+      "markPrice": "0.57691853",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789570800000,
+      "fundingRate": "-0.00037875",
+      "markPrice": "0.61294000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789574400001,
+      "fundingRate": "-0.00034969",
+      "markPrice": "0.73371681",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789578000000,
+      "fundingRate": "0.00001250",
+      "markPrice": "0.82583135",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789581600000,
+      "fundingRate": "-0.00016655",
+      "markPrice": "0.77688478",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789585200002,
+      "fundingRate": "-0.00006722",
+      "markPrice": "0.73661053",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789588800000,
+      "fundingRate": "-0.00002030",
+      "markPrice": "0.70961985",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789592400006,
+      "fundingRate": "-0.00001594",
+      "markPrice": "0.72916579",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789596000000,
+      "fundingRate": "-0.00000442",
+      "markPrice": "0.67024196",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789599600003,
+      "fundingRate": "-0.00022567",
+      "markPrice": "0.52402732",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789603200000,
+      "fundingRate": "-0.00140044",
+      "markPrice": "0.47043015",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789606800001,
+      "fundingRate": "-0.00137857",
+      "markPrice": "0.50585000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789610400002,
+      "fundingRate": "-0.00171539",
+      "markPrice": "0.50032000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789614000000,
+      "fundingRate": "-0.00168426",
+      "markPrice": "0.50809000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789617600004,
+      "fundingRate": "-0.00169882",
+      "markPrice": "0.49909597",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789621200000,
+      "fundingRate": "-0.00233016",
+      "markPrice": "0.48057000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789624800002,
+      "fundingRate": "-0.00249415",
+      "markPrice": "0.50133000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789628400002,
+      "fundingRate": "-0.00256154",
+      "markPrice": "0.48196000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789632000003,
+      "fundingRate": "-0.00273227",
+      "markPrice": "0.47994351",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789635600000,
+      "fundingRate": "-0.00322297",
+      "markPrice": "0.48306095",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789639200000,
+      "fundingRate": "-0.00494796",
+      "markPrice": "0.47155000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789642800000,
+      "fundingRate": "-0.00652253",
+      "markPrice": "0.46982000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789646400000,
+      "fundingRate": "-0.00504370",
+      "markPrice": "0.45861913",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789650000001,
+      "fundingRate": "-0.00532148",
+      "markPrice": "0.46842369",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789653600000,
+      "fundingRate": "-0.00320310",
+      "markPrice": "0.48290000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789657200000,
+      "fundingRate": "-0.00498547",
+      "markPrice": "0.46428924",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789660800000,
+      "fundingRate": "-0.00578120",
+      "markPrice": "0.44839608",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789664400000,
+      "fundingRate": "-0.00420785",
+      "markPrice": "0.45789946",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789668000006,
+      "fundingRate": "-0.00328648",
+      "markPrice": "0.45319000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789671600002,
+      "fundingRate": "-0.00310850",
+      "markPrice": "0.44119000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789675200001,
+      "fundingRate": "-0.00328996",
+      "markPrice": "0.43246000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789678800002,
+      "fundingRate": "-0.00211902",
+      "markPrice": "0.43732000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789682400004,
+      "fundingRate": "-0.00310201",
+      "markPrice": "0.43848000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789686000001,
+      "fundingRate": "-0.00247145",
+      "markPrice": "0.44058000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789689600003,
+      "fundingRate": "-0.00285100",
+      "markPrice": "0.43133000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789693200000,
+      "fundingRate": "-0.00512097",
+      "markPrice": "0.44479000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789696800000,
+      "fundingRate": "-0.01096120",
+      "markPrice": "0.43158000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789700400002,
+      "fundingRate": "-0.00632390",
+      "markPrice": "0.42875000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789704000000,
+      "fundingRate": "-0.00627321",
+      "markPrice": "0.43103022",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789707600004,
+      "fundingRate": "-0.00443348",
+      "markPrice": "0.44198329",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789711200005,
+      "fundingRate": "-0.00471686",
+      "markPrice": "0.43384618",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789714800000,
+      "fundingRate": "-0.00584491",
+      "markPrice": "0.42719156",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789718400006,
+      "fundingRate": "-0.00561814",
+      "markPrice": "0.42870563",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789722000000,
+      "fundingRate": "-0.00502328",
+      "markPrice": "0.42489000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789725600000,
+      "fundingRate": "-0.00460753",
+      "markPrice": "0.43587000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789729200000,
+      "fundingRate": "-0.00308953",
+      "markPrice": "0.44071211",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789732800000,
+      "fundingRate": "-0.00272045",
+      "markPrice": "0.44680000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789736400001,
+      "fundingRate": "-0.00182414",
+      "markPrice": "0.45640646",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789740000001,
+      "fundingRate": "-0.00233126",
+      "markPrice": "0.47588000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789743600005,
+      "fundingRate": "-0.00104418",
+      "markPrice": "0.47444697",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789747200000,
+      "fundingRate": "-0.00147636",
+      "markPrice": "0.44590138",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789750800002,
+      "fundingRate": "-0.00078923",
+      "markPrice": "0.44397000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789754400005,
+      "fundingRate": "-0.00090049",
+      "markPrice": "0.44199000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789758000002,
+      "fundingRate": "-0.00088678",
+      "markPrice": "0.44443000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789761600001,
+      "fundingRate": "-0.00090789",
+      "markPrice": "0.44488134",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789765200009,
+      "fundingRate": "-0.00318114",
+      "markPrice": "0.43623000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789768800001,
+      "fundingRate": "-0.00295193",
+      "markPrice": "0.43606921",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789772400000,
+      "fundingRate": "-0.00259069",
+      "markPrice": "0.43349000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789776000000,
+      "fundingRate": "-0.00311515",
+      "markPrice": "0.43583384",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789779600000,
+      "fundingRate": "-0.00317344",
+      "markPrice": "0.42618732",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789783200000,
+      "fundingRate": "-0.00294035",
+      "markPrice": "0.42294887",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789786800007,
+      "fundingRate": "-0.00215012",
+      "markPrice": "0.41977000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789790400000,
+      "fundingRate": "-0.00173806",
+      "markPrice": "0.41320183",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789794000002,
+      "fundingRate": "-0.00197016",
+      "markPrice": "0.42286901",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789797600000,
+      "fundingRate": "-0.00238318",
+      "markPrice": "0.42531000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789801200000,
+      "fundingRate": "-0.00307377",
+      "markPrice": "0.44109000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789804800002,
+      "fundingRate": "-0.00318410",
+      "markPrice": "0.42999000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789808400004,
+      "fundingRate": "-0.00245964",
+      "markPrice": "0.43449623",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789812000002,
+      "fundingRate": "-0.00249065",
+      "markPrice": "0.44055193",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789815600000,
+      "fundingRate": "-0.00191145",
+      "markPrice": "0.44485000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789819200000,
+      "fundingRate": "-0.00169661",
+      "markPrice": "0.43837866",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789822800003,
+      "fundingRate": "-0.00118320",
+      "markPrice": "0.43722526",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789826400004,
+      "fundingRate": "-0.00137161",
+      "markPrice": "0.45151000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789830000000,
+      "fundingRate": "-0.00109920",
+      "markPrice": "0.44813000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789833600000,
+      "fundingRate": "-0.00107575",
+      "markPrice": "0.41974000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789837200000,
+      "fundingRate": "-0.00152763",
+      "markPrice": "0.42208000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789840800000,
+      "fundingRate": "-0.00175561",
+      "markPrice": "0.41812000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789844400006,
+      "fundingRate": "-0.00140111",
+      "markPrice": "0.41197000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789848000000,
+      "fundingRate": "-0.00099658",
+      "markPrice": "0.40456000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789851600001,
+      "fundingRate": "-0.00065785",
+      "markPrice": "0.39709000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789855200000,
+      "fundingRate": "-0.00056383",
+      "markPrice": "0.39228000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789858800001,
+      "fundingRate": "-0.00102328",
+      "markPrice": "0.39810000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789862400000,
+      "fundingRate": "-0.00113594",
+      "markPrice": "0.40418565",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789866000002,
+      "fundingRate": "-0.00131291",
+      "markPrice": "0.40830000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789869600001,
+      "fundingRate": "-0.00093009",
+      "markPrice": "0.40233994",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789873200000,
+      "fundingRate": "-0.00068614",
+      "markPrice": "0.38929000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789876800000,
+      "fundingRate": "-0.00042132",
+      "markPrice": "0.39090720",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789880400000,
+      "fundingRate": "-0.00039092",
+      "markPrice": "0.38743000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789884000000,
+      "fundingRate": "-0.00031888",
+      "markPrice": "0.38767000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789887600000,
+      "fundingRate": "-0.00050826",
+      "markPrice": "0.40099699",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789891200000,
+      "fundingRate": "-0.00071195",
+      "markPrice": "0.38466493",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789894800000,
+      "fundingRate": "-0.00098400",
+      "markPrice": "0.37638662",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789898400000,
+      "fundingRate": "-0.00099597",
+      "markPrice": "0.37166697",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789902000001,
+      "fundingRate": "-0.00113031",
+      "markPrice": "0.36963776",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789905600004,
+      "fundingRate": "-0.00094803",
+      "markPrice": "0.37187000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789909200000,
+      "fundingRate": "-0.00098474",
+      "markPrice": "0.37908000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789912800001,
+      "fundingRate": "-0.00068471",
+      "markPrice": "0.39960057",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789916400000,
+      "fundingRate": "-0.00054923",
+      "markPrice": "0.38054000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789920000000,
+      "fundingRate": "-0.00061344",
+      "markPrice": "0.40658742",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789923600000,
+      "fundingRate": "-0.00124201",
+      "markPrice": "0.40192000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789927200000,
+      "fundingRate": "-0.00029385",
+      "markPrice": "0.39062000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789930800000,
+      "fundingRate": "-0.00013112",
+      "markPrice": "0.37914849",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789934400000,
+      "fundingRate": "-0.00016327",
+      "markPrice": "0.37689925",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789938000000,
+      "fundingRate": "-0.00032463",
+      "markPrice": "0.37232000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789941600000,
+      "fundingRate": "-0.00044432",
+      "markPrice": "0.37200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789945200006,
+      "fundingRate": "-0.00045202",
+      "markPrice": "0.36746000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789948800007,
+      "fundingRate": "-0.00060220",
+      "markPrice": "0.36605000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789952400000,
+      "fundingRate": "-0.00052895",
+      "markPrice": "0.36863000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789956000002,
+      "fundingRate": "-0.00108239",
+      "markPrice": "0.36996000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789959600000,
+      "fundingRate": "-0.00172419",
+      "markPrice": "0.37243000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789963200002,
+      "fundingRate": "-0.00165550",
+      "markPrice": "0.37131159",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789966800000,
+      "fundingRate": "-0.00118496",
+      "markPrice": "0.36692000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789970400001,
+      "fundingRate": "-0.00120577",
+      "markPrice": "0.36497000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789974000008,
+      "fundingRate": "-0.00114198",
+      "markPrice": "0.36623000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789977600004,
+      "fundingRate": "-0.00129569",
+      "markPrice": "0.36541016",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789981200000,
+      "fundingRate": "-0.00076635",
+      "markPrice": "0.37513000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789984800002,
+      "fundingRate": "-0.00040129",
+      "markPrice": "0.38340158",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789988400000,
+      "fundingRate": "-0.00049377",
+      "markPrice": "0.38689000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789992000000,
+      "fundingRate": "-0.00018432",
+      "markPrice": "0.39926065",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789995600001,
+      "fundingRate": "-0.00012276",
+      "markPrice": "0.39642286",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "fundingTime": 1789999200001,
+      "fundingRate": "-0.00001556",
+      "markPrice": "0.39362379",
+      "rateType": "Regular"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-HK"><!-- InstanceBegin template="/Templates/subpage_.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no">
+  <!-- InstanceBeginEditable name="doctitle" -->
+  <title>創興銀行 - 公司資訊</title>
+  <!-- InstanceEndEditable -->
+  <link rel="stylesheet" type="text/css" href="../../../../../../css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../../../../../css/fontawesome-all.css">
+  <link rel="stylesheet" type="text/css" href="../../../../../../css/swiper.css">
+  <link rel="stylesheet" type="text/css" href="../../../../../../css/common.css">
+  <link rel="stylesheet" type="text/css" href="../../../../../../css/subpage.css">
+  <link rel="stylesheet" type="text/css" href="../../../../../../css/print.css">
+  <script src="../../../../../../js/jquery.min.js"></script>
+  <script src="../../../../../../js/bootstrap.min.js"></script>
+  <script src="../../../../../../js/swiper.min.js"></script>
+
+
+  <!--  subpage&main.js is inside body.shtml -->
+  
+  <link type="image/x-icon" rel="icon" href="/img/favicon2.ico">
+  <link type="image/x-icon" rel="shortcut icon" href="/img/favicon2.ico">
+<!--javascript-->
+  <script type="text/javascript">
+  
+     function logon_m(){
+        var iBankingLocation = "https://www.ibanking.chbank.com/index0041.html";
+        var isNetscape = (navigator.appName == "Netscape");
+        var features = '';
+        var winWidth = screen.availWidth > 1024 ? 1024 : screen.availWidth-10;
+        var winHeight = screen.availHeight >= 768 ? 768 : screen.availHeight-45;
+        var left = screen.availWidth <= 1024 ? 0 : (screen.availWidth-winWidth) / 2;
+        var top = (screen.availHeight - winHeight-45) / 2;
+        var ibank;
+
+        features = 'resizable, scrollbars, status, width=' + winWidth + ', height=' + winHeight;
+
+        if (isNetscape)
+        features += ', screenX=' + left + ', screenY=' + top;
+        else
+        features += ', left=' + left + ', top=' + top;
+
+        ibank = window.open(iBankingLocation,"ibank",features);
+
+        ibank.focus();
+        }
+
+
+        // Include header, body and footer
+        $(function(){
+                
+                $("#HeaderInclude").load("/tc/personal/include/header.shtml");
+                $("#BodyInclude").load("/tc/personal/include/body.shtml");
+                $("#FooterInclude").load("/tc/personal/include/footer.shtml");
+            });
+
+       
+
+
+
+  </script>
+
+</head>
+
+<body>
+  
+  <div id="HeaderInclude"></div>
+
+  <main>
+    <div id="BodyInclude"></div>
+    <!---------------------------------------- CMS Starts ------------------------------------>
+    <!---------------------------------------- Subpage Banner photo ------------------------->
+    <!-- <div class="pageKeyVisual" style="background-image: url(../../../../../../../img/insurance-detail-bg.jpg);">-->
+      <div class="pageKeyVisual" style="background-image: url(../../../../../../data/media/image/20200805-163619090.jpg);">
+        <h1 class="pageTitle">公司資訊</div>
+      </div>
+    <div class="detail-content">
+      <div class="simple-text-tab-content">
+        <div class="container">
+          <div class="navigation"><ol class="breadcrumb"><li><a href="/tc/homepage.shtml">主頁</a></li><li><a href="/tc/personal/index.shtml">個人銀行</a></li><li><a href="/tc/personal/footer/index.shtml">頁尾</a></li><li><a href="/tc/personal/footer/about-ch-bank/index.shtml">關於我們</a></li><li><a href="/tc/personal/footer/about-ch-bank/corporate-news/index.shtml">公司資訊</a></li><li>公司資訊</li></ol></div>
+                <div class="content-medium">
+                <div class="title"></div>
+                <p><p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><strong><u>調整銀行服務收費通知</u></strong></p>
+<p style="text-align: center;">&nbsp;</p>
+<p>由2025年11月1日起，本行將向每位收取郵寄月結單的客戶，每月收取港幣5元的郵寄月結單費用。請親臨本行任何香港分行、致電本行客戶服務熱線(852) 3768 6888或<a href="https://www.chbank.com/data/media/document/PDSM_ML070925E.pdf">按此</a>查閱相關收費資料。</p>
+<p>&nbsp;</p>
+<p>創興銀行有限公司 <sub>謹啟</sub><sub><br /></sub>2025年9月15日</p></p>
+                </div>
+        </div>
+      </div>
+    </div>
+
+<!---------------------------------------- CMS Ends --------------------------------------------->
+</main>
+
+
+
+<div id="FooterInclude"></div>
+
+    <!-- InstanceBeginEditable name="footer" -->
+  <!-- InstanceEndEditable -->
+
+</body>
+<!-- InstanceEnd --></html>
+<script>var activeElement;
+  function createModal(){
+
+    var modal = document.createElement('div');
+    modal.className="modal";
+    modal.id="modal";
+  }
+
+  var _modal=document.getElementById("modal");
+  //console.log(_modal);
+
+  // When the user clicks on <span> (x), close the modal
+  function e_close() {
+    // alert("close");
+    _modal.style.display = "none";
+    _modal.parentNode.removeChild(_modal);activeElement.focus()
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == _modal) {
+      _modal.style.display = "none";
+      _modal.parentNode.removeChild(_modal);
+    }
+  }
+
+
+  // When the user clicks the button, open the modal
+  function e_alert(link) {
+
+    var modal = document.createElement('div');
+    modal.className="modal";
+    modal.id="modal";
+    activeElement = document.activeElement;
+//modal=document.getElementById("modal");
+
+
+    var HTMLContent ='<div class="modal-content" ><div class="modal-header"><button id="linkCloseBtn" title="關閉" class="close" onclick="e_close();">&times;</button><h2>External Link Alert</h2></div><div class="modal-body"></br><p>此連結將連接至<u>"'+link+'"</u></p><p>閣下將連結至第三方網站，對任何由於閣下接入連結及使用該網站之風險，創興銀行概不負責。</p><div align="center"><a href="'+link+'" target="_blank"> <button title=""確認 class="btn btn-gradient "  name="read"  >確認</button></a></br></br></br></div></div></div>';
+
+    document.body.appendChild(modal);
+    document.getElementById('modal').innerHTML = (HTMLContent);
+    modal.style.display = "block";
+    var linkCloseBtn = document.getElementById("linkCloseBtn")
+    linkCloseBtn.focus()
+    _modal=document.getElementById("modal");
+//alert(_modal);
+  }
+
+</script>

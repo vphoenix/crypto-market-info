@@ -1,0 +1,23 @@
+When you  offer funds  on Bitfinex, you will be providing your funds to the Bitfinex P2P funding market for traders to borrow for their margin positions and the Bitfinex Borrow platform. 
+ Important: 
+ 
+ 
+ Margin Trading, Margin Funding, and Bitfinex Borrow requires at least  Intermediate  level verification for all Bitfinex accounts created after March 1, 2022.  Only Bitfinex accounts created before March 1st, 2022 will be able to access these features with  Basic Plus  verification. 
+ 
+ 
+ — What are the risks of offering funding? 
+ The risks of offering funding are low due to the design of the Bitfinex underlying risk-limiting engine. We have taken the following steps to reduce the risk (funding providers) of losing money: 
+ 
+ If a trader's position is at a loss, they will cover the loss with funds in his margin wallet. The funds in the margin wallet serve as collateral only. 
+ 
+ A trader's position is liquidated when the net value of their account falls below the  maintenance margin . 
+ 
+ 
+ — What if the market changes too fast? 
+ In the event, and this has never happened, the market would drop (or rise) so fast that the forced liquidations cannot be matched quickly enough to bids/asks in the order book, Bitfinex has algorithms in place to slow down liquidation to prevent the situation from spinning out of control.  
+ In theory, these measures could still cause margin traders to lose more than the funds they hold in their accounts as collateral. Up to a certain point, we will cover the losses; however, if the price would change so dramatically that the majority of all margin positions would drop below zero, losses eventually will be shared with margin funding providers.  
+ This has never happened in the existence of the Bitfinex platform, but in theory, it could happen. 
+ You can find more information in our  Terms of Service . 
+ — Is providing margin funding risk-free? 
+ Providing liquidity in margin funding is not risk-free; however, interest rates are typically far higher than achievable through a typical savings account.  
+ If you have any other inquiries, please feel free to reach out to  Bitfinex Support .

@@ -1,0 +1,78 @@
+[
+  {
+    "url": "https://www.bitfinex.com/legal/exchange/terms/",
+    "name": "bitfinex-terms-page.html",
+    "fetched_at": "2026-09-13T14:06:00.382855+00:00",
+    "sha256": "2df3f3f62e68b86291e5968f6deb3b0b8cac47c1a6af631c70526ca84d7de204"
+  },
+  {
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:legal:terms:tos",
+    "name": "bitfinex-tos.json",
+    "fetched_at": "2026-09-13T14:07:53.221660+00:00",
+    "sha256": "0b9afe9cc38426064a796a299cd9c65e36805bc27b99ac91a30ecd547e8a0e73",
+    "bytes": 117364
+  },
+  {
+    "url": "https://api-pub.bitfinex.com/v2/conf/pub:legal:terms:rds",
+    "name": "bitfinex-rds.json",
+    "fetched_at": "2026-09-13T14:07:53.146703+00:00",
+    "sha256": "f44965fa6c7b1582029033a420cb88549440e59b35d5fbf0d8b0adad42dabccd",
+    "bytes": 9290
+  },
+  {
+    "url": "https://assets.ctfassets.net/vyse88cgwfbl/2kYf7r64h3tzwiu6F0CbUB/2997abd2f11ecea74a21528048b50707/Opinion___Report_-_Tether_International_Financial_Figure_30-06-2026.pdf",
+    "name": "tether-2026-q2.pdf",
+    "fetched_at": "2026-09-13T14:07:53.041993+00:00",
+    "sha256": "aa7322474c671beb4d02e2052dce36f4c0dc4482851021f782bf44ab7aba5ea1",
+    "bytes": 452960
+  },
+  {
+    "url": "https://raw.githubusercontent.com/bitfinexcom/pub/main/wallets.txt",
+    "name": "bitfinex-wallets.txt",
+    "fetched_at": "2026-09-13T14:07:53.113223+00:00",
+    "sha256": "1ffb55547342927abf5a6bc5486b8842342f90e9b598489cdf65199fbaa55a55",
+    "bytes": 9406
+  },
+  {
+    "url": "https://ag.ny.gov/sites/default/files/settlements-agreements/ifinex_inc.pdf",
+    "name": "nyag-settlement-2021.pdf",
+    "fetched_at": "2026-09-13T14:07:53.554833+00:00",
+    "sha256": "6d6e10deed411922611fb5469a24f36d17d1f3c41cd423df6705299652e935bd",
+    "bytes": 537429
+  },
+  {
+    "name": "tether-legal.html",
+    "url": "https://tether.to/en/legal/",
+    "fetched_at": "2026-09-13T14:12:08.768335+00:00",
+    "bytes": 147563,
+    "sha256": "688b6461e415398a5ac6d2ad2f651aba340b71ea80dd513347d89903c0959fbc"
+  },
+  {
+    "name": "tether-2025-audit-announcement.html",
+    "url": "https://tether.io/news/tether-completes-the-largest-inaugural-financial-audit-in-history/",
+    "fetched_at": "2026-09-13T14:12:08.304906+00:00",
+    "bytes": 42729,
+    "sha256": "f7b41bbe22eb77352dd7103c4498cb923d8ffa366f7cc6c49de7e55ef4ec6ab1"
+  },
+  {
+    "name": "tether-transparency.html",
+    "url": "https://tether.to/en/transparency/",
+    "fetched_at": "2026-09-13T14:12:08.553571+00:00",
+    "bytes": 48742,
+    "sha256": "f676056ea0d3163088452f7923fee0fc3b2d1b7eaf7eadef2c4b41bc05be9dc9"
+  },
+  {
+    "name": "tether-rid.pdf",
+    "url": "https://tether.to/public/Relevant_Information_Document_-_Tether_International%2C_S.A._de_C.V..pdf",
+    "fetched_at": "2026-09-13T14:12:09.311524+00:00",
+    "bytes": 491169,
+    "sha256": "a0957af1cab15e9239f1d4f9234941e7add1c12cc2290e08546b1dd258f1db17"
+  },
+  {
+    "name": "tether-fees.html",
+    "url": "https://tether.to/en/fees/",
+    "fetched_at": "2026-09-13T14:12:08.606812+00:00",
+    "bytes": 49631,
+    "sha256": "fa7503a9669be88b39c41b5b5bc7a901fa7f23c8b175c3d063a157618be70346"
+  }
+]

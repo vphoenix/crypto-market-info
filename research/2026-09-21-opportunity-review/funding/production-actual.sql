@@ -1,0 +1,1 @@
+SELECT instrument_id,funding_time,toString(argMax(rate,hour_time)) AS settled_rate,count() AS duplicate_rows,uniqExact(rate) AS distinct_rates FROM crypto_market_info.funding_rate_hourly FINAL WHERE is_actual GROUP BY instrument_id,funding_time ORDER BY instrument_id,funding_time

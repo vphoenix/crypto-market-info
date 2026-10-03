@@ -1,0 +1,7 @@
+{
+  "name": "depth-bybit-STEEM",
+  "url": "https://api.bybit.com/v5/market/orderbook?category=linear&limit=200&symbol=STEEMUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:24.602056+00:00",
+  "sha256": "2a3642ecad2e22ea6e58238f97b370409205538d4f30587f97868c7a88cfd54b",
+  "rows": null
+}

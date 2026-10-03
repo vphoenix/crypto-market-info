@@ -1,0 +1,7 @@
+{
+  "name": "depth-binance-STEEM",
+  "url": "https://fapi.binance.com/fapi/v1/depth?limit=100&symbol=STEEMUSDT",
+  "retrieved_at_utc": "2026-09-16T10:33:23.936217+00:00",
+  "sha256": "4c69bfd8032ba2600ccbea6d4ad5acedb88dd656a7e56ef8c8f6529ebb3d1cfc",
+  "rows": null
+}

@@ -1,0 +1,3509 @@
+{
+  "venue": "Binance",
+  "symbol": "DEXEUSDT",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=DEXEUSDT&limit=1000",
+  "fetched_at": "2026-09-12T19:15:07.101589+00:00",
+  "payload_sha256": "41b4acb6b449af402e1c31c336b914fbb8f515baba7df080455c198c7cbc19e4",
+  "data": [
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785074400000,
+      "fundingRate": "-0.00318557",
+      "markPrice": "3.59300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785078000000,
+      "fundingRate": "-0.00308681",
+      "markPrice": "3.63600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785081600000,
+      "fundingRate": "-0.00322899",
+      "markPrice": "3.54570167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785085200001,
+      "fundingRate": "-0.00368553",
+      "markPrice": "3.36400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785088800003,
+      "fundingRate": "-0.00311991",
+      "markPrice": "3.43231036",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785092400000,
+      "fundingRate": "-0.00256555",
+      "markPrice": "3.43200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785096000000,
+      "fundingRate": "-0.00276490",
+      "markPrice": "3.52000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785099600001,
+      "fundingRate": "-0.00207252",
+      "markPrice": "3.55601367",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785103200001,
+      "fundingRate": "-0.00146906",
+      "markPrice": "3.51400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785106800000,
+      "fundingRate": "-0.00171562",
+      "markPrice": "3.57790488",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785110400010,
+      "fundingRate": "-0.00215871",
+      "markPrice": "3.52700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785114000000,
+      "fundingRate": "-0.00294738",
+      "markPrice": "3.47500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785117600000,
+      "fundingRate": "-0.00452874",
+      "markPrice": "3.17593595",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785121200003,
+      "fundingRate": "-0.00243807",
+      "markPrice": "3.20285345",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785124800000,
+      "fundingRate": "-0.00070073",
+      "markPrice": "3.33357869",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785128400000,
+      "fundingRate": "-0.00174652",
+      "markPrice": "3.13866131",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785132000000,
+      "fundingRate": "-0.00261861",
+      "markPrice": "3.20548298",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785135600000,
+      "fundingRate": "-0.00359229",
+      "markPrice": "3.08059655",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785139200000,
+      "fundingRate": "-0.00292160",
+      "markPrice": "2.94500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785142800001,
+      "fundingRate": "-0.00152853",
+      "markPrice": "2.74405440",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785146400001,
+      "fundingRate": "-0.00213821",
+      "markPrice": "2.57200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785150000001,
+      "fundingRate": "-0.00191948",
+      "markPrice": "2.62800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785153600000,
+      "fundingRate": "-0.00157857",
+      "markPrice": "2.59500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785157200000,
+      "fundingRate": "-0.00137310",
+      "markPrice": "2.53600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785160800000,
+      "fundingRate": "-0.00099540",
+      "markPrice": "2.43085476",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785164400002,
+      "fundingRate": "-0.00133302",
+      "markPrice": "2.71904440",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785168000001,
+      "fundingRate": "-0.00181384",
+      "markPrice": "2.64600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785171600000,
+      "fundingRate": "-0.00110488",
+      "markPrice": "2.61988905",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785175200000,
+      "fundingRate": "-0.00148292",
+      "markPrice": "2.59900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785178800001,
+      "fundingRate": "-0.00183674",
+      "markPrice": "2.54600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785182400004,
+      "fundingRate": "-0.00181665",
+      "markPrice": "2.53700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785186000000,
+      "fundingRate": "-0.00137184",
+      "markPrice": "2.79800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785189600007,
+      "fundingRate": "-0.00072512",
+      "markPrice": "2.69210476",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785193200000,
+      "fundingRate": "-0.00075384",
+      "markPrice": "2.58600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785196800000,
+      "fundingRate": "-0.00103971",
+      "markPrice": "2.60000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785200400000,
+      "fundingRate": "-0.00080174",
+      "markPrice": "2.69400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785204000000,
+      "fundingRate": "-0.00054331",
+      "markPrice": "2.83000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785207600002,
+      "fundingRate": "-0.00053806",
+      "markPrice": "2.89000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785211200012,
+      "fundingRate": "-0.00043371",
+      "markPrice": "2.89500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785214800000,
+      "fundingRate": "-0.00049250",
+      "markPrice": "2.88204857",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785218400000,
+      "fundingRate": "-0.00025305",
+      "markPrice": "3.08600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785222000002,
+      "fundingRate": "-0.00040172",
+      "markPrice": "3.19400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785225600000,
+      "fundingRate": "-0.00034168",
+      "markPrice": "3.31135123",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785229200000,
+      "fundingRate": "-0.00009840",
+      "markPrice": "3.47900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785232800009,
+      "fundingRate": "-0.00027115",
+      "markPrice": "3.17800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785236400001,
+      "fundingRate": "-0.00012713",
+      "markPrice": "3.28500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785240000001,
+      "fundingRate": "-0.00017195",
+      "markPrice": "3.20610310",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785243600007,
+      "fundingRate": "-0.00006872",
+      "markPrice": "3.41432095",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785247200006,
+      "fundingRate": "-0.00030500",
+      "markPrice": "3.31163655",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785250800000,
+      "fundingRate": "-0.00020090",
+      "markPrice": "3.33249333",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785254400000,
+      "fundingRate": "-0.00018459",
+      "markPrice": "3.14902774",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785258000000,
+      "fundingRate": "-0.00017402",
+      "markPrice": "3.13082869",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785261600000,
+      "fundingRate": "-0.00009004",
+      "markPrice": "3.08400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785265200000,
+      "fundingRate": "-0.00006145",
+      "markPrice": "3.06600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785268800000,
+      "fundingRate": "-0.00020628",
+      "markPrice": "3.06883762",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785272400008,
+      "fundingRate": "-0.00005466",
+      "markPrice": "3.01600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785276000000,
+      "fundingRate": "-0.00009909",
+      "markPrice": "2.94521167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785279600000,
+      "fundingRate": "-0.00030780",
+      "markPrice": "2.90855952",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785283200000,
+      "fundingRate": "-0.00032139",
+      "markPrice": "2.97700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785286800003,
+      "fundingRate": "-0.00039872",
+      "markPrice": "3.00500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785290400000,
+      "fundingRate": "-0.00032872",
+      "markPrice": "2.83200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785294000000,
+      "fundingRate": "-0.00026006",
+      "markPrice": "2.79029321",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785297600000,
+      "fundingRate": "-0.00029916",
+      "markPrice": "2.69914298",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785301200000,
+      "fundingRate": "-0.00028457",
+      "markPrice": "2.82054940",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785304800001,
+      "fundingRate": "-0.00042640",
+      "markPrice": "2.86200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785308400003,
+      "fundingRate": "-0.00042267",
+      "markPrice": "2.88066048",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785312000002,
+      "fundingRate": "-0.00030411",
+      "markPrice": "2.90479938",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785315600001,
+      "fundingRate": "-0.00028891",
+      "markPrice": "2.86909238",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785319200002,
+      "fundingRate": "-0.00017537",
+      "markPrice": "2.82044143",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785322800000,
+      "fundingRate": "-0.00022338",
+      "markPrice": "2.84400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785326400007,
+      "fundingRate": "-0.00032222",
+      "markPrice": "2.78200857",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785330000000,
+      "fundingRate": "-0.00026103",
+      "markPrice": "2.78400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785333600001,
+      "fundingRate": "-0.00034130",
+      "markPrice": "2.74800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785337200000,
+      "fundingRate": "-0.00023539",
+      "markPrice": "2.76051690",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785340800000,
+      "fundingRate": "-0.00033754",
+      "markPrice": "2.71144845",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785344400000,
+      "fundingRate": "-0.00036581",
+      "markPrice": "2.77200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785348000001,
+      "fundingRate": "-0.00024644",
+      "markPrice": "2.85167119",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785351600003,
+      "fundingRate": "-0.00029186",
+      "markPrice": "2.76722071",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785355200003,
+      "fundingRate": "-0.00025035",
+      "markPrice": "2.73413714",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785358800004,
+      "fundingRate": "-0.00017669",
+      "markPrice": "2.77700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785362400000,
+      "fundingRate": "-0.00011271",
+      "markPrice": "2.82000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785366000001,
+      "fundingRate": "-0.00009383",
+      "markPrice": "2.80398595",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785369600000,
+      "fundingRate": "-0.00015197",
+      "markPrice": "2.74860298",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785373200008,
+      "fundingRate": "-0.00070974",
+      "markPrice": "2.67075167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785376800000,
+      "fundingRate": "-0.00084757",
+      "markPrice": "2.68900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785380400000,
+      "fundingRate": "-0.00095569",
+      "markPrice": "2.65605262",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785384000001,
+      "fundingRate": "-0.00120959",
+      "markPrice": "2.54972786",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785387600000,
+      "fundingRate": "-0.00169288",
+      "markPrice": "2.54600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785391200000,
+      "fundingRate": "-0.00151805",
+      "markPrice": "2.54421712",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785394800007,
+      "fundingRate": "-0.00125411",
+      "markPrice": "2.53600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785398400000,
+      "fundingRate": "-0.00146882",
+      "markPrice": "2.49788274",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785402000000,
+      "fundingRate": "-0.00174029",
+      "markPrice": "2.48300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785405600000,
+      "fundingRate": "-0.00204136",
+      "markPrice": "2.43900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785409200005,
+      "fundingRate": "-0.00190430",
+      "markPrice": "2.41100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785412800000,
+      "fundingRate": "-0.00141195",
+      "markPrice": "2.47022321",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785416400001,
+      "fundingRate": "-0.00195807",
+      "markPrice": "2.50000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785420000000,
+      "fundingRate": "-0.00238215",
+      "markPrice": "2.52570679",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785423600002,
+      "fundingRate": "-0.00175373",
+      "markPrice": "2.46638631",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785427200000,
+      "fundingRate": "-0.00130826",
+      "markPrice": "2.44500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785430800006,
+      "fundingRate": "-0.00177452",
+      "markPrice": "2.27300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785434400000,
+      "fundingRate": "-0.00288312",
+      "markPrice": "2.29600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785438000009,
+      "fundingRate": "-0.00338503",
+      "markPrice": "2.35400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785441600003,
+      "fundingRate": "-0.00313073",
+      "markPrice": "2.32300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785445200000,
+      "fundingRate": "-0.00300804",
+      "markPrice": "2.26755940",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785448800000,
+      "fundingRate": "-0.00374843",
+      "markPrice": "2.22300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785452400009,
+      "fundingRate": "-0.00385586",
+      "markPrice": "2.23600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785456000003,
+      "fundingRate": "-0.00370024",
+      "markPrice": "2.29100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785459600002,
+      "fundingRate": "-0.00297322",
+      "markPrice": "2.25600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785463200000,
+      "fundingRate": "-0.00184609",
+      "markPrice": "2.19800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785466800000,
+      "fundingRate": "-0.00161730",
+      "markPrice": "2.28122583",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785470400000,
+      "fundingRate": "-0.00120067",
+      "markPrice": "2.35313667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785474000000,
+      "fundingRate": "-0.00103600",
+      "markPrice": "2.26000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785477600001,
+      "fundingRate": "-0.00084653",
+      "markPrice": "2.53100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785481200000,
+      "fundingRate": "-0.00054149",
+      "markPrice": "2.44500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785484800000,
+      "fundingRate": "-0.00086895",
+      "markPrice": "2.52936345",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785488400000,
+      "fundingRate": "-0.00074339",
+      "markPrice": "2.52837476",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785492000000,
+      "fundingRate": "-0.00050589",
+      "markPrice": "2.48700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785495600000,
+      "fundingRate": "-0.00041867",
+      "markPrice": "2.47648738",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785499200000,
+      "fundingRate": "-0.00035941",
+      "markPrice": "2.48195476",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785502800000,
+      "fundingRate": "-0.00042476",
+      "markPrice": "2.45400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785506400001,
+      "fundingRate": "-0.00029556",
+      "markPrice": "2.40600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785510000006,
+      "fundingRate": "-0.00030165",
+      "markPrice": "2.53597405",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785513600000,
+      "fundingRate": "-0.00016576",
+      "markPrice": "2.57081613",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785517200002,
+      "fundingRate": "-0.00008566",
+      "markPrice": "2.59800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785520800000,
+      "fundingRate": "-0.00013637",
+      "markPrice": "2.59900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785524400002,
+      "fundingRate": "-0.00020515",
+      "markPrice": "2.50716857",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785528000001,
+      "fundingRate": "-0.00029258",
+      "markPrice": "2.49468905",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785531600000,
+      "fundingRate": "-0.00029084",
+      "markPrice": "2.48700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785535200000,
+      "fundingRate": "-0.00013887",
+      "markPrice": "2.51098131",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785538800000,
+      "fundingRate": "-0.00014728",
+      "markPrice": "2.48832762",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785542400001,
+      "fundingRate": "-0.00012960",
+      "markPrice": "2.59991762",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785546000000,
+      "fundingRate": "-0.00008658",
+      "markPrice": "2.63490821",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785549600004,
+      "fundingRate": "-0.00002155",
+      "markPrice": "2.56400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785553200001,
+      "fundingRate": "-0.00007974",
+      "markPrice": "2.53426762",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785556800000,
+      "fundingRate": "-0.00019501",
+      "markPrice": "2.49100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785560400000,
+      "fundingRate": "-0.00034699",
+      "markPrice": "2.48400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785564000001,
+      "fundingRate": "-0.00025806",
+      "markPrice": "2.44859857",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785567600001,
+      "fundingRate": "-0.00033456",
+      "markPrice": "2.41080179",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785571200000,
+      "fundingRate": "-0.00047847",
+      "markPrice": "2.39400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785574800001,
+      "fundingRate": "-0.00075164",
+      "markPrice": "2.41400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785578400000,
+      "fundingRate": "-0.00090815",
+      "markPrice": "2.39900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785582000002,
+      "fundingRate": "-0.00068517",
+      "markPrice": "2.39100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785585600000,
+      "fundingRate": "-0.00047219",
+      "markPrice": "2.41604548",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785589200007,
+      "fundingRate": "-0.00026066",
+      "markPrice": "2.44650667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785592800000,
+      "fundingRate": "-0.00030021",
+      "markPrice": "2.46106452",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785596400000,
+      "fundingRate": "-0.00024421",
+      "markPrice": "2.44464076",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785600000000,
+      "fundingRate": "-0.00023782",
+      "markPrice": "2.41215286",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785603600002,
+      "fundingRate": "-0.00027921",
+      "markPrice": "2.41489917",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785607200002,
+      "fundingRate": "-0.00024672",
+      "markPrice": "2.37644107",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785610800000,
+      "fundingRate": "-0.00031758",
+      "markPrice": "2.39600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785614400000,
+      "fundingRate": "-0.00016215",
+      "markPrice": "2.38670000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785618000000,
+      "fundingRate": "-0.00030667",
+      "markPrice": "2.39500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785621600002,
+      "fundingRate": "-0.00016581",
+      "markPrice": "2.37433214",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785625200008,
+      "fundingRate": "-0.00027352",
+      "markPrice": "2.38028333",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785628800000,
+      "fundingRate": "-0.00030524",
+      "markPrice": "2.33447143",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785632400000,
+      "fundingRate": "-0.00032140",
+      "markPrice": "2.33732857",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785636000001,
+      "fundingRate": "-0.00029641",
+      "markPrice": "2.31851667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785639600000,
+      "fundingRate": "-0.00052035",
+      "markPrice": "2.30500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785643200000,
+      "fundingRate": "-0.00066205",
+      "markPrice": "2.29600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785646800000,
+      "fundingRate": "-0.00078344",
+      "markPrice": "2.28400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785650400000,
+      "fundingRate": "-0.00091807",
+      "markPrice": "2.30115119",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785654000005,
+      "fundingRate": "-0.00126511",
+      "markPrice": "2.28943583",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785657600000,
+      "fundingRate": "-0.00116602",
+      "markPrice": "2.28926071",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785661200002,
+      "fundingRate": "-0.00142717",
+      "markPrice": "2.27000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785664800001,
+      "fundingRate": "-0.00115080",
+      "markPrice": "2.29200238",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785668400000,
+      "fundingRate": "-0.00123250",
+      "markPrice": "2.29200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785672000007,
+      "fundingRate": "-0.00107824",
+      "markPrice": "2.32200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785675600000,
+      "fundingRate": "-0.00093168",
+      "markPrice": "2.35400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785679200000,
+      "fundingRate": "-0.00074674",
+      "markPrice": "2.35500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785682800000,
+      "fundingRate": "-0.00058085",
+      "markPrice": "2.32600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785686400000,
+      "fundingRate": "-0.00044716",
+      "markPrice": "2.36700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785690000000,
+      "fundingRate": "-0.00036062",
+      "markPrice": "2.38100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785693600001,
+      "fundingRate": "-0.00033945",
+      "markPrice": "2.43900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785697200000,
+      "fundingRate": "-0.00027844",
+      "markPrice": "2.44831527",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785700800002,
+      "fundingRate": "-0.00026913",
+      "markPrice": "2.42152619",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785704400000,
+      "fundingRate": "-0.00013024",
+      "markPrice": "2.40696786",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785708000000,
+      "fundingRate": "-0.00012018",
+      "markPrice": "2.36161190",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785711600000,
+      "fundingRate": "-0.00024668",
+      "markPrice": "2.30400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785715200000,
+      "fundingRate": "-0.00036650",
+      "markPrice": "2.30500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785718800000,
+      "fundingRate": "-0.00029548",
+      "markPrice": "2.29817964",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785722400002,
+      "fundingRate": "-0.00033042",
+      "markPrice": "2.28422810",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785726000004,
+      "fundingRate": "-0.00036983",
+      "markPrice": "2.28000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785729600000,
+      "fundingRate": "-0.00056765",
+      "markPrice": "2.25604381",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785733200009,
+      "fundingRate": "-0.00066769",
+      "markPrice": "2.24713621",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785736800000,
+      "fundingRate": "-0.00098347",
+      "markPrice": "2.25303167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785740400000,
+      "fundingRate": "-0.00094593",
+      "markPrice": "2.23600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785744000000,
+      "fundingRate": "-0.00113904",
+      "markPrice": "2.23200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785747600000,
+      "fundingRate": "-0.00108068",
+      "markPrice": "2.23945929",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785751200000,
+      "fundingRate": "-0.00120001",
+      "markPrice": "2.23235869",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785754800000,
+      "fundingRate": "-0.00164184",
+      "markPrice": "2.22500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785758400000,
+      "fundingRate": "-0.00189668",
+      "markPrice": "2.18000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785762000000,
+      "fundingRate": "-0.00213372",
+      "markPrice": "2.15054667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785765600004,
+      "fundingRate": "-0.00276796",
+      "markPrice": "2.10767857",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785769200000,
+      "fundingRate": "-0.00338889",
+      "markPrice": "2.13200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785772800000,
+      "fundingRate": "-0.00406173",
+      "markPrice": "2.13200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785776400003,
+      "fundingRate": "-0.00577967",
+      "markPrice": "2.13335394",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785780000000,
+      "fundingRate": "-0.00610200",
+      "markPrice": "2.13086631",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785783600007,
+      "fundingRate": "-0.00488339",
+      "markPrice": "2.15722024",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785787200003,
+      "fundingRate": "-0.00424616",
+      "markPrice": "2.17593810",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785790800001,
+      "fundingRate": "-0.00261097",
+      "markPrice": "2.23100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785794400000,
+      "fundingRate": "-0.00110810",
+      "markPrice": "2.26300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785798000000,
+      "fundingRate": "-0.00109065",
+      "markPrice": "2.27200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785801600004,
+      "fundingRate": "-0.00109946",
+      "markPrice": "2.20450833",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785805200000,
+      "fundingRate": "-0.00099090",
+      "markPrice": "2.21914643",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785808800000,
+      "fundingRate": "-0.00062140",
+      "markPrice": "2.21200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785812400002,
+      "fundingRate": "-0.00056618",
+      "markPrice": "2.21511714",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785816000002,
+      "fundingRate": "-0.00054386",
+      "markPrice": "2.23355893",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785819600000,
+      "fundingRate": "-0.00046413",
+      "markPrice": "2.21800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785823200000,
+      "fundingRate": "-0.00046315",
+      "markPrice": "2.22070739",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785826800000,
+      "fundingRate": "-0.00036698",
+      "markPrice": "2.21534774",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785830400002,
+      "fundingRate": "-0.00033250",
+      "markPrice": "2.18000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785834000000,
+      "fundingRate": "-0.00053572",
+      "markPrice": "2.17500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785837600000,
+      "fundingRate": "-0.00068420",
+      "markPrice": "2.19300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785841200000,
+      "fundingRate": "-0.00060402",
+      "markPrice": "2.24300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785844800002,
+      "fundingRate": "-0.00065513",
+      "markPrice": "2.24611048",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785848400000,
+      "fundingRate": "-0.00077733",
+      "markPrice": "2.25266667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785852000003,
+      "fundingRate": "-0.00080897",
+      "markPrice": "2.27106667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785855600003,
+      "fundingRate": "-0.00081393",
+      "markPrice": "2.25400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785859200000,
+      "fundingRate": "-0.00102437",
+      "markPrice": "2.29930833",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785862800000,
+      "fundingRate": "-0.00073290",
+      "markPrice": "2.29358107",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785866400006,
+      "fundingRate": "-0.00064911",
+      "markPrice": "2.29600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785870000011,
+      "fundingRate": "-0.00041207",
+      "markPrice": "2.28269726",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785873600000,
+      "fundingRate": "-0.00029648",
+      "markPrice": "2.31500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785877200002,
+      "fundingRate": "-0.00018052",
+      "markPrice": "2.35800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785880800000,
+      "fundingRate": "-0.00020141",
+      "markPrice": "2.29518810",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785884400006,
+      "fundingRate": "-0.00023049",
+      "markPrice": "2.26800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785888000003,
+      "fundingRate": "-0.00024977",
+      "markPrice": "2.25409167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785891600007,
+      "fundingRate": "-0.00022193",
+      "markPrice": "2.32302786",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785895200000,
+      "fundingRate": "-0.00001930",
+      "markPrice": "2.46358321",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785898800000,
+      "fundingRate": "-0.00002343",
+      "markPrice": "2.45000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785902400001,
+      "fundingRate": "-0.00000769",
+      "markPrice": "2.37473095",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785906000000,
+      "fundingRate": "-0.00006618",
+      "markPrice": "2.33328988",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785909600000,
+      "fundingRate": "-0.00011189",
+      "markPrice": "2.31900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785913200000,
+      "fundingRate": "-0.00012026",
+      "markPrice": "2.29700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785916800004,
+      "fundingRate": "-0.00022012",
+      "markPrice": "2.28000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785920400000,
+      "fundingRate": "-0.00026663",
+      "markPrice": "2.28327619",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785924000000,
+      "fundingRate": "-0.00033009",
+      "markPrice": "2.26612095",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785927600004,
+      "fundingRate": "-0.00043416",
+      "markPrice": "2.28100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785931200008,
+      "fundingRate": "-0.00041692",
+      "markPrice": "2.25100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785934800000,
+      "fundingRate": "-0.00052666",
+      "markPrice": "2.26100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785938400000,
+      "fundingRate": "-0.00046775",
+      "markPrice": "2.26400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785942000000,
+      "fundingRate": "-0.00045260",
+      "markPrice": "2.24866700",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785945600000,
+      "fundingRate": "-0.00065289",
+      "markPrice": "2.24521988",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785949200000,
+      "fundingRate": "-0.00056008",
+      "markPrice": "2.26017143",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785952800000,
+      "fundingRate": "-0.00055527",
+      "markPrice": "2.25400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785956400002,
+      "fundingRate": "-0.00044792",
+      "markPrice": "2.22760345",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785960000000,
+      "fundingRate": "-0.00054026",
+      "markPrice": "2.21958929",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785963600000,
+      "fundingRate": "-0.00045525",
+      "markPrice": "2.23900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785967200000,
+      "fundingRate": "-0.00030186",
+      "markPrice": "2.24432976",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785970800000,
+      "fundingRate": "-0.00030125",
+      "markPrice": "2.27136310",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785974400002,
+      "fundingRate": "-0.00041485",
+      "markPrice": "2.23200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785978000002,
+      "fundingRate": "-0.00051647",
+      "markPrice": "2.23919762",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785981600000,
+      "fundingRate": "-0.00045837",
+      "markPrice": "2.23423732",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785985200000,
+      "fundingRate": "-0.00057453",
+      "markPrice": "2.20800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785988800000,
+      "fundingRate": "-0.00056792",
+      "markPrice": "2.21600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785992400002,
+      "fundingRate": "-0.00034338",
+      "markPrice": "2.19100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785996000000,
+      "fundingRate": "-0.00054130",
+      "markPrice": "2.18060653",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1785999600000,
+      "fundingRate": "-0.00062664",
+      "markPrice": "2.19729095",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786003200000,
+      "fundingRate": "-0.00057866",
+      "markPrice": "2.21573452",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786006800001,
+      "fundingRate": "-0.00044226",
+      "markPrice": "2.20200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786010400002,
+      "fundingRate": "-0.00044953",
+      "markPrice": "2.19827726",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786014000002,
+      "fundingRate": "-0.00045909",
+      "markPrice": "2.18900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786017600000,
+      "fundingRate": "-0.00055455",
+      "markPrice": "2.18100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786021200000,
+      "fundingRate": "-0.00036205",
+      "markPrice": "2.22100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786024800000,
+      "fundingRate": "-0.00026325",
+      "markPrice": "2.25700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786028400010,
+      "fundingRate": "-0.00017885",
+      "markPrice": "2.23989175",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786032000000,
+      "fundingRate": "-0.00015702",
+      "markPrice": "2.22300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786035600000,
+      "fundingRate": "-0.00019295",
+      "markPrice": "2.22900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786039200000,
+      "fundingRate": "-0.00021714",
+      "markPrice": "2.21400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786042800003,
+      "fundingRate": "-0.00008843",
+      "markPrice": "2.26343584",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786046400001,
+      "fundingRate": "-0.00010976",
+      "markPrice": "2.26009286",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786050000002,
+      "fundingRate": "-0.00004311",
+      "markPrice": "2.28200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786053600000,
+      "fundingRate": "-0.00003137",
+      "markPrice": "2.25401667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786057200000,
+      "fundingRate": "-0.00010315",
+      "markPrice": "2.22919881",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786060800000,
+      "fundingRate": "-0.00009384",
+      "markPrice": "2.23059347",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786064400003,
+      "fundingRate": "-0.00007737",
+      "markPrice": "2.26300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786068000000,
+      "fundingRate": "-0.00014895",
+      "markPrice": "2.25200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786071600002,
+      "fundingRate": "-0.00019516",
+      "markPrice": "2.23600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786075200000,
+      "fundingRate": "-0.00014969",
+      "markPrice": "2.26200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786078800000,
+      "fundingRate": "-0.00011895",
+      "markPrice": "2.24700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786082400002,
+      "fundingRate": "-0.00006297",
+      "markPrice": "2.22900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786089600000,
+      "fundingRate": "-0.00088445",
+      "markPrice": "2.20344405",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786104000000,
+      "fundingRate": "-0.00101743",
+      "markPrice": "2.20800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786118400000,
+      "fundingRate": "-0.00082841",
+      "markPrice": "2.20067619",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786132800000,
+      "fundingRate": "-0.00054859",
+      "markPrice": "2.21686667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786147200001,
+      "fundingRate": "-0.00012320",
+      "markPrice": "2.21800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786161600000,
+      "fundingRate": "-0.00021990",
+      "markPrice": "2.20000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786176000000,
+      "fundingRate": "-0.00130914",
+      "markPrice": "2.22500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786190400001,
+      "fundingRate": "-0.00089062",
+      "markPrice": "2.23072976",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786204800002,
+      "fundingRate": "0.00003144",
+      "markPrice": "2.27479357",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786219200000,
+      "fundingRate": "-0.00005149",
+      "markPrice": "2.30500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786233600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "2.26800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786248000000,
+      "fundingRate": "-0.00107556",
+      "markPrice": "2.21158155",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786262400005,
+      "fundingRate": "-0.00302211",
+      "markPrice": "2.14750714",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786276800000,
+      "fundingRate": "-0.00371685",
+      "markPrice": "2.17800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786291200000,
+      "fundingRate": "-0.00319120",
+      "markPrice": "2.17500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786305600000,
+      "fundingRate": "-0.00274908",
+      "markPrice": "2.17620571",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786320000001,
+      "fundingRate": "-0.00215998",
+      "markPrice": "2.16992810",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786334400000,
+      "fundingRate": "-0.00099598",
+      "markPrice": "2.16348596",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786348800005,
+      "fundingRate": "-0.00132536",
+      "markPrice": "2.13279512",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786363200000,
+      "fundingRate": "-0.00108801",
+      "markPrice": "2.13100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786377600000,
+      "fundingRate": "-0.00060368",
+      "markPrice": "2.13800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786392000000,
+      "fundingRate": "-0.00048382",
+      "markPrice": "2.14400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786406400000,
+      "fundingRate": "-0.00071328",
+      "markPrice": "2.12502286",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786420800000,
+      "fundingRate": "-0.00049680",
+      "markPrice": "2.12821833",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786435200006,
+      "fundingRate": "-0.00093853",
+      "markPrice": "2.03297143",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786449600001,
+      "fundingRate": "-0.00077087",
+      "markPrice": "2.07100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786464000000,
+      "fundingRate": "-0.00114746",
+      "markPrice": "1.97500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786478400003,
+      "fundingRate": "-0.00146458",
+      "markPrice": "1.99409433",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786492800001,
+      "fundingRate": "-0.00127743",
+      "markPrice": "1.95300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786507200000,
+      "fundingRate": "-0.00123953",
+      "markPrice": "1.93114762",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786521600000,
+      "fundingRate": "-0.00105706",
+      "markPrice": "1.92700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786536000000,
+      "fundingRate": "-0.00098902",
+      "markPrice": "1.89600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786550400000,
+      "fundingRate": "-0.00105276",
+      "markPrice": "1.93400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786564800001,
+      "fundingRate": "-0.00081610",
+      "markPrice": "2.00326357",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786579200000,
+      "fundingRate": "-0.00040584",
+      "markPrice": "2.03813690",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786593600000,
+      "fundingRate": "-0.00016324",
+      "markPrice": "2.03236905",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786608000000,
+      "fundingRate": "-0.00054305",
+      "markPrice": "2.00500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786622400000,
+      "fundingRate": "-0.00027798",
+      "markPrice": "2.01261429",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786636800000,
+      "fundingRate": "-0.00039961",
+      "markPrice": "1.96900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786651200002,
+      "fundingRate": "-0.00002155",
+      "markPrice": "2.04600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786665600000,
+      "fundingRate": "-0.00025723",
+      "markPrice": "1.99700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786680000001,
+      "fundingRate": "-0.00002779",
+      "markPrice": "2.00200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786694400001,
+      "fundingRate": "-0.00017952",
+      "markPrice": "1.99300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786708800002,
+      "fundingRate": "-0.00059628",
+      "markPrice": "1.90000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786723200001,
+      "fundingRate": "-0.00102351",
+      "markPrice": "1.91450000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786737600000,
+      "fundingRate": "-0.00084917",
+      "markPrice": "1.92400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786752000003,
+      "fundingRate": "-0.00020755",
+      "markPrice": "1.97100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786766400000,
+      "fundingRate": "-0.00018287",
+      "markPrice": "1.94200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786780800002,
+      "fundingRate": "-0.00010638",
+      "markPrice": "1.94230952",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786795200001,
+      "fundingRate": "-0.00005595",
+      "markPrice": "1.93288929",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786809600000,
+      "fundingRate": "-0.00002174",
+      "markPrice": "1.94726667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786824000003,
+      "fundingRate": "-0.00003598",
+      "markPrice": "1.96000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786838400000,
+      "fundingRate": "-0.00021106",
+      "markPrice": "1.93500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786852800001,
+      "fundingRate": "-0.00029691",
+      "markPrice": "1.91700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786867200002,
+      "fundingRate": "-0.00000471",
+      "markPrice": "1.93200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786881600008,
+      "fundingRate": "-0.00029165",
+      "markPrice": "1.90822500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786896000000,
+      "fundingRate": "-0.00060120",
+      "markPrice": "1.84500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786910400000,
+      "fundingRate": "-0.00122730",
+      "markPrice": "1.81545259",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786924800001,
+      "fundingRate": "-0.00109631",
+      "markPrice": "1.80328714",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786939200001,
+      "fundingRate": "-0.00053370",
+      "markPrice": "1.91134524",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786953600003,
+      "fundingRate": "-0.00019239",
+      "markPrice": "1.91400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786968000002,
+      "fundingRate": "0.00003931",
+      "markPrice": "1.94300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786982400005,
+      "fundingRate": "-0.00001142",
+      "markPrice": "1.95200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1786996800000,
+      "fundingRate": "0.00000837",
+      "markPrice": "1.92894202",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787011200006,
+      "fundingRate": "0.00003835",
+      "markPrice": "1.99304840",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787025600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.96400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787040000001,
+      "fundingRate": "0.00002278",
+      "markPrice": "1.91200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787054400000,
+      "fundingRate": "-0.00006613",
+      "markPrice": "1.88956071",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787068800003,
+      "fundingRate": "-0.00008152",
+      "markPrice": "1.89400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787083200008,
+      "fundingRate": "-0.00016712",
+      "markPrice": "1.89249786",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787097600000,
+      "fundingRate": "-0.00008359",
+      "markPrice": "1.86800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787112000001,
+      "fundingRate": "-0.00023200",
+      "markPrice": "1.83032143",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787126400000,
+      "fundingRate": "-0.00016401",
+      "markPrice": "1.83550000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787140800000,
+      "fundingRate": "-0.00019181",
+      "markPrice": "1.84300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787155200004,
+      "fundingRate": "-0.00001023",
+      "markPrice": "1.86508214",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787169600009,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.91800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787184000001,
+      "fundingRate": "0.00003739",
+      "markPrice": "1.91500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787198400011,
+      "fundingRate": "-0.00002401",
+      "markPrice": "1.91617119",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787212800000,
+      "fundingRate": "0.00000274",
+      "markPrice": "1.86200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787227200002,
+      "fundingRate": "-0.00004339",
+      "markPrice": "1.89163274",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787241600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.91978571",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787256000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.95211429",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787270400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.94643214",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787284800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.93045667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787299200000,
+      "fundingRate": "0.00000537",
+      "markPrice": "1.91200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787313600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.96600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787328000001,
+      "fundingRate": "0.00005000",
+      "markPrice": "2.00736667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787342400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "2.01900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787356800000,
+      "fundingRate": "-0.00000936",
+      "markPrice": "2.00750000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787371200004,
+      "fundingRate": "0.00005000",
+      "markPrice": "2.04600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787385600000,
+      "fundingRate": "-0.00026180",
+      "markPrice": "1.93853810",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787400000002,
+      "fundingRate": "-0.00021764",
+      "markPrice": "1.92117131",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787414400000,
+      "fundingRate": "-0.00041473",
+      "markPrice": "1.89774762",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787428800001,
+      "fundingRate": "-0.00010449",
+      "markPrice": "1.92800000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787443200000,
+      "fundingRate": "-0.00053305",
+      "markPrice": "1.87657143",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787457600004,
+      "fundingRate": "-0.00042331",
+      "markPrice": "1.86750000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787472000000,
+      "fundingRate": "-0.00017277",
+      "markPrice": "1.87844643",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787486400002,
+      "fundingRate": "-0.00009683",
+      "markPrice": "1.89909524",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787500800006,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.89750000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787515200000,
+      "fundingRate": "-0.00007438",
+      "markPrice": "1.88126190",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787529600001,
+      "fundingRate": "-0.00008177",
+      "markPrice": "1.89500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787544000000,
+      "fundingRate": "-0.00039608",
+      "markPrice": "1.87000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787558400002,
+      "fundingRate": "-0.00033402",
+      "markPrice": "1.86066857",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787572800000,
+      "fundingRate": "-0.00047439",
+      "markPrice": "1.87580238",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787587200000,
+      "fundingRate": "0.00001260",
+      "markPrice": "1.86247381",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787601600000,
+      "fundingRate": "-0.00024972",
+      "markPrice": "1.86352857",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787616000001,
+      "fundingRate": "0.00004172",
+      "markPrice": "1.87856429",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787630400001,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.87588929",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787644800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.88088571",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787659200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.89369976",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787673600005,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.88600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787688000000,
+      "fundingRate": "0.00003898",
+      "markPrice": "1.90595167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787702400000,
+      "fundingRate": "-0.00004992",
+      "markPrice": "1.87018690",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787716800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.88600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787731200005,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.88500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787745600000,
+      "fundingRate": "-0.00009656",
+      "markPrice": "1.86636548",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787760000000,
+      "fundingRate": "-0.00014349",
+      "markPrice": "1.85858374",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787774400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.90555893",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787788800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.90700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787803200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.91396310",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787817600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.90138929",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787832000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.90444286",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787846400013,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.91536000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787860800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.90145952",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787875200026,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.91150000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787889600008,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.91387143",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787904000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.90167500",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787918400004,
+      "fundingRate": "0.00005000",
+      "markPrice": "2.01754583",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787932800001,
+      "fundingRate": "-0.00018310",
+      "markPrice": "2.19353167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787947200000,
+      "fundingRate": "-0.00141249",
+      "markPrice": "2.27108095",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787961600000,
+      "fundingRate": "-0.00160228",
+      "markPrice": "2.46240357",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787976000000,
+      "fundingRate": "-0.00004216",
+      "markPrice": "2.53508869",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1787990400000,
+      "fundingRate": "-0.00001353",
+      "markPrice": "2.42607143",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788004800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "2.28600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788019200002,
+      "fundingRate": "0.00003106",
+      "markPrice": "2.32789762",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788033600002,
+      "fundingRate": "0.00005000",
+      "markPrice": "2.35117869",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788048000000,
+      "fundingRate": "0.00002845",
+      "markPrice": "2.24100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788062400000,
+      "fundingRate": "0.00002744",
+      "markPrice": "2.38029126",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788076800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "2.29545607",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788091200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "2.30900000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788105600001,
+      "fundingRate": "0.00005000",
+      "markPrice": "2.25600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788120000000,
+      "fundingRate": "0.00003969",
+      "markPrice": "2.23007635",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788134400002,
+      "fundingRate": "0.00003757",
+      "markPrice": "2.09700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788148800002,
+      "fundingRate": "0.00003227",
+      "markPrice": "2.15700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788163200002,
+      "fundingRate": "0.00005000",
+      "markPrice": "2.14077143",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788177600003,
+      "fundingRate": "0.00005000",
+      "markPrice": "2.12015517",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788192000001,
+      "fundingRate": "0.00001167",
+      "markPrice": "2.06443571",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788206400000,
+      "fundingRate": "0.00000224",
+      "markPrice": "2.06003103",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788220800005,
+      "fundingRate": "0.00003942",
+      "markPrice": "2.06400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788235200007,
+      "fundingRate": "0.00002847",
+      "markPrice": "2.04000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788249600000,
+      "fundingRate": "0.00005000",
+      "markPrice": "2.02700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788264000001,
+      "fundingRate": "-0.00003190",
+      "markPrice": "2.04315238",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788278400000,
+      "fundingRate": "-0.00001456",
+      "markPrice": "2.00897952",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788292800000,
+      "fundingRate": "0.00004790",
+      "markPrice": "1.96545476",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788307200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.95565238",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788321600000,
+      "fundingRate": "-0.00000953",
+      "markPrice": "1.92577094",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788336000001,
+      "fundingRate": "0.00001347",
+      "markPrice": "1.92700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788350400000,
+      "fundingRate": "0.00001329",
+      "markPrice": "1.91400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788364800005,
+      "fundingRate": "0.00000174",
+      "markPrice": "1.93118929",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788379200000,
+      "fundingRate": "-0.00004737",
+      "markPrice": "1.93742857",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788393600000,
+      "fundingRate": "0.00004639",
+      "markPrice": "1.92342241",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788408000000,
+      "fundingRate": "-0.00000799",
+      "markPrice": "1.94551429",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788422400000,
+      "fundingRate": "-0.00003977",
+      "markPrice": "1.94384857",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788436800002,
+      "fundingRate": "0.00002884",
+      "markPrice": "1.98585595",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788451200000,
+      "fundingRate": "-0.00001164",
+      "markPrice": "1.98500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788465600000,
+      "fundingRate": "-0.00001186",
+      "markPrice": "2.01167167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788480000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.99338095",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788494400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.97450000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788508800000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.94689167",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788523200003,
+      "fundingRate": "-0.00008730",
+      "markPrice": "1.94250000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788537600009,
+      "fundingRate": "0.00004050",
+      "markPrice": "1.99677143",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788552000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.99060833",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788566400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.99949464",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788580800001,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.97200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788595200000,
+      "fundingRate": "0.00002036",
+      "markPrice": "1.97861667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788609600007,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.99017475",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788624000001,
+      "fundingRate": "-0.00002967",
+      "markPrice": "2.01846667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788638400000,
+      "fundingRate": "-0.00014842",
+      "markPrice": "2.00262393",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788652800000,
+      "fundingRate": "-0.00001709",
+      "markPrice": "1.99211429",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788667200005,
+      "fundingRate": "-0.00026488",
+      "markPrice": "1.98526548",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788681600000,
+      "fundingRate": "-0.00012668",
+      "markPrice": "1.98700000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788696000001,
+      "fundingRate": "-0.00033139",
+      "markPrice": "1.97808726",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788710400004,
+      "fundingRate": "-0.00010738",
+      "markPrice": "1.97445238",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788724800000,
+      "fundingRate": "-0.00026542",
+      "markPrice": "1.97213054",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788739200004,
+      "fundingRate": "-0.00013630",
+      "markPrice": "1.96906119",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788753600001,
+      "fundingRate": "-0.00016318",
+      "markPrice": "1.94200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788768000000,
+      "fundingRate": "-0.00004174",
+      "markPrice": "1.92951905",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788782400000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.94500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788796800003,
+      "fundingRate": "-0.00005907",
+      "markPrice": "1.93897857",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788811200000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.95200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788825600004,
+      "fundingRate": "-0.00019408",
+      "markPrice": "1.93966667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788840000000,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.94299048",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788854400002,
+      "fundingRate": "-0.00000125",
+      "markPrice": "1.95002143",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788868800006,
+      "fundingRate": "-0.00006487",
+      "markPrice": "1.94850000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788883200001,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.95658571",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788897600002,
+      "fundingRate": "-0.00008002",
+      "markPrice": "1.92745833",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788912000005,
+      "fundingRate": "-0.00013967",
+      "markPrice": "1.95100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788926400004,
+      "fundingRate": "-0.00003923",
+      "markPrice": "1.93200000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788940800004,
+      "fundingRate": "0.00005000",
+      "markPrice": "1.93459524",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788955200004,
+      "fundingRate": "-0.00019831",
+      "markPrice": "1.92691071",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788969600002,
+      "fundingRate": "-0.00037112",
+      "markPrice": "1.90300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788984000000,
+      "fundingRate": "-0.00011971",
+      "markPrice": "1.88500000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1788998400000,
+      "fundingRate": "-0.00084073",
+      "markPrice": "1.81361214",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789012800000,
+      "fundingRate": "-0.00109173",
+      "markPrice": "1.78986207",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789027200007,
+      "fundingRate": "-0.00103112",
+      "markPrice": "1.77600000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789041600000,
+      "fundingRate": "-0.00143831",
+      "markPrice": "1.78336667",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789056000002,
+      "fundingRate": "-0.00096691",
+      "markPrice": "1.79266190",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789070400000,
+      "fundingRate": "-0.00041429",
+      "markPrice": "1.85068452",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789084800008,
+      "fundingRate": "-0.00193024",
+      "markPrice": "1.90100000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789099200005,
+      "fundingRate": "-0.00122706",
+      "markPrice": "1.88300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789113600000,
+      "fundingRate": "-0.00037148",
+      "markPrice": "1.86615595",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789128000000,
+      "fundingRate": "-0.00020650",
+      "markPrice": "1.83615000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789142400000,
+      "fundingRate": "-0.00045095",
+      "markPrice": "1.84300000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789156800004,
+      "fundingRate": "-0.00030606",
+      "markPrice": "1.85400000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789171200001,
+      "fundingRate": "-0.00026039",
+      "markPrice": "1.88439655",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789185600002,
+      "fundingRate": "-0.00021217",
+      "markPrice": "1.93000000",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789200000003,
+      "fundingRate": "-0.00004667",
+      "markPrice": "1.90656905",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789214400000,
+      "fundingRate": "-0.00005825",
+      "markPrice": "1.89550357",
+      "rateType": "Regular"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "fundingTime": 1789228800000,
+      "fundingRate": "-0.00006340",
+      "markPrice": "1.88900000",
+      "rateType": "Regular"
+    }
+  ]
+}

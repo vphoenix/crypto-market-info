@@ -1,0 +1,7 @@
+{
+  "name": "binance-info",
+  "url": "https://fapi.binance.com/fapi/v1/exchangeInfo",
+  "retrieved_at_utc": "2026-09-16T10:31:26.005320+00:00",
+  "sha256": "e8d9ca28f2b15b07c4e8598afed65ed622fa9458b9219b48992deaf7a305226a",
+  "rows": null
+}

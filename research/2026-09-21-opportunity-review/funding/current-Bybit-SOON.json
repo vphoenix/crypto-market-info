@@ -1,0 +1,51 @@
+{
+  "venue": "Bybit",
+  "retrieved_at": "2026-09-21T14:37:13.580087+00:00",
+  "url": "https://api.bybit.com/v5/market/tickers?category=linear&symbol=SOONUSDT",
+  "sha256": "a1fb0f83d84a7249bd417d94572b6c8eff6e08c22b29c1c75a0124cbb8b192e7",
+  "data": {
+    "retCode": 0,
+    "retMsg": "OK",
+    "result": {
+      "category": "linear",
+      "list": [
+        {
+          "symbol": "SOONUSDT",
+          "lastPrice": "0.19340",
+          "indexPrice": "0.19248",
+          "markPrice": "0.19331",
+          "prevPrice24h": "0.18450",
+          "price24hPcnt": "0.048238",
+          "highPrice24h": "0.19560",
+          "lowPrice24h": "0.18400",
+          "prevPrice1h": "0.19390",
+          "openInterest": "13595525",
+          "openInterestValue": "2628150.94",
+          "singleOpenInterest": "6797763",
+          "singleOpenInterestValue": "1314075.57",
+          "turnover24h": "800966.2507",
+          "volume24h": "4183694.0000",
+          "fundingRate": "0.00297536",
+          "nextFundingTime": "1790006400000",
+          "predictedDeliveryPrice": "",
+          "basisRate": "",
+          "deliveryFeeRate": "",
+          "deliveryTime": "0",
+          "ask1Size": "2500",
+          "bid1Price": "0.19330",
+          "ask1Price": "0.19340",
+          "bid1Size": "303",
+          "basis": "",
+          "preOpenPrice": "",
+          "preQty": "",
+          "curPreListingPhase": "",
+          "fundingIntervalHour": "4",
+          "basisRateYear": "",
+          "fundingCap": "0.02"
+        }
+      ]
+    },
+    "retExtInfo": {},
+    "time": 1790001432305
+  }
+}

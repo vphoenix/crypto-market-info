@@ -1,0 +1,56 @@
+[
+  {
+    "asset": "fUSD",
+    "days": 7,
+    "hourly_points": 168,
+    "gross_apr_pct": "11.2836816964285714285714285714285714285714285714285714285714",
+    "fee_only_net_apr_pct": "9.59112944196428571428571428571428571428571428571428571428569",
+    "source_pages_hash_verified": 9,
+    "is_realized_account_return": false
+  },
+  {
+    "asset": "fUSD",
+    "days": 30,
+    "hourly_points": 720,
+    "gross_apr_pct": "11.4068355208333333333333333333333333333333333333333333333333",
+    "fee_only_net_apr_pct": "9.69581019270833333333333333333333333333333333333333333333330",
+    "source_pages_hash_verified": 9,
+    "is_realized_account_return": false
+  },
+  {
+    "asset": "fUSD",
+    "days": 90,
+    "hourly_points": 2160,
+    "gross_apr_pct": "12.5615755439814814814814814814814814814814814814814814814815",
+    "fee_only_net_apr_pct": "10.6773392123842592592592592592592592592592592592592592592593",
+    "source_pages_hash_verified": 9,
+    "is_realized_account_return": false
+  },
+  {
+    "asset": "fUST",
+    "days": 7,
+    "hourly_points": 168,
+    "gross_apr_pct": "8.89990580357142857142857142857142857142857142857142857142858",
+    "fee_only_net_apr_pct": "7.56491993303571428571428571428571428571428571428571428571429",
+    "source_pages_hash_verified": 9,
+    "is_realized_account_return": false
+  },
+  {
+    "asset": "fUST",
+    "days": 30,
+    "hourly_points": 720,
+    "gross_apr_pct": "8.84280937500",
+    "fee_only_net_apr_pct": "7.5163879687500",
+    "source_pages_hash_verified": 9,
+    "is_realized_account_return": false
+  },
+  {
+    "asset": "fUST",
+    "days": 90,
+    "hourly_points": 2160,
+    "gross_apr_pct": "9.59799775462962962962962962962962962962962962962962962962963",
+    "fee_only_net_apr_pct": "8.15829809143518518518518518518518518518518518518518518518519",
+    "source_pages_hash_verified": 9,
+    "is_realized_account_return": false
+  }
+]

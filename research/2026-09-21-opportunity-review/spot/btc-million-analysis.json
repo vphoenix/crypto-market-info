@@ -1,0 +1,40 @@
+{
+  "capital": "1000000",
+  "quantity_btc": "5.819",
+  "spot_buy": "499153.82000000000",
+  "spot_sell": "499153.76181000000",
+  "perp_buy": "498895.49240",
+  "perp_sell": "498861.19730",
+  "four_trade_fees": "1497.18592666000000",
+  "spread_and_book_impact": "34.35329000000",
+  "total_roundtrip_friction": "1531.53921666000000",
+  "unused_after_equal_margin_and_all_fees": "195.17407334000000",
+  "entry_perp_discount": "0.0005862375249377035720171389252315047894",
+  "funding_apr_on_notional_30d": "0.07457302833333333333333333333333333333333",
+  "scenarios": {
+    "30": {
+      "net_usdt": "1526.125731338917000000000000000000000",
+      "net_apr": "0.01856786306462349016666666666666666666667",
+      "headroom_above_3pct_usdt": "-939.627693318617246575342465753424657534",
+      "basis_loss_notional_before_below3": "-0.001882441154749887011934201897429983922659"
+    },
+    "90": {
+      "net_usdt": "7641.455627336751000000000000000000000",
+      "net_apr": "0.030990347821976823500000000000000",
+      "headroom_above_3pct_usdt": "244.195353364148260273972602739726027397",
+      "basis_loss_notional_before_below3": "0.0004892186407872191787973747305784938746878"
+    },
+    "365": {
+      "net_usdt": "35670.05098399349016666666666666666666666",
+      "net_apr": "0.03567005098399349016666666666666666666666",
+      "headroom_above_3pct_usdt": "5670.05098399349016666666666666666666666",
+      "basis_loss_notional_before_below3": "0.01135932603699895588631710094228401711252"
+    }
+  },
+  "limitations": [
+    "Sequential public snapshots, not synchronized executable quotes.",
+    "Future funding equals historical 30-day average; basis and relative roundtrip liquidity unchanged.",
+    "Using fixed entry perpetual notional for future funding is an approximation, not mark-weighted realized PnL.",
+    "Transfer, tax, account specific fees and future basis costs unverified."
+  ]
+}

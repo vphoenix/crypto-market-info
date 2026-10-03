@@ -1,0 +1,12 @@
+{
+  "all_day_read_ms": 4244,
+  "blocks": 7200,
+  "compressed_table_bytes": 40849739,
+  "evidence_archive_bytes_included": false,
+  "kind": "synthetic_daily_capacity_not_live_history",
+  "logs": 21600,
+  "quotes": 417600,
+  "receipts": 21600,
+  "single_block_read_p95_us": 536758,
+  "source_sample": "sample-with-events"
+}

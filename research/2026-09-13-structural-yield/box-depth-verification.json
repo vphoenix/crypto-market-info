@@ -1,0 +1,60 @@
+{
+  "ETH_USDC-25DEC26-2500-C": {
+    "side": "asks",
+    "value": "283.0",
+    "used": [
+      [
+        "283.0",
+        "1"
+      ]
+    ],
+    "fee": "0.742689",
+    "timestamp": 1789307063115
+  },
+  "ETH_USDC-25DEC26-10000-C": {
+    "side": "bids",
+    "value": "0.22",
+    "used": [
+      [
+        "0.4",
+        "0.1"
+      ],
+      [
+        "0.2",
+        "0.9"
+      ]
+    ],
+    "fee": "0.02750",
+    "timestamp": 1789307063115
+  },
+  "ETH_USDC-25DEC26-10000-P": {
+    "side": "asks",
+    "value": "7512.0",
+    "used": [
+      [
+        "7512.0",
+        "1"
+      ]
+    ],
+    "fee": "0.742689",
+    "timestamp": 1789307063115
+  },
+  "ETH_USDC-25DEC26-2500-P": {
+    "side": "bids",
+    "value": "276.0",
+    "used": [
+      [
+        "276.0",
+        "1"
+      ]
+    ],
+    "fee": "0.742689",
+    "timestamp": 1789307063115
+  },
+  "total": {
+    "debit": "7518.78",
+    "fixed_pre_fee_payoff": "7500",
+    "entry_fees": "2.255567",
+    "pre_settlement_loss": "-21.035567"
+  }
+}

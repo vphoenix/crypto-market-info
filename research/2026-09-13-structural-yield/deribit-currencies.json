@@ -1,0 +1,1137 @@
+{
+  "name": "deribit-currencies",
+  "url": "https://www.deribit.com/api/v2/public/get_currencies",
+  "requested_at": "2026-09-13T13:51:01.459079+00:00",
+  "received_at": "2026-09-13T13:51:02.016933+00:00",
+  "payload_sha256": "1e4540c64944588eb3d8808b7e7a1a9f7f85aad1bb706d84f13fae52afa59505",
+  "data": {
+    "jsonrpc": "2.0",
+    "result": [
+      {
+        "decimals": 6,
+        "currency": "ZORA",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Base",
+            "resource_name": "networks/base-mainnet"
+          }
+        ],
+        "coin_type": "ZORA",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "ZORA",
+        "min_confirmations": 0,
+        "currency_long": "Zora",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "0c26413b-4404-407d-a8fc-e25d1dd8608e"
+      },
+      {
+        "decimals": 6,
+        "currency": "XRP",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0001",
+        "withdrawal_fee": "0.0001",
+        "coinbase_networks": [
+          {
+            "display_name": "Ripple",
+            "resource_name": "networks/ripple-mainnet"
+          }
+        ],
+        "coin_type": "XRP",
+        "withdrawal_priorities": [],
+        "network_fee": "1.5e-5",
+        "network_currency": "XRP",
+        "min_confirmations": 1,
+        "currency_long": "XRP",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "e17a44c8-6ea1-564f-a02c-2a9ca1d8eec4"
+      },
+      {
+        "decimals": 6,
+        "currency": "XLM",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Stellar",
+            "resource_name": "networks/stellar-mainnet"
+          }
+        ],
+        "coin_type": "XLM",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "XLM",
+        "min_confirmations": 0,
+        "currency_long": "Stellar",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "13b83335-5ede-595b-821e-5bcdfa80560f"
+      },
+      {
+        "decimals": 6,
+        "currency": "VET",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "VeChainThor",
+            "resource_name": "networks/vechain-mainnet"
+          }
+        ],
+        "coin_type": "VET",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "VET",
+        "min_confirmations": 0,
+        "currency_long": "VeChain",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6
+      },
+      {
+        "decimals": 6,
+        "currency": "USYC",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0001",
+        "withdrawal_fee": "0.004818",
+        "coin_type": "USYC",
+        "withdrawal_priorities": [],
+        "network_fee": "2.20978055e-6",
+        "network_currency": "ETH",
+        "min_confirmations": 1,
+        "currency_long": "USYC",
+        "in_cross_collateral_pool": true,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "4c559e06-44d0-411c-bb36-1a4812df4510"
+      },
+      {
+        "decimals": 6,
+        "currency": "USDT",
+        "apr": "0.0",
+        "min_withdrawal_fee": "2.0",
+        "withdrawal_fee": "2.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          }
+        ],
+        "coin_type": "USDT",
+        "withdrawal_priorities": [],
+        "network_fee": "2.20978055e-6",
+        "network_currency": "ETH",
+        "min_confirmations": 1,
+        "currency_long": "Tether",
+        "in_cross_collateral_pool": true,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "b26327c1-9a34-51d9-b982-9b29e6012648"
+      },
+      {
+        "decimals": 6,
+        "currency": "USDE",
+        "apr": "4.75",
+        "min_withdrawal_fee": "0.0001",
+        "withdrawal_fee": "0.005477",
+        "coin_type": "USDE",
+        "withdrawal_priorities": [],
+        "network_fee": "2.20978055e-6",
+        "network_currency": "ETH",
+        "min_confirmations": 1,
+        "currency_long": "Ethena USDe",
+        "in_cross_collateral_pool": true,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "e98ecced-8122-45a8-8bce-b842323af19d"
+      },
+      {
+        "decimals": 8,
+        "currency": "USDC",
+        "apr": "3.3999999999999995",
+        "min_withdrawal_fee": "5.0",
+        "withdrawal_fee": "5.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Arbitrum",
+            "resource_name": "networks/arbitrum-mainnet"
+          },
+          {
+            "display_name": "Avalanche C-Chain",
+            "resource_name": "networks/avacchain-mainnet"
+          },
+          {
+            "display_name": "Base",
+            "resource_name": "networks/base-mainnet"
+          },
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          },
+          {
+            "display_name": "Optimism",
+            "resource_name": "networks/optimism-mainnet"
+          },
+          {
+            "display_name": "Polygon",
+            "resource_name": "networks/polygon-mainnet"
+          },
+          {
+            "display_name": "Solana",
+            "resource_name": "networks/solana-mainnet"
+          }
+        ],
+        "coin_type": "USDC",
+        "withdrawal_priorities": [],
+        "network_fee": "2.20978055e-6",
+        "network_currency": "ETH",
+        "min_confirmations": 50,
+        "currency_long": "USD Coin",
+        "in_cross_collateral_pool": true,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "2b92315d-eab7-5bef-84fa-089a131333f5"
+      },
+      {
+        "decimals": 6,
+        "currency": "UNI",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Base",
+            "resource_name": "networks/base-mainnet"
+          }
+        ],
+        "coin_type": "UNI",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "UNI",
+        "min_confirmations": 0,
+        "currency_long": "Uniswap",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "412832ad-59dd-5af8-8d36-99ebda3afb80"
+      },
+      {
+        "decimals": 6,
+        "currency": "TAO",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Bittensor",
+            "resource_name": "networks/bittensor-mainnet"
+          }
+        ],
+        "coin_type": "TAO",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "TAO",
+        "min_confirmations": 0,
+        "currency_long": "Bittensor",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "c914ef4f-6cc1-4bc9-96ff-1293d2a913fa"
+      },
+      {
+        "decimals": 6,
+        "currency": "SUI",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Sui",
+            "resource_name": "networks/sui-mainnet"
+          }
+        ],
+        "coin_type": "SUI",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "SUI",
+        "min_confirmations": 0,
+        "currency_long": "Sui",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "26417fbc-f542-417a-9596-5a6065b76b78"
+      },
+      {
+        "decimals": 6,
+        "currency": "STETH",
+        "apr": "2.262857142857143",
+        "min_withdrawal_fee": "0.0001",
+        "withdrawal_fee": "0.0001",
+        "coin_type": "STETH",
+        "withdrawal_priorities": [],
+        "network_fee": "2.30872165e-6",
+        "network_currency": "ETH",
+        "min_confirmations": 1,
+        "currency_long": "Staked ETH",
+        "in_cross_collateral_pool": true,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "997e0978-a0a0-502d-a51b-9ae33bb54a49"
+      },
+      {
+        "decimals": 8,
+        "currency": "SOL",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0001",
+        "withdrawal_fee": "0.0001",
+        "coinbase_networks": [
+          {
+            "display_name": "Solana",
+            "resource_name": "networks/solana-mainnet"
+          }
+        ],
+        "coin_type": "SOL",
+        "withdrawal_priorities": [],
+        "network_fee": "3.14e-5",
+        "network_currency": "SOL",
+        "min_confirmations": 1,
+        "currency_long": "Solana",
+        "in_cross_collateral_pool": true,
+        "onchain_operations_precision": 8,
+        "currency_uuid": "4f039497-3af8-5bb3-951c-6df9afa9be1c"
+      },
+      {
+        "decimals": 6,
+        "currency": "SHIB",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          }
+        ],
+        "coin_type": "SHIB",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "SHIB",
+        "min_confirmations": 0,
+        "currency_long": "Shiba Inu",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "d6031388-71ab-59c7-8a15-a56ec20d6080"
+      },
+      {
+        "decimals": 6,
+        "currency": "PUMP",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Solana",
+            "resource_name": "networks/solana-mainnet"
+          }
+        ],
+        "coin_type": "PUMP",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "PUMP",
+        "min_confirmations": 0,
+        "currency_long": "Pump.fun",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "26d4c8c4-3132-485a-af94-e940c4276bc4"
+      },
+      {
+        "decimals": 6,
+        "currency": "PEPE",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          }
+        ],
+        "coin_type": "PEPE",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "PEPE",
+        "min_confirmations": 0,
+        "currency_long": "Pepe",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "dd47f029-47a9-4a1c-b379-fe4d4a8002a1"
+      },
+      {
+        "decimals": 6,
+        "currency": "PENGU",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Solana",
+            "resource_name": "networks/solana-mainnet"
+          }
+        ],
+        "coin_type": "PENGU",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "PENGU",
+        "min_confirmations": 0,
+        "currency_long": "Pudgy Penguins",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "7f104d51-59e1-47d0-8b0a-26f810f00184"
+      },
+      {
+        "decimals": 6,
+        "currency": "PAXG",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0001",
+        "withdrawal_fee": "0.0001",
+        "coinbase_networks": [
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          }
+        ],
+        "coin_type": "PAXG",
+        "withdrawal_priorities": [],
+        "network_fee": "2.30872165e-6",
+        "network_currency": "ETH",
+        "min_confirmations": 1,
+        "currency_long": "Pax Gold",
+        "in_cross_collateral_pool": true,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "fc8f2c01-f78f-5e4d-a72d-4692a57ce4ca"
+      },
+      {
+        "decimals": 6,
+        "currency": "OP",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Optimism",
+            "resource_name": "networks/optimism-mainnet"
+          }
+        ],
+        "coin_type": "OP",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "OP",
+        "min_confirmations": 0,
+        "currency_long": "Optimism",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "627b8bbb-9908-41be-87a8-1c9c87b6c5e7"
+      },
+      {
+        "decimals": 6,
+        "currency": "ONDO",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          }
+        ],
+        "coin_type": "ONDO",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "ONDO",
+        "min_confirmations": 0,
+        "currency_long": "Ondo",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "48456872-2ff7-4cc3-8fe9-c101d0fb073c"
+      },
+      {
+        "decimals": 6,
+        "currency": "NEAR",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Near",
+            "resource_name": "networks/near-mainnet"
+          }
+        ],
+        "coin_type": "NEAR",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "NEAR",
+        "min_confirmations": 0,
+        "currency_long": "NEAR Protocol",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "979a75c9-9466-5e6b-9545-930a89a3db8f"
+      },
+      {
+        "decimals": 6,
+        "currency": "MATIC",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0001",
+        "withdrawal_fee": "0.059306",
+        "coin_type": "MATIC",
+        "withdrawal_priorities": [],
+        "network_fee": "2.30872165e-6",
+        "network_currency": "ETH",
+        "min_confirmations": 1,
+        "currency_long": "Matic Ethereum Token",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "026bcc1e-9163-591c-a709-34dd18b2e7a1"
+      },
+      {
+        "decimals": 6,
+        "currency": "LTC",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Litecoin",
+            "resource_name": "networks/litecoin-mainnet"
+          }
+        ],
+        "coin_type": "LTC",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "LTC",
+        "min_confirmations": 0,
+        "currency_long": "Litecoin",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "c9c24c6e-c045-5fde-98a2-00ea7f520437"
+      },
+      {
+        "decimals": 6,
+        "currency": "LINK",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          }
+        ],
+        "coin_type": "LINK",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "ETH",
+        "min_confirmations": 0,
+        "currency_long": "Chainlink",
+        "in_cross_collateral_pool": true,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "ea3107c6-416b-5b02-b99f-ded31a0cbdfe"
+      },
+      {
+        "decimals": 6,
+        "currency": "JASMY",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          }
+        ],
+        "coin_type": "JASMY",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "JASMY",
+        "min_confirmations": 0,
+        "currency_long": "JasmyCoin",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "c0158cc5-1f31-5662-9da5-c06867f2baad"
+      },
+      {
+        "decimals": 6,
+        "currency": "INJ",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          }
+        ],
+        "coin_type": "INJ",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "INJ",
+        "min_confirmations": 0,
+        "currency_long": "Injective",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "0d150a7d-821e-5ca4-a17e-17f206668ecd"
+      },
+      {
+        "decimals": 6,
+        "currency": "ICP",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Internet Computer",
+            "resource_name": "networks/dfinity-mainnet"
+          }
+        ],
+        "coin_type": "ICP",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "ICP",
+        "min_confirmations": 0,
+        "currency_long": "Internet Computer",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "8f0fb5e8-9924-50bd-b95c-1d4b88fd20cc"
+      },
+      {
+        "decimals": 6,
+        "currency": "HYPE",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Hyperliquid",
+            "resource_name": "networks/hyperliquid-mainnet"
+          }
+        ],
+        "coin_type": "HYPE",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "HYPE",
+        "min_confirmations": 0,
+        "currency_long": "Hyperliquid",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "d13e2595-a214-48a7-9c09-2fdd960d10d8"
+      },
+      {
+        "decimals": 6,
+        "currency": "HBAR",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Hedera",
+            "resource_name": "networks/hedera-mainnet"
+          }
+        ],
+        "coin_type": "HBAR",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "HBAR",
+        "min_confirmations": 0,
+        "currency_long": "Hedera",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "60eb9c6e-ad04-54d5-bb2a-574f9fdb7786"
+      },
+      {
+        "decimals": 6,
+        "currency": "FIL",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Filecoin",
+            "resource_name": "networks/filecoin-mainnet"
+          }
+        ],
+        "coin_type": "FIL",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "FIL",
+        "min_confirmations": 0,
+        "currency_long": "Filecoin",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "0a5b73d1-a976-5966-b3ff-86be8f9b65d5"
+      },
+      {
+        "decimals": 6,
+        "currency": "FARTCOIN",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Solana",
+            "resource_name": "networks/solana-mainnet"
+          }
+        ],
+        "coin_type": "FARTCOIN",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "FARTCOIN",
+        "min_confirmations": 0,
+        "currency_long": "Fartcoin",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "6d592cc1-6eac-46a9-8fa2-05609c666ee9"
+      },
+      {
+        "decimals": 6,
+        "currency": "EURR",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0001",
+        "withdrawal_fee": "0.004725",
+        "coin_type": "EURR",
+        "withdrawal_priorities": [],
+        "network_fee": "2.20978055e-6",
+        "network_currency": "ETH",
+        "min_confirmations": 1,
+        "currency_long": "StablR Euro",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "20d8642e-36ad-4f92-becf-a68b2b0d05ef"
+      },
+      {
+        "decimals": 6,
+        "currency": "EURC",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Base",
+            "resource_name": "networks/base-mainnet"
+          },
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          }
+        ],
+        "coin_type": "EURC",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "EURC",
+        "min_confirmations": 0,
+        "currency_long": "EURC",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "674c6343-41a8-4b79-8914-21762877e907"
+      },
+      {
+        "decimals": 6,
+        "currency": "ETH",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.001",
+        "withdrawal_fee": "0.001",
+        "coinbase_networks": [
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          }
+        ],
+        "coin_type": "ETH",
+        "withdrawal_priorities": [],
+        "network_fee": "1.38523299e-6",
+        "network_currency": "ETH",
+        "min_confirmations": 50,
+        "currency_long": "Ethereum",
+        "in_cross_collateral_pool": true,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "d85dce9b-5b73-5c3c-8978-522ce1d1c1b4"
+      },
+      {
+        "decimals": 6,
+        "currency": "DOT",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Polkadot",
+            "resource_name": "networks/polkadot-mainnet"
+          }
+        ],
+        "coin_type": "DOT",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "DOT",
+        "min_confirmations": 0,
+        "currency_long": "Polkadot",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "ebea861a-c0ae-5323-bbe0-46893a119a39"
+      },
+      {
+        "decimals": 6,
+        "currency": "DOGE",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Dogecoin",
+            "resource_name": "networks/doge-mainnet"
+          }
+        ],
+        "coin_type": "DOGE",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "DOGE",
+        "min_confirmations": 0,
+        "currency_long": "Dogecoin",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "d9a3edfa-1be7-589c-bd20-c034f3830b60"
+      },
+      {
+        "decimals": 6,
+        "currency": "CRV",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Base",
+            "resource_name": "networks/base-mainnet"
+          },
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          }
+        ],
+        "coin_type": "CRV",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "CRV",
+        "min_confirmations": 0,
+        "currency_long": "Curve DAO Token",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "48a63b4a-1024-5cbe-9132-5dcc7792487d"
+      },
+      {
+        "decimals": 6,
+        "currency": "CBETH",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Base",
+            "resource_name": "networks/base-mainnet"
+          },
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          }
+        ],
+        "coin_type": "CBETH",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "CBETH",
+        "min_confirmations": 0,
+        "currency_long": "Coinbase Wrapped Staked ETH",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "161f5d0a-1657-4300-b072-3f9cb4d6bdad"
+      },
+      {
+        "decimals": 6,
+        "currency": "BUIDL",
+        "apr": "3.2049137857142855",
+        "min_withdrawal_fee": "0.0001",
+        "withdrawal_fee": "0.005724",
+        "coin_type": "BUIDL",
+        "withdrawal_priorities": [],
+        "network_fee": "2.30872165e-6",
+        "network_currency": "ETH",
+        "min_confirmations": 1,
+        "currency_long": "BUIDL",
+        "in_cross_collateral_pool": true,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "297c64fb-112e-4722-bad0-175507f46d8e"
+      },
+      {
+        "decimals": 8,
+        "currency": "BTC",
+        "apr": "0.0",
+        "min_withdrawal_fee": "1.0e-5",
+        "withdrawal_fee": "1.0e-5",
+        "coinbase_networks": [
+          {
+            "display_name": "Bitcoin",
+            "resource_name": "networks/bitcoin-mainnet"
+          }
+        ],
+        "coin_type": "BTC",
+        "withdrawal_priorities": [],
+        "network_fee": "3.072e-6",
+        "network_currency": "BTC",
+        "min_confirmations": 1,
+        "currency_long": "Bitcoin",
+        "in_cross_collateral_pool": true,
+        "onchain_operations_precision": 8,
+        "currency_uuid": "5b71fc48-3dd3-540c-809b-f8c94d0e68b5"
+      },
+      {
+        "decimals": 5,
+        "currency": "BONK",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Solana",
+            "resource_name": "networks/solana-mainnet"
+          }
+        ],
+        "coin_type": "BONK",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "BONK",
+        "min_confirmations": 0,
+        "currency_long": "Bonk",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 5,
+        "currency_uuid": "4def86bf-6bf0-4cd0-9194-aa58e107d38a"
+      },
+      {
+        "decimals": 4,
+        "currency": "BNB",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0001",
+        "withdrawal_fee": "0.0001",
+        "coinbase_networks": [
+          {
+            "display_name": "BNB Smart Chain",
+            "resource_name": "networks/bsc-mainnet"
+          }
+        ],
+        "coin_type": "BNB",
+        "withdrawal_priorities": [],
+        "network_fee": "3.0e-6",
+        "network_currency": "BNB",
+        "min_confirmations": 1,
+        "currency_long": "Binance Coin",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 4,
+        "currency_uuid": "eb8ab5cb-d2a5-5068-88af-21c3ed92757a"
+      },
+      {
+        "decimals": 8,
+        "currency": "BCH",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Bitcoin Cash",
+            "resource_name": "networks/bitcoincash-mainnet"
+          }
+        ],
+        "coin_type": "BCH",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "BCH",
+        "min_confirmations": 0,
+        "currency_long": "Bitcoin Cash",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 8,
+        "currency_uuid": "45f99e13-b522-57d7-8058-c57bf92fe7a3"
+      },
+      {
+        "decimals": 8,
+        "currency": "AVAX",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Avalanche C-Chain",
+            "resource_name": "networks/avacchain-mainnet"
+          }
+        ],
+        "coin_type": "AVAX",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "AVAX",
+        "min_confirmations": 0,
+        "currency_long": "Avalanche",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 8,
+        "currency_uuid": "9d06e463-b3ba-5abf-9082-8761846b28ab"
+      },
+      {
+        "decimals": 6,
+        "currency": "ATOM",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Cosmos",
+            "resource_name": "networks/cosmos-mainnet"
+          }
+        ],
+        "coin_type": "ATOM",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "ATOM",
+        "min_confirmations": 0,
+        "currency_long": "Cosmos",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "64c607d2-4663-5649-86e0-3ab06bba0202"
+      },
+      {
+        "decimals": 6,
+        "currency": "ARB",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Arbitrum",
+            "resource_name": "networks/arbitrum-mainnet"
+          }
+        ],
+        "coin_type": "ARB",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "ARB",
+        "min_confirmations": 0,
+        "currency_long": "Arbitrum",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "c2102278-2bbe-49e1-a115-5e83bffbcead"
+      },
+      {
+        "decimals": 6,
+        "currency": "APT",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Aptos",
+            "resource_name": "networks/aptos-mainnet"
+          }
+        ],
+        "coin_type": "APT",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "APT",
+        "min_confirmations": 0,
+        "currency_long": "Aptos",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "976e5f1e-e419-4eac-990e-76caf525c6af"
+      },
+      {
+        "decimals": 6,
+        "currency": "ALGO",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Algorand",
+            "resource_name": "networks/algorand-mainnet"
+          }
+        ],
+        "coin_type": "ALGO",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "ALGO",
+        "min_confirmations": 0,
+        "currency_long": "Algorand",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "9220d47f-bc0a-53ad-9646-ef49918adcf3"
+      },
+      {
+        "decimals": 6,
+        "currency": "AERO",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Base",
+            "resource_name": "networks/base-mainnet"
+          }
+        ],
+        "coin_type": "AERO",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "AERO",
+        "min_confirmations": 0,
+        "currency_long": "Aerodrome Finance",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "9476e3be-b731-47fa-82be-347fabc573d9"
+      },
+      {
+        "decimals": 6,
+        "currency": "ADA",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Cardano",
+            "resource_name": "networks/cardano-mainnet"
+          }
+        ],
+        "coin_type": "ADA",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "ADA",
+        "min_confirmations": 0,
+        "currency_long": "Cardano",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "63062039-7afb-56ff-8e19-5e3215dc404a"
+      },
+      {
+        "decimals": 6,
+        "currency": "AAVE",
+        "apr": "0.0",
+        "min_withdrawal_fee": "0.0",
+        "withdrawal_fee": "0.0",
+        "coinbase_networks": [
+          {
+            "display_name": "Ethereum",
+            "resource_name": "networks/ethereum-mainnet"
+          }
+        ],
+        "coin_type": "AAVE",
+        "withdrawal_priorities": [],
+        "network_fee": "0.0",
+        "network_currency": "AAVE",
+        "min_confirmations": 0,
+        "currency_long": "Aave",
+        "in_cross_collateral_pool": false,
+        "onchain_operations_precision": 6,
+        "currency_uuid": "b1646860-6b23-5f7d-a506-cba0902f0ca9"
+      }
+    ],
+    "usIn": 1789307461879219,
+    "usOut": 1789307461879337,
+    "usDiff": 118,
+    "testnet": false
+  }
+}

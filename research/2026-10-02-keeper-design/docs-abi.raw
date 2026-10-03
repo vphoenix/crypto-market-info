@@ -1,0 +1,260 @@
+[
+  {
+    "type": "function",
+    "name": "getRentInfo",
+    "inputs": [
+      {
+        "type": "address",
+        "name": "renter"
+      },
+      {
+        "type": "address",
+        "name": "receiver"
+      },
+      {
+        "type": "uint256",
+        "name": "resourceType"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "uint256",
+        "name": "securityDeposit"
+      },
+      {
+        "type": "uint256",
+        "name": "index"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "rentals",
+    "inputs": [
+      {
+        "type": "address",
+        "name": "renter"
+      },
+      {
+        "type": "address",
+        "name": "receiver"
+      },
+      {
+        "type": "uint256",
+        "name": "resourceType"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "uint256",
+        "name": "rentBalance"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "totalDelegatedOfType",
+    "inputs": [
+      {
+        "type": "uint256",
+        "name": "resourceType"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "totalFrozenOfType",
+    "inputs": [
+      {
+        "type": "uint256",
+        "name": "resourceType"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "maxRentableOfType",
+    "inputs": [
+      {
+        "type": "uint256",
+        "name": "resourceType"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "liquidateThreshold",
+    "inputs": [],
+    "outputs": [
+      {
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "feeRatio",
+    "inputs": [],
+    "outputs": [
+      {
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "minFee",
+    "inputs": [],
+    "outputs": [
+      {
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "rentPaused",
+    "inputs": [
+      {
+        "type": "uint256",
+        "name": "resourceType"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "usageChargeRatio",
+    "inputs": [],
+    "outputs": [
+      {
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "_rentalRate",
+    "inputs": [
+      {
+        "type": "uint256",
+        "name": "amount"
+      },
+      {
+        "type": "uint256",
+        "name": "resourceType"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "_stableRate",
+    "inputs": [
+      {
+        "type": "uint256",
+        "name": "resourceType"
+      }
+    ],
+    "outputs": [
+      {
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "rentResource",
+    "inputs": [
+      {
+        "type": "address",
+        "name": "receiver"
+      },
+      {
+        "type": "uint256",
+        "name": "stakeAmount"
+      },
+      {
+        "type": "uint256",
+        "name": "resourceType"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "payable"
+  },
+  {
+    "type": "function",
+    "name": "returnResource",
+    "inputs": [
+      {
+        "type": "address",
+        "name": "renter"
+      },
+      {
+        "type": "uint256",
+        "name": "stakeAmount"
+      },
+      {
+        "type": "uint256",
+        "name": "resourceType"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "returnResourceByReceiver",
+    "inputs": [
+      {
+        "type": "address",
+        "name": "renter"
+      },
+      {
+        "type": "uint256",
+        "name": "stakeAmount"
+      },
+      {
+        "type": "uint256",
+        "name": "resourceType"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  }
+]

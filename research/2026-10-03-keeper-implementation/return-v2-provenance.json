@@ -1,0 +1,11 @@
+{
+  "source_manifest": "5e7fdd5f3ba0cae30d630f736e155028e7e883122d4f82b002dc369d8f60053c",
+  "tx_id": "6fbacb20f2ca567e879b0780e3a0e912fe066bc25048c38a20afff1f46bf992f",
+  "provider_event_index": 3,
+  "hashes": {
+    "page": "86a0529d14ed1de09f3ef98d492ad7a561aaec5073b48994226e2067e2a8a662",
+    "receipt": "a6e2425c2598d4dcf23da3af8576bd5d8109b816e0da2aeba3256ef5d7b52724",
+    "block": "2f240a50b907ca4abc639357bccbe5ba0fb95665c132fe93fc3eaa4de62f292f",
+    "body": "17997f2bbb6956451b78a96a92d40e77bc86f8636e359573fd712f00daf14c29"
+  }
+}

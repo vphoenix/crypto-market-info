@@ -1,0 +1,47 @@
+{
+  "name": "lido-current-apr",
+  "url": "https://eth-api.lido.fi/v1/protocol/steth/apr/sma",
+  "requested_at": "2026-09-13T13:51:01.459499+00:00",
+  "received_at": "2026-09-13T13:51:02.123940+00:00",
+  "payload_sha256": "b72d384ea826e45b15842b10e763d62efd62d5761c45d21d5232b726f4be0473",
+  "data": {
+    "data": {
+      "aprs": [
+        {
+          "timeUnix": 1788783719,
+          "apr": "2.244"
+        },
+        {
+          "timeUnix": 1788870119,
+          "apr": "2.238"
+        },
+        {
+          "timeUnix": 1788956531,
+          "apr": "2.331"
+        },
+        {
+          "timeUnix": 1789042931,
+          "apr": "2.247"
+        },
+        {
+          "timeUnix": 1789129415,
+          "apr": "2.231"
+        },
+        {
+          "timeUnix": 1789215803,
+          "apr": "2.316"
+        },
+        {
+          "timeUnix": 1789302167,
+          "apr": "2.235"
+        }
+      ],
+      "smaApr": "2.263142857142857"
+    },
+    "meta": {
+      "symbol": "stETH",
+      "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "chainId": 1
+    }
+  }
+}

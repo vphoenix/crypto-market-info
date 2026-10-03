@@ -1,0 +1,1304 @@
+[
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1786881600008,
+    "fundingRate": "0.00003481",
+    "markPrice": "0.03497000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1786896000000,
+    "fundingRate": "-0.00006587",
+    "markPrice": "0.03521000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1786910400000,
+    "fundingRate": "-0.00010709",
+    "markPrice": "0.03514508",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1786924800001,
+    "fundingRate": "-0.00032262",
+    "markPrice": "0.03485000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1786939200001,
+    "fundingRate": "-0.00054686",
+    "markPrice": "0.03552293",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1786953600003,
+    "fundingRate": "-0.00017885",
+    "markPrice": "0.03526633",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1786968000002,
+    "fundingRate": "-0.00007594",
+    "markPrice": "0.03500000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1786982400005,
+    "fundingRate": "-0.00008021",
+    "markPrice": "0.03523000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1786996800000,
+    "fundingRate": "-0.00038268",
+    "markPrice": "0.03493000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787011200006,
+    "fundingRate": "-0.00025199",
+    "markPrice": "0.03485479",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787025600001,
+    "fundingRate": "-0.00029452",
+    "markPrice": "0.03440000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787040000001,
+    "fundingRate": "0.00004361",
+    "markPrice": "0.03456568",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787054400000,
+    "fundingRate": "-0.00006382",
+    "markPrice": "0.03466000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787068800003,
+    "fundingRate": "-0.00011309",
+    "markPrice": "0.03481000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787083200008,
+    "fundingRate": "-0.00017458",
+    "markPrice": "0.03471516",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787097600000,
+    "fundingRate": "-0.00006540",
+    "markPrice": "0.03467500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787112000001,
+    "fundingRate": "-0.00051192",
+    "markPrice": "0.03454500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787126400000,
+    "fundingRate": "0.00002352",
+    "markPrice": "0.03444000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787140800000,
+    "fundingRate": "-0.00007106",
+    "markPrice": "0.03469028",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787155200004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03564000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787169600009,
+    "fundingRate": "-0.00015524",
+    "markPrice": "0.03591000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787184000001,
+    "fundingRate": "-0.00006705",
+    "markPrice": "0.03653960",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787198400011,
+    "fundingRate": "0.00004203",
+    "markPrice": "0.03653612",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787212800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03674100",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787227200002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03740000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787241600005,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03828000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787256000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03810000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787270400004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.03884747",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787284800000,
+    "fundingRate": "-0.00028799",
+    "markPrice": "0.04054000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787299200000,
+    "fundingRate": "0.00004694",
+    "markPrice": "0.04110000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787313600000,
+    "fundingRate": "0.00002991",
+    "markPrice": "0.04163000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787328000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04203000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787342400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04180613",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787356800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04247000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787371200004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04405940",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787385600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04361000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787400000002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04301000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787414400000,
+    "fundingRate": "-0.00001533",
+    "markPrice": "0.04337000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787428800001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04335517",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787443200000,
+    "fundingRate": "0.00003360",
+    "markPrice": "0.04393000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787457600004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04150747",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787472000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04200960",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787486400002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04331947",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787500800006,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04410341",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787515200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04475000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787529600001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04415500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787544000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04289148",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787558400002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04378000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787572800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04532000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787587200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04452000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787601600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04451853",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787616000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04453000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787630400001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04440000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787644800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04409559",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787659200001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04434000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787673600005,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04457000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787688000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04442500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787702400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04333000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787716800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04430152",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787731200005,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04411712",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787745600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04373496",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787760000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04476000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787774400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04492000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787788800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04568000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787803200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04455160",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787817600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04463000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787832000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04459744",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787846400013,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04484000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787860800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04482000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787875200026,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04505618",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787889600008,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04423950",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787904000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04424469",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787918400004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04501367",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787932800001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04475160",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787947200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04520000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787961600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04578320",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787976000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04542345",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1787990400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04567700",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788004800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04546600",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788019200002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04596625",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788033600002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04569000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788048000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04573317",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788062400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04534000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788076800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04458823",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788091200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04488000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788105600001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04469000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788120000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04453000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788134400002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04284000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788148800002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04335000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788163200002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04367067",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788177600003,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04319000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788192000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04290000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788206400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04295433",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788220800005,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04308000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788235200007,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04306000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788249600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04302500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788264000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04344533",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788278400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04320000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788292800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04267810",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788307200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04269000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788321600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04392000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788336000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04349218",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788350400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04302021",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788364800005,
+    "fundingRate": "-0.00001799",
+    "markPrice": "0.04275200",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788379200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04240000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788393600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04252603",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788408000000,
+    "fundingRate": "-0.00014187",
+    "markPrice": "0.04391000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788422400000,
+    "fundingRate": "-0.00002592",
+    "markPrice": "0.04334000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788436800002,
+    "fundingRate": "0.00001255",
+    "markPrice": "0.04311573",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788451200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04435000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788465600000,
+    "fundingRate": "-0.00009916",
+    "markPrice": "0.04447000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788480000000,
+    "fundingRate": "-0.00007365",
+    "markPrice": "0.04443000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788494400000,
+    "fundingRate": "0.00004878",
+    "markPrice": "0.04476500",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788508800000,
+    "fundingRate": "-0.00010860",
+    "markPrice": "0.04456000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788523200003,
+    "fundingRate": "0.00002123",
+    "markPrice": "0.04513120",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788537600009,
+    "fundingRate": "-0.00005462",
+    "markPrice": "0.04456808",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788552000000,
+    "fundingRate": "-0.00006420",
+    "markPrice": "0.04473552",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788566400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04473000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788580800001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04515362",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788595200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04512000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788609600007,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04547000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788624000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04591384",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788638400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04596000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788652800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04615000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788667200005,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04621000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788681600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04591000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788696000001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04621897",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788710400004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04580000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788724800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04578000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788739200004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04602905",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788753600001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04546000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788768000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04560000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788782400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04580825",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788796800003,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04517760",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788811200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04558000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788825600004,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04542000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788840000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04554231",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788854400002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04573000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788868800006,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04591650",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788883200001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04622000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788897600002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04571728",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788912000005,
+    "fundingRate": "-0.00003434",
+    "markPrice": "0.04571000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788926400004,
+    "fundingRate": "0.00000224",
+    "markPrice": "0.04653000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788940800004,
+    "fundingRate": "-0.00009790",
+    "markPrice": "0.04718354",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788955200004,
+    "fundingRate": "0.00000684",
+    "markPrice": "0.04666000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788969600002,
+    "fundingRate": "-0.00002616",
+    "markPrice": "0.04651133",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788984000000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04676000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1788998400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04663463",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789012800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04634000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789027200007,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04543000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789041600000,
+    "fundingRate": "-0.00000050",
+    "markPrice": "0.04511000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789056000002,
+    "fundingRate": "-0.00010387",
+    "markPrice": "0.04476000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789070400000,
+    "fundingRate": "0.00000783",
+    "markPrice": "0.04442000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789084800008,
+    "fundingRate": "-0.00001173",
+    "markPrice": "0.04397000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789099200005,
+    "fundingRate": "0.00003659",
+    "markPrice": "0.04424000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789113600000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04449000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789128000000,
+    "fundingRate": "-0.00002149",
+    "markPrice": "0.04411000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789142400000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04476000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789156800004,
+    "fundingRate": "0.00000622",
+    "markPrice": "0.04453000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789171200001,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04481000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789185600002,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04652000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789200000003,
+    "fundingRate": "0.00003257",
+    "markPrice": "0.04638648",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789214400000,
+    "fundingRate": "0.00000265",
+    "markPrice": "0.04652000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789228800000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04777000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789243200000,
+    "fundingRate": "0.00005000",
+    "markPrice": "0.04803000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789257600002,
+    "fundingRate": "0.00002210",
+    "markPrice": "0.04939000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789272000007,
+    "fundingRate": "-0.01279184",
+    "markPrice": "0.06710000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789286400000,
+    "fundingRate": "-0.01007067",
+    "markPrice": "0.07126000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789300800001,
+    "fundingRate": "-0.00575221",
+    "markPrice": "0.07232819",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789315200000,
+    "fundingRate": "-0.00906714",
+    "markPrice": "0.05999353",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789329600000,
+    "fundingRate": "-0.00619444",
+    "markPrice": "0.06114751",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789344000000,
+    "fundingRate": "-0.01061035",
+    "markPrice": "0.05768773",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789358400000,
+    "fundingRate": "-0.01995569",
+    "markPrice": "0.06290000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789372800000,
+    "fundingRate": "-0.01273096",
+    "markPrice": "0.06598000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789387200002,
+    "fundingRate": "-0.00684476",
+    "markPrice": "0.05842329",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789401600000,
+    "fundingRate": "-0.00337705",
+    "markPrice": "0.05446175",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789416000008,
+    "fundingRate": "-0.00530456",
+    "markPrice": "0.05415000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789430400000,
+    "fundingRate": "-0.00835741",
+    "markPrice": "0.05441000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789444800001,
+    "fundingRate": "-0.00842961",
+    "markPrice": "0.05702975",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789459200005,
+    "fundingRate": "-0.00563002",
+    "markPrice": "0.05584747",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789473600005,
+    "fundingRate": "-0.01107816",
+    "markPrice": "0.05624000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789488000001,
+    "fundingRate": "-0.00397344",
+    "markPrice": "0.05511400",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789502400000,
+    "fundingRate": "-0.00410082",
+    "markPrice": "0.05438000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789516800001,
+    "fundingRate": "-0.00778031",
+    "markPrice": "0.05495000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789531200002,
+    "fundingRate": "-0.01376193",
+    "markPrice": "0.05830000",
+    "rateType": "Regular"
+  },
+  {
+    "symbol": "STEEMUSDT",
+    "fundingTime": 1789545600002,
+    "fundingRate": "-0.00319332",
+    "markPrice": "0.05703000",
+    "rateType": "Regular"
+  }
+]

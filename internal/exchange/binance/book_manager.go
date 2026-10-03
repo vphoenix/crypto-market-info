@@ -101,7 +101,7 @@ func NewBookManager(client *Client, instruments []model.Instrument, books map[ui
 		logger = slog.Default()
 	}
 	m := &BookManager{Client: client, WSEndpoint: "wss://fstream.binance.com/public/ws", Dialer: websocket.DefaultDialer,
-		SilenceTimeout: 45 * time.Second, SubscriptionTimeout: 10 * time.Second, SnapshotTimeout: 20 * time.Second, BridgeTimeout: 5 * time.Second,
+		SilenceTimeout: 45 * time.Second, SubscriptionTimeout: 10 * time.Second, SnapshotTimeout: 35 * time.Second, BridgeTimeout: 30 * time.Second,
 		ReconnectBase: time.Second, ReconnectMax: 30 * time.Second, ReconnectJitter: exchange.AddJitter, ControlInterval: 250 * time.Millisecond, Logger: logger, wake: make(chan struct{}, 1)}
 	ordered := append([]model.Instrument(nil), instruments...)
 	sort.Slice(ordered, func(i, j int) bool { return ordered[i].ExchangeSymbol < ordered[j].ExchangeSymbol })
@@ -462,6 +462,11 @@ func (m *BookManager) processEvent(event bookEvent) error {
 
 func (m *BookManager) retryTargetLocked(target *bookTarget, err error) {
 	m.resyncs.Add(1)
+	lastUpdateID := int64(0)
+	if target.collector != nil {
+		lastUpdateID = target.collector.lastUpdateID
+	}
+	m.Logger.Warn("Binance book target resyncing", "symbol", target.instrument.ExchangeSymbol, "error", err, "last_receive", target.lastReceive, "last_update_id", lastUpdateID)
 	target.generation++
 	target.stage = bookWaiting
 	target.buffer, target.collector = nil, nil

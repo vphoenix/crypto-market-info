@@ -1,0 +1,1 @@
+SELECT is_actual,count() AS rows,uniqExact(instrument_id) AS instruments,min(hour_time) AS first_hour,max(hour_time) AS last_hour,min(funding_time) AS first_funding,max(funding_time) AS last_funding FROM crypto_market_info.funding_rate_hourly FINAL GROUP BY is_actual

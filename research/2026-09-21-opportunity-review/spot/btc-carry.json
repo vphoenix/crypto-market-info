@@ -1,0 +1,22 @@
+{
+  "timestamp_utc": "2026-09-21 14:29:00",
+  "quantity_btc": "0.582",
+  "spot_buy": "49888.76064",
+  "spot_sell": "49888.5443794",
+  "perp_buy": "49867.6806",
+  "perp_sell": "49867.6224",
+  "enough_saved_depth": true,
+  "total_capital": "100000",
+  "spot_and_margin_plus_fee_reserve": "99927.1662365194",
+  "unused_capital": "72.8337634806",
+  "four_trade_fee": "149.6449565194",
+  "full_roundtrip_friction": "149.9194171194",
+  "current_entry_perp_discount": "0.000423707458931174602937580611743976",
+  "funding_30d_apr_notional": "0.0745730283333333333333333333333333333",
+  "net_scenarios": {
+    "30": "0.018963363857689048000000000000",
+    "90": "0.0311234943573737146666666666666666667",
+    "365": "0.03570436543602204800000000000"
+  },
+  "method": "Future funding equals past30d fixed-notional average; basis and executable depth unchanged; no transfers/tax. This is not a fixed-quantity historical return backtest."
+}

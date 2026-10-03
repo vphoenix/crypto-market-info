@@ -1,0 +1,3579 @@
+[
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-21 06:00:00",
+    "funding_time": "2026-08-21 08:00:00.000",
+    "rate": "0.00004954",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-21 07:00:00",
+    "funding_time": "2026-08-21 08:00:00.000",
+    "rate": "0.00004579",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-21 08:00:00",
+    "funding_time": "2026-08-21 08:00:00.000",
+    "rate": "0.00005814",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-21 14:00:00",
+    "funding_time": "2026-08-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-21 15:00:00",
+    "funding_time": "2026-08-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-21 16:00:00",
+    "funding_time": "2026-08-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-21 17:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-21 18:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-21 19:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-21 20:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-21 21:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-21 22:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-21 23:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 00:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 01:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 03:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 04:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 05:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 06:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 07:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 08:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 09:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 10:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 11:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 12:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 13:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 14:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 15:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 16:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 17:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 18:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 19:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 20:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 21:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 22:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-22 23:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 00:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 01:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 02:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 03:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 04:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 05:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 06:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 07:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 08:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 09:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 10:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 12:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 13:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 14:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 15:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 16:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 17:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 18:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 19:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 20:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 21:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 22:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-23 23:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 00:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 01:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 02:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 03:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 04:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 05:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 06:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 07:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 08:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 09:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 10:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 11:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 12:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 13:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 14:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 15:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 16:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 17:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 18:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 19:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 20:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.00007978",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 21:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.00006846",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 22:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.00006872",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-24 23:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.00006267",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 00:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.00005853",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 01:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.00005769",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 02:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0000796",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 03:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 04:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 05:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 06:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 07:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 08:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 09:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 10:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 11:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 12:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 13:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 14:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 15:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 16:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 17:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.00009969",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 18:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 19:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 20:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 21:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.00009034",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 22:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.00008697",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-25 23:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.00009083",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 00:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.00007734",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 01:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.00007169",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 02:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.00006688",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 03:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.00006213",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 04:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.00005487",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 05:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.00004857",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 06:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.0000561",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 07:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.00006315",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 08:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.00005976",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 09:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.00007011",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 10:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.0000908",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 11:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.00009765",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 12:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.00008877",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 13:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.00007791",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 14:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.0000677",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 15:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.0000567",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 16:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.00007091",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 17:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.00007768",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 18:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.00008619",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 19:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.00008791",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 20:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.00008699",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 21:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.00007947",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 22:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.0000762",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-26 23:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.00006239",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 00:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.00004595",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 01:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.00003252",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 02:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.00003081",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 03:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.00003203",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 04:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.00004133",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 05:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.00005693",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 06:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.00007668",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 07:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 08:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 09:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 10:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 11:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 12:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.0000957",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 13:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.00008388",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 14:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.00008004",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 15:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.00006488",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 16:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.00006331",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 17:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "0.00007677",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 18:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "0.0000937",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 19:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 20:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "0.00009049",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 21:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "0.00008284",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 22:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "0.00008707",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-27 23:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "0.00007866",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 00:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "0.00006632",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 01:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.00006256",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 02:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.00007092",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 03:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.00008006",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 04:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.00008372",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 05:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.00009041",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 06:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 07:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 08:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 09:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 10:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 11:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 12:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.00009566",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 13:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.00007254",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 14:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.00005716",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-28 15:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.00004971",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-31 18:00:00",
+    "funding_time": "2026-09-01 00:00:00.000",
+    "rate": "0.00007963",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-31 19:00:00",
+    "funding_time": "2026-09-01 00:00:00.000",
+    "rate": "0.00007235",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-31 20:00:00",
+    "funding_time": "2026-09-01 00:00:00.000",
+    "rate": "0.00007316",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-31 21:00:00",
+    "funding_time": "2026-09-01 00:00:00.000",
+    "rate": "0.00008905",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-31 22:00:00",
+    "funding_time": "2026-09-01 00:00:00.000",
+    "rate": "0.00009678",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 2,
+    "hour_time": "2026-08-31 23:00:00",
+    "funding_time": "2026-09-01 00:00:00.000",
+    "rate": "0.00008743",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-21 06:00:00",
+    "funding_time": "2026-08-21 08:00:00.000",
+    "rate": "0.00007761404231",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-21 07:00:00",
+    "funding_time": "2026-08-21 08:00:00.000",
+    "rate": "0.00007508221189",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-21 08:00:00",
+    "funding_time": "2026-08-21 08:00:00.000",
+    "rate": "0.0000807091890159",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-21 14:00:00",
+    "funding_time": "2026-08-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-21 15:00:00",
+    "funding_time": "2026-08-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-21 16:00:00",
+    "funding_time": "2026-08-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-21 17:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-21 18:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-21 19:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-21 20:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-21 21:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-21 22:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-21 23:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 00:00:00",
+    "funding_time": "2026-08-22 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 01:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 02:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 03:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 04:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 05:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 06:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 07:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 08:00:00",
+    "funding_time": "2026-08-22 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 09:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 10:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 11:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 12:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 13:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 14:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 15:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 16:00:00",
+    "funding_time": "2026-08-22 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 17:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 18:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 19:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 20:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 21:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 22:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-22 23:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 00:00:00",
+    "funding_time": "2026-08-23 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 01:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 02:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 03:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 04:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 05:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 06:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 07:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 08:00:00",
+    "funding_time": "2026-08-23 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 09:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 10:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 12:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 13:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 14:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 15:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 16:00:00",
+    "funding_time": "2026-08-23 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 17:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 18:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 19:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 20:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 21:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 22:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-23 23:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 00:00:00",
+    "funding_time": "2026-08-24 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 01:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 02:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 03:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 04:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 05:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 06:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 07:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 08:00:00",
+    "funding_time": "2026-08-24 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 09:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 10:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 11:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 12:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 13:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 14:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 15:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 16:00:00",
+    "funding_time": "2026-08-24 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 17:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.0000870117347163",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 18:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.0000764005750739",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 19:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.0000759552116081",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 20:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.0000659087287753",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 21:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.0000671814355952",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 22:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.0000764729198053",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-24 23:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.00007877308561",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 00:00:00",
+    "funding_time": "2026-08-25 00:00:00.000",
+    "rate": "0.0000721612486132",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 01:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0000709038817787",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 02:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0000940786680287",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 03:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 04:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 05:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 06:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 07:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 08:00:00",
+    "funding_time": "2026-08-25 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 09:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 10:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 11:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 12:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 13:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 14:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 15:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0000934521358299",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 16:00:00",
+    "funding_time": "2026-08-25 16:00:00.000",
+    "rate": "0.0000560993670634",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 17:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.0000430678264325",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 18:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.0000384741556381",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 19:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.0000291250869888",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 20:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.0000184596347057",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 21:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.0000158467410051",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 22:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.0000348726909681",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-25 23:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.0000646927859314",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 00:00:00",
+    "funding_time": "2026-08-26 00:00:00.000",
+    "rate": "0.0000839480914457",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 01:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 02:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 03:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 04:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 05:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 06:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 07:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.0000909628393017",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 08:00:00",
+    "funding_time": "2026-08-26 08:00:00.000",
+    "rate": "0.0000663611159815",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 09:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.0000639361100844",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 10:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.0000815532014483",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 11:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.0000870744365007",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 12:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.0000823756785382",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 13:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.0000755805301554",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 14:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.000061715292367",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 15:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.0000559368606984",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 16:00:00",
+    "funding_time": "2026-08-26 16:00:00.000",
+    "rate": "0.0000565958949127",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 17:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.0000649632187991",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 18:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.0000645421326817",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 19:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.0000552182567043",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 20:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.0000401635456323",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 21:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.0000267904347772",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 22:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.0000243381492126",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-26 23:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.0000386829905441",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 00:00:00",
+    "funding_time": "2026-08-27 00:00:00.000",
+    "rate": "0.0000442104724114",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 01:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.0000577166002748",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 02:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.000066427043853",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 03:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.0000709569405321",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 04:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.0000709824912769",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 05:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.0000629130164529",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 06:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.0000577419627943",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 07:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.0000506108676326",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 08:00:00",
+    "funding_time": "2026-08-27 08:00:00.000",
+    "rate": "0.0000418527563912",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 09:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.0000324476146268",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 10:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.0000331719144155",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 11:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.0000441943601198",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 12:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.0000510248738436",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 13:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.0000531438793696",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 14:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.0000511239678363",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 15:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "0.0000283898409805",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 16:00:00",
+    "funding_time": "2026-08-27 16:00:00.000",
+    "rate": "-0.0000040858109027",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 17:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "-0.0000212864770918",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 18:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "-0.0000361524085042",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 19:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "-0.0000336529871645",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 20:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "-0.0000286205280569",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 21:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "-0.0000097880821636",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 22:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "0.0000094800983163",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-27 23:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "0.0000243212837844",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 00:00:00",
+    "funding_time": "2026-08-28 00:00:00.000",
+    "rate": "0.0000299828619064",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 01:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.0000435072907448",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 02:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.0000695904564421",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 03:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.0000859663204073",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 04:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.0000796331541119",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 05:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.0000816500212348",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 06:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.0000891267090018",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 07:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.0000928408274336",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 08:00:00",
+    "funding_time": "2026-08-28 08:00:00.000",
+    "rate": "0.0000999821658119",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 09:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 10:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 11:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 12:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 13:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 14:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-28 15:00:00",
+    "funding_time": "2026-08-28 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-31 18:00:00",
+    "funding_time": "2026-09-01 00:00:00.000",
+    "rate": "0.0000629077236621",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-31 19:00:00",
+    "funding_time": "2026-09-01 00:00:00.000",
+    "rate": "0.0000633245271268",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-31 20:00:00",
+    "funding_time": "2026-09-01 00:00:00.000",
+    "rate": "0.0000587920446666",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-31 21:00:00",
+    "funding_time": "2026-09-01 00:00:00.000",
+    "rate": "0.0000650742742804",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-31 22:00:00",
+    "funding_time": "2026-09-01 00:00:00.000",
+    "rate": "0.0000586490049404",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 4,
+    "hour_time": "2026-08-31 23:00:00",
+    "funding_time": "2026-09-01 00:00:00.000",
+    "rate": "0.0000407066208605",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-19 11:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-19 12:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-19 13:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-19 14:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-19 15:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-19 16:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-19 17:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-19 18:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.0000743",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-19 19:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.00006686",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-19 20:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.00006751",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-19 21:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.00007546",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-19 22:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.00009851",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-19 23:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 00:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 01:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 02:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 03:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 04:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 05:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 06:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 07:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 08:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 09:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 10:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 11:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 12:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 13:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.00008927",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 14:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.00008067",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 15:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.00007648",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 16:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.00007524",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 17:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.00005756",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 18:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.00004183",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 19:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.00004025",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 20:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.00004445",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 21:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.00003587",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 22:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.00004348",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-20 23:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.00003955",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 00:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.000042",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 01:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0000613",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 02:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.00006963",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 03:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.00008183",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 04:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.00008436",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 05:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 06:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.00009457",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 07:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.00009037",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 08:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 09:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 10:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 11:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 12:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 13:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 5,
+    "hour_time": "2026-09-21 14:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.00009914",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-19 11:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-19 12:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-19 13:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-19 14:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-19 15:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-19 16:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-19 17:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-19 18:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-19 19:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-19 20:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-19 21:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-19 22:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-19 23:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 00:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 01:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 02:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 03:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 04:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 05:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 06:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 07:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 08:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 09:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 10:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 11:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 12:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.0000984853378521",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 13:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.0000951245164972",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 14:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.0000870079954943",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 15:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.0000831445016531",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 16:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.0000785786760489",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 17:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0000804056639103",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 18:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0000766693645093",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 19:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0000831675283458",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 20:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 21:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 22:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0000976876823259",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-20 23:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0000951962827204",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 00:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0000925806509055",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 01:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0000976077067556",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 02:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 03:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 04:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 05:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 06:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 07:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 08:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 09:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 10:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 11:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 12:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 13:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.000083896059284",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 6,
+    "hour_time": "2026-09-21 14:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0000632621661636",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-19 11:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-19 12:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-19 13:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-19 14:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-19 15:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-19 16:00:00",
+    "funding_time": "2026-09-19 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-19 17:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.00002103",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-19 18:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.00000291",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-19 19:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.00000439",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-19 20:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.00001458",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-19 21:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.00003393",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-19 22:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.00005504",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-19 23:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.00006599",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 00:00:00",
+    "funding_time": "2026-09-20 00:00:00.000",
+    "rate": "0.00006562",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 01:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.00008014",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 02:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.00008279",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 03:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 04:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 05:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 06:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.00009377",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 07:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.00008262",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 08:00:00",
+    "funding_time": "2026-09-20 08:00:00.000",
+    "rate": "0.00007123",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 09:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.00000979",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 10:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.00008859",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 11:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.00008637",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 12:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.00006032",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 13:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.00005293",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 14:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.00004499",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 15:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.00004763",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 16:00:00",
+    "funding_time": "2026-09-20 16:00:00.000",
+    "rate": "0.0000426",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 17:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 18:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 19:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 20:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 21:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 22:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-20 23:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 00:00:00",
+    "funding_time": "2026-09-21 00:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 01:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 02:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 03:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.00008218",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 04:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0000897",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 05:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.00008545",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 06:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.00007698",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 07:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.00008108",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 08:00:00",
+    "funding_time": "2026-09-21 08:00:00.000",
+    "rate": "0.0001",
+    "is_actual": true
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 09:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 10:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 11:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 12:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 13:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  },
+  {
+    "instrument_id": 7,
+    "hour_time": "2026-09-21 14:00:00",
+    "funding_time": "2026-09-21 16:00:00.000",
+    "rate": "0.0001",
+    "is_actual": false
+  }
+]

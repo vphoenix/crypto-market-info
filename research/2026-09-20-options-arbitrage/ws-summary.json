@@ -1,0 +1,152 @@
+{
+  "url": "wss://www.deribit.com/ws/api/v2",
+  "duration_requested_seconds": 40,
+  "started_at": "2026-09-20T14:14:21.663037+00:00",
+  "channels": [
+    "book.BTC-23SEP26-80500-C.100ms",
+    "book.BTC-23SEP26-80500-P.100ms",
+    "book.BTC-23SEP26.100ms",
+    "book.ETH-23SEP26-2580-C.100ms",
+    "book.ETH-23SEP26-2580-P.100ms",
+    "book.ETH-23SEP26.100ms",
+    "book.BTC_USDC-23SEP26-80500-C.100ms",
+    "book.BTC_USDC-23SEP26-80500-P.100ms",
+    "book.BTC_USDC-23SEP26.100ms",
+    "book.ETH_USDC-23SEP26-2580-C.100ms",
+    "book.ETH_USDC-23SEP26-2580-P.100ms",
+    "book.ETH_USDC-23SEP26.100ms",
+    "quote.BTC-23SEP26-80500-C"
+  ],
+  "subscription_ack": true,
+  "errors": [],
+  "books": {
+    "book.ETH_USDC-23SEP26.100ms": {
+      "bid_levels": 4,
+      "ask_levels": 3,
+      "best_bid": "2580.25",
+      "best_ask": "2580.75"
+    },
+    "book.ETH_USDC-23SEP26-2580-P.100ms": {
+      "bid_levels": 7,
+      "ask_levels": 4,
+      "best_bid": "36.8",
+      "best_ask": "39.4"
+    },
+    "book.ETH_USDC-23SEP26-2580-C.100ms": {
+      "bid_levels": 3,
+      "ask_levels": 4,
+      "best_bid": "37.2",
+      "best_ask": "40.4"
+    },
+    "book.ETH-23SEP26.100ms": {
+      "bid_levels": 3,
+      "ask_levels": 4,
+      "best_bid": "2580.25",
+      "best_ask": "2580.75"
+    },
+    "book.ETH-23SEP26-2580-P.100ms": {
+      "bid_levels": 7,
+      "ask_levels": 9,
+      "best_bid": "0.014",
+      "best_ask": "0.015"
+    },
+    "book.ETH-23SEP26-2580-C.100ms": {
+      "bid_levels": 6,
+      "ask_levels": 7,
+      "best_bid": "0.0145",
+      "best_ask": "0.0155"
+    },
+    "book.BTC_USDC-23SEP26.100ms": {
+      "bid_levels": 3,
+      "ask_levels": 4,
+      "best_bid": "80570.0",
+      "best_ask": "80597.5"
+    },
+    "book.BTC_USDC-23SEP26-80500-P.100ms": {
+      "bid_levels": 6,
+      "ask_levels": 8,
+      "best_bid": "755.0",
+      "best_ask": "815.0"
+    },
+    "book.BTC_USDC-23SEP26-80500-C.100ms": {
+      "bid_levels": 5,
+      "ask_levels": 5,
+      "best_bid": "850.0",
+      "best_ask": "935.0"
+    },
+    "book.BTC-23SEP26.100ms": {
+      "bid_levels": 48,
+      "ask_levels": 8,
+      "best_bid": "80597.5",
+      "best_ask": "80602.5"
+    },
+    "book.BTC-23SEP26-80500-P.100ms": {
+      "bid_levels": 8,
+      "ask_levels": 6,
+      "best_bid": "0.0095",
+      "best_ask": "0.0105"
+    },
+    "book.BTC-23SEP26-80500-C.100ms": {
+      "bid_levels": 8,
+      "ask_levels": 9,
+      "best_bid": "0.0105",
+      "best_ask": "0.0115"
+    }
+  },
+  "ended_at": "2026-09-20T14:15:02.779305+00:00",
+  "counts": {
+    "quote.BTC-23SEP26-80500-C": {
+      "messages": 6
+    },
+    "book.ETH_USDC-23SEP26.100ms": {
+      "messages": 35,
+      "snapshots": 1
+    },
+    "book.ETH_USDC-23SEP26-2580-P.100ms": {
+      "messages": 35,
+      "snapshots": 1
+    },
+    "book.ETH_USDC-23SEP26-2580-C.100ms": {
+      "messages": 22,
+      "snapshots": 1
+    },
+    "book.ETH-23SEP26.100ms": {
+      "messages": 25,
+      "snapshots": 1
+    },
+    "book.ETH-23SEP26-2580-P.100ms": {
+      "messages": 8,
+      "snapshots": 1
+    },
+    "book.ETH-23SEP26-2580-C.100ms": {
+      "messages": 5,
+      "snapshots": 1
+    },
+    "book.BTC_USDC-23SEP26.100ms": {
+      "messages": 36,
+      "snapshots": 1
+    },
+    "book.BTC_USDC-23SEP26-80500-P.100ms": {
+      "messages": 21,
+      "snapshots": 1
+    },
+    "book.BTC_USDC-23SEP26-80500-C.100ms": {
+      "messages": 12,
+      "snapshots": 1
+    },
+    "book.BTC-23SEP26.100ms": {
+      "messages": 31,
+      "snapshots": 1
+    },
+    "book.BTC-23SEP26-80500-P.100ms": {
+      "messages": 12,
+      "snapshots": 1
+    },
+    "book.BTC-23SEP26-80500-C.100ms": {
+      "messages": 6,
+      "snapshots": 1
+    }
+  },
+  "raw_sha256": "e5bd3fa437bd5042672d1c255f5daf7d8f0921af185e7c5fe8a1c293ce7e39d9",
+  "raw_bytes": 126688
+}

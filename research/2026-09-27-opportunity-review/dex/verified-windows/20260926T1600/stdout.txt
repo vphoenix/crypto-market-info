@@ -1,0 +1,9 @@
+UTC 2026-09-26T16:00:00Z .. 2026-09-26T16:26:00Z | capital 1000000.000000 USDT | finalized_only=true
+blocks=0 complete_live_quotes=0 observed_height_span=0 missing_heights=0
+route | complete blocks | confirmed windows | unknown fragments | positive UTC dates | best gross USDC | amount USDC | assessment
+positive observed segments=0; no cumulative profit or APR computed
+NOTE: all routes share Sky PSM; simultaneous candidates are mutually exclusive
+NOTE: block-end quotations do not establish inclusion, realized profit or APR
+NOTE: USDC profits are not USDT returns; entry/exit and idle capital need separate accounting
+NOTE: missing heights outside the observed endpoints cannot be measured from this report
+Report: /home/ubuntu/crypto-market-info/research/2026-09-27-opportunity-review/dex/verified-windows/20260926T1600

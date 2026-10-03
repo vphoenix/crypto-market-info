@@ -1,0 +1,47 @@
+[
+  {
+    "name": "instrument_id",
+    "type": "UInt32",
+    "default_type": "",
+    "default_expression": "",
+    "comment": "",
+    "codec_expression": "",
+    "ttl_expression": ""
+  },
+  {
+    "name": "hour_time",
+    "type": "DateTime('UTC')",
+    "default_type": "",
+    "default_expression": "",
+    "comment": "",
+    "codec_expression": "",
+    "ttl_expression": ""
+  },
+  {
+    "name": "funding_time",
+    "type": "DateTime64(3, 'UTC')",
+    "default_type": "",
+    "default_expression": "",
+    "comment": "",
+    "codec_expression": "",
+    "ttl_expression": ""
+  },
+  {
+    "name": "rate",
+    "type": "Decimal(38, 18)",
+    "default_type": "",
+    "default_expression": "",
+    "comment": "",
+    "codec_expression": "",
+    "ttl_expression": ""
+  },
+  {
+    "name": "is_actual",
+    "type": "Bool",
+    "default_type": "",
+    "default_expression": "",
+    "comment": "",
+    "codec_expression": "",
+    "ttl_expression": ""
+  }
+]

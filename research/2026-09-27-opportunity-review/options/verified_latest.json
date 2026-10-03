@@ -1,0 +1,437 @@
+{
+  "Profile": "deribit_live_v1",
+  "Run": {
+    "ID": "fac27b8c-7d81-4f0e-a0c0-a15130ecc095",
+    "StartedAt": "2026-09-25T06:35:18.571628Z",
+    "RESTURL": "https://www.deribit.com",
+    "WSURL": "wss://www.deribit.com/ws/api/v2",
+    "Selection": "near_atm_v1",
+    "Members": [
+      {
+        "InstrumentID": 126,
+        "Symbol": "BTC-27SEP26",
+        "DefinitionHash": "4726070b49c0cd3ac558b8281730ef7ad3e4c6aaf5c9c85e9ec33d573b8807d0",
+        "IndexID": "btc_usd"
+      },
+      {
+        "InstrumentID": 127,
+        "Symbol": "BTC-27SEP26-84000-C",
+        "DefinitionHash": "8fdd1686184c4121459305d8bb7b0b56d2b0d33c4dd98cfde3e03fc2babc3e43",
+        "IndexID": "btc_usd"
+      },
+      {
+        "InstrumentID": 128,
+        "Symbol": "BTC-27SEP26-84000-P",
+        "DefinitionHash": "eaa0b6fbeb3eef17bf559dfd060c0e566df778ab47f22b1032fcdfc984cb0ae5",
+        "IndexID": "btc_usd"
+      },
+      {
+        "InstrumentID": 129,
+        "Symbol": "BTC-27SEP26-84500-C",
+        "DefinitionHash": "9f83e304227e902171afb227b1f88f562bcd844c2f0c140a7bd22311f01d8029",
+        "IndexID": "btc_usd"
+      },
+      {
+        "InstrumentID": 130,
+        "Symbol": "BTC-27SEP26-84500-P",
+        "DefinitionHash": "07334ebb4d3ece6abaef8da9b4e785819fcb4d060ed07a32eb61892d30bd9263",
+        "IndexID": "btc_usd"
+      },
+      {
+        "InstrumentID": 133,
+        "Symbol": "BTC_USDC-27SEP26",
+        "DefinitionHash": "47ff853e930ed0cfc1f305ed446f9a0615aff5cc7331fce1ab355f56a2755e05",
+        "IndexID": "btc_usdc"
+      },
+      {
+        "InstrumentID": 134,
+        "Symbol": "BTC_USDC-27SEP26-84000-C",
+        "DefinitionHash": "5e45b8bc2e98fc95336cb477ce7e59f71d3b4ae07bacb460e0d65df6919e751a",
+        "IndexID": "btc_usdc"
+      },
+      {
+        "InstrumentID": 135,
+        "Symbol": "BTC_USDC-27SEP26-84000-P",
+        "DefinitionHash": "0dfb2865a39bddae953e4d032fb05bc8105ff39ae517c2011c2e0ad422c2866f",
+        "IndexID": "btc_usdc"
+      },
+      {
+        "InstrumentID": 136,
+        "Symbol": "BTC_USDC-27SEP26-84500-C",
+        "DefinitionHash": "3a6eb5effca192c4677b6f7bdca0cb68dfbf266d684bfb98149dbcfc68b710df",
+        "IndexID": "btc_usdc"
+      },
+      {
+        "InstrumentID": 137,
+        "Symbol": "BTC_USDC-27SEP26-84500-P",
+        "DefinitionHash": "13cf3587586351ef38fbb0caef3c6c44caedcfb795e07ee90202e6053729fb3f",
+        "IndexID": "btc_usdc"
+      },
+      {
+        "InstrumentID": 140,
+        "Symbol": "ETH-27SEP26",
+        "DefinitionHash": "d270163e07d5b82ea5fe03eeb4849addf8b0d2dc0efd8779b2ce564dae231fa5",
+        "IndexID": "eth_usd"
+      },
+      {
+        "InstrumentID": 141,
+        "Symbol": "ETH-27SEP26-2660-C",
+        "DefinitionHash": "89a95dcddafa14c5d074ab8d9966b6f1beecd4782e112eb784e4c69faff2a135",
+        "IndexID": "eth_usd"
+      },
+      {
+        "InstrumentID": 142,
+        "Symbol": "ETH-27SEP26-2660-P",
+        "DefinitionHash": "54da31446e53f45623b668dea3d6a56ddbcf77c32b1dd93c435d2cd70d4bf275",
+        "IndexID": "eth_usd"
+      },
+      {
+        "InstrumentID": 143,
+        "Symbol": "ETH-27SEP26-2680-C",
+        "DefinitionHash": "5db4501f3f9c2e35ac2aba08dca23d3f930fe1b29e1b48e02d75acf719ee3d5d",
+        "IndexID": "eth_usd"
+      },
+      {
+        "InstrumentID": 144,
+        "Symbol": "ETH-27SEP26-2680-P",
+        "DefinitionHash": "9851949dcb43ee077d4236683c36d4d045d6130d2f13732b24c1d2898197a5b7",
+        "IndexID": "eth_usd"
+      },
+      {
+        "InstrumentID": 145,
+        "Symbol": "ETH-27SEP26-2700-C",
+        "DefinitionHash": "6ecebadaf5a151c0860555d4e41586480e80ce3eea831cb4eccbd23072b6ecda",
+        "IndexID": "eth_usd"
+      },
+      {
+        "InstrumentID": 146,
+        "Symbol": "ETH-27SEP26-2700-P",
+        "DefinitionHash": "e6b2bf6f957b21e9b6932a90e7db23a49d638b0a7f1738a68e3fcab283a3dc11",
+        "IndexID": "eth_usd"
+      },
+      {
+        "InstrumentID": 147,
+        "Symbol": "ETH_USDC-27SEP26",
+        "DefinitionHash": "7aa8c8a5b9077eff105acd7c20305c76a6548fc111af786187dc130389e7dfce",
+        "IndexID": "eth_usdc"
+      },
+      {
+        "InstrumentID": 148,
+        "Symbol": "ETH_USDC-27SEP26-2660-C",
+        "DefinitionHash": "7c889f57eb01605970c056525ca009ff8e9b4d306948ca2e84f79d925bca6244",
+        "IndexID": "eth_usdc"
+      },
+      {
+        "InstrumentID": 149,
+        "Symbol": "ETH_USDC-27SEP26-2660-P",
+        "DefinitionHash": "b2ca00b86ff93011845b412a7f37fe348f192aaa81898a94f7f7a8983ddf58c8",
+        "IndexID": "eth_usdc"
+      },
+      {
+        "InstrumentID": 150,
+        "Symbol": "ETH_USDC-27SEP26-2680-C",
+        "DefinitionHash": "537e391b5226520c268c7b9c6722ee0f04920315d433ee8d75e180dd0b6ef27e",
+        "IndexID": "eth_usdc"
+      },
+      {
+        "InstrumentID": 151,
+        "Symbol": "ETH_USDC-27SEP26-2680-P",
+        "DefinitionHash": "2575893011eafccdd12b3decb8cc1cc5b14077363603789603b57bd15d635f2e",
+        "IndexID": "eth_usdc"
+      },
+      {
+        "InstrumentID": 152,
+        "Symbol": "ETH_USDC-27SEP26-2700-C",
+        "DefinitionHash": "4df44ec8cf42551703b751d10d53b92acc303f45d184b514056ab7786f6d9528",
+        "IndexID": "eth_usdc"
+      },
+      {
+        "InstrumentID": 153,
+        "Symbol": "ETH_USDC-27SEP26-2700-P",
+        "DefinitionHash": "c05d232cab0d57b454338ca748995846ed5ecea4c84dae579ce87f8a8541367e",
+        "IndexID": "eth_usdc"
+      },
+      {
+        "InstrumentID": 154,
+        "Symbol": "BTC_USDC-27SEP26-83500-C",
+        "DefinitionHash": "a41adab4b18e32b0eaf467b33b81e73bd673c02de9f4f66e9c5480cb388c3a1d",
+        "IndexID": "btc_usdc"
+      },
+      {
+        "InstrumentID": 155,
+        "Symbol": "BTC_USDC-27SEP26-83500-P",
+        "DefinitionHash": "8ea3bb33a491a8f3e62033c002559f9e18bf81d659838c05cf3b6c3eef00ba56",
+        "IndexID": "btc_usdc"
+      },
+      {
+        "InstrumentID": 156,
+        "Symbol": "BTC-27SEP26-83500-C",
+        "DefinitionHash": "0f6f4a79523b1feb7c5174f4bfb1b7b53039c17f3e600abd396455f42b1df9df",
+        "IndexID": "btc_usd"
+      },
+      {
+        "InstrumentID": 157,
+        "Symbol": "BTC-27SEP26-83500-P",
+        "DefinitionHash": "7bca77b52f845b8afa791200c48774ddb16ead509211fd4d385c35ff804ae215",
+        "IndexID": "btc_usd"
+      }
+    ],
+    "Indexes": [
+      "btc_usd",
+      "btc_usdc",
+      "eth_usd",
+      "eth_usdc"
+    ],
+    "References": [
+      {
+        "Symbol": "BTC-27SEP26",
+        "Bid": 8407000000000,
+        "Ask": 8407500000000,
+        "SourceTime": "2026-09-25T06:35:08.797Z",
+        "ReceivedAt": "2026-09-25T06:35:09.691392Z",
+        "PayloadHash": "90302b67a6513d8d1adfeab1ee3f74b6983c676caaf387cdab28f0a5fb7bfb6d"
+      },
+      {
+        "Symbol": "ETH-27SEP26",
+        "Bid": 267475000000,
+        "Ask": 267575000000,
+        "SourceTime": "2026-09-25T06:35:09.074Z",
+        "ReceivedAt": "2026-09-25T06:35:10.390174Z",
+        "PayloadHash": "9d824ea7b969b709afd35e009864fe5bce06a796fcd36683fbadadecb0929b41"
+      },
+      {
+        "Symbol": "BTC_USDC-27SEP26",
+        "Bid": 8405500000000,
+        "Ask": 8406500000000,
+        "SourceTime": "2026-09-25T06:35:11.551Z",
+        "ReceivedAt": "2026-09-25T06:35:12.477358Z",
+        "PayloadHash": "e74f6674cb17b0aa4b0f519d33db2a3cbc4b72837744faf796712c5bf193de65"
+      },
+      {
+        "Symbol": "ETH_USDC-27SEP26",
+        "Bid": 267475000000,
+        "Ask": 267525000000,
+        "SourceTime": "2026-09-25T06:35:14.188Z",
+        "ReceivedAt": "2026-09-25T06:35:14.443545Z",
+        "PayloadHash": "a4b87663efb5db3e28c6a82f4fedf7f5c9db979c576c7a2e88b0043ba6b6277b"
+      }
+    ]
+  },
+  "SampleTime": "2026-09-26T16:25:59Z",
+  "BatchID": "ce018057717c36b307725fe01c7d733f7d7cd6c38b1c86bfd49cc46ed29316bd",
+  "Coverage": [
+    {
+      "InstrumentID": 126,
+      "Symbol": "BTC-27SEP26",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 127,
+      "Symbol": "BTC-27SEP26-84000-C",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 128,
+      "Symbol": "BTC-27SEP26-84000-P",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 129,
+      "Symbol": "BTC-27SEP26-84500-C",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 130,
+      "Symbol": "BTC-27SEP26-84500-P",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 133,
+      "Symbol": "BTC_USDC-27SEP26",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 134,
+      "Symbol": "BTC_USDC-27SEP26-84000-C",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 135,
+      "Symbol": "BTC_USDC-27SEP26-84000-P",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 136,
+      "Symbol": "BTC_USDC-27SEP26-84500-C",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 137,
+      "Symbol": "BTC_USDC-27SEP26-84500-P",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 140,
+      "Symbol": "ETH-27SEP26",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 141,
+      "Symbol": "ETH-27SEP26-2660-C",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 142,
+      "Symbol": "ETH-27SEP26-2660-P",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 143,
+      "Symbol": "ETH-27SEP26-2680-C",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 144,
+      "Symbol": "ETH-27SEP26-2680-P",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 145,
+      "Symbol": "ETH-27SEP26-2700-C",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 146,
+      "Symbol": "ETH-27SEP26-2700-P",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 147,
+      "Symbol": "ETH_USDC-27SEP26",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 148,
+      "Symbol": "ETH_USDC-27SEP26-2660-C",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 149,
+      "Symbol": "ETH_USDC-27SEP26-2660-P",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 150,
+      "Symbol": "ETH_USDC-27SEP26-2680-C",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 151,
+      "Symbol": "ETH_USDC-27SEP26-2680-P",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 152,
+      "Symbol": "ETH_USDC-27SEP26-2700-C",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 153,
+      "Symbol": "ETH_USDC-27SEP26-2700-P",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 154,
+      "Symbol": "BTC_USDC-27SEP26-83500-C",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 155,
+      "Symbol": "BTC_USDC-27SEP26-83500-P",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 156,
+      "Symbol": "BTC-27SEP26-83500-C",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    },
+    {
+      "InstrumentID": 157,
+      "Symbol": "BTC-27SEP26-83500-P",
+      "ValidSeconds": 60,
+      "Reasons": {}
+    }
+  ],
+  "Indexes": [
+    {
+      "IndexID": "btc_usd",
+      "Sample": {
+        "Price": "84093.35",
+        "SourceTime": "2026-09-26T16:25:55.039Z",
+        "ReceivedAt": "2026-09-26T16:25:55.298853Z",
+        "Epoch": "6baa8d14-2fc5-4bf8-9c83-f86eb62a57f1",
+        "State": 2
+      }
+    },
+    {
+      "IndexID": "btc_usdc",
+      "Sample": {
+        "Price": "84093.35",
+        "SourceTime": "2026-09-26T16:25:55.039Z",
+        "ReceivedAt": "2026-09-26T16:25:55.292976Z",
+        "Epoch": "6baa8d14-2fc5-4bf8-9c83-f86eb62a57f1",
+        "State": 2
+      }
+    },
+    {
+      "IndexID": "eth_usd",
+      "Sample": {
+        "Price": "2689.83",
+        "SourceTime": "2026-09-26T16:25:56.42Z",
+        "ReceivedAt": "2026-09-26T16:25:56.674274Z",
+        "Epoch": "6baa8d14-2fc5-4bf8-9c83-f86eb62a57f1",
+        "State": 2
+      }
+    },
+    {
+      "IndexID": "eth_usdc",
+      "Sample": {
+        "Price": "2689.83",
+        "SourceTime": "2026-09-26T16:25:56.42Z",
+        "ReceivedAt": "2026-09-26T16:25:56.67912Z",
+        "Epoch": "6baa8d14-2fc5-4bf8-9c83-f86eb62a57f1",
+        "State": 2
+      }
+    }
+  ],
+  "Book": null,
+  "Specs": null,
+  "TradingRule": null
+}

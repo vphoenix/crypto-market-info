@@ -1,0 +1,1 @@
+SELECT * FROM crypto_market_info.order_book_minute FINAL WHERE instrument_id IN (1,3) AND minute_time IN (toDateTime('2026-09-21 08:39:00','UTC'),toDateTime('2026-09-24 13:56:00','UTC')) ORDER BY minute_time,instrument_id

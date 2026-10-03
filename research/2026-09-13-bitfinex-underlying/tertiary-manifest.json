@@ -1,0 +1,273 @@
+[
+  {
+    "name": "js-0",
+    "url": "https://www.bitfinex.com/_next/static/chunks/2-53m74dqkhnw.js",
+    "requested_at": "2026-09-13T14:11:09.358459+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:09.787996+00:00",
+    "sha256": "4ff7682cc3283955511a5d4f88b95a27fbef2ddc7b9916c568082aecabc8f1c0",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-0.raw"
+  },
+  {
+    "name": "js-1",
+    "url": "https://www.bitfinex.com/_next/static/chunks/2uv575d3zwdsb.js",
+    "requested_at": "2026-09-13T14:11:09.359071+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:34.785295+00:00",
+    "sha256": "1422888c1435dcadc1c140843cc2b3bc037934e24d216e49e5b9be8de3d72c82",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-1.raw"
+  },
+  {
+    "name": "js-2",
+    "url": "https://www.bitfinex.com/_next/static/chunks/42r055gexzev7.js",
+    "requested_at": "2026-09-13T14:11:09.359412+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:09.769003+00:00",
+    "sha256": "beb2e67ca3cc974e4cb24ae246baba3aadfa7481580a19fa092c523e2d8550e8",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-2.raw"
+  },
+  {
+    "name": "js-3",
+    "url": "https://www.bitfinex.com/_next/static/chunks/turbopack-0kprn8xso4wtx.js",
+    "requested_at": "2026-09-13T14:11:09.359780+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:09.749917+00:00",
+    "sha256": "bb181e42545f547e2fb0322cb6c9f0de13f35d8d91d6dbdb1f82dcd8184f28ba",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-3.raw"
+  },
+  {
+    "name": "js-4",
+    "url": "https://www.bitfinex.com/_next/static/chunks/3g8m5hezsdl2x.js",
+    "requested_at": "2026-09-13T14:11:09.360143+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:09.763753+00:00",
+    "sha256": "61804c2e4c61479c0ac629aa51f895524ec08d2d190e3223dcde7cc99e6ecca0",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-4.raw"
+  },
+  {
+    "name": "js-5",
+    "url": "https://www.bitfinex.com/_next/static/chunks/08p6t_qqcpnwr.js",
+    "requested_at": "2026-09-13T14:11:09.360510+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:09.774726+00:00",
+    "sha256": "800db6e4f40e21327323639da519e108db5ade0fceccb7475fbc1f854074dfb0",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-5.raw"
+  },
+  {
+    "name": "js-6",
+    "url": "https://www.bitfinex.com/_next/static/chunks/0u64u3xnjrxj_.js",
+    "requested_at": "2026-09-13T14:11:09.360897+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:09.768051+00:00",
+    "sha256": "1710fd98dac7ced34c5245464cdb4c0edaed16e7f12480cdf868a93947f7b05d",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-6.raw"
+  },
+  {
+    "name": "js-7",
+    "url": "https://www.bitfinex.com/_next/static/chunks/1ntn7efqc-iiw.js",
+    "requested_at": "2026-09-13T14:11:09.750164+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.157640+00:00",
+    "sha256": "32e9576b2b87cbc03075cbfde10797120b73b5c6e486723cd9e58a66d99c585d",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-7.raw"
+  },
+  {
+    "name": "js-8",
+    "url": "https://www.bitfinex.com/_next/static/chunks/2bjy9qpx79i23.js",
+    "requested_at": "2026-09-13T14:11:09.764062+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.089741+00:00",
+    "sha256": "5f62e5cd4dedf0b708b362b9ac9c16ebe3cadbb77ac788c8ea73ef688c130320",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-8.raw"
+  },
+  {
+    "name": "js-9",
+    "url": "https://www.bitfinex.com/_next/static/chunks/359dky8ws579l.js",
+    "requested_at": "2026-09-13T14:11:09.768265+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.111942+00:00",
+    "sha256": "db76a7c0557b9796e1d719c58a729a6f9f4c9b067f2d7677c6f8762c6d82a4c7",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-9.raw"
+  },
+  {
+    "name": "js-10",
+    "url": "https://www.bitfinex.com/_next/static/chunks/14n2fer6ot-_z.js",
+    "requested_at": "2026-09-13T14:11:09.769359+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.094091+00:00",
+    "sha256": "c29813c0c9b6d8d6963096e49a7d6690ee3af5288514217d1d707ec469223a51",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-10.raw"
+  },
+  {
+    "name": "js-11",
+    "url": "https://www.bitfinex.com/_next/static/chunks/0zw72jem024w1.js",
+    "requested_at": "2026-09-13T14:11:09.774941+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.321087+00:00",
+    "sha256": "5f4877d6da3a87bce98a9b85072e711b696ad156d534c4092a5bddf0f7456c2f",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-11.raw"
+  },
+  {
+    "name": "js-12",
+    "url": "https://www.bitfinex.com/_next/static/chunks/1n85spr2rav3o.js",
+    "requested_at": "2026-09-13T14:11:09.788328+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.156436+00:00",
+    "sha256": "36c639cdd81c95a94daa5c886313127d9bf8cdba8358518bbea8933e7e91fe05",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-12.raw"
+  },
+  {
+    "name": "js-13",
+    "url": "https://www.bitfinex.com/_next/static/chunks/2heu9t5pln8lj.js",
+    "requested_at": "2026-09-13T14:11:10.089958+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.569094+00:00",
+    "sha256": "73f657bb421d93fa54611ed0527aa8bc54e9f92ff7ea40dd4d5488729d33651e",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-13.raw"
+  },
+  {
+    "name": "js-14",
+    "url": "https://www.bitfinex.com/_next/static/chunks/3q555nyo33qp2.js",
+    "requested_at": "2026-09-13T14:11:10.094480+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.489003+00:00",
+    "sha256": "728f1b497109b4902bf5e9ed148297c1deb82e9c47dc89f158f8188a14568e4c",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-14.raw"
+  },
+  {
+    "name": "js-15",
+    "url": "https://www.bitfinex.com/_next/static/chunks/0q06a_k13t80x.js",
+    "requested_at": "2026-09-13T14:11:10.112194+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.499326+00:00",
+    "sha256": "63be316cac32d0cacb13c1f4d84d7f4439dc95ffa310fcc8dacf9f50aa37a5be",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-15.raw"
+  },
+  {
+    "name": "js-16",
+    "url": "https://www.bitfinex.com/_next/static/chunks/3as1rtckig-s6.js",
+    "requested_at": "2026-09-13T14:11:10.157241+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.575960+00:00",
+    "sha256": "2afc1255ffd9bbcfdfc254a2f0f27f522066e0252f9bc17aaf92efcc3bdd0608",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-16.raw"
+  },
+  {
+    "name": "js-17",
+    "url": "https://www.bitfinex.com/_next/static/chunks/0ua-nclrkqc_u.js",
+    "requested_at": "2026-09-13T14:11:10.157947+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.576465+00:00",
+    "sha256": "a013d94bfaa5e90d9df6b91e31a0a1fd6f6b28dc47c7fe79275d0d476e269073",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-17.raw"
+  },
+  {
+    "name": "js-18",
+    "url": "https://www.bitfinex.com/_next/static/chunks/1r3n3vru72m2l.js",
+    "requested_at": "2026-09-13T14:11:10.330686+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.628339+00:00",
+    "sha256": "1af6f490ae8c1907c463032dda021dc02e3e22925a189132236a82b74e8bc641",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-18.raw"
+  },
+  {
+    "name": "js-19",
+    "url": "https://www.bitfinex.com/_next/static/chunks/3yzz6atvgz7_k.js",
+    "requested_at": "2026-09-13T14:11:10.489242+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.802302+00:00",
+    "sha256": "a95e954c097a78d673c2dd36723eafca55b4e7c0a2a3dbb2afeaa826e2b71e20",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-19.raw"
+  },
+  {
+    "name": "js-20",
+    "url": "https://www.bitfinex.com/_next/static/chunks/1ak_hegahdxvr.js",
+    "requested_at": "2026-09-13T14:11:10.499734+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.803353+00:00",
+    "sha256": "179f808a7049451f23482e8704864ebe1bd18cdd0dce0f3c1a127ce8a8272f77",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-20.raw"
+  },
+  {
+    "name": "js-21",
+    "url": "https://www.bitfinex.com/_next/static/chunks/3_yjvpzizltpo.js",
+    "requested_at": "2026-09-13T14:11:10.569571+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.883777+00:00",
+    "sha256": "eeddcef7349589524712d55c5857d7f588035413cdf88800d074335d3e446f0c",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-21.raw"
+  },
+  {
+    "name": "js-22",
+    "url": "https://www.bitfinex.com/_next/static/chunks/2-85c-9yjvxnk.js",
+    "requested_at": "2026-09-13T14:11:10.576177+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.918970+00:00",
+    "sha256": "8cebcff4628cf0e39138829ce5e14f39918a64c11ee7804f5678090cb49816f1",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-22.raw"
+  },
+  {
+    "name": "js-23",
+    "url": "https://www.bitfinex.com/_next/static/chunks/2kdjrah95omjn.js",
+    "requested_at": "2026-09-13T14:11:10.576670+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:10.891575+00:00",
+    "sha256": "35761fe9ef0e1090f96734331c0383c1a628b24649357a089910b1a560760f26",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/js-23.raw",
+    "module": "204698,898213,e=>{\"use strict\";var n=e.i(271645),t=e.i(703312),l=e.i(574411),o=e.i(787588),r=e.i(56605);e.s([\"default\",0,e=>{let i=(0,t.useLocation)(),{data:a,isLoading:u,error:s}=(0,o.useFetchLegalTermsQuery)(e);return(0,n.useEffect)(()=>{a&&(0,r.scrollToHash)(i?.hash)},[a,i]),(0,n.useEffect)(()=>{s&&l.logger.log(s.message)},[s]),{loading:u,markdown:a}}],204698);var i=e.i(843476),a=e.i(745009),u=e.i(918789),s=e.i(807432),c=e.i(420061);class p{constructor(e,n,t){this.normal=n,this.property=e,t&&(this.space=t)}}function d(e,n){let t={},l={};for(let n of e)Object.assign(t,n.property),Object.assign(l,n.normal);return new p(t,l,n)}function f(e){return e.toLowerCase()}p.prototype.normal={},p.prototype.property={},p.prototype.space=void 0;class h{constructor(e,n){this.attribute=n,this.property=e}}h.prototype.attribute=\"\",h.prototype.booleanish=!1,h.prototype.boolean=!1,h.prototype.commaOrSpaceSeparated=!1,h.prototype.commaSeparated=!1,h.prototype.defined=!1,h.prototype.mustUseProperty=!1,h.prototype.number=!1,h.prototype.overloadedBoolean=!1,h.prototype.property=\"\",h.prototype.spaceSeparated=!1,h.prototype.space=void 0;let g=0,m=w(),y=w(),k=w(),v=w(),b=w(),x=w(),C=w();function w(){return 2**++g}e.s([\"boolean\",0,m,\"booleanish\",0,y,\"commaOrSpaceSeparated\",0,C,\"commaSeparated\",0,x,\"number\",0,v,\"overloadedBoolean\",0,k,\"spaceSeparated\",0,b],164484);var S=e.i(164484);let L=Object.keys(S);class D extends h{constructor(e,n,t,l){let o=-1;if(super(e,n),function(e,n,t){t&&(e[n]=t)}(this,\"space\",l),\"number\"==typeof t)for(;++o<L.length;){const e=L[o];!function(e,n,t){t&&(e[n]=t)}(this,L[o],(t&S[e])===S[e])}}}function O(e){let n={},t={};for(let[l,o]of Object.entries(e.properties)){let r=new D(l,e.transform(e.attributes||{},l),o,e.space);e.mustUseProperty&&e.mustUseProperty.includes(l)&&(r.mustUseProperty=!0),n[l]=r,t[f(l)]=l,t[f(r.attribute)]=l}return new p(n,t,e.space)}D.prototype.defined=!0;let T=O({properties:{ariaActiveDescendant:null,ariaAtomic:y,ariaAutoComplete:null,ariaBusy:y,ariaChecked:y,ariaColCount:v,ariaColIndex:v,ariaColSpan:v,ariaControls:b,ariaCurrent:null,ariaDescribedBy:b,ariaDetails:null,ariaDisabled:y,ariaDropEffect:b,ariaErrorMessage:null,ariaExpanded:y,ariaFlowTo:b,ariaGrabbed:y,ariaHasPopup:null,ariaHidden:y,ariaInvalid:null,ariaKeyShortcuts:null,ariaLabel:null,ariaLabelledBy:b,ariaLevel:v,ariaLive:null,ariaModal:y,ariaMultiLine:y,ariaMultiSelectable:y,ariaOrientation:null,ariaOwns:b,ariaPlaceholder:null,ariaPosInSet:v,ariaPressed:y,ariaReadOnly:y,ariaR"
+  },
+  {
+    "name": "margin-faq-json",
+    "url": "https://support.bitfinex.com/api/v2/help_center/en-us/articles/60356897072665.json",
+    "requested_at": "2026-09-13T14:11:10.628577+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:11.214302+00:00",
+    "sha256": "7d4d7cee5da8158baf874f6fa6e7f1eb4f8a059f80ef0e446ab6ad8c3e80a5c5",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/margin-faq-json.raw"
+  },
+  {
+    "name": "funding-credits-doc",
+    "url": "https://docs.bitfinex.com/reference/rest-auth-funding-credits.md",
+    "requested_at": "2026-09-13T14:11:10.802622+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:11.562096+00:00",
+    "sha256": "8920edeb3abbd738a7f4f3e5a9473732fe10864784a3ade87096e5fe5f170c4b",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/funding-credits-doc.raw"
+  },
+  {
+    "name": "stats-doc",
+    "url": "https://docs.bitfinex.com/reference/rest-public-stats.md",
+    "requested_at": "2026-09-13T14:11:10.803539+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:11.540429+00:00",
+    "sha256": "2c29fdf784ae3dfc393fd7f9f100e0d19d05f509fb005740201187a4a3d96e57",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/stats-doc.raw"
+  },
+  {
+    "name": "derivatives-doc",
+    "url": "https://docs.bitfinex.com/docs/derivatives.md",
+    "requested_at": "2026-09-13T14:11:10.884007+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:11.477083+00:00",
+    "sha256": "078509b14238093396d53a9504f65a872cddfb48c13e1bedade590ee2d1a66d2",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/derivatives-doc.raw"
+  },
+  {
+    "name": "margin-blog",
+    "url": "https://blog.bitfinex.com/products/how-to-trade-margin-on-bitfinex/",
+    "requested_at": "2026-09-13T14:11:10.891844+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:12.097010+00:00",
+    "sha256": "5e62566dba2ba32e0e50627d8983f77ca571b81c15ef41a4741a0eb3608a89ff",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/margin-blog.raw"
+  },
+  {
+    "name": "proof-reserves-blog",
+    "url": "https://blog.bitfinex.com/announcements/bitfinex-resilient-in-face-of-market-events-committed-to-greater-transparency-and-demonstrating-proof-of-reserves/",
+    "requested_at": "2026-09-13T14:11:10.919410+00:00",
+    "status": 200,
+    "received_at": "2026-09-13T14:11:12.125642+00:00",
+    "sha256": "50820054f236c458d249a49e3f27e56802d8e6c9a0a464dbdbca81c4e5c63aaa",
+    "raw_path": "research/2026-09-13-bitfinex-underlying/proof-reserves-blog.raw"
+  }
+]

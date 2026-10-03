@@ -1,0 +1,1 @@
+SELECT instrument_id,minute_time,valid_bitmap,bid_price_01,ask_price_01 FROM crypto_market_info.order_book_minute FINAL WHERE instrument_id IN (1,3) AND minute_time>='2026-09-15 08:00:00' AND minute_time<'2026-09-16 08:00:00' FORMAT JSONEachRow

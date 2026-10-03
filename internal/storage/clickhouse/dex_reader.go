@@ -31,5 +31,5 @@ func openDEXReader(ctx context.Context, cfg Config) (*Client, error) {
 		conn.Close()
 		return nil, e
 	}
-	return &Client{conn: conn, database: cfg.Database}, nil
+	return &Client{conn: conn, database: cfg.Database, readOnly: true}, nil
 }

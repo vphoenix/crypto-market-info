@@ -63,7 +63,9 @@ func NewBookManager(client *Client, instruments []model.Instrument, books map[ui
 	if logger == nil {
 		logger = slog.Default()
 	}
-	m := &BookManager{WSEndpoint: defaultWSEndpoint, Dialer: websocket.DefaultDialer, ConnectGate: client.WebsocketConnectGate(), Logger: logger, ReconnectBase: time.Second, ReconnectMax: 30 * time.Second, ReconnectJitter: exchange.AddJitter, books: make(map[uint32]*orderbook.Book)}
+	// The public order book can arrive before a delayed subscription acknowledgement.
+	// Allow the acknowledgement time to arrive while wsstream buffers pre-ACK events.
+	m := &BookManager{WSEndpoint: defaultWSEndpoint, Dialer: websocket.DefaultDialer, ConnectGate: client.WebsocketConnectGate(), Logger: logger, SubscribeTimeout: 30 * time.Second, ReconnectBase: time.Second, ReconnectMax: 30 * time.Second, ReconnectJitter: exchange.AddJitter, books: make(map[uint32]*orderbook.Book)}
 	m.instruments = append([]model.Instrument(nil), instruments...)
 	sort.Slice(m.instruments, func(i, j int) bool { return m.instruments[i].ExchangeSymbol < m.instruments[j].ExchangeSymbol })
 	seen := make(map[string]bool)

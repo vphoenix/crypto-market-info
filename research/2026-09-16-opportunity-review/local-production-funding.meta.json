@@ -1,0 +1,7 @@
+{
+  "name": "local-production-funding",
+  "url": "http://127.0.0.1:8123/?readonly=1&max_execution_time=45&max_threads=2",
+  "retrieved_at_utc": "2026-09-16T10:31:16.071257+00:00",
+  "sha256": "0557983b4e2c2566b552f57da44c0a42c8308f1a96a69ddef83227e0f672668d",
+  "rows": 1287
+}

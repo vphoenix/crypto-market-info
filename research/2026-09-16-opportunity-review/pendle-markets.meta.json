@@ -1,0 +1,7 @@
+{
+  "name": "pendle-markets",
+  "url": "https://api-v2.pendle.finance/core/v1/1/markets/active",
+  "retrieved_at_utc": "2026-09-16T10:31:30.378177+00:00",
+  "sha256": "ab5feb5482405f6d3a2f3f12c954877514c47f4359ab1ac392f1723fa3121fd1",
+  "rows": null
+}

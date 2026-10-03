@@ -1,0 +1,7 @@
+{
+  "name": "history-binance-LSK",
+  "url": "https://fapi.binance.com/fapi/v1/fundingRate?symbol=LSKUSDT&startTime=1786876389000&endTime=1789554789000&limit=1000",
+  "retrieved_at_utc": "2026-09-16T10:33:16.991623+00:00",
+  "sha256": "44d60321cfa03659ec1f646a8be41db44e5ee87699e8f2d1c9140c43d7293c45",
+  "rows": 239
+}

@@ -1,0 +1,61 @@
+{
+  "docs_selected": [
+    {
+      "type": "function",
+      "name": "getRentInfo",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "renter"
+        },
+        {
+          "type": "address",
+          "name": "receiver"
+        },
+        {
+          "type": "uint256",
+          "name": "resourceType"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "uint256",
+          "name": "securityDeposit"
+        },
+        {
+          "type": "uint256",
+          "name": "index"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "rentals",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "renter"
+        },
+        {
+          "type": "address",
+          "name": "receiver"
+        },
+        {
+          "type": "uint256",
+          "name": "resourceType"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "uint256",
+          "name": "rentBalance"
+        }
+      ],
+      "stateMutability": "view"
+    }
+  ],
+  "deployed_selected": [],
+  "contract_address": "41c60a6f5c81431c97ed01b61698b6853557f3afd4",
+  "bytecode_sha256": "3d4b949de861af99aa6498da689e6061bc2d09aa75c4fc0f53085297e6bd3f0a"
+}

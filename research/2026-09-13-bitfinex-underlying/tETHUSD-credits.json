@@ -1,0 +1,10 @@
+{
+  "url": "https://api-pub.bitfinex.com/v2/stats1/credits.size.sym:1m:fUSD:tETHUSD/last",
+  "requested_at_utc": "2026-09-13T14:09:57.277355+00:00",
+  "received_at_utc": "2026-09-13T14:09:57.732898+00:00",
+  "payload_sha256": "29abfc4c9467a81de2d7b26f31b5913d1b43b689761704420a0e3e62f4cf3c03",
+  "data": [
+    1789308540000,
+    "226486475.867577"
+  ]
+}
