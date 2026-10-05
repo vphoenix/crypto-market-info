@@ -149,7 +149,7 @@ type TradingRule struct {
 }
 
 func (r TradingRule) Validate() error {
-	if r.InstrumentID == 0 || r.ObservedAt.IsZero() || r.KnownFrom.Before(r.ObservedAt) || r.EffectiveFrom.IsZero() || !model.ValidDigest(r.PayloadHash) || !strings.HasPrefix(r.SourceURL, "https://") {
+	if r.InstrumentID == 0 || r.ObservedAt.IsZero() || r.KnownFrom.Before(r.ObservedAt) || r.EffectiveFrom.IsZero() || !model.ValidDigest(r.PayloadHash) || (!strings.HasPrefix(r.SourceURL, "https://") && !strings.HasPrefix(r.SourceURL, "wss://") && !strings.HasPrefix(r.SourceURL, "ws://127.0.0.1:") && !strings.HasPrefix(r.SourceURL, "http://127.0.0.1:")) {
 		return fmt.Errorf("invalid trading rule evidence")
 	}
 	if (r.EffectiveTimeBasis != "first_observed" && r.EffectiveTimeBasis != "published") || (r.EffectiveTimeBasis == "first_observed" && !r.EffectiveFrom.Equal(r.ObservedAt)) {

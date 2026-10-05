@@ -52,6 +52,9 @@ type Capture struct {
 	CostDigest           string     `ch:"cost_digest"`
 	EvidenceManifestHash string     `ch:"evidence_manifest_hash"`
 	Committed            bool       `ch:"committed"`
+	IndexedRows          uint32     `ch:"indexed_rows"`
+	IndexedDigest        *string    `ch:"indexed_digest"`
+	ParentCaptureId      *uuid.UUID `ch:"parent_capture_id"`
 }
 type RentalEvent struct {
 	CaptureId          uuid.UUID `ch:"capture_id"`
@@ -195,9 +198,11 @@ type CostObservation struct {
 	PayloadHash                 *string          `ch:"payload_hash"`
 }
 type Batch struct {
-	Capture  Capture
-	Events   []RentalEvent
-	Receipts []TxReceipt
-	Probes   []Probe
-	Costs    []CostObservation
+	Capture       Capture
+	Events        []RentalEvent
+	Receipts      []TxReceipt
+	Probes        []Probe
+	Costs         []CostObservation
+	IndexedEvents []IndexedEvent
+	IndexPage     *IndexPage
 }

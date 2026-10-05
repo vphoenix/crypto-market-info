@@ -16,6 +16,7 @@ Environment=OKX_PERP_SYMBOLS=BTC-USDT-SWAP
 Environment=BYBIT_PERP_SYMBOLS=BTCUSDT
 Environment=OPTIONS_ENABLED=true
 Environment=OPTIONS_SYMBOLS=auto
+Environment=OPTIONS_EVIDENCE_DIR=/home/ubuntu/.local/share/crypto-market-info-options/evidence
 Environment=DEX_ENABLED=true
 Environment=DEX_ETH_RPC_URL=https://ethereum-rpc.publicnode.com
 Environment=DEX_EVIDENCE_DIR=/home/ubuntu/.local/share/crypto-market-info-dex/evidence

@@ -29,8 +29,8 @@ func ReserveSchemaStatements(database string) ([]string, error) {
 		return nil, e
 	}
 	ss = append(ss, dexSS[3:]...)
-	if len(ss) != 5 {
-		return nil, errors.New("reserve_schema_expected_five_tables")
+	if len(ss) != 7 {
+		return nil, errors.New("reserve_schema_expected_seven_tables")
 	}
 	return ss, nil
 }
@@ -174,35 +174,7 @@ func (c *Client) ReserveBatch(ctx context.Context, cap reserve.Capture) (reserve
 	if e != nil {
 		return b, e
 	}
-	rs, e := c.conn.Query(ctx, "SELECT "+dexLogColumns+" FROM "+c.table("dex_log")+" FINAL WHERE chain_id=1 AND manifest_hash=? AND batch_id=? ORDER BY block_number,log_index", cap.ManifestHash, cap.BatchId)
-	if e != nil {
-		return b, e
-	}
-	for rs.Next() {
-		var l dex.Log
-		var hash, mh, bh, ph, tx, emitter string
-		var topics []string
-		var data string
-		if e = rs.Scan(&l.ChainID, &l.Number, &hash, &mh, &bh, &ph, &l.Time, &tx, &l.TxIndex, &l.Index, &emitter, &topics, &data, &l.Event, &l.Removed); e != nil {
-			rs.Close()
-			return b, e
-		}
-		copy(l.Hash[:], hash)
-		copy(l.Manifest[:], mh)
-		copy(l.Batch[:], bh)
-		copy(l.Payload[:], ph)
-		copy(l.TxHash[:], tx)
-		copy(l.Emitter[:], emitter)
-		l.Data = []byte(data)
-		for _, s := range topics {
-			var h dex.Hash
-			copy(h[:], s)
-			l.Topics = append(l.Topics, h)
-		}
-		b.Logs = append(b.Logs, l)
-	}
-	e = rs.Err()
-	rs.Close()
+	b.Logs, e = c.reserveLogs(ctx, "WHERE chain_id=1 AND manifest_hash=? AND batch_id=?", cap.ManifestHash, cap.BatchId)
 	if e != nil {
 		return b, e
 	}
@@ -219,6 +191,14 @@ func (c *Client) ReserveBatch(ctx context.Context, cap reserve.Capture) (reserve
 			return b, errors.New("capture_receipt_reference_mismatch")
 		}
 		b.Receipts = append(b.Receipts, r)
+		d, ok, e := c.ReserveReceiptData(ctx, r.Anchor, r.TxHash)
+		if e != nil {
+			return b, e
+		}
+		if !ok {
+			return b, errors.New("capture_receipt_data_missing")
+		}
+		b.ReceiptData = append(b.ReceiptData, d)
 	}
 	return b, reserve.Validate(b)
 }
@@ -258,6 +238,14 @@ func (c *Client) ReserveReceipt(ctx context.Context, a dex.Anchor, tx dex.Hash) 
 func (c *Client) WriteReserveBatch(ctx context.Context, b reserve.Batch) error {
 	if e := reserve.Validate(b); e != nil {
 		return e
+	}
+	if len(b.ReceiptData) != len(b.Receipts) {
+		return errors.New("receipt_data_members_missing")
+	}
+	for i, d := range b.ReceiptData {
+		if e := reserve.ReceiptDataContains(d, b.Receipts[i], receiptLogs(b.Logs, b.Receipts[i])); e != nil {
+			return e
+		}
 	}
 	newReceipts := []dex.Receipt{}
 	for _, r := range b.Receipts {
@@ -316,12 +304,66 @@ func (c *Client) WriteReserveBatch(ctx context.Context, b reserve.Batch) error {
 		table, cols string
 		rows        [][]any
 	}{{"reserve_folio_state", reserveColumns(reflect.TypeOf(reserve.State{})), reserveRows(b.States)}, {"reserve_route_quote", reserveColumns(reflect.TypeOf(reserve.Quote{})), reserveRows(b.Quotes)}, {"dex_log", dexLogColumns, logs}, {"dex_tx_receipt", dexReceiptColumns, receipts}, {"reserve_capture", reserveColumns(reflect.TypeOf(reserve.Capture{})), reserveRows([]reserve.Capture{b.Capture})}} {
+		if v.table == "reserve_capture" {
+			for i, d := range b.ReceiptData {
+				if e := c.WriteReserveReceiptData(ctx, d, b.Receipts[i]); e != nil {
+					return e
+				}
+			}
+		}
 		if e := c.dexInsert(ctx, v.table, v.cols, v.rows); e != nil {
 			return fmt.Errorf("%s: %w", v.table, e)
 		}
 	}
 	return nil
 }
+
+func receiptLogs(logs []dex.Log, r dex.Receipt) []dex.Log {
+	out := []dex.Log{}
+	for _, l := range logs {
+		if l.Hash == r.Hash && l.TxHash == r.TxHash {
+			out = append(out, l)
+		}
+	}
+	return out
+}
 func (c *Client) WriteReserveRevision(ctx context.Context, v reserve.Capture) error {
 	return c.dexInsert(ctx, "reserve_capture", reserveColumns(reflect.TypeOf(v)), reserveRows([]reserve.Capture{v}))
+}
+
+func (c *Client) reserveLogs(ctx context.Context, where string, args ...any) ([]dex.Log, error) {
+	out := []dex.Log{}
+	rs, e := c.conn.Query(ctx, "SELECT "+dexLogColumns+" FROM "+c.table("dex_log")+" FINAL "+where+" ORDER BY block_number,log_index", args...)
+	if e != nil {
+		return nil, e
+	}
+	for rs.Next() {
+		var l dex.Log
+		var hash, mh, bh, ph, tx, emitter string
+		var topics []string
+		var data string
+		if e = rs.Scan(&l.ChainID, &l.Number, &hash, &mh, &bh, &ph, &l.Time, &tx, &l.TxIndex, &l.Index, &emitter, &topics, &data, &l.Event, &l.Removed); e != nil {
+			rs.Close()
+			return nil, e
+		}
+		copy(l.Hash[:], hash)
+		copy(l.Manifest[:], mh)
+		copy(l.Batch[:], bh)
+		copy(l.Payload[:], ph)
+		copy(l.TxHash[:], tx)
+		copy(l.Emitter[:], emitter)
+		l.Data = []byte(data)
+		for _, s := range topics {
+			var h dex.Hash
+			copy(h[:], s)
+			l.Topics = append(l.Topics, h)
+		}
+		out = append(out, l)
+	}
+	e = rs.Err()
+	rs.Close()
+	if e != nil {
+		return nil, e
+	}
+	return out, nil
 }

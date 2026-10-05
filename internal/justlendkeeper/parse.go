@@ -150,15 +150,18 @@ type RawEvent struct {
 	BlockTimestamp  int64                      `json:"block_timestamp"`
 	ContractAddress string                     `json:"contract_address"`
 	Index           uint32                     `json:"event_index"`
+	Ordinal         uint32                     `json:"-"`
 	Name            string                     `json:"event_name"`
 	Result          map[string]json.RawMessage `json:"result"`
 	Transaction     string                     `json:"transaction_id"`
 	Evidence        Evidence                   `json:"-"`
 }
 type Page struct {
-	Data    []RawEvent `json:"data"`
-	Success *bool      `json:"success"`
-	Meta    struct {
+	ExcludedBoundary uint32     `json:"-"`
+	ExcludedResource uint32     `json:"-"`
+	Data             []RawEvent `json:"data"`
+	Success          *bool      `json:"success"`
+	Meta             struct {
 		Links struct {
 			Next string `json:"next"`
 		} `json:"links"`
@@ -174,11 +177,26 @@ func ParsePage(b []byte, ev Evidence, c Config, s Scan) (Page, string, error) {
 	if p.Success == nil || !*p.Success || p.Data == nil || len(p.Data) > 200 {
 		return p, "", errors.New("invalid_event_page")
 	}
+	// A source index missing from JSON must not silently become index zero.
+	var required struct {
+		Data []map[string]json.RawMessage `json:"data"`
+	}
+	if e := Decode(b, &required); e != nil {
+		return p, "", e
+	}
+	for _, row := range required.Data {
+		if n, e := ReqU(row, "event_index"); e != nil || n > uint64(^uint32(0)) {
+			return p, "", errors.New("invalid_or_missing_event_index")
+		}
+	}
 	filtered := make([]RawEvent, 0, len(p.Data))
+	lo, hi := eventQueryBounds(s.From, s.To)
 	for i := range p.Data {
 		r := &p.Data[i]
+		r.Ordinal = uint32(i)
 		r.Evidence = ev
-		if r.Name != s.Kind || r.ContractAddress != ContractBase58 || r.BlockNumber == 0 || r.BlockTimestamp <= 0 || time.UnixMilli(r.BlockTimestamp).Before(s.From) || !time.UnixMilli(r.BlockTimestamp).Before(s.To) {
+		at := time.UnixMilli(r.BlockTimestamp)
+		if r.Name != s.Kind || r.ContractAddress != ContractBase58 || r.BlockNumber == 0 || r.BlockTimestamp <= 0 || at.Before(lo) || !at.Before(hi) {
 			return p, "", errors.New("event_filter_mismatch")
 		}
 		if _, e := BinaryHex(r.Transaction, 32); e != nil {
@@ -189,10 +207,15 @@ func ParsePage(b []byte, ev Evidence, c Config, s Scan) (Page, string, error) {
 			return p, "", e
 		}
 		if resource.Sign() == 0 {
+			p.ExcludedResource++
 			continue
 		}
 		if _, e := EventRow(*r); e != nil {
 			return p, "", e
+		}
+		if at.Before(s.From) || !at.Before(s.To) {
+			p.ExcludedBoundary++
+			continue
 		}
 		filtered = append(filtered, *r)
 	}

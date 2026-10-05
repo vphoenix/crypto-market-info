@@ -23,9 +23,18 @@ func (r *Reader) BasketQuotes(ctx context.Context, s State, budgets []*big.Int) 
 	}
 	if !Usable(s) {
 		out := []Quote{}
+		reason := "protocol_state_unusable"
+		if s.Reason != "" {
+			reason += ":" + s.Reason
+		}
+		if !s.StateComplete {
+			reason = "state_incomplete:" + s.Reason
+		} else if s.SyncStateChangeActive != nil && *s.SyncStateChangeActive || s.AsyncStateChangeActive != nil && *s.AsyncStateChangeActive {
+			reason = "protocol_state_change_active"
+		}
 		for i := range budgets {
-			redeems[i].Reason = "state_or_permission_incomplete"
-			mints[i].Reason = "state_or_permission_incomplete"
+			redeems[i].Reason = reason
+			mints[i].Reason = reason
 			out = append(out, redeems[i], mints[i])
 		}
 		return out

@@ -17,9 +17,11 @@ import (
 )
 
 type Client struct {
+	FrameBudget           *exchange.BufferBudget
 	RESTURL, WSURL        string
 	HTTP                  *http.Client
 	RESTGate, ControlGate *exchange.RequestGate
+	SubscriptionGate      *exchange.RequestGate
 }
 
 func NewClient(rest, ws string) *Client {
@@ -37,9 +39,15 @@ type ScopeResult struct {
 	URL, PayloadHash, Status               string
 	RequestedAt, ObservedAt                time.Time
 	Instruments                            []ParsedInstrument
+	Excluded                               []ExcludedInstrument
+	Raw                                    []byte
 }
 
-func (c *Client) cooldown(d time.Duration) { c.RESTGate.Cooldown(d); c.ControlGate.Cooldown(d) }
+func (c *Client) cooldown(d time.Duration) {
+	c.RESTGate.Cooldown(d)
+	c.ControlGate.Cooldown(d)
+	c.SubscriptionGate.Cooldown(d)
+}
 func (c *Client) get(ctx context.Context, method string, params url.Values) ([]byte, string, time.Time, time.Time, error) {
 	u := c.RESTURL + "/api/v2/public/" + method + "?" + params.Encode()
 	if err := c.RESTGate.Wait(ctx); err != nil {
@@ -93,7 +101,7 @@ func (c *Client) get(ctx context.Context, method string, params url.Values) ([]b
 }
 func (c *Client) FetchScope(ctx context.Context, s Scope) (ScopeResult, error) {
 	raw, u, start, at, err := c.get(ctx, "get_instruments", url.Values{"currency": {s.Currency}, "kind": {s.Kind}, "expired": {"false"}})
-	r := ScopeResult{RequestID: uuid.New(), Scope: s, URL: u, RequestedAt: start, ObservedAt: at, Status: "request_error"}
+	r := ScopeResult{RequestID: uuid.New(), Scope: s, URL: u, RequestedAt: start, ObservedAt: at, Status: "request_error", Raw: raw}
 	if len(raw) > 0 {
 		r.PayloadHash = options.PayloadHash(raw)
 	}
@@ -109,6 +117,7 @@ func (c *Client) FetchScope(ctx context.Context, s Scope) (ScopeResult, error) {
 	r.ObservedAt = time.Now().UTC().Truncate(time.Microsecond)
 	r.AcceptedCount = uint32(len(r.Instruments))
 	r.ExcludedCount = uint32(len(excluded))
+	r.Excluded = excluded
 	r.RawCount = r.AcceptedCount + r.ExcludedCount
 	for n := range r.Instruments {
 		rule := &r.Instruments[n].Rule

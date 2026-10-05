@@ -12,7 +12,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 )
 
-const CollectorVersion = "lst-mvp-1"
+const CollectorVersion = "lst-mvp-11"
 
 type Manifest struct {
 	ChainId          uint64            `json:"chain_id"`

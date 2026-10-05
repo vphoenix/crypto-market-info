@@ -194,7 +194,7 @@ func mockReader(t *testing.T, chain uint64, reply func(string, json.RawMessage) 
 		}
 		return &http.Response{StatusCode: 200, Header: http.Header{}, Body: io.NopCloser(bytes.NewReader(b))}, nil
 	})
-	return NewReader(rpc, ChainConfig{ChainID: chain, SpokePool: strings.Repeat("s", 20)})
+	return NewReader(rpc, ChainConfig{ChainID: chain, USDC: strings.Repeat("u", 20), SpokePool: strings.Repeat("s", 20)})
 }
 func TestProtocolRPCMissingAndAnchorChecks(t *testing.T) {
 	for _, tc := range []struct {
@@ -259,6 +259,11 @@ func TestProtocolReceiptFeesAndTransactionAnchors(t *testing.T) {
 					return v
 				case "eth_getBlockByNumber":
 					return map[string]any{"number": "0x7b", "hash": hash, "parentHash": Hex(strings.Repeat("p", 32)), "timestamp": "0x3e8"}
+				case "eth_call":
+					if tc.operator {
+						return "0x" + strings.Repeat("0", 64)
+					}
+					return "0x" // historical oracle method unavailable, not a zero fee
 				}
 				t.Fatal(method)
 				return nil

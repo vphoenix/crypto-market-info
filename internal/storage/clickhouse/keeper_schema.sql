@@ -1,4 +1,4 @@
--- Applied by justlend-keeper-data init-schema; five independent research tables.
+-- Applied by justlend-keeper-data init-schema; seven independent collection tables.
 -- Use an isolated crypto_market_info_justlend_keeper database.
 -- FixedString address/hash values are raw 21/32 bytes, not printable hex.
 -- capture_started_at is frozen with capture_id, including across-month retries.
@@ -40,6 +40,9 @@ CREATE TABLE IF NOT EXISTS jl_keeper_capture
     cost_digest FixedString(32),
     evidence_manifest_hash FixedString(32),
     committed Bool,
+    indexed_rows UInt32 DEFAULT 0,
+    indexed_digest Nullable(FixedString(32)) DEFAULT NULL,
+    parent_capture_id Nullable(UUID) DEFAULT NULL,
     CONSTRAINT task_counts CHECK completed_tasks <= expected_tasks,
     CONSTRAINT sample_counts CHECK selected_candidates <= discovered_candidates
 )
@@ -219,3 +222,58 @@ CREATE TABLE IF NOT EXISTS jl_keeper_cost_observation
 ENGINE = ReplacingMergeTree
 PARTITION BY toYYYYMM(capture_started_at)
 ORDER BY (capture_id, observation_index);
+
+
+-- Indexer observations are independent of verified block/receipt facts.
+CREATE TABLE IF NOT EXISTS jl_keeper_indexed_event
+(
+    capture_id UUID,
+    capture_started_at DateTime64(6, 'UTC'),
+    row_ordinal UInt32,
+    contract_address FixedString(21),
+    block_number UInt64,
+    block_hash Nullable(FixedString(32)),
+    block_time DateTime64(6, 'UTC'),
+    finality LowCardinality(String),
+    tx_id FixedString(32),
+    provider_event_index UInt32,
+    position_status LowCardinality(String),
+    abi_revision LowCardinality(String),
+    event_kind LowCardinality(String),
+    renter FixedString(21),
+    receiver FixedString(21),
+    resource_type UInt8,
+    liquidator Nullable(FixedString(21)),
+    amount_sun UInt256,
+    added_amount_sun Nullable(UInt256),
+    added_deposit_sun Nullable(UInt256),
+    returned_amount_sun Nullable(UInt256),
+    returned_deposit_sun Nullable(UInt256),
+    usage_rental_sun Nullable(UInt256),
+    reward_sun Nullable(UInt256),
+    send_back_sun Nullable(UInt256),
+    security_deposit_sun Nullable(UInt256),
+    rent_index Nullable(UInt256),
+    request_started_at DateTime64(6, 'UTC'),
+    available_at DateTime64(6, 'UTC'),
+    payload_hash FixedString(32)
+)
+ENGINE = ReplacingMergeTree
+PARTITION BY toYYYYMM(capture_started_at)
+ORDER BY (capture_id, row_ordinal);
+
+-- Small pagination progress only. Never request/response JSON.
+CREATE TABLE IF NOT EXISTS jl_keeper_index_page
+(
+    capture_id UUID,
+    capture_started_at DateTime64(6, 'UTC'),
+    scan_id String,
+    fingerprint_in String,
+    fingerprint_out String,
+    request_started_at DateTime64(6, 'UTC'),
+    available_at DateTime64(6, 'UTC'),
+    payload_hash FixedString(32)
+)
+ENGINE = ReplacingMergeTree
+PARTITION BY toYYYYMM(capture_started_at)
+ORDER BY capture_id;

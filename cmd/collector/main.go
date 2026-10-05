@@ -21,7 +21,7 @@ import (
 func main() {
 	initDEX := flag.Bool("init-dex-schema", false, "create the five DEX tables only and exit; does not start any collector")
 	printDDL := flag.Bool("print-ddl", false, "print concrete ClickHouse DDL and exit")
-	printOptions := flag.Bool("print-options-plan", false, "fetch public Deribit metadata and print fixed C/P/future selection without database or websocket connections")
+	printOptions := flag.Bool("print-options-plan", false, "fetch public Deribit catalog and print collection scope without database or websocket connections")
 	printUniverse := flag.Bool("print-perp-universe", false, "fetch public catalogs and print validated perpetual universe without database or websocket connections")
 	printCatalogs := flag.Bool("print-perp-catalogs", false, "print complete eligible public catalogs for alias maintenance without database or websocket connections")
 	replayInstrument := flag.Uint("replay-instrument", 0, "instrument_id to replay")

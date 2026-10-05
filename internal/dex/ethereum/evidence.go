@@ -3,6 +3,7 @@ package ethereum
 import (
 	"compress/gzip"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/vphoenix/crypto-market-info/internal/dex"
 	"io"
@@ -10,10 +11,18 @@ import (
 	"path/filepath"
 )
 
-type Archive struct{ Dir string }
+type Archive struct {
+	Dir string
+	// HashOnly retains source/member digests without writing response bodies.
+	// Opt-in only: other collectors keep their existing archive behavior.
+	HashOnly bool
+}
 
 func (a Archive) Put(raw []byte) (dex.Hash, error) {
 	h := dex.Digest(raw)
+	if a.HashOnly {
+		return h, nil
+	}
 	if a.Dir == "" {
 		return h, fmt.Errorf("evidence directory required")
 	}
@@ -61,6 +70,9 @@ func (a Archive) PutObject(v any) (dex.Hash, error) {
 	return a.Put(b)
 }
 func (a Archive) Get(h dex.Hash) ([]byte, error) {
+	if a.HashOnly {
+		return nil, errors.New("raw_response_not_retained")
+	}
 	f, e := os.Open(filepath.Join(a.Dir, h.String()[2:4], h.String()[2:]+".json.gz"))
 	if e != nil {
 		return nil, e

@@ -339,7 +339,7 @@ func TestMixedRPCErrorGroupRemainsUnknown(t *testing.T) {
 	if e != nil {
 		t.Fatal(e)
 	}
-	if SourceError(rpc, ethereum.Result{Err: errors.New("rpc_method_error"), Payload: h}) == "contract_revert" {
+	if SourceError(rpc, ethereum.Result{Err: errors.New("rpc_method_error"), Payload: h, Raw: raw}) == "contract_revert" {
 		t.Fatal("upstream failure misclassified as pair zero")
 	}
 }

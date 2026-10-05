@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/vphoenix/crypto-market-info/internal/dex"
 	"github.com/vphoenix/crypto-market-info/internal/dex/ethereum"
+	"sort"
 	"time"
 )
 
@@ -17,6 +18,13 @@ func (c *Collector) Reconcile(ctx context.Context, finalized, safe dex.Block) er
 	caps, e := c.Store.ReserveCaptures(ctx, Hash(c.Manifest.Hash))
 	if e != nil {
 		return e
+	}
+	for _, m := range c.RelatedManifests {
+		more, e := c.Store.ReserveCaptures(ctx, Hash(m))
+		if e != nil {
+			return e
+		}
+		caps = append(caps, more...)
 	}
 	var sentinel *Capture
 	for i := range caps {
@@ -125,20 +133,15 @@ func (c *Collector) Backfill(ctx context.Context, from, to uint64, chunk uint64,
 	if e != nil {
 		return e
 	}
-	done := map[[2]uint64]bool{}
-	for _, v := range previous {
-		if v.Canonical && v.Committed && v.Finality == "finalized" && v.CaptureKind == "logs" && v.LogCoverage == "complete" && v.ReceiptCoverage == "complete" {
-			done[[2]uint64{v.FromBlock, v.ToBlock}] = true
-		}
-	}
+
 	count := 0
 	for start := from; start <= to; {
 		end := min(start+chunk-1, to)
 		if maxRanges > 0 && count >= maxRanges {
 			break
 		}
-		if done[[2]uint64{start, end}] {
-			start = end + 1
+		if covered := CoveredThrough(previous, start); covered >= start {
+			start = covered + 1
 			continue
 		}
 		count++
@@ -150,16 +153,38 @@ func (c *Collector) Backfill(ctx context.Context, from, to uint64, chunk uint64,
 		if e != nil {
 			return e
 		}
-		batch, e := c.Logs(ctx, a, b, "backfill", "finalized")
-		if e != nil {
-			return e
+		var batch Batch
+		for attempt := 0; attempt < 3; attempt++ {
+			batch, e = c.Logs(ctx, a, b, "backfill", "finalized")
+			if e != nil {
+				return e
+			}
+			if e = c.Store.WriteReserveBatch(ctx, batch); e != nil {
+				return e
+			}
+			progress(fmt.Sprintf("backfill blocks=%d..%d logs=%d receipts=%d/%d coverage=%s reason=%s", start, end, len(batch.Logs), len(batch.Receipts), batch.Capture.ExpectedReceipts, batch.Capture.LogCoverage, batch.Capture.Reason))
+			if batch.Capture.LogCoverage == "complete" && batch.Capture.ReceiptCoverage == "complete" {
+				break
+			}
+			if !TransientRPC(errors.New(batch.Capture.Reason)) || attempt == 2 {
+				break
+			}
+			if e = c.RPC.WaitReady(ctx); e != nil {
+				return e
+			}
+			timer := time.NewTimer(time.Duration(attempt+1) * 3 * time.Second)
+			select {
+			case <-ctx.Done():
+				timer.Stop()
+				return ctx.Err()
+			case <-timer.C:
+			}
 		}
-		if e = c.Store.WriteReserveBatch(ctx, batch); e != nil {
-			return e
-		}
-		progress(fmt.Sprintf("backfill blocks=%d..%d logs=%d receipts=%d/%d coverage=%s reason=%s", start, end, len(batch.Logs), len(batch.Receipts), batch.Capture.ExpectedReceipts, batch.Capture.LogCoverage, batch.Capture.Reason))
 		if batch.Capture.LogCoverage != "complete" || batch.Capture.ReceiptCoverage != "complete" {
-			return errors.New("backfill_incomplete_range_preserved")
+			if batch.Capture.Reason == "rpc_archive_auth_required" {
+				return fmt.Errorf("%w: blocks=%d..%d", ErrArchiveAuthorization, start, end)
+			}
+			return fmt.Errorf("backfill_incomplete_range_preserved: %s", batch.Capture.Reason)
 		}
 		start = end + 1
 	}
@@ -200,18 +225,17 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 		return e
 	}
 	lastLog := head.Number - 1
+	if c.StartBlock > 0 {
+		lastLog = c.StartBlock - 1
+	}
 	caps, e := c.Store.ReserveCaptures(ctx, Hash(c.Manifest.Hash))
 	if e != nil {
 		return e
 	}
-	for _, v := range caps {
-		if v.CaptureKind == "logs" && v.CaptureMode == "live" && v.Canonical && v.Committed && v.LogCoverage == "complete" && v.ToBlock > 0 {
-			if lastLog == head.Number-1 || v.ToBlock > lastLog {
-				lastLog = v.ToBlock
-			}
-		}
-	}
+	lastLog = ContiguousLiveCursor(caps, lastLog, c.StartBlock == 0)
 	var lastQuote time.Time
+	var lastSimulation time.Time
+	var nextLogAttempt time.Time
 	active := false
 	var burstUntil uint64
 	pendingSnapshot := false
@@ -220,6 +244,10 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 	}
 	var lastHash dex.Hash
 	var lastHead uint64
+	lastReconcile := time.Now()
+	pendingReconcile := false
+	lastReceiptRepair := time.Now()
+	var priorHead dex.Block
 	logChunk := uint64(512)
 	for {
 		if ctx.Err() != nil {
@@ -229,8 +257,9 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 		if headChanged || lastLog < head.Number {
 			forceSnapshot := false
 			// Catch every intervening height. Live log failures leave the cursor at
-			// its preceding covered height and retry on the next head.
-			if lastLog < head.Number {
+			// its preceding covered height. Authorization failures are checked at
+			// most once per five minutes, without shrinking or skipping the range.
+			if lastLog < head.Number && !time.Now().Before(nextLogAttempt) {
 				start := lastLog + 1
 				end := min(head.Number, start+logChunk-1)
 				from, e := c.Header(ctx, ethereum.Height(start))
@@ -242,7 +271,9 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 					return e
 				}
 				to := head
-				if end != head.Number {
+				if end == start {
+					to = from
+				} else if end != head.Number {
 					to, e = c.Header(ctx, ethereum.Height(end))
 					if e != nil {
 						if TransientRPC(e) {
@@ -265,12 +296,14 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 				}
 				if b.Capture.LogCoverage == "complete" {
 					lastLog = end
-				} else if end > start {
-					logChunk = max(uint64(1), (end-start+1)/2)
+				} else if b.Capture.Reason == "rpc_archive_auth_required" {
+					nextLogAttempt = time.Now().Add(5 * time.Minute)
+					progress(fmt.Sprintf("logs_authorization_deferred retry_at=%s", nextLogAttempt.UTC().Format(time.RFC3339)))
 				}
+				logChunk = nextLogChunk(logChunk, end-start+1, b.Capture.LogCoverage == "complete", b.Capture.Reason)
 				forceSnapshot = SnapshotEvent(b.Logs)
 				pendingSnapshot = pendingSnapshot || forceSnapshot
-				progress(fmt.Sprintf("logs blocks=%d..%d count=%d coverage=%s", start, end, len(b.Logs), b.Capture.LogCoverage))
+				progress(fmt.Sprintf("logs blocks=%d..%d count=%d coverage=%s reason=%s", start, end, len(b.Logs), b.Capture.LogCoverage, b.Capture.Reason))
 			}
 			if pendingSnapshot || lastQuote.IsZero() || headChanged && (active || head.Number <= burstUntil) || time.Since(lastQuote) >= 60*time.Second {
 				b, e := c.Snapshot(ctx, head, "live")
@@ -296,6 +329,12 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 						burstUntil = max(burstUntil, head.Number+10)
 					}
 				}
+				if c.SimulateEvery > 0 && (lastSimulation.IsZero() || time.Since(lastSimulation) >= c.SimulateEvery) {
+					if e = c.SimulateBatch(ctx, head, b, 2, progress); e != nil {
+						return e
+					}
+					lastSimulation = time.Now()
+				}
 				lastQuote = time.Now()
 				progress(fmt.Sprintf("snapshot block=%d states=%d quotes=%d coverage=%s rpc_evidence=%s", head.Number, len(b.States), len(b.Quotes), b.Capture.QuoteCoverage, Hex(b.Capture.PayloadHash)))
 			}
@@ -306,14 +345,20 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 			return nil
 		}
 	poll:
-		timer := time.NewTimer(2 * time.Second)
+		if e = c.RPC.WaitReady(ctx); e != nil {
+			return e
+		}
+		timer := time.NewTimer(6 * time.Second)
 		select {
 		case <-ctx.Done():
 			timer.Stop()
 			return ctx.Err()
 		case <-timer.C:
 		}
-		tags, e = c.RPC.HeaderTags(ctx, "latest", "safe", "finalized")
+		// Quotes retain their original sampling cadence. Safe/finalized are
+		// only needed by the minute reconciliation, not every six-second poll.
+		refreshFinality := pendingReconcile || time.Since(lastReconcile) >= time.Minute
+		tags, e = c.pollHeaders(ctx, refreshFinality)
 		if e != nil {
 			if TransientRPC(e) {
 				progress("head_poll_retry: " + e.Error())
@@ -321,9 +366,26 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 			}
 			return e
 		}
-		head, safe, final = tags[0], tags[1], tags[2]
+		priorHead = head
+		head = tags[0]
+		if refreshFinality {
+			safe, final = tags[1], tags[2]
+		}
 		head.Manifest = c.Manifest.Hash
-		if head.Number != lastHead || head.Hash != lastHash {
+		pendingReconcile = pendingReconcile || ReconcileDue(priorHead, head, lastReconcile, time.Now())
+		if pendingReconcile {
+			if !refreshFinality {
+				// A newly observed branch conflict must use fresh finality tags.
+				tags, e = c.RPC.HeaderTags(ctx, "safe", "finalized")
+				if e != nil {
+					if TransientRPC(e) {
+						progress("finality_poll_retry: " + e.Error())
+						goto poll
+					}
+					return e
+				}
+				safe, final = tags[0], tags[1]
+			}
 			if e = c.Reconcile(ctx, final, safe); e != nil {
 				if TransientRPC(e) {
 					progress("reconcile_retry: " + e.Error())
@@ -334,8 +396,70 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 			if c.Rewind > 0 {
 				lastLog = min(lastLog, c.Rewind-1)
 			}
+			lastReconcile = time.Now()
+			pendingReconcile = false
+		}
+		if time.Since(lastReceiptRepair) >= 60*time.Second {
+			if e = c.RepairReceipts(ctx, final, safe, progress); e != nil {
+				if !TransientRPC(e) {
+					return e
+				}
+				progress("receipt_retry_deferred: " + e.Error())
+			}
+			lastReceiptRepair = time.Now()
 		}
 	}
+}
+
+func (c *Collector) pollHeaders(ctx context.Context, finality bool) ([]dex.Block, error) {
+	if finality {
+		return c.RPC.HeaderTags(ctx, "latest", "safe", "finalized")
+	}
+	return c.RPC.HeaderTags(ctx, "latest")
+}
+
+// Only an explicit provider range/result limit justifies splitting. In
+// particular authorization, throttling and timeouts cannot cause permanent
+// single-block polling. Successful ranges gradually restore the batch size.
+func nextLogChunk(current, attempted uint64, complete bool, reason string) uint64 {
+	if complete {
+		return min(uint64(512), max(uint64(1), current)*2)
+	}
+	if reason == "rpc_log_range_limit" && attempted > 1 {
+		return max(uint64(1), attempted/2)
+	}
+	return current
+}
+
+func ReconcileDue(previous, next dex.Block, last, now time.Time) bool {
+	return now.Sub(last) >= 60*time.Second || next.Number < previous.Number || next.Number == previous.Number && next.Hash != previous.Hash || next.Number == previous.Number+1 && next.Parent != previous.Hash
+}
+
+// Resume a union of successful intervals, never the largest endpoint over gaps.
+func ContiguousLiveCursor(caps []Capture, fallback uint64, discover bool) uint64 {
+	ranges := []Capture{}
+	for _, v := range caps {
+		if v.CaptureKind == "logs" && v.CaptureMode == "live" && v.Canonical && v.Committed && v.LogCoverage == "complete" {
+			ranges = append(ranges, v)
+		}
+	}
+	if len(ranges) == 0 {
+		return fallback
+	}
+	sort.Slice(ranges, func(i, j int) bool { return ranges[i].FromBlock < ranges[j].FromBlock })
+	cursor := fallback
+	if discover {
+		cursor = ranges[0].FromBlock - 1
+	}
+	for _, v := range ranges {
+		if v.FromBlock > cursor+1 {
+			break
+		}
+		if v.ToBlock > cursor {
+			cursor = v.ToBlock
+		}
+	}
+	return cursor
 }
 
 func SnapshotEvent(logs []dex.Log) bool {

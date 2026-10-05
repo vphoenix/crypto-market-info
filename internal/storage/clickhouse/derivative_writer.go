@@ -125,7 +125,11 @@ func (c *Client) insertDerivativeDeltas(ctx context.Context, id string, books []
 
 func (c *Client) validateDerivativeReferences(ctx context.Context, books []model.DerivativeMinuteBatch) error {
 	// Every reference must resolve BEFORE the first market-data insert.
-	instruments, err := c.Instruments(ctx)
+	ids := make([]uint32, len(books))
+	for n, b := range books {
+		ids[n] = b.InstrumentID
+	}
+	instruments, err := c.instrumentsWhere(ctx, "WHERE instrument_id IN (?)", []any{ids})
 	if err != nil {
 		return err
 	}
@@ -133,17 +137,21 @@ func (c *Client) validateDerivativeReferences(ctx context.Context, books []model
 	for _, i := range instruments {
 		byID[i.ID] = i
 	}
+	specs, err := c.derivativeSpecReferences(ctx, ids)
+	if err != nil {
+		return err
+	}
 	rules := map[string]uint32{}
 	for _, b := range books {
 		i, ok := byID[b.InstrumentID]
 		if !ok || i.Exchange != "Deribit" || (i.MarketType != model.MarketOption && i.MarketType != model.MarketOptionCombo && i.MarketType != model.MarketDelivery) || b.Signed != (i.MarketType == model.MarketOptionCombo) || !i.PriceTickSize.Equal(options.StorageUnit()) || !i.QuantityStepSize.Equal(options.StorageUnit()) || !i.ContractMultiplier.Equal(options.StorageUnit().Shift(8)) {
 			return fmt.Errorf("unregistered or incompatible derivative %d", b.InstrumentID)
 		}
-		var definitionHash string
-		if err := c.conn.QueryRow(ctx, `SELECT definition_hash FROM `+c.table("derivative_contract_spec")+` FINAL WHERE instrument_id=?`, i.ID).Scan(&definitionHash); err != nil {
-			return fmt.Errorf("missing derivative spec: %w", err)
+		spec, ok := specs[i.ID]
+		if !ok {
+			return fmt.Errorf("missing derivative spec")
 		}
-		if len(i.VenueContractVersion) < 65 || i.VenueContractVersion[len(i.VenueContractVersion)-64:] != definitionHash {
+		if len(i.VenueContractVersion) < 65 || i.VenueContractVersion[len(i.VenueContractVersion)-64:] != spec.hash {
 			return fmt.Errorf("spec identity mismatch")
 		}
 		for _, q := range b.Quality {
@@ -155,13 +163,20 @@ func (c *Client) validateDerivativeReferences(ctx context.Context, books []model
 			}
 		}
 	}
+	ruleIDs := make([]string, 0, len(rules))
+	for id := range rules {
+		ruleIDs = append(ruleIDs, id)
+	}
+	stored, err := c.derivativeRuleReferences(ctx, ruleIDs)
+	if err != nil {
+		return err
+	}
 	for rule, owner := range rules {
-		var found uint32
-		var known, effective time.Time
-		if err := c.conn.QueryRow(ctx, `SELECT instrument_id,known_from,effective_from FROM `+c.table("derivative_trading_rule")+` FINAL WHERE trading_rule_id=?`, rule).Scan(&found, &known, &effective); err != nil {
-			return err
+		r, ok := stored[rule]
+		if !ok {
+			return fmt.Errorf("missing derivative rule")
 		}
-		if found != owner {
+		if r.owner != owner {
 			return fmt.Errorf("rule reference instrument mismatch")
 		}
 		for _, b := range books {
@@ -169,7 +184,7 @@ func (c *Client) validateDerivativeReferences(ctx context.Context, books []model
 				continue
 			}
 			for second, q := range b.Quality {
-				if q.TradingRuleID == rule && (q.RulePublishedAt.Before(known) || b.MinuteTime.Add(time.Duration(second)*time.Second).Before(effective)) {
+				if q.TradingRuleID == rule && (q.RulePublishedAt.Before(r.known) || b.MinuteTime.Add(time.Duration(second)*time.Second).Before(r.effective)) {
 					return fmt.Errorf("rule reference precedes knowledge/publication or effectiveness")
 				}
 			}
@@ -177,6 +192,36 @@ func (c *Client) validateDerivativeReferences(ctx context.Context, books []model
 	}
 	return nil
 }
+
+type derivativeRuleReference struct {
+	owner            uint32
+	known, effective time.Time
+}
+
+func (c *Client) derivativeRuleReferences(ctx context.Context, ids []string) (map[string]derivativeRuleReference, error) {
+	out := map[string]derivativeRuleReference{}
+	if len(ids) == 0 {
+		return out, nil
+	}
+	rows, err := c.conn.Query(ctx, `SELECT trading_rule_id,instrument_id,known_from,effective_from FROM `+c.table("derivative_trading_rule")+` FINAL WHERE trading_rule_id IN (?)`, ids)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var id string
+		var r derivativeRuleReference
+		if err := rows.Scan(&id, &r.owner, &r.known, &r.effective); err != nil {
+			return nil, err
+		}
+		if _, exists := out[id]; exists {
+			return nil, fmt.Errorf("duplicate derivative rule reference")
+		}
+		out[id] = r
+	}
+	return out, rows.Err()
+}
+
 func (c *Client) insertDerivativeMinutes(ctx context.Context, id string, books []model.DerivativeMinuteBatch) error {
 	count := 0
 	for _, b := range books {

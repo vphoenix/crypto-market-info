@@ -31,14 +31,17 @@ type Reader struct {
 	Members []string
 	Used    int
 	MaxLogs uint32
+	// When source-wide coordination is installed, use small bounded groups.
+	BatchLimit int
 	// RPCMinInterval is configured before use. Zero preserves normal batching.
 	// Positive values serialize members with a cooldown after each response;
 	// this conservatively bounds actual request starts even under slow transport.
-	RPCMinInterval time.Duration
-	memberMu       sync.Mutex
-	rateInit       sync.Once
-	rateGate       chan struct{}
-	nextRequestAt  time.Time
+	RPCMinInterval   time.Duration
+	memberMu         sync.Mutex
+	rateInit         sync.Once
+	rateGate         chan struct{}
+	nextRequestAt    time.Time
+	receiptTransfers *ReceiptTransfers
 }
 
 func NewReader(rpc *ethereum.Client, c ChainConfig) *Reader {
@@ -49,6 +52,26 @@ func (r *Reader) batch(ctx context.Context, calls []ethereum.Call) []ethereum.Re
 	used := len(calls)
 	if r.RPCMinInterval > 0 {
 		v, used = r.throttledBatch(ctx, calls)
+	} else if r.BatchLimit > 0 {
+		v = make([]ethereum.Result, len(calls))
+		for start := 0; start < len(calls); start += r.BatchLimit {
+			end := min(start+r.BatchLimit, len(calls))
+			copy(v[start:end], r.RPC.Batch(ctx, calls[start:end]))
+			failed := false
+			for _, x := range v[start:end] {
+				if x.Err != nil {
+					failed = true
+					break
+				}
+			}
+			if failed {
+				used = end
+				for j := end; j < len(v); j++ {
+					v[j] = ethereum.Result{Err: errors.New("rpc_batch_aborted_after_failure"), At: Now()}
+				}
+				break
+			}
+		}
 	} else {
 		// Base's public RPC rejects more than ten members (-32014). Group before
 		// calling the shared client; its semaphore still caps all requests at two.
@@ -127,6 +150,9 @@ func (r *Reader) throttledBatch(ctx context.Context, calls []ethereum.Call) ([]e
 }
 func (r *Reader) headerBudget(count int) time.Duration {
 	if r.RPCMinInterval <= 0 {
+		if r.BatchLimit > 0 {
+			return time.Duration(count) * (5*time.Second + time.Second)
+		}
 		return 5 * time.Second
 	}
 	// Saturate rather than wrapping an explicitly supplied very long interval.
@@ -552,8 +578,9 @@ func (r *Reader) Probe(ctx context.Context, d Deposit, b Block) (p OrderProbe, e
 }
 
 // Receipt obtains transaction and receipt together, checks all positions against
-// an independently read canonical header, and retains the complete raw receipt.
+// an independently read canonical header, then parses USDC transfers for storage.
 func (r *Reader) Receipt(ctx context.Context, txHash string) (out TxReceipt, err error) {
+	r.receiptTransfers = nil
 	out = TxReceipt{ChainId: r.Chain.ChainID, TxHash: txHash, RequestedAt: Now(), FeeRule: "unknown", Reason: "fee_components_incomplete"}
 	defer func() { out.AvailableAt = Now() }()
 	if len(txHash) != 32 {
@@ -575,6 +602,7 @@ func (r *Reader) Receipt(ctx context.Context, txHash string) (out TxReceipt, err
 		To                                                              *string
 		Status, GasUsed, EffectiveGasPrice                              string
 		L1Fee, OperatorFee, GasUsedForL1                                *string
+		OperatorFeeScalar, OperatorFeeConstant                          *string
 		Logs                                                            []rpcLog
 	}
 	if json.Unmarshal(v[0].Raw, &tx) != nil || string(v[0].Raw) == "null" || json.Unmarshal(v[1].Raw, &receipt) != nil || string(v[1].Raw) == "null" {
@@ -688,7 +716,13 @@ func (r *Reader) Receipt(ctx context.Context, txHash string) (out TxReceipt, err
 	}
 	switch r.Chain.ChainID {
 	case 8453:
-		out.FeeRule = "base_explicit_components"
+		out.OperatorFeeWei, out.FeeRule, e = r.baseOperatorFee(ctx, b, out.GasUsed, out.TxType, out.OperatorFeeWei, receipt.OperatorFeeScalar, receipt.OperatorFeeConstant)
+		if e != nil {
+			return out, e
+		}
+		if out.OperatorFeeWei == nil {
+			out.Reason = out.FeeRule
+		}
 		if out.L1DataFeeWei != nil && out.OperatorFeeWei != nil {
 			out.TotalFeeWei = new(big.Int).Add(out.ExecutionFeeWei, out.L1DataFeeWei)
 			out.TotalFeeWei.Add(out.TotalFeeWei, out.OperatorFeeWei)
@@ -720,5 +754,14 @@ func (r *Reader) Receipt(ctx context.Context, txHash string) (out TxReceipt, err
 	}
 	out.TransactionPayloadHash = string(v[0].Payload[:])
 	out.ReceiptPayloadHash = string(v[1].Payload[:])
-	return out, r.canonical(ctx, b)
+	if err = r.canonical(ctx, b); err != nil {
+		return out, err
+	}
+	transfers, err := parseReceiptTransferResult(v[1].Raw, out, r.Chain.USDC)
+	if err != nil {
+		return out, err
+	}
+	data := receiptTransferRow(out, r.Chain.USDC, transfers)
+	r.receiptTransfers = &data
+	return out, nil
 }

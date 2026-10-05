@@ -63,7 +63,7 @@ func TestRealArchivedSampleOfflineRecompute(t *testing.T) {
 			t.Fatal("archived integer cashflow changed", q.Route, q.Reason)
 		}
 	}
-	archive := Archive{filepath.Join(dir, "evidence")}
+	archive := Archive{Dir: filepath.Join(dir, "evidence")}
 	count := 0
 	e = filepath.WalkDir(archive.Dir, func(path string, entry os.DirEntry, e error) error {
 		if e != nil {

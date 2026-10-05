@@ -15,6 +15,61 @@ import (
 )
 
 var ErrLogRange = errors.New("log_range_too_large")
+var ErrLogSourceUnsupported = errors.New("log_source_range_capability_rejected")
+
+func classifyLogRPCError(err error, res Response) *RPCError {
+	var re *RPCError
+	if !errors.As(err, &re) {
+		return nil
+	}
+	// Additional RPC diagnostics must never replace rate-limit/ban semantics.
+	if res.HTTPStatus == 200 && err.Error() == re.Error() || res.HTTPStatus == 400 && strings.HasPrefix(err.Error(), "source_http_400\n") {
+		return re
+	}
+	return nil
+}
+
+func (c *Collector) logRPC() *RPC {
+	if c.LogRPC != nil {
+		return c.LogRPC
+	}
+	return c.RPC
+}
+
+func (c *Collector) logSourceIdentity() string {
+	// Bind the rejection to the exact endpoint without persisting credentials.
+	return Hex(HashBytes([]byte(c.logRPC().URL + "|" + c.LogMode)))
+}
+
+func (c *Collector) liveLogBlocks() uint64 {
+	if c.LogMode == "receipts" || c.LiveLogsFromBlock != 0 {
+		return min(uint64(8), c.Manifest.MaxLogBlocks)
+	}
+	return c.Manifest.MaxLogBlocks
+}
+
+func (c *Collector) logInterval() time.Duration {
+	if c.LogMode == "receipts" || c.LiveLogsFromBlock != 0 {
+		return time.Minute
+	}
+	return 5 * time.Minute
+}
+
+// Ethereum's header bloom has no false negatives for an address. A positive
+// bloom is only a candidate and must be resolved with logs at that exact hash.
+func bloomContains(bloom, address string) (bool, error) {
+	if len(bloom) != 256 || len(address) != 20 {
+		return false, errors.New("logs_bloom_missing_or_invalid")
+	}
+	h := crypto.Keccak256([]byte(address))
+	for i := 0; i < 6; i += 2 {
+		bit := (uint16(h[i])<<8 | uint16(h[i+1])) & 2047
+		if bloom[255-bit/8]&(1<<(bit%8)) == 0 {
+			return false, nil
+		}
+	}
+	return true, nil
+}
 
 type chainLog struct {
 	Address          string   `json:"address"`
@@ -165,7 +220,7 @@ func decodeEvent(v chainLog, b Block, m Manifest, batch *Batch, res Response) er
 	return nil
 }
 func (c *Collector) queueIdentityAt(ctx context.Context, b Block) (Response, error) {
-	v, res, e := c.RPC.View(ctx, c.Manifest.Address("queue"), b, "proxy__getImplementation()", []string{"address"}, "normal")
+	v, res, e := c.logRPC().View(ctx, c.Manifest.Address("queue"), b, "proxy__getImplementation()", []string{"address"}, "normal")
 	if e != nil {
 		return res, e
 	}
@@ -175,63 +230,241 @@ func (c *Collector) queueIdentityAt(ctx context.Context, b Block) (Response, err
 	return res, nil
 }
 func (c *Collector) Logs(ctx context.Context, from, to uint64, mode string) (Batch, error) {
+	return c.logsWithFinalized(ctx, from, to, mode, nil)
+}
+
+// The runner may reuse the finalized response it just obtained for planning.
+// It remains archived with its original timestamps; no cached market head is used.
+func (c *Collector) logsWithFinalized(ctx context.Context, from, to uint64, mode string, finalized *Block) (Batch, error) {
+	return c.logsRange(ctx, from, to, mode, finalized, false)
+}
+func (c *Collector) logsRange(ctx context.Context, from, to uint64, mode string, finalized *Block, liveBounded bool) (Batch, error) {
+	liveBounded = liveBounded && c.LogMode == "receipts" && c.logRPC().URL == c.RPC.URL
 	b := Batch{Capture: c.newCapture("logs", mode)}
 	b.Capture.Finality = "finalized"
 	b.Capture.SourceId = "ethereum:1:lido:withdrawal-queue"
 	responses := []Response{}
+	stage := "log_range"
+	var lastResponse Response
+	add := func(res Response) { responses = append(responses, res); lastResponse = res }
 	collect := func() error {
 		if from > to || to-from >= c.Manifest.MaxLogBlocks {
 			return errors.New("log_range_invalid")
 		}
-		end, e := c.RPC.Header(ctx, "finalized")
-		responses = append(responses, end.Response)
+		if c.LogMode == "receipts" && to-from >= c.liveLogBlocks() {
+			return errors.New("receipt_scan_range_over_eight_blocks")
+		}
+		stage = "logs_finalized_head"
+		var end Block
+		var e error
+		if finalized != nil {
+			end = *finalized
+			if end.Number == 0 || !goodHash(end.Hash, 32) || !timeValid(end.Time) || len(end.Response.PayloadHash) != 32 {
+				return errors.New("logs_finalized_proof_invalid")
+			}
+		} else {
+			end, e = c.RPC.Header(ctx, "finalized")
+		}
+		add(end.Response)
 		if e != nil {
 			return e
 		}
 		if to > end.Number {
 			return errors.New("log_range_not_finalized")
 		}
+		stage = "logs_range_header"
 		first, e := c.RPC.Header(ctx, fmt.Sprintf("0x%x", from))
-		responses = append(responses, first.Response)
+		add(first.Response)
 		if e != nil {
 			return e
 		}
+		if first.Number != from {
+			return errors.New("logs_from_header_height_mismatch")
+		}
 		last := first
-		if to != from {
+		if to != from && !liveBounded {
 			last, e = c.RPC.Header(ctx, fmt.Sprintf("0x%x", to))
-			responses = append(responses, last.Response)
+			add(last.Response)
 			if e != nil {
 				return e
+			}
+			if last.Number != to {
+				return errors.New("logs_to_header_height_mismatch")
 			}
 		}
 		setAnchor(&b.Capture, first, last)
-		for _, h := range []Block{first, last} {
+		// A separate log source must agree with the primary chain anchor. Empty
+		// arrays from a wrong chain/provider cannot establish range coverage.
+		if c.logRPC().URL != c.RPC.URL {
+			stage = "logs_source_anchor"
+			h, err := c.logRPC().Header(ctx, fmt.Sprintf("0x%x", to))
+			add(h.Response)
+			if err != nil {
+				return err
+			}
+			if h.Number != last.Number || h.Hash != last.Hash {
+				return errors.New("log_source_anchor_mismatch")
+			}
+		}
+		stage = "logs_queue_identity"
+		identityHeaders := []Block{first, last}
+		if c.LogMode == "receipts" {
+			identityHeaders = nil
+		}
+		for _, h := range identityHeaders {
 			res, e := c.queueIdentityAt(ctx, h)
-			responses = append(responses, res)
+			add(res)
 			if e != nil {
 				return e
 			}
 		}
-		raw, res, e := c.RPC.Call(ctx, "eth_getLogs", []any{map[string]any{"address": c.Manifest.Addresses["queue"], "fromBlock": fmt.Sprintf("0x%x", from), "toBlock": fmt.Sprintf("0x%x", to)}}, "logs")
-		responses = append(responses, res)
-		if e != nil {
-			var re *RPCError
-			if errors.As(e, &re) {
-				s := strings.ToLower(re.Message)
-				if strings.Contains(s, "too many results") || strings.Contains(s, "block range") || strings.Contains(s, "response size") || strings.Contains(s, "query returned more") {
-					return ErrLogRange
-				}
-			}
-			return e
+		headers := map[uint64]Block{from: first}
+		if !liveBounded {
+			headers[to] = last
 		}
+		logResponses := map[uint64]Response{}
 		var logs []chainLog
-		if e = exactJSON(raw, &logs); e != nil {
-			return e
+		if c.LogMode == "receipts" {
+			var verifiedLast Block
+			budgetStopped := false
+			// Only the live runner accepts a fully verified prefix. Public
+			// Logs/backfill retain their explicit whole-range contract.
+			room := func(calls int) (bool, error) {
+				if !liveBounded {
+					return true, nil
+				}
+				slots, err := c.RPC.Transport.AvailableRPCSlots(c.RPC.URL)
+				if err != nil {
+					return false, err
+				}
+				if slots < calls {
+					return false, nil
+				}
+				if deadline, ok := ctx.Deadline(); ok {
+					if time.Until(deadline) < time.Duration(calls)*c.RPC.Transport.spacing("rpc", Now())+5*time.Second {
+						return false, nil
+					}
+				}
+				return true, nil
+			}
+			var previousHash string
+			for n := from; n <= to; n++ {
+				h, ok := headers[n]
+				remainingCalls := 2 // canonical end plus one maintenance reservation
+				if !ok {
+					remainingCalls++
+				}
+				enough, roomErr := room(remainingCalls)
+				if roomErr != nil {
+					return roomErr
+				}
+				if !enough {
+					budgetStopped = true
+					break
+				}
+				if !ok {
+					stage = "logs_bloom_header"
+					h, e = c.RPC.Header(ctx, fmt.Sprintf("0x%x", n))
+					add(h.Response)
+					if e != nil {
+						return e
+					}
+					headers[n] = h
+				}
+				stage, lastResponse = "logs_header_identity", h.Response
+				if h.Number != n {
+					return errors.New("logs_middle_header_height_mismatch")
+				}
+				if n > from && h.ParentHash != previousHash {
+					return errors.New("logs_header_parent_chain_mismatch")
+				}
+				previousHash = h.Hash
+				stage, lastResponse = "logs_bloom", h.Response
+				possible, err := bloomContains(h.LogsBloom, c.Manifest.Address("queue"))
+				if err != nil {
+					return err
+				}
+				if !possible {
+					verifiedLast = h
+					continue
+				}
+				// Receipt + possible ABI check + canonical + maintenance.
+				enough, roomErr = room(4)
+				if roomErr != nil {
+					return roomErr
+				}
+				if !enough {
+					budgetStopped = true
+					break
+				}
+				stage = "logs_block_receipts"
+				raw, res, err := c.logRPC().Call(ctx, "eth_getBlockReceipts", []any{Hex(h.Hash)}, "normal")
+				add(res)
+				if err != nil {
+					if re := classifyLogRPCError(err, res); re != nil && re.Code == -32601 {
+						return errors.Join(ErrLogSourceUnsupported, err)
+					}
+					return err
+				}
+				part, err := queueLogsFromReceipts(raw, h, c.Manifest.Address("queue"))
+				if err != nil {
+					return err
+				}
+
+				// Check ABI only when raw queue-address logs actually exist,
+				// before filtering known topics. Empty proof needs no state read.
+				if len(part) > 0 {
+					stage = "logs_queue_identity"
+					identity, identityErr := c.queueIdentityAt(ctx, h)
+					add(identity)
+					if identityErr != nil {
+						return identityErr
+					}
+				}
+				logResponses[n] = res
+				logs = append(logs, part...)
+				verifiedLast = h
+			}
+			if budgetStopped {
+				if verifiedLast.Number == 0 {
+					return errors.New("live_receipt_piece_budget_exhausted_before_first_block")
+				}
+				b.Capture.Reason = fmt.Sprintf("live_receipt_piece_bounded planned_to=%d covered_to=%d", to, verifiedLast.Number)
+				to = verifiedLast.Number
+			}
+			last = verifiedLast
+			setAnchor(&b.Capture, first, last)
+		} else {
+			stage = "logs_getLogs"
+			raw, res, e := c.logRPC().Call(ctx, "eth_getLogs", []any{map[string]any{"address": c.Manifest.Addresses["queue"], "fromBlock": fmt.Sprintf("0x%x", from), "toBlock": fmt.Sprintf("0x%x", to)}}, "logs")
+			add(res)
+			if e != nil {
+				if re := classifyLogRPCError(e, res); re != nil {
+					s := strings.ToLower(re.Message)
+					if re.Code == 35 && strings.Contains(s, "ranges over") && strings.Contains(s, "10000") && strings.Contains(s, "free plan") && to-from < 10000 {
+						return errors.Join(ErrLogSourceUnsupported, e)
+					}
+					if strings.Contains(s, "too many results") || strings.Contains(s, "block range") || strings.Contains(s, "response size") || strings.Contains(s, "query returned more") {
+						return errors.Join(ErrLogRange, e)
+					}
+				}
+				return e
+			}
+			stage = "logs_parse"
+			if e = exactJSON(raw, &logs); e != nil {
+				return e
+			}
+			if logs == nil {
+				return errors.New("logs_array_missing")
+			}
+			for _, v := range logs {
+				n, _ := q64(v.BlockNumber)
+				logResponses[n] = res
+			}
 		}
 		if len(logs) >= int(c.Manifest.MaxLogs) {
 			return ErrLogRange
 		}
-		headers := map[uint64]Block{from: first, to: last}
 		seen := map[string]bool{}
 		sort.Slice(logs, func(i, j int) bool {
 			a, _ := q64(logs[i].BlockNumber)
@@ -258,20 +491,24 @@ func (c *Collector) Logs(ctx context.Context, from, to uint64, mode string) (Bat
 			seen[key] = true
 			h, ok := headers[n]
 			if !ok {
+				stage = "logs_event_header"
 				h, e = c.RPC.Header(ctx, fmt.Sprintf("0x%x", n))
-				responses = append(responses, h.Response)
+				add(h.Response)
 				if e != nil {
 					return e
 				}
 				headers[n] = h
 			}
-			if e = decodeEvent(v, h, c.Manifest, &b, res); e != nil {
+			stage = "logs_decode_event"
+			lastResponse = logResponses[n]
+			if e = decodeEvent(v, h, c.Manifest, &b, logResponses[n]); e != nil {
 				return e
 			}
 		}
 		// Finalized data must still match canonical headers. Conflicts stop the range.
+		stage = "logs_canonical_end"
 		ok, rs, e := c.RPC.Canonical(ctx, last)
-		responses = append(responses, rs)
+		add(rs)
 		if e != nil {
 			return e
 		}
@@ -284,7 +521,7 @@ func (c *Collector) Logs(ctx context.Context, from, to uint64, mode string) (Bat
 	e := collect()
 	if e != nil {
 		b.Capture.Status = "failed"
-		b.Capture.Reason = e.Error()
+		b.Capture.Reason = failureReason(stage, e, lastResponse)
 		b.Requests = nil
 		b.Finalizations = nil
 		b.Claims = nil

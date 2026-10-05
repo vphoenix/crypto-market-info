@@ -44,6 +44,7 @@ type reportSummary struct {
 	GasSampleTotalWei         string   `json:"gas_sample_total_wei"`
 	ProfitStatus              string   `json:"profit_status"`
 	Limitations               []string `json:"limitations"`
+	RawResponsePolicy         string   `json:"raw_response_policy"`
 }
 
 // Report exports only stored public evidence. It never fetches missing evidence,
@@ -77,6 +78,8 @@ func Report(ctx context.Context, store Store, manifest Manifest, from, to time.T
 		return captures[i].StartedAt.Before(captures[j].StartedAt)
 	})
 	summary := reportSummary{ManifestHash: Hex(manifest.Hash), From: reportTime(from), To: reportTime(to), ProfitStatus: "unknown_costs_and_funding_coverage", Limitations: []string{"Amounts and prices are observations, not executed fills.", "Current gross discount excludes all gas, trading fees, redemption losses, hedge funding and capital costs.", "Fixed-delay followups do not establish our actual redemption time or amount.", "Actual funding observations are exported; historical settlement schedule and full holding-period coverage are not certified.", "Net profit, APR and capacity across overlapping routes/time samples are not estimated.", "Gas statistics cover only sampled known receipts; they are not total strategy execution cost."}}
+	summary.RawResponsePolicy = "typed_database_with_bounded_diagnostics"
+	summary.Limitations = append(summary.Limitations, "Successful raw responses may be removed after database acknowledgement. This report validates stored typed members and digests, not deleted response bodies.")
 	coverage := [][]string{{"capture_id", "kind", "started_at", "status", "finality", "canonical", "committed", "report_eligibility", "reason"}}
 	quotes := map[string]reportQuote{}
 	requestEvents := map[string]WithdrawalRequest{}

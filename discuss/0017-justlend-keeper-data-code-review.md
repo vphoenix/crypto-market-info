@@ -2,7 +2,7 @@
 
 日期：2026-10-03。独立审核者：`/root/keeper_code_review`。
 
-状态：真实首批问题修复后再次复审通过；没有剩余采集代码阻断，非空正式报价、资源费率及扩展 Rent/Return 事件已经独立进程报告验收。修复经过及原审核遗漏完整保留在末尾记录。审核者未向公开节点发请求、未启动服务、未改实现代码或正式数据库。通过范围是采集、恢复与条件报告，成功机会及净利润认证仍受下文数据门槛约束。
+状态：最新“索引先存、后台补证据、纯数据导出”实现已完成代码复审及真实六表首批落库／独立导出验收，无剩余代码阻断。当前服务记录为active/running、enabled，PID2085678，NRestarts=0；之前的运行故障、停服及审核遗漏保留在末尾，不能代替本轮运行状态。审核者未向公开节点发请求、未启动服务、未改实现代码或正式数据库。当前通过范围仅为采集、恢复、认证与数据导出；获利判断由其他程序完成，长期覆盖仍需持续观测。
 
 ## 范围与检查方式
 
@@ -117,3 +117,121 @@ chain_resource 是参数、代理资源比例与前后头的组合观测。Finis
 本轮最终复审范围共24文件，按上述 path+NUL+SHA256+LF 算法聚合指纹为 `6db97260c57e7671c9f156c84a04aecf95e76ff6820b3777ac13a713c01eaa45`。
 
 实际 probe 另只读抽查 capture `69454f65-dfa8-4bf7-bbbe-b944b75e4e40`：manifest/request/response SHA 与数据库完全一致，原 API result=true、TVM transaction.ret=FAILED、消息 REVERT opcode executed、energy_used=18173，定型状态准确为 revert、奖励 NULL；前后头 86766298/86766302 的高度、blockID 与原始头响应相同。节点最新状态仍为 unpinned 前后范围，没有将失败模拟当作成功收益。
+
+### 数小时实际运行后的边界、调度与报告修复复审
+
+本轮依据用户五项故障、原始响应及离线重放重新审核。原代码通过首批 fixture 和局部启动验收，未覆盖持续数小时的游标推进：Rent 下界20:54:03.378227、Return 下界00:34:39.138186，HTTP成功响应返回下界所在秒的.000事件，严格校验拒绝整页，同ID旧窗口随后反复重试。另有五个probe各需三个请求，30秒期限在已发模拟之后也会丢掉后置头；旧revert分类包含一般TVM失败。原审核覆盖遗漏在此保留，不以之前通过结论代替本轮验收。
+
+已读并复审秒查询包络、逻辑半开裁剪、watch迁移及1/2/4/8/16/30分钟失败退避。保存的两份真实边界响应现在分别保留逻辑窗口内7条/0条，记录边缘排除2条/1条；从原游标所在秒重扫时接受9条/1条，不丢掉原页面。包络之外仍失败，下一页参数必须完全一致，排除边缘不跳过分页。旧未冻结待办保留capture身份及已有证据、明确标partial/legacy_fractional_window_replaced；不将旧token用于新包络。Frozen内容不改，完成后新扫描仍对游标秒对齐，最多重叠一秒。
+
+失败的daily rescan及history按原窗口/token恢复，预算和来源状态不清空。可选watch --history-days冻结完整UTC日区间，一次只排一天；从rent/return追赶完成后开启历史补采。审核发现新history/catchup同kind活跃判断会抑制实时Liquidate，已要求修为仅watch前缀之间互斥，并独立验证history与实时同时调度。另要求UTC零点后的120秒不能提前认证刚结束的一天；EnsureHistory以now-120秒选择完整日终点，daily rescan等到延迟满足才排。历史窗口扩大或多个流继续运行不增加请求速率，原统一gate仍使用。
+
+probe一次一个、最早每6秒轮转；生命周期游标落后超过5分钟不发新模拟。仅未尝试模拟的过时待办被跳过；已有观察或旧Evidence显示已发constant call时继续完成后置头。明确REVERT才标revert，其他已知执行失败标tvm_failure，API/传输错误独立。报告在成员及证据认证后仅在副本派生旧分类，保留observed_status，不改原事实或摘要。
+
+报告每组最多256个capture读取四表，包含预期空成员表；逐capture继续检查计数/摘要。完整SHA缓存只保留本次已认证结果，不缓存失败；错误成员不能通过批量路径。未知费用改为NULL并列known_burn_transactions/burn_coverage，净利润仍unknown。已读隔离数据库新增的非空v2往返与预期空表被注入额外member后拒绝的测试；作者该测试2.496秒通过，审核者本轮没有修改测试库或正式库。
+
+独立keeper专项完整-race -count=1通过6.841秒。共享仓库其他模块维修期间CLI依赖出现中间编译失败，未修改其代码；作者用git HEAD和当前keeper专项文件构造可复现快照。审核者逐文件SHA确认快照中keeper、CLI和keeper writer/集成测试与工作区一致，在该快照独立完整keeper+CLI -race通过5.237秒。首次两个回归fixture缺新鲜生命周期游标/有效probe身份及一个空逻辑窗口的断言问题均已修正后重跑，没有放宽Validate。
+
+独立新进程正式只读report成功，输出/tmp/keeper-review-repair-bulk-report，8,906个capture、4,748条probe、9笔历史Liquidate/180 TRX毛奖励、完整UTC日1。全部9笔整笔burn仍unknown，known_whole_transaction_burn_trx=NULL、burn_coverage=none、net_profit_status=unknown；4,742条旧revert的原始证据仍支持REVERT，实际派生分类变更数0。审核者实测240.27秒，包含go run构建并处于并行维修负载；作者纯已建二进制测量76.88秒，条件不同，不合并或宣称固定耗时。
+
+已读同步后的设计、实现和存储文档。本轮代码及离线报告复审通过，没有剩余代码阻断；实际部署SHA957021c8b11b51a9ac9c9ab94f49a7f69865078cc844d242fbfd58880a4007b1。只读正式库已见新Liquidate逻辑窗口complete；作者05:47:27 UTC状态记录Rent已从20:54:03推进至21:54:03，Return首30分钟窗口仍在核验选中事件的块/收据。Return持续推进、追平后的新probe前后头、完整30日历史及完整日容量仍需运行验收，不能由“服务active”或一次成功页替代。成功奖励fixture、连续episode、竞争胜率和净收益仍未认证。
+
+本轮复审范围共25文件，沿用path+NUL+SHA256+LF聚合算法，当前指纹 `8ebc4e8c3c4788148086c61c7061ff7b19f779fd226f0743bca0071027aace4b`。
+
+### 原生 API 编码的 VM exception 分类补审
+
+作者06:01:25 UTC状态显示Rent/Return均已推进到05:58:59，历史补采及新single probe开始运行。进一步复核原OTHER_ERROR响应发现明确Program$OutOfTimeException（CPU JUMP/PUSH1超时），属于执行失败。第一版补丁只匹配显式API result=false；审核者只读抽查真实旧cap `3b315ed3-d132-45cd-95ce-7a1f2c84bdf7`，响应SHA `3f45d5a0d9dabf2492111b14cbbffd027bb76848bd5941ea974ec2ac31a708d4` 实际省略result.result，数据库api_success=NULL。合成false fixture不足以证明这份真实protobuf默认省略响应的分类正确，已要求补实际归档回归。
+
+修订后在API未成功分支，仅OTHER_ERROR加明确OutOfTimeException/OutOfEnergyException两类VM异常归tvm_failure；ApiSuccess保留原nil或false，不从缺字段补造false。旧report也从认证的原响应派生，observed_status、原事实和摘要不改。明确的非REVERT contractRet失败优先于消息里的REVERT文字，不把OUT_OF_ENERGY误记为业务REVERT。
+
+独立核对真实gzip fixture内容SHA与正式证据一致，并运行限定-race回归通过1.055秒，包含真实缺result.result、合成显式false、旧report派生且原行保持rpc_error，以及既有TVM失败/后置头回归。末项代码复审通过，无新增代码阻断；该修订的最终二进制SHA、正式报告中的实际分类计数及最新范围指纹由后续部署验收补充。完整30日、成功奖励fixture和净收益仍不在此结论范围内。
+
+另复查冷启动准入：仅Schedule新probe要求now达到本次Limiter.Started+5分钟；已发旧模拟仍由Step按probeAttempted完成后置头，不修改已有观察或预算。独立限定-race回归（WarmupDoesNotAdmitProbeQueue、SingleProbeAdmissionAndFrozenHistoryWindow、ProbeCompletionAfterAdmissionDeadlineAndTVMClasses）通过1.043秒。此修订减少启动慢速gate下无望完成的排队轮次，不承诺固定实际采样频率。
+
+审核者实际读取部署文件SHA为 `e7a0b6afe095da98b15ebfde7260ca99b3a2b2f4e519993bb2e07dce5054b495`。此前名为final-report的文件as_of为06:07:13 UTC、分类变更0，属于末项修订前的阶段，不能充当缺失result.result已修复的正式分类验收；新版报告仍需刷新确认。代码及限定回归已通过，历史费用、奖励及覆盖边界不变。
+
+
+### 报告本地证据并行读取复审
+
+最终报告再次超过六分钟，作者SIGQUIT堆栈定位到本地Archive.Get/gzip文件读取。此轮只加速离线证据读取，不增加公开API调用，也不更改事实、采集窗口或来源路由。每组最多256个capture，先最多8个worker逐一完整SHA及严格JSON认证manifest，并检查capture身份、版本与成员编码；再去重请求/响应SHA，由最多8个worker调用原Archive.Get完整解压及SHA认证。逐capture的成员计数／摘要和全高度固化hash冲突检查仍保留。
+
+审核者已通读新report_evidence.go、readManifest及report调用。各worker只写独立下标，retained总字节数加锁；所有worker退出后才由主线程合并成功verified缓存，任一错误使整组失败且不会缓存该组新结果。已认证的来源SHA不能跳过另一capture的manifest身份核验。旧probe分类只在当组保留最多16MiB响应，超限后沿原顺序Archive.Get重新完整认证，不从缺缓存推导成功或缺失。16MiB仅为保留响应缓存上限，八路Archive.Get仍可各临时解压至原64MiB上限，另有manifest和事实内存，不能宣称整个报告内存仅16MiB。
+
+独立定向-race -count=1（ParallelReportEvidenceFailsClosedAndRetainsResponses、APIExecutionExceptionAndLegacyReportClassification及既有Report回归）通过1.437秒；包含17个capture共享响应、缓存下错误capture绑定仍拒绝、预取消、损坏gzip整组失败且不写新缓存。代码复审通过，无报告认证或分类阻断。超缓存上限的本地fixture回归已建议补强，实际完整报告耗时和修订后真实分类计数仍待本次运行结果，不能沿用旧final-report的零分类变更。
+
+
+### 最终只读报告与停服验收
+
+已读正式并行报告及计时文件：滚动30日as_of=2026-10-03T06:31:21.150486Z，9,234个capture，99.33秒，实测max RSS 90,500KiB。原观察7条rpc_error在报告副本中成为5条tvm_failure与2条rpc_error；审核者读取CSV确认五条具体capture含此前真实缺result.result样本。另独立本机只读SQL确认这五条原行全部仍为rpc_error、api_success=NULL，没有重写旧状态或补造false。
+
+停服后的固定完整UTC30日窗口为2026-09-03T00:00:00Z至2026-10-03T00:00:00Z，as_of=2026-10-03T06:35:12.891646Z：9,256个capture，28.89秒，实测max RSS 86,412KiB；已认证完整UTC日2，27笔历史Liquidate，毛奖励591.259864 TRX。全部27笔burn费用仍unknown，已核验reward transfer数0，burn_coverage=none、net_profit_status=unknown。此窗口排除10月3日probe，分类变更数2，与滚动窗口的5不同是查询时间边界差异，不是分类不一致。两次计时数据量、窗口、采集并发及文件缓存状态不同，不承诺固定运行耗时或精确加速倍数。
+
+独立本机只读SQL核对06:13:14 UTC本次启动后70条新probe：70条均为revert，70条前后头的高度/hash/时间均非NULL；首个scheduled为06:18:16.492813，首个available为06:18:31.659415，满足warmup后准入。作者runtime-verification记录三类事件游标已到06:28:45／06:29:16、878次真实请求延续原预算10,682至11,560，新event_filter_mismatch为0；PublicNode仍有真实transport_error，不应将其改为链上失败或假成功。
+
+新增3个不同6MiB响应的缓存边界测试已通读并独立限定-race通过2.692秒：3份SHA均认证、只缓存2份共12MiB，未保留的6MiB响应仍可顺序完整认证。部署二进制实际SHA为c264480c1eb67456fe242ce1e2368c26f0dd21f9269e3e660bc473eaa9d0b182，与保存的deployed-sha256相同。按用户要求服务在06:33:36 UTC停止；已读final-service记录inactive/dead、MainPID=0，路由未改，此验收不授权重新启动。
+
+最终代码、真实游标恢复、新probe前后头、旧分类派生及新进程报告验收通过，没有剩余代码审核阻断。完整30日覆盖仅2日、成功奖励fixture未认证、连续episode和竞争胜率未测，未知费用与转账核验不足仍不能支持日赚200美元或年化3%的判断。当前复审范围共26文件，沿用path+NUL+SHA256+LF聚合算法，指纹15d1d98f1af683648670891e5f114b8f1b24af7fc41491b01d02df2bd889fa88；最终validation说明正在由作者补齐，不将未完成文件称为已读证据。
+
+
+最终验证文档闭环已完成：审核者已读research/2026-10-03-keeper-repair/validation.md及其停止状态、最终请求核验、传输失败、probe调度、capture状态、构建／测试记录；文档所有20处本地相对链接均存在。固定与滚动报告窗口、2完整日、毛奖励及NULL成本、5条旧分类原行保持NULL、二进制安装但不重启的说明与实际记录一致。最终停止核验比前述运行快照多39次请求：917次真实请求，原预算10,682延续至11,599，350个capture／待办证据，游标Rent06:30:46、Return／Liquidate06:30:16 UTC。最终四笔transport_error明确区分两笔正常运行失败与两笔计划stop取消；无响应不归TVM失败。文档保留另1个未模拟stale和3个身份skipped，不宣称70条已完成probe代表全部计划均及时。
+
+无进一步代码改动；最终26文件范围指纹重新计算仍为 `15d1d98f1af683648670891e5f114b8f1b24af7fc41491b01d02df2bd889fa88`。最终验证文档自身SHA256为 `681c5d67a7b22f3ce055b2f78566a8b6164d69ae515bc2bba6dbaf32348adc76`（未混入上述实现范围算法）。本轮独立审核及文档闭环完成，服务保持停止，净获利结论仍未认证。
+
+最后状态补充已复核：final-service为UnitFileState=disabled、inactive/dead、MainPID=0，避免主机重启自动恢复请求；disable后ExecMain时间字段为空，06:33:36 UTC退出时间保留在final-journal和验证正文。validation及运行文档已同步；审核者未执行任何服务变更。上述最终验证文档SHA已更新为disable后的版本，实现26文件指纹保持不变。
+
+
+### 索引先存、核验后补的简化方案设计审查（实现待审）
+
+按新任务只读重新检查模型、分页解析、Finish冻结／提交、状态恢复及调度。新方案拟增加一张定类型jl_keeper_indexed_event表，使用Capture追加IndexedRows、可空IndexedDigest、可空ParentCaptureId作索引页提交记录；既有四种事实结构与成员摘要不改。每页保存全部目标事件和原页面序号，不先按cohort筛选；block hash及收据位置未核验时保持未知，索引页完成不升级为solid／receipt_verified，也不计入旧奖励认证。空页仍需要非空的稳定空成员摘要。
+
+设计可行，但实现通过需验证以下边界：旧Capture增加字段的DB默认应与旧gob缺字段后的0／nil完全一致，Frozen批次不重Seal；writer对期望零行的indexed表也检查，拒绝额外成员。索引页严格解析、原始SHA归档与稳定冻结在DB写入之前，索引事实先写、Capture提交标记最后写；提交后同一次本地状态保存推进token／抓取cursor并记录补证据关系。DB已提交而本地保存失败时按原pageID／成员恢复，不能重新取页替换冻结内容。
+
+旧未Frozen页不能直接使用按cohort筛选后的RawEvents迁移，应重新严格解析保存的原页或保留的全量Discoveries；原From／To／token及已发证据留存。provider event_index不是链上日志位置，字段缺失不能默认为真实0；写入身份使用page capture与原页面ordinal，防止ReplacingMergeTree按交易／provider index静默丢掉重复或冲突观测。实时watch catchup按实时角色设置priority/background，不因mode=catchup误作历史；页请求移除PublicNode前置head，来源冷却、单在途和日预算保持。
+
+补证据最多一个独立child，通过已提交父页数量／摘要／原SHA认证后补链上证据，引用ParentCaptureId；失败只影响核验，不回退或阻塞抓取。child complete只认证该页目标成员，与父页pagination_continues分开。EvidenceCursors应依据连续父页token链、最终exhausted和每页完整child推进，不能用新的抓取游标或未核验bootstrap起点冒充核验。历史／实时进度分别处理。DB选择有界未完成父页，避免把全部历史事件塞入本地Ops。数据导出表达索引与核验差异，收益计算不参与采集流程。此段为方案审查，不将未完成实现、迁移或部署称为已通过。
+
+
+索引简化实际代码第一轮读审已开始：Capture三个字段追加且Nullable默认NULL，新表按capture／原ordinal保存索引来源；索引页未知block hash保持NULL，provider_claimed_confirmed与receipt_verified事实分开。writer读写新增表并继续期望零行检查，capture提交标记仍在事实之后；旧四种事实结构未改。本轮只读检查尚未替代完整实现和迁移验收。
+
+第一轮已反馈具体问题：初版只在刚完成child上推进EvidenceCursor会卡在逆序完成窗口，且新状态在bootstrap前复制空游标会无法开始核验；作者改为连续DB frontier及显式bootstrap增量baseline，待回归确认。DB frontier初版仅以存在终页及每个可见父页有成功child计算完整性，缺少分页token链证明，已要求完整链验证。旧Frozen末页成功后抓取／核验游标，以及旧Frozen非末页后接新索引页的缺前缀恢复，仍需专门处理与测试。迁移已取到response的历史页分支也应统一history模式；索引manifest不能套用旧空事实允许缺digest encoding的兼容，父response应绑定精确查询路径。作者正在补这些修订。当前阶段不宣称新采集方案通过或已部署。
+
+
+简化方案完整读审期间，独立keeper＋CLI完整-race -count=1通过7.431秒；首次沙盒内httptest监听被环境禁止，改为仅本机mock端口权限后通过，不涉及公开请求。独立本机随机隔离库的旧成员冻结重试与新IndexFrontier／LegacyDefaults回归通过2.050秒，未改正式库。审核者直接检查旧gob字节，没有IndexedRows／IndexedDigest／ParentCaptureId／IndexedEvents／IndexingEnabled／EvidenceCursors字段；旧nullable默认往返有实际跨布局证据。
+
+本轮进一步发现并已要求修订：无Operation的旧非末页扫描在升级时仍沿非空token进入新索引，缺少新第一页；初版256父页限制会截断单窗口或使全部已完成的后续窗口无触发地卡住；默认Export会因四条已撤回committed=false旧报价失败。作者已修首启旧scan前缀、按覆盖当前游标完整窗口查询及有界连续／空闲推进，并将captures审计行与已提交当前配置成员分开。父child在writer增加同配置／合约／事件／窗口及提交关系检查，Export认证父manifest身份／种类，不只核对任意原文SHA。新增边界回归仍在补齐，此阶段测试耗时不替代这些末改的最终验证。
+
+另发现新异步核验的重要可用时间风险：Hydrate生成RentalEvent时仍继承父索引页AvailableAt，可能比child链上核验完成早数十分钟。已要求新enrichment事实可用时间提升为完整child完成时刻，索引行保留原来源观测时刻；旧Frozen及旧事实不改，导出说明历史组合数据的有效可用时刻需结合capture完成时间。此项修订和最终文档／部署尚待后续验收，暂不将简化实现判为最终通过。
+
+
+### 采集简化最终代码复审通过（实际落库待验收）
+
+最终末改已读并确认：全目标能源索引页先提交，不等待PublicNode前置固化头／收据；nullable block hash与provider_claimed_confirmed／indexed_only明确保留未核验语义。三新增Capture字段与旧gob／旧数据库NULL默认一致，旧四类FactBytes及Frozen成员不变；新索引空页也核验窗口、来源、种类与scope，仍有非NULL空摘要。原ordinal使重复供应商下标分别留存。
+
+旧Frozen非末页先按原批次完成，再从原窗口空token重索引；末页只推进原已核验连续基线。首启旧页间停机而无Operation的扫描也重置前缀；未Frozen来源从完整归档重新严格解析，旧证据保留。source token／cursor仅在DB提交之后与本地状态一起保存，DB失败不推进，冻结身份及时间不变。实时catchup按watch角色优先，所有请求仍走原来源／后台／预算gate，没有外部并发。
+
+核验一次仅恢复一个父页；父数量／摘要、原SHA和精确请求路径重验，writer另检查父提交身份、配置、合约、事件、时间窗及发现数。Rent/Return只核验当前选中样本，EvidenceCursors仅表示该样本连续生命周期证据。完整窗口需空token到终页的全manifest链，且每个父页有成功child；当前完整窗口不被256页截断，连续晋级每次最多32窗，无child时仍周期恢复，逆序先完成后续窗口不会掩盖早期缺口。失败次数最多3、至少间隔30分钟，失败父页关系可查询，不伪造完整。
+
+新enrichment事实AvailableAt仅在Freeze之前提升为child完整核验完成时间，来源RequestStartedAt／payload hash不改；索引行仍是原响应可用时间。旧Frozen重试不重新定时，旧事实保持原值；导出metadata说明完整上下文应取max(row.available_at,capture.available_at)。
+
+CLI export与兼容report现在只输出六份typed CSV＋metadata，没有机会／年化／利润／成本情景计算。撤回／未提交及不同配置cap作为审计行保留，其成员排除；正常成员逐批摘要及完整SHA认证，child父manifest绑定继续认证。金额与Decimal无损输出，地址／hash十六进制，NULL为unknown，输出先认证到临时目录后整体发布且拒绝覆盖。旧研究Report函数保留仅作历史测试兼容，不参与命令或采集。
+
+在此前完整keeper＋CLI race7.431秒、隔离CH2.050秒基础上，独立末项定向race通过1.139秒，覆盖异步事实时刻、冻结重试、撤回cap导出、真实旧gob／页间停机和token链；273个已完成窗口在无新child时周期晋级回归另通过1.014秒。独立真实隔离CH IndexFrontierRetryAndLegacyDefaults末项通过4.430秒，包括257父页完整窗口、逆序进度、30分钟重试及旧nullable默认。候选/tmp/keeper-collection-split-build共28个keeper／CLI／writer源码逐文件相同，DDL两份字节相同。未修改正式库或服务，也未访问公开节点。
+
+最终代码审核通过，没有剩余代码阻断；实际部署后的非空索引行、父子批次、来源SHA、分页游标与独立导出仍需运行验证。最新设计、implementation、storage及architecture已读；implementation末尾仍残留旧四表研究report描述／旧测试名，storage章节旧编号与五表口径已要求作者收尾，不将文档未闭环称为完成。当前实现范围30文件指纹为a6675e42213a6cf8175ae87c05d0ee5b13864860de938e491b62051ce1aed960，文档收尾后应重新计算最终指纹。
+
+
+### 简化采集真实落库及纯数据导出验收
+
+已读本轮[validation](../research/2026-10-03-keeper-collection-split/validation.md)、service-final、live-audit-final及两份导出metadata，独立抽查本地不可变归档与CSV。服务08:57:13 UTC启动；service-final为active/running、enabled、MainPID2085678、NRestarts=0。审核者实际读取部署二进制SHA为`0749ecd085f5b187150bc88c424cd7a7896e0adc8a79b74a79e50342cb60009c`，与构建记录一致。本轮只读验收，不向公开节点发请求或更改正式数据／服务。原五表、状态、二进制及归档备份保存在本轮before目录。
+
+历史父33834175-8d08-4b3d-8352-ebc3dd70d266及child4b29cb00-c651-4db2-bb00-8830ab9eb024所引用59份唯一请求／响应原文，独立解压重算SHA全部一致；11条索引可按原页ordinal、交易ID与供应商下标追溯，未知block hash保持NULL。child保存11条已核验事件及11条收据，AvailableAt全部为09:06:08.365361 UTC完成时刻，父源观测时间单独保留，未提前声称链上核验可用。父页开始时间早于export-live的08:52下界，父capture及索引可在export-30d读取；子批次导出仍认证父manifest，不把时间窗外父页误作漏采。
+
+Rent父26fcb7e5-689f-43fb-ad13-770ffbba1c4c及child3e5ad30c-539d-413d-b4e5-38ed2da4e6ec所引用8份唯一原文SHA也全部重算一致，父manifest身份／hash绑定正确。父页2条索引均保存，child发现2、选中1，实际1事件／1收据，AvailableAt等于child完成时刻。抽查块86781643、收据log2：原blockID与事实／收据hash一致，交易在原区块交易列表中，收据id、高度和合约地址相符；索引金额、security_deposit_sun、rent_index原值与已核验事实一致，receipt_complete／body_complete均为true。
+
+Return父667d3ca9-3ee6-46ae-894e-34b27c2a038e与child5a2bdb07-4da7-43d5-bf82-b33a5488e5a8已抽查父子manifest和源响应SHA。3条索引按原ordinal保存；child发现3、选中0、事件／收据行数均0，complete仅表示当前选中范围完成，没有伪造3条收据认证。样本EvidenceCursors与源EventCursors分开，实际快照的证据进度晚于源抓取进度，文档明确该范围。
+
+09:10:02.195828266 UTC的作者离线审计含135个源／子capture、172次归档请求；审核者以上小范围独立重放不冒充逐一重新执行全部审计。export-live实际metadata为187个审计capture、234索引、12事件／12收据、21probe、16成本观测；export-30d为10499个审计capture、137索引、257事件／257收据、5424probe、910成本观测。两目录仅六份typed CSV与metadata，没有获利分析文件；窗口均按capture_started_at半开选择，不将不同截点行数或样本核验范围合并成全量完备数据集。
+
+本轮代码、首批真实索引／异步补证据、来源认证及独立纯数据导出验收通过，没有剩余审核阻断。通过范围是短期运行和已列样本，未验收长期供应商索引完整性、全天流量或后台全部积压；此限制不阻止准确抓取继续运行。最新实现及设计文档旧章节已清理，validation全部9处本地链接、两份设计／实现文档链接均存在。
+
+最终30文件范围沿用path+NUL+SHA256+LF聚合算法，指纹为`1a046c3c41229c15a16b3a0a11f353310ec48f7be70e94da62cfa45fceb0a20d`。本轮validation自身SHA256为`de017dd5bbe5334f761d97a6a83170857ea3ff31f968105ee5227849ecf29f36`，未混入实现范围指纹。

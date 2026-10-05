@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/url"
 	"regexp"
+	"sync"
 	"time"
 
 	"github.com/shopspring/decimal"
@@ -21,6 +22,7 @@ type BBO struct {
 	PayloadHash              string
 }
 type Prices struct {
+	mu        sync.RWMutex
 	URL       string
 	HTTP      *http.Client
 	Archive   ethereum.Archive
@@ -115,19 +117,28 @@ func (p *Prices) fetch(ctx context.Context, symbol string) (*BBO, error) {
 	return &b, nil
 }
 func (p *Prices) Refresh(ctx context.Context) {
+	p.mu.Lock()
 	if Now().Before(p.next) {
+		p.mu.Unlock()
 		return
 	}
 	p.next = Now().Add(time.Minute)
+	p.mu.Unlock()
 	// Independent sources: a failed refresh never changes a cached observation time.
 	if b, e := p.fetch(ctx, "ETHUSDT"); e == nil {
+		p.mu.Lock()
 		p.ETH = b
+		p.mu.Unlock()
 	}
 	if b, e := p.fetch(ctx, "USDCUSDT"); e == nil {
+		p.mu.Lock()
 		p.USDC = b
+		p.mu.Unlock()
 	}
 }
 func (p *Prices) Attach(v *OrderProbe) {
+	p.mu.RLock()
+	defer p.mu.RUnlock()
 	fresh := func(b *BBO) bool {
 		return b != nil && !v.AvailableAt.Before(b.AvailableAt) && v.AvailableAt.Sub(b.AvailableAt) <= time.Minute
 	}

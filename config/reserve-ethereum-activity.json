@@ -1,0 +1,289 @@
+{
+  "chain_id": 1,
+  "source_commit": "241f0d244c45a311a4cd2af2c383a4f3bbe56265",
+  "implementation": "0xb6b35b2c7032e00baa2535ba480d461321b7e0a6",
+  "implementation_code_hash": "0xfbf2575b5c31627c604729a8e8d0eb942fb34819675bc9316da070c6ec240005",
+  "quoter": "0x61ffe014ba17989e743c5f6cb21bf9697530b21e",
+  "quoter_code_hash": "0x06148f47d0f41a68d3bc970030a7150e5d608cfbc28d372440a2e41ce543d92b",
+  "factory": "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+  "folios": [
+    {
+      "address": "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b",
+      "name": "DFX",
+      "deployment_block": 0,
+      "share_decimals": 18
+    },
+    {
+      "address": "0xe4a10951f962e6cb93cb843a4ef05d2f99db1f94",
+      "name": "ixEdel",
+      "deployment_block": 0,
+      "share_decimals": 18
+    },
+    {
+      "address": "0x9a1741e151233a82cf69209a2f1bc7442b1fb29c",
+      "name": "DGI (raw version check)",
+      "deployment_block": 0,
+      "share_decimals": 18
+    }
+  ],
+  "paths": [
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
+      ],
+      "pools": [
+        "0xd0fc8ba7e267f2bc56044a7715a489d851dc6d78"
+      ],
+      "fees": [
+        3000
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
+      ],
+      "pools": [
+        "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+        "0x1d42064fc4beb5f8aaf85f4617ae8b3b5b8bd801"
+      ],
+      "fees": [
+        500,
+        3000
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"
+      ],
+      "pools": [
+        "0xdceaf5d0e5e0db9596a47c0c4120654e80b1d706"
+      ],
+      "fees": [
+        3000
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"
+      ],
+      "pools": [
+        "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+        "0x5ab53ee1d50eef2c1dd3d5402789cd27bb52c1bb"
+      ],
+      "fees": [
+        500,
+        3000
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0x5a98fcbea516cf06857215779fd812ca3bef1b32"
+      ],
+      "pools": [
+        "0x78235d08b2ae7a3e00184329212a4d7acd2f9985"
+      ],
+      "fees": [
+        10000
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "0x5a98fcbea516cf06857215779fd812ca3bef1b32"
+      ],
+      "pools": [
+        "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+        "0xa3f558aebaecaf0e11ca4b2199cc5ed341edfd74"
+      ],
+      "fees": [
+        500,
+        3000
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0xd533a949740bb3306d119cc777fa900ba034cd52"
+      ],
+      "pools": [
+        "0x9445bd19767f73dcae6f2de90e6cd31192f62589"
+      ],
+      "fees": [
+        10000
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "0xd533a949740bb3306d119cc777fa900ba034cd52"
+      ],
+      "pools": [
+        "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+        "0x919fa96e88d67499339577fa202345436bcdaf79"
+      ],
+      "fees": [
+        500,
+        3000
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3"
+      ],
+      "pools": [
+        "0xa8e8c91faa15149f5f6e4a37846dcd58b88b3ec7"
+      ],
+      "fees": [
+        3000
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3"
+      ],
+      "pools": [
+        "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+        "0x7b1e5d984a43ee732de195628d20d05cfabc3cc7"
+      ],
+      "fees": [
+        500,
+        3000
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0x57e114b691db790c35207b2e685d4a43181e6061"
+      ],
+      "pools": [
+        "0xfc545f345e2afc52652cd6f76323c5ddc847bd6d"
+      ],
+      "fees": [
+        500
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "0x57e114b691db790c35207b2e685d4a43181e6061"
+      ],
+      "pools": [
+        "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+        "0xc3db44adc1fcdfd5671f555236eae49f4a8eea18"
+      ],
+      "fees": [
+        500,
+        3000
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b"
+      ],
+      "pools": [
+        "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+        "0x1914256c2f70aac87e097cd8b07958e9f17f2bcd"
+      ],
+      "fees": [
+        500,
+        3000
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+      ],
+      "pools": [
+        "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640"
+      ],
+      "fees": [
+        500
+      ]
+    },
+    {
+      "tokens": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "0xdac17f958d2ee523a2206206994597c13d831ec7"
+      ],
+      "pools": [
+        "0x3416cf6c708da44db2624d63ea0aaef7113527c6"
+      ],
+      "fees": [
+        100
+      ]
+    }
+  ],
+  "budgets_usdc_raw": [
+    "5000000000",
+    "20000000000",
+    "50000000000"
+  ],
+  "assets": [
+    {
+      "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "decimals": 6,
+      "transfer_semantics": "standard_erc20_assumed_pending_simulation"
+    },
+    {
+      "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "decimals": 18,
+      "transfer_semantics": "standard_erc20_assumed_pending_simulation"
+    },
+    {
+      "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "decimals": 18,
+      "transfer_semantics": "standard_erc20_assumed_pending_simulation"
+    },
+    {
+      "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+      "decimals": 18,
+      "transfer_semantics": "standard_erc20_assumed_pending_simulation"
+    },
+    {
+      "address": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+      "decimals": 18,
+      "transfer_semantics": "standard_erc20_assumed_pending_simulation"
+    },
+    {
+      "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+      "decimals": 18,
+      "transfer_semantics": "standard_erc20_assumed_pending_simulation"
+    },
+    {
+      "address": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+      "decimals": 18,
+      "transfer_semantics": "standard_erc20_assumed_pending_simulation"
+    },
+    {
+      "address": "0x57e114b691db790c35207b2e685d4a43181e6061",
+      "decimals": 18,
+      "transfer_semantics": "standard_erc20_assumed_pending_simulation"
+    },
+    {
+      "address": "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b",
+      "decimals": 18,
+      "transfer_semantics": "standard_erc20_assumed_pending_simulation"
+    },
+    {
+      "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "decimals": 6,
+      "transfer_semantics": "standard_erc20_assumed_pending_simulation"
+    }
+  ]
+}

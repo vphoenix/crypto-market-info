@@ -82,6 +82,12 @@ func (b *DerivativeBook) Invalidate(reason model.DerivativeReason) {
 	b.valid, b.reason = false, reason
 }
 
+func (b *DerivativeBook) LevelCount() int {
+	b.mu.RLock()
+	defer b.mu.RUnlock()
+	return len(b.bids) + len(b.asks)
+}
+
 func (b *DerivativeBook) Apply(u DerivativeUpdate) error {
 	b.mu.Lock()
 	defer b.mu.Unlock()

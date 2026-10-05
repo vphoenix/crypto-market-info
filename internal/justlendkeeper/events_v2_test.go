@@ -187,6 +187,9 @@ func TestSeedFailureBoundedRecoveryPreservesState(t *testing.T) {
 	// Verified members continue to receive probes even with one recovery in flight.
 	c.State.Cohort[0].Verified = true
 	c.State.CallersValid = []string{row.Renter} // conflict is recorded as a skipped observation
+	for _, kind := range []string{"RentResource", "ReturnResource"} {
+		c.State.EventCursors[kind] = now.Add(-2 * time.Minute)
+	}
 	c.Schedule(true)
 	if !c.Active("probe") {
 		t.Fatal("recovery seed blocked foreground schedule")

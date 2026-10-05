@@ -4,7 +4,13 @@
 
 这些表在整个采集进程中的位置及以后增加其他数据时的扩展原则见[系统总体架构](architecture.md)。
 
+2026-10-05 重启核验后，五个生产库（主库、Across、LST、Reserve、JustLend keeper）的59张现有 MergeTree 表已显式设置 `fsync_after_insert=1`、`fsync_part_directory=1`、`min_rows_to_fsync_after_merge=1`。插入与合并结果同步落盘，表设置持久保存；新建生产表也应采用这三项设置。它们不改变字段、UTC时间、编码或完整性含义；`CREATE TABLE IF NOT EXISTS`不会覆盖已有设置。本次逐表执行与核验记录见[重启检查目录](../research/2026-10-05-reboot-check/)。同步落盘降低断电风险，不能恢复缺失的行情，也不能代替底层存储的可靠性。
+
 Reserve 拍卖与篮子申赎已在独立库 `crypto_market_info_reserve` 建表，新增 `reserve_capture`、`reserve_folio_state`、`reserve_route_quote`，复用 `dex_log`／`dex_tx_receipt` 定义。实际结构和不变量见 [DDL](reserve-data-schema.sql) 与 [实现说明](reserve-data-implementation.md)；特别是控制表 `receipt_refs` 固定当时引用集合，后续补收据不会改写旧批语义。
+
+2026-10-04 Reserve `reserve-r5-mvp-3` 共七表，另含联合模拟 `reserve_route_simulation` 和完整交易明细 `reserve_receipt_data`。按用户要求，Reserve 的 API/RPC 返回只在内存中严格解析，定类型数据直接入库，响应正文不落文件。来源 payload hash、成员摘要、UTC 时间与区块锚点仍保存；hash 不承诺原文可下载，报告标注 `raw_response_policy=not_retained`。此项仅修改 Reserve，其他采集器的归档政策以各自说明为准。
+
+`reserve_receipt_data` 按 `(chain_id,block_hash,tx_hash)` 唯一，按 block_time 的 UTC 月分区，ReplacingMergeTree。保存原始 receipt/calldata SHA256、二进制 calldata、tx_index、完整日志数量和 `Array(Tuple(log_index UInt32,emitter FixedString(20),topics Array(FixedString(32)),data String))`；包括 Folio 白名单外的日志。空日志必须有明确零数量的行，缺行不能当空。`data_hash` 使用确定性二进制编码，覆盖锚点、原哈希与全部明细；仅排除自身和迁移可用时间 `materialized_at`。校验摘要、数量、calldata hash/selector、唯一有序 log_index 和原 capture 所引用日志后才允许共享回执复用。摘要/回执事实及明细先落库，capture 最后提交。旧 capture 的 `receipt_refs`、成员摘要与首次可见时间不变；旧原文只由离线 `migrate-receipts` 读取一次，迁移全部通过后才清理。版本化配置、ABI、只读模拟编译产物另存小型 rules 目录；备份七表和该目录即可，不依赖响应归档。
 
 所有时间均为 UTC。盘口快照和差量中的价格、数量均为整数：价格使用 `price_tick`，数量使用 `qty_lot`；不得使用字符串价格或二进制浮点数。用于定义换算单位的元数据使用十进制定点数 `Decimal`。
 
@@ -283,7 +289,7 @@ member 只有 `run_id UUID`、`instrument_id UInt32`、`canonical_market_key Str
 
 ## 10. 期权采集
 
-2026-09-21 已按 [ARB-0009 R4 设计](arbitrage/strategies/arb-0009-options-collection-design.md) 实现现有机器上的固定合约清单采集：Deribit BTC/ETH币本位、USDC线性期权及同到期期货，保存10档与必要元数据供以后分析。[离线基础](arbitrage/strategies/arb-0009-options-phase-1.md) 与[实时实现](arbitrage/strategies/arb-0009-options-live.md)共享规格、规则与盘口事实表，使用各自提交表。真实公共来源已在临时库完成验证，现有常驻采集服务尚未启用这些表。
+2026-09-21 已按 [ARB-0009 R4 设计](arbitrage/strategies/arb-0009-options-collection-design.md) 实现固定合约清单采集。[离线基础](arbitrage/strategies/arb-0009-options-phase-1.md) 与[实时实现](arbitrage/strategies/arb-0009-options-live.md)共享规格、规则与盘口事实表，使用各自提交表。2026-10-04代码已增加新挂牌自动发现R5；其模型见第10.4节，[实现与验收](arbitrage/strategies/arb-0009-options-lifecycle-implementation.md)记录本次验证。R5已于2026-10-04部署到常驻服务；[部署验证与旧历史坏分片限制](arbitrage/strategies/arb-0009-options-lifecycle-deployment.md)另有记录，已有R4读取语义保留。
 
 - 已扩展 `instrument` 的类型与版本校验，并实现定类型经济规格、组合腿和交易规则。实时run/成员、所选元数据复核证据与状态、指数观测及分钟发布见10.3；完整结算/费用/保证金规则、原生combo和全链BBO按需扩展。行权价币种、权利金币、结算币、native amount 和合约张数不能混用。
 - 经济/编码规格保持不可变；下单tick、分段tick、最小量与增量放入独立 `derivative_trading_rule`，逐秒引用当时规则。该链路 `contract_multiplier=1` 表示保留native amount，USD名义和combo必须经专项换算，不能直接套第8节USDT永续的基础币换算公式。
@@ -336,6 +342,32 @@ member 只有 `run_id UUID`、`instrument_id UInt32`、`canonical_market_key Str
 
 秒入口的256条/16MiB上限、时钟异常或持续写入失败会结束当前run并重试，尚未完成/提交的分钟形成缺口。逐秒冻结迟于T+250ms则保存无效质量；缺第0秒锚点时该分钟不可回放。停止最多45秒排空完整分钟，末尾不完整分钟不提交。实际短窗口容量与查询测量见[实时记录](arbitrage/strategies/arb-0009-options-live.md)。
 
+### 10.4 期权自动发现模型（R5）
+
+2026-10-04代码已按[R5设计](arbitrage/strategies/arb-0009-options-lifecycle-design.md)将auto改为四族全部新挂牌期权的持续发现、独立准入和自动到期退出。以下五表由 `InitOptionsCatalogSchema` 幂等初始化，已在生产及隔离库验证，并于2026-10-04部署到常驻服务。第10.1–10.3节仍适用于原固定清单及其历史。
+
+| 新表 | 逻辑键 | 语义与约束 |
+| --- | --- | --- |
+| `options_catalog_scope_observation` | `(observation_id,scope)` | 定类型目录成员及排除数组，完整scope数量校验、来源URL、请求/观测时间与payload hash；失败不能刷新当前目录 |
+| `options_lifecycle_observation` | `observation_id` | state/platform/status及协议错误证据，source/received时间、epoch/接纳序号、目标身份、状态、锁定/maintenance及hash；creation完整定义存目录表；未知不伪造open |
+| `options_collection_plan` | `(session_id,revision)` | 不可变plan ID/hash、全局前驱ID/hash、生效UTC分钟、唯一成员owner run、证据及pending/excluded原因；跨session不分叉，生效分钟严格递增 |
+| `options_catalog_quality_evidence_minute` | `(run_id,instrument_id,minute_time,batch_id)` | 固定60槽状态依据、规则目录、status基线、maintenance、单指数锁定证据，以及生命周期epoch/确认时间；未知引用NULL，质量与规则知悉分别核验 |
+| `options_catalog_live_minute_commit` | `(run_id,minute_time)` | 绑定plan/run、完整成员及质量证据/指数摘要，全部事实成功后发布；分片缺失不会隐藏其他已提交分片 |
+
+R5复用整数价量10档事实和固定成员run；新增 `catalog_v2` 准入独立于C/P/期货配对，旧selection及旧run/hash/commit读取不变。R5分钟使用独立v2摘要域，含计划和60槽证据；不直接修改旧结构的JSON序列化来重算旧摘要。原旧50档回放不变。
+
+目录定义与规则整批校验后批量写入；同批或已存重复定义保留首次EvidenceHash，规则重试保留原来源及知悉/生效时间和内容ID。分钟引用只批量读取目标instrument及所用规则，缺引用、owner不符或任何秒早于规则知悉/生效仍拒绝；批量化不改变表结构或分钟编码。
+
+持续运行修订分别保存规则与目录状态的真实观测时间，采样器和writer均按所引用目录证据的35分钟有效期校验。完整目录可更新已确认且没有较新屏障的目录状态引用；当前生命周期epoch的WS状态仍由其独立事实确认。WS源时间只在同一epoch内排序，不与HTTP本地观测时间比较；重连重置序号及源时间排序，旧epoch已应用序号不能确认新事件。creation不能借用后来状态通知的接纳序号或覆盖当前epoch已确认的WS状态。
+
+生命周期按最多128条、5ms聚合窗口写入，逐条保留原身份、内容hash、epoch和接纳序号；批内及已存内容冲突整批拒绝，歧义重试复用身份，落盘成功后才发布。工作与重试数量界限为`2*MaxBooks+512`，同时受共享32MiB字节预算约束。资源拒绝保留有界symbol屏障，定时fresh单合约确认可恢复未知、新增或尚未准入的未到期成员；请求受inflight合并与退避控制。到期/terminal停止健康恢复请求，持久化terminal可清理无entry且屏障匹配的恢复意图。原始证据仍先归档，不因恢复而伪造open。
+
+成员退役和部分迁移合并为每个physical的待退订集合，最多512频道一批；subscribe和unsubscribe共用一个待ACK批次，移除路由也不能提前释放未ACK的订阅屏障。历史频道在同一epoch不复用；连接预算耗尽且历史使用阻塞时，有界轮换一个稀疏epoch并失效其盘口，待新连接和快照确认后恢复。冷却期间保留恢复意图。以上修订不改变表结构、价格数量编码或旧历史回放语义，验证记录见[持续运行修复](arbitrage/strategies/arb-0009-options-sustained-repair.md)。
+
+原文按SHA-256先写gzip归档，再允许正向发布和引用。时间为UTC `DateTime64(6)`，观测与计划携带不可变内容hash；序号/计数/身份为整数，金额仍为Decimal，未增加通用JSON事实表。严格字段定义见 [options_catalog_schema.sql](../internal/storage/clickhouse/options_catalog_schema.sql)。
+
+新合约的定义、规则和状态确认后立即预订阅；计划默认在当前UTC分钟之后第二个边界生效，为落盘及预热留出1–2分钟，未来计划队列有界，迟到计划顺延。缺第0秒锚点如实不可回放。T切换后旧writer仅排空<T的冻结分钟，新run立即采样T；查询按唯一生效计划认证owner。全量检查通过计划返回预期/有效/缺失合约及未提交分片，不能只读最新一个run。分钟验证/提交限三路并发，控制证据使用独立连接额度与锁集合，不让整个分钟hash计算阻塞采样入口。
+
 ## 11. Ethereum DEX 协议兑换实验（2026-09-22）
 
 本次新增五张专项表，DDL 入口为 `DEXSchemaStatements` / `InitDEXSchema`；`collector --init-dex-schema` 只建表并退出。当前 `crypto_market_info` 已实际建表，DEX 持续采集默认关闭。完整范围、使用方法与验收记录见 [DEX 实现说明](dex-arbitrage-implementation.md)。原盘口、期权、资金费率和收益模型不改。
@@ -366,40 +398,70 @@ member 只有 `run_id UUID`、`instrument_id UInt32`、`canonical_market_key Str
 
 ## Across 稳定币中继（2026-10-02 已实现）
 
-独立研究库 `crypto_market_info_across` 已建立七表：`across_capture`、`across_deposit`、`across_deposit_update`、`across_fill`、`across_refund`、`across_tx_receipt`、`across_order_probe`。入口 `AcrossSchemaStatements` / `InitAcrossSchema`，命令 `cmd/across-data`。字段见 [DDL](across-stablecoin-data-schema.sql)，操作和实际限制见 [实现说明](across-stablecoin-data-implementation.md)。
+独立研究库 `crypto_market_info_across` 使用八张定类型表：`across_capture`、`across_deposit`、`across_deposit_update`、`across_fill`、`across_refund`、`across_tx_receipt`、`across_order_probe`、`across_receipt_transfers`。入口 `AcrossSchemaStatements` / `InitAcrossSchema`，命令 `cmd/across-data`。字段见 [DDL](across-stablecoin-data-schema.sql)，操作见 [实现说明](across-stablecoin-data-implementation.md)。
 
-金额原子单位 UInt256，估值价格/数量 Decimal(38,18)，时间 DateTime64(6,UTC)；协议 bytes32 和 EVM address 分别为32/20字节。原始响应存有SHA256的本地gzip证据，不使用通用JSON业务表。事实包含capture_id并按原区块时间分月，capture/probe分别按开始/请求时间分月，不设TTL。
+2026-10-04按用户要求改为内存解析RPC/API响应，事实直接入库，不保存响应正文或原文备份。SHA256、来源时间、链高度/hash和最终性保留。金额用UInt256，价格/数量用Decimal(38,18)，时间统一UTC微秒；协议bytes32/address分别32/20字节。未知费用仍为NULL，请求/解析失败不制造成功空数据；链日志和收据通过保存的锚点补查，只补首次启动之后范围。
 
-先归档证据、写事实，再提交capture；读取先取最新revision，再筛canonical/committed并核验六组成员计数/摘要。重试内容不变；重组revision只改canonical/finality/说明，旧成功版本不会重新出现。跨capture按不可变链上事实去重，采集时间和payload格式不同不算协议冲突。capture错误、成功空日志和未知ABI保持不同状态。
+用户放弃的历史解码补采用capture新revision追加reason标记`repair_abandoned=user_requested_historical_state_unavailable`。自动partial补采跳过该标记；status仍为partial，已存事实、成员摘要、链锚点和最终性均保留。放弃修补不增加完整解码覆盖，也不代表该区间没有交易。
+
+`across_receipt_transfers`每份收据保存一行原生USDC Transfer全集：交易/区块锚点、token、收据成功状态、来源hash、UTC可用时间，以及等长的log_indices/senders/recipients/amounts_raw数组。index严格递增且唯一，金额为UInt256。成功解析但无Transfer保存空数组，缺少这行表示尚未获得全集，不能当成零笔。正常收据capture先写收据及Transfer事实，最后提交capture。新成员表编号7；原六组成员编码及旧数据摘要不变。查询核验最新revision、canonical/committed、精确计数及摘要。
+
+旧留存退款收据通过`migrate-transfers`本地解析入库，新增`receipt_transfers` capture保留原始来源时间和链锚点，不修改旧事实及旧capture的成员摘要，也不向链请求历史。迁移可重跑；旧退款缺少Transfer，即使费用已知也进入现有补采队列，并优先于旧未知费用重试；已删除的普通收据原文不伪造空Transfer。退款查询只读取定类型全集。capture成员/区块时间及最终性复核还保存紧凑元数据，查询不再逐份回读RPC/API正文。重组revision只改canonical/finality/说明，旧成功版本不会重新出现。跨capture按不可变链上事实去重，采集时间和payload格式不同不算协议冲突。
+
+旧文件用`prune-responses`清理：先核验数据库成员和紧凑元数据，再限并发删除已转存及未被引用的旧response；保留尚无完整替代采集的日志原文和未迁移退款收据，保留两分钟以内可能仍在途的旧请求。不会删除紧凑元数据、数据库或RPC额度状态。实时writer不再生成正文，所以不需要每批归档再删除的后台机制。
 
 原始/更新条款、真实live首见、计划/实际后续probe各自保存；原始响应先收到不代表解码已可用。重启/补采不能制造历史live可见性。聚合退款仅通过同交易Transfer核验地址到账，不伪造逐单归属。整笔gas按交易去重，未知费用/过期价格保留NULL。库存及成本情景只在离线报告计算。已通过[独立代码审核与必要验证](../discuss/0013-across-stablecoin-code-review.md)，完整验收见[记录](../research/2026-10-02-across-implementation/validation.md)。
 
 ## LST 折价、官方赎回与对冲（2026-10-02 已实现）
 
+2026-10-05 mvp11修复日志恢复：持久Next不能代替DB完整覆盖证明。读取成功后从原Start重建匹配manifest且complete/committed/canonical/finalized的连续范围，遇到真实断口可回退；数据库读取失败不改状态。已验证人工补采可衔接现有范围，未建立的旧流不以backfill选择起点；两段缺口分别保留。不改七表、成员摘要、链锚点、金额和时间编码。实际重启、1852块人工补采及8块断口修复见[运行验收](../research/2026-10-05-lst-reboot-check/report.md)。
+
 Ethereum Lido stETH/wstETH 与 Binance ETHUSDT 首版设计见 [方案](lst-redemption-data-mvp-design.md)、[七表 DDL](lst-redemption-data-schema.sql)、[独立审核](../discuss/0014-lst-redemption-data-design-review.md)。专项表为 `lst_capture`、`lst_protocol_state`、`lst_quote_observation`、`lst_withdrawal_request`、`lst_withdrawal_finalization`、`lst_withdrawal_claim`、`lst_funding_settlement`，另复用既有 instrument 定义。已在独立库 `crypto_market_info_lst` 建表；入口 `cmd/lst-data`、`InitLSTSchema`，采集连接 `OpenLSTWriter` 只打开现有库，只有显式 `init-schema` 执行 DDL。实现见[运行说明](lst-redemption-data-implementation.md)，代码审核见[0016](../discuss/0016-lst-redemption-data-code-review.md)。
 
-启动与来源限速见[运行说明](lst-redemption-data-implementation.md)：watch不隐式回补历史，初始化缓速，实际RPC单成员均匀发出，Binance只取10档，二分/重试共用额度和持久冷却。2026-10-03 已启动用户级 `crypto-market-info-lst.service` 并启用开机启动，只运行实时 watch，补采限于断线后的日志缺口；实际来源限制和部署状态见[运行文档](runtime-operations.md)。
+启动与来源限速见[运行说明](lst-redemption-data-implementation.md)：watch不隐式回补历史，初始化缓速，实际RPC单成员均匀发出，Binance只取10档，二分/重试共用额度和持久冷却。2026-10-03 已配置用户级 `crypto-market-info-lst.service` 并启用开机启动，只运行实时 watch，补采限于断线后的日志缺口；此前因预检网络 timeout 停止，随后按用户要求恢复并降低发送密度，但 Binance 真实 timeout 又触发停止；实际来源限制和部署状态见[运行文档](runtime-operations.md)。
 
 时间 UTC 微秒，链上原子金额 UInt256，交易深度按 integer tick/lot；mark/index/结算mark独立用1e-8 USDT整数tick，链上/CEX USDT金额分别用1e-6/1e-8单位。当前及同量后续金额报价、请求、finalization范围、claim、actual资金费分别保存；来源缺失与失败锚点为NULL。提交成员数/摘要冻结，canonical/finality取最新revision；同刻路线和金额档不累加容量，队列等待与用户领取拖延分开，unknown不当零成本。
 
-完整DDL已在隔离 `/tmp` 的ClickHouse local通过建表语法检查，公开来源字段验证见 [记录](../research/2026-10-02-lst-design/validation.md)。七表已另经真实 ClickHouse UInt256/NULL/微秒/摘要往返、失败重试及孤块修订集成测试。事实先写、capture 后提交；查询核对完整成员摘要，纯最终性修订不改原批次。失败日志范围不推进游标，成功空日志与失败分开。
+完整DDL已在隔离 `/tmp` 的ClickHouse local通过建表语法检查，公开来源字段验证见 [记录](../research/2026-10-02-lst-design/validation.md)。七表已另经真实 ClickHouse UInt256/NULL/微秒/摘要往返、失败重试及孤块修订集成测试。事实先写、capture 后提交；查询核对完整成员摘要，纯最终性修订不改原批次。失败日志范围不推进游标，成功空日志与失败分开。2026-10-03 的 receipts 模式复用现有事件类型：event payload hash 可指向整块收据响应，evidence root 包括逐块头部/收据和端点 canonical 核验。Bloom 阴性仅在严格有效、父哈希连续的 finalized 头部上认定；阳性校验全部交易收据、全局日志索引及重建 Bloom 后过滤队列。失败整片不提交事件，不能把截断数组当空覆盖。这是 RPC 一致性校验，没有独立 receipt trie root 验证；未增加列或通用 JSON 表。
+
+2026-10-04（北京时间）mvp9固定新日志段与旧缺口使用独立持久游标，共用既有七表、锁和限速；每条capture仍只表示实际校验并提交的区间。主RPC区块锚点与独立日志源末头hash必须一致，历史queue实现状态由支持archive读取的LogRPC核验。新段完成不会覆盖旧缺口；报告只合并相邻或重叠的真实complete/finalized/canonical区间，跨缺口等待与兑付关联保持unknown。未新增通用JSON表或更改事件整数、摘要和键语义。
+
+2026-10-04按用户要求，一次性删除已提交并通过成员/摘要/类型校验的旧原文，保留近期、未提交及必要核验样本和共享依赖；不删除数据库行、payload hash、来源时间或链上锚点，不改变七表及提交语义。LST报告核验数据库成员摘要，不依赖原文文件；对已清理的hash不再具备原始响应回读验证能力，不能将清理后的报告成功宣称为原文重新核验成功。未启用自动TTL，实际删除与服务核验见[清理记录](../research/2026-10-04-lst-cleanup/report.md)。
+
+mvp10在LST `Batch` 增加仅用于本机pending恢复的 `RawEvidenceHashes` 文件清单，未增加数据库列或改动成员摘要。该清单随原批次持久化，数据库写入成功后即清理原文；写库失败保持原ID、UTC时间及已知零/NULL语义重试。旧gob缺省清单为空，兼容读取。七表继续保存来源hash、时间、链上位置和事实摘要；成功响应不长期保留，失败/解析不完整仅保留有界诊断样本。report说明原文留存策略，成员校验不依赖文件存在；详细边界和实际核验见[运行说明](lst-redemption-data-implementation.md)。
 
 `lst_withdrawal_finalization.from_request_id` 保存官方事件原始首 ID，范围为 **[from,to]（两端包含）**；合约发出的是 `lastFinalizedRequestId+1`。`from==to` 是合法单请求完成，匹配不得漏掉首 ID，不对源值减 1。
+
+每轮八条 entry 身份保持稳定。2026-10-03 的生产配置每两分钟调度一个金额的一条路线，其余七条；CLI 兼容旧默认每分钟 A/B 两条、其余六条。未调度成员 `timing_status=not_scheduled`、`reason=not_scheduled_this_round`，所有来源/数值观测为空、各腿 unknown；完整性校验禁止这类成员携带旧数据。健康统计区分未调度、已调度失败及 `cex_ten_level_capacity_insufficient`，不能更改旧窗口分母来宣称采集改善。
 
 `partial` 是批次成员完整性状态，不能直接判整批全部可用或全部无效；每条报价分别检查 buy/conversion/exit/hedge/timing 状态。head、canonical、committed 也分别表示不同条件。历史报告先排除未接受的 capture，只有接受的批次才回读并核验成员摘要；健康 SQL 不代替这一步。实际资金费按 instrument/funding_time 去重，重叠窗口不能重复累加现金流。只读检查见 [LST 健康 SQL](lst-data-health.sql)。
 
 ## JustLend 能源租单清理 keeper
 
-实际 Rent/Return 扩展 ABI 比旧参考页多 `securityDeposit` 和 `rentIndex`；租赁事件表新增 `security_deposit_sun`、`rent_index` 两个 Nullable(UInt256)。两版按精确 topic、word 数严格区分，扩展字段参与索引页/收据的一致性校验，旧版字段为 NULL，不回填。新增时生产事件事实为零；初版不包含这些字段的非空事件摘要不可混用。`init-schema` 幂等加列，collector 不执行 DDL。原始公开值保留，不据索引推算业务截止时间。
+本链路只采集/校验/查询公开数据，获利分析由其他程序完成。独立库 `crypto_market_info_justlend_keeper` 有七表：capture、index_page、indexed_event、rental_event、tx_receipt、probe、cost_observation（均带 jl_keeper_ 前缀）。定义见[DDL](justlend-keeper-data-schema.sql)，运行与实现见[实现说明](justlend-keeper-data-implementation.md)，[当前设计](justlend-keeper-data-mvp-design.md)和[代码审核](../discuss/0017-justlend-keeper-data-code-review.md)。
 
-最小采集方案见 [设计](justlend-keeper-data-mvp-design.md)、[五表 DDL](justlend-keeper-data-schema.sql)、[设计审核](../discuss/0015-justlend-keeper-data-design-review.md)、[实现说明](justlend-keeper-data-implementation.md)与[代码审核](../discuss/0017-justlend-keeper-data-code-review.md)。2026-10-03 已实现并建立独立研究库 `crypto_market_info_justlend_keeper`，表为 `jl_keeper_capture`、`jl_keeper_rental_event`、`jl_keeper_tx_receipt`、`jl_keeper_probe`、`jl_keeper_cost_observation`。
+金额 UInt256 sun、资源/费用有范围校验的整数、BBO价格/数量 Decimal(38,18)；时间 UTC微秒、地址含0x41前缀21字节、hash32字节。Rent/Return旧/扩展ABI按精确topic及word数严格区分；扩展字段 security_deposit_sun、rent_index 为 Nullable(UInt256)，旧版NULL。实时响应保存SHA和来源时间，模拟为node_latest_unpinned，不能冒充固化历史。
 
-来源分流见方案第2.1节：`node_rpc_url=https://tron-rpc.publicnode.com` 直连承担链节点读取和只读模拟，`event_api_url=https://api.trongrid.io` 保留事件分页并单独配置路由，Binance 提供兑换报价。capture.source_id 记录批次主来源；证据 manifest 对事件分页、节点区块／收据等每个实际请求分别保存来源标识及 hash，避免跨来源验证时丢失归属。沿用五表，不因来源分流增加表。
+### 源观测与核验事实
 
-启动与补采限速见方案第7.1节：每次启动前5分钟所有外部请求至少间隔5秒，此后全局至少1秒且单请求在途；TronGrid及所有后台补采请求另受5秒间隔约束。启动检查、分页、补证据和每次HTTP重试均受限，不积攒额度或集中补发错过的轮次；watch不隐式回补30日清理历史。上述约束已在统一发送 gate 实现；进度、每日40,000次预算、来源冷却和401/403停用保存到原子校验状态，重启不清空。运行命令同时受全局进程锁保护。
+TronGrid源页内存严格解析并计算SHA后，将全部目标能源事件写入 typed jl_keeper_indexed_event，来源不是固定样本全集的估计。月分区、ORDER BY(capture_id,row_ordinal)；原页ordinal保留重复供应商下标的独立记录。保存块高/链时间、供应商下标、协议字段与实际本地请求/响应可用时间、payload_hash。block_hash Nullable(FixedString(32)) 为NULL、finality=provider_claimed_confirmed、position_status=indexed_only，不冒充独立核验。
 
-只完整回补目标能源合约的清理事件与收据；租单变化用于有上限的固定样本。协议金额为 UInt256 sun，资源/费用为有范围校验的整数，BBO价格/数量 Decimal(38,18)，时间 UTC 微秒，TRON地址含0x41前缀21字节，hash32字节。供应商事件下标与receipt日志下标分开，另存块内交易序号；多个奖励共用一笔交易时费用只计一次。模拟按实际本地可用时间记录、明确为 node_latest_unpinned，不冒充固化历史状态。
+源Capture kind=event_index、scope=indexed_energy_events；complete表示一页完整提交，pagination_exhausted另外表示最后页。旧RentalEvent仍是固化块hash、交易序号、receipt日志位置核验的事实；供应商下标不能作收据位置。源观测提交后推进源游标，后台补区块/收据/交易体，不覆盖原索引行。
 
-五表按冻结 capture_started_at 月分区，重试复用 capture_id 及原始成员；部分事实重试和已提交capture均核验原成员。报告核验摘要、证据、同高度固化hash一致性并按规范身份去重，费用未知保留NULL。原始证据独立保存，资源费率／TRX兑换与收益分析分离。五表已通过真实ClickHouse UInt256/Decimal/NULL/嵌套转账/UTC往返及跨月冻结重试。实时成功奖励fixture尚未认证，正模拟输出保留unknown；成本情景不认证净收益，实际验收见[验证记录](../research/2026-10-03-keeper-implementation/validation.md)。
+后台child kind=enrichment，parent_capture_id指向完整源页；writer检查父已提交、kind、cfg、合约、事件、窗口及发现数一致。后台直接读取索引表的已解析字段并核验typed摘要，不读取完整父响应；父子关系从capture核对。Liquidate全核验、Rent/Return仅当前固定样本；EvidenceCursors只表示该样本的连续生命周期证据，不表示全量索引行receipt核验。晋级必须有从空token到终页的完整分页链，每个父页均有成功child，不能跳过前面的失败缺口。空样本child表明该页没有选中核验对象。失败child最多3次、至少30分钟重试；它不阻塞源抓取。
 
-JustLend成员摘要使用带版本域的固定二进制 `jl-keeper-fact-v1`：字段顺序/名称、长度前缀、UTC UnixMicro、NULL标记、整数及无损18位Decimal。每行SHA-256按二进制排序后再SHA-256；manifest记录member_digest_encoding。gob只存本地冻结容器，不作跨进程摘要。不同进程/不同类型注册顺序和来源1/8/18精度均测试。首批四条无法认证的旧报价提交已备份后标uncommitted，保留全部原值、摘要及证据；coverage展示排除原因，不将其计作已认证分析。
+新enrichment的事实available_at为核验完成时刻，原索引响应时刻不改。旧事实保持原值，完整上下文可用时间为max(row.available_at,capture.available_at)，不可用链上block_time替代。未知费用保持NULL，不把零行或known费用覆盖解释为零成本。
+
+### 提交、兼容和导出
+
+Capture追加 indexed_rows UInt32 DEFAULT0、indexed_digest Nullable(FixedString(32)) DEFAULT NULL、parent_capture_id Nullable(UUID) DEFAULT NULL。旧四类事实及固定二进制 jl-keeper-fact-v1 摘要不变；新索引表有单独摘要，空索引页也须非NULL摘要。成员先写、Capture最后提交，预期0行表也读取认证。Frozen重试复用原ID、起始时间及成员，旧表默认NULL/旧gob已验证兼容。旧分页前缀（含页间停机）从原窗口空token重索引，旧已存事实不删除。旧Frozen批次原样完成后恢复，预算和冷却不清空。
+
+init-schema幂等创建第七表index_page并保留既有兼容列，collector不做DDL。所有表按冻结capture_started_at月分区；索引表按ordinal查询，事实查询按各自typed主键。查询时间显式DateTime64(6,'UTC')，不使用驱动默认整秒time.Time绑定。
+
+CLI export与兼容命令report只导出七份typed CSV（含index_pages）及metadata，不输出获利、年化或成本情景。按capture_started_at半开窗口选择；captures.csv保留撤回/未提交/其他配置的审计记录，成员只输出已提交当前配置、计数/摘要校验的批次；同时核对分页来源hash/时间及父capture关系。第一批四条旧报价仍保持uncommitted及原值/摘要，不改回或计入认证成员。实际验收见[本轮记录](../research/2026-10-03-keeper-collection-split/validation.md)。
+
+### 发送与运行
+
+PublicNode承担节点只读查询，TronGrid事件分页，Binance公开BBO；端点和路由不自动改变。每次启动前5分钟所有来源间隔至少5秒，此后全局至少1秒且单请求在途；TronGrid及后台另有5秒gate、所有来源合计40,000请求/UTC日，重试计数。实时索引优先，固定历史逐日源回补；其他请求后台核验，不突发补发。source游标与样本证据游标分开；晚启动的probe不补发，已尝试的观测补后置头。缺省API success仍为NULL；明确REVERT、其他TVM失败、网络/API失败分开保存。实际状态见[运行文档](runtime-operations.md#justlend-keeper-独立研究采集2026-10-03)，服务保留自启动。
+
+2026-10-04增加小型jl_keeper_index_page表：capture_id UUID（主键）、capture_started_at UTC微秒、scan_id String、fingerprint_in/out String、request_started_at/available_at UTC微秒、payload_hash FixedString(32)。月分区，与索引成员先写、capture最后提交，重试内容稳定。完整空页仍有分页来源记录；token链从空起点完整连接到空终点才允许连续核验进度晋级。旧metadata一次性从manifest迁移并与DB索引成员hash/时间交叉核验，旧Capture及事实摘要不变。正常链路不保存request/response/summary正文；export只访问DB。没有通用JSON表，payload hash保留但删除原文后不能重放原JSON。迁移/清理验收见[验证记录](../research/2026-10-04-keeper-no-raw/validation.md)。

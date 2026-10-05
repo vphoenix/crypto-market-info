@@ -6,6 +6,7 @@ import (
 	"github.com/google/uuid"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -46,6 +47,9 @@ func (c *Collector) SeedBootstrap() {
 	}
 	for _, kind := range []string{"Liquidate", "RentResource", "ReturnResource"} {
 		c.State.EventCursors[kind] = end
+		if c.State.IndexingEnabled {
+			c.State.EvidenceCursors[kind] = end
+		}
 	}
 	c.State.RescanDay = c.Now().UTC().Format("2006-01-02")
 }
@@ -177,6 +181,16 @@ func (c *Collector) Active(kind string) bool {
 	return false
 }
 func (c *Collector) Schedule(watch bool) {
+	if watch {
+		c.retireFractionalWatch()
+		// Failed daily/history pages retry their original window and token.
+		for i := range c.State.Scans {
+			s := &c.State.Scans[i]
+			if s.Done && s.Failed && (strings.HasPrefix(s.ID, "rescan:") || strings.HasPrefix(s.ID, "history:")) && !c.Now().Before(s.RetryAt) {
+				s.Done, s.Failed = false, false
+			}
+		}
+	}
 	if watch && c.State.BootstrapReady && !c.Active("seed") {
 		c.RefillCohort()
 		c.RetrySeed()
@@ -188,6 +202,9 @@ func (c *Collector) Schedule(watch bool) {
 			continue
 		}
 		kept = append(kept, sc)
+		if sc.Done && !sc.Failed && strings.HasPrefix(sc.ID, "history:") {
+			kept = kept[:len(kept)-1]
+		}
 	}
 	c.State.Scans = kept
 	if watch && !c.Active("identity") && !now.Before(c.State.NextIdentity) {
@@ -244,12 +261,30 @@ func (c *Collector) Schedule(watch bool) {
 	if !watch || !c.State.BootstrapReady {
 		return
 	}
+	if c.State.HistoryCursor.Before(c.State.HistoryTo) {
+		active := false
+		for _, sc := range c.State.Scans {
+			if strings.HasPrefix(sc.ID, "history:") {
+				active = true
+			}
+		}
+		if !active {
+			from := c.State.HistoryCursor
+			to := from.Add(24 * time.Hour)
+			if to.After(c.State.HistoryTo) {
+				to = c.State.HistoryTo
+			}
+			s := Scan{ID: "history:" + from.Format(time.RFC3339), Kind: "Liquidate", Mode: "catchup", From: from, To: to}
+			c.State.Scans = append(c.State.Scans, s)
+			c.AddPage(s)
+		}
+	}
 	if !now.Before(c.State.NextEvents) {
-		end := UTC(now.Add(-120 * time.Second))
+		end := UTC(now.Add(-120 * time.Second).Truncate(time.Second))
 		for _, kind := range []string{"Liquidate", "RentResource", "ReturnResource"} {
 			active := false
 			for _, s := range c.State.Scans {
-				if s.Kind == kind && (s.Mode == "live" || s.Mode == "catchup") && !s.Done {
+				if s.Kind == kind && strings.HasPrefix(s.ID, "watch:") && (s.Mode == "live" || s.Mode == "catchup") && !s.Done {
 					active = true
 				}
 			}
@@ -260,6 +295,9 @@ func (c *Collector) Schedule(watch bool) {
 			if from.IsZero() {
 				from = end.Add(-30 * time.Second)
 			}
+			// Re-read at most one second when migrating a fractional cursor.
+			// Canonical facts and lifecycle positions deduplicate this overlap.
+			from = from.Truncate(time.Second)
 			to := from.Add(30 * time.Second)
 			if to.After(end) {
 				to = end
@@ -267,13 +305,13 @@ func (c *Collector) Schedule(watch bool) {
 			if !from.Before(to) {
 				continue
 			}
-			id := "watch:" + kind + ":" + from.Format(time.RFC3339Nano)
+			id := "watch:v2:" + kind + ":" + from.Format(time.RFC3339Nano)
 			mode := "live"
 			if now.Sub(from) > 3*time.Minute {
 				mode = "catchup"
 				// Enlarge the time window, never the request rate, to drain a
 				// bootstrap/restart backlog without replaying missed timer ticks.
-				to = from.Add(5 * time.Minute)
+				to = from.Add(30 * time.Minute)
 				if to.After(end) {
 					to = end
 				}
@@ -287,6 +325,9 @@ func (c *Collector) Schedule(watch bool) {
 				}
 			}
 			if found >= 0 {
+				if now.Before(c.State.Scans[found].RetryAt) {
+					continue
+				}
 				c.State.Scans[found].Done = false
 				c.State.Scans[found].Failed = false
 				c.AddPage(c.State.Scans[found])
@@ -297,27 +338,86 @@ func (c *Collector) Schedule(watch bool) {
 		}
 		c.State.NextEvents = now.Add(30 * time.Second)
 	}
-	if !c.Active("probe") && !now.Before(c.State.NextProbe) {
+	// Warmup's five-second gate cannot sustain three-request probes alongside
+	// the other due tasks inside the admission deadline. Do not queue them.
+	if !c.Active("probe") && !now.Before(c.State.NextProbe) && c.lifecycleCurrent(now) && !now.Before(c.API.Limiter.Started.Add(5*time.Minute)) {
 		n := len(c.State.Cohort)
-		for i := 0; i < 5 && i < n; i++ {
-			idx := (int(c.State.Rotation) + i) % n
-			c.AddProbe(c.State.Cohort[idx], now)
-		}
 		if n > 0 {
-			c.State.Rotation = (c.State.Rotation + 5) % uint32(n)
+			c.AddProbe(c.State.Cohort[int(c.State.Rotation)%n], now)
+			c.State.Rotation = (c.State.Rotation + 1) % uint32(n)
 		}
-		c.State.NextProbe = now.Add(30 * time.Second)
+		c.State.NextProbe = now.Add(6 * time.Second)
 	}
 	day := now.UTC().Format("2006-01-02")
 	if c.State.RescanDay != "" && c.State.RescanDay != day {
 		end := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.UTC)
+		if now.Sub(end) < 120*time.Second {
+			return
+		}
 		s := Scan{ID: "rescan:" + day, Kind: "Liquidate", Mode: "catchup", From: end.Add(-24 * time.Hour), To: end}
 		c.State.Scans = append(c.State.Scans, s)
 		c.AddPage(s)
 		c.State.RescanDay = day
 	}
 }
+
+// Freeze an optional historical interval once, alongside watch; one UTC day
+// runs at a time using the same gate/budget. Restart never rolls this interval.
+func (c *Collector) EnsureHistory(days int) {
+	if days <= 0 || !c.State.HistoryTo.IsZero() {
+		return
+	}
+	now := c.Now().UTC().Add(-120 * time.Second)
+	to := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.UTC)
+	c.State.HistoryFrom, c.State.HistoryTo = to.Add(-time.Duration(days)*24*time.Hour), to
+	c.State.HistoryCursor = c.State.HistoryFrom
+}
+
+func (c *Collector) lifecycleCurrent(now time.Time) bool {
+	for _, kind := range []string{"RentResource", "ReturnResource"} {
+		at := c.State.EventCursors[kind]
+		if c.State.IndexingEnabled {
+			at = c.State.EvidenceCursors[kind]
+		}
+		if at.IsZero() || now.Sub(at) > 5*time.Minute {
+			return false
+		}
+	}
+	return true
+}
+
+// Old non-frozen operations retain their ID, raw evidence and failed capture;
+// their pagination token cannot be reused with a changed query envelope.
+// Frozen database retries always finish with their original members untouched.
+func (c *Collector) retireFractionalWatch() {
+	for i := range c.State.Scans {
+		s := &c.State.Scans[i]
+		if s.Done || len(s.ID) < 6 || s.ID[:6] != "watch:" || (s.From.Equal(s.From.Truncate(time.Second)) && s.To.Equal(s.To.Truncate(time.Second))) {
+			continue
+		}
+		frozen := false
+		for j := range c.State.Ops {
+			o := &c.State.Ops[j]
+			if o.ScanID != s.ID {
+				continue
+			}
+			if o.Frozen {
+				frozen = true
+				continue
+			}
+			o.Failed = true
+			o.Batch.Capture.Status, o.Batch.Capture.Reason = "partial", "legacy_fractional_window_replaced"
+			o.Requests = nil
+		}
+		if !frozen {
+			s.Done, s.Failed = true, true
+		}
+	}
+}
 func (c *Collector) Run(ctx context.Context, watch bool, maxPages uint32) error {
+	if e := c.enableIndexing(); e != nil {
+		return e
+	}
 	pages := uint32(0)
 	for _, s := range c.State.Scans {
 		pages += s.Pages
@@ -328,6 +428,11 @@ func (c *Collector) Run(ctx context.Context, watch bool, maxPages uint32) error 
 			return e
 		}
 		c.Schedule(watch)
+		if watch {
+			if e := c.restoreEnrichment(ctx); e != nil {
+				return e
+			}
+		}
 		if e := c.Save(); e != nil {
 			return e
 		}

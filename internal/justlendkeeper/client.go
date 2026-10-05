@@ -84,11 +84,7 @@ func (c *Client) Send(ctx context.Context, r Request) (Evidence, []byte, error) 
 		return ev, nil, errors.New("request_method_not_allowed")
 	}
 	if len(r.Body) > 0 {
-		h, e := c.Archive.Put(r.Body)
-		if e != nil {
-			return ev, nil, e
-		}
-		ev.RequestHash = Hex(h)
+		ev.RequestHash = Hex(Hash(r.Body))
 	}
 	method := http.MethodGet
 	if len(r.Body) > 0 {
@@ -138,11 +134,7 @@ func (c *Client) Send(ctx context.Context, r Request) (Evidence, []byte, error) 
 	if len(b) > 16*1024*1024 {
 		return ev, nil, errors.New("response_exceeds_16MiB")
 	}
-	h, e := c.Archive.Put(b)
-	if e != nil {
-		return ev, nil, e
-	}
-	ev.ResponseHash = Hex(h)
+	ev.ResponseHash = Hex(Hash(b))
 	ev.Available = UTC(c.Now())
 	if res.StatusCode < 200 || res.StatusCode >= 300 {
 		ev.Error = "http_" + strconv.Itoa(res.StatusCode)
@@ -159,9 +151,20 @@ func RetryAfter(s string, now time.Time) time.Duration {
 	return 0
 }
 func EventPath(kind string, from, to time.Time, fingerprint string) string {
-	q := url.Values{"event_name": {kind}, "only_confirmed": {"true"}, "limit": {"200"}, "order_by": {"block_timestamp,asc"}, "min_block_timestamp": {strconv.FormatInt(from.UnixMilli(), 10)}, "max_block_timestamp": {strconv.FormatInt(to.UnixMilli()-1, 10)}}
+	lo, hi := eventQueryBounds(from, to)
+	q := url.Values{"event_name": {kind}, "only_confirmed": {"true"}, "limit": {"200"}, "order_by": {"block_timestamp,asc"}, "min_block_timestamp": {strconv.FormatInt(lo.UnixMilli(), 10)}, "max_block_timestamp": {strconv.FormatInt(hi.UnixMilli()-1, 10)}}
 	if fingerprint != "" {
 		q.Set("fingerprint", fingerprint)
 	}
 	return "/v1/contracts/" + ContractBase58 + "/events?" + q.Encode()
+}
+
+// A second-aligned envelope avoids relying on the indexer's undocumented
+// fractional timestamp handling. ParsePage still enforces the logical [from,to).
+func eventQueryBounds(from, to time.Time) (time.Time, time.Time) {
+	lo, hi := from.Truncate(time.Second), to.Truncate(time.Second)
+	if hi.Before(to) {
+		hi = hi.Add(time.Second)
+	}
+	return lo, hi
 }

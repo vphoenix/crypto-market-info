@@ -9,19 +9,23 @@ import (
 	"strings"
 	"time"
 
-	"github.com/shopspring/decimal"
 	"github.com/vphoenix/crypto-market-info/internal/exchange/deribit"
-	"github.com/vphoenix/crypto-market-info/internal/model"
 	"github.com/vphoenix/crypto-market-info/internal/options"
 )
 
 type Config struct {
-	Enabled        bool
-	RESTURL, WSURL string
-	Symbols        []string
+	Enabled                                                        bool
+	RESTURL, WSURL                                                 string
+	Symbols                                                        []string
+	MaxBooks, MaxConnections, ChannelsPerConnection, MaxBookLevels int
+	MaxTotalLevels, MaxIngressBytes                                int64
+	EvidenceDir                                                    string
 }
 
 func (c Config) Validate() error {
+	if err := c.validateCatalog(); err != nil {
+		return err
+	}
 	for _, raw := range []string{c.RESTURL, c.WSURL} {
 		u, e := url.Parse(raw)
 		if e != nil || u.Host == "" || u.User != nil || u.RawQuery != "" || u.Fragment != "" {
@@ -133,68 +137,10 @@ func Discover(ctx context.Context, c *deribit.Client, cfg Config) (Plan, error) 
 			plan.Selected = append(plan.Selected, p)
 		}
 	} else {
-		plan.Selection = "near_atm_v1"
-		for _, family := range []string{"btc_usd", "eth_usd", "btc_usdc", "eth_usdc"} {
-			var futures []deribit.ParsedInstrument
-			for _, p := range all {
-				i := p.Spec.Instrument
-				if i.MarketType == model.MarketDelivery && p.Spec.IndexID == family && p.Active && p.State == "open" {
-					dte := i.ExpiryTime.Sub(now)
-					if dte >= 48*time.Hour && dte <= 45*24*time.Hour {
-						futures = append(futures, p)
-					}
-				}
-			}
-			sort.Slice(futures, func(i, j int) bool {
-				return futures[i].Spec.Instrument.ExpiryTime.Before(*futures[j].Spec.Instrument.ExpiryTime)
-			})
-			found := false
-			for _, f := range futures {
-				calls, puts := map[string]deribit.ParsedInstrument{}, map[string]deribit.ParsedInstrument{}
-				for _, p := range all {
-					i := p.Spec.Instrument
-					if i.MarketType == model.MarketOption && p.Spec.IndexID == family && i.ExpiryTime.Equal(*f.Spec.Instrument.ExpiryTime) && p.Active && p.State == "open" {
-						if p.Spec.OptionType == "call" {
-							calls[p.Spec.Strike.String()] = p
-						} else {
-							puts[p.Spec.Strike.String()] = p
-						}
-					}
-				}
-				var strikes []decimal.Decimal
-				for k, p := range calls {
-					if _, ok := puts[k]; ok {
-						strikes = append(strikes, p.Spec.Strike)
-					}
-				}
-				if len(strikes) < 3 {
-					continue
-				}
-				sort.Slice(strikes, func(i, j int) bool { return strikes[i].LessThan(strikes[j]) })
-				ref, err := c.Reference(ctx, f.Spec.Instrument.ExchangeSymbol)
-				if err != nil {
-					continue
-				}
-				mid := decimal.NewFromInt(ref.Bid).Add(decimal.NewFromInt(ref.Ask)).Mul(options.StorageUnit()).Div(decimal.NewFromInt(2))
-				center := 0
-				for n := 1; n < len(strikes); n++ {
-					if strikes[n].Sub(mid).Abs().LessThan(strikes[center].Sub(mid).Abs()) {
-						center = n
-					}
-				}
-				if center == 0 || center == len(strikes)-1 {
-					continue
-				}
-				for _, k := range strikes[center-1 : center+2] {
-					plan.Selected = append(plan.Selected, calls[k.String()], puts[k.String()])
-				}
-				plan.Selected = append(plan.Selected, f)
-				plan.References = append(plan.References, ref)
-				found = true
-				break
-			}
-			if !found {
-				return plan, fmt.Errorf("no complete fresh C/P/future group for %s; configure explicit symbols", family)
+		plan.Selection = options.CatalogSelection
+		for _, p := range all {
+			if p.Active && p.State == "open" && p.Spec.Instrument.ExpiryTime.After(now) {
+				plan.Selected = append(plan.Selected, p)
 			}
 		}
 	}
@@ -205,8 +151,10 @@ func Discover(ctx context.Context, c *deribit.Client, cfg Config) (Plan, error) 
 	for n, p := range plan.Selected {
 		specs[n] = p.Spec
 	}
-	if err := options.ValidateSelection(specs); err != nil {
-		return plan, err
+	if len(cfg.Symbols) > 0 {
+		if err := options.ValidateSelection(specs); err != nil {
+			return plan, err
+		}
 	}
 	return plan, nil
 }

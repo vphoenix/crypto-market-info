@@ -4,9 +4,11 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 	"time"
 
 	"github.com/google/uuid"
@@ -63,6 +65,14 @@ func (c *Collector) FlushPending(ctx context.Context) error {
 	}
 	if e := c.Store.WriteLST(ctx, b); e != nil {
 		return e
+	}
+	if c.PruneCommittedResponses {
+		if e := c.pruneRawEvidence(b); e != nil {
+			return e
+		}
+		if len(b.RawEvidenceHashes) != 0 {
+			log.Printf("raw_evidence_released capture_id=%s candidates=%d diagnostic=%t", b.Capture.CaptureId, len(b.RawEvidenceHashes), needsRawDiagnostic(b))
+		}
 	}
 	return os.Remove(file)
 }
@@ -178,14 +188,48 @@ func (s *followupState) committed(b Batch) {
 }
 
 type logProgress struct {
-	Manifest          string
-	Start, Next       uint64
-	RangeSize         uint64
-	CoverageStartedAt time.Time
+	Manifest                     string
+	Start, Next                  uint64
+	RangeSize                    uint64
+	CoverageStartedAt            time.Time
+	BlockedSource, BlockedReason string
+}
+
+func (p *logProgress) sourceAllowed(source string) bool {
+	if p.BlockedSource == "" {
+		return true
+	}
+	if p.BlockedSource == source {
+		return false
+	}
+	p.BlockedSource, p.BlockedReason = "", ""
+	return true
+}
+
+func (p *logProgress) result(c *Collector, to uint64, err error) {
+	if err == nil {
+		p.Next = to + 1
+		p.RangeSize = min(max(uint64(1), p.RangeSize)+1, c.liveLogBlocks())
+	} else if errors.Is(err, ErrLogSourceUnsupported) {
+		p.BlockedSource, p.BlockedReason = c.logSourceIdentity(), err.Error()
+	} else if errors.Is(err, ErrLogRange) && p.RangeSize > 1 {
+		p.RangeSize = max(uint64(1), p.RangeSize/2)
+	} else if (strings.Contains(err.Error(), "budget_exhausted") || errors.Is(err, context.DeadlineExceeded)) && p.RangeSize > 1 {
+		// Range verification can need many event headers. Bound the work on
+		// the next scheduled pass, without retrying in the same minute.
+		p.RangeSize = max(uint64(1), p.RangeSize/2)
+	}
+}
+
+func (c *Collector) liveLogCursorPath() string {
+	if c.LiveLogsFromBlock != 0 {
+		return filepath.Join(c.StateDir, fmt.Sprintf("live-logs-from-%d.gob", c.LiveLogsFromBlock))
+	}
+	return filepath.Join(c.StateDir, "live-logs.gob")
 }
 
 func (c *Collector) logProgress(ctx context.Context) (logProgress, error) {
-	file := filepath.Join(c.StateDir, "live-logs.gob")
+	file := c.liveLogCursorPath()
 	var p logProgress
 	e := readGob(file, &p)
 	if e == nil && p.Manifest != c.Manifest.Hash {
@@ -196,14 +240,31 @@ func (c *Collector) logProgress(ctx context.Context) (logProgress, error) {
 	}
 	if os.IsNotExist(e) {
 		p.Manifest = c.Manifest.Hash
+		if c.LiveLogsFromBlock != 0 {
+			head, err := c.RPC.Header(ctx, fmt.Sprintf("0x%x", c.LiveLogsFromBlock))
+			if err != nil {
+				return p, err
+			}
+			if head.Number != c.LiveLogsFromBlock {
+				return p, errors.New("live_cursor_start_header_mismatch")
+			}
+			p.Start, p.Next, p.CoverageStartedAt = head.Number, head.Number, head.Time
+		}
+	} else if c.LiveLogsFromBlock != 0 && (p.Start != c.LiveLogsFromBlock || p.Next < p.Start) {
+		return p, errors.New("live_cursor_start_mismatch")
 	}
 	if p.RangeSize == 0 {
-		p.RangeSize = c.Manifest.MaxLogBlocks
+		p.RangeSize = c.liveLogBlocks()
 	}
+	p.RangeSize = min(p.RangeSize, c.liveLogBlocks())
 	caps, e := c.Store.LSTCaptures(ctx, c.Manifest.Hash)
 	if e != nil {
 		return p, e
 	}
+	// A cursor file can survive a reboot while the last acknowledged database
+	// range does not. Rebuild the continuous prefix from its retained start;
+	// the persisted Next alone must never prove coverage across a missing row.
+	p.Next = p.Start
 	sort.Slice(caps, func(i, j int) bool {
 		if caps[i].FromBlock == nil {
 			return false
@@ -214,7 +275,11 @@ func (c *Collector) logProgress(ctx context.Context) (logProgress, error) {
 		return *caps[i].FromBlock < *caps[j].FromBlock
 	})
 	for _, cap := range caps {
-		if cap.CaptureKind == "logs" && cap.Status == "complete" && cap.Committed && cap.Canonical && cap.Finality == "finalized" && cap.ToBlock != nil && cap.CaptureMode == "live" {
+		// A bounded manual gap repair has the same verified chain coverage as
+		// watch. Consume its committed range without re-fetching it on restart.
+		// A backfill must not choose the starting point for a new legacy cursor.
+		modeAllowed := cap.CaptureMode == "live" || cap.CaptureMode == "backfill" && p.Start != 0
+		if cap.ManifestHash == c.Manifest.Hash && cap.CaptureKind == "logs" && cap.Status == "complete" && cap.Committed && cap.Canonical && cap.Finality == "finalized" && cap.FromBlock != nil && cap.FromBlockTime != nil && cap.ToBlock != nil && *cap.FromBlock <= *cap.ToBlock && modeAllowed {
 			if p.Start == 0 {
 				p.Start = *cap.FromBlock
 				p.CoverageStartedAt = *cap.FromBlockTime
@@ -232,25 +297,107 @@ func (c *Collector) logProgress(ctx context.Context) (logProgress, error) {
 		if e != nil {
 			return p, e
 		}
-		p = logProgress{Manifest: c.Manifest.Hash, Start: head.Number, Next: head.Number, RangeSize: c.Manifest.MaxLogBlocks, CoverageStartedAt: head.Time}
+		p = logProgress{Manifest: c.Manifest.Hash, Start: head.Number, Next: head.Number, RangeSize: c.liveLogBlocks(), CoverageStartedAt: head.Time}
 	}
 	if e = writeGob(file, p); e != nil {
 		return p, e
 	}
 	return p, nil
 }
+
+// Restore only the outage gap before the explicit live segment. This shares the
+// original cursor, writer, lock and provider gates; there is no history worker.
+// Fetch failures are committed for diagnosis but never move that cursor.
+func (c *Collector) catchUpOldLogGap(ctx, commitCtx context.Context, finalized Block, progress func(string)) error {
+	if c.LiveLogsFromBlock == 0 || c.LogMode != "range" || c.PauseLiveLogs {
+		return nil
+	}
+	old := *c
+	old.LiveLogsFromBlock = 0
+	if _, err := os.Stat(old.liveLogCursorPath()); os.IsNotExist(err) {
+		return nil
+	} else if err != nil {
+		return err
+	}
+	p, err := old.logProgress(ctx)
+	if err != nil {
+		return err
+	}
+	if p.Next >= c.LiveLogsFromBlock || !p.sourceAllowed(old.logSourceIdentity()) {
+		return nil
+	}
+	p.RangeSize = min(max(uint64(1), p.RangeSize), uint64(32))
+	from := p.Next
+	to := min(from+p.RangeSize-1, c.LiveLogsFromBlock-1, finalized.Number)
+	if from > to {
+		return nil
+	}
+	b, fetchErr := old.logsWithFinalized(ctx, from, to, "live", &finalized)
+	if err := Validate(b); err != nil {
+		return err
+	}
+	if err := old.Commit(commitCtx, b); err != nil {
+		return err
+	}
+	p.result(&old, to, fetchErr)
+	p.RangeSize = min(p.RangeSize, uint64(32))
+	if err := writeGob(old.liveLogCursorPath(), p); err != nil {
+		return err
+	}
+	progress(fmt.Sprintf("old_log_gap from=%d to=%d status=%s next=%d target=%d request=%d finalization=%d claim=%d reason=%q", from, to, b.Capture.Status, p.Next, c.LiveLogsFromBlock-1, len(b.Requests), len(b.Finalizations), len(b.Claims), b.Capture.Reason))
+	return nil
+}
+
+func (c *Collector) oldLogGapHasRoom(ctx context.Context) (bool, error) {
+	deadline, ok := ctx.Deadline()
+	if !ok || time.Until(deadline) < 35*time.Second {
+		return false, nil
+	}
+	primarySlots, err := c.RPC.Transport.AvailableRPCSlots(c.RPC.URL)
+	if err != nil {
+		return false, err
+	}
+	if c.logRPC().URL == c.RPC.URL {
+		return primarySlots >= 10, nil
+	}
+	logSlots, err := c.RPC.Transport.AvailableRPCSlots(c.logRPC().URL)
+	return primarySlots >= 4 && logSlots >= 6, err
+}
 func (c *Collector) FinalizePending(ctx context.Context) error {
+	return c.finalizePending(ctx, nil)
+}
+func (c *Collector) finalizePending(ctx context.Context, finalized *Block) error {
 	caps, e := c.Store.LSTCaptures(ctx, c.Manifest.Hash)
 	if e != nil {
 		return e
 	}
-	end, e := c.RPC.Header(ctx, "finalized")
-	if e != nil {
-		return e
+	// No RPC is needed when all committed markets already have finality.
+	pending := false
+	for _, cap := range caps {
+		if cap.CaptureKind == "market" && cap.Committed && cap.ToBlock != nil && cap.Finality != "finalized" && cap.Finality != "orphaned" {
+			pending = true
+			break
+		}
+	}
+	if !pending {
+		return nil
+	}
+	var end Block
+	if finalized != nil {
+		end = *finalized
+	} else {
+		end, e = c.RPC.Header(ctx, "finalized")
+		if e != nil {
+			return e
+		}
 	}
 	count := 0
+	limit := 4
+	if c.RPC.ProtocolMulticall {
+		limit = 1
+	}
 	for _, cap := range caps {
-		if count >= 4 {
+		if count >= limit {
 			break
 		}
 		if cap.CaptureKind != "market" || !cap.Committed || cap.Finality == "finalized" || cap.Finality == "orphaned" || cap.ToBlock == nil || *cap.ToBlock > end.Number {
@@ -425,6 +572,22 @@ func latestCaptures(caps []Capture) []Capture {
 	}
 	return out
 }
+
+// Fixed range planners include finalized/canonical headers and all possible
+// receipt/ABI calls. Live watch instead stops before an unaffordable next read.
+func receiptPieceBlocks(planned uint64, slots int) uint64 {
+	if slots < 6 {
+		return 0
+	}
+	return min(planned, uint64((slots-3)/3))
+}
+func receiptPieceBlocksWithFinalized(planned uint64, slots int) uint64 {
+	if slots < 5 {
+		return 0
+	}
+	return min(planned, uint64((slots-2)/3))
+}
+
 func (c *Collector) Watch(ctx context.Context, once bool, progress func(string)) error {
 	if progress == nil {
 		progress = func(string) {}
@@ -440,7 +603,13 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 		return err
 	}
 	var cursor logProgress
-	var nextLogs, nextGas time.Time
+	var nextLogs, nextOldGap, nextGas, nextMarket time.Time
+	if c.PauseLiveLogs {
+		progress("log_scan paused=configuration; cursor retained; history coverage remains incomplete")
+	}
+	if c.LiveLogsFromBlock != 0 {
+		progress(fmt.Sprintf("log_scan explicit_start_block=%d cursor=%s; original live-logs.gob retained; earlier gaps remain unknown", c.LiveLogsFromBlock, c.liveLogCursorPath()))
+	}
 	nextMetadata := Now().Add(6 * time.Hour)
 	funding := fundingSchedule{}
 	for {
@@ -453,22 +622,63 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 			return err
 		}
 		start := Now()
-		b, err := c.Market(ctx, s.due(start))
-		if err != nil {
-			return err
-		}
-		s.selectSeed(&b)
-		if err = b.Seal(); err != nil {
-			return err
-		}
-		if err = c.Commit(ctx, b); err != nil {
-			return err
-		}
-		s.committed(b)
-		funding.observe(b, Now())
-		progress(fmt.Sprintf("market capture=%s status=%s quotes=%d canonical=%t", b.Capture.CaptureId, b.Capture.Status, len(b.Quotes), b.Capture.Canonical))
-		if once {
-			return nil
+		marketRan := !start.Before(nextMarket)
+		if marketRan {
+			slots := 25
+			if c.EntryRoutesPerRound == 1 {
+				slots = 22
+			}
+			if c.RPC.ProtocolMulticall {
+				slots = 13
+				if c.EntryRoutesPerRound == 1 {
+					slots = 10
+				}
+			}
+			waitingAt := Now()
+			if err := c.RPC.Transport.WaitRPCSlots(ctx, c.RPC.URL, slots); err != nil {
+				return err
+			}
+			if waited := Now().Sub(waitingAt); waited >= time.Second {
+				progress(fmt.Sprintf("market_rpc_capacity_wait=%s; observation starts after wait", waited.Round(time.Millisecond)))
+			}
+			// Base this round's maintenance and next interval on the actual
+			// start too; a quota wait must not replay an already expired minute.
+			start = Now()
+			b, err := c.Market(ctx, s.due(Now()))
+			if err != nil {
+				return err
+			}
+			// Admission may wait for a recent head. The actual observation
+			// start controls maintenance, the next interval and UTC seed rules.
+			start = b.Capture.StartedAt
+			s.selectSeed(&b)
+			if err = b.Seal(); err != nil {
+				return err
+			}
+			if err = c.Commit(ctx, b); err != nil {
+				return err
+			}
+			s.committed(b)
+			funding.observe(b, Now())
+			scheduled, usable := 0, 0
+			for _, q := range b.Quotes {
+				if q.QuoteRole == "entry" && q.TimingStatus != "not_scheduled" {
+					scheduled++
+					if completeQuote(q) {
+						usable++
+					}
+				}
+			}
+			progress(fmt.Sprintf("market capture=%s status=%s quotes=%d scheduled_entry=%d usable_entry=%d canonical=%t reason=%q protocol_reason=%q", b.Capture.CaptureId, b.Capture.Status, len(b.Quotes), scheduled, usable, b.Capture.Canonical, b.Capture.Reason, b.Protocols[0].Reason))
+			for _, q := range b.Quotes {
+				if q.TimingStatus != "not_scheduled" && !completeQuote(q) {
+					progress(fmt.Sprintf("quote role=%s route=%s buy=%s conversion=%s exit=%s hedge=%s timing=%s buy_reason=%q conversion_reason=%q exit_reason=%q hedge_reason=%q reason=%q", q.QuoteRole, q.RouteId, q.BuyStatus, q.ConversionStatus, q.ExitStatus, q.HedgeStatus, q.TimingStatus, q.BuyReason, q.ConversionReason, q.ExitReason, q.HedgeReason, q.Reason))
+				}
+			}
+			if once {
+				return nil
+			}
+			nextMarket = start.Add(c.marketInterval())
 		}
 		// Serial maintenance stays inside the quiet part of this minute. It
 		// never queues market intervals or races writers on pending-batch.gob.
@@ -479,6 +689,10 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 			metadataErr := c.refreshMetadata(metadataCtx)
 			stop()
 			if metadataErr != nil {
+				if err := c.saveUncommittedDiagnostic("maintenance", metadataErr); err != nil {
+					cancel()
+					return err
+				}
 				if metadataErr.Error() == "metadata_contract_identity_changed" {
 					cancel()
 					return metadataErr
@@ -507,49 +721,118 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 				progress("funding: " + fundingErr.Error())
 			}
 		}
+		var maintenanceFinalized *Block
 		now = Now()
-		if !now.Before(nextLogs) && quiet.Err() == nil {
-			// Use a new local error for this job. A previous finality/funding
-			// failure must never silently skip an otherwise healthy log pass.
-			var logErr error
-			if cursor.Next == 0 {
-				cursor, logErr = c.logProgress(quiet)
+		if !c.PauseLiveLogs && !now.Before(nextLogs) && quiet.Err() == nil {
+			passes := 1
+			if c.marketInterval() > time.Minute && c.LogMode == "receipts" {
+				passes = 2
 			}
-			if logErr == nil {
-				end, headerErr := c.RPC.Header(quiet, "finalized")
-				logErr = headerErr
-				if headerErr == nil && cursor.Next <= end.Number {
-					to := min(cursor.Next+cursor.RangeSize-1, end.Number)
-					logs, fetchErr := c.Logs(quiet, cursor.Next, to, "live")
-					if validationErr := Validate(logs); validationErr == nil {
-						if commitErr := c.Commit(ctx, logs); commitErr != nil {
-							cancel()
-							return commitErr
-						}
-					} else if fetchErr == nil {
-						fetchErr = validationErr
-					}
-					logErr = fetchErr
-					if fetchErr == nil {
-						cursor.Next = to + 1
-						cursor.RangeSize = c.Manifest.MaxLogBlocks
-					} else if errors.Is(fetchErr, ErrLogRange) && cursor.RangeSize > 1 {
-						cursor.RangeSize = max(uint64(1), cursor.RangeSize/2)
-					}
-					if writeErr := writeGob(filepath.Join(c.StateDir, "live-logs.gob"), cursor); writeErr != nil {
+			for pass := 0; pass < passes && quiet.Err() == nil; pass++ {
+				plannedBlocks := c.liveLogBlocks()
+				if c.LogMode == "receipts" && c.logRPC().URL == c.RPC.URL {
+					slots, slotErr := c.RPC.Transport.AvailableRPCSlots(c.RPC.URL)
+					if slotErr != nil {
 						cancel()
-						return writeErr
+						return slotErr
+					}
+					gap := c.RPC.Transport.spacing("rpc", Now())
+					minWindow := 4*gap + 2*c.RPC.Transport.cfg.HTTP.Timeout
+					endQuiet, _ := quiet.Deadline()
+					plannedBlocks = 0
+					if slots >= 4 && time.Until(endQuiet) >= minWindow {
+						plannedBlocks = c.liveLogBlocks()
+					}
+					if plannedBlocks == 0 && time.Until(endQuiet) >= minWindow {
+						// Wait for rolling reservations to expire within this
+						// quiet window. The actual sends retain the original gate.
+						waitErr := c.RPC.Transport.WaitRPCSlots(quiet, c.RPC.URL, 4)
+						if waitErr == nil {
+							slots, slotErr = c.RPC.Transport.AvailableRPCSlots(c.RPC.URL)
+							if slotErr != nil {
+								cancel()
+								return slotErr
+							}
+							if slots >= 4 && time.Until(endQuiet) >= minWindow {
+								plannedBlocks = c.liveLogBlocks()
+							}
+						}
+					}
+					if plannedBlocks == 0 {
+						progress(fmt.Sprintf("log_scan deferred=live_piece_budget available_rpc=%d required_initial_rpc=4 next=%d", slots, cursor.Next))
+						break
 					}
 				}
+				// Use a new local error for this job. A previous finality/funding
+				// failure must never silently skip an otherwise healthy log pass.
+				var logErr error
+				if cursor.Next == 0 {
+					cursor, logErr = c.logProgress(quiet)
+				}
+				if logErr == nil && !cursor.sourceAllowed(c.logSourceIdentity()) {
+					progress("logs paused: " + cursor.BlockedReason + "; cursor retained; configure a verified log source")
+				} else if logErr == nil {
+					end, headerErr := c.RPC.Header(quiet, "finalized")
+					logErr = headerErr
+					if headerErr == nil {
+						maintenanceFinalized = &end
+					}
+					if headerErr == nil && cursor.Next <= end.Number {
+						to := min(cursor.Next+min(min(cursor.RangeSize, c.liveLogBlocks()), plannedBlocks)-1, end.Number)
+						from := cursor.Next
+						logs, fetchErr := c.logsRange(quiet, from, to, "live", &end, c.LogMode == "receipts")
+						if validationErr := Validate(logs); validationErr == nil {
+							if commitErr := c.Commit(ctx, logs); commitErr != nil {
+								cancel()
+								return commitErr
+							}
+						} else if fetchErr == nil {
+							fetchErr = validationErr
+						}
+						logErr = fetchErr
+						coveredTo, cursorTo := uint64(0), to
+						if fetchErr == nil && logs.Capture.ToBlock != nil {
+							coveredTo = *logs.Capture.ToBlock
+							cursorTo = coveredTo
+						}
+						cursor.result(c, cursorTo, fetchErr)
+						progress(fmt.Sprintf("log_scan mode=%s planned_from=%d planned_to=%d status=%s covered_to=%d next=%d finalized=%d backlog_blocks=%d request=%d finalization=%d claim=%d reason=%q", c.LogMode, from, to, logs.Capture.Status, coveredTo, cursor.Next, end.Number, end.Number+1-cursor.Next, len(logs.Requests), len(logs.Finalizations), len(logs.Claims), logs.Capture.Reason))
+						if writeErr := writeGob(c.liveLogCursorPath(), cursor); writeErr != nil {
+							cancel()
+							return writeErr
+						}
+					}
+				}
+				if logErr != nil {
+					progress("logs: " + logErr.Error())
+					break
+				}
 			}
-			if logErr != nil {
-				progress("logs: " + logErr.Error())
-			}
-			nextLogs = Now().Add(5 * time.Minute)
+			nextLogs = start.Add(c.logInterval())
 		}
 		if quiet.Err() == nil {
-			if finalityErr := c.FinalizePending(quiet); finalityErr != nil && quiet.Err() == nil {
-				progress("finality: " + finalityErr.Error())
+			if finalityErr := c.finalizePending(quiet, maintenanceFinalized); finalityErr != nil {
+				if err := c.saveUncommittedDiagnostic("maintenance", finalityErr); err != nil {
+					cancel()
+					return err
+				}
+				if quiet.Err() == nil {
+					progress("finality: " + finalityErr.Error())
+				}
+			}
+		}
+		if c.LiveLogsFromBlock != 0 && !c.PauseLiveLogs && !marketRan && maintenanceFinalized != nil && cursor.Next > maintenanceFinalized.Number && !Now().Before(nextOldGap) && quiet.Err() == nil {
+			room, roomErr := c.oldLogGapHasRoom(quiet)
+			if roomErr != nil {
+				cancel()
+				return roomErr
+			}
+			if room {
+				nextOldGap = Now().Add(5 * time.Minute)
+				if gapErr := c.catchUpOldLogGap(quiet, ctx, *maintenanceFinalized, progress); gapErr != nil {
+					cancel()
+					return gapErr
+				}
 			}
 		}
 		now = Now()
@@ -558,6 +841,12 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 			gasCtx, stop := quietTask(quiet, start, 10*time.Second)
 			gasErr := c.GasPass(gasCtx, 10)
 			stop()
+			if gasErr != nil {
+				if err := c.saveUncommittedDiagnostic("maintenance", gasErr); err != nil {
+					cancel()
+					return err
+				}
+			}
 			if gasErr != nil && !errors.Is(gasErr, context.DeadlineExceeded) {
 				progress("gas: " + gasErr.Error())
 			}
@@ -608,6 +897,9 @@ func recoverHistorical(p *historicalProgress, caps []Capture) {
 }
 
 func (c *Collector) Backfill(ctx context.Context, days, maxRanges int, progress func(string)) error {
+	if c.LogMode == "receipts" {
+		return errors.New("receipts_history_backfill_disabled_use_bounded_gap")
+	}
 	if progress == nil {
 		progress = func(string) {}
 	}
@@ -653,7 +945,7 @@ func (c *Collector) Backfill(ctx context.Context, days, maxRanges int, progress 
 	}
 	recoverHistorical(&p, caps)
 	if p.RangeSize == 0 {
-		p.RangeSize = c.Manifest.MaxLogBlocks
+		p.RangeSize = c.liveLogBlocks()
 	}
 	if e = writeGob(file, p); e != nil {
 		return e

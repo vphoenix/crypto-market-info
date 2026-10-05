@@ -3,6 +3,7 @@ package justlendkeeper
 import (
 	"context"
 	"encoding/csv"
+	"encoding/hex"
 	"errors"
 	"fmt"
 	"math/big"
@@ -12,12 +13,16 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
 )
 
 type ReportReader interface {
 	KeeperCaptures(context.Context, any, any) ([]Capture, error)
 	KeeperBatch(context.Context, Capture) (Batch, error)
+}
+type BulkReportReader interface {
+	KeeperBatches(context.Context, []Capture) (map[uuid.UUID]Batch, error)
 }
 type Summary struct {
 	TopTwoAddressPercent      string  `json:"top_two_address_percent"`
@@ -33,10 +38,15 @@ type Summary struct {
 	Transactions            int            `json:"liquidation_transactions"`
 	GrossTRX                string         `json:"gross_reward_trx"`
 	RewardTransfersVerified int            `json:"reward_transfer_verified_transactions"`
-	KnownBurnTRX            string         `json:"known_whole_transaction_burn_trx"`
+	KnownBurnTRX            *string        `json:"known_whole_transaction_burn_trx"`
+	KnownBurnTransactions   int            `json:"known_burn_transactions"`
+	BurnCoverage            string         `json:"burn_coverage"`
+	NetProfitStatus         string         `json:"net_profit_status"`
 	UnknownBurn             int            `json:"unknown_burn_transactions"`
 	Probes                  int            `json:"simulation_observations"`
 	ProbeStatus             map[string]int `json:"probe_status"`
+	ProbeObservedStatus     map[string]int `json:"probe_observed_status"`
+	ProbeReclassified       int            `json:"probe_reclassified_observations"`
 	PositiveUncertified     int            `json:"positive_return_unclassified"`
 	CoverageCaptures        int            `json:"capture_rows"`
 	Incomplete              int            `json:"incomplete_or_failed_captures"`
@@ -102,6 +112,14 @@ func Report(ctx context.Context, r ReportReader, a Archive, cfg Config, from, to
 	costs := []CostObservation{}
 	windows := map[string]*windowPages{}
 	anchors := map[uint64]string{}
+	verifiedHashes := map[string]bool{}
+	observedStatus := map[string]string{}
+	bulk, useBulk := r.(BulkReportReader)
+	var batches map[uuid.UUID]Batch
+	var manifests map[uuid.UUID]Manifest
+	var responseBodies map[string][]byte
+	summary.ProbeObservedStatus = map[string]int{}
+	summary.NetProfitStatus = "unknown"
 	checkAnchor := func(number uint64, hash string) error {
 		if prior, ok := anchors[number]; ok && prior != hash {
 			return errors.New("report_solid_hash_conflict")
@@ -109,7 +127,33 @@ func Report(ctx context.Context, r ReportReader, a Archive, cfg Config, from, to
 		anchors[number] = hash
 		return nil
 	}
-	for _, cap := range caps {
+	for i, cap := range caps {
+		if i%256 == 0 {
+			group := []Capture{}
+			for _, member := range caps[i:min(i+256, len(caps))] {
+				if member.Committed && member.ConfigHash == cfg.Hash() {
+					group = append(group, member)
+				}
+			}
+			retain := map[string]bool{}
+			if useBulk {
+				batches, e = bulk.KeeperBatches(ctx, group)
+				if e != nil {
+					return e
+				}
+				for _, batch := range batches {
+					for _, p := range batch.Probes {
+						if in(p.AvailableAt, from, to) && (p.Status == "revert" || p.Status == "rpc_error") && p.ResponsePayloadHash != nil {
+							retain[*p.ResponsePayloadHash] = true
+						}
+					}
+				}
+			}
+			manifests, responseBodies, e = reportEvidence(ctx, a, group, verifiedHashes, retain)
+			if e != nil {
+				return fmt.Errorf("capture_evidence: %w", e)
+			}
+		}
 		if cap.ConfigHash != cfg.Hash() {
 			continue
 		}
@@ -119,14 +163,25 @@ func Report(ctx context.Context, r ReportReader, a Archive, cfg Config, from, to
 			coverage = append(coverage, []string{cap.CaptureId.String(), cap.CaptureMode, cap.SourceId, cap.EventKind, "", "", "uncommitted", cap.Reason, "false", strconv.Itoa(int(cap.EventRows))})
 			continue
 		}
-		b, e := r.KeeperBatch(ctx, cap)
+		var b Batch
+		if useBulk {
+			var ok bool
+			b, ok = batches[cap.CaptureId]
+			if !ok {
+				return errors.New("report_batch_missing")
+			}
+			e = Validate(b)
+		} else {
+			b, e = r.KeeperBatch(ctx, cap)
+		}
 		if e != nil {
 			return e
 		}
-		m, er := verifyManifest(a, cap)
-		if er != nil {
-			return fmt.Errorf("capture_evidence: %w", er)
+		m, ok := manifests[cap.CaptureId]
+		if !ok {
+			return errors.New("report_manifest_missing")
 		}
+		var er error
 		for _, row := range b.Events {
 			if er = checkAnchor(row.BlockNumber, row.BlockHash); er != nil {
 				return er
@@ -191,6 +246,35 @@ func Report(ctx context.Context, r ReportReader, a Archive, cfg Config, from, to
 		}
 		for _, p := range b.Probes {
 			if in(p.AvailableAt, from, to) {
+				observedStatus[p.CaptureId.String()+":"+strconv.Itoa(int(p.ProbeIndex))] = p.Status
+				if (p.Status == "revert" || p.Status == "rpc_error") && p.ResponsePayloadHash != nil {
+					raw, ok := responseBodies[*p.ResponsePayloadHash]
+					if !ok {
+						raw, er = a.Get(*p.ResponsePayloadHash)
+						if er != nil {
+							return er
+						}
+					}
+					var result struct {
+						Constant []string `json:"constant_result"`
+						Result   struct {
+							Success *bool  `json:"result"`
+							Code    string `json:"code"`
+							Message string `json:"message"`
+						} `json:"result"`
+					}
+					if er = Decode(raw, &result); er != nil {
+						return er
+					}
+					if p.Status == "revert" {
+						p.Status = classifyTVMFailure(p.TvmResult, p.ErrorMessage, result.Constant)
+					} else if (result.Result.Success == nil || !*result.Result.Success) && result.Result.Code == "OTHER_ERROR" {
+						message, err := hex.DecodeString(result.Result.Message)
+						if err == nil && vmExecutionException(string(message)) {
+							p.Status = "tvm_failure"
+						}
+					}
+				}
 				probes = append(probes, p)
 			}
 		}
@@ -253,6 +337,7 @@ func Report(ctx context.Context, r ReportReader, a Archive, cfg Config, from, to
 		if rr.FeeSun == nil {
 			summary.UnknownBurn++
 		} else {
+			summary.KnownBurnTransactions++
 			burn.Add(burn, new(big.Int).SetUint64(*rr.FeeSun))
 		}
 		for _, ev := range ee {
@@ -263,17 +348,29 @@ func Report(ctx context.Context, r ReportReader, a Archive, cfg Config, from, to
 	summary.Events = len(eventRows)
 	summary.Transactions = len(txs)
 	summary.GrossTRX = sun(reward)
-	summary.KnownBurnTRX = sun(burn)
+	summary.BurnCoverage = "none"
+	if summary.KnownBurnTransactions > 0 {
+		summary.KnownBurnTRX = Ptr(sun(burn))
+		summary.BurnCoverage = "partial"
+		if summary.UnknownBurn == 0 {
+			summary.BurnCoverage = "complete"
+		}
+	}
 	summary.Probes = len(probes)
 	// A row is an observed point, never another hypothetical trade or a continuous interval.
 	sort.Slice(probes, func(i, j int) bool { return probes[i].AvailableAt.Before(probes[j].AvailableAt) })
 	episodes := [][]string{}
 	for _, p := range probes {
+		observed := observedStatus[p.CaptureId.String()+":"+strconv.Itoa(int(p.ProbeIndex))]
+		summary.ProbeObservedStatus[observed]++
+		if observed != p.Status {
+			summary.ProbeReclassified++
+		}
 		summary.ProbeStatus[p.Status]++
 		if p.RewardReturnSun != nil && p.RewardReturnSun.Sign() > 0 && p.Status == "unknown" {
 			summary.PositiveUncertified++
 		}
-		episodes = append(episodes, []string{p.CaptureId.String(), strconv.Itoa(int(p.ProbeIndex)), Hex(p.Renter), Hex(p.Receiver), p.ScheduledAt.Format(time.RFC3339Nano), p.AvailableAt.Format(time.RFC3339Nano), p.Status, fieldBig(p.RewardReturnSun), p.RewardConsistency, fieldU(p.EnergyUsed), p.IdentityStatus, p.StateBinding, p.ErrorCode})
+		episodes = append(episodes, []string{p.CaptureId.String(), strconv.Itoa(int(p.ProbeIndex)), Hex(p.Renter), Hex(p.Receiver), p.ScheduledAt.Format(time.RFC3339Nano), p.AvailableAt.Format(time.RFC3339Nano), p.Status, fieldBig(p.RewardReturnSun), p.RewardConsistency, fieldU(p.EnergyUsed), p.IdentityStatus, p.StateBinding, p.ErrorCode, observed, p.TvmResult, p.ErrorMessage})
 	}
 	completed := []completeWindow{}
 	for _, w := range windows {
@@ -293,7 +390,7 @@ func Report(ctx context.Context, r ReportReader, a Archive, cfg Config, from, to
 	if e = CSV(filepath.Join(out, "liquidations.csv"), []string{"block_time_utc", "block_hash", "tx_id", "receipt_log_index", "liquidator_hex", "reward_sun", "reward_transfer", "call_class", "whole_tx_burn_sun_do_not_sum_per_event", "energy_usage_total"}, liquidations); e != nil {
 		return e
 	}
-	if e = CSV(filepath.Join(out, "probe_observations.csv"), []string{"capture_id", "probe_index", "renter", "receiver", "scheduled_utc", "available_utc", "status", "reward_return_sun", "reward_consistency", "energy_used", "identity_status", "state_binding", "error_code"}, episodes); e != nil {
+	if e = CSV(filepath.Join(out, "probe_observations.csv"), []string{"capture_id", "probe_index", "renter", "receiver", "scheduled_utc", "available_utc", "status", "reward_return_sun", "reward_consistency", "energy_used", "identity_status", "state_binding", "error_code", "observed_status", "tvm_result", "error_message"}, episodes); e != nil {
 		return e
 	}
 	if e = CSV(filepath.Join(out, "probe_episodes.csv"), []string{"lifecycle_id", "first_observed_utc", "last_observed_utc", "certified_reward_observations", "continuous_availability"}, nil); e != nil {

@@ -38,6 +38,7 @@ type engine struct {
 	refresh      func()
 	complete     func(options.LiveEnvelope) error
 	now          func() time.Time
+	catalog      *catalogEngine
 }
 
 func newEngine(run options.LiveRun, specs []options.ContractSpec, started time.Time, reset func(string), refresh func(), complete func(options.LiveEnvelope) error) (*engine, error) {
@@ -66,6 +67,12 @@ func newEngine(run options.LiveRun, specs []options.ContractSpec, started time.T
 func (e *engine) handle(v event, now time.Time) error {
 	if v.Boundary {
 		return e.sample(v.At, now)
+	}
+	if e.catalog != nil {
+		handled, err := e.handleCatalog(v)
+		if handled {
+			return err
+		}
 	}
 	if v.Metadata != nil {
 		o := *v.Metadata
@@ -167,6 +174,11 @@ func (e *engine) sample(at, now time.Time) error {
 		return fmt.Errorf("missing options second boundary")
 	}
 	e.next = e.next.Add(time.Second)
+	if e.catalog != nil {
+		if err := e.catalogBoundary(at); err != nil {
+			return err
+		}
+	}
 	if at.Second() == 0 {
 		e.minute = at
 		e.buffers = map[uint32]*sampler.DerivativeMinuteBuffer{}
@@ -217,34 +229,38 @@ func (e *engine) sample(at, now time.Time) error {
 			s, q = e.books[id].Current()
 			q.Sampled = true
 			q.CapturedAt = now.UTC().Truncate(time.Microsecond)
-			c := e.connections["book"]
-			q.ConnectionConfirmedAt = c.confirmed.UTC().Truncate(time.Microsecond)
-			m := e.metadata[id]
-			if m.known {
-				q.MarketKnown = true
-				q.MarketOpen = m.observation.Active && m.observation.State == "open"
-				q.MarketStateAt = m.published.UTC().Truncate(time.Microsecond)
-				q.MarketStateBasis = 2
-				q.TradingRuleID = m.observation.TradingRuleID
-				q.RulePublishedAt = q.MarketStateAt
-			}
-			if !c.ready {
-				q.StreamValid = false
-				q.Reason = model.DerivativeNotReady
-			}
-			if !m.known {
-				q.StreamValid = false
-				q.Reason = model.DerivativeMetadataUncertain
-			}
-			if m.known && (!q.MarketOpen || !at.Before(*e.specs[id].Instrument.ExpiryTime)) {
-				q.MarketOpen = false
-				q.StreamValid = false
-				q.Reason = model.DerivativeMarketClosed
-			}
-			if !at.Before(*e.specs[id].Instrument.ExpiryTime) {
-				q.StreamValid = false
-				q.MarketOpen = false
-				q.Reason = model.DerivativeMarketClosed
+			if e.catalog != nil {
+				q = e.catalogQuality(id, at, q)
+			} else {
+				c := e.connections["book"]
+				q.ConnectionConfirmedAt = c.confirmed.UTC().Truncate(time.Microsecond)
+				m := e.metadata[id]
+				if m.known {
+					q.MarketKnown = true
+					q.MarketOpen = m.observation.Active && m.observation.State == "open"
+					q.MarketStateAt = m.published.UTC().Truncate(time.Microsecond)
+					q.MarketStateBasis = 2
+					q.TradingRuleID = m.observation.TradingRuleID
+					q.RulePublishedAt = q.MarketStateAt
+				}
+				if !c.ready {
+					q.StreamValid = false
+					q.Reason = model.DerivativeNotReady
+				}
+				if !m.known {
+					q.StreamValid = false
+					q.Reason = model.DerivativeMetadataUncertain
+				}
+				if m.known && (!q.MarketOpen || !at.Before(*e.specs[id].Instrument.ExpiryTime)) {
+					q.MarketOpen = false
+					q.StreamValid = false
+					q.Reason = model.DerivativeMarketClosed
+				}
+				if !at.Before(*e.specs[id].Instrument.ExpiryTime) {
+					q.StreamValid = false
+					q.MarketOpen = false
+					q.Reason = model.DerivativeMarketClosed
+				}
 			}
 			s.ReceivedAt = s.ReceivedAt.UTC().Truncate(time.Microsecond)
 			q.ReceivedAt = q.ReceivedAt.UTC().Truncate(time.Microsecond)
@@ -289,8 +305,10 @@ func (e *engine) sample(at, now time.Time) error {
 			}
 			batch.Books = append(batch.Books, b)
 		}
-		if err := batch.ValidateRun(e.run); err != nil {
-			return err
+		if e.catalog == nil {
+			if err := batch.ValidateRun(e.run); err != nil {
+				return err
+			}
 		}
 		return e.complete(batch)
 	}

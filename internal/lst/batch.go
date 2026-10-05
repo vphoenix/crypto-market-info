@@ -301,6 +301,11 @@ func validateSourceTimes(requested, received, available *time.Time) error {
 }
 
 func Validate(b Batch) error {
+	for _, h := range b.RawEvidenceHashes {
+		if _, err := rawEvidencePath("", h); err != nil {
+			return err
+		}
+	}
 	c := b.Capture
 	if e := validateColumns(c); e != nil {
 		return fmt.Errorf("capture: %w", e)
@@ -408,8 +413,14 @@ func Validate(b Batch) error {
 						return errors.New("invalid_quote_leg_status")
 					}
 				}
-				if !memberOf(r.TimingStatus, "fresh", "stale", "late", "missed", "unknown") {
+				if !memberOf(r.TimingStatus, "fresh", "stale", "late", "missed", "unknown", "not_scheduled") {
 					return errors.New("invalid_quote_timing_status")
+				}
+				if r.TimingStatus == "not_scheduled" {
+					blank := Quote{CaptureId: r.CaptureId, QuoteId: r.QuoteId, ObservedAt: r.ObservedAt, AvailableAt: r.AvailableAt, QuoteRole: "entry", RouteId: r.RouteId, QuoteAssetAddress: r.QuoteAssetAddress, LstAddress: r.LstAddress, PurchaseBudgetUsdtRaw: r.PurchaseBudgetUsdtRaw, HedgeInstrumentId: r.HedgeInstrumentId, BuyStatus: "unknown", ConversionStatus: "unknown", ExitStatus: "unknown", HedgeStatus: "unknown", TimingStatus: "not_scheduled", Reason: "not_scheduled_this_round", RowHash: r.RowHash}
+					if CanonicalHash(r) != CanonicalHash(blank) {
+						return errors.New("not_scheduled_quote_has_observation")
+					}
 				}
 				if !memberOf(r.QuoteRole, "entry", "followup") || r.RouteId == "" || r.HedgeInstrumentId == 0 {
 					return errors.New("quote_identity")

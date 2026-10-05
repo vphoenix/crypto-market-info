@@ -6,12 +6,12 @@ Wants=network-online.target crypto-market-info-clickhouse.service
 [Service]
 Type=oneshot
 WorkingDirectory=%h/crypto-market-info
-ExecStart=%h/crypto-market-info/var/across/bin/across-data backfill --database crypto_market_info_across_history --evidence var/across/history-evidence --chain 8453 --from-block 50783591 --to-block 52079591 --rpc-min-interval 500ms
-ExecStart=%h/crypto-market-info/var/across/bin/across-data backfill --database crypto_market_info_across_history --evidence var/across/history-evidence --chain 42161 --from-block 500994686 --to-block 511000892 --rpc-min-interval 500ms
+ExecStart=%h/crypto-market-info/var/across/bin/across-data history --database crypto_market_info_across_history --evidence var/across/history-evidence --range 8453:50783591:52079591 --range 42161:500994686:511000892
 TimeoutStartSec=infinity
 TimeoutStopSec=30
 RemainAfterExit=yes
 Restart=on-failure
+RestartPreventExitStatus=2
 RestartSec=60
 KillSignal=SIGTERM
 UMask=0077

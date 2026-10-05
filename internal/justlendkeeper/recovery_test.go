@@ -331,6 +331,9 @@ func TestReportCanonicalDedupUnknownFeeAndSolidConflict(t *testing.T) {
 	if e != nil || json.Unmarshal(b, &summary) != nil || summary.Events != 1 || summary.Transactions != 1 || summary.UnknownBurn != 1 || summary.GrossTRX != "20" || summary.RewardTransfersVerified != 0 {
 		t.Fatal("duplicate rewards or unknown fee/transfer misreported", e, summary)
 	}
+	if summary.KnownBurnTRX != nil || summary.KnownBurnTransactions != 0 || summary.BurnCoverage != "none" || summary.NetProfitStatus != "unknown" {
+		t.Fatal("unknown cost converted to zero", summary)
+	}
 	conflict := newBatch(Hash([]byte("conflicting-solid-block")))
 	if e = Report(context.Background(), testReportReader{[]Batch{first, conflict}}, c.API.Archive, c.Config, from, to, *now, t.TempDir()); e == nil || e.Error() != "report_solid_hash_conflict" {
 		t.Fatal("conflicting solid history accepted", e)

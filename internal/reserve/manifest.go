@@ -13,7 +13,7 @@ import (
 const Implementation = "0xb6b35b2c7032E00BAa2535Ba480d461321B7E0A6"
 
 // Bump whenever decoding, sizing, permission or sampling semantics change.
-const CollectorVersion = "reserve-r5-mvp-1"
+const CollectorVersion = "reserve-r5-mvp-3"
 
 type ManifestIdentity struct {
 	CollectorVersion string

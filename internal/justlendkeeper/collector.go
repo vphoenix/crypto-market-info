@@ -9,6 +9,7 @@ import (
 	"math/big"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/google/uuid"
@@ -24,24 +25,27 @@ type ReceiptLogs struct {
 type Operation struct {
 	Discoveries []RawEvent
 
-	Kind            string
-	ScanID          string
-	Requests        []Request
-	Evidence        []Evidence
-	Batch           Batch
-	RawEvents       []RawEvent
-	Headers         []Header
-	Receipts        []ReceiptLogs
-	NextFingerprint string
-	Frozen          bool
-	Failed          bool
-	NotBefore       time.Time
-	Candidate       *Candidate
-	IdentityAddress string
-	IdentityCode    string
-	Scheduled       time.Time
-	Caller          string
-	ValidCallers    []string
+	Kind             string
+	ScanID           string
+	Requests         []Request
+	Evidence         []Evidence
+	Batch            Batch
+	RawEvents        []RawEvent
+	Headers          []Header
+	Receipts         []ReceiptLogs
+	NextFingerprint  string
+	Frozen           bool
+	Failed           bool
+	NotBefore        time.Time
+	Candidate        *Candidate
+	IdentityAddress  string
+	IdentityCode     string
+	Scheduled        time.Time
+	Caller           string
+	ValidCallers     []string
+	ExcludedBoundary uint32
+	ExcludedResource uint32
+	Parent           *Capture
 }
 type Collector struct {
 	Config Config
@@ -99,18 +103,17 @@ func headRequest(solid bool, role string, bg bool) Request {
 	return Post("publicnode", path, role, "", map[string]any{"detail": false}, bg)
 }
 func (c *Collector) AddPage(s Scan) {
-	o := c.NewOperation("page", s.Mode, "trongrid")
+	o := c.NewOperation("index_page", s.Mode, "trongrid")
 	o.ScanID = s.ID
-	o.Batch.Capture.CaptureKind = "events"
+	o.Batch.Capture.CaptureKind = "event_index"
 	o.Batch.Capture.EventKind = s.Kind
 	o.Batch.Capture.RequestedFrom = Ptr(s.From)
 	o.Batch.Capture.RequestedTo = Ptr(s.To)
-	o.Batch.Capture.CoverageScope = "sampled_rental_events"
-	if s.Kind == "Liquidate" {
-		o.Batch.Capture.CoverageScope = "returned_liquidations"
+	if strings.HasPrefix(s.ID, "history:") || strings.HasPrefix(s.ID, "rescan:") {
+		o.Batch.Capture.CaptureMode = "history"
 	}
-	bg := s.Mode != "live"
-	o.Requests = []Request{headRequest(true, "solid", bg), {Source: "trongrid", Path: EventPath(s.Kind, s.From, s.To, s.Fingerprint), Role: "page", Background: bg}}
+	o.Batch.Capture.CoverageScope = "indexed_energy_events"
+	o.Requests = []Request{{Source: "trongrid", Path: EventPath(s.Kind, s.From, s.To, s.Fingerprint), Role: "page", Background: !realtimeScan(s)}}
 	c.State.Ops = append(c.State.Ops, o)
 }
 func (c *Collector) scan(id string) *Scan {
@@ -160,6 +163,10 @@ func (c *Collector) Process(o *Operation, r Request, ev Evidence, b []byte) erro
 		if e != nil {
 			return e
 		}
+		if o.Kind == "index_page" {
+			return c.indexRows(o, p, next)
+		}
+		o.ExcludedBoundary = p.ExcludedBoundary
 		o.Batch.Capture.PageCount = 1
 		o.NextFingerprint = next
 		o.Batch.Capture.PaginationExhausted = next == ""
@@ -439,7 +446,7 @@ func (c *Collector) Hydrate(o *Operation) error {
 }
 func (c *Collector) Finish(ctx context.Context, o *Operation) error {
 	if !o.Frozen {
-		if !o.Failed && o.Kind == "page" && o.Batch.Capture.CaptureMode != "bootstrap" {
+		if !o.Failed && (o.Kind == "page" && o.Batch.Capture.CaptureMode != "bootstrap" || o.Kind == "enrichment") {
 			if e := c.Hydrate(o); e != nil {
 				o.Failed = true
 				o.Batch.Capture.Status = "partial"
@@ -479,13 +486,21 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) error {
 					p.HeadAfterHash = Ptr(h.Hash)
 					p.HeadAfterTime = Ptr(h.Time)
 				}
-				if len(o.Headers) < 2 && p.Status != "rpc_error" && p.Status != "timeout" && p.Status != "revert" {
+				if len(o.Headers) < 2 && p.Status != "rpc_error" && p.Status != "timeout" && p.Status != "revert" && p.Status != "tvm_failure" {
 					p.Status = "unknown"
 					p.ErrorCode = "missing_head_range"
 				}
 			}
 		}
 		completedAt := UTC(c.Now())
+		if o.Kind == "enrichment" {
+			for i := range o.Batch.Events {
+				o.Batch.Events[i].AvailableAt = completedAt
+			}
+			for i := range o.Batch.Receipts {
+				o.Batch.Receipts[i].AvailableAt = completedAt
+			}
+		}
 		for i := range o.Batch.Costs {
 			q := &o.Batch.Costs[i]
 			if q.ObservationKind == "chain_resource" && q.Status != "error" {
@@ -518,9 +533,21 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) error {
 		if cap.ExpectedTasks < cap.CompletedTasks {
 			cap.ExpectedTasks = cap.CompletedTasks
 		}
-		manifest := Manifest{Version: "keeper-v1", DigestEncoding: "jl-keeper-fact-v1", Capture: cap.CaptureId.String(), Kind: o.Kind, ScanID: o.ScanID, FingerprintOut: o.NextFingerprint, Requests: o.Evidence, CohortID: c.State.CohortId.String(), Selection: "stratified-15-15-20-fixed-hash-keeper-cohort-v1", Rotation: c.State.Rotation, Changes: c.State.CohortChanges}
+		manifest := Manifest{Version: "keeper-v1", DigestEncoding: "jl-keeper-fact-v1", Capture: cap.CaptureId.String(), Kind: o.Kind, ScanID: o.ScanID, FingerprintOut: o.NextFingerprint, Requests: o.Evidence, CohortID: c.State.CohortId.String(), Selection: "stratified-15-15-20-fixed-hash-keeper-cohort-v1", Rotation: c.State.Rotation, Changes: c.State.CohortChanges, ExcludedBoundary: o.ExcludedBoundary}
+		manifest.ExcludedResource = o.ExcludedResource
+		if o.Parent != nil {
+			manifest.ParentCapture = o.Parent.CaptureId.String()
+			manifest.ParentManifestHash = Hex(o.Parent.EvidenceManifestHash)
+		}
 		if sc := c.scan(o.ScanID); sc != nil {
 			manifest.FingerprintIn = sc.Fingerprint
+			// The request path is the authoritative envelope for legacy attempts.
+			// Only new aligned scans advertise the new query contract.
+			if len(sc.ID) >= 9 && sc.ID[:9] == "watch:v2:" {
+				lo, hi := eventQueryBounds(sc.From, sc.To)
+				manifest.EventFilterRevision = "second-envelope-v1"
+				manifest.QueryFrom, manifest.QueryTo = &lo, &hi
+			}
 		}
 		for _, can := range c.State.Cohort {
 			manifest.Cohort = append(manifest.Cohort, Snapshot(can))
@@ -529,16 +556,21 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) error {
 			manifest.ProbeLifecycle = o.Candidate.Lifecycle
 		}
 
-		h, e := c.API.Archive.Put(JSONEvidence(manifest))
-		if e != nil {
+		// Keep the summary hash for compatibility, without archiving its body.
+		cap.EvidenceManifestHash = Hash(JSONEvidence(manifest))
+		if e := c.prepareIndexPage(o); e != nil {
 			return e
 		}
-		cap.EvidenceManifestHash = h
 		Seal(&o.Batch)
 		o.Frozen = true
-		if e = c.Save(); e != nil {
+		if e := c.Save(); e != nil {
 			return e
 		}
+	}
+	// Old frozen batches retain their capture and member digests unchanged.
+	// Only add the separate pagination record, recovered from saved progress.
+	if e := c.prepareIndexPage(o); e != nil {
+		return e
 	}
 	if e := c.Store.WriteKeeperBatch(ctx, o.Batch); e != nil {
 		return e
@@ -555,16 +587,31 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) error {
 			c.State.IdentityStatus = "changed"
 		}
 	}
-	if o.Kind == "page" {
+	if o.Kind == "page" || o.Kind == "index_page" {
 		s := c.scan(o.ScanID)
 		if s != nil {
 			if o.Failed {
 				s.Failed = true
 				s.Done = true
+				s.Failures++
+				delay := time.Minute << min(s.Failures-1, 5)
+				s.RetryAt = UTC(c.Now().Add(min(delay, 30*time.Minute)))
+				if o.Batch.Capture.Reason == "legacy_prefix_reindexed" {
+					s.Fingerprint = ""
+					s.Pages = 0
+					s.Done = false
+					s.Failed = false
+					s.RetryAt = time.Time{}
+				}
 			} else {
+				s.Failures = 0
+				s.RetryAt = time.Time{}
 				s.Pages++
 				s.Fingerprint = o.NextFingerprint
 				s.Done = s.Fingerprint == ""
+				if s.Done && strings.HasPrefix(s.ID, "history:") {
+					c.State.HistoryCursor = s.To
+				}
 				if s.Done && (s.Mode == "live" || (s.Mode == "catchup" && len(s.ID) > 6 && s.ID[:6] == "watch:")) {
 					c.State.EventCursors[s.Kind] = s.To
 				}
@@ -575,14 +622,26 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) error {
 				if s.Mode == "bootstrap" {
 					c.AddCandidates(o.Discoveries)
 				}
+				if o.Kind == "page" && c.State.IndexingEnabled {
+					if s.Done && realtimeScan(*s) && !s.From.After(c.State.EvidenceCursors[s.Kind]) {
+						c.State.EvidenceCursors[s.Kind] = s.To
+					}
+					if !s.Done {
+						s.Fingerprint = ""
+						s.Pages = 0
+					}
+				}
 			}
 		}
 	}
-	if o.Kind == "page" && !o.Failed && o.Batch.Capture.CaptureMode != "bootstrap" && o.Batch.Capture.EventKind != "Liquidate" {
+	if (o.Kind == "page" || o.Kind == "index_page") && !o.Failed && o.Batch.Capture.CaptureMode != "bootstrap" && o.Batch.Capture.EventKind != "Liquidate" {
 		c.AddCandidates(o.Discoveries)
 	}
-	if o.Kind == "seed" || o.Kind == "page" {
+	if o.Kind == "seed" || o.Kind == "page" || o.Kind == "enrichment" {
 		c.ApplyEvents(o.Batch.Events)
+	}
+	if e := c.evidenceProgress(ctx, *o); e != nil {
+		return e
 	}
 	if o.Kind == "seed" && o.Failed && o.Candidate != nil {
 		for i := range c.State.Cohort {
@@ -592,12 +651,13 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) error {
 			}
 		}
 	}
-	c.Log(fmt.Sprintf("capture=%s kind=%s status=%s events=%d receipts=%d probes=%d costs=%d reason=%s", o.Batch.Capture.CaptureId, o.Kind, o.Batch.Capture.Status, len(o.Batch.Events), len(o.Batch.Receipts), len(o.Batch.Probes), len(o.Batch.Costs), o.Batch.Capture.Reason))
+	c.Log(fmt.Sprintf("capture=%s kind=%s status=%s indexed=%d events=%d receipts=%d probes=%d costs=%d reason=%s", o.Batch.Capture.CaptureId, o.Kind, o.Batch.Capture.Status, len(o.Batch.IndexedEvents), len(o.Batch.Events), len(o.Batch.Receipts), len(o.Batch.Probes), len(o.Batch.Costs), o.Batch.Capture.Reason))
 	return nil
 }
 func (c *Collector) Step(ctx context.Context) (bool, time.Time, error) {
 	now := c.Now()
 	next := now.Add(time.Second)
+	sort.SliceStable(c.State.Ops, func(i, j int) bool { return c.operationPriority(c.State.Ops[i]) < c.operationPriority(c.State.Ops[j]) })
 	for i := 0; i < len(c.State.Ops); i++ {
 		o := &c.State.Ops[i]
 		if o.Frozen || len(o.Requests) == 0 {
@@ -618,7 +678,7 @@ func (c *Collector) Step(ctx context.Context) (bool, time.Time, error) {
 			return true, next, c.Save()
 		}
 		r := o.Requests[0]
-		if o.Kind == "probe" && now.After(o.Scheduled.Add(30*time.Second)) {
+		if o.Kind == "probe" && !o.probeAttempted() && now.After(o.Scheduled.Add(30*time.Second)) {
 			o.Failed = true
 			o.Batch.Capture.Status = "skipped"
 			o.Batch.Capture.Reason = "stale_probe_round"
@@ -684,6 +744,20 @@ func (c *Collector) Step(ctx context.Context) (bool, time.Time, error) {
 		return true, next, c.Save()
 	}
 	return false, next, nil
+}
+
+// Once a constant call was attempted, retain its observation and finish its
+// after-head even when the admission deadline has passed (also for old state).
+func (o Operation) probeAttempted() bool {
+	if len(o.Batch.Probes) > 0 {
+		return true
+	}
+	for _, ev := range o.Evidence {
+		if ev.Path == "/wallet/triggerconstantcontract" {
+			return true
+		}
+	}
+	return false
 }
 func (c *Collector) AddCandidates(events []RawEvent) {
 	for _, re := range events {

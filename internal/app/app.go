@@ -107,7 +107,12 @@ func runMarketSources(ctx context.Context, cfg config.Config, logger *slog.Logge
 	components := markets.components
 	if cfg.Options.Enabled {
 		components = append(components, component{name: "Deribit options", run: func(ctx context.Context) error {
-			return optionslive.Run(ctx, cfg.Options, store, logger)
+			optionsStore, err := store.OptionsWriter(ctx, cfg.ClickHouse)
+			if err != nil {
+				return err
+			}
+			defer optionsStore.Close()
+			return optionslive.Run(ctx, cfg.Options, optionsStore, logger)
 		}})
 	}
 	fundingInstruments := markets.fundingInstruments

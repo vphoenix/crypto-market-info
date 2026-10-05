@@ -1,6 +1,8 @@
 # 当前部署与运行说明
 
-最近核实：2026-09-23（Asia/Shanghai）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
+最近核实：2026-10-05（Asia/Shanghai；含重启后的修复与旧历史坏块清理结果）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
+
+2026-10-05 11:23（Asia/Shanghai）重启后再次核验：七个项目unit均active/running，五路盘口最新分钟60/60；期权11:20、11:21两个完整分钟均3,104成员、每成员60秒有效。已给五个生产库59张MergeTree表显式启用插入、目录及合并fsync，51张本次有新数据的表各选一个有界part校验，全部通过；不涉及其他项目的表设置。Across已部署`across-reboot-head-repair-20261005`（SHA256 `34753e49bfba8965975d34e0acbd78ae5239880788240f869cbc8dc767f97015`），长积压时当前链头与旧缺口补采由已有worker分别推进，两链当前事实已恢复完整解码；旧放弃标记仍为993个partial。原始扫描与完整事实必须分开核验，最新高度不能证明历史连续；Arbitrum停机原始缺口仍在补，旧历史状态不可用仍partial。启动时的空文件隔离块和既有坏历史不视为已恢复；块号包含关系不能证明行完整。具体修改、真实验证与限制见[重启检查记录](../research/2026-10-05-reboot-check/report.md)。
 
 ## 1. 实际使用的本机服务
 
@@ -11,15 +13,19 @@
 | 全量永续验收 collector | 用户级 systemd unit `crypto-market-info-perp-soak.service`；独立二进制与数据库 | `crypto_market_info_perp_soak_20260928`；仅三家共有 USDT 永续盘口和资金费率，不重复采集现货与收益 |
 | 桌面状态指示器 | 图形会话用户级 systemd unit `crypto-market-info-status-indicator.service`；Python/Gtk AppIndicator | 每 30 秒只读检查生产 unit、五路盘口及最新收益写入；不访问交易所、不写数据库 |
 
-本项目不使用 Redis、PostgreSQL、消息队列或其他项目的服务。生产 collector 保持 BTC 显式列表及现有收益配置，尚未切换自动全量；新版本先在独立验收服务运行。具体构建版本用下文 `go version -m` 查询，不以当前仓库 HEAD 推断正在运行的二进制版本。
+本项目不使用 Redis、PostgreSQL、消息队列或其他项目的服务。生产CEX永续保持BTC显式列表及现有收益配置；Deribit期权auto已部署R5持续全量发现。永续全量验收服务当前停用。具体构建版本用下文 `go version -m` 查询，不以当前仓库 HEAD 推断正在运行的二进制版本。
 
 AVAX 第二阶段已于 2026-08-27 部署。collector unit 保持 `AVAX_YIELD_ENABLED=true`，新增 BENQI sAVAX、Ankr ankrAVAX、BENQI AVAX 借贷三条 Runner；启动时已对生产 `yield_observation` 幂等补齐两列，并成功写入三条首批同区块观测。
 
-2026-09-21 已在现有collector启用 Deribit 期权采集，unit 设置 `OPTIONS_ENABLED=true`、`OPTIONS_SYMBOLS=auto`，没有新增期权专用服务。当前run `5ec3ced8-4d3a-44e9-bf1f-62386d0c505b` 自动固定选择24个期权、4个同到期期货及四个指数。启动过渡分钟如实保留无效锚点；下一完整分钟 `2026-09-20T19:28:00Z` 的28个盘口和四个指数均为60/60有效秒，批次hash为 `ace2270262f3a7bdec6524cd70bcaea13abf9b7d3a5064c102e43531c1a2a779`。详情见[期权实时采集说明](arbitrage/strategies/arb-0009-options-live.md)。
+2026-09-21 已在现有collector启用 Deribit 期权采集，unit 设置 `OPTIONS_ENABLED=true`、`OPTIONS_SYMBOLS=auto`，没有新增期权专用服务。当时run `5ec3ced8-4d3a-44e9-bf1f-62386d0c505b` 自动固定选择24个期权、4个同到期期货及四个指数。启动过渡分钟如实保留无效锚点；下一完整分钟 `2026-09-20T19:28:00Z` 的28个盘口和四个指数均为60/60有效秒，批次hash为 `ace2270262f3a7bdec6524cd70bcaea13abf9b7d3a5064c102e43531c1a2a779`。详情见[期权实时采集说明](arbitrage/strategies/arb-0009-options-live.md)。
+
+2026-10-04 15:43（Asia/Shanghai）已完成Deribit R5部署：四族全部未到期期权及交割期货随新挂牌加入、到期退出。部署前独立库全量真实DB验收通过，并由同一Agent复审批量写入修复。常驻collector SHA-256为 `3a39581b13a8abe0dcf03383d1d4ae8337a29bf350bb11aec44f5787f98a0ee4`，生产已创建五张R5表；15:46、15:47两个分钟全部3108成员均60/60有效，15:46全部秒实际回放通过。原文持久目录及备份见[部署记录](arbitrage/strategies/arb-0009-options-lifecycle-deployment.md)。检查另发现9月期权质量表旧分片UNKNOWN_CODEC，未执行数据修复；上述成功仅针对新分钟及现场范围。上段28合约为R4历史。
+
+2026-10-05 02:40（Asia/Shanghai）已按用户批准并要求继续的方案，完成九月旧历史坏块清理：生产期权质量表的`202609_1_5549_21`及停用旧验收库`crypto_market_info_perp_soak.order_book_second_delta`的7个坏parts，共8块。均有原始列全部或局部全零及实际读失败证据，未找到完整可用恢复副本，已逐块`DETACH PART`后`DROP DETACHED PART`，删除约1.97 GB。324个文件的哈希、UTC范围及当前最终状态保存于`var/recovery/history-codec-cleanup-2026-10-05.json`。剩余九月期权质量8块、旧永续差量2块均通过逐块校验和全列实际读取，健康块与删除前内容哈希相同。02:34分钟全部3,094合约及五路CEX全秒实际回放通过，02:36—02:38全量分钟均60/60；02:32有30个合约各1秒采样延迟，已按无效秒记录且随后恢复。服务未重启。删除不是历史恢复，旧验收库仍有明确缺口；具体清单、原始异常及验证边界见[清理完成记录](../research/2026-10-05-history-codec-cleanup/report.md)，[初次隔离记录](../research/2026-10-05-history-codec-isolation/report.md)保留当时中间状态。
 
 2026-09-22 已在同一个生产 collector 启用 Ethereum DEX 采集，unit 设置 `DEX_ENABLED=true`、`DEX_ETH_RPC_URL=https://ethereum-rpc.publicnode.com`，证据写入持久目录。部署后二进制 SHA-256 为 `cf49b0795aad53a8b5ae00f623d66f867836aac07154761c8c13097f61aaf7a4`。验收区间 `26027452` 至 `26027477` 共26个连续高度无缺口，其中25个区块达到58/58完整报价；`26027460` 因一次RPC/Sky状态读取不完整保留为 `partial/unknown`，后续区块自动恢复。首份24高度机会报告没有毛正窗口。DEX分支不包含钱包、签名或交易发送。
 
-2026-09-23 排查发现 DEX 公共 RPC 的响应读取超时集中出现在最终性校验阶段，旧版在校验失败后额外等待5秒，并在下一轮立即重复昂贵的校验。现版将 RPC 响应读取超时、截断与超过16 MiB分别记录；最终性校验把 `finalized`、`safe` 和原 checkpoint 合为一个 RPC 批次，每轮最多校验20个高度、最多占用6秒，失败后30秒再重试。实时新区块采集与补采、最终性、日志和回执维护现已独立运行，维护任务不会在调度上阻塞实时轮询；共享 RPC 仍可能使实时请求变慢。实时请求失败后按正常2秒轮询间隔重试。Binance 实际资金费率历史中部分 `fundingTime` 比计划整点晚数毫秒，现版查询并匹配整点后1秒内唯一的来源记录，保留其原始毫秒时间，启动补查窗口扩大到72小时；重试耗尽而来源尚无记录时会明确告警。2026-09-23 12:39 CST重启时，OKX启动元数据请求超时曾导致整个collector首次启动失败，此类启动缺口只能补回区块元数据，不能补回当时的实时报价。现已将DEX与CEX等其他来源拆成独立启动和重试分支，并分别使用数据库连接；CEX元数据超时不会停止已运行的DEX分支。12:52 CST重启验收时，DEX先于CEX元数据初始化完成写入新区块。2026-09-28 的当前生产二进制 SHA-256 为 `dd55a3a80fbba9bec3b61a18401f41b1ba436322d4de8012f4889fdca6859a21`。更新未增加外部域名。
+2026-09-23 排查发现 DEX 公共 RPC 的响应读取超时集中出现在最终性校验阶段，旧版在校验失败后额外等待5秒，并在下一轮立即重复昂贵的校验。现版将 RPC 响应读取超时、截断与超过16 MiB分别记录；最终性校验把 `finalized`、`safe` 和原 checkpoint 合为一个 RPC 批次，每轮最多校验20个高度、最多占用6秒，失败后30秒再重试。实时新区块采集与补采、最终性、日志和回执维护现已独立运行，维护任务不会在调度上阻塞实时轮询；共享 RPC 仍可能使实时请求变慢。实时请求失败后按正常2秒轮询间隔重试。Binance 实际资金费率历史中部分 `fundingTime` 比计划整点晚数毫秒，现版查询并匹配整点后1秒内唯一的来源记录，保留其原始毫秒时间，启动补查窗口扩大到72小时；重试耗尽而来源尚无记录时会明确告警。2026-09-23 12:39 CST重启时，OKX启动元数据请求超时曾导致整个collector首次启动失败，此类启动缺口只能补回区块元数据，不能补回当时的实时报价。现已将DEX与CEX等其他来源拆成独立启动和重试分支，并分别使用数据库连接；CEX元数据超时不会停止已运行的DEX分支。12:52 CST重启验收时，DEX先于CEX元数据初始化完成写入新区块。2026-09-28 部署时二进制 SHA-256 为 `dd55a3a80fbba9bec3b61a18401f41b1ba436322d4de8012f4889fdca6859a21`。更新未增加外部域名。
 
 Bybit USDT 线性永续已于 2026-09-05 部署，collector unit 设置 `BYBIT_PERP_SYMBOLS=BTCUSDT`。启动时已幂等增加 `instrument.venue_contract_version`：迁移前 Binance、OKX 永续 ID 2、4 保留，新版本分别登记为 ID 5、6，Bybit `BTCUSDT` 登记为 ID 7。首个完整生产分钟的五个当前行情流均有 60 个有效秒；Bybit 公共 ticker 实测产生了指向下一结算时刻的完整资金费率估算。
 
@@ -39,6 +45,7 @@ Bybit USDT 线性永续已于 2026-09-05 部署，collector unit 设置 `BYBIT_P
 | ClickHouse PID 文件 | `/run/user/1000/crypto-market-info-clickhouse/clickhouse.pid`（由 systemd 运行目录创建，重启后重建） |
 | collector 二进制 | `/home/ubuntu/.local/share/crypto-market-info-collector/collector` |
 | collector 日志 | `/home/ubuntu/.local/share/crypto-market-info-collector/logs/collector.log` |
+| 期权原始证据 | `/home/ubuntu/.local/share/crypto-market-info-options/evidence/` |
 | DEX 原始证据 | `/home/ubuntu/.local/share/crypto-market-info-dex/evidence/` |
 | 全量验收二进制 | `/home/ubuntu/.local/share/crypto-market-info-perp-soak/collector` |
 | 全量验收日志 | `journalctl --user -u crypto-market-info-perp-soak.service` |
@@ -74,7 +81,7 @@ ClickHouse unit 以前台模式运行数据库并在启动阶段轮询 `/ping`�
 | Binance、OKX 盘口 | 各自的 BTC/USDT 现货及 BTC/USDT 线性永续，共四个交易流 | 每秒采样，结束的分钟批量写入 |
 | 永续资金费率 | 上述两个永续合约 | 公共 WebSocket 估算；REST 确认实际结算值 |
 | Bybit USDT 线性永续 | `BTCUSDT`，已部署启用 | 每秒盘口采样；公共 ticker 估算并由 REST 确认实际资金费率 |
-| Deribit 期权 | BTC/ETH币本位和USDC线性四族；自动固定24个C/P期权、4个同到期期货及四个指数 | 每秒前10档与指数；元数据每30分钟复核，重连时提前复核 |
+| Deribit 期权 | BTC/ETH币本位和USDC线性四族；全部未到期期权及交割期货，四个指数 | 每秒前10档与指数；生命周期推送，目录每30分钟及重连后复核 |
 | Ethereum DEX | 主网4个策略池、2个成本参考池及Sky相关状态；每块固定58条状态报价 | 每2秒检查新区块；按区块hash采集并跟踪最终性 |
 | JustLend | 四条固定 TRX 路线 | 每小时 |
 | TRON 原生质押 | 前 127 名 SR | 每 6 小时 |
@@ -293,6 +300,8 @@ go run ./cmd/perp-check \
 
 ## Reserve r5 研究采集（2026-10-02）
 
+本节早期操作记录保留日期；现行七表、直接入库和响应清理政策见文末「Reserve 2026-10-04 存储修正」。旧原文已迁移并删除，不再按早期五表/证据目录方式恢复。
+
 新增独立 user unit `crypto-market-info-reserve.service`，二进制 `/home/ubuntu/crypto-market-info/var/reserve/reserve-data`，工作目录仓库根，隔离库 `crypto_market_info_reserve`，证据 `/home/ubuntu/crypto-market-info/var/reserve/evidence`。默认 HTTPS POST 到 ethereum-rpc.publicnode.com，路由沿用用户配置。
 
 ```bash
@@ -308,40 +317,66 @@ Watch主循环对明确的RPC传输/读取超时、截断及HTTP429/5xx保留游
 2026-10-03补齐的[Reserve操作说明](reserve-data-implementation.md)含当前manifest的只读SQL、报告计数口径、RPC环境覆盖、固定高度回补和备份恢复要求。前台export不会修改已运行的systemd环境；回补前停止这一unit，固定from/to及chunk，结束后恢复watch。日志完整而收据未齐时可能已经推进日志游标，Watch没有独立收据重试队列，应通过显式范围回补核验。备份须同时保留五表和原始证据；当前没有自动清理或已验收的自动恢复流程。
 
 
-## Across 独立研究采集器（2026-10-02）
+## Across 独立研究采集器（2026-10-03 修复）
 
-2026-10-02 13:57 UTC 已启动并启用 user unit `crypto-market-info-across.service`，常驻采集 Base / Arbitrum。入口 `var/across/bin/across-data`，工作目录仓库根，七表独立库 `crypto_market_info_across`，证据 `var/across/evidence`。user linger 已开启，退出登录后继续运行；失败15秒后自动重启，恢复已提交游标与待补收据。
+当前运行实时 `crypto-market-info-across.service`，磁盘binary为 `var/across/bin/across-data`，工作目录仓库根，使用实时库 `crypto_market_info_across` 和证据 `var/across/evidence`。只有一个writer进程，report只读，不要手工启动同库第二个writer。user linger已开启。固定历史unit模板仍保留，但已disabled，其独立库和归档已按用户要求删除。
 
-另启用 `crypto-market-info-across-history.service`，隔离库 `crypto_market_info_across_history`、证据 `var/across/history-evidence`。一个 writer 顺序回补 Base `50783591..52079591`、Arbitrum `500994686..511000892`，起止高度已按 finalized 头冻结，约对应2026-09-02至2026-10-02的30天；重启不会把窗口滑动到另一天。两条命令均完成前显示 `activating (start)`，成功处理固定日志范围后显示 `active (exited)`，失败60秒后重试。收据缺口、未知实现或 partial 仍须读报告，不能把 unit 结束理解为完整30日研究数据。启动窗口证据与验收见 [startup](../research/2026-10-02-across-startup/)。
+2026-10-03用户明确收窄采集范围：首次启动前的数据不再回补。已停止并禁用 `crypto-market-info-across-history.service`（inactive/dead、MainPID=0、disabled）。核对所有history事实均早于实时首次已保存区块（Base 52077937、Arbitrum 510991304），没有可补实时缺口的数据；已删除独立库 `crypto_market_info_across_history`、`var/across/history-evidence`（75,702个归档文件）和导出的历史报告数据，保留修复说明及少量验证统计。实时库、实时证据、RPC冷却状态均保留。实时unit继续active/running、enabled：首次无保存游标时从当时链头开始，以后从已保存位置续采；只修补其已有采集范围内的缺块、partial和缺收据，并继续最终性核验。重启实时服务不重置首次采集起点。
+
+此前历史unit使用一条 `history --range 8453:50783591:52079591 --range 42161:500994686:511000892`，固定窗口约对应2026-09-02至2026-10-02，每链一轮64块、独立退避与补解码；现在已停用，不再执行该窗口。实时普通失败15秒重启；已确认网络故障以2退出，unit配置RestartPreventExitStatus=2，保持停止待用户处理。
+
+两进程共同使用 `var/across/rpc-quota` 的host gate，默认400ms/成员、每批最多3成员，所有批次共同等待上一批额度后准入，限流共享冷却。仅fresh live baseline及准时followup获准后有固定最多4秒优先窗口，不续租，届满按实际额度可用时间让行一个成员间隔；restart/open_check没有优先额度，且可被新live到达取消其网络工作。此预算不证明源端额度，也不约束不使用此gate的应用。不要删quota文件清冷却；不会自动改路由/代理。默认RPC仍为 `https://mainnet.base.org` 和 `https://arb1.arbitrum.io/rpc`，行情为用户指定 `https://api.binance.com`。对明确限流与网络错误分别排查；确认连通性故障先停止修复工作并告知用户。
 
 ```bash
 systemctl --user status crypto-market-info-across.service crypto-market-info-across-history.service
 journalctl --user -u crypto-market-info-across.service -n 30 --no-pager
 journalctl --user -u crypto-market-info-across-history.service -n 30 --no-pager
+var/across/bin/across-data version
 var/across/bin/across-data report --out var/across/reports/live-latest
-var/across/bin/across-data report --database crypto_market_info_across_history --evidence var/across/history-evidence --out var/across/reports/history-latest
 ```
 
-实时与历史分别报告；两个库可能覆盖相同事件，不能直接相加收入或订单数。不要在任何一个正在运行的库上手工启动第二个 writer。30日回补是一次固定任务，启动/重启它用 `systemctl --user start --no-block ...`，避免终端等待整个回补；它不周期滚动补采另一份30日。
+升级前停止Across实时unit并确认历史unit保持停止，保存旧binary和unit；构建候选版本，测试后原子替换磁盘binary、复制unit、daemon-reload，只启动实时unit，历史unit保持disabled，除非用户重新要求历史回补。部署后以`systemctl show ... -p MainPID`取得实时PID，对磁盘和`/proc/PID/exe`做sha256sum，验证没有deleted旧映像；启动日志含构建版本。只管理Across服务，不停止其他项目collector。此前双服务修复的构建、进度、报告与剩余缺口见[修复验收](../research/2026-10-03-across-repair/validation.md)，其运行快照先于本次范围收窄。
 
-启动回补时曾触发Base `-32016 over rate limit`；现history unit使用 `--rpc-min-interval 500ms`，每个Reader单请求串行、响应后冷却500毫秒，降低批量header/receipt突发对实时的影响。watch使用默认0保持原实时批量行为。限速并非公共节点配额承诺，history仍可能退避重试。
+健康检查使用[Across只读SQL](across-data-health.sql)：每链最近capture时间、fixed窗口raw/decoded union、finalized待核验量、最终性晋级新增revision、费用完整性去重和probe准时/取消要分开。原始coverage推进不能替代完整事实；pending积压要测趋势。成功返回finalized头不等于整尾已核验；只认实际存储的已证明revision。report performance明确SQL和归档耗时，finality策略明确包括head，不把报告存在当作盈利成立。
 
-14:20:53 UTC部署限速修正后，14:23:25已提交Base `50784359..50784870`，跨过原停点；前220份单成员RPC响应无HTTP/RPC错误。14:24:49快照中实时服务0重启，主库558存款事件/733成交事件/403收据，两条链已采到当时最新十几秒内；history在Base阶段，306存款事件/211成交事件/20收据，Arbitrum30日阶段尚未开始。事件包含其他路线，不能当作机会数。限速修正经独立Agent复审和race回归通过，详见上述startup目录；短时验收不代表长期覆盖保证。
+2026-10-04按用户要求改为内存解析后直接落库，不归档RPC/API响应。实时RPC及Binance适配器只计算payload hash；不再依赖response-retention.json或每批删文件。新增`across_receipt_transfers`保存完整原生USDC Transfer数组，退款查询读数据库。旧数据先用`var/across/bin/across-data migrate-transfers`本地迁移（需暂停同库writer，命令不联网），随后恢复实时服务；`prune-responses`可并发只读核验并清理旧response，包括未被引用的旧请求。未完整替代的旧日志、未迁移退款及两分钟内的请求暂留，compact capture/finality元数据和quota保持。history继续disabled；不重新补首次启动前的历史。修改及实际验收见[本轮记录](../research/2026-10-04-across-no-raw/validation.md)。
 
-命令、RPC环境变量、恢复方式与实测限制见[Across实现说明](across-stablecoin-data-implementation.md)。访问 Base/Arbitrum 公开 RPC 和 `api.binance.com` 行情。实时轮询配置目标1秒；先前90秒测试完整循环约6–14秒，本次启动追赶阶段约12–36秒，需按probe真实时间和coverage评价样本。默认 Arbitrum RPC 对部分历史合约状态返回 `historical state ... is not available`，对应 capture 保留 raw/partial，不伪造完整解码。两个进程仍共享公共 RPC 的访问额度，独立库只隔离 writer 和查询范围。服务不与已有行情、DEX或Reserve采集器共用业务表。
+2026-10-05用户明确放弃已核验的Arbitrum旧历史状态解码缺口。30段共35,257块所涉及的993条partial日志capture追加新revision与reason标记`repair_abandoned=user_requested_historical_state_unavailable`，自动partial补采跳过，重启后仍生效；其他缺采、新块、收据和最终性继续按原逻辑处理。状态仍partial，原失败原因及事实/成员/锚点/最终性保留，覆盖统计仍显示缺口。02:15:25北京时间部署跳过逻辑，磁盘与进程SHA256为`042ea8b0e6b13937575d1d81d295a95c6df7b520802074858d94883d45311ed2`，两链随后实际落库，history保持disabled。修改和验证见[记录](../research/2026-10-05-across-abandon/validation.md)。
+
+备份和恢复须同时保留每库七表、相应完整evidence目录、manifest及其引用的verified实现文件。恢复前停止对应unit并验证成员/归档摘要，不删除源错误证据或重写旧capture。启动时旧partial/费用unknown安排新capture尝试补齐；暂缺历史状态/未知实现仍保持unknown，换RPC应由用户配置并重新验证，不能静默回退到latest。当前无需私钥或真实账户凭据。
+
 ## LST 独立研究采集（2026-10-02 UTC）
+
+**当前恢复验收（2026-10-05 11:22 北京时间）：** 已部署mvp11，active/running、enabled、NRestarts0。机器10:42重启后LST自动启动，但日志积压且游标曾领先实际DB覆盖8块；本轮人工补1852块，修改恢复为从保留Start重建完整连续前缀，自动补回断口并验证重启后跳过已补大段。Next26123313与DB连续覆盖一致，11:19、11:21两轮四腿ok/fresh/canonical；48个本次boot后批次校验和原文清理通过。旧2296块缺口仍低速补，停机报价不能重建，资金费实际结算已补回。程序SHA256 `77b5545b6ac6d74f5e3b9730b5d5a247ba5b28c75dfb29fdb4f6c4abb2536a59`，原unit/路由/端点/限速不改，不建旧程序备份。见[修复记录](../research/2026-10-05-lst-reboot-check/report.md)。
+
+**最近健康检查（2026-10-04 22:27 北京时间）：** 同一mvp10进程持续运行、NRestarts0、enabled；最近15分钟7轮调度报价四腿完整及时、canonical，25个近期批次回读校验与原文清理通过。新段22:24:52追上当时finalized，旧缺口尚未补齐。此前容量不足及零星失败保留原状态，孤立后台数据库超时后落库和最终性继续，没有停止服务或改路由。具体窗口、失败分母与覆盖核验见[晚间检查](../research/2026-10-04-lst-evening-check/report.md)。下段为启动时点记录。
+
+**当前状态（2026-10-04 14:39 北京时间）：** 按用户指令于14:35:16启动现有mvp10，active/running、enabled、NRestarts0；已确认新的market、funding、logs实际落库，4个新批次成员摘要和结构验证通过，成功落库后临时原文已清理。首轮25万USDT链上三腿ok、十档对冲容量不足，正确保持不可用；日志从原游标连续推进16块，未宣称全历史完整。程序SHA256 `24c812ec0a0f5cd7f3d1f7a38f4327f68f32661b224f65f26855dbbe541c0b6b`，原unit、端点、路由、额度和持久状态未改。13:31:19是此前助手手动停止记录，三轮初始化各一次超时不证明持续网络中断；程序本来会退避重试。此次短时恢复及原文清理核验见[启动记录](../research/2026-10-04-lst-restart/report.md)，此前代码与清理测试见[修改记录](../research/2026-10-04-lst-response-retention/report.md)。
+
+**mvp9恢复验收（2026-10-03 17:13 UTC，历史记录）：** 16:52:36 UTC（北京时间2026-10-04 00:52:36）按用户“恢复”部署mvp9，唯一MainPID2196152、active/running、enabled、NRestarts0。BlockPI继续当前报价，MEV Blocker负责赎回日志与历史queue实现状态；固定新段Start26113044每分钟至多8块，原live-logs.gob只依据真实落库补旧缺口，每5分钟至多32块且让实时任务优先。每host20RPC/min、响应后2秒、日志8次/5分钟；不清旧预约或cooldown、不改路由。一笔真实request与claim已通过有限双来源读取落库；随后固定窗口5轮四腿完整及时、9片新日志连续覆盖65块，后台旧缺口已真实推进Next26105776；新Next26113109追上当时finalized26113108。一次Binance预检超时自动恢复，旧整体缺口仍不完整。原始证据、输入/binary/unit SHA及后续验收见[本轮记录](../research/2026-10-04-lst-logs-restore/report.md)。
 
 已创建 `crypto_market_info_lst` 七张专项表及 instrument，程序 `var/lst/lst-data`，工作目录仓库根。状态与限速冷却在 `var/lst/state`，原始公开证据在 `var/lst/evidence`。2026-10-03 02:36:08（北京时间）按用户要求安装并启动用户级 `crypto-market-info-lst.service`，启用开机启动；用户管理器已有 `Linger=yes`。unit 源文件为 [crypto-market-info-lst.service](../deploy/systemd/crypto-market-info-lst.service)，安装在 `/home/ubuntu/.config/systemd/user/`，只运行 `watch`，不启动 30/60 日历史回补。补采仅用于断线后的增量日志缺口，旧状态目录和持久限速沿用。失败后等待 60 秒重启，日志进入 journal。
 
-启动核验已连续写入三轮市场批次（24 条报价观测，其中四条完整且及时）和六条资金费观测。首轮本地发送预约过期被标 unknown，后两轮协议状态恢复 ok；服务未重启。实时日志补缺仍被 dRPC 拒绝，保留 failed、不推进覆盖。有限核验详见[常驻启动记录](../research/2026-10-03-lst-drpc/service-startup.md)。
+2026-10-03 18:09:36 UTC（北京时间2026-10-04 02:09:36）完成用户授权的一次性空间清理：删除36,823份已落库旧证据原文及7份旧程序备份，实际释放约292 MiB；未保留原文副本。保留数据库、当前程序、配置/游标/冷却/待写状态、近期或未证明已提交的数据和必要核验/错误样本。清理期间服务未停止，MainPID2196152、NRestarts0、程序SHA不变；清理后历史report仍通过成员摘要校验，且新market批次继续提交。已删除原文不能再按hash回读；本次没有启用自动清理，详情见[清理记录](../research/2026-10-04-lst-cleanup/report.md)。
+
+初次启动核验（旧版本，非本轮验收）已连续写入三轮市场批次（24 条报价观测，其中四条完整且及时）和六条资金费观测。首轮本地发送预约过期被标 unknown，后两轮协议状态恢复 ok；服务未重启。实时日志补缺仍被 dRPC 拒绝，保留 failed、不推进覆盖。有限核验详见[常驻启动记录](../research/2026-10-03-lst-drpc/service-startup.md)。
 
 2026-10-03（北京时间）按用户选择将此 LST CLI 的默认 RPC 改为 `https://eth.drpc.org`，无需注册或 API key。`LST_RPC_URL` 仍可覆盖；共享状态目录、排他锁、启动节奏和回补限速沿用，验证见[切换记录](../research/2026-10-03-lst-drpc/validation.md)。
 
-dRPC 的一次实时 `watch --once` 已落库协议状态和报价，但该免费端点按高度查询日志返回 HTTP 400 / code 35，512 块历史回补未通过。程序保存错误与 failed 范围，不把拒绝当作成功空范围，不据这条不一致的范围提示反复拆分重试；未运行完整 30/60 日回补。
+旧版 dRPC 的一次实时 `watch --once` 已落库协议状态和报价，但该免费端点按高度查询日志返回 HTTP 400 / code 35，512 块历史回补未通过。程序保存错误与 failed 范围，不把拒绝当作成功空范围，不据这条不一致的范围提示反复拆分重试；未运行完整 30/60 日回补。
+
+2026-10-03 06:16:46 UTC 已部署 `lst-mvp-2`，同一 `eth.drpc.org`、原状态目录和冷却，unit 显式 `LST_LOG_MODE=receipts`；非空区块 26106948 的全部收据与 blockHash 日志已有限核验。每轮轮转一个金额的 A/B 两条路线，六条未调度观测保持空值。启动预检在 06:19:28 UTC 记录 `code_curve: transport_http_timeout`；按用户有网络故障即停止、不改路由的要求停止服务，确认 `inactive/dead`、`MainPID=0`、`NRestarts=0`。本次没有新增市场/日志批次，持久 Next 仍为 26105616；连续生产验收未通过。修复、测试、只读数据库核验和归档证据见[本轮记录](../research/2026-10-03-lst-repair/report.md)。这是此前停止状态，后续同机复查见[网络复核](../research/2026-10-03-lst-network-recheck/report.md)。
+
+用户要求恢复后，07:03:54 UTC 启动，首次日志覆盖成功推进至 26105623；随后过去 60 秒共 41 次 RPC 的轮次出现真实 429，来源进入原持久冷却。07:38:20 UTC 部署 `lst-mvp-3` 并启动，该次启动 active/running、enabled、无自动重启；二进制 SHA-256 `375fb00eee7975cda359d51bfc025b2fe35bf3dfc7e5ac94e94a03e46d1cbf82`。unit 显式 32 RPC/滚动分钟、2m 市场周期、一条路线/轮，另一分钟串行尝试最多两段八块 receipts；额度与冷却跨重启保留。限速是本程序保守配置，不等于供应商保证额度，也不约束同出口其他进程。服务继续使用 eth.drpc.org，未修改路由。07:50:19.743042..07:50:24.747729 UTC 的 Binance 十档请求发生真实 `transport_http_timeout`，本地观察在07:50:25.843994 UTC按用户约束停止服务。当前 inactive/dead、MainPID=0、NRestarts=0，保留enabled；未继续外部探测。已提交连续日志26105624..26105687，共64块，含一条请求与一条领取；失败26105688..26105695未覆盖，Next=26105688。另有轮前额度等待源码 `lst-mvp-4` 经本地测试和审核，尚未替换已安装二进制，恢复前须先部署。最新落库、剩余报价问题、完整证据见[启动修复记录](../research/2026-10-03-lst-live-restart/report.md)。
+
+2026-10-03 10:35:52 UTC（北京时间18:35:52）已安装并启动最终 `lst-mvp-7`，MainPID2111383、active/running、enabled、NRestarts=0，二进制SHA256 `b8aa795efe98378f4379ae4a10727c7c8c859753f044e990804e3a1b01d7b5b7`。沿原eth.drpc.org/fapi.binance.com与原state/cursor，不修改路由。此前mvp6最后429的持久冷却10:33:54自然到期；本版Protocol13视图合为一条已pin运行时代码的Multicall3只读请求、核验执行高度/时间；unit20RPC/滚动分钟、响应后2s、启动gap10s、市场2m单路线。初始化20s head窗口对冷却作明确诊断，60s再试。receipts只在原始queue日志非空的真实块核验历史实现；空日志覆盖不声明历史implementation。live发送前额度不足可收束在完全核验的真实前缀，再canonical/Commit/按实际To推进；任何真实source/解析/身份失败整片零事实/Next不动。已通过最终全包race78.257s、vet及独立审核；实际预检/持续采集验收见[本轮记录](../research/2026-10-03-lst-running/report.md)，不能仅凭active认定正常。
+
+
+以上是历史停止记录。用户要求再次恢复后，08:18:11 UTC启动mvp4，预检16RPC后收到HTTP429，原gate冷却至08:48:51 UTC。08:47:06 UTC已安装并启动mvp5，二进制SHA256 `af121d3bb626f934d38896beaa4b8471efbc647eeea65a37482fa721ea8cf654`，MainPID2081638，active/running、enabled、NRestarts=0，冷却未清除。unit增加 `LST_RPC_STARTUP_GAP=10s`，报价轮前等待持久NextAt和额度，CEX时序及陈旧原因诊断已修复，第二段receipts按剩余额度缩片。最终race49.502秒、vet及独立审核通过；真实预检和持续落库验收进行中，不能仅凭active认定数据正常，详见[本轮运行修复](../research/2026-10-03-lst-running/report.md)。
 
 ```bash
 systemctl --user status crypto-market-info-lst.service
-journalctl --user -u crypto-market-info-lst.service -n 30 --no-pager
+journalctl --user-unit=crypto-market-info-lst.service -n 30 --no-pager
 var/lst/lst-data report --out var/lst-reports/latest
 ```
 
@@ -349,11 +384,16 @@ var/lst/lst-data report --out var/lst-reports/latest
 
 数据健康检查使用[只读 SQL](lst-data-health.sql)：最近 15 分钟 market 应持续产生观测，协议/报价可用性按成员状态检查，`partial` 不代表所有成员无效。增量日志覆盖只认 complete/canonical/committed；失败范围与资金费重叠采样不作为新增覆盖或重复现金流。head 观测不会立即进入历史报告。升级、配置覆盖和状态备份见[维护说明](lst-redemption-data-implementation.md#维护配置与恢复)，不要删除状态目录来绕过冷却。
 
+
+
+
 ## JustLend keeper 独立研究采集（2026-10-03）
 
-按用户要求已启用常驻用户服务 `crypto-market-info-justlend-keeper.service`，2026-10-03 03:02:31 Asia/Shanghai 首次启动，真实扩展租赁事件修复后03:58:11恢复，检查为 active/running、NRestarts=0。独立库 `crypto_market_info_justlend_keeper` 的五表已建；不接入主盘口 collector。当前二进制 SHA-256 为 `4637bf2cfdd97c572e0b5188674f8d3d8b17e9547466b28f6b1e7d42ed6eb9ce`。四条初版无法跨进程核验的报价提交已备份后撤回，保留全部原值及证据；实际新状态以现场查询为准。
+当前版本（2026-10-04 02:09:06北京时间启动）已去除请求/响应/summary文件归档：正常采集内存严格解析后直接落库，后台补查及export/report只读DB。七表包括新增jl_keeper_index_page，3244旧成功页进度已本地迁移，旧六表行数/内容指纹不变；state预算/游标保留。实际binary SHA256为480b8d916a21bf2bf013c55a2b954444fbf2d85ed2cac1865dba0c58295a7b47，原unit/路由/限速不改，自启动保留。旧evidence及其硬链接备份已清理，正常目录不存在时采集/后台/30天导出均验证通过。详细范围及持续运行记录见[本轮验证](../research/2026-10-04-keeper-no-raw/validation.md)和[独立审核](../discuss/0019-justlend-keeper-no-raw-review.md)。
 
-二进制在仓库 `var/justlend-keeper/bin/justlend-keeper-data`，配置 `config/justlend-keeper-tron.json`；状态与原始证据分别在 `var/justlend-keeper/state/`、`var/justlend-keeper/evidence/`。仓库 unit 已复制到用户服务目录并 enable，已有 Linger=yes 使退出登录后继续运行。每次七天时限结束或失败后等60秒恢复，进度与预算保留。
+按用户要求已启用常驻用户服务 `crypto-market-info-justlend-keeper.service`，2026-10-03 03:02:31 Asia/Shanghai 首次启动；本次边界与报告修复后13:43:36恢复，修复验证版本14:13:14启动，14:33:36曾因两次transport_error停止；该停止判定过于敏感，用户明确要求恢复后，14:55:43（北京时间）已启动并恢复自启动，当前active/running、UnitFileState=enabled。独立库 `crypto_market_info_justlend_keeper` 初版五表已建（当前七表），不接入主盘口 collector。该次二进制 SHA-256 为 `c264480c1eb67456fe242ce1e2368c26f0dd21f9269e3e660bc473eaa9d0b182`（最终报告优化版已安装并实际运行）；同目录其他模块同时维修，使用已提交依赖加keeper补丁的独立快照构建，只安装keeper程序。先前四条无法跨进程核验的报价提交保留原撤回状态，本次不改旧事实／摘要。实际服务、游标和验证证据见[修复记录](../research/2026-10-03-keeper-repair/validation.md)。
+
+二进制在仓库 `var/justlend-keeper/bin/justlend-keeper-data`，配置 `config/justlend-keeper-tron.json`；状态在 `var/justlend-keeper/state/`；旧原始归档已按2026-10-04策略清理，正常运行不依赖evidence目录。仓库 unit 已复制到用户服务目录并 enable，已有 Linger=yes 使退出登录后继续运行。每次七天时限结束或失败后等60秒恢复，进度与预算保留。
 
 ```bash
 systemctl --user status crypto-market-info-justlend-keeper.service
@@ -361,8 +401,62 @@ journalctl --user -u crypto-market-info-justlend-keeper.service -n 30 --no-pager
 var/justlend-keeper/bin/justlend-keeper-data report --days 30
 ```
 
-PublicNode `tron-rpc.publicnode.com` 承担只读节点数据，事件分页仍来自 `api.trongrid.io`，TRXUSDT来自 `api.binance.com`。第一请求等五秒，前五分钟全局至少五秒/次，此后至少一秒/次；TronGrid及后台请求仍至少五秒/次，单请求在途，每日总上限40,000次。初始化 Rent/Return 最多60页和固定50样本，watch不暗中回补30日Liquidate历史。429保存来源冷却，401/403保存停用；不通过重启清掉状态。
+PublicNode `tron-rpc.publicnode.com` 承担只读节点数据，事件分页仍来自 `api.trongrid.io`，TRXUSDT来自 `api.binance.com`。第一请求等五秒，前五分钟全局至少五秒/次，此后至少一秒/次；TronGrid及后台请求仍至少五秒/次，单请求在途，每日总上限40,000次。初始化 Rent/Return 最多60页和固定50样本；unit显式启用 `--history-days 30`，生命周期事件追上后按一天一个窗口后台回补，冻结区间不随重启滚动。429保存来源冷却，401/403保存停用；不通过重启清掉状态，不自动改路由。
 
-不要再手动启动一份采集器。恢复来源前先停止此unit，完成后重新start；report只读可以同时执行。历史backfill与watch共用状态时禁止带另一模式的待办切换，单纯停止unit不能排空watch队列，当前没有自动排空命令。模式切换限制、配置、备份及[数据健康SQL](justlend-keeper-data-implementation.md#数据健康检查与排查)见[实现说明](justlend-keeper-data-implementation.md)，独立[代码审核](../discuss/0017-justlend-keeper-data-code-review.md)与[真实验收](../research/2026-10-03-keeper-implementation/validation.md)。
+本轮两笔非停服时段的约10秒transport_error不足以证明持续网络故障；按用户后续明确指令已恢复采集及自启动。偶发传输失败保存证据并按现有机制重试，不因两次零星失败停止服务或取消自启动；持续采集不可用时再报告。未更换端点或修改路由。不要再手动启动一份采集器。恢复来源前先停止此unit，完成后重新start；report只读可以同时执行。历史backfill与watch共用状态时禁止带另一模式的待办切换，单纯停止unit不能排空watch队列，当前没有自动排空命令。模式切换限制、配置、备份及[数据健康SQL](justlend-keeper-data-implementation.md#数据健康检查与排查)见[实现说明](justlend-keeper-data-implementation.md)，独立[代码审核](../discuss/0017-justlend-keeper-data-code-review.md)与[真实验收](../research/2026-10-03-keeper-implementation/validation.md)。
 
 04:07首批实际验收已有9条事件、9份收据、5条只读模拟、45条报价/费用观测，正式独立报告成员及原始证据核验通过。模拟均为TVM revert，source请求成功不被当作合约执行成功。启动五分钟51次已回读请求均HTTP200，最小间隔5.54603秒；其余固定样本继续经统一gate恢复核验。
+
+### Reserve 2026-10-03 修复运行
+
+实时 user unit 保留 PublicNode 来源，drop-in `~/.config/systemd/user/crypto-market-info-reserve.service.d/repair.conf` 指定 `watch --simulate-every=5m --from=26109689 --reconcile-manifest=0x98cf5cc757bbbe69d9cc8219210cad0490ae70e6a19a4531f6f6aa74afc3a4a9`，`RestartPreventExitStatus=4`。明确网络故障停止后先看归档诊断并联系用户，不改路由；普通来源限流由程序冷却，冷却元数据在 `var/rpc-state`，重启/换库不得删除它。
+
+本轮独立临时历史 unit 使用 MEV Blocker、隔离历史库/证据。任务名与完整验收结果记录在 [修复记录](../research/2026-10-03-reserve-repair/report.md)，不要依赖临时 unit 在成功退出后仍可重启。固定窗口续跑命令见 [实现说明](reserve-data-implementation.md)。历史与实时不共享 writer.lock，但必须协调同 hostname 的来源额度。
+
+旧 binary 已备份 `var/reserve/reserve-data.v1-20261003`；只替换/restart Reserve，其他会话正在改的 Across/LST/keeper 服务不属于本次部署。回滚时保留新六表、证据和配额目录，停止服务后原子替换二进制；回滚旧版会重新引入密集复核/限流问题，不能把旧参数当现行参数。联合模拟表随六表一起备份；它的 canonical/finality 必须通过 quote/capture 关联读取。
+
+2026-10-03 16:57:13（北京时间，08:57:13 UTC）完成源采集/核验拆分升级并启动；active/running、enabled、NRestarts=0。新二进制SHA256为0749ecd085f5b187150bc88c424cd7a7896e0adc8a79b74a79e50342cb60009c。专用库新增jl_keeper_indexed_event及Capture兼容列，共六表；源页提交独立推进，后台父子核验不阻塞抓取。export及兼容report只输出数据CSV与metadata，不运行获利分析。原state/五表/证据/旧binary已备份，预算与来源状态保留、路由和unit参数不改。实际持续游标、非空索引、父子批次、导出及请求间隔见[本轮验收](../research/2026-10-03-keeper-collection-split/validation.md)。
+
+### Reserve 2026-10-04 存储修正
+
+现行 `reserve-r5-mvp-3`，DFX manifest `0xfb3914d4f2dbc4a357a45ca7aa7876cc78e82feca991a8a77d46746acc8ba332`。只在内存接收、解析和校验RPC；事实写七张定类型表，正文不归档。回执的完整调用参数（calldata）和全部日志在 `reserve_receipt_data`，查询/补采从数据库读取；源哈希、链锚点、旧成员摘要和首次可见时间保留。静态版本配置/ABI/模拟产物在 `/home/ubuntu/crypto-market-info/var/reserve/rules`，约232KiB；四个旧 evidence 目录均只剩 writer.lock。`var/rpc-state` 持久配额/冷却保留。
+
+2026-10-04 02:17:07 CST仅停止 Reserve 服务，四库981旧回执迁移后于02:23:48 CST启动新版。二进制实际SHA256 `4a770096440460a0580a0d475df42084bb4d85ffa6423d152dcf420816a0bfa8`，已核对 `/proc/<pid>/exe` 与安装文件。drop-in 现为 `watch --simulate-every=5m --from=26113531 --reconcile-manifest=0x04af64a255a41d2e2182eb44cc8148338ee62e7fbc5e37a43eac86a73ef93abc`；保留 `RestartPreventExitStatus=4`，路由/RPC来源不改。停机区间日志已自动补齐；旧 v2 尾部正常复核最终性。
+
+本轮删除209,324份运行归档gzip，文件正文压缩后合计7,144,459,564字节，已保留独立静态规则；不备份原文。历史研究目录的既有排障记录未批量删除。删档后从只读数据库逐一验证982回执（981迁移+1实网新抓），33,331条完整回执日志；30日原窗口报告一致。验收检查时 active/running、enabled，本次启动NRestarts=0，11/11完整状态及报价、61/61完整日志范围、128连续高度、零响应文件。该状态为短时现场核验，不代表长期稳定率。
+
+迁移命令需要同目录 writer.lock，不能在运行中的watch旁绕过锁。日常核查使用 readonly `report`；每个旧 manifest 也可用 `--manifest-hash` 检查。备份七表、静态rules、公开配置、构建和unit参数；不要回滚到依赖原文的v1/v2。明确网络故障仍停下通知用户；429仍按来源冷却。修改、实网验证及测试限制见[验收记录](../research/2026-10-04-reserve-storage/report.md)。
+
+交付前02:47:12 CST再次只读核对：Reserve同一进程保持active/running、NRestarts=0，17/17轮完整状态和报价、93/93完整日志范围，167连续高度，四目录零响应文件；见[最后核验](../research/2026-10-04-reserve-storage/last-check.json)。
+
+### Reserve 2026-10-04 服务器重启核查
+
+服务器12:33:55 CST重启，ClickHouse12:34:26、Reserve及其他采集服务12:35:04自动恢复；active/running、enabled、NRestarts=0，Reserve运行binary SHA保持不变。12:47抽查重启后9/9完整状态/报价采样，每批13报价；最新12:46:35落库。旧982回执逐笔校验及215,066高度/1,946日志/957回执的原30日历史报告通过，四目录仍零响应文件。
+
+日志不完全正常：PublicNode `eth_getLogs`反复403/-32602，明确 `rpc_archive_auth_required`；积压在重启前已存在，不是整体网络不通。本次恢复后已推进465高度至26116373，已完成并集内部连续，但相对最新报价仍落后314块、约63分钟；现有watch继续回补。不要把服务running或报价完整当成日志已追平。本轮只读检查，未重启服务、额外回补、修改来源或路由；完整证据见[重启核验](../research/2026-10-04-reserve-reboot/report.md)。
+
+### Reserve 2026-10-05 请求优化
+
+01:39:04 CST部署请求优化，PID223487，安装和运行SHA256同为`8a5604db1a0bd055a2822fdc3b93ab8b2e0aaf3db7dd9dc296ae363260a39978`。保留原manifest、RPC、unit及报价/模拟采样规则，响应正文仍不保留。普通head轮询只读latest，safe/finalized按原分钟复核及链冲突需要读取；失败范围不因授权/限流而缩片，成功后恢复512批量，授权拒绝每5分钟复测且不跳游标。仅Reserve主动重启一次，路由未改。
+
+前两片实际完整补入1024块、2日志/1新回执，第三片512块仍遇来源archive授权限制，保留missing等待冷却；不能仅凭批量恢复就宣称当前已追平。原报价节奏持续落库、全20笔回执数据库摘要检查通过。后续运行状态及严格连续覆盖验收见[本轮记录](../research/2026-10-05-reserve-cadence/report.md)。
+
+01:46:16现场：同一PID、NRestarts0；部署后6/6完整snapshot（78报价）、4联合模拟。01:45:10在约312秒后重试原512块范围仍为archive授权拒绝，没有缩片或跳游标。成功区间连续到26119712，相对最新完整报价26120573尚差861块、2小时52分48秒；来源限制尚未解除，不能把已补1024块说成全部补齐。
+
+### 期权2026-10-04持续运行修复
+
+23:59:51 CST原子替换主collector为SHA-256 `41059f71a06f0064dbb05db7ecbea9380aec350fd2871c3da9e6c8bb42265c0c`，PID201072。部署仅包含期权修复，沿用已安装unit，其他独立采集服务未重启。生命周期合批、丢失屏障主动确认、创建/open及epoch排序、目录状态证据刷新和退订ACK均通过新一轮独立复审。孤立真实公开候选3,090成员全部60秒回放通过；生产跨35分钟持续验证结果见[修复记录](arbitrage/strategies/arb-0009-options-sustained-repair.md)，不能把运行状态当作数据健康。
+
+2026-10-05 00:39:51完成40分钟真实生产核验：37个新计划生效分钟均提交全部预期成员/分片，最新3,094成员、97分片、pending=0；真实新C/P自动开始采集。00:30状态引用实际更新，00:38全量185,640秒回放通过。窗口有效成员秒99.64%，8次连接退役和两次采样迟滞的24,151无效成员秒如实保存并随后恢复；无状态证据、retry容量或writer错误。最终CEX5流各60秒，DEX继续推进，其他独立服务PID不变；实网瞬断根因及下一次真实到期的未观察边界保留在修复记录。
+
+### 2026-10-05 10:42服务器重启后核验
+
+10:50–11:08 CST检查六个数据库/采集服务均active/running、enabled并持续落库，自动重启计数0。Reserve运行SHA仍为`8a5604db1a0bd055a2822fdc3b93ab8b2e0aaf3db7dd9dc296ae363260a39978`；11:07严格只读报告确认26113531..26123372共9842高度日志/所需收据连续无缺口，停机后自动补入1986高度，无需手工补采。启动后17轮状态/报价完整、每轮13报价，24收据完整明细摘要通过，响应正文仍零留存。
+
+本次启动隔离457个全部文件0字节的空parts。452个有现存合并块覆盖，24个对应健康块逐块校验全部通过；另外5个probe尾块以全量capture承诺数量核对，Across/keeper已提交成员缺失均0。空块继续隔离，没有强挂或删除。停机前3094、重启后3104个期权及五路CEX完整分钟全部实际60秒回放通过；10:50有一秒采样迟滞如实标无效，11:01–11:04全量分钟已恢复60/60。未发现需人工重建的本次已提交数据缺失；不撤销已有九月坏块/历史缺口记录。
+
+主DEX旧区块仍在自动补采，Across Arbitrum仍有既有历史状态来源限制；不能据六个服务running宣称全部历史完整。停机期间的实时盘口及报价不可事后还原。本轮没有主动重启、改来源/路由、另起writer；同期LST维护改变PID，11:06已恢复新市场批次。详细时间、查询、空块清单和验证边界见[本次核验](../research/2026-10-05-reserve-reboot/report.md)。
+
+11:22 CST 增补检查与修复：keeper 虽无已提交成员数量缺失，扫描覆盖仍发现停机前的三个 30 秒断口。已正常停止原服务、取得原锁后用原 Collector 定点补采，三片无事件且分页穷尽，来源哈希、成员摘要及窗口连续性核验通过；11:21:16 已恢复 enabled 的常驻服务，实时游标和额度保留。同期 LST 人工补入1852块，新版恢复逻辑又自动补回8块持久游标领先数据库的断口，实际续采与成员验证通过。七个服务均 active/running、enabled；五路 CEX 最新分钟各60/60，期权97分片/3104成员，停机前后完整分钟均已实际回放。未改路由/来源或取消自启动。
+
+本次 CEX 04:29–10:44 CST 共376个分钟缺失，无法精确事后补回；不要填入重启后的盘口冒充历史。共享 ClickHouse 的另一个项目表 `crypto_grid_trading.quality_events_raw` 仍有旧分片 `UNKNOWN_CODEC`，本轮只定位并记录，没有删改该项目数据。Across 的部分 Arbitrum 历史状态及旧 LST 缺口仍按原限制保留。操作、实际查询、补采程序和完整 race 回归见[重启核查与修复](../research/2026-10-05-reboot-recovery/report.md)。

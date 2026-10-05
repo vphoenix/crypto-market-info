@@ -32,6 +32,9 @@ type Prepared struct {
 
 func Prepare(ctx context.Context, c *deribit.Client, cfg Config, sink Sink) (Prepared, error) {
 	var p Prepared
+	if len(cfg.Symbols) == 0 {
+		return p, fmt.Errorf("automatic options collection requires RunCatalog; Prepare is for an explicit fixed run")
+	}
 	plan, err := Discover(ctx, c, cfg)
 	if err != nil {
 		return p, err
@@ -97,6 +100,13 @@ func Run(ctx context.Context, cfg Config, sink Sink, logger *slog.Logger) error 
 	}
 	if logger == nil {
 		logger = slog.Default()
+	}
+	if len(cfg.Symbols) == 0 {
+		cs, ok := sink.(CatalogSink)
+		if !ok {
+			return fmt.Errorf("catalog sink required")
+		}
+		return RunCatalog(ctx, cfg, cs, logger)
 	}
 	c := deribit.NewClient(cfg.RESTURL, cfg.WSURL)
 	for ctx.Err() == nil {

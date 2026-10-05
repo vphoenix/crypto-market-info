@@ -26,6 +26,8 @@ type Scan struct {
 	MaxPages    uint32
 	Done        bool
 	Failed      bool
+	Failures    uint32
+	RetryAt     time.Time
 }
 type Candidate struct {
 	Ambiguous  bool
@@ -53,6 +55,9 @@ type State struct {
 	BackfillActive bool
 	BackfillFrom   time.Time
 	BackfillTo     time.Time
+	HistoryFrom    time.Time
+	HistoryTo      time.Time
+	HistoryCursor  time.Time
 
 	Version         uint32
 	Target          string
@@ -83,6 +88,9 @@ type State struct {
 	RescanDay       string
 	LastSolidNumber uint64
 	LastSolidHash   string
+	IndexingEnabled bool
+	EvidenceCursors map[string]time.Time
+	NextEnrichment  time.Time
 }
 
 func NewState(target string, c Config) State {

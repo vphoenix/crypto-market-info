@@ -25,6 +25,7 @@ func derivativeIntegrationClient(t *testing.T) *Client {
 		t.Skip("set CLICKHOUSE_INTEGRATION=1 for isolated derivative database tests")
 	}
 	db := fmt.Sprintf("crypto_options_it_%d", time.Now().UnixNano())
+	t.Logf("isolated derivative database=%s", db)
 	c, err := Open(context.Background(), Config{Addresses: []string{envOr("CLICKHOUSE_TEST_ADDR", "127.0.0.1:9000")}, Database: db, MaxAttempts: 1, WriteTimeout: 20 * time.Second})
 	if err != nil {
 		t.Fatal(err)

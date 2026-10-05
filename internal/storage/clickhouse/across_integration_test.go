@@ -15,9 +15,9 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/across"
 )
 
-func TestAcrossSchemaOnlySevenTypedTables(t *testing.T) {
+func TestAcrossSchemaOnlyEightTypedTables(t *testing.T) {
 	ss, e := AcrossSchemaStatements("crypto_across_test")
-	if e != nil || len(ss) != 7 {
+	if e != nil || len(ss) != 8 {
 		t.Fatal(len(ss), e)
 	}
 	for _, s := range ss {
@@ -182,5 +182,78 @@ func TestAcrossIntegrationUInt256NullDecimalRetryRevisionAndMembership(t *testin
 	}
 	if _, e = c.AcrossBatch(ctx, caps[0]); e == nil {
 		t.Fatal("committed missing member accepted")
+	}
+}
+
+func TestAcrossIntegrationBulkChunkingDedupAndPerCaptureIntegrity(t *testing.T) {
+	c := acrossIntegration(t)
+	ctx := context.Background()
+	full := acrossFixture(t)
+	// Two identical physical inserts must still yield one exact frozen member.
+	for range 2 {
+		if e := c.WriteAcrossBatch(ctx, full); e != nil {
+			t.Fatal(e)
+		}
+	}
+	caps := []across.Capture{full.Capture}
+	for i := 1; i <= acrossReadCaptureLimit; i++ {
+		b := across.Batch{Capture: full.Capture}
+		b.Capture.CaptureId = across.ID(fmt.Sprintf("bulk-empty-%d", i))
+		across.Seal(&b)
+		caps = append(caps, b.Capture)
+	}
+	if e := c.dexInsert(ctx, "across_capture", acrossColumns(reflect.TypeOf(across.Capture{})), acrossRows(caps[1:])); e != nil {
+		t.Fatal(e)
+	}
+	loaded, e := across.LoadBatches(ctx, c, caps)
+	if e != nil || len(loaded.Batches) != 513 || len(loaded.Errors) != 0 || loaded.Stats.SQLQueries == nil || *loaded.Stats.SQLQueries != 12 || loaded.Stats.Chunks != 2 {
+		t.Fatal(loaded.Stats, len(loaded.Batches), loaded.Errors, e)
+	}
+	if across.ID(loaded.Batches[full.Capture.CaptureId]) != across.ID(full) {
+		t.Fatal("bulk changed UInt256/null/Decimal facts or frozen capture")
+	}
+	// Extra rows in a table declared empty and missing committed members both
+	// remain capture-local errors; other captures survive the same bulk read.
+	extra := full.Deposits[0]
+	extra.CaptureId = caps[1].CaptureId
+	if e = c.dexInsert(ctx, "across_deposit", acrossColumns(reflect.TypeOf(across.Deposit{})), acrossRows([]across.Deposit{extra})); e != nil {
+		t.Fatal(e)
+	}
+	if e = c.conn.Exec(ctx, "ALTER TABLE "+c.table("across_fill")+" DELETE WHERE capture_id=? SETTINGS mutations_sync=2", full.Capture.CaptureId); e != nil {
+		t.Fatal(e)
+	}
+	loaded, e = across.LoadBatches(ctx, c, caps)
+	if e != nil || len(loaded.Errors) != 2 || loaded.Errors[full.Capture.CaptureId] == nil || loaded.Errors[caps[1].CaptureId] == nil || len(loaded.Batches) != 511 {
+		t.Fatal("bulk hid extra/missing members", len(loaded.Batches), loaded.Errors, e)
+	}
+	t.Logf("513 captures: %d SELECTs, %d chunks, SQL read %d us, total load+validation %d us", *loaded.Stats.SQLQueries, loaded.Stats.Chunks, *loaded.Stats.SQLMicros, loaded.Stats.TotalMicros)
+}
+
+func TestAcrossIntegrationReceiptTransfersCommitAndMissingMember(t *testing.T) {
+	c := acrossIntegration(t)
+	ctx := context.Background()
+	b := acrossFixture(t)
+	r := b.Receipts[0]
+	n := new(big.Int).Sub(new(big.Int).Lsh(big.NewInt(1), 256), big.NewInt(1))
+	b.Transfers = []across.ReceiptTransfers{{CaptureId: r.CaptureId, ChainId: r.ChainId, BlockNumber: r.BlockNumber, BlockHash: r.BlockHash, BlockTime: r.BlockTime, TxHash: r.TxHash, Token: strings.Repeat("u", 20), ReceiptSuccess: true, LogIndices: []uint32{0}, Senders: []string{strings.Repeat("s", 20)}, Recipients: []string{strings.Repeat("r", 20)}, AmountsRaw: []*big.Int{n}, AvailableAt: r.AvailableAt, PayloadHash: r.ReceiptPayloadHash}}
+	across.Seal(&b)
+	for range 2 {
+		if err := c.WriteAcrossBatch(ctx, b); err != nil {
+			t.Fatal(err)
+		}
+	}
+	got, err := c.AcrossBatch(ctx, b.Capture)
+	if err != nil || across.ID(got) != across.ID(b) {
+		t.Fatal("inexact transfers", err)
+	}
+	bulk, err := c.AcrossBatches(ctx, []across.Capture{b.Capture})
+	if err != nil || bulk.Errors[b.Capture.CaptureId] != nil || across.ID(bulk.Batches[b.Capture.CaptureId]) != across.ID(b) {
+		t.Fatal("bulk transfers", err, bulk.Errors)
+	}
+	if err := c.conn.Exec(ctx, "ALTER TABLE "+c.table("across_receipt_transfers")+" DELETE WHERE capture_id=? SETTINGS mutations_sync=2", b.Capture.CaptureId); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := c.AcrossBatch(ctx, b.Capture); err == nil {
+		t.Fatal("missing transfer set accepted")
 	}
 }

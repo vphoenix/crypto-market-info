@@ -13,15 +13,20 @@ import (
 )
 
 type Collector struct {
-	Manifest     Manifest
-	Readers      map[uint64]*Reader
-	Store        Store
-	Archive      ethereum.Archive
-	Prices       *Prices
-	captures     []Capture
-	loaded       bool
-	receiptQueue map[string]receiptTask
-	finalized    map[uint64]Block
+	Manifest           Manifest
+	Readers            map[uint64]*Reader
+	Store              Store
+	Archive            ethereum.Archive
+	Prices             *Prices
+	captures           []Capture
+	loaded             bool
+	receiptQueue       map[string]receiptTask
+	receiptDataMissing map[string]bool
+	finalized          map[uint64]Block
+	// Reconcile checks a bounded tail slice per call, persisting each proven group.
+	ReconcileLimit int
+	partialRepair  *partialRepairState
+	rawRepairNext  int
 }
 type receiptTask struct {
 	ChainID           uint64
@@ -90,7 +95,11 @@ func appendFacts(b *Batch, v Batch) {
 
 // CollectRange records raw coverage even when a deployment has no verified ABI.
 // A failed RPC range never returns a successful empty observation.
-func (c *Collector) CollectRange(ctx context.Context, chain, from, to uint64, mode, finality string) (Batch, error) {
+func (c *Collector) CollectRange(ctx context.Context, chain, from, to uint64, mode, finality string, networkContext ...context.Context) (Batch, error) {
+	rpcCtx := ctx
+	if len(networkContext) > 0 {
+		rpcCtx = networkContext[0]
+	}
 	r := c.Readers[chain]
 	if r == nil {
 		return Batch{}, errors.New("missing_chain_reader")
@@ -100,21 +109,21 @@ func (c *Collector) CollectRange(ctx context.Context, chain, from, to uint64, mo
 	b.Capture.Finality = finality
 	b.Capture.ExpectedTasks = 1
 	headers := []EvidenceHeader{}
-	a, e := r.Header(ctx, height(from))
+	a, e := r.Header(rpcCtx, height(from))
 	if e != nil {
 		return b, c.failed(ctx, r, &b, headers, e)
 	}
 	headers = append(headers, evidenceHeader(a))
 	z := a
 	if to != from {
-		z, e = r.Header(ctx, height(to))
+		z, e = r.Header(rpcCtx, height(to))
 		if e != nil {
 			return b, c.failed(ctx, r, &b, headers, e)
 		}
 		headers = append(headers, evidenceHeader(z))
 	}
 	anchorCapture(&b.Capture, a, z)
-	logs, e := r.Logs(ctx, from, to)
+	logs, e := r.Logs(rpcCtx, from, to)
 	if e != nil {
 		return b, c.failed(ctx, r, &b, headers, e)
 	}
@@ -135,7 +144,7 @@ func (c *Collector) CollectRange(ctx context.Context, chain, from, to uint64, mo
 		}
 	}
 	if len(missing) > 0 {
-		hh, err := r.Headers(ctx, missing)
+		hh, err := r.Headers(rpcCtx, missing)
 		if err != nil {
 			return b, c.failed(ctx, r, &b, headers, err)
 		}
@@ -145,13 +154,17 @@ func (c *Collector) CollectRange(ctx context.Context, chain, from, to uint64, mo
 		}
 	}
 
-	abi, identityErr := r.VerifyImplementation(ctx, a)
+	abi, identityErr := r.VerifyImplementation(rpcCtx, a)
 	endABI, endErr := abi, identityErr
 	if z.Number != a.Number {
-		endABI, endErr = r.VerifyImplementation(ctx, z)
+		endABI, endErr = r.VerifyImplementation(rpcCtx, z)
 	}
 	if identityErr == nil && (endErr != nil || endABI != abi) && len(upgrades) == 0 {
-		identityErr = errors.New("implementation_range_mismatch")
+		if endErr != nil {
+			identityErr = fmt.Errorf("implementation_range_mismatch: %w", endErr)
+		} else {
+			identityErr = errors.New("implementation_range_mismatch")
+		}
 	}
 	if mode == "live" && !fresh(Now(), z.Time, c.Manifest) {
 		b.Capture.CaptureMode = "catchup"
@@ -170,7 +183,7 @@ func (c *Collector) CollectRange(ctx context.Context, chain, from, to uint64, mo
 		revision := abi
 		idErr := identityErr
 		if len(upgrades) > 0 {
-			revision, idErr = r.VerifyImplementation(ctx, h)
+			revision, idErr = r.VerifyImplementation(rpcCtx, h)
 		}
 		if idErr != nil {
 			b.Capture.UnknownEventCount++
@@ -221,7 +234,7 @@ func (c *Collector) CollectRange(ctx context.Context, chain, from, to uint64, mo
 		b.Capture.Reason = "implementation_unknown: " + identityErr.Error()
 	}
 	// Re-check the branch after all decoding/state work; no orphaned range commits canonical.
-	after, err := r.Headers(ctx, []uint64{from, to})
+	after, err := r.Headers(rpcCtx, []uint64{from, to})
 	if err != nil {
 		return b, c.failed(ctx, r, &b, headers, err)
 	}
@@ -263,13 +276,13 @@ func (c *Collector) collectSplit(ctx context.Context, chain, from, to uint64, mo
 		return nil, e
 	}
 	// Only bounded log/result errors warrant smaller ranges. Storage failure stops.
-	if b.Capture.Status != "error" || b.Capture.Committed == false {
+	if b.Capture.Status != "error" || b.Capture.Committed == false || !splitLogError(e) {
 		return nil, e
 	}
 	mid := from + (to-from)/2
 	left, e := c.collectSplit(ctx, chain, from, mid, mode, finality)
 	if e != nil {
-		return nil, e
+		return left, e
 	}
 	right, e := c.collectSplit(ctx, chain, mid+1, to, mode, finality)
 	return append(left, right...), e
@@ -379,6 +392,11 @@ func (c *Collector) DrainReceipts(ctx context.Context, limit int, networkContext
 		}
 		row.CaptureId = b.Capture.CaptureId
 		b.Receipts = []TxReceipt{row}
+		if r.receiptTransfers != nil {
+			data := *r.receiptTransfers
+			data.CaptureId = b.Capture.CaptureId
+			b.Transfers = []ReceiptTransfers{data}
+		}
 		b.Capture.CompletedTasks = 1
 		h := Block{ChainID: t.ChainID, Number: row.BlockNumber, Hash: row.BlockHash, Time: row.BlockTime}
 		if f, ok := c.finalized[t.ChainID]; ok && h.Number <= f.Number {
@@ -393,14 +411,20 @@ func (c *Collector) DrainReceipts(ctx context.Context, limit int, networkContext
 	return nil
 }
 
-// Reconcile invalidates every attempt whose entire range intersects an orphan.
-// Failed/partial captures are included, so old successful revisions cannot revive.
-func (c *Collector) Reconcile(ctx context.Context, chain uint64) error {
+// Reconcile validates a bounded number of anchored captures. Each small group
+// commits before querying the next; a later RPC failure cannot erase progress.
+// The checkpoint is verified first, and every attempt intersecting a discovered
+// orphan is invalidated, even when it was outside the selected group.
+func (c *Collector) Reconcile(ctx context.Context, chain uint64, networkContext ...context.Context) error {
+	rpcCtx := ctx
+	if len(networkContext) > 0 {
+		rpcCtx = networkContext[0]
+	}
 	if e := c.load(ctx); e != nil {
 		return e
 	}
 	r := c.Readers[chain]
-	fin, e := r.Header(ctx, "finalized")
+	fin, e := r.Header(rpcCtx, "finalized")
 	if e != nil {
 		return fmt.Errorf("finality_capability_unknown: %w", e)
 	}
@@ -408,102 +432,142 @@ func (c *Collector) Reconcile(ctx context.Context, chain uint64) error {
 		c.finalized = map[uint64]Block{}
 	}
 	c.finalized[chain] = fin
+	var checkpoint *Capture
+	var checkpointHash string
+	for i := range c.captures {
+		v := &c.captures[i]
+		if v.ChainId == chain && v.Canonical && v.Finality == "finalized" && anchored(*v) && (checkpoint == nil || *v.ToBlock > *checkpoint.ToBlock) {
+			checkpoint = v
+		}
+	}
+	if checkpoint != nil {
+		h, err := r.Header(rpcCtx, height(*checkpoint.ToBlock))
+		if err != nil {
+			return err
+		}
+		checkpointHash = h.PayloadHash
+		if h.Hash != *checkpoint.ToHash {
+			return errors.New("finalized_hash_conflict")
+		}
+	}
+	limit := c.ReconcileLimit
+	if limit <= 0 {
+		limit = 24
+	}
+	candidates := []int{}
+	for i, v := range c.captures {
+		if v.ChainId == chain && v.Canonical && v.Finality != "finalized" && anchored(v) {
+			candidates = append(candidates, i)
+		}
+	}
+	// Drain oldest anchors first. Successfully promoted captures leave this queue.
+	sort.SliceStable(candidates, func(i, j int) bool { return *c.captures[candidates[i]].ToBlock < *c.captures[candidates[j]].ToBlock })
 	cache := map[uint64]Block{}
-	wanted := []uint64{}
-	seen := map[uint64]bool{}
-	for _, cap := range c.captures {
-		if cap.ChainId != chain || !cap.Canonical || cap.ToBlock == nil || cap.Finality == "finalized" {
+	checked := 0
+	for _, idx := range candidates {
+		if checked >= limit {
+			break
+		}
+		v := c.captures[idx]
+		if !v.Canonical || v.Finality == "finalized" {
 			continue
 		}
-		for _, n := range []uint64{*cap.FromBlock, *cap.ToBlock} {
-			if !seen[n] {
-				seen[n] = true
+		wanted := []uint64{}
+		for _, n := range []uint64{*v.FromBlock, *v.ToBlock} {
+			if _, ok := cache[n]; !ok && (len(wanted) == 0 || wanted[0] != n) {
 				wanted = append(wanted, n)
 			}
 		}
-	}
-	for start := 0; start < len(wanted); start += 512 {
-		hh, err := r.Headers(ctx, wanted[start:min(start+512, len(wanted))])
+		hh, err := r.Headers(rpcCtx, wanted)
 		if err != nil {
 			return err
 		}
 		for _, h := range hh {
 			cache[h.Number] = h
 		}
-	}
-	bad := map[uint64]bool{}
-	for _, cap := range c.captures {
-		if cap.ChainId != chain || !cap.Canonical || cap.ToBlock == nil {
-			continue
+		bad := []uint64{}
+		if cache[*v.FromBlock].Hash != *v.FromHash {
+			bad = append(bad, *v.FromBlock)
 		}
-		if cap.Finality == "finalized" {
-			continue
+		if cache[*v.ToBlock].Hash != *v.ToHash {
+			bad = append(bad, *v.ToBlock)
 		}
-		for _, point := range []struct {
-			n uint64
-			h string
-		}{{*cap.FromBlock, *cap.FromHash}, {*cap.ToBlock, *cap.ToHash}} {
-			now, ok := cache[point.n]
-			if !ok {
-				now, e = r.Header(ctx, height(point.n))
-				if e != nil {
-					return e
-				}
-				cache[point.n] = now
-			}
-			if now.Hash != point.h {
-				bad[point.n] = true
-			}
-		}
-	}
-	// A finalized checkpoint is checked even when the whole tail is already final.
-	var checkpoint *Capture
-	for i := range c.captures {
-		v := c.captures[i]
-		if v.ChainId == chain && v.Canonical && v.Finality == "finalized" && v.ToBlock != nil && (checkpoint == nil || *v.ToBlock > *checkpoint.ToBlock) {
-			checkpoint = &v
-		}
-	}
-	if checkpoint != nil {
-		h, err := r.Header(ctx, height(*checkpoint.ToBlock))
+
+		// Keep query evidence separately from immutable original capture members.
+		// Revision.reason links this proof; the original evidence_hash stays frozen.
+		proof, err := c.Archive.PutObject(struct {
+			Version                                                uint8
+			Chain                                                  uint64
+			Capture                                                string
+			FinalizedHead, FromHeader, ToHeader, CheckpointPayload string
+			BadHeights                                             []uint64
+			FinalizedAnchor, FromAnchor, ToAnchor                  EvidenceHeader
+		}{1, chain, Hex(v.CaptureId), Hex(fin.PayloadHash), Hex(cache[*v.FromBlock].PayloadHash), Hex(cache[*v.ToBlock].PayloadHash), Hex(checkpointHash), bad, evidenceHeader(fin), evidenceHeader(cache[*v.FromBlock]), evidenceHeader(cache[*v.ToBlock])})
 		if err != nil {
-			return err
+			return fmt.Errorf("across_write_frozen_capture_%s: finality proof: %w", Hex(v.CaptureId), err)
 		}
-		if h.Hash != *checkpoint.ToHash {
-			return errors.New("finalized_hash_conflict")
-		}
-	}
-	for i := range c.captures {
-		v := c.captures[i]
-		if v.ChainId != chain || !v.Canonical || v.ToBlock == nil {
-			continue
-		}
-		orphan := false
-		for n := range bad {
-			if *v.FromBlock <= n && *v.ToBlock >= n {
-				orphan = true
+		proofReason := "finality_proof=" + proof.String()
+		if len(bad) > 0 {
+			for j, other := range c.captures {
+				if other.ChainId != chain || !other.Canonical || !anchored(other) {
+					continue
+				}
+				orphan := false
+				for _, n := range bad {
+					if *other.FromBlock <= n && n <= *other.ToBlock {
+						orphan = true
+					}
+				}
+				if !orphan {
+					continue
+				}
+				if other.Finality == "finalized" {
+					return errors.New("finalized_hash_conflict")
+				}
+				other.Canonical = false
+				other.Finality = "orphaned"
+				other.Reason = "reorg_invalidated; " + proofReason
+				if err = c.revise(ctx, j, other); err != nil {
+					return err
+				}
 			}
-		}
-		if !orphan && v.Finality == "finalized" {
-			continue
-		}
-		if orphan {
-			if v.Finality == "finalized" {
-				return errors.New("finalized_hash_conflict")
-			}
-			v.Canonical = false
-			v.Finality = "orphaned"
-			v.Reason = "reorg_invalidated"
 		} else if *v.ToBlock <= fin.Number {
 			v.Finality = "finalized"
-		} else {
-			continue
+			if v.Reason != "" {
+				v.Reason += "; "
+			}
+			v.Reason += proofReason
+			if err = c.revise(ctx, idx, v); err != nil {
+				return err
+			}
 		}
-		v.Revision++
-		if e = c.Store.WriteAcrossRevision(ctx, v); e != nil {
-			return fmt.Errorf("across_write_frozen_capture_%s: revision: %w", Hex(v.CaptureId), e)
-		}
-		c.captures[i] = v
+		checked++
 	}
 	return nil
+}
+func anchored(v Capture) bool {
+	return v.FromBlock != nil && v.ToBlock != nil && v.FromHash != nil && v.ToHash != nil
+}
+func (c *Collector) revise(ctx context.Context, idx int, v Capture) error {
+	v.Revision++
+	if err := c.Store.WriteAcrossRevision(ctx, v); err != nil {
+		return fmt.Errorf("across_write_frozen_capture_%s: revision: %w", Hex(v.CaptureId), err)
+	}
+	c.captures[idx] = v
+	return nil
+}
+func splitLogError(err error) bool {
+	if err == nil {
+		return false
+	}
+	s := err.Error()
+	if strings.Contains(s, "log_result_limit") || strings.Contains(s, "rpc_log_limit_reached") || strings.Contains(s, "rpc_response_too_large") {
+		return true
+	}
+	var remote *ethereum.RPCError
+	if errors.As(err, &remote) && !remote.RateLimited() {
+		m := strings.ToLower(remote.Message)
+		return strings.Contains(m, "block range") || strings.Contains(m, "too many results") || strings.Contains(m, "response size")
+	}
+	return false
 }

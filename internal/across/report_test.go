@@ -7,6 +7,7 @@ import (
 	"math/big"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"testing"
 	"time"
@@ -217,26 +218,22 @@ func TestReportInventoryScenariosAreHypothesesAndKeepChainBalancesSeparate(t *te
 }
 
 func TestReportRefundVerifiesTransferWithoutInventingOrderMembership(t *testing.T) {
-	a := ethereum.Archive{Dir: t.TempDir()}
 	m := reportTestManifest()
 	d := reportTestDeposit(1)
 	recipient := strings.Repeat("r", 20)
 	caller := strings.Repeat("c", 20)
 	amount := big.NewInt(123000000)
 	r := TxReceipt{ChainId: 8453, BlockHash: d.BlockHash, TxHash: ID("refund-tx"), BlockTime: d.BlockTime, Success: true}
-	transfer := map[string]any{"address": Hex(m.Chains[0].USDC), "topics": []string{"0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef", Hex(reportToken32(m.Chains[0].SpokePool)), Hex(reportToken32(recipient))}, "data": Hex(string(amount.FillBytes(make([]byte, 32)))), "logIndex": "0x5", "transactionHash": Hex(r.TxHash), "blockHash": Hex(r.BlockHash), "removed": false}
-	response, _ := json.Marshal([]any{map[string]any{"jsonrpc": "2.0", "id": 1, "result": map[string]any{"transactionHash": Hex(r.TxHash), "blockHash": Hex(r.BlockHash), "status": "0x1", "logs": []any{transfer}}}})
-	h, e := a.PutObject(struct{ Response []byte }{response})
-	if e != nil {
-		t.Fatal(e)
-	}
-	r.ReceiptPayloadHash = string(h[:])
+	r.CaptureId = ID("typed transfer capture")
+	r.BlockNumber = d.BlockNumber
+	r.ReceiptPayloadHash = ID("raw source hash")
 	refund := Refund{ChainId: 8453, SpokePool: m.Chains[0].SpokePool, BlockHash: r.BlockHash, TxHash: r.TxHash, BlockTime: d.BlockTime, LogIndex: 10, Token: m.Chains[0].USDC, EventKind: "deferred_claim", Caller: caller, RefundAddresses: []string{recipient}, RefundAmountsRaw: []*big.Int{amount}}
 	f := newReportFacts()
 	f.refunds["claim"] = refund
 	f.receipts[reportReceiptKey(r.ChainId, r.BlockHash, r.TxHash)] = r
+	f.transfers[reportReceiptKey(r.ChainId, r.BlockHash, r.TxHash)+"/"+Hex(m.Chains[0].USDC)] = receiptTransferRow(r, m.Chains[0].USDC, []receiptTransfer{{m.Chains[0].SpokePool, recipient, amount, 5}})
 	s := reportTestSummary()
-	rows := reportRefundRows(&f, a, m, d.BlockTime.Add(-time.Hour), d.BlockTime.Add(time.Hour), &s)
+	rows := reportRefundRows(&f, m, d.BlockTime.Add(-time.Hour), d.BlockTime.Add(time.Hour), &s)
 	if len(rows) != 1 || rows[0][13] != "verified_transfer" || rows[0][9] != Hex(caller) || rows[0][10] != Hex(recipient) || rows[0][16] != "attribution_unknown" || rows[0][17] != "other_origins_or_user_refunds_possible" {
 		t.Fatal(rows)
 	}
@@ -245,7 +242,7 @@ func TestReportRefundVerifiesTransferWithoutInventingOrderMembership(t *testing.
 	duplicate.LogIndex++
 	f.refunds["duplicate"] = duplicate
 	s = reportTestSummary()
-	rows = reportRefundRows(&f, a, m, d.BlockTime.Add(-time.Hour), d.BlockTime.Add(time.Hour), &s)
+	rows = reportRefundRows(&f, m, d.BlockTime.Add(-time.Hour), d.BlockTime.Add(time.Hour), &s)
 	for _, row := range rows {
 		if row[13] == "verified_transfer" {
 			t.Fatal("one transfer allocated twice", rows)
@@ -256,7 +253,7 @@ func TestReportRefundVerifiesTransferWithoutInventingOrderMembership(t *testing.
 	refund.DeferredRefunds = Ptr(true)
 	f.refunds["claim"] = refund
 	s = reportTestSummary()
-	rows = reportRefundRows(&f, a, m, d.BlockTime.Add(-time.Hour), d.BlockTime.Add(time.Hour), &s)
+	rows = reportRefundRows(&f, m, d.BlockTime.Add(-time.Hour), d.BlockTime.Add(time.Hour), &s)
 	if rows[0][13] != "deferred_or_unmatched" || rows[0][12] != "" {
 		t.Fatal("deferred transfer invented", rows)
 	}
@@ -323,5 +320,84 @@ func TestBuildReportLatestOrphanCannotResurrectAndMissingEvidenceStaysGap(t *tes
 	rows, e := csv.NewReader(f).ReadAll()
 	if e != nil || len(rows) != 1 {
 		t.Fatal(rows, e)
+	}
+}
+
+func TestBuildReportBulkLoadSeparatesRawAndDecodedContinuity(t *testing.T) {
+	m := reportTestManifest()
+	archive := ethereum.Archive{Dir: t.TempDir()}
+	baseTime := time.Date(2026, 10, 2, 0, 0, 0, 0, time.UTC)
+	store := &bulkTestStore{reportTestStore: reportTestStore{batches: map[string]Batch{}}}
+	for i, bounds := range [][2]uint64{{10, 19}, {20, 29}, {30, 39}, {50, 59}} {
+		b := batchLoadFixture("coverage-range-" + strconv.Itoa(i))
+		b.Capture.ManifestHash = m.Hash
+		b.Capture.FromBlock = Ptr(bounds[0])
+		b.Capture.ToBlock = Ptr(bounds[1])
+		b.Capture.FromHash = Ptr(ID(bounds[0]))
+		b.Capture.ToHash = Ptr(ID(bounds[1]))
+		b.Capture.ExpectedTasks = 1
+		b.Capture.CompletedTasks = 1
+		if i == 1 {
+			b.Capture.Status = "partial"
+			b.Capture.Reason = "implementation_unknown"
+			b.Capture.UnknownEventCount = 1
+			b.Capture.Finality = "head"
+		}
+		headers := []EvidenceHeader{{ChainID: 8453, Number: bounds[0], Hash: Hex(*b.Capture.FromHash), Time: baseTime.Add(time.Duration(bounds[0]) * time.Second)}, {ChainID: 8453, Number: bounds[1], Hash: Hex(*b.Capture.ToHash), Time: baseTime.Add(time.Duration(bounds[1]) * time.Second)}}
+		if e := ArchiveBatch(archive, &b, headers, nil); e != nil {
+			t.Fatal(e)
+		}
+		store.caps = append(store.caps, b.Capture)
+		store.batches[b.Capture.CaptureId] = b
+	}
+	out := t.TempDir()
+	if e := BuildReport(context.Background(), store, m, archive, baseTime, baseTime.Add(time.Hour), out); e != nil {
+		t.Fatal(e)
+	}
+	if store.bulkCalls != 1 || store.singleCalls != 0 {
+		t.Fatal("report used per-capture store reads", store)
+	}
+	raw, e := os.ReadFile(filepath.Join(out, "summary.json"))
+	if e != nil {
+		t.Fatal(e)
+	}
+	var summary reportSummary
+	if e = json.Unmarshal(raw, &summary); e != nil {
+		t.Fatal(e)
+	}
+	c := summary.LogCoverage["8453"]
+	if len(c.Raw) != 2 || len(c.Decoded) != 3 || c.Raw[0].First != 10 || c.Raw[0].Last != 39 || c.RawBlocks != 40 || c.DecodedBlocks != 30 || summary.Counts["internal_raw_log_height_gaps"] != 1 || summary.Counts["internal_decoded_log_height_gaps"] != 2 {
+		t.Fatal(string(raw))
+	}
+	if summary.Performance.FactLoad.SQLQueries == nil || *summary.Performance.FactLoad.SQLQueries != 6 || summary.Performance.CaptureEvidenceChecks != 4 || summary.Performance.ArchiveValidationMicros <= 0 || summary.NetProfitUSDT != nil || summary.NegativeConclusionAllowed {
+		t.Fatal(string(raw))
+	}
+	if summary.EligibleCaptureFinalityPolicy != "canonical_committed_including_head" || summary.EligibleCaptureFinalityCounts["head"] != 1 || summary.EligibleCaptureFinalityCounts["finalized"] != 3 {
+		t.Fatal("head evidence mislabeled finalized", string(raw))
+	}
+	f, e := os.Open(filepath.Join(out, "coverage.csv"))
+	if e != nil {
+		t.Fatal(e)
+	}
+	defer f.Close()
+	rows, e := csv.NewReader(f).ReadAll()
+	if e != nil {
+		t.Fatal(e)
+	}
+	columns := map[string]int{}
+	for i, k := range rows[0] {
+		columns[k] = i
+	}
+	partialFound := false
+	for _, row := range rows[1:] {
+		if row[columns["status"]] == "partial" {
+			partialFound = true
+			if row[columns["raw_range_complete"]] != "true" || row[columns["decoded_range_complete"]] != "false" {
+				t.Fatal("raw archive conflated with decoded facts", row)
+			}
+		}
+	}
+	if !partialFound {
+		t.Fatal("partial raw range disappeared")
 	}
 }

@@ -128,11 +128,12 @@ func MintFee(gross, fee, numerator, denominator, floor *big.Int) (*big.Int, erro
 }
 
 type Batch struct {
-	Capture  Capture
-	States   []State
-	Quotes   []Quote
-	Logs     []dex.Log
-	Receipts []dex.Receipt
+	Capture     Capture
+	States      []State
+	Quotes      []Quote
+	Logs        []dex.Log
+	Receipts    []dex.Receipt
+	ReceiptData []ReceiptData
 }
 
 func StateMembers(in []State) string {
@@ -309,6 +310,22 @@ func Validate(b Batch) error {
 	})
 	if ID(refs) != ID(c.ReceiptRefs) {
 		return errors.New("receipt_reference_members_mismatch")
+	}
+	if len(b.ReceiptData) > 0 {
+		if len(b.ReceiptData) != len(b.Receipts) {
+			return errors.New("receipt_data_members_missing")
+		}
+		for i, d := range b.ReceiptData {
+			wanted := []dex.Log{}
+			for _, l := range b.Logs {
+				if l.Hash == b.Receipts[i].Hash && l.TxHash == b.Receipts[i].TxHash {
+					wanted = append(wanted, l)
+				}
+			}
+			if e := ReceiptDataContains(d, b.Receipts[i], wanted); e != nil {
+				return e
+			}
+		}
 	}
 	for _, l := range b.Logs {
 		if l.Manifest.String() != Hex(c.ManifestHash) || Hash(l.Batch) != c.BatchId || l.Number < c.FromBlock || l.Number > c.ToBlock || l.Removed {

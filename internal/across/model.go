@@ -210,12 +210,33 @@ type OrderProbe struct {
 	UsdcPricePayloadHash *string          `ch:"usdc_price_payload_hash" dbtype:"Nullable(FixedString(32))"`
 	PayloadHash          string           `ch:"payload_hash" dbtype:"FixedString(32)"`
 }
+
+// ReceiptTransfers stores the complete native-USDC Transfer set for one receipt.
+// An empty array is a successfully observed empty set, not missing evidence.
+type ReceiptTransfers struct {
+	CaptureId      string     `ch:"capture_id" dbtype:"FixedString(32)"`
+	ChainId        uint64     `ch:"chain_id" dbtype:"UInt64"`
+	BlockNumber    uint64     `ch:"block_number" dbtype:"UInt64"`
+	BlockHash      string     `ch:"block_hash" dbtype:"FixedString(32)"`
+	BlockTime      time.Time  `ch:"block_time" dbtype:"DateTime64(6, 'UTC')"`
+	TxHash         string     `ch:"tx_hash" dbtype:"FixedString(32)"`
+	Token          string     `ch:"token" dbtype:"FixedString(20)"`
+	ReceiptSuccess bool       `ch:"receipt_success" dbtype:"Bool"`
+	LogIndices     []uint32   `ch:"log_indices" dbtype:"Array(UInt32)"`
+	Senders        []string   `ch:"senders" dbtype:"Array(FixedString(20))"`
+	Recipients     []string   `ch:"recipients" dbtype:"Array(FixedString(20))"`
+	AmountsRaw     []*big.Int `ch:"amounts_raw" dbtype:"Array(UInt256)"`
+	AvailableAt    time.Time  `ch:"available_at" dbtype:"DateTime64(6, 'UTC')"`
+	PayloadHash    string     `ch:"payload_hash" dbtype:"FixedString(32)"`
+}
+
 type Batch struct {
-	Capture  Capture
-	Deposits []Deposit
-	Updates  []DepositUpdate
-	Fills    []Fill
-	Refunds  []Refund
-	Receipts []TxReceipt
-	Probes   []OrderProbe
+	Capture   Capture
+	Deposits  []Deposit
+	Updates   []DepositUpdate
+	Fills     []Fill
+	Refunds   []Refund
+	Receipts  []TxReceipt
+	Probes    []OrderProbe
+	Transfers []ReceiptTransfers
 }

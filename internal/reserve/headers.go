@@ -3,6 +3,7 @@ package reserve
 import (
 	"context"
 	"github.com/vphoenix/crypto-market-info/internal/dex"
+	"github.com/vphoenix/crypto-market-info/internal/dex/ethereum"
 	"strconv"
 	"strings"
 	"sync"
@@ -46,9 +47,12 @@ func TransientRPC(e error) bool {
 	if e == nil {
 		return false
 	}
+	if ethereum.IsRateLimited(e) {
+		return true
+	}
 	s := e.Error()
 	switch s {
-	case "rpc_transport_or_timeout", "rpc_response_read_timeout", "rpc_response_read_failed", "rpc_response_truncated", "deadline_exceeded":
+	case "rpc_transport_or_timeout", "rpc_transport_timeout", "rpc_transport_failure", "rpc_rate_limited", "rpc_source_wait_exceeds_deadline", "rpc_response_read_timeout", "rpc_response_read_failed", "rpc_response_truncated", "deadline_exceeded":
 		return true
 	}
 	if strings.HasPrefix(s, "rpc_http_") {

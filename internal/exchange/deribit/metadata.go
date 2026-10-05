@@ -58,7 +58,7 @@ func DecodeInstruments(raw []byte, currency, kind string, at time.Time) ([]Parse
 		if m.Period != "day" && m.Period != "week" && m.Period != "month" && m.Period != "perpetual" {
 			return nil, nil, fmt.Errorf("missing/unknown settlement period")
 		}
-		if m.Active == nil || (m.State != "open" && m.State != "closed" && m.State != "settlement" && m.State != "delivered" && m.State != "inactive") {
+		if m.Active == nil || !options.ValidMarketState(m.State) {
 			return nil, nil, fmt.Errorf("missing/unknown instrument state")
 		}
 		classification, reason := "", ""

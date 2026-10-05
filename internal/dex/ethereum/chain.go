@@ -357,6 +357,12 @@ func (c *Client) parseReceipt(a dex.Anchor, h dex.Hash, index uint32, tx, receip
 	return r, e
 }
 
+// DecodeReceipt permits a collector-owned Reader to retain both successful and
+// failed transaction/receipt envelopes in its capture proof.
+func (c *Client) DecodeReceipt(a dex.Anchor, h dex.Hash, index uint32, tx, receipt Result) (dex.Receipt, error) {
+	return c.parseReceipt(a, h, index, tx, receipt)
+}
+
 func (c *Client) Headers(ctx context.Context, numbers []uint64) (map[uint64]dex.Block, error) {
 	calls := make([]Call, len(numbers))
 	for i, n := range numbers {

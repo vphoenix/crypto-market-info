@@ -3,7 +3,6 @@ package across
 import (
 	"context"
 	"encoding/csv"
-	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -17,33 +16,79 @@ import (
 	"time"
 
 	"github.com/shopspring/decimal"
-	"github.com/vphoenix/crypto-market-info/internal/dex"
 	"github.com/vphoenix/crypto-market-info/internal/dex/ethereum"
 )
 
 // Report does not connect to an RPC or use current prices to value history. Its
 // ceilings are user fee space, before LP fees, execution, inventory and rivalry.
 type reportSummary struct {
-	ManifestHash              string                     `json:"manifest_hash"`
-	From                      time.Time                  `json:"from_utc"`
-	To                        time.Time                  `json:"to_utc"`
-	GeneratedAt               time.Time                  `json:"generated_at_utc"`
-	Scope                     string                     `json:"scope"`
-	CoverageScope             string                     `json:"coverage_scope"`
-	OrderScope                string                     `json:"order_scope"`
-	ReceiptAndProbeScope      string                     `json:"receipt_and_probe_counts_scope"`
-	Counts                    map[string]uint64          `json:"counts"`
-	OriginalTermsCeiling      string                     `json:"original_terms_fee_space_usdc"`
-	ObservedFastCeiling       string                     `json:"observed_fast_fill_fee_space_usdc"`
-	LiveOpenCeiling           string                     `json:"live_observed_open_original_terms_fee_space_usdc"`
-	Daily                     map[string]*reportTotals   `json:"utc_days"`
-	Directions                map[string]*reportTotals   `json:"directions"`
-	RepaymentAddresses        map[string]uint64          `json:"fast_fills_by_repayment_address"`
-	TransactionFeesWei        map[string]string          `json:"unique_observed_transaction_fees_wei_by_chain"`
-	InventorySensitivity      reportInventorySensitivity `json:"inventory_sensitivity"`
-	NetProfitUSDT             *string                    `json:"net_profit_usdt"`
-	NegativeConclusionAllowed bool                       `json:"negative_conclusion_allowed"`
-	Limitations               []string                   `json:"limitations"`
+	ManifestHash                  string                       `json:"manifest_hash"`
+	From                          time.Time                    `json:"from_utc"`
+	To                            time.Time                    `json:"to_utc"`
+	GeneratedAt                   time.Time                    `json:"generated_at_utc"`
+	Scope                         string                       `json:"scope"`
+	CoverageScope                 string                       `json:"coverage_scope"`
+	OrderScope                    string                       `json:"order_scope"`
+	ReceiptAndProbeScope          string                       `json:"receipt_and_probe_counts_scope"`
+	Counts                        map[string]uint64            `json:"counts"`
+	OriginalTermsCeiling          string                       `json:"original_terms_fee_space_usdc"`
+	ObservedFastCeiling           string                       `json:"observed_fast_fill_fee_space_usdc"`
+	LiveOpenCeiling               string                       `json:"live_observed_open_original_terms_fee_space_usdc"`
+	Daily                         map[string]*reportTotals     `json:"utc_days"`
+	Directions                    map[string]*reportTotals     `json:"directions"`
+	RepaymentAddresses            map[string]uint64            `json:"fast_fills_by_repayment_address"`
+	TransactionFeesWei            map[string]string            `json:"unique_observed_transaction_fees_wei_by_chain"`
+	InventorySensitivity          reportInventorySensitivity   `json:"inventory_sensitivity"`
+	NetProfitUSDT                 *string                      `json:"net_profit_usdt"`
+	NegativeConclusionAllowed     bool                         `json:"negative_conclusion_allowed"`
+	Limitations                   []string                     `json:"limitations"`
+	Performance                   reportPerformance            `json:"performance"`
+	LogCoverage                   map[string]reportLogCoverage `json:"log_coverage_all_saved_captures"`
+	EligibleCaptureFinalityPolicy string                       `json:"eligible_capture_finality_policy"`
+	EligibleCaptureFinalityCounts map[string]uint64            `json:"eligible_capture_finality_counts"`
+	RawResponsePolicy             string                       `json:"raw_response_policy"`
+}
+
+type reportPerformance struct {
+	CaptureMetadataLoadMicros     int64          `json:"capture_metadata_load_microseconds"`
+	FactLoad                      BatchLoadStats `json:"fact_load"`
+	ArchiveValidationMicros       int64          `json:"archive_validation_microseconds"`
+	ArchiveWorkers                uint32         `json:"archive_workers"`
+	ArchiveChunkCaptures          uint32         `json:"archive_chunk_captures"`
+	CaptureEvidenceChecks         uint64         `json:"capture_evidence_checks"`
+	UniqueRPCPayloadChecks        uint64         `json:"unique_rpc_payload_checks"`
+	TotalBeforeSummaryWriteMicros int64          `json:"total_before_summary_write_microseconds"`
+}
+
+type reportLogRange struct {
+	First uint64    `json:"from_block"`
+	Last  uint64    `json:"to_block"`
+	From  time.Time `json:"from_block_time_utc"`
+	To    time.Time `json:"to_block_time_utc"`
+}
+
+type reportLogCoverage struct {
+	Raw           []reportLogRange `json:"raw_scanned_contiguous_ranges"`
+	Decoded       []reportLogRange `json:"fully_decoded_contiguous_ranges"`
+	RawBlocks     uint64           `json:"raw_scanned_blocks"`
+	DecodedBlocks uint64           `json:"fully_decoded_blocks"`
+}
+
+func reportMergeLogRanges(ranges []reportLogRange) []reportLogRange {
+	sort.Slice(ranges, func(i, j int) bool { return ranges[i].First < ranges[j].First })
+	out := []reportLogRange{}
+	for _, r := range ranges {
+		if len(out) == 0 || r.First > out[len(out)-1].Last && r.First-out[len(out)-1].Last > 1 {
+			out = append(out, r)
+			continue
+		}
+		last := &out[len(out)-1]
+		if r.Last > last.Last {
+			last.Last = r.Last
+			last.To = r.To
+		}
+	}
+	return out
 }
 
 type reportInventorySensitivity struct {
@@ -90,11 +135,12 @@ type reportFacts struct {
 	refunds   map[string]Refund
 	receipts  map[string]TxReceipt
 	probes    map[string]OrderProbe
+	transfers map[string]ReceiptTransfers
 	firstSeen map[string]time.Time
 }
 
 func newReportFacts() reportFacts {
-	return reportFacts{map[string]Deposit{}, map[string]Fill{}, map[string]DepositUpdate{}, map[string]Refund{}, map[string]TxReceipt{}, map[string]OrderProbe{}, map[string]time.Time{}}
+	return reportFacts{map[string]Deposit{}, map[string]Fill{}, map[string]DepositUpdate{}, map[string]Refund{}, map[string]TxReceipt{}, map[string]OrderProbe{}, map[string]ReceiptTransfers{}, map[string]time.Time{}}
 }
 
 // Event comparisons deliberately omit observation metadata, including payload
@@ -214,6 +260,14 @@ func (f *reportFacts) add(b Batch) error {
 			f.receipts[k] = v
 		}
 	}
+	for _, v := range b.Transfers {
+		k := reportReceiptKey(v.ChainId, v.BlockHash, v.TxHash) + "/" + Hex(v.Token)
+		if old, exists := f.transfers[k]; exists && reportProtocolID(old) != reportProtocolID(v) {
+			return errors.New("conflicting_receipt_transfers")
+		}
+		f.transfers[k] = v
+	}
+
 	return nil
 }
 
@@ -339,82 +393,135 @@ func writeReportCSV(path string, header []string, rows [][]string) error {
 
 // BuildReport reads immutable saved evidence only. Missing member sets or source
 // evidence remain visible coverage failures; neither is silently treated as zero.
-func BuildReport(ctx context.Context, store Store, manifest Manifest, archive ethereum.Archive, from, to time.Time, out string) error {
+func BuildReport(ctx context.Context, store Store, manifest Manifest, archive ethereum.Archive, from, to time.Time, out string) (resultErr error) {
+	started := time.Now()
 	if from.IsZero() || !to.After(from) {
 		return errors.New("invalid_report_interval")
 	}
+	if err := os.MkdirAll(out, 0700); err != nil {
+		return err
+	}
+	progressFile, err := os.OpenFile(filepath.Join(out, "phase-progress.jsonl"), os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0600)
+	if err != nil {
+		return err
+	}
+	var progressErr error
+	progress := func(event LoadProgress) {
+		entry := struct {
+			At                  time.Time `json:"at_utc"`
+			ReportElapsedMicros int64     `json:"report_elapsed_microseconds"`
+			LoadProgress
+		}{Now(), time.Since(started).Microseconds(), event}
+		raw, err := json.Marshal(entry)
+		if err != nil {
+			progressErr = err
+			return
+		}
+		raw = append(raw, '\n')
+		if _, err = progressFile.Write(raw); err != nil {
+			progressErr = err
+		}
+		_, _ = os.Stderr.Write(raw)
+	}
+	defer func() {
+		phase := "report_complete"
+		if resultErr != nil {
+			phase = "report_failed"
+		}
+		progress(LoadProgress{Phase: phase, ElapsedMicros: time.Since(started).Microseconds()})
+		if err := progressFile.Close(); progressErr == nil {
+			progressErr = err
+		}
+		if resultErr == nil {
+			resultErr = progressErr
+		}
+	}()
+	ctx = WithLoadProgress(ctx, progress)
+	progress(LoadProgress{Phase: "capture_metadata_started"})
 	caps, e := store.AcrossCaptures(ctx, manifest.Hash)
 	if e != nil {
 		return e
 	}
+	metadataMicros := time.Since(started).Microseconds()
+	progress(LoadProgress{Phase: "capture_metadata_finished", Completed: uint64(len(caps)), ElapsedMicros: metadataMicros})
 	// Defend callers/fakes as well as FINAL SQL: latest first, filters second.
-	latest := map[string]Capture{}
-	for _, c := range caps {
-		if old, ok := latest[c.CaptureId]; !ok || c.Revision > old.Revision {
-			latest[c.CaptureId] = c
-		} else if c.Revision == old.Revision && ID(c) != ID(old) {
-			return errors.New("conflicting_capture_revision")
+	latest, e := latestReadCaptures(caps)
+	if e != nil {
+		return e
+	}
+	selected := []Capture{}
+	for _, c := range latest {
+		if c.Canonical && c.Committed {
+			selected = append(selected, c)
 		}
 	}
-	keys := make([]string, 0, len(latest))
-	for k := range latest {
-		keys = append(keys, k)
+	loaded, e := LoadBatches(ctx, store, selected)
+	if e != nil {
+		return e
 	}
-	sort.Strings(keys)
+	progress(LoadProgress{Phase: "fact_load_finished", Completed: uint64(len(selected)), ElapsedMicros: loaded.Stats.TotalMicros})
 	facts := newReportFacts()
 	coverage := [][]string{}
-	type logRange struct {
-		first, last uint64
-		from, to    time.Time
-	}
-	ranges := map[uint64][]logRange{}
-	checkedPayloads := map[string]bool{}
+	rawRanges := map[uint64][]reportLogRange{}
+	decodedRanges := map[uint64][]reportLogRange{}
+	archiveValidator := newReportArchiveValidator(archive)
 	s := reportSummary{ManifestHash: Hex(manifest.Hash), From: from.UTC(), To: to.UTC(), GeneratedAt: Now(), Scope: "Base-Arbitrum native USDC; original empty-message terms; public polling observations", Counts: map[string]uint64{}, Daily: map[string]*reportTotals{}, Directions: map[string]*reportTotals{}, RepaymentAddresses: map[string]uint64{}, TransactionFeesWei: map[string]string{}, OriginalTermsCeiling: "0.000000", ObservedFastCeiling: "0.000000", LiveOpenCeiling: "0.000000", Limitations: []string{"fee space is before LP, transaction, failure, inventory and operating costs; no verified net profit", "all relayer refunds remain per-order attribution_unknown; no observed capital turnover", "absence of a matched fill remains fill_unknown: destination coverage and prefill history are not proven by an absent event", "unknown ABI, unmatched fills, nonempty messages and updated execution terms prevent a global negative Across conclusion", "CEX prices are reference observations only; historical receipts are not repriced using current quotes", "two-chain capture excludes other origins and user-refund membership; refund transfers are not route income"}}
+	s.RawResponsePolicy = "not_retained"
+	s.Limitations = append(s.Limitations, "source responses are parsed in memory and not archived; source hashes, database member digests and compact capture anchors remain available")
 	s.CoverageScope = "coverage.csv and capture/evidence/unknown-event/log-gap counts use ALL saved captures for this manifest, including outside [from_utc,to_utc); latest revisions are selected before filtering"
 	s.OrderScope = "orders.csv, order counts and fee-space totals select deposit block_time in [from_utc,to_utc); matching fills, updates and probes use all saved evidence, including after to_utc; this is a deposit cohort, not an as-of replay"
 	s.ReceiptAndProbeScope = "unique receipt fees and receipt counts select receipt block_time in [from_utc,to_utc); probe status/price counts select probe requested_at in that window; refund rows and unmatched-fill counts select their event block_time in that window"
 	s.InventorySensitivity = reportInventoryScenarios()
 	s.Limitations = append(s.Limitations, "orders.csv fill_transaction_fee_wei_shared is the full shared transaction fee; do not sum this column across orders; summary receipt fees deduplicate chain/block_hash/tx_hash")
-	for _, key := range keys {
-		c := latest[key]
+	s.Performance.CaptureMetadataLoadMicros = metadataMicros
+	s.Performance.FactLoad = loaded.Stats
+	s.Performance.ArchiveWorkers = reportArchiveWorkers
+	s.Performance.ArchiveChunkCaptures = reportArchiveChunkSize
+	s.LogCoverage = map[string]reportLogCoverage{}
+	s.EligibleCaptureFinalityPolicy = "canonical_committed_including_head"
+	s.EligibleCaptureFinalityCounts = map[string]uint64{}
+	s.Limitations = append(s.Limitations, "raw scanned continuity only proves complete log retrieval; fully decoded continuity also requires complete known-ABI interpretation; neither proves coverage before the first stored range or after the last")
+	s.Limitations = append(s.Limitations, "accepted evidence includes canonical committed head and safe captures after member/archive verification; these are not finalized and remain subject to reorganization; no finalized profitability conclusion is produced")
+	progress(LoadProgress{Phase: "archive_validation_started", Total: uint64(len(latest))})
+	var archiveResults []reportArchiveResult
+	for captureIndex, c := range latest {
+		if captureIndex%reportArchiveChunkSize == 0 {
+			archiveStarted := time.Now()
+			archiveResults, e = archiveValidator.check(ctx, latest[captureIndex:min(captureIndex+reportArchiveChunkSize, len(latest))], loaded.Errors)
+			s.Performance.ArchiveValidationMicros += time.Since(archiveStarted).Microseconds()
+			if e != nil {
+				return e
+			}
+		}
+		if e := ctx.Err(); e != nil {
+			return e
+		}
 		reason := c.Reason
 		fromTime, toTime := "", ""
+		rawComplete, decodedComplete := false, false
 		use := c.Canonical && c.Committed
 		if !use {
 			s.Counts["excluded_orphan_or_uncommitted_captures"]++
 		}
 		if use {
-			b, err := store.AcrossBatch(ctx, c)
+			b := loaded.Batches[c.CaptureId]
+			err := loaded.Errors[c.CaptureId]
+			delete(loaded.Batches, c.CaptureId)
 			if err != nil {
 				use = false
 				reason = "incomplete_members: " + err.Error()
 				s.Counts["incomplete_capture_members"]++
 			} else {
-				var evidence CaptureEvidence
-				if evidence, err = ReadCaptureEvidence(archive, c); err != nil {
+				s.Performance.CaptureEvidenceChecks++
+				verified := archiveResults[captureIndex%reportArchiveChunkSize]
+				evidence := verified.evidence
+				if verified.reason != "" {
 					use = false
-					reason = "missing_or_invalid_capture_evidence"
-					s.Counts["missing_capture_evidence"]++
-				}
-				if use {
-					for _, ref := range evidence.RPCPayloads {
-						good, checked := checkedPayloads[ref]
-						if !checked {
-							rawHash, parseErr := reportDecodeHex(ref, 32)
-							if parseErr == nil {
-								var h dex.Hash
-								copy(h[:], rawHash)
-								_, parseErr = archive.Get(h)
-							}
-							good = parseErr == nil
-							checkedPayloads[ref] = good
-						}
-						if !good {
-							use = false
-							reason = "missing_or_invalid_rpc_evidence"
-							s.Counts["missing_rpc_evidence"]++
-							break
-						}
+					reason = verified.reason
+					if reason == "missing_or_invalid_capture_evidence" {
+						s.Counts["missing_capture_evidence"]++
+					} else {
+						s.Counts["missing_rpc_evidence"]++
 					}
 				}
 				if use {
@@ -424,13 +531,19 @@ func BuildReport(ctx context.Context, store Store, manifest Manifest, archive et
 					if evidence.ToTime != nil {
 						toTime = reportTime(*evidence.ToTime)
 					}
-					if c.CaptureKind == "logs" && c.Status == "complete" && c.UnknownEventCount == 0 && c.FromBlock != nil && evidence.FromTime != nil && evidence.ToTime != nil {
-						ranges[c.ChainId] = append(ranges[c.ChainId], logRange{*c.FromBlock, *c.ToBlock, *evidence.FromTime, *evidence.ToTime})
+					if c.CaptureKind == "logs" && c.CompletedTasks == 1 && c.FromBlock != nil && evidence.FromTime != nil && evidence.ToTime != nil {
+						rawComplete = true
+						rawRanges[c.ChainId] = append(rawRanges[c.ChainId], reportLogRange{*c.FromBlock, *c.ToBlock, *evidence.FromTime, *evidence.ToTime})
+						if c.Status == "complete" && c.UnknownEventCount == 0 {
+							decodedComplete = true
+							decodedRanges[c.ChainId] = append(decodedRanges[c.ChainId], reportLogRange{*c.FromBlock, *c.ToBlock, *evidence.FromTime, *evidence.ToTime})
+						}
 					}
 					if err = facts.add(b); err != nil {
 						return err
 					}
 					s.Counts["accepted_captures"]++
+					s.EligibleCaptureFinalityCounts[c.Finality]++
 					s.Counts["unknown_events"] += uint64(c.UnknownEventCount)
 					if c.Status != "complete" {
 						s.Counts["partial_or_error_captures"]++
@@ -438,23 +551,33 @@ func BuildReport(ctx context.Context, store Store, manifest Manifest, archive et
 				}
 			}
 		}
-		coverage = append(coverage, []string{Hex(c.CaptureId), strconv.FormatUint(c.ChainId, 10), c.CaptureKind, c.CaptureMode, reportNullable(c.FromBlock), reportNullable(c.ToBlock), fromTime, toTime, c.Status, c.Finality, strconv.FormatBool(c.Canonical), strconv.FormatBool(c.Committed), strconv.FormatBool(use), strconv.FormatUint(uint64(c.UnknownEventCount), 10), reportTime(c.StartedAt), reportTime(c.AvailableAt), reason})
-	}
-	for _, chain := range manifest.Chains {
-		rr := ranges[chain.ChainID]
-		sort.Slice(rr, func(i, j int) bool { return rr[i].first < rr[j].first })
-		if len(rr) == 0 {
-			s.Counts["chains_without_complete_known_abi_log_range"]++
-			continue
+		coverage = append(coverage, []string{Hex(c.CaptureId), strconv.FormatUint(c.ChainId, 10), c.CaptureKind, c.CaptureMode, reportNullable(c.FromBlock), reportNullable(c.ToBlock), fromTime, toTime, c.Status, c.Finality, strconv.FormatBool(c.Canonical), strconv.FormatBool(c.Committed), strconv.FormatBool(use), strconv.FormatBool(rawComplete), strconv.FormatBool(decodedComplete), strconv.FormatUint(uint64(c.UnknownEventCount), 10), reportTime(c.StartedAt), reportTime(c.AvailableAt), reason})
+		if (captureIndex+1)%1000 == 0 || captureIndex+1 == len(latest) {
+			progress(LoadProgress{Phase: "archive_validation_progress", Completed: uint64(captureIndex + 1), Total: uint64(len(latest)), Payloads: archiveValidator.count(), ElapsedMicros: s.Performance.ArchiveValidationMicros})
 		}
-		end := rr[0].last
-		for _, r := range rr[1:] {
-			if r.first > end && r.first-end > 1 {
-				s.Counts["internal_log_height_gaps"]++
-				coverage = append(coverage, []string{"", strconv.FormatUint(chain.ChainID, 10), "gap", "", strconv.FormatUint(end+1, 10), strconv.FormatUint(r.first-1, 10), "", "", "missing", "unknown", "", "", "false", "", "", "", "gap_between_complete_known_abi_ranges"})
+	}
+	progress(LoadProgress{Phase: "archive_validation_finished", Completed: uint64(len(latest)), ElapsedMicros: s.Performance.ArchiveValidationMicros})
+	s.Counts["raw_response_unavailable"] = archiveValidator.unavailableCount()
+	for _, chain := range manifest.Chains {
+		c := reportLogCoverage{Raw: reportMergeLogRanges(rawRanges[chain.ChainID]), Decoded: reportMergeLogRanges(decodedRanges[chain.ChainID])}
+		for _, r := range c.Raw {
+			c.RawBlocks += r.Last - r.First + 1
+		}
+		for _, r := range c.Decoded {
+			c.DecodedBlocks += r.Last - r.First + 1
+		}
+		s.LogCoverage[strconv.FormatUint(chain.ChainID, 10)] = c
+		for _, kind := range []struct {
+			name   string
+			ranges []reportLogRange
+		}{{"raw", c.Raw}, {"decoded", c.Decoded}} {
+			if len(kind.ranges) == 0 {
+				s.Counts["chains_without_"+kind.name+"_log_range"]++
+				continue
 			}
-			if r.last > end {
-				end = r.last
+			for i := 1; i < len(kind.ranges); i++ {
+				s.Counts["internal_"+kind.name+"_log_height_gaps"]++
+				coverage = append(coverage, []string{"", strconv.FormatUint(chain.ChainID, 10), kind.name + "_gap", "", strconv.FormatUint(kind.ranges[i-1].Last+1, 10), strconv.FormatUint(kind.ranges[i].First-1, 10), "", "", "missing", "unknown", "", "", "false", "false", "false", "", "", "", "gap_between_" + kind.name + "_ranges"})
 			}
 		}
 	}
@@ -462,7 +585,9 @@ func BuildReport(ctx context.Context, store Store, manifest Manifest, archive et
 	if e != nil {
 		return e
 	}
-	refunds := reportRefundRows(&facts, archive, manifest, from, to, &s)
+	progress(LoadProgress{Phase: "orders_built", Completed: uint64(len(orders)), ElapsedMicros: time.Since(started).Microseconds()})
+	refunds := reportRefundRows(&facts, manifest, from, to, &s)
+	progress(LoadProgress{Phase: "refunds_built", Completed: uint64(len(refunds)), ElapsedMicros: time.Since(started).Microseconds()})
 	for _, r := range facts.receipts {
 		if r.BlockTime.Before(from) || !r.BlockTime.Before(to) {
 			continue
@@ -493,7 +618,7 @@ func BuildReport(ctx context.Context, store Store, manifest Manifest, archive et
 	if e = os.MkdirAll(out, 0700); e != nil {
 		return e
 	}
-	if e = writeReportCSV(filepath.Join(out, "coverage.csv"), []string{"capture_id", "chain_id", "kind", "mode", "from_block", "to_block", "from_block_time_utc", "to_block_time_utc", "status", "finality", "canonical", "committed", "members_and_evidence_accepted", "unknown_event_count", "started_at_utc", "available_at_utc", "reason"}, coverage); e != nil {
+	if e = writeReportCSV(filepath.Join(out, "coverage.csv"), []string{"capture_id", "chain_id", "kind", "mode", "from_block", "to_block", "from_block_time_utc", "to_block_time_utc", "status", "finality", "canonical", "committed", "members_and_evidence_accepted", "raw_range_complete", "decoded_range_complete", "unknown_event_count", "started_at_utc", "available_at_utc", "reason"}, coverage); e != nil {
 		return e
 	}
 	if e = writeReportCSV(filepath.Join(out, "orders.csv"), reportOrderHeader, orders); e != nil {
@@ -502,6 +627,8 @@ func BuildReport(ctx context.Context, store Store, manifest Manifest, archive et
 	if e = writeReportCSV(filepath.Join(out, "refunds.csv"), reportRefundHeader, refunds); e != nil {
 		return e
 	}
+	s.Performance.UniqueRPCPayloadChecks = archiveValidator.count()
+	s.Performance.TotalBeforeSummaryWriteMicros = time.Since(started).Microseconds()
 	raw, e := json.MarshalIndent(s, "", "  ")
 	if e != nil {
 		return e
@@ -690,133 +817,7 @@ func reportOrders(f *reportFacts, m Manifest, from, to time.Time, s *reportSumma
 
 var reportRefundHeader = []string{"chain_id", "spoke_pool", "block_hash", "tx_hash", "log_index", "block_time_utc", "event_kind", "root_bundle_id", "leaf_id", "caller_credit_address", "recipient", "expected_usdc", "verified_usdc", "payment_status", "transfer_log_index", "deferred_refunds", "order_attribution", "route_membership"}
 
-type reportTransfer struct {
-	from, to string
-	amount   *big.Int
-	index    uint32
-}
-
-func reportDecodeHex(s string, n int) (string, error) {
-	if !strings.HasPrefix(s, "0x") || len(s) != 2+2*n {
-		return "", errors.New("invalid_hex_width")
-	}
-	b, e := hex.DecodeString(s[2:])
-	return string(b), e
-}
-func reportQuantity(s string) (*big.Int, error) {
-	if !strings.HasPrefix(s, "0x") || len(s) < 3 || len(s) > 3 && s[2] == '0' {
-		return nil, errors.New("invalid_quantity")
-	}
-	for _, c := range s[2:] {
-		if !(c >= '0' && c <= '9' || c >= 'a' && c <= 'f' || c >= 'A' && c <= 'F') {
-			return nil, errors.New("invalid_quantity")
-		}
-	}
-	n, ok := new(big.Int).SetString(s[2:], 16)
-	if !ok || n.Sign() < 0 || n.BitLen() > 256 {
-		return nil, errors.New("invalid_quantity")
-	}
-	return n, nil
-}
-
-// Receipt payloads are content-addressed RPC envelopes. Match transaction and
-// block before examining transfers, and reject ambiguous or malformed evidence.
-func reportReceiptTransfers(archive ethereum.Archive, r TxReceipt, token string) ([]reportTransfer, error) {
-	if !r.Success {
-		return nil, errors.New("failed_receipt_cannot_pay_refund")
-	}
-	var h dex.Hash
-	copy(h[:], r.ReceiptPayloadHash)
-	raw, e := archive.Get(h)
-	if e != nil {
-		return nil, e
-	}
-	var env struct{ Response []byte }
-	if e = json.Unmarshal(raw, &env); e != nil || len(env.Response) == 0 {
-		return nil, errors.New("invalid_receipt_archive")
-	}
-	var responses []struct {
-		Result json.RawMessage `json:"result"`
-	}
-	if e = json.Unmarshal(env.Response, &responses); e != nil {
-		return nil, e
-	}
-	type log struct {
-		Address         string   `json:"address"`
-		Topics          []string `json:"topics"`
-		Data            string   `json:"data"`
-		LogIndex        string   `json:"logIndex"`
-		TransactionHash string   `json:"transactionHash"`
-		BlockHash       string   `json:"blockHash"`
-		Removed         bool     `json:"removed"`
-	}
-	var chosen []log
-	found := false
-	for _, response := range responses {
-		var rr struct {
-			TransactionHash string `json:"transactionHash"`
-			BlockHash       string `json:"blockHash"`
-			Status          string `json:"status"`
-			Logs            []log  `json:"logs"`
-		}
-		if json.Unmarshal(response.Result, &rr) != nil {
-			continue
-		}
-		if !strings.EqualFold(rr.TransactionHash, Hex(r.TxHash)) {
-			continue
-		}
-		if found || !strings.EqualFold(rr.BlockHash, Hex(r.BlockHash)) || rr.Status != "0x1" || rr.Logs == nil {
-			return nil, errors.New("receipt_anchor_or_status_mismatch")
-		}
-		found = true
-		chosen = rr.Logs
-	}
-	if !found {
-		return nil, errors.New("receipt_result_missing")
-	}
-	const transferTopic = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
-	out := []reportTransfer{}
-	seen := map[uint32]bool{}
-	for _, l := range chosen {
-		if !strings.EqualFold(l.Address, Hex(token)) {
-			continue
-		}
-		if len(l.Topics) == 0 || strings.ToLower(l.Topics[0]) != transferTopic {
-			continue
-		}
-		if len(l.Topics) != 3 || l.Removed || !strings.EqualFold(l.TransactionHash, Hex(r.TxHash)) || !strings.EqualFold(l.BlockHash, Hex(r.BlockHash)) {
-			return nil, errors.New("invalid_transfer_anchor")
-		}
-		from, e := reportDecodeHex(l.Topics[1], 32)
-		if e != nil {
-			return nil, e
-		}
-		to, e := reportDecodeHex(l.Topics[2], 32)
-		if e != nil {
-			return nil, e
-		}
-		data, e := reportDecodeHex(l.Data, 32)
-		if e != nil {
-			return nil, e
-		}
-		index, e := reportQuantity(l.LogIndex)
-		if e != nil || !index.IsUint64() || index.Uint64() > uint64(^uint32(0)) {
-			return nil, errors.New("invalid_transfer_index")
-		}
-		i := uint32(index.Uint64())
-		if seen[i] {
-			return nil, errors.New("duplicate_transfer_index")
-		}
-		seen[i] = true
-		if from[:12] != strings.Repeat("\x00", 12) || to[:12] != strings.Repeat("\x00", 12) {
-			return nil, errors.New("non_evm_transfer_address")
-		}
-		out = append(out, reportTransfer{from[12:], to[12:], new(big.Int).SetBytes([]byte(data)), i})
-	}
-	return out, nil
-}
-
-func reportRefundRows(f *reportFacts, archive ethereum.Archive, m Manifest, from, to time.Time, s *reportSummary) [][]string {
+func reportRefundRows(f *reportFacts, m Manifest, from, to time.Time, s *reportSummary) [][]string {
 	groups := map[string][]Refund{}
 	for _, v := range f.refunds {
 		if v.BlockTime.Before(from) || !v.BlockTime.Before(to) {
@@ -844,15 +845,19 @@ func reportRefundRows(f *reportFacts, archive ethereum.Archive, m Manifest, from
 		refunds := groups[k]
 		sort.Slice(refunds, func(i, j int) bool { return refunds[i].LogIndex < refunds[j].LogIndex })
 		r, exists := f.receipts[k]
-		var transfers []reportTransfer
+		var transfers []receiptTransfer
 		var err error
 		if exists {
-			transfers, err = reportReceiptTransfers(archive, r, refunds[0].Token)
+			if data, ok := f.transfers[k+"/"+Hex(refunds[0].Token)]; ok {
+				transfers, err = storedReceiptTransfers(data, r, refunds[0].Token)
+			} else {
+				err = errors.New("receipt_transfer_set_missing")
+			}
 		}
 		// Exact amount/address duplicates across claims or leaves are ambiguous;
 		// never allocate one transfer twice or invent event-to-transfer ordering.
 		demand := map[string]int{}
-		supply := map[string][]reportTransfer{}
+		supply := map[string][]receiptTransfer{}
 		transferKey := func(from, to string, amount *big.Int) string {
 			return Hex(from) + "/" + Hex(to) + "/" + amount.String()
 		}
@@ -874,7 +879,10 @@ func reportRefundRows(f *reportFacts, archive ethereum.Archive, m Manifest, from
 				if !exists {
 					status = "receipt_missing"
 				} else if err != nil {
-					status = "receipt_evidence_invalid"
+					status = "receipt_transfers_invalid"
+					if err.Error() == "receipt_transfer_set_missing" {
+						status = "receipt_transfers_missing"
+					}
 				} else if demand[tk] == 1 && len(supply[tk]) == 1 && supply[tk][0].index < v.LogIndex && (refundIndex == 0 || supply[tk][0].index > refunds[refundIndex-1].LogIndex) {
 					status = "verified_transfer"
 					verified = reportAmount(amount)

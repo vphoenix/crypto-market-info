@@ -222,6 +222,35 @@ func saveCosts(out string, costs []CostObservation, probes []Probe) error {
 	return CSV(filepath.Join(out, "resource_break_even.csv"), []string{"capture_id", "probe_index", "available_utc", "status", "reward_return_sun", "energy_used", "assumed_bandwidth_bytes", "max_sun_per_energy_before_other_costs", "burn_only_margin_trx_before_other_costs", "bid_capacity_checked_gross_usdt", "all_in_net_profit"}, rows)
 }
 func verifyManifest(a Archive, cap Capture) (Manifest, error) {
+	return verifyManifestCached(a, cap, nil)
+}
+func verifyManifestCached(a Archive, cap Capture, verified map[string]bool) (Manifest, error) {
+	m, e := readManifest(a, cap)
+	if e != nil {
+		return m, e
+	}
+	for _, ev := range m.Requests {
+		for _, h := range []string{ev.RequestHash, ev.ResponseHash} {
+			if h != "" {
+				x, e := BinaryHex(h, 32)
+				if e != nil {
+					return m, e
+				}
+				if verified[x] {
+					continue
+				}
+				if _, e = a.Get(x); e != nil {
+					return m, e
+				}
+				if verified != nil {
+					verified[x] = true
+				}
+			}
+		}
+	}
+	return m, nil
+}
+func readManifest(a Archive, cap Capture) (Manifest, error) {
 	b, e := a.Get(cap.EvidenceManifestHash)
 	if e != nil {
 		return Manifest{}, e
@@ -233,21 +262,11 @@ func verifyManifest(a Archive, cap Capture) (Manifest, error) {
 	if m.Version != "keeper-v1" || m.Capture != cap.CaptureId.String() {
 		return m, errors.New("manifest_capture_mismatch")
 	}
-	if m.DigestEncoding != "jl-keeper-fact-v1" && (m.DigestEncoding != "" || cap.EventRows+cap.ReceiptRows+cap.ProbeRows+cap.CostRows != 0) {
+	if m.DigestEncoding != "jl-keeper-fact-v1" && (m.DigestEncoding != "" || cap.EventRows+cap.ReceiptRows+cap.ProbeRows+cap.CostRows != 0 || cap.IndexedDigest != nil || cap.CaptureKind == "enrichment") {
 		return m, errors.New("manifest_digest_encoding_unsupported")
 	}
-	for _, ev := range m.Requests {
-		for _, h := range []string{ev.RequestHash, ev.ResponseHash} {
-			if h != "" {
-				x, e := BinaryHex(h, 32)
-				if e != nil {
-					return m, e
-				}
-				if _, e = a.Get(x); e != nil {
-					return m, e
-				}
-			}
-		}
+	if cap.ParentCaptureId != nil && (m.ParentCapture != cap.ParentCaptureId.String() || len(m.ParentManifestHash) != 64) {
+		return m, errors.New("manifest_parent_mismatch")
 	}
 	return m, nil
 }

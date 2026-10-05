@@ -5,18 +5,27 @@ import (
 	"sync"
 	"time"
 
+	"github.com/vphoenix/crypto-market-info/internal/exchange"
 	"github.com/vphoenix/crypto-market-info/internal/exchange/deribit"
 	"github.com/vphoenix/crypto-market-info/internal/options"
 )
 
 type event struct {
-	At       time.Time
-	Boundary bool
-	Group    string
-	Stream   deribit.StreamEvent
-	Metadata *options.MetadataObservation
+	Spec         *options.ContractSpec
+	Index        *catalogIndex
+	At           time.Time
+	Boundary     bool
+	Group        string
+	Stream       deribit.StreamEvent
+	Metadata     *options.MetadataObservation
+	InstrumentID uint32
+	State        *catalogState
+	Gate         *catalogGate
+	Plan         *options.CollectionPlan
+	Swap         *catalogSwap
 }
 type ingress struct {
+	budget     *exchange.BufferBudget
 	mu         sync.Mutex
 	queue      chan event
 	failure    chan error
@@ -62,15 +71,24 @@ func (q *ingress) push(e event) error {
 	if q.bytes+cost > 16<<20 {
 		return q.fail(fmt.Errorf("options ingress byte budget exceeded"))
 	}
+	if !q.budget.Reserve(int64(cost)) {
+		return q.fail(fmt.Errorf("global options ingress byte budget exceeded"))
+	}
 	select {
 	case q.queue <- e:
 		q.bytes += cost
 		return nil
 	default:
+		q.budget.Release(int64(cost))
 		return q.fail(fmt.Errorf("options ingress queue overflow"))
 	}
 }
-func (q *ingress) consumed(e event) { q.mu.Lock(); q.bytes -= len(e.Stream.Raw) + 512; q.mu.Unlock() }
+func (q *ingress) consumed(e event) {
+	q.mu.Lock()
+	q.bytes -= len(e.Stream.Raw) + 512
+	q.budget.Release(int64(len(e.Stream.Raw) + 512))
+	q.mu.Unlock()
+}
 func (q *ingress) fail(err error) error {
 	q.failed = true
 	select {

@@ -19,14 +19,17 @@ import (
 type Block struct {
 	Number           uint64
 	Hash, ParentHash string
+	LogsBloom        string
+	Transactions     []string
 	Time             time.Time
 	BaseFee          *big.Int
 	Response         Response
 }
 type RPC struct {
-	Transport *Transport
-	URL       string
-	sequence  atomic.Uint64
+	Transport         *Transport
+	URL               string
+	ProtocolMulticall bool // verified Multicall3, read-only eth_call aggregation
+	sequence          atomic.Uint64
 }
 type RPCError struct {
 	Code    int
@@ -36,7 +39,7 @@ type RPCError struct {
 func (e *RPCError) Error() string { return fmt.Sprintf("rpc_error_%d", e.Code) }
 func (r *RPC) Call(ctx context.Context, method string, params any, class string) (json.RawMessage, Response, error) {
 	switch method {
-	case "eth_chainId", "eth_getBlockByNumber", "eth_getBlockByHash", "eth_getCode", "eth_call", "eth_getLogs", "eth_getTransactionReceipt", "eth_getTransactionByHash":
+	case "eth_chainId", "eth_getBlockByNumber", "eth_getBlockByHash", "eth_getCode", "eth_call", "eth_getLogs", "eth_getBlockReceipts", "eth_getTransactionReceipt", "eth_getTransactionByHash":
 	default:
 		return nil, Response{}, errors.New("rpc_method_not_readonly_whitelist")
 	}
@@ -55,11 +58,11 @@ func (r *RPC) Call(ctx context.Context, method string, params any, class string)
 		}
 		res.PayloadHash = h
 	}
-	// Some providers send JSON-RPC errors with HTTP 400. Only inspect a
-	// complete, archived response for this exact transport failure. Rate limits,
-	// bans and evidence/network failures retain their transport semantics.
+	// A complete archived HTTP error may also carry a strict JSON-RPC error.
+	// Join both for diagnosis; parsing can never turn a rate limit/ban into
+	// success, erase its cooldown, or reinterpret evidence/network failures.
 	transportErr := e
-	inspectHTTPError := e != nil && e.Error() == "source_http_400" && res.HTTPStatus == 400 && len(res.PayloadHash) == 32
+	inspectHTTPError := e != nil && len(res.PayloadHash) == 32 && (strings.HasPrefix(e.Error(), "source_http_") || e.Error() == "source_rate_limited" || e.Error() == "source_disabled")
 	if e != nil && !inspectHTTPError {
 		return nil, res, e
 	}
@@ -106,7 +109,10 @@ func (r *RPC) Header(ctx context.Context, tag string) (Block, error) {
 	if e != nil {
 		return b, e
 	}
-	var v struct{ Number, Hash, ParentHash, Timestamp, BaseFeePerGas string }
+	var v struct {
+		Number, Hash, ParentHash, Timestamp, BaseFeePerGas, LogsBloom string
+		Transactions                                                  []string
+	}
 	if e = exactJSON(raw, &v); e != nil {
 		return b, e
 	}
@@ -119,6 +125,12 @@ func (r *RPC) Header(ctx context.Context, tag string) (Block, error) {
 	if b.ParentHash, e = ParseHex(v.ParentHash, 32); e != nil {
 		return b, e
 	}
+	if v.LogsBloom != "" {
+		if b.LogsBloom, e = ParseHex(v.LogsBloom, 256); e != nil {
+			return b, e
+		}
+	}
+	b.Transactions = v.Transactions
 	sec, e := q64(v.Timestamp)
 	if e != nil || sec > 1<<63-1 {
 		return b, errors.New("block_timestamp")

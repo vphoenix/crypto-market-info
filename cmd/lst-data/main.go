@@ -7,9 +7,11 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"net/url"
 	"os"
 	"os/signal"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"syscall"
 	"time"
@@ -39,7 +41,7 @@ func run(ctx context.Context, args []string) error {
 	once := fs.Bool("once", false, "one market capture; no implicit backfill")
 	days := fs.Int("days", 30, "primary event cohort days plus at most 30 context days")
 	ranges := fs.Int("max-ranges", 0, "bounded historical log requests; 0 runs to fixed end")
-	fromBlock := fs.Uint64("from-block", 0, "explicit inclusive historical range start (paired with to-block)")
+	fromBlock := fs.Uint64("from-block", 0, "watch: fixed new log segment start; backfill: inclusive start paired with to-block")
 	toBlock := fs.Uint64("to-block", 0, "explicit inclusive range end, at most 512 blocks")
 	duration := fs.Duration("duration", 0, "optional maximum command runtime")
 	from := fs.String("from", "", "report start UTC RFC3339")
@@ -114,7 +116,63 @@ func run(ctx context.Context, args []string) error {
 	if e != nil {
 		return e
 	}
-	transport, e := lst.NewTransport(lst.TransportConfig{StateDir: *state, ArchiveDir: *evidence, Backfill: command == "backfill"})
+	rpcLimit := 120
+	if value := os.Getenv("LST_RPC_REQUESTS_PER_MINUTE"); value != "" {
+		rpcLimit, e = strconv.Atoi(value)
+		if e != nil || rpcLimit < 1 || rpcLimit > 120 {
+			return errors.New("invalid_rpc_requests_per_minute")
+		}
+	}
+	logLimit := 0
+	if value := os.Getenv("LST_LOG_REQUESTS_PER_5_MINUTE"); value != "" {
+		logLimit, e = strconv.Atoi(value)
+		if e != nil || logLimit < 1 || logLimit > 30 {
+			return errors.New("invalid_log_requests_per_five_minutes")
+		}
+	}
+	startupGap := 2 * time.Second
+	if value := os.Getenv("LST_RPC_STARTUP_GAP"); value != "" {
+		startupGap, e = time.ParseDuration(value)
+		if e != nil || startupGap < 2*time.Second || startupGap > 30*time.Second {
+			return errors.New("invalid_rpc_startup_gap")
+		}
+	}
+	rpcGap := 500 * time.Millisecond
+	if value := os.Getenv("LST_RPC_GAP"); value != "" {
+		rpcGap, e = time.ParseDuration(value)
+		if e != nil || rpcGap < 500*time.Millisecond || rpcGap > 10*time.Second {
+			return errors.New("invalid_rpc_gap")
+		}
+	}
+	marketInterval := time.Minute
+	if value := os.Getenv("LST_MARKET_INTERVAL"); value != "" {
+		marketInterval, e = time.ParseDuration(value)
+		if e != nil || (marketInterval != time.Minute && marketInterval != 2*time.Minute) {
+			return errors.New("invalid_market_interval")
+		}
+	}
+	entryRoutes := 2
+	if value := os.Getenv("LST_ENTRY_ROUTES_PER_ROUND"); value != "" {
+		entryRoutes, e = strconv.Atoi(value)
+		if e != nil || (entryRoutes != 1 && entryRoutes != 2) {
+			return errors.New("invalid_entry_routes_per_round")
+		}
+	}
+	pauseLiveLogs := false
+	if value := os.Getenv("LST_PAUSE_LIVE_LOGS"); value != "" {
+		pauseLiveLogs, e = strconv.ParseBool(value)
+		if e != nil {
+			return errors.New("invalid_pause_live_logs")
+		}
+		if pauseLiveLogs && command != "watch" {
+			return errors.New("pause_live_logs_only_for_watch")
+		}
+	}
+	if command == "watch" && (*toBlock != 0 || pauseLiveLogs && *fromBlock != 0) {
+		return errors.New("watch_log_start_requires_unpaused_logs_and_no_to_block")
+	}
+	pruneResponses := command == "watch" || command == "backfill"
+	transport, e := lst.NewTransport(lst.TransportConfig{StateDir: *state, ArchiveDir: *evidence, Backfill: command == "backfill", RPCRequestsPerMinute: rpcLimit, LogRequestsPerFiveMinutes: logLimit, StartupRPCGap: startupGap, RPCGap: rpcGap, PruneCommittedResponses: pruneResponses})
 	if e != nil {
 		return e
 	}
@@ -123,7 +181,19 @@ func run(ctx context.Context, args []string) error {
 	if endpoint == "" {
 		endpoint = "https://eth.drpc.org"
 	}
-	rpc := &lst.RPC{Transport: transport, URL: endpoint}
+	protocolMode := os.Getenv("LST_PROTOCOL_MODE")
+	if protocolMode != "" && protocolMode != "sequential" && protocolMode != "multicall" {
+		return errors.New("invalid_protocol_mode")
+	}
+	rpc := &lst.RPC{Transport: transport, URL: endpoint, ProtocolMulticall: protocolMode == "multicall"}
+	logRPC := rpc
+	if logEndpoint := os.Getenv("LST_LOG_RPC_URL"); logEndpoint != "" {
+		u, err := url.Parse(logEndpoint)
+		if err != nil || u.Hostname() == "" || (u.Scheme != "http" && u.Scheme != "https") || u.Fragment != "" {
+			return errors.New("invalid_log_rpc_endpoint")
+		}
+		logRPC = &lst.RPC{Transport: transport, URL: logEndpoint}
+	}
 	archive := ethereum.Archive{Dir: *evidence}
 	if _, e = archive.Put(m.Raw); e != nil {
 		return e
@@ -185,7 +255,20 @@ func run(ctx context.Context, args []string) error {
 	if e != nil {
 		return e
 	}
-	c := &lst.Collector{RPC: rpc, CEX: cex, Manifest: m, Store: store, Archive: archive, StateDir: *state}
+	logMode := os.Getenv("LST_LOG_MODE")
+	if logMode == "" {
+		logMode = "range"
+	}
+	if logMode != "range" && logMode != "receipts" {
+		return errors.New("invalid_log_mode")
+	}
+	if command == "backfill" && logMode == "receipts" && (*fromBlock == 0 || *toBlock < *fromBlock || *toBlock-*fromBlock >= 8) {
+		return errors.New("receipts_mode_requires_explicit_one_to_eight_block_gap")
+	}
+	c := &lst.Collector{RPC: rpc, LogRPC: logRPC, LogMode: logMode, PauseLiveLogs: pauseLiveLogs, CEX: cex, Manifest: m, Store: store, Archive: archive, StateDir: *state, MarketInterval: marketInterval, EntryRoutesPerRound: entryRoutes, PruneCommittedResponses: pruneResponses}
+	if command == "watch" {
+		c.LiveLogsFromBlock = *fromBlock
+	}
 	// Validate the target before trusting persisted cursors/pending batches.
 	targetFile := filepath.Join(*state, "database-target")
 	target := *address + "/" + *database
@@ -204,11 +287,34 @@ func run(ctx context.Context, args []string) error {
 	if e = c.FlushPending(ctx); e != nil {
 		return e
 	}
+	u, endpointErr := url.Parse(endpoint)
+	if endpointErr != nil || u == nil || u.Hostname() == "" {
+		return errors.New("invalid_rpc_endpoint")
+	}
+	identityTag := "finalized"
+	if command == "watch" || pauseLiveLogs {
+		// Watch verifies current pinned identities. Event ABI is separately
+		// verified at its actual historical block; finalized state may be pruned.
+		identityTag = "latest"
+	}
+	log.Printf("starting collector=%s phase=identity rpc_host=%s rpc_limit_per_minute=%d startup_gap=%s rpc_gap=%s protocol_mode=%s log_mode=%s live_logs_paused=%t identity_anchor=%s; persistent cooldown applies", lst.CollectorVersion, u.Hostname(), rpcLimit, startupGap, rpcGap, protocolMode, c.LogMode, c.PauseLiveLogs, identityTag)
 	for {
-		head, he := rpc.Header(ctx, "finalized")
+		// A cooling host must produce a visible initialization diagnostic,
+		// rather than leave an active process silently blocked for 30 minutes.
+		headCtx, headStop := context.WithTimeout(ctx, max(20*time.Second, startupGap+10*time.Second, rpcGap+10*time.Second))
+		head, he := rpc.Header(headCtx, identityTag)
+		headStop()
 		var proof []lst.Response
 		if he == nil {
 			_, proof, he = rpc.VerifyIdentity(ctx, m, head, false)
+		}
+		if he == nil && !pauseLiveLogs && logRPC.URL != rpc.URL {
+			raw, res, err := logRPC.Call(ctx, "eth_chainId", []any{}, "normal")
+			proof = append(proof, res)
+			he = err
+			if he == nil && string(raw) != `"0x1"` {
+				he = errors.New("wrong_chain_log_source")
+			}
 		}
 		if he == nil {
 			c.Metadata, he = cex.Metadata(ctx)
@@ -224,6 +330,9 @@ func run(ctx context.Context, args []string) error {
 		}
 		if he == nil {
 			break
+		}
+		if e = c.SaveInitializationDiagnostic(he); e != nil {
+			return e
 		}
 		if ctx.Err() != nil {
 			return ctx.Err()

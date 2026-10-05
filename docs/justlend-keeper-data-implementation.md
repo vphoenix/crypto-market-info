@@ -1,10 +1,18 @@
 # JustLend keeper 公开数据采集实现
 
-2026-10-03：已实现 Go 命令并建立独立研究库 `crypto_market_info_justlend_keeper` 的五张表。设计见[最小方案](justlend-keeper-data-mvp-design.md)，代码独立审核见[审核记录](../discuss/0017-justlend-keeper-data-code-review.md)，实际验收见[验证记录](../research/2026-10-03-keeper-implementation/validation.md)。
+2026-10-04：已实现 Go 命令，独立研究库 `crypto_market_info_justlend_keeper` 的七张表。设计见[最小方案](justlend-keeper-data-mvp-design.md)，代码独立审核见[本轮审核](../discuss/0019-justlend-keeper-no-raw-review.md)，实际验收见[验证记录](../research/2026-10-04-keeper-no-raw/validation.md)。
+
+2026-10-05 11:22 CST 重启后复核：常驻服务 active/running、enabled，停机大窗口已自动补采。另发现停机前本地游标与现存数据库覆盖之间各少一片：Liquidate/RentResource 的 20:27:06–20:27:36 UTC、ReturnResource 的 20:27:13–20:27:43 UTC。11:20–11:21 CST 使用原 Collector、单进程锁和持久预算定点补采，三片均无事件、一页且分页穷尽，完整写入来源哈希和分页表；实时游标未回退，恢复后来源/明细游标继续推进。按完整扫描窗口并集验证停机前至当前无内部断口，实际成员摘要导出通过。未保留响应正文、未修改路由或自启动。完整操作、SQL、验证及不能补回的盘口缺失见[重启修复记录](../research/2026-10-05-reboot-recovery/report.md)。
+
+## 2026-10-03 采集与核验分离
+
+本轮以准确获取公开数据为边界。TronGrid 页经内存严格解析/计算SHA及 typed 索引观测提交后，即推进抓取进度；PublicNode 区块、收据、交易体作为独立父子批次后台核验。源页不再预取固化头，也不等待核验请求。所有目标能源事件进入新增 jl_keeper_indexed_event，不受固定样本限制；未知块hash为NULL、finality明确是供应商宣称确认。
+
+实时索引页优先，历史索引页与核验低优先，现有限速/冷却/单请求在途不变。源 EventCursors 与当前选中样本的 EvidenceCursors 分开；后者要求完整分页链及每页成功子批次，不认证全量租单。旧 Frozen 批次不重写，旧分页前缀从原窗口首页重索引；capture 的三个新字段默认0/NULL，兼容旧 gob 与表。详细设计见[当前方案](justlend-keeper-data-mvp-design.md)，实际部署核验见[本轮记录](../research/2026-10-03-keeper-collection-split/validation.md)。
 
 ## 运行与来源
 
-程序入口为 `cmd/justlend-keeper-data`，配置为 `config/justlend-keeper-tron.json`。单进程循环调度 HTTP 工作项；原始请求、响应和批次 manifest 按 SHA-256 gzip 归档。没有队列平台、全链索引或交易执行。
+程序入口为 `cmd/justlend-keeper-data`，配置为 `config/justlend-keeper-tron.json`。单进程循环调度 HTTP 工作项；请求/响应只在内存中解析及计算SHA，不保存正文文件。解析字段、时间、区块锚点、来源哈希和分页进度存入专项表。没有队列平台、全链索引或交易执行。
 
 | 来源 | 地址 | 读取内容 |
 |---|---|---|
@@ -22,7 +30,7 @@
 var/justlend-keeper/bin/justlend-keeper-data init-schema
 var/justlend-keeper/bin/justlend-keeper-data preflight --duration 90s
 var/justlend-keeper/bin/justlend-keeper-data watch --duration 168h
-var/justlend-keeper/bin/justlend-keeper-data report --days 30
+var/justlend-keeper/bin/justlend-keeper-data export --days 30
 ```
 
 `init-schema` 是唯一显式建库建表命令。采集连接只打开已有库；`report` 使用只读连接，不发外部 HTTP，不执行 DDL。采集、建表与来源恢复命令使用同一 UID 的全局文件锁；换数据库或状态目录不能同时启动另一份采集器。`report` 不占用此锁，可以在服务运行时执行；并行报告应使用不同输出目录。
@@ -34,7 +42,7 @@ systemctl --user status crypto-market-info-justlend-keeper.service
 journalctl --user -u crypto-market-info-justlend-keeper.service -n 30 --no-pager
 ```
 
-持久路径：二进制 `var/justlend-keeper/bin/justlend-keeper-data`、状态 `var/justlend-keeper/state/state.gob`、证据 `var/justlend-keeper/evidence/`、离线报告 `var/justlend-keeper/reports/latest/`。不要删状态以恢复运行；状态校验损坏、配置或数据库身份不符会停止。
+持久路径：二进制 `var/justlend-keeper/bin/justlend-keeper-data`、状态 `var/justlend-keeper/state/state.gob`；旧归档 `var/justlend-keeper/evidence/` 仅供一次性migrate-pages使用，正常采集/导出不依赖该目录；数据导出 `var/justlend-keeper/exports/<UTC时间戳>/`。不要删状态以恢复运行；状态校验损坏、配置或数据库身份不符会停止。
 
 ### 构建与配置
 
@@ -48,12 +56,14 @@ go build -buildvcs=false -o /tmp/justlend-keeper-data.next ./cmd/justlend-keeper
 |---|---|
 | `--config` | `config/justlend-keeper-tron.json` |
 | `--clickhouse` / `--database` | `127.0.0.1:9000` / `crypto_market_info_justlend_keeper`；库名必须以该研究库前缀开头 |
-| `--state` / `--evidence` | `var/justlend-keeper/state` / `var/justlend-keeper/evidence` |
+| `--state` | `var/justlend-keeper/state`，必须保留进度/预算和未完成解析结果 |
+| `--evidence` | 兼容旧unit参数；仅migrate-pages读取旧归档，watch/export忽略 |
 | `--duration` | 命令默认24小时；实际 unit 使用168小时；到时保留待办，不表示历史窗口已完成 |
-| `--days` | 默认30，允许1..30；backfill 为首次历史窗口，report 为查询区间；report 不抓取缺失历史 |
+| `--days` | 默认30，允许1..30；backfill 为首次历史窗口，export 为查询区间；export 不抓取缺失历史 |
 | `--from` / `--to` | RFC3339 时间，含起点、不含终点，建议显式 `Z`；backfill 终点至少落后当前120秒，范围不超过30日 |
+| `--history-days` | 仅watch；0默认不新增历史任务，1..30冻结已满足120秒延迟的完整UTC日窗口；现有未完成历史继续恢复 |
 | `--max-pages` | backfill 本次最多再提交多少页，默认0表示继续处理整个冻结窗口；分页上限退出不代表完整覆盖 |
-| `--out` | `var/justlend-keeper/reports/latest`，仅用于离线报告 |
+| `--out` | `var/justlend-keeper/exports/<UTC时间戳>`，仅用于数据导出 |
 | `--source` | resume-source 要恢复的 `publicnode`、`trongrid` 或 `binance` |
 
 配置文件只有三个公开 HTTPS origin、两个公共 caller 和 `daily_budget`（1..40000）。链、合约、implementation/code 指纹、ABI 与调度间隔在代码中固定。ClickHouse 用户与密码分别来自 `JUSTLEND_KEEPER_CLICKHOUSE_USER`、`JUSTLEND_KEEPER_CLICKHOUSE_PASSWORD`；TronGrid 的可选 key 来自 `JUSTLEND_KEEPER_TRONGRID_API_KEY`，均不写入仓库或证据。
@@ -76,11 +86,15 @@ systemctl --user start crypto-market-info-justlend-keeper.service
 
 ## 收集范围与数据身份
 
-watch 缓速初始化六个 Rent/Return 年龄窗口，每个最多十页，共最多六十页。原始完整页保留；只把选中租单的日志、收据、交易及指定块核验后写为事实。替补缓存最多 1,500 个候选，按固定 hash 每年龄层保留最多 500 个；它不是总体数量估计。固定样本目标 50 个，年龄层配额 15/15/20，缺样本不伪造补足。新租单不会挤出已选成员；固化事件证实关闭后才在同层替换，manifest 记录生命周期和替换原因。
+watch 缓速初始化六个 Rent/Return 年龄窗口，每个最多十页，共最多六十页。原始完整页和全部目标能源索引观测保留；只把选中租单的日志、收据、交易及指定块核验后写为事实。替补缓存最多 1,500 个候选，按固定 hash 每年龄层保留最多 500 个；它不是总体数量估计。固定样本目标 50 个，年龄层配额 15/15/20，缺样本不伪造补足。新租单不会挤出已选成员；固化事件证实关闭后才在同层替换，manifest 记录生命周期和替换原因。
 
-初始化分页完成后，三类事件按确认延迟 120 秒、固定窗口增量抓取。积压时窗口最多五分钟，发送速率不增加。每 30 秒最多调度五个样本的只读模拟，轮转样本；未验证样本只记录 skipped，晚于计划 30 秒的工作跳过。链参数与身份检查每五分钟，TRXUSDT 报价每分钟；来源变慢时不集中补轮次。日切后台重查前一 UTC 日 Liquidate。
+初始化分页完成后，三类事件按确认延迟120秒、半开窗口增量抓取。新 watch 窗口按秒对齐；积压时窗口最多30分钟，每页仍最多200条、先提交索引观测再后台核验，发送速率不增加。实际部署启用 `--history-days 30`，先追赶租单生命周期，然后一次只补一个完整UTC日的 Liquidate；历史起止首次冻结，重启不滚动。实时 Liquidate 与历史窗口分别调度，不因历史未完成而停止实时游标。UTC零点后的前120秒不启动刚结束一天的重查。
 
-watch 不隐式做三十日奖励历史回补。backfill 可用 `--max-pages`、`--duration` 分段；首次冻结起止时间，恢复仍用原窗口和分页游标，不能用新的默认 now 再开一套滚动历史。以下示例只适用于当前状态没有 watch 待办的新部署：
+事件 HTTP 查询使用 `[floor(from,秒),ceil(to,秒))` 包络，供应商返回值必须位于包络内，地址／种类／ABI／交易身份仍严格核验；包络边缘合法事件按原逻辑 `[from,to)` 裁剪，保留完整原页和排除数。分页链接必须保持同一个包络。升级时未冻结的小数 watch 待办以 `legacy_fractional_window_replaced` 提交原失败记录；新扫描从原游标所在秒重扫，最多重叠一秒，收据位置与 canonical 身份去重。旧 Frozen 数据库重试保持原样，原预算、冷却、游标不清空。失败窗口保留原分页 token，1／2／4／8／16／30分钟退避，成功后才推进游标；每天重查失败也按此恢复。
+
+冷启动前五分钟不新增probe；已有模拟观测仍完成后置头。probe 一次只调度一个样本，最早每6秒轮转一次，最多5个／30秒，不积攒轮次。Rent/Return 样本证据游标落后当前超过5分钟时暂停新 probe，待事件追上再恢复。未验证样本仍如实 skipped；30秒期限仅拒绝尚未发出模拟的过时待办，一旦模拟尝试已经发出就保留观测并补完后置块头，实际前后范围全部记录。链参数与身份检查每五分钟，TRXUSDT 报价每分钟。
+
+watch 默认不做三十日奖励历史回补；当前unit显式加 `--history-days 30`，可与原watch待办一起恢复，无需删除队列或切换命令。独立 backfill 可用 `--max-pages`、`--duration` 分段；首次冻结起止时间，恢复仍用原窗口和分页游标，不能用新的默认 now 再开一套滚动历史。以下示例只适用于当前状态没有 watch 待办的新部署：
 
 ```bash
 var/justlend-keeper/bin/justlend-keeper-data backfill --days 30 --max-pages 20 --duration 30m
@@ -90,55 +104,37 @@ var/justlend-keeper/bin/justlend-keeper-data backfill --days 30 --max-pages 20 -
 
 固化事件保留块高/hash、块内交易序号、供应商事件下标与 receipt 日志下标。同高度 hash 冲突会停止写入；报告也拒绝冲突数据。完全相同日志被分页拆散时保守记 partial，不能把后页重新匹配到第一条日志。只有具备唯一日志定位和成功收据的事件进入历史奖励统计。
 
-真实 Rent/Return 使用扩展事件：非 indexed 数据分别六/七个 uint256 word，比官方参考页的旧四/五个多 `securityDeposit` 和 `rentIndex`。按精确 topic 和 word 数兼容两版；扩展版两字段严格核验，保存为 `security_deposit_sun`、`rent_index` Nullable(UInt256)，旧版 NULL，ABI revision 区分版本。`init-schema` 对既有五表幂等增加这两列。原始索引页和收据同时留存，不从未认证 ABI 推导清理截止时间。
+真实 Rent/Return 使用扩展事件：非 indexed 数据分别六/七个 uint256 word，比官方参考页的旧四/六个多 `securityDeposit` 和 `rentIndex`。按精确 topic 和 word 数兼容两版；扩展版两字段严格核验，保存为 `security_deposit_sun`、`rent_index` Nullable(UInt256)，旧版 NULL，ABI revision 区分版本。`init-schema` 对既有表幂等增加这两列。索引和收据的解析字段及来源hash分别落库，不从未认证 ABI 推导清理截止时间。
 
 已选且未验证的样本可恢复核验：一次只排一个恢复 seed，失败后至少等30分钟，每个解析版本最多三次；次数、下次时间、解析版本保存在状态和 cohort manifest。解析版本改变可重新核验旧失败，预算和来源冷却不重置。到达上限仍保留未验证，不标关闭、不自动换样本。初始化结束后，恢复任务不阻塞已验证样本的 probe 或增量事件。
 
 最新只读模拟为 `node_latest_unpinned`；前后块头给出观测范围，不能当作某个固化历史块的执行结果。API true 与 TVM 成功分别解析，公共 caller 必须为正常 EOA 且不同于 renter/receiver。
 
-## 五表与写入
+## 七表与写入
 
-五表为 `jl_keeper_capture`、`jl_keeper_rental_event`、`jl_keeper_tx_receipt`、`jl_keeper_probe`、`jl_keeper_cost_observation`，DDL 见[表结构](justlend-keeper-data-schema.sql)。UTC 微秒；金额 UInt256 sun，价格/数量 Decimal(38,18)，hash/address 是二进制 FixedString。缺失 fee 或资源信息保留 NULL。
+七表为 `jl_keeper_index_page`、`jl_keeper_capture`、`jl_keeper_indexed_event`、`jl_keeper_rental_event`、`jl_keeper_tx_receipt`、`jl_keeper_probe`、`jl_keeper_cost_observation`，DDL 见[表结构](justlend-keeper-data-schema.sql)。UTC 微秒；金额 UInt256 sun，价格/数量 Decimal(38,18)，hash/address 是二进制 FixedString。缺失 fee 或资源信息保留 NULL。
 
-原始证据先归档，再冻结成员与摘要，最后写事实和 capture 提交标记。重试复用 capture_id、起始时间和原成员，跨月不会换分区。writer 检查部分写入未被变更，已提交批次回读核验摘要。报告只使用可核验完整成员及证据的 capture，并按 block/tx/log 身份去重；同一交易多个奖励只计算一次整笔费用。
+响应在内存解析及计算哈希，冻结解析成员与摘要后写事件/分页进度等成员，最后写capture提交标记。重试复用 capture_id、起始时间和原成员，跨月不会换分区。writer 检查部分写入未被变更，已提交批次回读核验摘要。导出只验证已提交当前配置的数据库成员计数/摘要、分页来源关系及父capture；索引观测、已核验事实、整笔交易费用各自保留，由下游程序按身份组合。
 
 成员摘要采用 `jl-keeper-fact-v1` 固定二进制编码：域标签、固定字段顺序/名称、长度前缀、UTC UnixMicro、整数/大整数及18位Decimal；NULL与零不同，空列表与数据库空列表等值。每行SHA-256排序后再哈希，manifest显式记录编码标识。gob仅用于本地状态和冻结容器，不用于持久成员摘要。不同进程及不同gob类型注册顺序的回归均核验一致。
 
-组合chain_resource观测的available_at等于参数、proxy与前后头全部组装完成的capture可用时刻；source_time/received_at仍是参数响应时刻。旧组合行保持原值，报告取max(row.available_at,capture.available_at)作为保守有效时刻，CSV列为effective_available_utc，避免使用未来元数据。
+组合chain_resource观测的available_at等于参数、proxy与前后头全部组装完成的capture可用时刻；source_time/received_at仍是参数响应时刻。旧组合行保持原值，报告取max(row.available_at,capture.available_at)作为保守有效时刻，下游需据这两个时间计算有效可用时刻，避免使用未来元数据。
 
-首批实际验收发现早期gob摘要不能跨进程认证，四条报价错误提交已完整备份后撤回提交标记；事实值、原摘要、身份、时间和原始证据全部保留。它们仍在coverage中显示uncommitted，分析排除，详见验证记录。其他十九个空事实批次逐一认证通过；没有把撤回数据当零值。链参数按TRON signed int64严格解析，无关参数合法的-1不影响两项必须为正的资源费率。
+首批实际验收发现早期gob摘要不能跨进程认证，四条报价错误提交已完整备份后撤回提交标记；事实值、原摘要、身份和时间保留；原始归档按本次策略清理。它们仍在coverage中显示uncommitted，分析排除，详见验证记录。其他十九个空事实批次逐一认证通过；没有把撤回数据当零值。链参数按TRON signed int64严格解析，无关参数合法的-1不影响两项必须为正的资源费率。
 
-## 报告与目前边界
+## 纯数据导出
 
-输出下列文件。完整首尾分页链覆盖一整 UTC 日后才统计完整日奖励；未覆盖日期保留 unknown，不把未抓到事件当零奖励。
+`export` 与兼容命令 `report` 只导出 captures/indexed_events/verified_events/receipts/probes/cost_observations/index_pages 七张 CSV 和 metadata.json；不生成利润、年化、episode、集中度或成本情景报告。`--from/--to` 按 capture_started_at 半开窗口过滤，`--days` 只查询、不回补。目录必须不存在，默认使用 UTC 时间戳；先在临时目录写完、认证成功后整体发布。
 
-| 文件 | 阅读口径 |
-|---|---|
-| `summary.json` | 先看 `complete_utc_days`、`unknown_burn_transactions`、`positive_return_unclassified`；`gross_reward_trx` 是已观测历史赢家毛奖励，`known_whole_transaction_burn_trx` 只合计费用已知交易，不能将两者直接相减作为净收益 |
-| `coverage.csv` | 所有匹配当前配置的已存批次及失败／未提交状态；`pagination_continues` 需结合后续页，单页complete不等于整日complete |
-| `liquidations.csv` | 日志身份去重后的 Liquidate；同一交易可多行，整笔费用列不得逐事件再次求和；Rent/Return 事实留数据库，不列在这个CSV |
-| `daily_rewards.csv` | `vendor_window_complete=false` 时 `complete_day_reward_trx=unknown`，即使已观察金额为0；只有完整日参与中位数和最差连续7日统计 |
-| `address_concentration.csv` | 已观察毛奖励的赢家地址集中度，不是本采集器可得份额 |
-| `probe_observations.csv` | 按实际 available_at 的离散模拟点；无观测、skipped、unknown不能当作成功零奖励 |
-| `probe_episodes.csv` | 当前仅表头，尚无已认证连续机会数据 |
-| `cost_observations.csv` | 费率和BBO观测，`effective_available_utc` 是保守可用时间；CSV可包含查询区间外的成本，用于回溯可用价格 |
-| `resource_break_even.csv` | 400字节带宽假设下的条件性资源预算；`all_in_net_profit` 始终unknown |
+captures.csv 保留窗口内撤回/未提交/其他配置的审计记录；这些记录的成员不进入认证输出。其他六份 CSV 仅输出 committed=true、当前 config_hash 的成员，每256个capture批读所有成员表。即使期望0行也读取并校验；子批次还核对父capture身份、窗口和发现数；分页记录核对来源hash和时间。金额完整输出整数，Nullable 用 unknown，hash/地址输出 hex，嵌套内部转账作为无损 JSON 单元格。metadata明确原响应不保留、不能重新解析核验原JSON；导出不读取文件归档。
 
-report 的 `--from/--to` 对 Liquidate 按链上 `block_time` 过滤，对 probe 按本地 `available_at` 过滤；capture覆盖清单及cost不是同样的时间过滤。程序核验当前配置下全部已存capture来检查证据、重复和固化hash冲突，所以 `capture_rows` 不是该时间窗内事件条数。`--days 30` 只查询，不自动回补。服务继续采集时，旧报告不会自动刷新，需重新运行 report；其 `as_of` 是这次报告生成时间。
+索引观测与固化事实分开读取。索引页 complete 不证明整个窗口分页完成，更不证明已收据核验。Rent/Return 后台核验仅覆盖固定样本；complete 且 selected_candidates=0 的子批次不代表父页所有索引行已核验。后台事实 available_at 为核验完成时刻，完整上下文有效可用时间为 max(row.available_at,capture.available_at)；block_time 是链时间。失败子批次最多尝试3次、至少间隔30分钟，父子状态可查询，不自动标为核验完整。
 
-`revert` 表示源响应已获得但TVM模拟执行失败；`success_zero` 才是已核验成功返回0；`rpc_error`／`timeout` 是请求或API失败；`unknown` 保留未认证结果。正返回值当前可能计入 `positive_return_unclassified`，不升级为 `success_reward`。未验证caller／样本及过期轮次只产生capture的skipped记录，可能没有probe行，须一起读coverage。
-
-历史奖励属于当时的获胜者。helper 交易可能同笔转入退款、归还押金和奖励；不能仅挑一条恰好同金额转账就证明净收入。未知交易费、能源采购、失败尝试和兑换成本不视为零。
-
-成功奖励模拟 fixture 尚未认证，当前禁止写 `success_reward`；正返回值仍保存原始证据和 unknown/uncertified 观测。短期优先队列未启用；`probe_episodes.csv` 当前只有表头，`probe_observations.csv` 是离散观测点，不认证连续机会时长或胜率。
-
-成本盈亏平衡是使用当时已可用费率和 **400 字节带宽假设** 的研究情景，检查报价一档容量；维护边界、实际能源成交报价、其他成本 K 及失败成本尚未知，`all_in_net_profit` 始终为 unknown。当前不输出可认证年化或每日净获利。
-
-测试覆盖严格解析、定点数、真实归档、失败/重试、发送间隔、冷却恢复、分页歧义、固化冲突、canonical 去重和真实 ClickHouse 往返。完整 24 小时实际请求数、压缩空间及代表性查询时间应在持续采集后补测；首批空间和时序不外推为全天容量。
+模拟仍保留真实 TVM/API 状态和 NULL。`revert` 只表示明确 REVERT，其他明确 TVM 失败为 tvm_failure，不能视作网络错误；成功奖励 fixture 未认证，禁止写 success_reward。这是结果分类与完整性校验，不做机会判断。历史研究 Report 函数保留作旧测试兼容，命令行不调用它。
 
 ## 数据健康检查与排查
 
-在仓库根目录读取unit与journal，再用本机客户端执行下面SQL。SQL仅用于看数据进度，完整成员和raw核验仍使用report。`active`只说明进程存在；资源/BBO可用时刻、实际probe和事件窗口也需要持续推进。初始化、来源冷却或当日预算耗尽时允许延迟，按journal和coverage确认原因，不能用旧值填新时间。
+在仓库根目录读取unit与journal，再用本机客户端执行下面SQL；索引与父子状态完整查询见[健康SQL](justlend-keeper-data-health.sql)。SQL仅用于看数据进度，完整数据库成员校验使用export/report，不再重放原文。`active`只说明进程存在；资源/BBO可用时刻、实际probe和事件窗口也需要持续推进。初始化、来源冷却或当日预算耗尽时允许延迟，按journal和coverage确认原因，不能用旧值填新时间。
 
 ```bash
 systemctl --user show crypto-market-info-justlend-keeper.service -p ActiveState -p SubState -p NRestarts
@@ -170,17 +166,17 @@ GROUP BY status;
 
 | 现象／错误 | 当前处理方式 |
 |---|---|
-| `caller_conflict_or_unverified_candidate`、`stale_probe_round` | 如实skipped；看cohort manifest中的verified、seed_attempts和seed_next_at，不把空probe表当作已经观测到零机会 |
+| `caller_conflict_or_unverified_candidate`、`stale_probe_round` | 如实skipped；看state中的cohort verified、seed_attempts和seed_next_at，不把空probe表当作已经观测到零机会 |
 | 429／418，或当日已达daily_budget | 等待持久来源冷却或下一UTC日；不通过重启清除 |
 | 401／403 | 来源保持blocked，核实路由／鉴权后按上面的resume-source流程显式恢复 |
 | `state_checksum_failed`／`state_version_target_config_mismatch` | 保留现场，检查状态备份、配置和目标身份；不用删除state启动新额度 |
-| `solid_hash_conflict`、`stored_solid_hash_conflict`、`report_solid_hash_conflict` | 保留原始证据和冲突批次，核对来源；重启不能认证冲突数据 |
-| `capture_members_mismatch`、`capture_evidence`、`partial_capture_retry_mutated` | 查原manifest/raw和冻结状态；先备份再纠正，不重算旧摘要让错误记录冒充通过 |
+| `solid_hash_conflict`、`stored_solid_hash_conflict`、`report_solid_hash_conflict` | 保留冲突批次和state，核对区块锚点及来源；重启不能认证冲突数据 |
+| `capture_members_mismatch`、`partial_capture_retry_mutated` | 查数据库成员和冻结状态；先备份再纠正，不重算旧摘要让错误记录冒充通过 |
 | `pending_watch_tasks_resume_with_watch_before_backfill` | 恢复原watch；当前没有自动排空后切换模式的实现 |
 
 ## 备份与后续验收
 
-恢复运行需要同一时点的五表数据、`state.gob`、全部SHA归档及对应配置／二进制版本；CSV报告可以重建，不能代替源数据。备份时暂停keeper unit，确认进程已退出，再保存该研究库五表及DDL、状态和evidence；完成后恢复unit，其他采集器无需停止。恢复只针对keeper研究库，沿用当日预算／来源阻断，不覆盖主行情库。缺manifest/raw的数据库记录不能通过report认证。
+恢复运行需要同一时点的七表数据、`state.gob`及对应配置／二进制版本；CSV报告可以重建，不能代替源数据。备份时暂停keeper unit，确认进程已退出，再保存该研究库七表及DDL、状态；完成后恢复unit，其他采集器无需停止。恢复只针对keeper研究库，沿用当日预算／来源阻断，不覆盖主行情库。正常恢复与导出不需要manifest/raw文件；完整分页进度与数据库成员摘要必须通过校验。
 
 已有失败修复的Native快照、原状态和SHA清单在[验收目录](../research/2026-10-03-keeper-implementation/)，这不是自动备份服务。不要仅恢复数据库或仅恢复较旧state后宣称恢复完整；需核对原批次身份、冻结待办及已用预算。当前没有自动状态迁移、备份或队列排空命令。
 
@@ -188,7 +184,7 @@ GROUP BY status;
 
 | 验收项 | 补齐条件 |
 |---|---|
-| 24小时稳定性、请求量与空间 | 同一观测期的journal、已提交及待办请求manifest、UTC日预算、五表活跃part和evidence目录增长；重启／缺口保留，不能把首批线性外推为全天 |
+| 24小时稳定性、请求量与空间 | 同一观测期的journal、UTC日预算、七表活跃part和state待办；原响应目录不再增长；重启／缺口保留，不能把首批线性外推为全天 |
 | 查询耗时 | 在同一数据量下记录报告墙钟耗时，以及代表性活跃／低活动身份查询耗时；报告大量revert也属于有效观测，不能只选择成功样本 |
 | 完整30日历史 | 显式回补且首尾分页链覆盖所需完整UTC日，报告列出未知窗口；常驻watch的bootstrap不替代奖励历史 |
 | 奖励成功模拟字段 | 一份可核验真实成功响应或可复现TVM fixture，加上implementation/code身份、return/log/transfer核验；目前仅有失败模拟验收 |
@@ -198,7 +194,26 @@ GROUP BY status;
 
 ```bash
 go test -race ./internal/justlendkeeper ./cmd/justlend-keeper-data
-KEEPER_DB_TEST=1 go test -race ./internal/storage/clickhouse -run TestKeeperFiveTableRoundTripAndFrozenRetry -count=1
+KEEPER_DB_TEST=1 go test -race ./internal/storage/clickhouse -run Keeper -count=1
 ```
 
 测试使用research目录中的公开raw fixture及provenance，移动代码时需一并保留。文档改动核验相对链接、SQL和`git diff --check`即可，不需要重复外部采集测试。
+
+export/report按每256个capture批读六张成员/分页表（含indexed_event与index_page）；包括预期0行表，验证摘要和分页来源字段，核对子批次的父capture。保留旧记录的原始status，不派生盈亏或重分类分析；TVM原字段同时导出。只读本地数据库，不发外部HTTP。
+
+2026-10-03 边界、调度、历史与报告修复的实际验证见[修复记录](../research/2026-10-03-keeper-repair/validation.md)。网络或来源访问失败由运行记录明确报告，不自动修改路由。
+
+## 2026-10-04 旧归档迁移与清理
+
+旧分页token只在manifest，因此先将必要分页进度迁入jl_keeper_index_page。旧Capture和事实成员的值/摘要不修改，旧Frozen继续完成原批次，只为成功索引页补独立进度记录。该表只保存capture身份/起始时间、scan_id、fingerprint_in/out、请求/可用时间、payload_hash八列。
+
+```bash
+systemctl --user stop crypto-market-info-justlend-keeper.service
+var/justlend-keeper/bin/justlend-keeper-data init-schema
+var/justlend-keeper/bin/justlend-keeper-data migrate-pages
+systemctl --user start crypto-market-info-justlend-keeper.service
+```
+
+migrate-pages持全局锁，仅访问本地旧manifest与数据库，批量交叉核验索引成员来源hash/时间后写分页进度，不发HTTP。重复执行已迁移记录时不需旧归档。维护不能disable服务或重置state。归档清理必须在分页迁移及无归档恢复/导出验证完成后进行；新的正常采集不产生原始请求、响应或summary文件。已删除原文后旧归档版binary不能直接回滚；数据库/state不删除。
+
+独立审核见[0019](../discuss/0019-justlend-keeper-no-raw-review.md)，真实验证、清理范围及二进制hash见[本轮记录](../research/2026-10-04-keeper-no-raw/validation.md)。历史研究Report函数只作原fixture测试兼容，CLI不调用，不能用它读取清理后的数据。

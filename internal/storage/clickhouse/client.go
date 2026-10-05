@@ -23,19 +23,27 @@ type Config struct {
 }
 
 type Client struct {
-	readOnly     bool // Constructors that set a server readonly session also reject writes locally.
-	conn         driver.Conn
-	database     string
-	writeTimeout time.Duration
-	maxAttempts  int
-	retryDelay   time.Duration
-	instrumentMu sync.Mutex
-	derivativeMu sync.Mutex
-	metadataMu   sync.Mutex
-	yieldMu      sync.Mutex
-	yieldLoaded  bool
-	yieldByKey   map[string]yieldRouteEntry
-	yieldMaxID   uint32
+	storeIdentity      string
+	readOnly           bool // Constructors that set a server readonly session also reject writes locally.
+	conn               driver.Conn
+	database           string
+	writeTimeout       time.Duration
+	maxAttempts        int
+	retryDelay         time.Duration
+	instrumentMu       *sync.Mutex
+	instrumentOnce     sync.Once
+	derivativeMu       sync.Mutex
+	catalogLocks       [1024]chan struct{}
+	catalogLocksOnce   sync.Once
+	catalogMinuteLocks [1024]chan struct{}
+	catalogPlanLock    chan struct{}
+	catalogSlotsOnce   sync.Once
+	catalogSlots       chan struct{}
+	metadataMu         sync.Mutex
+	yieldMu            sync.Mutex
+	yieldLoaded        bool
+	yieldByKey         map[string]yieldRouteEntry
+	yieldMaxID         uint32
 	// yieldRouteInsert is a narrow fault-injection seam for the ambiguous case
 	// where ClickHouse commits a route batch but the client receives an error.
 	// Production always leaves it nil and uses insertYieldRoutes directly.
@@ -92,7 +100,7 @@ func Open(ctx context.Context, cfg Config) (*Client, error) {
 	if err != nil {
 		return nil, err
 	}
-	client := &Client{conn: conn, database: cfg.Database, writeTimeout: cfg.WriteTimeout, maxAttempts: cfg.MaxAttempts, retryDelay: cfg.RetryDelay}
+	client := &Client{storeIdentity: fmt.Sprint(cfg.Addresses), instrumentMu: &sync.Mutex{}, conn: conn, database: cfg.Database, writeTimeout: cfg.WriteTimeout, maxAttempts: cfg.MaxAttempts, retryDelay: cfg.RetryDelay}
 	if err = client.conn.Ping(ctx); err != nil {
 		client.conn.Close()
 		return nil, fmt.Errorf("ping ClickHouse: %w", err)

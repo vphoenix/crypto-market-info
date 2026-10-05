@@ -452,15 +452,24 @@ func ApplyHedge(q *Quote, m CEXMetadata, market CEXMarket, q0 *big.Int) error {
 		q.MarkSourceTime = cexPtrTime(mark.SourceTime)
 		q.NextFundingTime = cexPtrTime(mark.NextFundingTime)
 	}
+	if market.MarkErr != nil {
+		if q.Reason != "" {
+			q.Reason += "; "
+		}
+		q.Reason += failureReason("cex_mark", market.MarkErr, mark.Response)
+	}
 	fail := func(reason string) error { q.HedgeReason = reason; return errors.New(reason) }
 	if market.DepthErr != nil {
-		return fail("cex_depth_unavailable")
+		return fail(failureReason("cex_depth", market.DepthErr, d.Response))
 	}
 	q.HedgeDepthLastUpdateId = &d.LastUpdateId
 	q.HedgeDepthEventTime = cexPtrTime(d.EventTime)
 	q.HedgeDepthTransactionTime = cexPtrTime(d.TransactionTime)
-	if m.Instrument.ID == 0 || q0 == nil || q0.Sign() <= 0 || q0.BitLen() > 256 {
-		return fail("cex_hedge_identity_or_input_invalid")
+	if m.Instrument.ID == 0 {
+		return fail("cex_hedge_instrument_identity_missing")
+	}
+	if q0 == nil || q0.Sign() <= 0 || q0.BitLen() > 256 {
+		return fail("hedge_input_unavailable_from_chain")
 	}
 	lotWei, e := decimalAtoms(m.Instrument.QuantityStepSize.Mul(m.Instrument.ContractMultiplier), 18)
 	if e != nil || lotWei.Sign() <= 0 {

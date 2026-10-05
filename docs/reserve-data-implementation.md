@@ -1,5 +1,6 @@
 # Reserve 公开数据采集首版
 
+当前七表及响应留存政策见「2026-10-04 数据库存储修正」，请求优化见文末「2026-10-05 完整性优先的请求修正」；前文运行记录保留其历史日期。
 2026-10-02 已建立独立库 `crypto_market_info_reserve` 并实现 `cmd/reserve-data`。一个 Go 进程、五张定类型表、一个 SHA256/gzip 原始证据目录；不调用交易接口、不使用钱包。正常运行只访问 [Ethereum PublicNode RPC](https://ethereum-rpc.publicnode.com)，使用 HTTPS JSON-RPC POST。官方目录只在手选地址时使用，运行不依赖目录网站。
 
 首个白名单是 Ethereum DFX `0x188d12eb13a5eadd0867074ce8354b1ad6f4790b`，链上 r5.0.0，完整六成分，share 与六成分 decimals 均为18。配置见 `config/reserve-ethereum.json`：15条经实际 factory/pool 查询核验的有限路径，包括六成分、share、WETH 与 USDT 参考，每资产最多两条、每条最多两跳。白名单固定地址和 decimals，转账语义明确标为待联合交易模拟验证；没有将 Quoter 成功当成交易执行证明。新资产、代理实现或 decimals 不匹配时仍保留完整状态，停止相应经济报价。
@@ -147,9 +148,9 @@ LIMIT 30;
 4. 修复来源后使用相同范围与 chunk 续跑，完整且收据齐全的相同分片会跳过。`--days 30` 每次按当时 finalized 时间重新算窗口，不能用它承诺续跑原冻结区间。改变 chunk 可能重抓重叠范围，查询仍需去重。
 5. 保存只读覆盖报告，恢复这一 unit 的 `watch`。回补不恢复过去的实时报价；报告中的历史完整性和实时完整性分别核验。
 
-## 证据保留与备份恢复
+## 首版的证据备份方式（历史记录，已被2026-10-04替代）
 
-当前首版没有自动保留期限、证据垃圾回收或已验收的自动备份。状态／报价和最终性修订持续积累；数据库压缩 bytes 与 gzip 证据占用分别测量。保留共享收据、旧分支和旧尝试，有助于核验重试及当时可用性；删除不能只按 capture 的当前状态决定。
+2026-10-02首版没有自动保留期限、证据垃圾回收或已验收的自动备份。以下记录当时的方式，当前只需备份七表及静态规则，不需要原始响应文件。
 
 备份时停止这一独立 writer，取得整个五表库的一致 ClickHouse 备份，同时保存 `var/reserve/evidence`、公开 manifest、匹配的 ABI／collector version、构建身份和 unit 配置，再恢复 watch。备份方式需匹配本机 ClickHouse 已配置的目标；本文没有假设某个 backup disk 已可用。凭据单独管理。
 
@@ -170,3 +171,84 @@ LIMIT 30;
 免费节点对30天首个日志分片返回 HTTP403，失败锚点/覆盖已入库；独立预检还曾收到 `Archive requests require a personal token`。部分近期大分片也被拒绝，小分片成功与失败均实际保留。不能据此称30天没有拍卖。要完成完整30天回补，需要能够可靠提供该范围日志、收据和历史状态的 RPC；接口保持 `RESERVE_RPC_URL` 可替换，程序不会默默缩短请求天数。历史状态仅供核验事件身份，绝不假造过去的 Quoter报价。
 
 验证：全项目 `go test -race ./...`、`go vet ./...`，及隔离 ClickHouse 的 Reserve 集成测试通过。专项覆盖 checked fee 及舍入、同 hash 整篮子、零金额、六对容量、RPC 混合失败、共享池、gas 桶、重组所有尝试/游标、UInt256超过200bit、NULL、提交顺序、重试、旧revision、共享收据历史引用和日志内容冲突。测试和实网证据位于 `research/2026-10-02-reserve-implementation`；独立代码审核见 [0012](../discuss/0012-reserve-data-code-review.md)。
+
+## 2026-10-03 修复版（以此节覆盖前文过时运行参数）
+
+代码版本 `reserve-r5-mvp-2`，DFX manifest identity 为 `0x04af64a255a41d2e2182eb44cc8148338ee62e7fbc5e37a43eac86a73ef93abc`，旧 v1 identity 保留。六表（原五表加 `reserve_route_simulation`）自动通过幂等 CREATE 增补；没有改写旧事实、删除证据或更改交易接口。
+
+### 来源控制、错误与恢复
+
+- HTTP 默认每批最多 10 成员、最多两并发。按 hostname 在 `var/rpc-state` 共享持久来源配额：请求准入最小间隔 500ms、每成员 100ms，不积攒闲时突发额度。这只能协调使用同一目录/政策的新进程，不能确定旧进程或其他应用是否占用了同一 IP 额度。
+- HTTP 超时从配额准入后计起，默认 8 秒；snapshot wall budget 从 10 秒增为 35 秒，仍限 300 成员。`rpc_source_wait_exceeds_deadline`、`rpc_member_budget_exhausted` 和来源失败分别记录。
+- 429 响应头一到达即写持久冷却，读取正文超时/截断也不能丢掉它；最低 60 秒，连续失败指数增加（最多 16 倍），尊重更长 Retry-After，安静 10 分钟后重置递增计数。HTTP200 中明确的 RPC 限流也触发冷却。重启不能清空冷却。主循环等待来源就绪后再轮询，不再两秒密集试。
+- head 默认每 6 秒检查；安静采样仍为上一轮完成后约 60 秒。未 finalized 端点每分钟批量复核，观察到 rollback/hash/parent 冲突则立即复核。复核失败保留 pending 状态，成功前不能绕过并继续采集。活动拍卖/毛正 burst 仍尝试逐 head，实际吞吐受预算限制；没有实网活动拍卖负载验收。
+- 重启按 canonical、committed、日志 complete 的连续范围并集续采；不会用最大端点跳过中间缺口。`watch --from` 可固定迁移起点，`--reconcile-manifest` 明确复核旧 manifest 尾部。
+- 日志完整但收据 partial 不阻挡新日志游标；每分钟最多重试一个当前 manifest 的不完整收据范围，用新尝试及真实可用时间保存。backfill 依据已 finalized、日志/收据 complete 的区间并集跳过，不依赖旧 chunk 边界。已识别暂时来源错误最多重试三次，每次保留尝试；历史授权拒绝立即停止（exit 3），不通过切小范围绕过授权。
+- 新 RPC 证据增加 allowlist 响应头（Retry-After、Date、Content-Type、rate-limit 字段）、DNS/connect/TLS/first-byte/write 时间和脱敏错误类别。`Sent=false` 表示未进入 HTTP 的本地等待/取消；`Sent=true` 表示 HTTP 尝试，实际写入另看 `wrote_request`。不保存带凭据的 URL、原始 net error 字符串、Authorization 或 Set-Cookie。
+- 明确 DNS not-found/error、TLS certificate、connection-refused、network/host-unreachable 会停止此进程（exit 4），user unit 禁止自动重启此退出码。不修改路由。单次 deadline、读取超时或 reset 不能单独证明 DNS/TLS/路由故障；按证据分别记录。
+
+可选参数：`--rpc-state`、`--rpc-interval`、`--rpc-per-member`、`--rpc-batch`、`--rpc-timeout`、`--rpc-cooldown`、`--snapshot-budget`。保持配额目录稳定；不能换证据/数据库目录就当作获得新的来源额度。
+
+### 历史任务与研究输出
+
+实时仍使用 `https://ethereum-rpc.publicnode.com`。其历史方法的 personal token 授权限制没有被节流修复。公开替代 `https://rpc.mevblocker.io` 已通过原失败首分片、历史身份调用、交易和完整收据实采，作为独立历史任务的显式来源；没有隐式节点回退或路由改动。
+
+本轮冻结原 30 日窗口 `25889149..26104214`，历史库 `crypto_market_info_reserve_history`，证据 `var/reserve/history-evidence`，与 realtime 单 writer 隔离。历史任务停在 partial 时，按同一范围重跑会自动跳过完整并集，补齐收据缺口；不得用浮动 `--days` 代替冻结窗口。独立来源与目录须同时备份，跨库事件按 blockHash/txHash/logIndex 去重。验收结果和任务身份见 [修复记录](../research/2026-10-03-reserve-repair/report.md)。
+
+2026-10-03 06:52:59 UTC 固定窗口已正常完成，215,066 高度的日志及所需收据完整并集均无缺口；保留 1,946 条原始 DFX 事件和 957 笔收据。源时间为 2026-09-02 10:56:35 至 2026-10-02 11:02:47 UTC。这是日志/收据覆盖，不是过去 30 日的可执行报价或权限复原。原 v1 首分片的 403 失败事实仍在原库中，新历史库保留其成功替代和后续重试尝试。
+
+```bash
+RESERVE_RPC_URL=https://rpc.mevblocker.io var/reserve/reserve-data backfill \
+  --database crypto_market_info_reserve_history --evidence var/reserve/history-evidence \
+  --from 25889149 --to 26104214 --chunk 512 --rpc-timeout 20s
+var/reserve/reserve-data report --out var/reserve/reports
+var/reserve/reserve-data report --manifest-hash 0x98cf5cc757bbbe69d9cc8219210cad0490ae70e6a19a4531f6f6aa74afc3a4a9
+```
+
+`report` 批量读取 256 captures 一组，仍读取全部成员表并验证计数、摘要及固定收据引用；SQL 查询时间不再随数千 captures 逐个增加。JSON 增加按 mode 的成功区间并集与实际 gaps、失败腿观察数及有正确 finality/mode 的联合模拟记录。`--out` 新增三份 CSV：coverage 保留所有尝试和 selected 标记；activity 去重原始事件并列完整收据/gas 事实；candidates 输出所有选中经济报价（含非正、失败、共享池、联合结果），不只导出 top20。
+
+CSV/JSON 各自执行只读查询；后台继续写入时生成时刻与计数可能略有差异。引用 `quote_id`/batch identity 可核对。历史公开权限、赢家净收益、采样缺口之间的持续性仍未知，CSV 明确写 unknown；没有用今天权限或区块末报价反推历史机会。没有收益率/日赚认证。
+
+兼容字段 `missing_log_ranges` 计数的是选中但不完整的范围尝试，不能直接当作当前缺失高度。范围不同的后续成功批次可以覆盖该失败范围；当前缺口以 `log_coverage_scopes.missing_blocks`、`receipt_missing_blocks` 和 `gaps` 为准。模拟结果读写均校验定类型字段、quote/payload 绑定摘要及资金/预算标记；JSON 与 CSV 都要求 manifest、quote、Folio、kind、金额、区块高度及 hash 严格对应。模拟 canonical/finality 由所选 canonical committed quote/capture 派生，不由模拟表自己宣称。
+
+### 联合只读验证
+
+`simulate` 在指定隔离库采一个 `research` snapshot，然后验证最小两条完整经济路线；`watch --simulate-every 5m` 每五分钟最多验证最小两条（当前 DFX 为 5,000 USDC mint/redeem）。研究 actor 的 Solidity runtime、ABI、compiler/source hash 均随证据存档，源码见 `internal/reserve/simulator/RouteProbe.sol`。无链上部署、签名、发送交易或私钥。
+
+```bash
+var/reserve/reserve-data simulate --database crypto_market_info_reserve_simtest \
+  --evidence var/reserve/simtest-evidence --simulation-limit 2
+```
+
+选中白名单路径的交换、实际 Folio 操作与退出在一次 EIP-1898 eth_call 中顺序执行；不是 Quoter 数量简单相加。合成余额只代表资金假设，不能把 1,000,000 USDC 等同为用户实际 USDT 资金。`gas_internal` 不是整笔 gas；MEV、竞争、实际 inclusion、USDT 转换仍未认证。只读 bid 路径已实现，但本轮没有实际活动拍卖正例可验收。
+
+增加 `config/reserve-ethereum-activity.json` 作为限定三候选的独立研究配置（DFX、ixEdel、DGI），没有扩生产报价白名单。实采已区分：ixEdel 为 r5、完整七成分，但资产/venue 尚未白名单；DGI 代理为 r4 实现，不套 r5 状态/经济 ABI，日志保持 unknown_version 原文。目录与链上身份只是研究范围证据，短窗口不能冒充三基金完整 30 日，也不能以 DFX 安静样本否定 Reserve 市场。
+
+## 2026-10-04 数据库存储修正（现行政策）
+
+按用户要求取消 Reserve API/RPC 响应归档。`reserve-r5-mvp-3` 的共享 RPC client 显式使用 `Archive.HashOnly`：计算原有 SHA256，然后丢弃正文，不产生 gzip 文件；其他采集器未通过此开关改变。collector 从内存中的响应解析、校验并写定类型事实，写入失败重试同一批，不用文件进行日常恢复。来源限速、持久冷却及明确网络故障停止逻辑仍生效，路由没有修改。
+
+新增第七表 `reserve_receipt_data`，将过去只在文件中的完整交易调用参数（calldata）和所有回执日志转为数据库明细。它严格绑定不可变回执摘要、区块/交易身份、原 receipt/calldata 哈希、日志数量及二进制内容摘要；零日志有显式行。补采与查询直接从此表读取，摘要冲突、明细缺失、截断或选中日志不匹配都报错，不能生成看似完整的批次。原五表及模拟表的身份、旧 receipt_refs、可见时间和成员摘要不变。
+
+错误在收到响应时直接分类，无需回读文件。服务日志仅记录有界 HTTP 状态、RPC code、允许列表响应头、方法与网络阶段时间，不记录正文、provider 文本、请求参数或完整 URL。每项响应头最多256字节、最多20方法/code、方法名最多64字节；诊断最多每10秒一条，由现有 journald 管理。来源的429冷却独立执行，不受诊断抽样影响。
+
+`--evidence` 目录目前只需要 writer.lock；名称保留以兼容既有命令。小型静态规则保存到 `--rules`（默认 `var/reserve/rules`），包括版本身份、公开配置、ABI、只读模拟源码/编译产物；这些不是返回数据。报告明确 `raw_response_policy=not_retained`，来源 hash 只表示收到过的内容摘要，不能声称删除原文后仍可逐字核验原始响应。
+
+旧库升级先停对应写进程，运行一次离线迁移；此命令不创建RPC client、不访问外部来源，不改变旧采集时间或引用。覆盖各版本、失败尝试或孤立尝试已写入的全部回执，验证SHA及所有明细后写新表；已迁移的行再次执行只校验，不覆盖。
+
+```bash
+var/reserve/reserve-data migrate-receipts \
+  --database crypto_market_info_reserve --evidence var/reserve/evidence
+var/reserve/reserve-data migrate-receipts \
+  --database crypto_market_info_reserve_history --evidence var/reserve/history-evidence
+```
+
+所有库迁移完成、旧规则单独保留并实测无文件复用后，旧 `??/<sha256>.json.gz` 可以删除。不要删除 writer.lock、`var/rpc-state` 或数据库。备份七表、配置/规则与运行参数；已删除原文后不要回滚到依赖文件的 v1/v2 程序。本轮迁移、清理、实际服务和落盘验收见[记录](../research/2026-10-04-reserve-storage/report.md)。
+
+## 2026-10-05 完整性优先的请求修正
+
+用户要求采集可以延迟，但不能因此减少数据。本轮保留原报价规则（安静期上一轮完成后约60秒、事件触发、活动拍卖逐head及毛正burst）和部署的5分钟联合模拟；不实施5分钟报价或30分钟模拟。`latest`仍每轮至少等待6秒，`safe/finalized`改为每分钟复核需要时读取；观察到分支冲突或存在pending复核时也读取新tag。失败复核保持pending，成功前不继续采集。普通轮询由3个RPC成员减少到1个，复核周期仍不超过原规则，不降低业务采样密度。
+
+日志从数据库连续成功覆盖的下一块起抓，每片最多512块，逐条保留片内所有白名单事件及所需完整收据。成功提交后才推进日志游标。授权、429或超时不会再缩片；仅明确的日志范围/结果数量限制会二分，成功后逐步恢复至512，避免永久退成单块。单块范围复用同一份起止header，后续canonical校验保留。`rpc_archive_auth_required`尝试仍保存missing，保留原游标，每5分钟才重新检查一次；不通过细分、跳过范围或服务反复重启处理授权失败。收据补采和来源429持久冷却沿用原规则。
+
+这减少请求浪费，但不能解除来源权限，也不能把缺失报价补造为当时已知。完整性以canonical/committed成功区间并集、事件/收据成员校验及真实可用时间验收，不以最高区块或失败次数代替。未改变表结构、数据粒度、manifest身份、RPC来源或路由；实际二进制身份与实网观察见[本轮记录](../research/2026-10-05-reserve-cadence/report.md)。

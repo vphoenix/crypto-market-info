@@ -1,6 +1,6 @@
 # Reserve 拍卖与篮子申赎：最小采集设计
 
-设计日期：2026-10-02。采集核心、五表和独立服务已上线；本文件保留目标设计，实际首版范围以[实现说明](reserve-data-implementation.md)为准。三份CSV、窗口分析和历史权限复原暂缓。设计独立审核见 [0011](../discuss/0011-reserve-data-design-review.md)，代码审核见 [0012](../discuss/0012-reserve-data-code-review.md)。
+设计日期：2026-10-02。采集核心、五表和独立服务已上线；本文件保留目标设计，实际首版范围以[实现说明](reserve-data-implementation.md)为准。修复版已补三份CSV和联合只读模拟；窗口持续性、历史权限复原仍明确未知。设计独立审核见 [0011](../discuss/0011-reserve-data-design-review.md)，代码审核见 [0012](../discuss/0012-reserve-data-code-review.md)。
 
 ## 1. 交付目标与范围
 
@@ -10,7 +10,7 @@
 
 报价以 USDC 结算，另抓 USDT↔USDC 和购买 gas 币的有数量成本参考。用户预算是 100 万 USDT，不能将 USDC 当作严格等值 USDT，也不能把 USDC 往返参考直接拼成已验证的 USDT 闭环。首版优先研究一笔交易内归还所有波动币的路线；不设计长期币仓或低杠杆对冲执行。
 
-实现为一个 `cmd/reserve-data` 程序，复用项目 Go、ClickHouse、整数数值和 RPC 工具。独立研究库 `crypto_market_info_reserve`，同时仅一个写进程，避免与现有生产 collector 共用运行生命周期。没有 Kafka、Redis、Web 服务、通用策略引擎、本地全链索引或自动交易器。原始证据保存本机压缩文件，数据库保存可查询的事实。
+实现为一个 `cmd/reserve-data` 程序，复用项目 Go、ClickHouse、整数数值和 RPC 工具。独立研究库 `crypto_market_info_reserve`，同时仅一个写进程，避免与现有生产 collector 共用运行生命周期。没有 Kafka、Redis、Web 服务、通用策略引擎、本地全链索引或自动交易器。2026-10-04按用户要求取消响应归档：内存解析校验，定类型事实入库，API/RPC正文随后丢弃；数据库保存源哈希与链锚点，配置及ABI保留小型规则文件。
 
 ## 2. 已核对的协议细节
 
@@ -162,3 +162,9 @@ state 中篮子与当前再平衡均为同一 Folio、同一块的状态，适�
 ## 首版实现状态（2026-10-02）
 
 采集核心和五张表已实现，见 [实现说明](reserve-data-implementation.md)。实施审核新增控制表定类型 `receipt_refs`，避免后来取得的共享收据改变旧批成员集合。有效manifest包含ABI/采样语义版本。首版查询提供完整批次和JSON摘要，暂缓本设计的三份CSV、候选窗口连续性和历史权限复原，不能输出已确认新窗口或年化。免费RPC历史缺口按失败范围保存，不以最近成功范围代替30天覆盖。
+
+## 2026-10-03 已落地修复
+
+修复版补来源准入/持久冷却、精确错误分类与网络诊断、连续日志恢复/收据补采、批量校验报告、三份 CSV 及单 eth_call 顺序联合模拟。来源速率参数、六表和实际命令以[实现说明最新节](reserve-data-implementation.md)为准；原文每2秒/10秒/五表和CSV暂缓为早期设计状态。历史权限复原、赢家利润归属与跨未采区间的持续性仍未实现，输出明确 unknown。实际历史覆盖、服务核验、链上只读样本和未验收项见[修复记录](../research/2026-10-03-reserve-repair/report.md)。
+
+2026-10-05用户明确要求降低请求负载不能减少数据。保留现有报价/模拟采样规则，优先合并完整日志范围、减少重复控制查询和失败重试。范围二分只适用于明确的range/result限制，授权和限流不得触发细分；成功后恢复批量。`latest`保持6秒轮询，`safe/finalized`仅在分钟复核或观察到链冲突时读取。完整范围内全部事件/所需收据保留，失败不能推进游标。现行细节与验收见[实现说明](reserve-data-implementation.md#2026-10-05-完整性优先的请求修正)。

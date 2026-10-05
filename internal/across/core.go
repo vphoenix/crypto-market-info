@@ -94,7 +94,12 @@ func Encoding(v any) []byte {
 	return b.Bytes()
 }
 func batchTables(b Batch) []any {
-	return []any{b.Deposits, b.Updates, b.Fills, b.Refunds, b.Receipts, b.Probes}
+	tables := []any{b.Deposits, b.Updates, b.Fills, b.Refunds, b.Receipts, b.Probes}
+	// Preserve frozen six-table digests of existing captures.
+	if len(b.Transfers) != 0 || len(b.Capture.TableIds) == 7 {
+		tables = append(tables, b.Transfers)
+	}
+	return tables
 }
 func Members(rows any) []string {
 	v := reflect.ValueOf(rows)
@@ -126,7 +131,7 @@ func Validate(b Batch) error {
 	if len(c.ManifestHash) != 32 || len(c.CaptureId) != 32 || len(c.EvidenceHash) != 32 || c.ChainId == 0 || c.StartedAt.IsZero() || c.AvailableAt.Before(c.StartedAt) || !c.Committed || c.Revision == 0 {
 		return errors.New("invalid_capture")
 	}
-	if c.CompletedTasks > c.ExpectedTasks || len(c.TableIds) != 6 || len(c.RowCounts) != 6 || len(c.RowDigests) != 6 {
+	if c.CompletedTasks > c.ExpectedTasks || (len(c.TableIds) != 6 && len(c.TableIds) != 7) || len(c.TableIds) != len(batchTables(b)) || len(c.RowCounts) != len(c.TableIds) || len(c.RowDigests) != len(c.TableIds) {
 		return errors.New("capture_member_arrays")
 	}
 	if (c.FromBlock == nil) != (c.ToBlock == nil) || (c.FromHash == nil) != (c.ToHash == nil) || (c.FromBlock == nil) != (c.FromHash == nil) {
@@ -192,6 +197,11 @@ func Validate(b Batch) error {
 	for _, r := range b.Receipts {
 		if r.FeeComplete && r.TotalFeeWei == nil {
 			return errors.New("complete_fee_missing")
+		}
+	}
+	for _, v := range b.Transfers {
+		if err := ValidateReceiptTransfers(v); err != nil {
+			return err
 		}
 	}
 	for _, p := range b.Probes {
@@ -322,7 +332,7 @@ func ReadCaptureEvidence(a ethereum.Archive, c Capture) (CaptureEvidence, error)
 	if err = json.Unmarshal(raw, &e); err != nil {
 		return e, err
 	}
-	if e.Version != 1 || e.CaptureID != Hex(c.CaptureId) || e.ManifestHash != Hex(c.ManifestHash) || len(e.RowDigests) != 6 || len(e.RowCounts) != 6 || len(e.RowMembers) != 6 || len(e.TableIDs) != 6 || len(c.RowDigests) != 6 || len(c.RowCounts) != 6 {
+	if e.Version != 1 || e.CaptureID != Hex(c.CaptureId) || e.ManifestHash != Hex(c.ManifestHash) || (len(c.TableIds) != 6 && len(c.TableIds) != 7) || len(e.RowDigests) != len(c.TableIds) || len(e.RowCounts) != len(c.TableIds) || len(e.RowMembers) != len(c.TableIds) || len(e.TableIDs) != len(c.TableIds) || len(c.RowDigests) != len(c.TableIds) || len(c.RowCounts) != len(c.TableIds) {
 		return e, errors.New("capture_evidence_identity")
 	}
 	for i, d := range c.RowDigests {

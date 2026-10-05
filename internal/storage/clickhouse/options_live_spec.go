@@ -10,7 +10,7 @@ import (
 )
 
 func (c *Client) LoadDerivativeSpecs(ctx context.Context, ids []uint32) ([]options.ContractSpec, error) {
-	instruments, err := c.Instruments(ctx)
+	instruments, err := c.instrumentsWhere(ctx, "WHERE instrument_id IN (?)", []any{ids})
 	if err != nil {
 		return nil, err
 	}
@@ -78,7 +78,7 @@ func (c *Client) validateOptionsRunSpecs(ctx context.Context, r options.LiveRun)
 	if err != nil {
 		return err
 	}
-	if err = options.ValidateSelection(specs); err != nil {
+	if err = options.ValidateLiveSpecs(r.Selection, specs); err != nil {
 		return err
 	}
 	for n, s := range specs {

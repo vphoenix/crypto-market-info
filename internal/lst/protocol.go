@@ -139,6 +139,17 @@ func (r *RPC) VerifyIdentity(ctx context.Context, m Manifest, b Block, pin bool)
 			return m, responses, errors.New("pool_fee_identity")
 		}
 	}
+	if r.ProtocolMulticall {
+		h, rs, err := r.Code(ctx, multicallAddress(), b)
+		add(rs)
+		if err != nil {
+			return m, responses, fmt.Errorf("multicall_code: %w", err)
+		}
+		if Hex(h) != multicallCodeHash {
+			return m, responses, errors.New("multicall_code_hash_mismatch")
+		}
+	}
+
 	ok, rs, e := r.Canonical(ctx, b)
 	add(rs)
 	if e != nil {
@@ -154,17 +165,50 @@ func (r *RPC) Protocol(ctx context.Context, m Manifest, b Block) (p ProtocolStat
 	now := Now()
 	p = ProtocolState{BlockNumber: &b.Number, BlockHash: &b.Hash, BlockTime: &b.Time, ObservedAt: now, ChainId: 1, QueueAddress: m.Address("queue"), StateStatus: "unknown", AvailableAt: now}
 	responses = []Response{b.Response}
+	var lastResponse Response
 	defer func() {
 		p.RequestedAt, p.ReceivedAt, p.SourceAvailableAt, p.PayloadHashes = responseTimes(responses)
 		p.AvailableAt = Now()
+		if err != nil {
+			p.Reason = failureReason("protocol", err, lastResponse)
+		}
 	}()
 	add := func(rs Response) {
+		if !r.ProtocolMulticall || rs.PayloadHash != "" || rs.HTTPStatus != 0 {
+			lastResponse = rs
+		}
 		if rs.PayloadHash != "" {
 			responses = append(responses, rs)
 		}
 	}
+	var aggregate [][]any
+	if r.ProtocolMulticall {
+		var rs Response
+		aggregate, rs, err = r.protocolMulticall(ctx, m, b)
+		add(rs)
+		if err != nil {
+			return p, responses, err
+		}
+	}
+	index := 0
+	view := func(address, sig string, outputs []string, values ...any) ([]any, Response, error) {
+		if !r.ProtocolMulticall {
+			return r.View(ctx, address, b, sig, outputs, "normal", values...)
+		}
+		out := aggregate[index]
+		index++
+		return out, Response{}, nil
+	}
+	uintView := func(address, sig string, values ...any) (*big.Int, Response, error) {
+		out, rs, err := view(address, sig, []string{"uint256"}, values...)
+		if err != nil {
+			return nil, rs, err
+		}
+		return out[0].(*big.Int), rs, nil
+	}
+
 	for _, v := range []struct{ role, sig, want string }{{"steth", "implementation()", "steth_impl"}, {"queue", "proxy__getImplementation()", "queue_impl"}} {
-		out, rs, e := r.View(ctx, m.Address(v.role), b, v.sig, []string{"address"}, "normal")
+		out, rs, e := view(m.Address(v.role), v.sig, []string{"address"})
 		add(rs)
 		if e != nil {
 			return p, responses, e
@@ -178,14 +222,14 @@ func (r *RPC) Protocol(ctx context.Context, m Manifest, b Block) (p ProtocolStat
 		role, sig string
 		dest      **big.Int
 	}{{"steth", "getTotalPooledEther()", &p.StethTotalPooledEthWei}, {"steth", "getTotalShares()", &p.StethTotalSharesRaw}, {"queue", "MIN_STETH_WITHDRAWAL_AMOUNT()", &p.MinRequestStethWei}, {"queue", "MAX_STETH_WITHDRAWAL_AMOUNT()", &p.MaxRequestStethWei}, {"queue", "getLastRequestId()", &p.LastRequestId}, {"queue", "getLastFinalizedRequestId()", &p.LastFinalizedRequestId}, {"queue", "unfinalizedStETH()", &p.UnfinalizedStethWei}, {"queue", "getLockedEtherAmount()", &p.LockedEthWei}} {
-		n, rs, e := r.Uint(ctx, m.Address(v.role), b, v.sig)
+		n, rs, e := uintView(m.Address(v.role), v.sig)
 		add(rs)
 		if e != nil {
 			return p, responses, e
 		}
 		*v.dest = n
 	}
-	n, rs, e := r.Uint(ctx, m.Address("wsteth"), b, "getStETHByWstETH(uint256)", big.NewInt(1e18))
+	n, rs, e := uintView(m.Address("wsteth"), "getStETHByWstETH(uint256)", big.NewInt(1e18))
 	add(rs)
 	if e != nil {
 		return p, responses, e
@@ -195,7 +239,7 @@ func (r *RPC) Protocol(ctx context.Context, m Manifest, b Block) (p ProtocolStat
 		sig  string
 		dest **bool
 	}{{"isPaused()", &p.QueuePaused}, {"isBunkerModeActive()", &p.BunkerActive}} {
-		out, rs, e := r.View(ctx, m.Address("queue"), b, v.sig, []string{"bool"}, "normal")
+		out, rs, e := view(m.Address("queue"), v.sig, []string{"bool"})
 		add(rs)
 		if e != nil {
 			return p, responses, e

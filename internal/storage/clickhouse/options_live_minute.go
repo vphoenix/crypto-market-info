@@ -31,6 +31,9 @@ func (c *Client) WriteOptionsMinute(ctx context.Context, input options.LiveEnvel
 	if err = e.ValidateRun(r); err != nil {
 		return err
 	}
+	if r.Selection == options.CatalogSelection {
+		return fmt.Errorf("catalog run requires catalog commit and plan")
+	}
 	var old string
 	err = c.conn.QueryRow(ctx, `SELECT batch_id FROM `+c.table("options_live_minute_commit")+` FINAL WHERE run_id=? AND minute_time=?`, e.RunID, e.MinuteTime).Scan(&old)
 	if err == nil {
@@ -114,11 +117,19 @@ func (c *Client) LoadOptionsMinute(ctx context.Context, run uuid.UUID, minute ti
 	if run == uuid.Nil || minute.IsZero() || !minute.Equal(minute.Truncate(time.Minute)) {
 		return e, fmt.Errorf("exact run/minute required")
 	}
+	runSpec, err := c.LoadOptionsRun(ctx, run)
+	if err != nil {
+		return e, err
+	}
+	if runSpec.Selection == options.CatalogSelection {
+		v, err := c.LoadOptionsCatalogMinute(ctx, run, minute)
+		return v.Live, err
+	}
 	var id string
 	var ids []uint32
 	var hashes, indexIDs, indexHashes []string
 	var anchors, deltas uint32
-	err := c.conn.QueryRow(ctx, `SELECT `+liveCommitColumns+` FROM `+c.table("options_live_minute_commit")+` FINAL WHERE run_id=? AND minute_time=?`, run, minute.UTC()).Scan(&e.RunID, &e.MinuteTime, &id, &e.RunHash, &e.PreparedAt, &ids, &hashes, &anchors, &deltas, &indexIDs, &indexHashes)
+	err = c.conn.QueryRow(ctx, `SELECT `+liveCommitColumns+` FROM `+c.table("options_live_minute_commit")+` FINAL WHERE run_id=? AND minute_time=?`, run, minute.UTC()).Scan(&e.RunID, &e.MinuteTime, &id, &e.RunHash, &e.PreparedAt, &ids, &hashes, &anchors, &deltas, &indexIDs, &indexHashes)
 	if errors.Is(err, sql.ErrNoRows) {
 		return e, ErrNotFound
 	}
@@ -193,7 +204,15 @@ func (c *Client) LoadOptionsMinute(ctx context.Context, run uuid.UUID, minute ti
 
 func (c *Client) LatestOptionsMinute(ctx context.Context, run uuid.UUID) (time.Time, error) {
 	var at time.Time
-	err := c.conn.QueryRow(ctx, `SELECT minute_time FROM `+c.table("options_live_minute_commit")+` FINAL WHERE run_id=? ORDER BY minute_time DESC LIMIT 1`, run).Scan(&at)
+	r, err := c.LoadOptionsRun(ctx, run)
+	if err != nil {
+		return at, err
+	}
+	table := "options_live_minute_commit"
+	if r.Selection == options.CatalogSelection {
+		table = "options_catalog_live_minute_commit"
+	}
+	err = c.conn.QueryRow(ctx, `SELECT minute_time FROM `+c.table(table)+` FINAL WHERE run_id=? ORDER BY minute_time DESC LIMIT 1`, run).Scan(&at)
 	if errors.Is(err, sql.ErrNoRows) {
 		return at, ErrNotFound
 	}

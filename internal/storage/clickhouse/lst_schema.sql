@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS lst_quote_observation
     mark_received_at Nullable(DateTime64(6, 'UTC')),
     mark_available_at Nullable(DateTime64(6, 'UTC')),
     mark_payload_hash Nullable(FixedString(32)),
-    timing_status LowCardinality(String), -- fresh, stale, late, missed, unknown
+    timing_status LowCardinality(String), -- fresh, stale, late, missed, unknown, not_scheduled
     reason String,
     available_at DateTime64(6, 'UTC'),
     row_hash FixedString(32)

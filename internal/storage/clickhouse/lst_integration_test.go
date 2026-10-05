@@ -327,3 +327,27 @@ func TestLSTIntegrationExistingWriterAndReadOnlyConstructors(t *testing.T) {
 		t.Fatal("writer caused table DDL", count, e)
 	}
 }
+
+func TestLSTIntegrationNotScheduledRoundTrip(t *testing.T) {
+	c := lstIntegration(t)
+	b := lstStorageMarket()
+	old := b.Quotes[0]
+	b.Quotes = []lst.Quote{{CaptureId: old.CaptureId, QuoteId: old.QuoteId, ObservedAt: old.ObservedAt, AvailableAt: old.AvailableAt, QuoteRole: "entry", RouteId: old.RouteId, QuoteAssetAddress: old.QuoteAssetAddress, LstAddress: old.LstAddress, PurchaseBudgetUsdtRaw: old.PurchaseBudgetUsdtRaw, HedgeInstrumentId: old.HedgeInstrumentId, BuyStatus: "unknown", ConversionStatus: "unknown", ExitStatus: "unknown", HedgeStatus: "unknown", TimingStatus: "not_scheduled", Reason: "not_scheduled_this_round"}}
+	if e := b.Seal(); e != nil {
+		t.Fatal(e)
+	}
+	ctx := context.Background()
+	if e := c.WriteLST(ctx, b); e != nil {
+		t.Fatal(e)
+	}
+	got, e := c.LSTBatch(ctx, b.Capture)
+	if e != nil {
+		t.Fatal(e)
+	}
+	if e = lst.Validate(got); e != nil {
+		t.Fatal(e)
+	}
+	if lst.CanonicalHash(got) != lst.CanonicalHash(b) {
+		t.Fatal("not_scheduled changed across ClickHouse")
+	}
+}

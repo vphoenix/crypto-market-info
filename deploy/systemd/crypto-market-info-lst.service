@@ -6,9 +6,20 @@ Wants=network-online.target crypto-market-info-clickhouse.service
 [Service]
 Type=simple
 WorkingDirectory=%h/crypto-market-info
-Environment=LST_RPC_URL=https://eth.drpc.org
+Environment=LST_RPC_URL=https://ethereum.public.blockpi.network/v1/rpc/public
+EnvironmentFile=-%h/crypto-market-info/var/lst/rpc.env
+Environment=LST_LOG_RPC_URL=https://rpc.mevblocker.io
+Environment=LST_LOG_MODE=range
+Environment=LST_PAUSE_LIVE_LOGS=false
+Environment=LST_PROTOCOL_MODE=multicall
+Environment=LST_RPC_REQUESTS_PER_MINUTE=20
+Environment=LST_LOG_REQUESTS_PER_5_MINUTE=8
+Environment=LST_RPC_STARTUP_GAP=2s
+Environment=LST_RPC_GAP=2s
+Environment=LST_MARKET_INTERVAL=2m
+Environment=LST_ENTRY_ROUTES_PER_ROUND=1
 Environment=LST_BINANCE_URL=https://fapi.binance.com
-ExecStart=%h/crypto-market-info/var/lst/lst-data watch --manifest config/lst-lido-ethereum.json --database crypto_market_info_lst --state-dir var/lst/state --evidence var/lst/evidence
+ExecStart=%h/crypto-market-info/var/lst/lst-data watch --from-block 26113044 --manifest config/lst-lido-ethereum.json --database crypto_market_info_lst --state-dir var/lst/state --evidence var/lst/evidence
 Restart=on-failure
 RestartSec=60
 KillSignal=SIGTERM

@@ -41,7 +41,7 @@ type SelectionReference struct {
 
 func (r LiveRun) Hash() string { b, _ := json.Marshal(r); return PayloadHash(b) }
 func (r LiveRun) Validate() error {
-	if r.ID == uuid.Nil || !microTime(r.StartedAt) || r.RESTURL == "" || r.WSURL == "" || (r.Selection != "explicit" && r.Selection != "near_atm_v1") || len(r.Members) == 0 || len(r.Members) > MaxLiveBooks || len(r.Indexes) == 0 || len(r.Indexes) > 4 {
+	if r.ID == uuid.Nil || !microTime(r.StartedAt) || r.RESTURL == "" || r.WSURL == "" || (r.Selection != "explicit" && r.Selection != "near_atm_v1" && r.Selection != CatalogSelection) || len(r.Members) == 0 || len(r.Members) > MaxLiveBooks || len(r.Indexes) == 0 || len(r.Indexes) > 4 {
 		return fmt.Errorf("invalid live run")
 	}
 	seen := map[string]bool{}
@@ -254,7 +254,7 @@ func (o MetadataObservation) Validate() error {
 		if !o.ScopeComplete || o.ScopeAcceptedCount == 0 {
 			return fmt.Errorf("member success without complete scope")
 		}
-		if !model.ValidDigest(o.PayloadHash) || !model.ValidDigest(o.DefinitionHash) || !model.ValidDigest(o.TradingRuleID) || (o.State != "open" && o.State != "closed" && o.State != "settlement" && o.State != "delivered" && o.State != "inactive") {
+		if !model.ValidDigest(o.PayloadHash) || !model.ValidDigest(o.DefinitionHash) || !model.ValidDigest(o.TradingRuleID) || !ValidMarketState(o.State) {
 			return fmt.Errorf("incomplete metadata success")
 		}
 	case "request_error", "parse_error", "missing", "definition_changed":

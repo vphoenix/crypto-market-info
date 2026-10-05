@@ -132,6 +132,10 @@ func Seal(b *Batch) {
 	c.ProbeDigest = digest(b.Probes)
 	c.CostRows = uint32(len(b.Costs))
 	c.CostDigest = digest(b.Costs)
+	if c.CaptureKind == "event_index" {
+		c.IndexedRows = uint32(len(b.IndexedEvents))
+		c.IndexedDigest = Ptr(digest(b.IndexedEvents))
+	}
 	c.Committed = true
 }
 func Validate(b Batch) error {
@@ -142,7 +146,7 @@ func Validate(b Batch) error {
 	if c.CompletedTasks > c.ExpectedTasks || c.SelectedCandidates > c.DiscoveredCandidates {
 		return errors.New("invalid_capture_counts")
 	}
-	if int(c.EventRows+c.ReceiptRows+c.ProbeRows+c.CostRows) > 500 {
+	if int(c.EventRows+c.ReceiptRows+c.ProbeRows+c.CostRows+c.IndexedRows) > 500 {
 		return errors.New("batch_exceeds_500")
 	}
 	if c.EventRows != uint32(len(b.Events)) || c.EventDigest != digest(b.Events) || c.ReceiptRows != uint32(len(b.Receipts)) || c.ReceiptDigest != digest(b.Receipts) || c.ProbeRows != uint32(len(b.Probes)) || c.ProbeDigest != digest(b.Probes) || c.CostRows != uint32(len(b.Costs)) {
@@ -150,6 +154,9 @@ func Validate(b Batch) error {
 	}
 	if c.CostDigest != digest(b.Costs) {
 		return errors.New("capture_members_mismatch")
+	}
+	if err := validateIndexed(b); err != nil {
+		return err
 	}
 	for _, r := range b.Events {
 		if r.CaptureId != c.CaptureId || !r.CaptureStartedAt.Equal(c.CaptureStartedAt) || r.Finality != "solid" || len(r.BlockHash) != 32 || len(r.TxId) != 32 || len(r.PayloadHash) != 32 || r.ResourceType != 1 || r.AmountSun == nil || r.AmountSun.Sign() < 0 || r.AmountSun.BitLen() > 256 {
@@ -214,20 +221,27 @@ type CohortChange struct {
 	Reason  string       `json:"reason"`
 }
 type Manifest struct {
-	Version        string         `json:"version"`
-	DigestEncoding string         `json:"member_digest_encoding,omitempty"`
-	Capture        string         `json:"capture_id"`
-	Kind           string         `json:"kind"`
-	ScanID         string         `json:"scan_id"`
-	FingerprintIn  string         `json:"fingerprint_in"`
-	FingerprintOut string         `json:"fingerprint_out"`
-	Requests       []Evidence     `json:"requests"`
-	CohortID       string         `json:"cohort_id"`
-	Selection      string         `json:"selection"`
-	Rotation       uint32         `json:"rotation"`
-	Cohort         []CohortMember `json:"cohort"`
-	Changes        []CohortChange `json:"cohort_changes,omitempty"`
-	ProbeLifecycle string         `json:"probe_lifecycle,omitempty"`
+	ParentCapture       string         `json:"parent_capture_id,omitempty"`
+	ParentManifestHash  string         `json:"parent_manifest_hash,omitempty"`
+	ExcludedResource    uint32         `json:"excluded_resource_events,omitempty"`
+	EventFilterRevision string         `json:"event_filter_revision,omitempty"`
+	QueryFrom           *time.Time     `json:"query_from,omitempty"`
+	QueryTo             *time.Time     `json:"query_to,omitempty"`
+	ExcludedBoundary    uint32         `json:"excluded_boundary_events,omitempty"`
+	Version             string         `json:"version"`
+	DigestEncoding      string         `json:"member_digest_encoding,omitempty"`
+	Capture             string         `json:"capture_id"`
+	Kind                string         `json:"kind"`
+	ScanID              string         `json:"scan_id"`
+	FingerprintIn       string         `json:"fingerprint_in"`
+	FingerprintOut      string         `json:"fingerprint_out"`
+	Requests            []Evidence     `json:"requests"`
+	CohortID            string         `json:"cohort_id"`
+	Selection           string         `json:"selection"`
+	Rotation            uint32         `json:"rotation"`
+	Cohort              []CohortMember `json:"cohort"`
+	Changes             []CohortChange `json:"cohort_changes,omitempty"`
+	ProbeLifecycle      string         `json:"probe_lifecycle,omitempty"`
 }
 
 func Snapshot(c Candidate) CohortMember {

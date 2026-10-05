@@ -13,9 +13,12 @@ import (
 )
 
 type StreamEvent struct {
+	ReceivedAt    time.Time
 	Kind, Channel string
 	Epoch         uuid.UUID
 	Raw           []byte
+	Sequence      uint64
+	Generation    uint64
 }
 
 // Stream runs one connection generation. Its owner retries with backoff.

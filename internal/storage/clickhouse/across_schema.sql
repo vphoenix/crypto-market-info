@@ -247,6 +247,27 @@ ENGINE = ReplacingMergeTree
 PARTITION BY toYYYYMM(requested_at)
 ORDER BY (origin_chain_id, deposit_id, relay_hash, probe_id, capture_id);
 
+CREATE TABLE IF NOT EXISTS across_receipt_transfers
+(
+ capture_id FixedString(32),
+ chain_id UInt64,
+ block_number UInt64,
+ block_hash FixedString(32),
+ block_time DateTime64(6, 'UTC'),
+ tx_hash FixedString(32),
+ token FixedString(20),
+ receipt_success Bool,
+ log_indices Array(UInt32),
+ senders Array(FixedString(20)),
+ recipients Array(FixedString(20)),
+ amounts_raw Array(UInt256),
+ available_at DateTime64(6, 'UTC'),
+ payload_hash FixedString(32)
+)
+ENGINE = ReplacingMergeTree
+PARTITION BY toYYYYMM(block_time)
+ORDER BY (chain_id, block_hash, tx_hash, token, capture_id);
+
 -- Application/query invariants:
 -- 1. Query latest capture revision BEFORE canonical/finality/committed filters.
 -- 2. Facts require their committed capture and exact member count/digest verification.
@@ -267,7 +288,7 @@ ORDER BY (origin_chain_id, deposit_id, relay_hash, probe_id, capture_id);
 -- 11. Leaf execution is not per-order repayment. Never infer membership by FIFO,
 --     next payment time, or matching amount; unknown attribution stays unknown.
 -- 12. Reported verified payout needs one-to-one exact USDC Transfer allocation
---     from the raw receipt; payment status is derived, never patched into the event.
+--     from the typed receipt Transfer set; payment status is derived, never patched into the event.
 --     Claim caller identifies credit; refundAddress identifies receiving account.
 -- 13. Missing fee/price/receipt is NULL, not zero. Price is only CEX reference;
 --     source timestamps, freshness, BBO quantity and actual execution scope matter.
@@ -275,6 +296,6 @@ ORDER BY (origin_chain_id, deposit_id, relay_hash, probe_id, capture_id);
 --     prove historical live detection or a continuous opportunity window.
 --     Use earliest canonical live available time, never min across backfill rows.
 -- 15. capture evidence freezes request scope, ordered raw hashes, canonical headers,
---     implementation/ABI references and exact sorted table member identities/hashes.
+--     implementation/ABI references and exact sorted table member identities/hashes (6 legacy tables, optionally 7 with transfers).
 -- 16. Later probes have explicit scheduled/actual times and skipped/late states.
 --     Income ceiling sums per-order max(0, spread), not signed route aggregates.

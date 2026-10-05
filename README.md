@@ -8,7 +8,7 @@
 - Ethereum Uniswap v3＋Sky 协议兑换状态、56档闭环报价及日志/回执（默认关闭；[采集与判断说明](docs/dex-arbitrage-implementation.md)）；
 - Deribit BTC/ETH 币本位与 USDC 期权、同到期期货的每秒10档、元数据与指数（默认关闭；[使用说明](docs/arbitrage/strategies/arb-0009-options-live.md)）；
 - Binance、OKX 和 Bybit 永续资金费率；
-- JustLend 能源租单清理 keeper 的事件、收据、只读模拟和资源／兑换成本，使用独立命令与五表研究库（[实现与运行说明](docs/justlend-keeper-data-implementation.md)）；
+- JustLend 能源租单清理 keeper 的事件、收据、只读模拟和资源／兑换成本，使用独立命令与六表研究库（[实现与运行说明](docs/justlend-keeper-data-implementation.md)）；
 - JustLend TRX 收益、TRON 原生质押，以及 SOL 第一、第二阶段收益（LST、原生质押、Kamino 和 Save）；
 - AVAX 第一阶段：OKX 公开出借 APR、Aave V3/V4 WAVAX 基础存款历史 APY；
 - AVAX 第二阶段：BENQI sAVAX、Ankr ankrAVAX 兑换率，以及 BENQI AVAX 基础借贷 APR、同块现金和退出规则（已部署；实际运行状态见运行说明）；
@@ -24,7 +24,7 @@
 
 当前长期采集使用**宿主机原生 ClickHouse + 编译后的 collector + 用户级 systemd 开机服务**，不是 Docker Compose。`ubuntu` 用户已启用 linger，因此机器启动后无需登录就会拉起数据库和采集器。实际路径、启用的数据源、检查命令和重启注意事项见[当前部署与运行说明](docs/runtime-operations.md)。`docker compose ps` 为空不代表数据库未运行；在这台机器上不要直接执行下面的开发环境启动命令。
 
-LST 由 `crypto-market-info-lst.service` 独立运行 `lst-data watch`，写入 `crypto_market_info_lst`。当前以实时采集为主，只尝试恢复断线日志缺口，不运行 30/60 日回补；dRPC 日志查询的已知拒绝仍保留为失败，不能把事件缺口当作没有赎回活动。
+LST 由 `crypto-market-info-lst.service` 独立运行 `lst-data watch`，写入 `crypto_market_info_lst`。当前mvp9已恢复持续采集：BlockPI负责当前报价，MEV Blocker负责赎回日志与历史queue实现；固定新段与原缺口分别推进，每host限速和冷却持久保留。补采仅限断线缺口，不回补30/60日全历史、不补造错过的报价。实际新日志连续覆盖、旧游标推进、报价和超时恢复验收见[恢复记录](research/2026-10-04-lst-logs-restore/report.md)，旧整体缺口仍不完整，不能当作没有赎回活动。
 
 ## 可选的本地开发环境
 
@@ -92,7 +92,13 @@ Bybit BTC 显式模式已部署；后续全量扩容仍须按[共有永续设计
 | `DEX_ETH_RPC_URL` | `https://ethereum-rpc.publicnode.com` | 只读Ethereum RPC，URL凭据不进入证据 |
 | `DEX_EVIDENCE_DIR` | `var/dex-evidence` | 持久化原始响应的内容寻址gzip目录 |
 | `OPTIONS_ENABLED` | `false` | 在现有collector内启用Deribit期权任务 |
-| `OPTIONS_SYMBOLS` | `auto` | 启动时固定选择四族共24个期权及4个期货；也可填完整C/P及同到期期货symbol清单，最多32个 |
+| `OPTIONS_SYMBOLS` | `auto` | 持续采集BTC/ETH币本位及USDC线性四族的全部未到期期权和交割期货；显式C/P及同到期期货清单仍最多32个 |
+| `OPTIONS_EVIDENCE_DIR` | `var/options-evidence` | 自动发现的公开目录、生命周期及锁定响应内容寻址gzip目录 |
+| `OPTIONS_MAX_BOOKS` | `4096` | 自动采集合约数上限；超限成员保留pending原因 |
+| `OPTIONS_MAX_CONNECTIONS` | `20` | 期权任务物理WS总上限，含生命周期和共享指数连接；配置最多28 |
+| `OPTIONS_CHANNELS_PER_CONNECTION` | `256` | 每条盘口物理连接的频道上限，逻辑run仍最多32个合约 |
+| `OPTIONS_MAX_BOOK_LEVELS` / `OPTIONS_MAX_TOTAL_LEVELS` | `20000` / `2000000` | 单书每侧与任务全部完整L2价位预算，保存时仍截为各10档 |
+| `OPTIONS_MAX_INGRESS_BYTES` | `67108864` | 全部期权书入口及WS读取缓冲的字节预算 |
 | `DERIBIT_REST_URL` / `DERIBIT_WS_URL` | `https://www.deribit.com` / `wss://www.deribit.com/ws/api/v2` | 无认证公共行情地址 |
 | `MINUTE_QUEUE_CAPACITY` | 自动 `max(512, 2×采样源数)` | 排队及正在写入的 instrument 分钟批次数；不足两个完整分钟、队列满或 45 秒积压均明确失败 |
 | `JUSTLEND_YIELD_ENABLED` | `false` | 是否每小时采集四条 JustLend TRX 收益路线 |

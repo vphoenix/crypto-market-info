@@ -54,7 +54,8 @@ cmd/collector：配置、启动顺序、生命周期
 │  └─ 借贷 API 与身份校验：Kamino Main SOL、Save Main SOL
 │
 ├─ Deribit 期权／期货／指数
-│  └─ 规格与规则校验 → 有序市场入口 → 每秒采样 → 分钟批次提交
+│  ├─ 生命周期WS／完整目录核对 → 定类型证据 → 不可变分钟采集计划
+│  └─ 规格与规则校验 → 分片有序入口 → 每秒采样 → 按计划提交与全量查询
 │
 ├─ Ethereum DEX
 │  └─ RPC → 同 hash 状态与报价 → 完整性校验 → DEX writer
@@ -74,8 +75,8 @@ Reserve 与 Across 是并列的独立进程：
 ```text
 cmd/reserve-data → 固定 r5／池白名单与同 hash 调用
   → 完整篮子、拍卖权限、金额报价、日志及收据
-  → 原始证据 + 三张 reserve_* 表 + dex_log／dex_tx_receipt
-  → crypto_market_info_reserve → 默认 finalized 的只读 JSON 报告
+  → 内存解析/校验、源哈希 + 五张 reserve_* 表 + dex_log／dex_tx_receipt
+  → crypto_market_info_reserve → 默认 finalized 的只读 JSON／CSV 报告
 
 cmd/across-data → Base／Arbitrum RPC + 公开币安价格
   → 订单、更新、成交、退款、实际 live probe 与收据
@@ -84,7 +85,7 @@ cmd/across-data → Base／Arbitrum RPC + 公开币安价格
   → 各自只读 CSV／JSON 报告
 ```
 
-各库按单 writer 管理；Reserve 写命令沿用同一 evidence 目录锁，Across 实时和历史任务分库运行。它们独立于主 collector，但共享宿主机数据库、磁盘及部分上游额度。公开 HTTPS／RPC 接口提供链数据，当前没有本机 P2P 全节点。回补恢复链上事实，不能补造错过的实时 Quoter 报价或抢单可见时间。完整语义见 [Reserve](reserve-data-implementation.md) 和 [Across](across-stablecoin-data-implementation.md)。
+各库按单 writer 进程管理；Reserve 写命令沿用同一 evidence 目录锁，Across 实时和历史任务分库运行，并在同一RPC主机共用文件额度gate。Across内部probe定时任务与日志/最终性维护使用独立Reader证据缓冲和HTTP槽位；历史按两链小轮交替推进，报告批量读取冻结成员。它们独立于主 collector，但共享宿主机数据库、磁盘及部分上游额度。公开 HTTPS／RPC 接口提供链数据，当前没有本机 P2P 全节点。回补恢复链上事实，不能补造错过的实时 Quoter 报价或抢单可见时间。完整语义见 [Reserve](reserve-data-implementation.md) 和 [Across](across-stablecoin-data-implementation.md)。
 
 LST 是并列的独立链路，不在主 collector 内启动：
 
@@ -101,22 +102,24 @@ cmd/lst-data report → 只读本地库 → 最终性筛选及已接受批次校
 
 此 CLI 的 `init-schema` 才执行专项 DDL，`watch` 打开已有库。市场、资金费、日志和最终性维护分别保存状态；单个来源任务失败不会伪造其他任务的数据，写库失败则留下原 pending 待恢复。所有联网/写入模式共享 `var/lst/state` 的排他锁和持久额度，`report` 不占采集锁、不联网。其 gate 不约束同出口的其他进程。
 
-当前部署只运行实时 `watch`，从持久日志游标尝试补断线缺口；错过的历史报价保留缺失。dRPC 的按高度日志查询仍失败，因此事件、队列等待和基于完整日志日的 gas 样本尚不能靠运行时间自动补齐。详细频率、恢复和运维见 [LST 运行说明](lst-redemption-data-implementation.md)。
+mvp10为此LST链路加入提交后清理：请求/响应原文临时保存，文件清单随pending批次冻结，数据库确认成功后删除；失败诊断按任务种类只保留一个有大小上限的样本。查询与恢复仍依赖结构化事实、成员摘要和状态，不读取成功响应原文；manifest保留，其他采集器的留存策略不变。
+
+当前mvp10实时 `watch` 配置：主BlockPI读当前报价与真实区块头，独立MEV Blocker读赎回日志及事件区块的queue实现状态，两来源末端区块hash必须一致。固定新段每分钟至多8个finalized区块，原持久游标在新段追上后于空闲窗口每5分钟至多32块补断线缺口，分别只按实际完整提交推进。生产每两分钟调度一个金额的一条路线，其余七条成员显式not_scheduled；所有任务共享同进程writer、pending与各host20RPC/min/响应后2秒，getLogs另8次/5分钟。历史持续运行、连续新覆盖及旧缺口推进见[恢复验收](../research/2026-10-04-lst-logs-restore/report.md)。2026-10-04北京时间13:31因连续RPC超时按用户要求停止，当前状态以[运行文档](runtime-operations.md#lst-独立研究采集2026-10-02-utc)为准。旧整体缺口仍未知，错过报价不回补；详细配置与恢复见[LST运行说明](lst-redemption-data-implementation.md)。
 
 JustLend keeper 是与上述主 collector 并列的低频采集链路，由独立用户服务运行，写入 `crypto_market_info_justlend_keeper`，不复用收益表或盘口表：
 
 ```text
 cmd/justlend-keeper-data
   → PublicNode / TronGrid / Binance 只读适配器 + 全部请求共用发送 gate
-  → 严格解析、固化事件／收据核验、latest 模拟范围标注
-  → 单进程调度 + 持久化游标／限速／固定样本
-  → SHA-256 原始证据 + 冻结批次 + 五表 writer
-  → report：只读数据库、核验成员及证据、导出 CSV/JSON
+  → 内存严格解析 + 计算SHA + 索引事件/分页进度落库，即推进源抓取游标
+  → 同一单进程循环后台补固化事件／收据，另记样本证据进度
+  → 冻结批次 + 六表 writer，限速／冷却／预算持久化
+  → export/report：只读DB校验成员摘要后导出 typed CSV，无获利分析
 ```
 
 其初始化、停止、来源阻断与写入失败独立于主 collector。keeper 的源码、命令和限制见[实现说明](justlend-keeper-data-implementation.md)，部署路径见[运行说明](runtime-operations.md#justlend-keeper-独立研究采集2026-10-03)。
 
-不使用 Redis、Kafka 或跨进程实时状态。盘口的当前 L2 只存在于内存；ClickHouse 保存已经结束的分钟、资金费率及低频收益快照。
+不使用 Redis 或 Kafka；跨进程仅共享有限的来源额度/冷却运维状态，不共享内存盘口或订单业务状态。盘口的当前 L2 只存在于内存；ClickHouse 保存已经结束的分钟、资金费率及低频收益快照。
 
 ## 3. 分层职责
 
@@ -316,7 +319,7 @@ LST 独立服务应另查其 unit、最近 market 时间、协议与报价成员
 ## 8. 文档分工
 
 - [当前部署与运行说明](runtime-operations.md)：宿主机服务、路径、启用配置、连接和维护方式。
-- [Reserve 实现与查询](reserve-data-implementation.md)：五表、同块完整篮子、采样、回补恢复和报告口径。
+- [Reserve 实现与查询](reserve-data-implementation.md)：七表、同块完整篮子、直接入库并丢弃响应、回补恢复和报告口径。
 - [Across 实现与查询](across-stablecoin-data-implementation.md)：独立实时／历史库、probe 可见性、退款核验和费用空间。
 - [行情采集程序设计](implementation-design.md)：盘口和资金费率的具体实现。
 - [Bybit USDT 线性永续采集设计](bybit-usdt-perpetual-market-data.md)：Bybit 产品身份、盘口序列、资金费率和限流细节。
@@ -329,4 +332,4 @@ LST 独立服务应另查其 unit、最近 market 时间、协议与报价成员
 - [ARB-0016 AVAX 收益采集第一阶段实现设计](arbitrage/strategies/arb-0016-avax-yield-phase-1.md)：三个独立历史来源、严格利率单位、分页完整性及重试写入。
 - [ARB-0016 AVAX 收益采集第二阶段实现设计](arbitrage/strategies/arb-0016-avax-yield-phase-2.md)：三个链上来源、同块锚点、整数换算和两列兼容迁移。
 - [套利机会与策略资料](arbitrage/README.md)：数据为何采集，不参与采集进程运行。
-- [JustLend keeper 实现与运行说明](justlend-keeper-data-implementation.md)：独立五表采集器、发送预算、状态恢复、健康查询及报告口径；[目标设计](justlend-keeper-data-mvp-design.md)另列已实现与待验收部分。
+- [JustLend keeper 实现与运行说明](justlend-keeper-data-implementation.md)：独立六表采集器、发送预算、状态恢复、健康查询及报告口径；[目标设计](justlend-keeper-data-mvp-design.md)另列已实现与待验收部分。

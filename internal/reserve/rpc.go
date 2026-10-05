@@ -36,20 +36,36 @@ type Reader struct {
 	At       time.Time
 }
 
-func SourceError(rpc *ethereum.Client, v ethereum.Result) string {
+func SourceError(_ *ethereum.Client, v ethereum.Result) string {
 	if v.Err == nil {
 		return ""
 	}
 	reason := v.Err.Error()
-	if reason != "rpc_method_error" {
-		return reason
+	if ethereum.IsRateLimited(v.Err) {
+		return "rpc_rate_limited"
 	}
-	raw, e := rpc.Archive.Get(v.Payload)
-	if e != nil {
-		return reason
+	var remote *ethereum.RPCError
+	var httpError *ethereum.HTTPError
+	if errors.As(v.Err, &httpError) && httpError.RPCMessage != "" {
+		remote = &ethereum.RPCError{Code: httpError.RPCCode, Message: httpError.RPCMessage}
 	}
-	var envelope struct{ Response []byte }
-	if json.Unmarshal(raw, &envelope) != nil {
+	if remote != nil || errors.As(v.Err, &remote) {
+		msg := strings.ToLower(remote.Message)
+		if remote.RateLimited() {
+			return "rpc_rate_limited"
+		}
+		if strings.Contains(msg, "archive requests require") && strings.Contains(msg, "token") {
+			return "rpc_archive_auth_required"
+		}
+		if strings.Contains(msg, "query returned more than") || strings.Contains(msg, "too many results") ||
+			strings.Contains(msg, "block range") && (strings.Contains(msg, "too large") || strings.Contains(msg, "maximum") || strings.Contains(msg, "limit")) {
+			return "rpc_log_range_limit"
+		}
+		if remote.Code == 3 && strings.Contains(msg, "revert") {
+			return "contract_revert"
+		}
+	}
+	if reason != "rpc_method_error" && reason != "rpc_http_403" {
 		return reason
 	}
 	var replies []struct {
@@ -58,7 +74,7 @@ func SourceError(rpc *ethereum.Client, v ethereum.Result) string {
 			Message string
 		}
 	}
-	if json.Unmarshal(envelope.Response, &replies) != nil {
+	if json.Unmarshal(v.Raw, &replies) != nil {
 		return reason
 	}
 	errorsSeen := 0
@@ -69,8 +85,8 @@ func SourceError(rpc *ethereum.Client, v ethereum.Result) string {
 		}
 		errorsSeen++
 		msg := strings.ToLower(reply.Error.Message)
-		if strings.Contains(msg, "archive") && strings.Contains(msg, "token") {
-			return "rpc_archive_unavailable"
+		if strings.Contains(msg, "archive requests require") && strings.Contains(msg, "token") {
+			return "rpc_archive_auth_required"
 		}
 		if reply.Error.Code != 3 || !strings.Contains(msg, "revert") {
 			allReverts = false
@@ -101,6 +117,11 @@ func (r *Reader) Batch(ctx context.Context, calls []ethereum.Call) []ethereum.Re
 		}
 		if v.At.After(r.At) {
 			r.At = v.At
+		}
+	}
+	for i := range out {
+		if out[i].Err != nil {
+			out[i].Err = errors.New(SourceError(r.RPC, out[i]))
 		}
 	}
 	return out
@@ -174,34 +195,51 @@ func (r *Reader) Preflight(ctx context.Context, b dex.Block) error {
 	if i != r.Manifest.ImplementationCodeHash || q != r.Manifest.QuoterCodeHash {
 		return errors.New("code_hash_mismatch")
 	}
+	type poolIdentity struct {
+		pool, a, b dex.Address
+		fee        uint32
+	}
+	checks := []poolIdentity{}
+	seen := map[dex.Address]poolIdentity{}
+	calls := []ethereum.Call{}
 	for _, p := range r.Manifest.Paths {
 		for j, pool := range p.Pools {
-			v, e := r.Read(ctx, b.Hash, r.Manifest.Factory, "getPool", Eth(p.Tokens[j]), Eth(p.Tokens[j+1]), new(big.Int).SetUint64(uint64(p.Fees[j])))
-			if e != nil {
-				return e
+			k := poolIdentity{pool, p.Tokens[j], p.Tokens[j+1], p.Fees[j]}
+			if old, ok := seen[pool]; ok {
+				if old.fee != k.fee || !(old.a == k.a && old.b == k.b || old.a == k.b && old.b == k.a) {
+					return errors.New("conflicting_pool_identity")
+				}
+				continue
 			}
-			if Addr(v[0].(common.Address)) != pool {
-				return errors.New("pool_factory_mismatch")
-			}
-			calls := []ethereum.Call{Call(pool, b.Hash, "token0"), Call(pool, b.Hash, "token1"), Call(pool, b.Hash, "fee")}
-			vals := r.Batch(ctx, calls)
-			v0, e := Decode(vals[0], "token0")
-			if e != nil {
-				return e
-			}
-			v1, e := Decode(vals[1], "token1")
-			if e != nil {
-				return e
-			}
-			vf, e := Decode(vals[2], "fee")
-			if e != nil {
-				return e
-			}
-			a, z := Addr(v0[0].(common.Address)), Addr(v1[0].(common.Address))
-			x, y := p.Tokens[j], p.Tokens[j+1]
-			if !((a == x && z == y) || (a == y && z == x)) || vf[0].(*big.Int).Uint64() != uint64(p.Fees[j]) {
-				return errors.New("pool_identity_mismatch")
-			}
+			seen[pool] = k
+			checks = append(checks, k)
+			calls = append(calls, Call(r.Manifest.Factory, b.Hash, "getPool", Eth(k.a), Eth(k.b), Uint(int64(k.fee))), Call(pool, b.Hash, "token0"), Call(pool, b.Hash, "token1"), Call(pool, b.Hash, "fee"))
+		}
+	}
+	results := r.Batch(ctx, calls)
+	for j, k := range checks {
+		v, e := Decode(results[4*j], "getPool")
+		if e != nil {
+			return e
+		}
+		if Addr(v[0].(common.Address)) != k.pool {
+			return errors.New("pool_factory_mismatch")
+		}
+		v0, e := Decode(results[4*j+1], "token0")
+		if e != nil {
+			return e
+		}
+		v1, e := Decode(results[4*j+2], "token1")
+		if e != nil {
+			return e
+		}
+		vf, e := Decode(results[4*j+3], "fee")
+		if e != nil {
+			return e
+		}
+		a, z := Addr(v0[0].(common.Address)), Addr(v1[0].(common.Address))
+		if !((a == k.a && z == k.b) || (a == k.b && z == k.a)) || vf[0].(*big.Int).Cmp(Uint(int64(k.fee))) != 0 {
+			return errors.New("pool_identity_mismatch")
 		}
 	}
 	return nil

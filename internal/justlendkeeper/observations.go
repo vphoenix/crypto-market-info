@@ -89,6 +89,9 @@ func ParseProbe(b []byte, ev Evidence, can Candidate, caller string, scheduled t
 	p.ErrorMessage = string(msg)
 	if s.Result.Result == nil || !*s.Result.Result {
 		p.Status = "rpc_error"
+		if s.Result.Code == "OTHER_ERROR" && vmExecutionException(p.ErrorMessage) {
+			p.Status = "tvm_failure"
+		}
 		return p, nil
 	}
 	if len(s.Transaction.Ret) != 1 {
@@ -100,7 +103,7 @@ func ParseProbe(b []byte, ev Evidence, can Candidate, caller string, scheduled t
 		if string(cr) == "0" || string(cr) == "\"DEFAULT\"" {
 			p.ErrorCode = "unknown_contract_result"
 		} else {
-			p.Status = "revert"
+			p.Status = classifyTVMFailure(p.TvmResult, p.ErrorMessage, s.Constant)
 		}
 		return p, nil
 	}
@@ -108,7 +111,7 @@ func ParseProbe(b []byte, ev Evidence, can Candidate, caller string, scheduled t
 	if raw, ok := s.Transaction.Ret[0]["ret"]; ok {
 		p.TvmResult = string(raw)
 		if string(raw) == "\"FAILED\"" || string(raw) == "1" {
-			p.Status = "revert"
+			p.Status = classifyTVMFailure(p.TvmResult, p.ErrorMessage, s.Constant)
 			return p, nil
 		}
 		if string(raw) != "\"SUCESS\"" && string(raw) != "0" {
@@ -167,6 +170,24 @@ func ParseProbe(b []byte, ev Evidence, can Candidate, caller string, scheduled t
 	}
 	p.ErrorCode = "success_fixture_not_certified"
 	return p, nil
+}
+
+// FAILED is the transaction result; it does not identify the TVM failure.
+// Only explicit REVERT evidence receives the business-revert classification.
+func classifyTVMFailure(result, message string, constant []string) string {
+	if strings.HasPrefix(result, "contractRet:") && result != "contractRet:2" && result != "contractRet:\"REVERT\"" {
+		return "tvm_failure"
+	}
+	if result == "contractRet:2" || result == "contractRet:\"REVERT\"" || strings.Contains(strings.ToUpper(message), "REVERT") || (len(constant) > 0 && strings.HasPrefix(constant[0], "08c379a0")) {
+		return "revert"
+	}
+	return "tvm_failure"
+}
+
+// Native triggerconstantcontract can encode a VM exception as API OTHER_ERROR
+// without transaction.ret. Keep API=false, but distinguish execution failure.
+func vmExecutionException(message string) bool {
+	return strings.Contains(message, "org.tron.core.vm.program.Program$OutOfTimeException") || strings.Contains(message, "org.tron.core.vm.program.Program$OutOfEnergyException")
 }
 func ParseQuote(b []byte, ev Evidence) (CostObservation, error) {
 	r := CostObservation{ObservationKind: "trx_usdt_bbo", SourceId: "binance", RequestStartedAt: ev.Started, ReceivedAt: ev.Received, AvailableAt: ev.Available, SourceTime: ev.Received, SourceTimeKind: "received", StateBinding: "offchain", Symbol: "TRXUSDT", Status: "ok", PayloadHash: Ptr(mustHex(ev.ResponseHash))}

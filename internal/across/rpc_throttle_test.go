@@ -166,12 +166,12 @@ func TestRPCThrottleAbortsBatchAfterSourceFailure(t *testing.T) {
 				sent.Add(1)
 				return &http.Response{StatusCode: 200, Header: http.Header{}, Body: io.NopCloser(strings.NewReader(body))}, nil
 			})
-			start := time.Now()
 			heads, e := r.Headers(context.Background(), make([]uint64, 40))
 			if e == nil || heads != nil || sent.Load() != 1 || r.Used != 1 || len(r.Members) != 1 {
 				t.Fatalf("batch continued after failure: sent=%d used=%d evidence=%d err=%v", sent.Load(), r.Used, len(r.Members), e)
 			}
-			if time.Since(start) > 250*time.Millisecond {
+			// Measure the skipped cooldown, not the first RPC/archive disk IO.
+			if !time.Now().Before(r.nextRequestAt) {
 				t.Fatal("failed batch waited for skipped members")
 			}
 		})

@@ -1,0 +1,24 @@
+{
+  "compiler": "0.8.28+commit.7893614a.Emscripten.clang",
+  "source_sha256": "4ee3af3a8f31eda747ad2d06483624e40a439908fff851027d2d0e4b3d569a82",
+  "runtime_sha256": "f13f1be6612401cfe31d5102910fb1db903ff981fba33f2f35ffd7496981e7ce",
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "viaIR": true,
+    "evmVersion": "cancun",
+    "metadata": {
+      "bytecodeHash": "none"
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.deployedBytecode.object"
+        ]
+      }
+    }
+  }
+}

@@ -23,10 +23,14 @@ type Store interface {
 	ReserveReceipt(context.Context, dex.Anchor, dex.Hash) (dex.Receipt, bool, error)
 }
 type Collector struct {
-	RPC      *ethereum.Client
-	Manifest Manifest
-	Store    Store
-	Rewind   uint64
+	RPC              *ethereum.Client
+	Manifest         Manifest
+	Store            Store
+	Rewind           uint64
+	StartBlock       uint64
+	RelatedManifests []dex.Hash
+	SnapshotBudget   time.Duration
+	SimulateEvery    time.Duration
 }
 
 func (c *Collector) Header(ctx context.Context, tag string) (dex.Block, error) {
@@ -51,7 +55,11 @@ func (c *Collector) Snapshot(ctx context.Context, b dex.Block, mode string) (Bat
 	out := Batch{Capture: cap}
 	r := NewReader(c.RPC, c.Manifest)
 	r.Members = append(r.Members, b.Payload)
-	work, cancel := context.WithTimeout(ctx, 10*time.Second)
+	budget := c.SnapshotBudget
+	if budget == 0 {
+		budget = 35 * time.Second
+	}
+	work, cancel := context.WithTimeout(ctx, budget)
 	defer cancel()
 	out.Capture.ExpectedStates = uint32(len(c.Manifest.Folios))
 	out.Capture.StateCoverage = "complete"
@@ -334,8 +342,11 @@ func (c *Collector) Logs(ctx context.Context, from, to dex.Block, mode, finality
 				out.Logs[i].Event = "unknown_version"
 			}
 		}
-		// Fetch receipts once per unique transaction. Archive contains the complete
-		// receipt, including transfers outside the Folio address whitelist.
+		// Fetch/validate full receipts in memory, then retain typed logs/calldata.
+		dataStore, ok := c.Store.(ReceiptDataStore)
+		if !ok && len(out.Logs) > 0 {
+			return out, errors.New("receipt_data_store_unavailable")
+		}
 		seenTx := map[dex.Hash]bool{}
 		byTx := map[dex.Hash][]dex.Log{}
 		for _, l := range out.Logs {
@@ -352,23 +363,43 @@ func (c *Collector) Logs(ctx context.Context, from, to dex.Block, mode, finality
 				return out, e
 			}
 			if ok {
-				if e = c.ReceiptContains(existing, byTx[l.TxHash]); e != nil {
+				data, present, e := dataStore.ReserveReceiptData(ctx, existing.Anchor, existing.TxHash)
+				if e != nil {
+					return out, e
+				}
+				if !present {
+					return out, errors.New("receipt_data_migration_required")
+				}
+				if e = ReceiptDataContains(data, existing, byTx[l.TxHash]); e != nil {
 					return out, e
 				}
 				out.Receipts = append(out.Receipts, existing)
+				out.ReceiptData = append(out.ReceiptData, data)
 				continue
 			}
-			rr, e := c.RPC.Receipts(ctx, l.Anchor, []dex.Log{l})
+			response := r.Batch(ctx, []ethereum.Call{{Method: "eth_getTransactionByHash", Params: []any{l.TxHash.String()}}, {Method: "eth_getTransactionReceipt", Params: []any{l.TxHash.String()}}})
+			receipt, e := c.RPC.DecodeReceipt(l.Anchor, l.TxHash, l.TxIndex, response[0], response[1])
 			if e != nil {
 				failure = e
 				continue
 			}
-			for _, receipt := range rr {
-				if e = c.ReceiptContains(receipt, byTx[l.TxHash]); e != nil {
-					return out, e
-				}
+			var transaction struct{ Input string }
+			if json.Unmarshal(response[0].Raw, &transaction) != nil {
+				return out, errors.New("receipt_transaction_encoding")
 			}
-			out.Receipts = append(out.Receipts, rr...)
+			calldata, e := ethereum.Bytes(transaction.Input)
+			if e != nil {
+				return out, e
+			}
+			data, e := DecodeReceiptData(receipt, response[1].Raw, calldata)
+			if e != nil {
+				return out, e
+			}
+			if e = ReceiptDataContains(data, receipt, byTx[l.TxHash]); e != nil {
+				return out, e
+			}
+			out.Receipts = append(out.Receipts, receipt)
+			out.ReceiptData = append(out.ReceiptData, data)
 		}
 		out.Capture.ReceiptCoverage = "complete"
 		if len(out.Receipts) != int(out.Capture.ExpectedReceipts) {
@@ -403,35 +434,6 @@ func (c *Collector) Logs(ctx context.Context, from, to dex.Block, mode, finality
 	}
 	out.Seal()
 	return out, Validate(out)
-}
-
-func (c *Collector) ReceiptContains(receipt dex.Receipt, wanted []dex.Log) error {
-	raw, e := c.RPC.Archive.Get(receipt.ReceiptHash)
-	if e != nil {
-		return e
-	}
-	var v struct{ Logs []rawLog }
-	if json.Unmarshal(raw, &v) != nil || v.Logs == nil {
-		return errors.New("receipt_logs_unavailable")
-	}
-	facts := map[uint32]string{}
-	for _, entry := range v.Logs {
-		emitter, e := dex.ParseAddress(entry.Address)
-		if e != nil {
-			return e
-		}
-		l, e := parseLog(entry, receipt.Anchor, map[dex.Address]bool{emitter: true})
-		if e != nil || l.TxHash != receipt.TxHash {
-			return errors.New("receipt_log_identity")
-		}
-		facts[l.Index] = LogFact(l)
-	}
-	for _, l := range wanted {
-		if facts[l.Index] != LogFact(l) {
-			return errors.New("receipt_selected_log_conflict")
-		}
-	}
-	return nil
 }
 
 func minTime(a, b time.Time) time.Time {

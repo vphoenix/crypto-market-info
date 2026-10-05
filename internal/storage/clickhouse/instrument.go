@@ -3,13 +3,17 @@ package clickhouse
 import (
 	"context"
 	"fmt"
+	"sync"
 
 	"github.com/vphoenix/crypto-market-info/internal/model"
 )
 
 func (c *Client) Instruments(ctx context.Context) ([]model.Instrument, error) {
+	return c.instrumentsWhere(ctx, "", nil)
+}
+func (c *Client) instrumentsWhere(ctx context.Context, where string, args []any) ([]model.Instrument, error) {
 	rows, err := c.conn.Query(ctx, `SELECT instrument_id, exchange, market_type, exchange_symbol, venue_contract_version, base_asset, quote_asset, settle_asset,
-contract_multiplier, price_tick_size, quantity_step_size, expiry_time FROM `+c.table("instrument")+` FINAL ORDER BY instrument_id`)
+contract_multiplier, price_tick_size, quantity_step_size, expiry_time FROM `+c.table("instrument")+` FINAL `+where+` ORDER BY instrument_id`, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -33,6 +37,11 @@ contract_multiplier, price_tick_size, quantity_step_size, expiry_time FROM `+c.t
 }
 
 func (c *Client) RegisterInstruments(ctx context.Context, definitions []model.Instrument) ([]model.Instrument, error) {
+	c.instrumentOnce.Do(func() {
+		if c.instrumentMu == nil {
+			c.instrumentMu = &sync.Mutex{}
+		}
+	})
 	c.instrumentMu.Lock()
 	defer c.instrumentMu.Unlock()
 	// Validate everything before even preparing an insert. This also ensures a

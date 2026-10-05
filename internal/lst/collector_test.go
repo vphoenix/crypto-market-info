@@ -54,7 +54,7 @@ func TestProtocolFailureKeepsKnownAnchorAndEvidence(t *testing.T) {
 	r := RPC{Transport: tr, URL: "https://rpc.example"}
 	h := Block{Number: 100, Hash: strings.Repeat("h", 32), Time: Now()}
 	p, responses, e := r.Protocol(context.Background(), m, h)
-	if e == nil || p.BlockHash == nil || *p.BlockHash != h.Hash || p.BlockNumber == nil || *p.BlockNumber != 100 || len(p.PayloadHashes) != 1 || len(responses) != 2 || p.RequestedAt == nil || p.StateStatus == "ok" {
+	if e == nil || p.BlockHash == nil || *p.BlockHash != h.Hash || p.BlockNumber == nil || *p.BlockNumber != 100 || len(p.PayloadHashes) != 2 || len(responses) != 3 || p.RequestedAt == nil || p.StateStatus == "ok" {
 		t.Fatalf("partial protocol lost source evidence: %v", e)
 	}
 }

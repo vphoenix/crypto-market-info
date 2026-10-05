@@ -26,7 +26,7 @@ func run() error {
 	addr := flag.String("addr", "127.0.0.1:9000", "ClickHouse native address")
 	db := flag.String("database", "", "existing database (required)")
 	profile := flag.String("profile", "offline", "offline or live")
-	runID := flag.String("run", "", "run UUID (live defaults to latest)")
+	runID := flag.String("run", "", "run UUID (live defaults to complete collection plan)")
 	at := flag.String("at", "", "exact UTC replay second, RFC3339 (live defaults to latest minute's last second)")
 	id := flag.Uint("instrument", 0, "instrument ID (live: omit for member/quality summary)")
 	user := flag.String("user", "default", "ClickHouse user; password via CLICKHOUSE_PASSWORD")
@@ -72,6 +72,36 @@ func run() error {
 }
 
 func printLive(ctx context.Context, c *clickhouse.Client, id uuid.UUID, at time.Time, instrument uint32) error {
+	if id == uuid.Nil {
+		has, err := c.HasOptionsCatalog(ctx)
+		if err != nil {
+			return err
+		}
+		if has {
+			if at.IsZero() {
+				at = time.Now().UTC().Add(-time.Minute).Truncate(time.Minute).Add(59 * time.Second)
+			}
+			snapshot, err := c.LoadOptionsPlanSnapshot(ctx, at)
+			if err != nil {
+				return err
+			}
+			if instrument != 0 {
+				for _, e := range snapshot.Runs {
+					for _, b := range e.Books {
+						if b.InstrumentID == instrument {
+							result, err := replay.ReplayDerivative(b, uint8(at.Second()))
+							if err != nil {
+								return err
+							}
+							return json.NewEncoder(os.Stdout).Encode(result)
+						}
+					}
+				}
+				return fmt.Errorf("instrument missing from plan or uncommitted shard")
+			}
+			return json.NewEncoder(os.Stdout).Encode(snapshot)
+		}
+	}
 	var r options.LiveRun
 	var err error
 	if id == uuid.Nil {

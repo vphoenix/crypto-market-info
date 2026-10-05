@@ -251,6 +251,9 @@ func (c *Collector) GasPass(ctx context.Context, maxTransactions int) error {
 			b.Finalizations[n].CaptureId = b.Capture.CaptureId
 		}
 		if !changed {
+			if err := c.saveUncommittedDiagnostic("maintenance", errors.New("gas_enrichment_no_verified_receipt")); err != nil {
+				return err
+			}
 			continue
 		}
 		// Retain links to the original full log evidence as well as new receipts.

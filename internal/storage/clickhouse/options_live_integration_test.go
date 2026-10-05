@@ -213,6 +213,38 @@ func TestOptionsLivePublicCollection(t *testing.T) {
 	client := deribit.NewClient(cfg.RESTURL, cfg.WSURL)
 	ctx, cancel := context.WithTimeout(context.Background(), 4*time.Minute)
 	defer cancel()
+	// Exercise the legacy explicit API with a current public C/P/future triplet.
+	// Automatic catalog collection has its own independent full-universe probe.
+	plan, err := optionslive.Discover(ctx, client, cfg)
+	if err != nil {
+		t.Fatal(err)
+	}
+	names := map[string]bool{}
+	for _, item := range plan.Selected {
+		names[item.Spec.Instrument.ExchangeSymbol] = true
+	}
+	for _, future := range plan.Selected {
+		if future.Spec.OptionType != "" {
+			continue
+		}
+		for _, call := range plan.Selected {
+			if call.Spec.OptionType != "call" || call.Spec.IndexID != future.Spec.IndexID || !call.Spec.Instrument.ExpiryTime.Equal(*future.Spec.Instrument.ExpiryTime) {
+				continue
+			}
+			name := call.Spec.Instrument.ExchangeSymbol
+			put := name[:len(name)-1] + "P"
+			if names[put] {
+				cfg.Symbols = []string{future.Spec.Instrument.ExchangeSymbol, name, put}
+				break
+			}
+		}
+		if len(cfg.Symbols) > 0 {
+			break
+		}
+	}
+	if len(cfg.Symbols) == 0 {
+		t.Fatal("no public paired explicit triplet")
+	}
 	p, err := optionslive.Prepare(ctx, client, cfg, c)
 	if err != nil {
 		t.Fatal(err)

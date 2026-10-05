@@ -19,11 +19,11 @@ import (
 
 func run(ctx context.Context, args []string) error {
 	if len(args) == 0 {
-		return errors.New("usage: justlend-keeper-data init-schema|preflight|backfill|watch|report|resume-source [flags]")
+		return errors.New("usage: justlend-keeper-data init-schema|migrate-pages|preflight|backfill|watch|export|report|resume-source [flags]")
 	}
 	command := args[0]
 	switch command {
-	case "init-schema", "preflight", "backfill", "watch", "report", "resume-source":
+	case "init-schema", "migrate-pages", "preflight", "backfill", "watch", "export", "report", "resume-source":
 	default:
 		return errors.New("unknown_command")
 	}
@@ -32,19 +32,23 @@ func run(ctx context.Context, args []string) error {
 	db := f.String("database", "crypto_market_info_justlend_keeper", "isolated keeper research database")
 	addr := f.String("clickhouse", "127.0.0.1:9000", "ClickHouse native address")
 	stateDir := f.String("state", "var/justlend-keeper/state", "persistent local state; retain across restarts")
-	evidence := f.String("evidence", "var/justlend-keeper/evidence", "content-addressed raw evidence")
+	evidence := f.String("evidence", "var/justlend-keeper/evidence", "legacy archive, used only by migrate-pages; collection/export never use it")
 	duration := f.Duration("duration", 24*time.Hour, "collection time limit including warmup")
 	days := f.Int("days", 30, "explicit backfill days, 1..30")
+	historyDays := f.Int("history-days", 0, "watch: freeze 1..30 complete UTC days for bounded background liquidation backfill; 0 disables new history")
 	maxPages := f.Uint("max-pages", 0, "maximum additional committed backfill pages; 0 finishes the window")
 	fromText := f.String("from", "", "inclusive UTC RFC3339 start")
 	toText := f.String("to", "", "exclusive UTC RFC3339 end")
-	out := f.String("out", "var/justlend-keeper/reports/latest", "offline report output")
+	out := f.String("out", "var/justlend-keeper/exports/"+time.Now().UTC().Format("20060102T150405.000000000Z"), "new directory for authenticated data export")
 	source := f.String("source", "", "source to unblock explicitly: publicnode, trongrid or binance")
 	if e := f.Parse(args[1:]); e != nil {
 		return e
 	}
 	if f.NArg() != 0 {
 		return errors.New("unexpected_arguments")
+	}
+	if *historyDays < 0 || *historyDays > 30 || (*historyDays != 0 && command != "watch") {
+		return errors.New("invalid_history_days")
 	}
 	if !strings.HasPrefix(*db, "crypto_market_info_justlend_keeper") || *duration <= 0 || *days < 1 || *days > 30 || *maxPages > 100000 {
 		return errors.New("invalid_database_or_limits")
@@ -84,13 +88,13 @@ func run(ctx context.Context, args []string) error {
 		return errors.New("backfill_maximum_30_days")
 	}
 	archive := keeper.Archive{Dir: *evidence}
-	if command == "report" {
+	if command == "export" || command == "report" {
 		store, e := clickhouse.OpenDEXReader(ctx, chcfg)
 		if e != nil {
 			return e
 		}
 		defer store.Close()
-		return keeper.Report(ctx, store, archive, cfg, start, end, time.Now().UTC(), *out)
+		return keeper.Export(ctx, store, archive, cfg, start, end, *out)
 	}
 	lockPath := filepath.Join(os.TempDir(), fmt.Sprintf("crypto-market-info-justlend-keeper-%d.lock", os.Getuid()))
 	lock, e := os.OpenFile(lockPath, os.O_CREATE|os.O_RDWR, 0600)
@@ -128,7 +132,7 @@ func run(ctx context.Context, args []string) error {
 		if e = store.InitKeeperSchema(ctx); e != nil {
 			return e
 		}
-		fmt.Printf("keeper schema ready: %s (5 tables)\n", *db)
+		fmt.Printf("keeper schema ready: %s (7 tables)\n", *db)
 		return nil
 	}
 	store, e := clickhouse.OpenKeeperWriter(ctx, chcfg)
@@ -136,6 +140,14 @@ func run(ctx context.Context, args []string) error {
 		return e
 	}
 	defer store.Close()
+	if command == "migrate-pages" {
+		count, err := keeper.MigrateIndexPages(ctx, store, archive, store)
+		if err != nil {
+			return err
+		}
+		fmt.Printf("legacy page progress migrated: %d; captures and members unchanged\n", count)
+		return nil
+	}
 	s, e := keeper.LoadState(keeper.StateFile(*stateDir), *addr+"/"+*db, cfg)
 	if e != nil {
 		return e
@@ -152,6 +164,9 @@ func run(ctx context.Context, args []string) error {
 	defer cancel()
 	c := keeper.NewCollector(cfg, &s, keeper.StateFile(*stateDir), archive, store)
 	c.Log = func(s string) { log.Print(s) }
+	if command == "watch" {
+		c.EnsureHistory(*historyDays)
+	}
 	if command == "preflight" {
 		if !c.Active("identity") {
 			c.AddIdentity()

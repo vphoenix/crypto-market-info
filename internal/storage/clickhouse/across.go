@@ -15,7 +15,7 @@ import (
 //go:embed across_schema.sql
 var acrossDDL string
 
-// AcrossSchemaStatements contains only the seven Across research tables.
+// AcrossSchemaStatements contains only the eight Across research tables.
 func AcrossSchemaStatements(database string) ([]string, error) {
 	if !identifierPattern.MatchString(database) {
 		return nil, errors.New("invalid_database")
@@ -24,8 +24,8 @@ func AcrossSchemaStatements(database string) ([]string, error) {
 	// fixed trusted DDL (no SQL string literal in this schema contains --).
 	ddl := regexp.MustCompile(`(?m)--[^\n]*`).ReplaceAllString(acrossDDL, "")
 	ss := regexp.MustCompile(`(?s)CREATE TABLE IF NOT EXISTS (across_\w+).*?;`).FindAllString(ddl, -1)
-	if len(ss) != 7 {
-		return nil, errors.New("across_schema_expected_seven_tables")
+	if len(ss) != 8 {
+		return nil, errors.New("across_schema_expected_eight_tables")
 	}
 	for i, s := range ss {
 		ss[i] = regexp.MustCompile(`CREATE TABLE IF NOT EXISTS (across_\w+)`).ReplaceAllString(s, "CREATE TABLE IF NOT EXISTS `"+database+"`.`$1`")
@@ -117,6 +117,11 @@ func (c *Client) AcrossBatch(ctx context.Context, cap across.Capture) (across.Ba
 	if b.Probes, err = acrossRead[across.OrderProbe](ctx, c, "across_order_probe", where, cap.CaptureId); err != nil {
 		return b, err
 	}
+	if len(cap.TableIds) == 7 {
+		if b.Transfers, err = acrossRead[across.ReceiptTransfers](ctx, c, "across_receipt_transfers", where, cap.CaptureId); err != nil {
+			return b, err
+		}
+	}
 	// Physical insert retries collapse before exact frozen member verification.
 	return b, across.Validate(b)
 }
@@ -150,6 +155,7 @@ func (c *Client) WriteAcrossBatch(ctx context.Context, b across.Batch) error {
 		{"across_refund", acrossColumns(reflect.TypeOf(across.Refund{})), acrossRows(b.Refunds)},
 		{"across_tx_receipt", acrossColumns(reflect.TypeOf(across.TxReceipt{})), acrossRows(b.Receipts)},
 		{"across_order_probe", acrossColumns(reflect.TypeOf(across.OrderProbe{})), acrossRows(b.Probes)},
+		{"across_receipt_transfers", acrossColumns(reflect.TypeOf(across.ReceiptTransfers{})), acrossRows(b.Transfers)},
 		{"across_capture", acrossColumns(reflect.TypeOf(across.Capture{})), acrossRows([]across.Capture{b.Capture})},
 	} {
 		if err := c.dexInsert(ctx, w.table, w.columns, w.rows); err != nil {

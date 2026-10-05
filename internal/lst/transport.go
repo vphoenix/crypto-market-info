@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"io"
 	"math/rand/v2"
+	"net"
 	"net/http"
 	"net/url"
 	"os"
@@ -43,10 +44,15 @@ func (realClock) Sleep(ctx context.Context, d time.Duration) error {
 }
 
 type TransportConfig struct {
-	StateDir, ArchiveDir string
-	HTTP                 *http.Client
-	Clock                Clock
-	Backfill             bool
+	StateDir, ArchiveDir      string
+	HTTP                      *http.Client
+	Clock                     Clock
+	Backfill                  bool
+	RPCRequestsPerMinute      int           // zero preserves the original 120/min cap
+	LogRequestsPerFiveMinutes int           // zero preserves live 4 / backfill 30; shares persisted per-host history
+	StartupRPCGap             time.Duration // zero preserves the original 2s preflight gap
+	RPCGap                    time.Duration // zero preserves 500ms; production slows every response gap
+	PruneCommittedResponses   bool
 	// Tests can inject zero jitter. Production jitter only lengthens cooldowns.
 	Jitter func() time.Duration
 }
@@ -91,9 +97,22 @@ type Transport struct {
 	initialized bool
 	hosts       map[string]*hostGate
 	stats       map[string]HostStats
+	rawEvidence []string // requests/attempts since the previous frozen batch
 }
 
 func NewTransport(c TransportConfig) (*Transport, error) {
+	if c.LogRequestsPerFiveMinutes < 0 || c.LogRequestsPerFiveMinutes > 30 {
+		return nil, errors.New("transport_log_five_minute_limit_invalid")
+	}
+	if c.RPCRequestsPerMinute < 0 || c.RPCRequestsPerMinute > 120 {
+		return nil, errors.New("transport_rpc_minute_limit_invalid")
+	}
+	if c.StartupRPCGap != 0 && (c.StartupRPCGap < 2*time.Second || c.StartupRPCGap > 30*time.Second) {
+		return nil, errors.New("transport_startup_rpc_gap_invalid")
+	}
+	if c.RPCGap != 0 && (c.RPCGap < 500*time.Millisecond || c.RPCGap > 10*time.Second) {
+		return nil, errors.New("transport_rpc_gap_invalid")
+	}
 	if c.StateDir == "" || c.ArchiveDir == "" {
 		return nil, errors.New("transport_state_and_archive_required")
 	}
@@ -116,6 +135,90 @@ func NewTransport(c TransportConfig) (*Transport, error) {
 	return &Transport{cfg: c, archive: ethereum.Archive{Dir: c.ArchiveDir}, started: c.Clock.Now().UTC(), hosts: map[string]*hostGate{}, stats: map[string]HostStats{}}, nil
 }
 func (t *Transport) MarkInitialized() { t.mu.Lock(); t.initialized = true; t.mu.Unlock() }
+
+// Wait before creating a timed market observation, so maintenance requests
+// cannot consume its whole fresh-data window while the rolling quota expires.
+// This reserves no requests: every actual send still passes acquire. The
+// collector owns the RPC gate serially; Binance uses a different host gate.
+func (t *Transport) WaitRPCSlots(ctx context.Context, endpoint string, slots int) error {
+	cap := 120
+	if t.cfg.RPCRequestsPerMinute > 0 {
+		cap = t.cfg.RPCRequestsPerMinute
+	}
+	if t.cfg.Backfill {
+		cap = min(cap, 60)
+	}
+	if slots < 1 || slots > cap {
+		return errors.New("market_rpc_slots_exceed_limit")
+	}
+	g, err := t.gate("rpc", endpoint)
+	if err != nil {
+		return err
+	}
+	g.mu.Lock()
+	defer g.mu.Unlock()
+	for {
+		if err := ctx.Err(); err != nil {
+			return err
+		}
+		if g.broken {
+			return errors.New("transport_state_unavailable")
+		}
+		now := t.cfg.Clock.Now().UTC()
+		// Let Market record a disabled/cooling source as missing immediately.
+		if g.state.Disabled || g.state.CooldownUntil.After(now) {
+			return nil
+		}
+		recent := []sentRequest{}
+		for _, r := range g.state.Recent {
+			if r.At.After(now.Add(-time.Minute)) {
+				recent = append(recent, r)
+			}
+		}
+		ready := g.state.NextAt
+		if len(recent) > cap-slots {
+			ready = later(ready, recent[len(recent)-(cap-slots)-1].At.Add(time.Minute))
+		}
+		if !ready.After(now) {
+			return nil
+		}
+		if err := t.cfg.Clock.Sleep(ctx, ready.Sub(now)); err != nil {
+			return err
+		}
+	}
+}
+
+// Optional maintenance does not wait for quota or begin a range it cannot
+// conservatively finish. Actual sends still acquire the persisted host gate.
+func (t *Transport) AvailableRPCSlots(endpoint string) (int, error) {
+	cap := 120
+	if t.cfg.RPCRequestsPerMinute > 0 {
+		cap = t.cfg.RPCRequestsPerMinute
+	}
+	if t.cfg.Backfill {
+		cap = min(cap, 60)
+	}
+	g, err := t.gate("rpc", endpoint)
+	if err != nil {
+		return 0, err
+	}
+	g.mu.Lock()
+	defer g.mu.Unlock()
+	if g.broken {
+		return 0, errors.New("transport_state_unavailable")
+	}
+	now := t.cfg.Clock.Now().UTC()
+	if g.state.Disabled || g.state.CooldownUntil.After(now) {
+		return 0, nil
+	}
+	for _, r := range g.state.Recent {
+		if r.At.After(now.Add(-time.Minute)) {
+			cap--
+		}
+	}
+	return max(0, cap), nil
+}
+
 func (t *Transport) Stats() map[string]HostStats {
 	t.mu.Lock()
 	defer t.mu.Unlock()
@@ -222,16 +325,19 @@ func (t *Transport) spacing(source string, now time.Time) time.Duration {
 	initialized := t.initialized
 	t.mu.Unlock()
 	if !initialized || now.Before(t.started.Add(time.Minute)) {
-		return 2 * time.Second
+		return max(2*time.Second, t.cfg.StartupRPCGap, t.cfg.RPCGap)
 	}
 	if t.cfg.Backfill {
-		return time.Second
+		return max(time.Second, t.cfg.RPCGap)
 	}
-	return 500 * time.Millisecond
+	return max(500*time.Millisecond, t.cfg.RPCGap)
 }
 func (t *Transport) acquire(ctx context.Context, g *hostGate, class string, weight int) error {
 	for {
 		if err := ctx.Err(); err != nil {
+			if errors.Is(err, context.DeadlineExceeded) {
+				return errors.New("round_budget_exhausted")
+			}
 			return err
 		}
 		if g.broken {
@@ -278,8 +384,11 @@ func (t *Transport) acquire(ctx context.Context, g *hostGate, class string, weig
 			}
 		}
 		cap := 120
+		if t.cfg.RPCRequestsPerMinute > 0 {
+			cap = t.cfg.RPCRequestsPerMinute
+		}
 		if t.cfg.Backfill {
-			cap = 60
+			cap = min(cap, 60)
 		}
 		if g.state.Source == "binance" {
 			cap = 12
@@ -309,6 +418,9 @@ func (t *Transport) acquire(ctx context.Context, g *hostGate, class string, weig
 		if t.cfg.Backfill {
 			logCap = 30
 		}
+		if t.cfg.LogRequestsPerFiveMinutes != 0 {
+			logCap = t.cfg.LogRequestsPerFiveMinutes
+		}
 		if class == "logs" && logs300 >= logCap {
 			for _, r := range g.state.Recent {
 				if r.Class == "logs" {
@@ -318,6 +430,13 @@ func (t *Transport) acquire(ctx context.Context, g *hostGate, class string, weig
 			}
 		}
 		if ready.After(now) {
+			if deadline, ok := ctx.Deadline(); ok && ready.Add(t.cfg.HTTP.Timeout).After(deadline) {
+				cause := "local_gate_budget_exhausted"
+				if g.state.CooldownUntil.After(now) {
+					cause = "source_cooldown"
+				}
+				return &gateWaitError{Cause: cause, ReadyAt: ready}
+			}
 			t.stat(g.state.Host, func(s *HostStats) { s.Waits++ })
 			if err := t.cfg.Clock.Sleep(ctx, ready.Sub(now)); err != nil {
 				return err
@@ -483,7 +602,7 @@ func (t *Transport) Do(ctx context.Context, source, method, endpoint string, bod
 			return out, errors.New("rpc_single_read_method_required")
 		}
 		switch call.Method {
-		case "eth_call", "eth_chainId", "eth_getBlockByNumber", "eth_getBlockByHash", "eth_getCode", "eth_getStorageAt", "eth_getLogs", "eth_getTransactionByHash", "eth_getTransactionReceipt", "eth_maxPriorityFeePerGas", "eth_blockNumber":
+		case "eth_call", "eth_chainId", "eth_getBlockByNumber", "eth_getBlockByHash", "eth_getCode", "eth_getStorageAt", "eth_getLogs", "eth_getBlockReceipts", "eth_getTransactionByHash", "eth_getTransactionReceipt", "eth_maxPriorityFeePerGas", "eth_blockNumber":
 		default:
 			return out, errors.New("rpc_method_not_allowed")
 		}
@@ -533,7 +652,7 @@ func (t *Transport) Do(ctx context.Context, source, method, endpoint string, bod
 	// One in flight per host also makes post-response cooldown immediate.
 	g.mu.Lock()
 	defer g.mu.Unlock()
-	requestHash, err := t.archive.PutObject(struct {
+	requestHash, err := t.putEvidence(struct {
 		Source, Host, Method, Path string
 		Body                       []byte
 	}{source, g.state.Host, method, path, body})
@@ -572,7 +691,25 @@ func (t *Transport) Do(ctx context.Context, source, method, endpoint string, bod
 		if e := t.penalize(g, 0, nil, nil, true); e != nil {
 			return out, e
 		}
-		return out, errors.New("transport_network_or_timeout")
+		cause := "transport_network_error"
+		var dns *net.DNSError
+		var ne net.Error
+		if errors.Is(err, context.Canceled) {
+			cause = "transport_request_cancelled"
+		} else if errors.Is(err, context.DeadlineExceeded) || errors.As(err, &ne) && ne.Timeout() {
+			cause = "transport_http_timeout"
+		} else if errors.As(err, &dns) {
+			cause = "transport_dns_error"
+		} else if strings.Contains(err.Error(), "proxyconnect") {
+			cause = "transport_proxy_error"
+		} else {
+			var op *net.OpError
+			if errors.As(err, &op) && op.Op == "dial" {
+				cause = "transport_connect_error"
+			}
+		}
+		out.ReceivedAt = t.cfg.Clock.Now().UTC().Truncate(time.Microsecond)
+		return out, errors.Join(errors.New(cause), t.archiveFailure(&out, source, g.state.Host, cause))
 	}
 	defer resp.Body.Close()
 	out.HTTPStatus = resp.StatusCode
@@ -583,7 +720,17 @@ func (t *Transport) Do(ctx context.Context, source, method, endpoint string, bod
 		if e := t.penalize(g, resp.StatusCode, resp.Header, nil, true); e != nil {
 			return out, e
 		}
-		return out, errors.New("transport_response_read_failed_or_too_large")
+		cause := "transport_response_read_failed"
+		var ne net.Error
+		if len(out.Raw) > 16<<20 {
+			cause = "transport_response_too_large"
+			out.Raw = out.Raw[:16<<20]
+		} else if errors.Is(err, context.DeadlineExceeded) || errors.As(err, &ne) && ne.Timeout() {
+			cause = "transport_response_read_timeout"
+		} else if errors.Is(err, io.ErrUnexpectedEOF) {
+			cause = "transport_response_truncated"
+		}
+		return out, errors.Join(errors.New(cause), t.archiveFailure(&out, source, g.state.Host, cause))
 	}
 	// Cooldown must be durable even if evidence storage subsequently fails.
 	if err = t.penalize(g, resp.StatusCode, resp.Header, out.Raw, false); err != nil {
@@ -595,7 +742,7 @@ func (t *Transport) Do(ctx context.Context, source, method, endpoint string, bod
 			selected.Set(key, v)
 		}
 	}
-	h, err := t.archive.PutObject(struct {
+	h, err := t.putEvidence(struct {
 		Source, Host, RequestHash string
 		RequestedAt, ReceivedAt   time.Time
 		HTTPStatus                int
@@ -618,4 +765,20 @@ func (t *Transport) Do(ctx context.Context, source, method, endpoint string, bod
 		return out, fmt.Errorf("source_http_%d", resp.StatusCode)
 	}
 	return out, nil
+}
+
+func (t *Transport) archiveFailure(out *Response, source, host, cause string) error {
+	// For failures this is an attempt/partial-body proof, never a complete RPC
+	// response. The cause and HTTP status remain explicit in the observation.
+	h, err := t.putEvidence(struct {
+		Source, Host, RequestHash, Failure string
+		RequestedAt, ReceivedAt            time.Time
+		HTTPStatus                         int
+		Response                           []byte
+	}{source, host, out.RequestHash, cause, out.RequestedAt, out.ReceivedAt, out.HTTPStatus, out.Raw})
+	if err != nil {
+		return errors.New("failure_evidence_write_failed")
+	}
+	out.PayloadHash, out.AvailableAt = h.String(), t.cfg.Clock.Now().UTC().Truncate(time.Microsecond)
+	return nil
 }

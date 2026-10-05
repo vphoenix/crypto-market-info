@@ -243,6 +243,8 @@ type Batch struct {
 	Finalizations []WithdrawalFinalization
 	Claims        []WithdrawalClaim
 	Funding       []FundingSettlement
+	// Local cleanup metadata, frozen in pending-batch.gob; never a database row.
+	RawEvidenceHashes []string
 }
 
 type Store interface {

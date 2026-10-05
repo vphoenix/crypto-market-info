@@ -127,6 +127,31 @@ func Load() (Config, error) {
 			cfg.Options.Symbols[n] = strings.TrimSpace(cfg.Options.Symbols[n])
 		}
 	}
+	cfg.Options.EvidenceDir = value("OPTIONS_EVIDENCE_DIR", "var/options-evidence")
+	for _, field := range []struct {
+		name     string
+		target   *int
+		fallback int
+	}{
+		{"OPTIONS_MAX_BOOKS", &cfg.Options.MaxBooks, 4096}, {"OPTIONS_MAX_CONNECTIONS", &cfg.Options.MaxConnections, 20}, {"OPTIONS_CHANNELS_PER_CONNECTION", &cfg.Options.ChannelsPerConnection, 256}, {"OPTIONS_MAX_BOOK_LEVELS", &cfg.Options.MaxBookLevels, 20000},
+	} {
+		n, e := strconv.Atoi(value(field.name, strconv.Itoa(field.fallback)))
+		if e != nil {
+			return Config{}, fmt.Errorf("%s: %w", field.name, e)
+		}
+		*field.target = n
+	}
+	for _, field := range []struct {
+		name     string
+		target   *int64
+		fallback string
+	}{{"OPTIONS_MAX_TOTAL_LEVELS", &cfg.Options.MaxTotalLevels, "2000000"}, {"OPTIONS_MAX_INGRESS_BYTES", &cfg.Options.MaxIngressBytes, "67108864"}} {
+		n, e := strconv.ParseInt(value(field.name, field.fallback), 10, 64)
+		if e != nil {
+			return Config{}, fmt.Errorf("%s: %w", field.name, e)
+		}
+		*field.target = n
+	}
 	if cfg.Options.Enabled {
 		if err = cfg.Options.Validate(); err != nil {
 			return Config{}, err

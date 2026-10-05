@@ -203,3 +203,54 @@ ORDER BY (chain_id, manifest_hash, folio, block_number, block_hash, capture_id, 
 -- 13. Reorg invalidates ALL capture/batch revisions referencing the orphaned
 --     branch. Fallback to an older successful batch must never revive that branch.
 -- 14. Activity counts de-duplicate dex_log across captures by chain/block/tx/log.
+
+-- Ephemeral sequential eth_call verification; never an executed trade.
+CREATE TABLE IF NOT EXISTS reserve_route_simulation
+(
+ chain_id UInt64,
+ manifest_hash FixedString(32),
+ quote_id FixedString(32),
+ simulation_id FixedString(32),
+ block_number UInt64,
+ block_hash FixedString(32),
+ block_time DateTime64(6, 'UTC'),
+ available_at DateTime64(6, 'UTC'),
+ folio FixedString(20),
+ route_kind LowCardinality(String),
+ budget_raw UInt256,
+ funded_raw UInt256,
+ amount_in_raw Nullable(UInt256),
+ amount_out_raw Nullable(UInt256),
+ shares_raw Nullable(UInt256),
+ gas_internal Nullable(UInt64),
+ within_budget Nullable(Bool),
+ status LowCardinality(String),
+ reason LowCardinality(String),
+ simulator_hash FixedString(32),
+ payload_hash FixedString(32)
+)
+ENGINE = ReplacingMergeTree
+PARTITION BY toYYYYMM(block_time)
+ORDER BY (chain_id,manifest_hash,quote_id,simulation_id);
+
+-- Complete typed transaction input/logs; source JSON is discarded after parse.
+-- Shared across manifests/captures, including explicit zero-log transactions.
+CREATE TABLE IF NOT EXISTS reserve_receipt_data
+(
+ chain_id UInt64,
+ block_number UInt64,
+ block_hash FixedString(32),
+ block_time DateTime64(6, 'UTC'),
+ tx_hash FixedString(32),
+ tx_index UInt32,
+ receipt_hash FixedString(32),
+ calldata_hash FixedString(32),
+ calldata String,
+ log_count UInt32,
+ logs Array(Tuple(log_index UInt32, emitter FixedString(20), topics Array(FixedString(32)), data String)),
+ data_hash FixedString(32),
+ materialized_at DateTime64(6, 'UTC')
+)
+ENGINE = ReplacingMergeTree
+PARTITION BY toYYYYMM(block_time)
+ORDER BY (chain_id,block_hash,tx_hash);
