@@ -125,7 +125,7 @@ cmd/justlend-keeper-data
 
 - 数据源适配器只处理 URL、请求、响应结构、WebSocket 序列和来源错误，不做套利判断。
 - 标准化与 collector 把来源数据转换成有明确身份、UTC 时间和定点数值的内部模型，并执行完整性校验。
-- 盘口 sampler 负责固定秒边界和新数据前 10 档编码；分钟 `stored_depth` 区分新 10 档和旧 50 档，查询按对应深度回放；低频 Runner 负责采集间隔、单批重试和不重叠执行。
+- 盘口 sampler 负责固定秒边界和新现货/永续/交割期货5档、期权10档编码；分钟 `stored_depth` 区分5/10/50档，查询按对应深度回放；低频 Runner 负责采集间隔、单批重试和不重叠执行。
 - ClickHouse writer 只负责 ID 登记、批量写入和确定性重试，不重新解释来源业务含义。
 - 查询端使用 `FINAL` 或等价的 `argMax` 消除 `ReplacingMergeTree` 的逻辑重复；盘口查询还负责回放分钟差量。
 
@@ -333,3 +333,5 @@ LST 独立服务应另查其 unit、最近 market 时间、协议与报价成员
 - [ARB-0016 AVAX 收益采集第二阶段实现设计](arbitrage/strategies/arb-0016-avax-yield-phase-2.md)：三个链上来源、同块锚点、整数换算和两列兼容迁移。
 - [套利机会与策略资料](arbitrage/README.md)：数据为何采集，不参与采集进程运行。
 - [JustLend keeper 实现与运行说明](justlend-keeper-data-implementation.md)：独立六表采集器、发送预算、状态恢复、健康查询及报告口径；[目标设计](justlend-keeper-data-mvp-design.md)另列已实现与待验收部分。
+
+2026-10-07 新增的 OKX 配对链路独立于“至少两站共有”集合，复用同一 instrument 注册器、价格序列校验、分钟 writer 与资金费率模块。目录30分钟复核、新集合先预热，在已记录的 UTC 分钟边界替换采样源；公开借贷政策每分钟完整观测写入专表。详见 [5档与配对实现](okx-paired-five-level.md)。

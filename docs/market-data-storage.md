@@ -49,7 +49,7 @@ Reserve 拍卖与篮子申赎已在独立库 `crypto_market_info_reserve` 建表
 
 表名：`order_book_minute`
 
-用途：保存每个交易流在每分钟第 0 秒的完整盘口。新采集保存买卖各 10 档；旧历史保存买卖各 50 档，由 `stored_depth` 标明。该记录是恢复本分钟内任意秒盘口的起点。
+用途：保存每个交易流在每分钟第 0 秒的完整盘口。新现货/期货保存买卖各5档；旧历史保存买卖各10或50档，由 `stored_depth` 标明。该记录是恢复本分钟内任意秒盘口的起点。
 
 唯一键：`(instrument_id, minute_time)`
 
@@ -59,11 +59,11 @@ Reserve 拍卖与篮子申赎已在独立库 `crypto_market_info_reserve` 建表
 | `instrument_id` | 交易流 ID | `UInt32` | 是 | 唯一标识交易所、市场类型、标的、结算币种及合约版本。 |
 | `minute_time` | 分钟时间 | `DateTime` | 是 | UTC 分钟起始时间，秒和毫秒固定为 0。 |
 | `valid_bitmap` | 秒有效位图 | `UInt64` | 是 | 低 60 位分别代表本分钟第 0 至 59 秒是否有有效盘口。位值为 `1` 表示有效，`0` 表示无效或缺失。 |
-| `stored_depth` | 保存档数上限（每侧） | `UInt8` | 是 | 仅支持 `10` 或 `50`。新 writer 显式写 `10`；列默认值固定为 `50`，用于旧 part 与旧 collector。实际挂单不足此深度时仍以零补齐。 |
+| `stored_depth` | 保存档数上限（每侧） | `UInt8` | 是 | 支持 `5`、`10` 或 `50`。新现货/期货 writer 显式写 `5`；列默认值固定为 `50`，用于旧 part 与旧 collector。实际挂单不足此深度时仍以零补齐。 |
 
-兼容迁移执行 `ADD COLUMN IF NOT EXISTS stored_depth UInt8 DEFAULT 50 AFTER valid_bitmap`。物理快照继续保留每侧 50 档的价格和数量列，新数据的第 11 至 50 档必须全部为零；压缩后主要新增占用来自前 10 档及其差量。不删除列、不重写旧 part、不改变 instrument 或分钟唯一键。新建库也采用同样结构和默认值，避免旧 writer 回退运行时被误标为 10 档。
+兼容迁移执行 `ADD COLUMN IF NOT EXISTS stored_depth UInt8 DEFAULT 50 AFTER valid_bitmap`。物理快照继续保留每侧 50 档的价格和数量列，超出本分钟 `stored_depth` 的档位必须全部为零；压缩后主要新增占用来自所保存档位及其差量。不删除列、不重写旧 part、不改变 instrument 或分钟唯一键。新建库也采用同样结构和默认值，避免旧 writer 回退运行时被误标为 10 档。
 
-回放必须先加载完整的历史起点及差量，再按本分钟实际保存深度返回，并在输出 `BookSnapshot.StoredDepth` 中标明上限。不能只读旧起点的前 10 档：未发生数量变化的旧第 11 档也可能因前档删除进入前 10。尚未迁移的旧表可只读回放，缺少该列时按 50 解释；新查询不会为此执行 DDL。新分钟在 UTC 分钟边界建立 10 档独立起点，不与旧分钟共用差量链。回滚只能在新分钟开始新起点，不能重写已存在分钟为另一深度。
+回放必须先加载完整的历史起点及差量，再按本分钟实际保存深度返回，并在输出 `BookSnapshot.StoredDepth` 中标明上限。不能只读旧起点的前 10 档：未发生数量变化的旧第 11 档也可能因前档删除进入前 10。尚未迁移的旧表可只读回放，缺少该列时按 50 解释；新查询不会为此执行 DDL。新分钟在 UTC 分钟边界建立所配置深度的独立起点，不与旧分钟共用差量链。回滚只能在新分钟开始新起点，不能重写已存在分钟为另一深度。
 
 分钟 ID 的生成公式固定为：
 
@@ -86,7 +86,7 @@ id = (unix_minute << 32) | instrument_id
 | `bid_price_50` | 买 50 价 | `Int64` | 是 | 第五十高买价，保存为 `price_tick`。 |
 | `bid_qty_50` | 买 50 量 | `UInt64` | 是 | 买 50 价对应的数量，保存为 `qty_lot`。 |
 
-买盘非零有效价格必须严格递减（新数据到第 10 档，旧数据最多到第 50 档）：
+买盘非零有效价格必须严格递减（新现货/期货到第5档，历史最多到第50档）：
 
 ```text
 bid_price_01 > bid_price_02 > …… > bid_price_50
@@ -104,13 +104,13 @@ bid_price_01 > bid_price_02 > …… > bid_price_50
 | `ask_price_50` | 卖 50 价 | `Int64` | 是 | 第五十低卖价，保存为 `price_tick`。 |
 | `ask_qty_50` | 卖 50 量 | `UInt64` | 是 | 卖 50 价对应的数量，保存为 `qty_lot`。 |
 
-卖盘非零有效价格必须严格递增（新数据到第 10 档，旧数据最多到第 50 档）：
+卖盘非零有效价格必须严格递增（新现货/期货到第5档，历史最多到第50档）：
 
 ```text
 ask_price_01 < ask_price_02 < …… < ask_price_50
 ```
 
-如果某一侧不足 `stored_depth` 档，从第一个缺失档开始，该档及后续物理档位的价格和数量一律为 `0`。`stored_depth=10` 时第 11 至 50 档强制为零；writer 拒绝深度不受支持、超出深度的非零快照或差量恢复后超过该深度的状态。
+如果某一侧不足 `stored_depth` 档，从第一个缺失档开始，该档及后续物理档位的价格和数量一律为 `0`。`stored_depth=5` 时第6至50档强制为零，`stored_depth=10` 时第11至50档强制为零；writer 拒绝深度不受支持、超出深度的非零快照或差量恢复后超过该深度的状态。
 
 `price_tick` 以交易流定义的最小价格单位换算：
 
@@ -156,7 +156,7 @@ length(ask_change_prices) = length(ask_change_qtys)
 
 数量保存的是更新后的绝对值，而不是与前一秒相比的增减值。例如某价格的数量从 `1.2` 变为 `1.5`，差量中保存 `1.5` 对应的 `qty_lot`，不保存 `+0.3`。
 
-若某个价格从保存的前 `stored_depth` 档状态中移除，写入其价格和数量 `0`。该价格即使仍存在于交易所更深的盘口中，也视为从本系统保存的状态中删除。新数据先截取每侧 10 档再计算差量，不能通过截短旧 50 档差量数组得到 10 档差量。
+若某个价格从保存的前 `stored_depth` 档状态中移除，写入其价格和数量 `0`。该价格即使仍存在于交易所更深的盘口中，也视为从本系统保存的状态中删除。新数据先截取目标5/10档再计算差量，不能通过截短旧差量数组得到新深度差量。
 
 若某一秒有效但盘口没有变化，不写差量行；其有效性由分钟完整盘口表的 `valid_bitmap` 对应位表示。若某一秒无效或缺失，同样不写差量行，但 `valid_bitmap` 对应位必须为 `0`。
 
@@ -223,7 +223,7 @@ length(ask_change_prices) = length(ask_change_qtys)
 2. 检查 `valid_bitmap` 的第 `n` 位，若为 `0` 则该秒盘口无效；
 3. 读取同一 `minute_id` 且 `second_offset ≤ n` 的全部差量；
 4. 按 `second_offset` 从小到大应用差量：数量为 `0` 则删除该价格，数量大于 `0` 则新增或覆盖该价格的数量；
-5. 买盘按价格从高到低、卖盘按价格从低到高排序，返回本分钟保存的全部深度（新 10 档、旧 50 档）；返回 `StoredDepth`，稀疏盘口可以少于此上限，超出上限则报错。
+5. 买盘按价格从高到低、卖盘按价格从低到高排序，返回本分钟保存的全部深度（5/10/50档）；返回 `StoredDepth`，稀疏盘口可以少于此上限，超出上限则报错。
 
 分钟完整盘口和差量表之间不跨分钟依赖；下一分钟第 0 秒的完整盘口是新的独立恢复起点。
 
@@ -293,12 +293,12 @@ member 只有 `run_id UUID`、`instrument_id UInt32`、`canonical_market_key Str
 
 - 已扩展 `instrument` 的类型与版本校验，并实现定类型经济规格、组合腿和交易规则。实时run/成员、所选元数据复核证据与状态、指数观测及分钟发布见10.3；完整结算/费用/保证金规则、原生combo和全链BBO按需扩展。行权价币种、权利金币、结算币、native amount 和合约张数不能混用。
 - 经济/编码规格保持不可变；下单tick、分段tick、最小量与增量放入独立 `derivative_trading_rule`，逐秒引用当时规则。该链路 `contract_multiplier=1` 表示保留native amount，USD名义和combo必须经专项换算，不能直接套第8节USDT永续的基础币换算公式。
-- 已提供 `derivative_book_minute`、`derivative_book_second_delta`、`derivative_book_quality_minute` 的显式建表与离线读写接口。新数据仍只保存每秒前10档，`stored_depth=10`；允许已知空边/空书，combo允许零价和负价，因此不复用现有正价/双边盘口的校验语义。
+- 已提供 `derivative_book_minute`、`derivative_book_second_delta`、`derivative_book_quality_minute` 的显式建表与离线读写接口。新期权仍保存每秒前10档，交割期货默认5档，`stored_depth=10/5`；允许已知空边/空书，combo允许零价和负价，因此不复用现有正价/双边盘口的校验语义。
 - 新分钟起点用等长typed价格/数量数组，各侧长度0–10，真实数量大于0；价格0可为真实combo档位，只有差量数量0表示删除。没有有效第0秒锚点的分钟不生成可回放盘口，但保留独立质量记录。
 - 每秒质量按分钟60槽保存；所选合约BBO可直接从L2提取，无需先建全链quote表。真实源时间、接收时间、采样截止、连接代次、缺失原因与盘口状态分开表达。
 - 实时分钟需关联本次run及不可变 `batch_id`，先写数据后发布提交标记；跨表部分写入不可见，重试复用原内容与身份。当前 `derivative_book_foundation_commit` 仍只接受离线来源，不能冒充实时提交。所选指数和低频元数据使用定类型字段，不进入资金费率或收益表。
 - 低频实时来源按本次请求范围核验完整性，保存来源时间/采集时间、URL和payload hash；规则区分生效与知悉时间，失败不刷新历史事实。盘口的 `delta_bitmap` 标明应存在差量的秒，提交后缺行必须返回incomplete，不能解释成无变化。
-- 现有10档/旧50档历史的编码、物理列和回放路径保持本字典第2–3节语义；不得先截旧50档起点再应用旧差量。
+- 现有5/10档及旧50档历史的编码、物理列和回放路径保持本字典第2–3节语义；不得先截旧50档起点再应用旧差量。
 
 ### 10.1 已实现的离线基础表（显式初始化）
 
@@ -308,7 +308,7 @@ member 只有 `run_id UUID`、`instrument_id UInt32`、`canonical_market_key Str
 | --- | --- | --- |
 | `derivative_contract_spec` | `instrument_id` | 源ID、创建时间、经济定义hash、normalization_version、linear/reversed、native amount种类与币种、Decimal(38,18) contract_size、index、结算语义ID、Nullable期权类型/strike/strike_currency、等长组合腿ID/有符号比例/Decimal换算系数数组、首次证据hash。与instrument经济版本一起不可变；本阶段不单独建option和combo子表 |
 | `derivative_trading_rule` | `trading_rule_id FixedString(64)` | instrument、Decimal tick/min amount/step、等长分段阈值/tick数组、observed_at/known_from/effective_from、明确first_observed或published口径、来源URL与payload hash；时间DateTime64(6,UTC)；规则变化新增ID |
-| `derivative_book_minute` | `(instrument_id,minute_time,batch_id)` | id、encoding_version=1、stored_depth=10、signed、valid_bitmap、delta_bitmap、四个买卖price Int64/qty UInt64数组，每侧0–10档；价0不是填充；按月分区 |
+| `derivative_book_minute` | `(instrument_id,minute_time,batch_id)` | id、encoding_version=1、stored_depth=5/10（期权固定10）、signed、valid_bitmap、delta_bitmap、四个买卖price Int64/qty UInt64数组，每侧0–stored_depth档；价0不是填充；按月分区 |
 | `derivative_book_second_delta` | `(minute_id,second_offset,batch_id)` | 秒1–59，买卖各price Int64与qty UInt64等长数组，qty=0删除；按minute_id内分钟推导月份分区 |
 | `derivative_book_quality_minute` | `(instrument_id,minute_time,batch_id)` | signed、整份该instrument分钟内容hash；sampled/stream_valid/replay_valid/market_known/market_open位图；所有时间、epoch、序号、交易规则、市场状态依据、原因和实际档数按60槽保存；时间统一Nullable DateTime64(6,UTC)，UUID/hash未知为NULL；按月分区 |
 | `derivative_book_foundation_commit` | `(run_id,minute_time)` | batch_id、origin仅fixture/synthetic、evidence_hash、prepared_at、完整instrument_ids与member_hashes数组、anchor_count与delta_count；按月分区；最后写以发布离线分钟 |
@@ -354,19 +354,33 @@ member 只有 `run_id UUID`、`instrument_id UInt32`、`canonical_market_key Str
 | `options_catalog_quality_evidence_minute` | `(run_id,instrument_id,minute_time,batch_id)` | 固定60槽状态依据、规则目录、status基线、maintenance、单指数锁定证据，以及生命周期epoch/确认时间；未知引用NULL，质量与规则知悉分别核验 |
 | `options_catalog_live_minute_commit` | `(run_id,minute_time)` | 绑定plan/run、完整成员及质量证据/指数摘要，全部事实成功后发布；分片缺失不会隐藏其他已提交分片 |
 
-R5复用整数价量10档事实和固定成员run；新增 `catalog_v2` 准入独立于C/P/期货配对，旧selection及旧run/hash/commit读取不变。R5分钟使用独立v2摘要域，含计划和60槽证据；不直接修改旧结构的JSON序列化来重算旧摘要。原旧50档回放不变。
+R5复用整数价量事实（期权10档、交割期货默认5档）和固定成员run；新增 `catalog_v2` 准入独立于C/P/期货配对，旧selection及旧run/hash/commit读取不变。R5分钟使用独立v2摘要域，含计划和60槽证据；不直接修改旧结构的JSON序列化来重算旧摘要。原旧50档回放不变。
 
 目录定义与规则整批校验后批量写入；同批或已存重复定义保留首次EvidenceHash，规则重试保留原来源及知悉/生效时间和内容ID。分钟引用只批量读取目标instrument及所用规则，缺引用、owner不符或任何秒早于规则知悉/生效仍拒绝；批量化不改变表结构或分钟编码。
 
 持续运行修订分别保存规则与目录状态的真实观测时间，采样器和writer均按所引用目录证据的35分钟有效期校验。完整目录可更新已确认且没有较新屏障的目录状态引用；当前生命周期epoch的WS状态仍由其独立事实确认。WS源时间只在同一epoch内排序，不与HTTP本地观测时间比较；重连重置序号及源时间排序，旧epoch已应用序号不能确认新事件。creation不能借用后来状态通知的接纳序号或覆盖当前epoch已确认的WS状态。
 
-生命周期按最多128条、5ms聚合窗口写入，逐条保留原身份、内容hash、epoch和接纳序号；批内及已存内容冲突整批拒绝，歧义重试复用身份，落盘成功后才发布。工作与重试数量界限为`2*MaxBooks+512`，同时受共享32MiB字节预算约束。资源拒绝保留有界symbol屏障，定时fresh单合约确认可恢复未知、新增或尚未准入的未到期成员；请求受inflight合并与退避控制。到期/terminal停止健康恢复请求，持久化terminal可清理无entry且屏障匹配的恢复意图。原始证据仍先归档，不因恢复而伪造open。
+生命周期按最多128条、5ms聚合窗口写入，逐条保留原身份、内容hash、epoch和接纳序号；批内及已存内容冲突整批拒绝，歧义重试复用身份，落盘成功后才发布。工作与重试数量界限为`2*MaxBooks+512`，同时受共享32MiB字节预算约束。资源拒绝保留有界symbol屏障，定时fresh单合约确认可恢复未知、新增或尚未准入的未到期成员；请求受inflight合并与退避控制。到期/terminal停止健康恢复请求，持久化terminal可清理无entry且屏障匹配的恢复意图。原始响应先在内存校验，再持久化定类型证据，不因恢复而伪造open。
 
 成员退役和部分迁移合并为每个physical的待退订集合，最多512频道一批；subscribe和unsubscribe共用一个待ACK批次，移除路由也不能提前释放未ACK的订阅屏障。历史频道在同一epoch不复用；连接预算耗尽且历史使用阻塞时，有界轮换一个稀疏epoch并失效其盘口，待新连接和快照确认后恢复。冷却期间保留恢复意图。以上修订不改变表结构、价格数量编码或旧历史回放语义，验证记录见[持续运行修复](arbitrage/strategies/arb-0009-options-sustained-repair.md)。
 
-原文按SHA-256先写gzip归档，再允许正向发布和引用。时间为UTC `DateTime64(6)`，观测与计划携带不可变内容hash；序号/计数/身份为整数，金额仍为Decimal，未增加通用JSON事实表。严格字段定义见 [options_catalog_schema.sql](../internal/storage/clickhouse/options_catalog_schema.sql)。
+2026-10-06 按用户要求取消期权原始响应归档。公开目录、单合约与生命周期响应先在内存校验 SHA-256，再按原顺序写入定类型事实、发布状态；读取与回放只依赖数据库。旧 `OPTIONS_EVIDENCE_DIR` 接受但不使用，目录缺失或旧 gzip 损坏不影响采集。时间为UTC `DateTime64(6)`，观测与计划携带不可变内容hash；序号/计数/身份为整数，金额仍为Decimal，未增加通用JSON事实表。来源 hash 不能还原原始 JSON，也不承诺原文仍可下载。质量、状态依据、分钟提交表仍保留，批次摘要与历史查询语义不变。严格字段定义见 [options_catalog_schema.sql](../internal/storage/clickhouse/options_catalog_schema.sql)。
 
 新合约的定义、规则和状态确认后立即预订阅；计划默认在当前UTC分钟之后第二个边界生效，为落盘及预热留出1–2分钟，未来计划队列有界，迟到计划顺延。缺第0秒锚点如实不可回放。T切换后旧writer仅排空<T的冻结分钟，新run立即采样T；查询按唯一生效计划认证owner。全量检查通过计划返回预期/有效/缺失合约及未提交分片，不能只读最新一个run。分钟验证/提交限三路并发，控制证据使用独立连接额度与锁集合，不让整个分钟hash计算阻塞采样入口。
+
+### 10.5 辅助表紧凑存储
+
+2026-10-07 增加辅助表的无损紧凑物理格式。上文表字典继续描述读取口径；实际新建表的物理列由 [options_compact.go](../internal/storage/clickhouse/options_compact.go) 转换生成。目录 SQL 是逻辑模板，不能跳过该转换直接作为新格式 DDL。采集启动只幂等建表，已有表不会自动迁移或删除。
+
+适用表：`derivative_book_quality_minute`、`options_catalog_quality_evidence_minute`，以及离线、固定清单实时、自动发现实时的三种分钟 commit。盘口快照、按价格差量、价格数量单位及深度版本保持原定义。
+
+- SHA-256 摘要以完整 `FixedString(32)` 保存；旧 64 字符字段通过 `ALIAS lower(hex(...))` 精确还原。完整成员摘要仍用于单批核验，未缩短摘要或取消成员证明。
+- 每分钟的 60 槽时间、连接、规则及状态数组改存 `compact_<field>_offsets` 和 `compact_<field>_values`：第一个偏移必须是 0，偏移严格递增且小于 60，两个数组长度相同。相同状态只存一次，变化才存下一项。`NULL`、零和已知空值保持区分。
+- 时间值保存相对 UTC 分钟起点的有符号微秒差，保留原精度和负偏移；使用整数运算及 `fromUnixTimestamp64Micro` 还原。时间/序号值采用 Delta＋ZSTD，其他紧凑列使用 ZSTD。每个原数组由 ALIAS 按变化区间展开为完整 60 槽，展开工作量与槽数成正比。
+- 查询显式选择原逻辑列，原内容 hash、batch ID、发布时间及采样截止校验均保持成立。`SELECT *` 默认不包括 ALIAS；需要原口径的 SQL 应列出逻辑字段。writer 按连接首次检测物理格式，旧表仍可写，新表写紧凑列；切换表后必须重启 writer。
+- 本次精简删除重复存储，精确采样完成时间、序列末值和档数仍可无损恢复。取消这些诊断信息的长期留存是另一项有损取舍，未混入此次迁移。
+
+`go run ./cmd/options-compact-plan` 只输出五类辅助表的建表与转换 SELECT，不连接或修改数据库。迁移须先复制旧事实、逐字段核验，再停止 writer 补齐尾部，确认逻辑成员数一致，交换表并重启；同时继承生产表的插入、目录和合并 fsync 设置。原表只有在原查询/摘要/每秒回放和新写入验证通过后才删除；旧摘要域无需伪造或重算。旧库和新格式、旧 10/50 档盘口的读取兼容均在隔离 ClickHouse 测试中验证。
 
 ## 11. Ethereum DEX 协议兑换实验（2026-09-22）
 
@@ -390,7 +404,7 @@ R5复用整数价量10档事实和固定成员run；新增 `catalog_v2` 准入�
 
 已经提交但缺失的日志另行补采：先写日志事实，再追加coverage完成revision，保留原quote成员与可见时间；补采的原始证据记录真实获取时间。相同hash的每条日志使用确定性定类型日志响应作为payload证据，完整RPC信封由该区块的proof引用；不能因RPC id或请求时间变化而改变同一日志事实。日志补写同样保留不可变pending直到完成。回执独立batch按available_at去重，补齐目标交易集合后更新receipt coverage/count/members，不让已完成块占住补采窗口。这些是补采完成版本；纯finality版本不重新生成数据。
 
-原始RPC响应及manifest按SHA-256寻址写入 `DEX_EVIDENCE_DIR/<hash前2位>/<hash>.json.gz`，临时文件、fsync、原子rename完成后才提交表引用；calldata证据保存原始字节（该文件不一定是JSON）。RPC证据保存脱敏source_id（主机名）与UTC获取时间，不保存RPC URL的用户名、路径或查询凭据。事实行及manifest在库内均有hash，原始body在文件中；不使用通用JSON业务大表。证据目录与ClickHouse数据共同备份，不能独立清理引用文件。
+2026-10-06 起主 collector 的 Ethereum DEX 适配器使用 `Archive.HashOnly`：RPC 响应、calldata 和 manifest 仅计算摘要，所需字段严格解析后直接写现有定类型表，不再另存正文文件；重试、补采、最终性及历史报告均从数据库读取。`DEX_EVIDENCE_DIR` 为兼容旧配置保留，主 collector 不再使用。SHA-256、UTC获取时间、区块锚点和批次计数/摘要保持原含义，但 hash 不承诺原文仍可回读。完整 calldata、非采集目标的 receipt 日志及未选择字段不在现有研究数据范围内，删除旧原文后不能从摘要恢复它们。固定 manifest 在程序内嵌版本中保留，不依赖运行归档。`dex-check --sample-block` 或 `--quote-costs-rpc` 显式研究命令仍可在指定报告目录保存独立研究样本；其他采集器使用共享 Archive 的策略不受影响。主 collector 旧响应目录在停写并核验历史查询后可以清理，不以原文归档替代数据库备份。
 
 报告连接使用服务端 `readonly=1`，不执行数据库引导或DDL。成本补报只写报告目录的证据与JSON/CSV，不修改生产事实。参考1 WETH卖出价格不参与可执行gas成本计算；成本必须用同hash、实际gas数量的USDC→WETH exact-output，Quoter内部gas不作为交易总gas。
 
@@ -465,3 +479,12 @@ CLI export与兼容命令report只导出七份typed CSV（含index_pages）及me
 PublicNode承担节点只读查询，TronGrid事件分页，Binance公开BBO；端点和路由不自动改变。每次启动前5分钟所有来源间隔至少5秒，此后全局至少1秒且单请求在途；TronGrid及后台另有5秒gate、所有来源合计40,000请求/UTC日，重试计数。实时索引优先，固定历史逐日源回补；其他请求后台核验，不突发补发。source游标与样本证据游标分开；晚启动的probe不补发，已尝试的观测补后置头。缺省API success仍为NULL；明确REVERT、其他TVM失败、网络/API失败分开保存。实际状态见[运行文档](runtime-operations.md#justlend-keeper-独立研究采集2026-10-03)，服务保留自启动。
 
 2026-10-04增加小型jl_keeper_index_page表：capture_id UUID（主键）、capture_started_at UTC微秒、scan_id String、fingerprint_in/out String、request_started_at/available_at UTC微秒、payload_hash FixedString(32)。月分区，与索引成员先写、capture最后提交，重试内容稳定。完整空页仍有分页来源记录；token链从空起点完整连接到空终点才允许连续核验进度晋级。旧metadata一次性从manifest迁移并与DB索引成员hash/时间交叉核验，旧Capture及事实摘要不变。正常链路不保存request/response/summary正文；export只访问DB。没有通用JSON表，payload hash保留但删除原文后不能重放原JSON。迁移/清理验收见[验证记录](../research/2026-10-04-keeper-no-raw/validation.md)。
+
+## OKX USDT 配对目录与公开借贷政策（2026-10-07）
+
+新增两张定类型完整观测表，源响应只在内存校验，不保存 JSON 原文或备份文件。字段与运行衔接见[实现说明](okx-paired-five-level.md)。
+
+- `okx_public_loan_policy`：UUID、请求/观测 UTC 时间、来源 URL 与 payload SHA256；基本币种、**每日**借贷利率、公开额度；特殊币种利率；vip/regular/config 级别、币种、策略、额度、利息折扣、额度系数。金额与利率统一 Decimal(38,18)，可空字段 `Nullable`，空值表示未知。并列数组长度经模型及数据库约束校验，完整批次一行写入。
+- `okx_paired_catalog`：UUID、观测时间、生效分钟、借贷观测 ID；依次 SPOT/SWAP/MARGIN/借贷的四组来源 URL/hash/请求与接收时间/原始数据条数；基础币种、两腿 instrument ID 与最小下单数量。四个来源缺一即拒绝。目录提交前与读取时都核对借贷来源、已登记定义以及正公开额度。目录只在 `effective_minute<=查询时间` 时可见。
+
+两表按 UTC 观测月份分区，ReplacingMergeTree 以稳定观测 UUID 去重，重试不换身份；保存规范化行摘要并在读取时验证。公开额度用于界定研究集合，**不是账户实际剩余可借量**；额度系数不是分档边际借贷利率，弃用折扣为空时不能补成零。所有已选永续复用现有资金费率采集，采样频率仍为整点估算与结算后确认。本次不增加分钟成交量表，也不将公开政策冒充账户实际借款成本。

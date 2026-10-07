@@ -6,7 +6,7 @@ import (
 )
 
 // InitOptionsLiveSchema is opt-in. Existing installations with options disabled
-// do not create these tables. The six offline tables retain their exact schema.
+// do not create these tables. Compact tables retain exact legacy read values.
 func (c *Client) InitOptionsLiveSchema(ctx context.Context) error {
 	if err := c.InitDerivativeSchema(ctx); err != nil {
 		return err
@@ -31,7 +31,7 @@ instrument_ids Array(UInt32), member_hashes Array(FixedString(64)), anchor_count
 ) ENGINE=ReplacingMergeTree PARTITION BY toYYYYMM(minute_time) ORDER BY (run_id,minute_time)`,
 	}
 	for n, table := range []string{"options_live_run", "options_metadata_observation", "options_index_minute", "options_live_minute_commit"} {
-		if err := c.conn.Exec(ctx, fmt.Sprintf(statements[n], c.table(table))); err != nil {
+		if err := c.conn.Exec(ctx, compactDDL(fmt.Sprintf(statements[n], c.table(table)))); err != nil {
 			return err
 		}
 	}

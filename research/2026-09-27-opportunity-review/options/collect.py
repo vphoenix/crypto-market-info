@@ -5,7 +5,7 @@ QUERIES={
 'schemas': "SELECT table,name,type FROM system.columns WHERE database='crypto_market_info' AND table IN ('instrument','derivative_contract_spec','derivative_trading_rule','derivative_book_minute','derivative_book_second_delta','derivative_book_quality_minute','options_live_minute_commit','options_index_minute') ORDER BY table,position FORMAT JSONEachRow",
 'runs': 'SELECT * FROM options_live_run FINAL ORDER BY started_at DESC FORMAT JSONEachRow',
 'commits_summary': 'SELECT run_id,count() AS minutes,min(minute_time) AS first_minute,max(minute_time) AS last_minute,sum(anchor_count) AS anchors FROM options_live_minute_commit FINAL GROUP BY run_id ORDER BY last_minute DESC FORMAT JSONEachRow',
-'latest_commit': 'SELECT * FROM options_live_minute_commit FINAL ORDER BY minute_time DESC LIMIT 1 FORMAT JSONEachRow',
+'latest_commit': 'SELECT run_id,minute_time,batch_id,run_hash,prepared_at,instrument_ids,member_hashes,anchor_count,delta_count,index_ids,index_hashes FROM options_live_minute_commit FINAL ORDER BY minute_time DESC LIMIT 1 FORMAT JSONEachRow',
 'instruments': "SELECT * FROM instrument FINAL WHERE exchange='Deribit' ORDER BY instrument_id FORMAT JSONEachRow",
 'specs':'SELECT * FROM derivative_contract_spec FINAL ORDER BY instrument_id FORMAT JSONEachRow',
 }

@@ -5,12 +5,29 @@ import (
 	"errors"
 	"github.com/vphoenix/crypto-market-info/internal/config"
 	"github.com/vphoenix/crypto-market-info/internal/dex"
+	"github.com/vphoenix/crypto-market-info/internal/dex/ethereum"
 	"io"
 	"log/slog"
 	"sync/atomic"
 	"testing"
 	"time"
 )
+
+func TestDEXCollectorDoesNotRequireEvidenceDirectory(t *testing.T) {
+	client, err := newDEXCollectorClient("https://example.test/rpc")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !client.Archive.HashOnly || client.Archive.Dir != "" {
+		t.Fatal("collector restored raw response retention")
+	}
+	if hash, err := client.Archive.Put(ethereum.ManifestJSON); err != nil || hash != ethereum.ManifestHash() {
+		t.Fatal("embedded manifest digest requires an evidence directory", err)
+	}
+	if hash, err := client.Clone().Archive.Put([]byte("response")); err != nil || hash != dex.Digest([]byte("response")) {
+		t.Fatal("worker requires an evidence directory or changed its source digest", err)
+	}
+}
 
 func TestDEXStaleHeadRecoversButFinalizedConflictPauses(t *testing.T) {
 	checkpoint := dex.Block{Anchor: dex.Anchor{Number: 100, Hash: dex.ObjectHash(uint64(100))}}

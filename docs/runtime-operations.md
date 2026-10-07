@@ -1,6 +1,14 @@
 # 当前部署与运行说明
 
-最近核实：2026-10-05（Asia/Shanghai；含重启后的修复与旧历史坏块清理结果）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
+最近核实：2026-10-07（Asia/Shanghai；含期权辅助存储精简）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
+
+2026-10-07 02:14:10（Asia/Shanghai）已部署主collector紧凑期权辅助存储版本，现行SHA-256为 `ccec72f25771ad48fb275e2b80675f9d3a3f59f1073b8512a18953add0bd51fa`。五张辅助表迁移18,504,278条逻辑记录，全部原字段逐批精确核验；相同数据物理占用10.75 GB→4.49 GB，净减少6.26 GB。历史2,862合约/171,720合约秒迁移前后实际回放完全相同；新02:17分钟2,866合约/90分片/171,960有效合约秒实际回放及原摘要核验通过后，已删除五个旧展开副本。02:19分钟仍完整提交，五路CEX各60有效秒，服务active/running、NRestarts0，原文目录未重建。主采集器切换暂停约56秒，启动过渡按真实缺失/无效记录；不填造停机盘口。精确微秒、序号和档数仍可恢复，未删除唯一事实或降低深度、频率、覆盖；fsync设置已继承。测量不是每日增长，实际范围、测试、查询兼容及边界见[本轮清理记录](../research/2026-10-07-options-redundancy-prune/report.md)。
+
+2026-10-06 21:16（Asia/Shanghai）已部署主 collector 无响应原文归档版本，SHA-256 `19f48c87e8db988230ae563b8e8745039e719fe29f23a486d834ad466f0f0d6a`。主 Ethereum DEX 使用 `Archive.HashOnly`，期权公开目录及生命周期在内存核验 payload hash 后直接写定类型表；旧 `DEX_EVIDENCE_DIR`、`OPTIONS_EVIDENCE_DIR` 仅兼容接受，运行程序不再读写两目录。来源摘要、UTC时间、价格数量编码、链锚点、质量表与批次提交语义不变。清理仅涉及确认不再使用的运行响应原文，独立研究样本、配置、续采状态和锁保留；Across compact capture/finality 仍被历史报告读取，不可整目录删除。LST 按已审清单清理前，先停服持原锁并复用 `FlushPending` 正常排空待写批次，禁止手工删除 pending。部署验证、精确删除统计和历史报告比较见[本轮清理记录](../research/2026-10-06-redundant-data-cleanup/report.md)。不要用旧版本回滚恢复原文依赖。
+
+本轮实际删除 2,569,434 份冗余文件及 258 个空目录，测得释放分配空间 42.0224 GB；Across 另删除的 342,004 字节仅统计压缩文件长度，未混入分配空间合计。最终验收又复现期权旧分组恢复缺陷：计划异步入库期间新增预热成员，使下一轮超过单 run 32 个上限并反复发布失败。22:53:39 部署修复版，该版主 collector SHA-256 为 `be1b072b19b1c414206959f82d73b2543e28f71d13b7bd7d0edf44ff88680fcc`：每组最多 32 个，溢出成员继续分配，旧预热列表不抢回其他组已接管的成员。源码、回归及独立审核证明此错误不是原文读取依赖；清理期间磁盘负载可能加重数据库超时，不能宣称全程采集无中断。各次恢复与最终数据核验以本轮记录为准。
+
+22:58 最终核验：22:57 期权2,862成员、90个run、171,720个成员秒实际回放全部有效；五路CEX同分钟各60有效秒。主collector、Across、LST、Reserve、keeper和ClickHouse均运行，两处主原文目录不存在且未重新生成。另记录Across旧的内部取消可能被当作成功退出、从而未触发自动重启的问题；本次已恢复采集，但该独立退出缺陷尚未修复，见清理记录中的诊断。
 
 2026-10-05 11:23（Asia/Shanghai）重启后再次核验：七个项目unit均active/running，五路盘口最新分钟60/60；期权11:20、11:21两个完整分钟均3,104成员、每成员60秒有效。已给五个生产库59张MergeTree表显式启用插入、目录及合并fsync，51张本次有新数据的表各选一个有界part校验，全部通过；不涉及其他项目的表设置。Across已部署`across-reboot-head-repair-20261005`（SHA256 `34753e49bfba8965975d34e0acbd78ae5239880788240f869cbc8dc767f97015`），长积压时当前链头与旧缺口补采由已有worker分别推进，两链当前事实已恢复完整解码；旧放弃标记仍为993个partial。原始扫描与完整事实必须分开核验，最新高度不能证明历史连续；Arbitrum停机原始缺口仍在补，旧历史状态不可用仍partial。启动时的空文件隔离块和既有坏历史不视为已恢复；块号包含关系不能证明行完整。具体修改、真实验证与限制见[重启检查记录](../research/2026-10-05-reboot-check/report.md)。
 
@@ -45,8 +53,8 @@ Bybit USDT 线性永续已于 2026-09-05 部署，collector unit 设置 `BYBIT_P
 | ClickHouse PID 文件 | `/run/user/1000/crypto-market-info-clickhouse/clickhouse.pid`（由 systemd 运行目录创建，重启后重建） |
 | collector 二进制 | `/home/ubuntu/.local/share/crypto-market-info-collector/collector` |
 | collector 日志 | `/home/ubuntu/.local/share/crypto-market-info-collector/logs/collector.log` |
-| 期权原始证据 | `/home/ubuntu/.local/share/crypto-market-info-options/evidence/` |
-| DEX 原始证据 | `/home/ubuntu/.local/share/crypto-market-info-dex/evidence/` |
+| 期权旧原文目录（现行 collector 不再读写） | `/home/ubuntu/.local/share/crypto-market-info-options/evidence/` |
+| 主 DEX 旧原文目录（现行 collector 不再读写） | `/home/ubuntu/.local/share/crypto-market-info-dex/evidence/` |
 | 全量验收二进制 | `/home/ubuntu/.local/share/crypto-market-info-perp-soak/collector` |
 | 全量验收日志 | `journalctl --user -u crypto-market-info-perp-soak.service` |
 | 桌面指示器程序 | `/home/ubuntu/crypto-market-info/tools/desktop-status/crypto_market_status.py` |
@@ -460,3 +468,9 @@ PublicNode `tron-rpc.publicnode.com` 承担只读节点数据，事件分页仍�
 11:22 CST 增补检查与修复：keeper 虽无已提交成员数量缺失，扫描覆盖仍发现停机前的三个 30 秒断口。已正常停止原服务、取得原锁后用原 Collector 定点补采，三片无事件且分页穷尽，来源哈希、成员摘要及窗口连续性核验通过；11:21:16 已恢复 enabled 的常驻服务，实时游标和额度保留。同期 LST 人工补入1852块，新版恢复逻辑又自动补回8块持久游标领先数据库的断口，实际续采与成员验证通过。七个服务均 active/running、enabled；五路 CEX 最新分钟各60/60，期权97分片/3104成员，停机前后完整分钟均已实际回放。未改路由/来源或取消自启动。
 
 本次 CEX 04:29–10:44 CST 共376个分钟缺失，无法精确事后补回；不要填入重启后的盘口冒充历史。共享 ClickHouse 的另一个项目表 `crypto_grid_trading.quality_events_raw` 仍有旧分片 `UNKNOWN_CODEC`，本轮只定位并记录，没有删改该项目数据。Across 的部分 Arbitrum 历史状态及旧 LST 缺口仍按原限制保留。操作、实际查询、补采程序和完整 race 回归见[重启核查与修复](../research/2026-10-05-reboot-recovery/report.md)。
+
+### 2026-10-07：5档与 OKX 配对版本待部署
+
+用户选择“期权10档、现货/永续/交割期货5档，补齐 OKX 可借贷 USDT 现货/永续配对”。代码与仓库中的 systemd 模板已加入 `MARKET_BOOK_DEPTH=5`、`OKX_PAIRED_ENABLED=true`、`OKX_PAIRED_MAX_PAIRS=256`、`OKX_PAIRED_REFRESH=30m`。本轮为编程和审核，**尚未覆盖安装二进制、安装 unit 或重启生产采集器**；线上实际深度仍以数据库 `stored_depth` 与运行二进制为准。新版本细节与验证见 [实现说明](okx-paired-five-level.md)。
+
+部署时先备份实际二进制和 unit，停止原采集器后安装已验证版本，保持现有其他来源环境配置。新现货/期货从新分钟写5档；期权继续10档。核验新配对目录、相应两腿有效秒、资金费率及来源政策时间。回退时设 `MARKET_BOOK_DEPTH=10`、`OKX_PAIRED_ENABLED=false`，用支持5/10/50回放的新查询程序读取混合历史，不删除或重写已有历史。

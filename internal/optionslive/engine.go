@@ -39,6 +39,7 @@ type engine struct {
 	complete     func(options.LiveEnvelope) error
 	now          func() time.Time
 	catalog      *catalogEngine
+	futureDepth  int
 }
 
 func newEngine(run options.LiveRun, specs []options.ContractSpec, started time.Time, reset func(string), refresh func(), complete func(options.LiveEnvelope) error) (*engine, error) {
@@ -63,6 +64,16 @@ func newEngine(run options.LiveRun, specs []options.ContractSpec, started time.T
 		e.next = first
 	}
 	return e, nil
+}
+
+func (e *engine) bookDepth(id uint32) int {
+	if e.specs[id].Instrument.MarketType == model.MarketDelivery {
+		if e.futureDepth == 10 {
+			return 10
+		}
+		return model.MarketBookDepth
+	}
+	return model.BookDepth
 }
 func (e *engine) handle(v event, now time.Time) error {
 	if v.Boundary {
@@ -184,7 +195,7 @@ func (e *engine) sample(at, now time.Time) error {
 		e.buffers = map[uint32]*sampler.DerivativeMinuteBuffer{}
 		e.indexMinutes = nil
 		for _, m := range e.run.Members {
-			b, err := sampler.NewDerivativeMinuteBuffer(m.InstrumentID, at, false)
+			b, err := sampler.NewDerivativeMinuteBufferWithDepth(m.InstrumentID, at, false, e.bookDepth(m.InstrumentID))
 			if err != nil {
 				return err
 			}
@@ -227,6 +238,10 @@ func (e *engine) sample(at, now time.Time) error {
 			q = model.DerivativeQuality{CapturedAt: now.UTC().Truncate(time.Microsecond), Reason: model.DerivativeSamplingLag}
 		} else {
 			s, q = e.books[id].Current()
+			depth := e.bookDepth(id)
+			s.Bids = s.Bids[:min(len(s.Bids), depth)]
+			s.Asks = s.Asks[:min(len(s.Asks), depth)]
+			q.BidLevels, q.AskLevels = uint8(len(s.Bids)), uint8(len(s.Asks))
 			q.Sampled = true
 			q.CapturedAt = now.UTC().Truncate(time.Microsecond)
 			if e.catalog != nil {

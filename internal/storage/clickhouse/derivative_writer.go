@@ -148,6 +148,9 @@ func (c *Client) validateDerivativeReferences(ctx context.Context, books []model
 			return fmt.Errorf("unregistered or incompatible derivative %d", b.InstrumentID)
 		}
 		spec, ok := specs[i.ID]
+		if b.Minute != nil && i.MarketType != model.MarketDelivery && b.Minute.StoredDepth != model.BookDepth {
+			return fmt.Errorf("options must retain ten levels")
+		}
 		if !ok {
 			return fmt.Errorf("missing derivative spec")
 		}
@@ -251,15 +254,9 @@ func (c *Client) insertDerivativeMinutes(ctx context.Context, id string, books [
 	return b.Send()
 }
 func (c *Client) insertDerivativeQuality(ctx context.Context, id string, books []model.DerivativeMinuteBatch) error {
-	b, err := c.conn.PrepareBatch(ctx, `INSERT INTO `+c.table("derivative_book_quality_minute")+` (`+derivativeQualityColumns+`)`)
-	if err != nil {
-		return err
-	}
-	defer b.Abort()
+	rows := make([][]any, 0, len(books))
 	for _, book := range books {
-		if err := b.Append(derivativeQualityValues(book, id)...); err != nil {
-			return err
-		}
+		rows = append(rows, derivativeQualityValues(book, id))
 	}
-	return b.Send()
+	return c.insertDerivativeRows(ctx, "derivative_book_quality_minute", derivativeQualityColumns, rows)
 }

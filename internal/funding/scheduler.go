@@ -56,6 +56,7 @@ func (s *Scheduler) CollectHour(ctx context.Context, hour time.Time) {
 		s.MaxEstimateAge = 2 * time.Minute
 	}
 	hour = hour.UTC().Truncate(time.Hour)
+	rates := make([]model.FundingRate, 0, len(s.Instruments))
 	for _, instrument := range s.Instruments {
 		estimate, found := s.Estimates.At(instrument.ID, hour, s.MaxEstimateAge)
 		if !found {
@@ -69,8 +70,13 @@ func (s *Scheduler) CollectHour(ctx context.Context, hour time.Time) {
 			Rate:         estimate.Rate,
 			IsActual:     false,
 		}
+		rates = append(rates, rate)
+	}
+	// Freeze every quote before slow writes, so disconnecting an old generation
+	// during persistence cannot erase later members of an already sampled hour.
+	for _, rate := range rates {
 		if err := s.Sink.UpsertFundingRate(ctx, rate); err != nil {
-			s.Logger.Error("estimated funding write failed", "instrument_id", instrument.ID, "hour", hour, "error", err)
+			s.Logger.Error("estimated funding write failed", "instrument_id", rate.InstrumentID, "hour", hour, "error", err)
 		}
 	}
 }

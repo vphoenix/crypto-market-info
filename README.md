@@ -4,9 +4,10 @@
 
 当前已经实现：
 
-- Binance、OKX 现货及永续合约 L2 盘口，以及 Bybit USDT 线性永续 L2 盘口；
+- Binance、OKX 现货及永续合约 L2 盘口，以及 Bybit USDT 线性永续 L2 盘口，新采样默认每侧5档；
+- OKX 可公开借贷的 USDT 现货/永续配对动态采集（开关默认关闭），完整范围及新挂牌衔接见[5档与配对实现](docs/okx-paired-five-level.md)；
 - Ethereum Uniswap v3＋Sky 协议兑换状态、56档闭环报价及日志/回执（默认关闭；[采集与判断说明](docs/dex-arbitrage-implementation.md)）；
-- Deribit BTC/ETH 币本位与 USDC 期权、同到期期货的每秒10档、元数据与指数（默认关闭；[使用说明](docs/arbitrage/strategies/arb-0009-options-live.md)）；
+- Deribit BTC/ETH 币本位与 USDC 期权每秒10档、同到期交割期货每秒5档，以及元数据与指数（默认关闭；[使用说明](docs/arbitrage/strategies/arb-0009-options-live.md)）；
 - Binance、OKX 和 Bybit 永续资金费率；
 - JustLend 能源租单清理 keeper 的事件、收据、只读模拟和资源／兑换成本，使用独立命令与六表研究库（[实现与运行说明](docs/justlend-keeper-data-implementation.md)）；
 - JustLend TRX 收益、TRON 原生质押，以及 SOL 第一、第二阶段收益（LST、原生质押、Kamino 和 Save）；
@@ -87,17 +88,20 @@ Bybit BTC 显式模式已部署；后续全量扩容仍须按[共有永续设计
 | `PERP_MAX_TOTAL_WS_CONNECTIONS` | `128` | 含现货和资金费率的总连接预算 |
 | `PERP_MAX_TOTAL_BUFFERED_EVENTS` | `1000000` | 有界消息队列、确认前缓存与快照桥接的总 slot 预算 |
 | `MARKET_DATA_MAX_SAMPLE_SOURCES` | `1100` | 现货加永续的总采样源预算 |
+| `MARKET_BOOK_DEPTH` | `5` | 现货、永续与 Deribit 交割期货的每侧保存档数；可设 `10` 回退，期权固定10档 |
+| `OKX_PAIRED_ENABLED` | `false` | 补齐 OKX USDT 现货/永续可借贷配对，与跨站共有永续集合独立 |
+| `OKX_PAIRED_MAX_PAIRS` / `OKX_PAIRED_REFRESH` | `256` / `30m` | 完整集合容量及目录复核间隔；超限拒绝，不截断 |
 | `FUNDING_ENABLED` | `true` | 是否采集永续资金费率 |
 | `DEX_ENABLED` | `false` | 在现有collector内启用Ethereum DEX实验分支 |
 | `DEX_ETH_RPC_URL` | `https://ethereum-rpc.publicnode.com` | 只读Ethereum RPC，URL凭据不进入证据 |
-| `DEX_EVIDENCE_DIR` | `var/dex-evidence` | 持久化原始响应的内容寻址gzip目录 |
+| `DEX_EVIDENCE_DIR` | `var/dex-evidence` | 兼容旧配置；主 collector 已不保存或读取响应原文，所需事实与来源摘要直接入库 |
 | `OPTIONS_ENABLED` | `false` | 在现有collector内启用Deribit期权任务 |
 | `OPTIONS_SYMBOLS` | `auto` | 持续采集BTC/ETH币本位及USDC线性四族的全部未到期期权和交割期货；显式C/P及同到期期货清单仍最多32个 |
-| `OPTIONS_EVIDENCE_DIR` | `var/options-evidence` | 自动发现的公开目录、生命周期及锁定响应内容寻址gzip目录 |
+| `OPTIONS_EVIDENCE_DIR` | `var/options-evidence` | 兼容旧配置；目录、生命周期和锁定响应在内存校验，定类型事实与来源摘要直接入库 |
 | `OPTIONS_MAX_BOOKS` | `4096` | 自动采集合约数上限；超限成员保留pending原因 |
 | `OPTIONS_MAX_CONNECTIONS` | `20` | 期权任务物理WS总上限，含生命周期和共享指数连接；配置最多28 |
 | `OPTIONS_CHANNELS_PER_CONNECTION` | `256` | 每条盘口物理连接的频道上限，逻辑run仍最多32个合约 |
-| `OPTIONS_MAX_BOOK_LEVELS` / `OPTIONS_MAX_TOTAL_LEVELS` | `20000` / `2000000` | 单书每侧与任务全部完整L2价位预算，保存时仍截为各10档 |
+| `OPTIONS_MAX_BOOK_LEVELS` / `OPTIONS_MAX_TOTAL_LEVELS` | `20000` / `2000000` | 单书每侧与任务全部完整L2价位预算，保存期权每侧10档、交割期货按 `MARKET_BOOK_DEPTH` |
 | `OPTIONS_MAX_INGRESS_BYTES` | `67108864` | 全部期权书入口及WS读取缓冲的字节预算 |
 | `DERIBIT_REST_URL` / `DERIBIT_WS_URL` | `https://www.deribit.com` / `wss://www.deribit.com/ws/api/v2` | 无认证公共行情地址 |
 | `MINUTE_QUEUE_CAPACITY` | 自动 `max(512, 2×采样源数)` | 排队及正在写入的 instrument 分钟批次数；不足两个完整分钟、队列满或 45 秒积压均明确失败 |
@@ -166,7 +170,7 @@ go run ./cmd/collector
 go run ./cmd/collector -print-ddl
 ```
 
-回放某个 UTC 秒保存的盘口（新数据每侧 10 档，旧历史每侧 50 档；输出 `StoredDepth`）：
+回放某个 UTC 秒保存的盘口（新现货/期货每侧5档，期权10档；历史按5/10/50档恢复；输出 `StoredDepth`）：
 
 ```bash
 go run ./cmd/collector \
@@ -177,7 +181,7 @@ go run ./cmd/collector \
 单元测试与 ClickHouse 集成/一天压缩测量：
 
 ```bash
-go test ./...
+go test ./cmd/... ./internal/...
 CLICKHOUSE_INTEGRATION=1 go test ./internal/storage/clickhouse -v
 ```
 
@@ -189,9 +193,9 @@ JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer�
 
 ## 数据存储模型
 
-每个交易流对新数据按秒保存前 10 档买盘和前 10 档卖盘，使用分钟快照和秒级差量编码：
+新现货、永续和交割期货按秒保存买卖各5档，期权保存买卖各10档，使用分钟快照和秒级差量编码：
 
-1. 每分钟第 0 秒写入一次完整的 10 档盘口快照，并标记 `stored_depth=10`；
+1. 每分钟第 0 秒写入一次完整的盘口快照，并标记对应的 `stored_depth=5/10`；
 2. 第 1 至 59 秒仅写入相对上一个有效采样状态发生变化的价格和数量；
 3. 查询任意秒时，以该分钟快照为起点回放最多 59 秒差量。
 
@@ -200,9 +204,9 @@ JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer�
 ### 为什么盘口采用两张数据表
 
 - `order_book_minute` 保存每分钟第 0 秒的完整盘口，是恢复该分钟任意秒盘口的确定起点。
-- `order_book_second_delta` 只保存分钟内价格和数量的变化，避免把 60 份完整的 10 档盘口重复写入磁盘。
+- `order_book_second_delta` 只保存分钟内价格和数量的变化，避免把 60 份完整盘口重复写入磁盘。
 
-两张表配合后，查询任意秒只需读取一个分钟完整盘口并回放至多 59 秒差量；既保留精确盘口，又避免按秒重复存储完整盘口。旧 50 档历史保留，回放按分钟 `stored_depth` 返回全部已保存深度；迁移只增加深度标记，不重写历史。交易所接收与内存保留仍为 Binance/Bybit 1000 档、OKX 400 档。
+两张表配合后，查询任意秒只需读取一个分钟完整盘口并回放至多 59 秒差量；既保留精确盘口，又避免按秒重复存储完整盘口。旧 10/50 档历史保留，回放按分钟 `stored_depth` 返回全部已保存深度；迁移只增加深度标记，不重写历史。交易所接收与内存保留仍为 Binance/Bybit 1000 档、OKX 400 档。
 
 收益数据使用 `yield_route` 保存稳定产品身份，使用 `yield_observation` 保存每次完整利率快照。收益量较低，不采用盘口的分钟快照和秒级差量编码。
 

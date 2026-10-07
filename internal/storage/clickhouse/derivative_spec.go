@@ -186,6 +186,10 @@ func (c *Client) insertDerivativeRow(ctx context.Context, table, columns string,
 	return c.insertDerivativeRows(ctx, table, columns, [][]any{values})
 }
 func (c *Client) insertDerivativeRows(ctx context.Context, table, columns string, values [][]any) error {
+	columns, values, err := c.compactOptionInsert(ctx, table, columns, values)
+	if err != nil {
+		return err
+	}
 	b, err := c.conn.PrepareBatch(ctx, `INSERT INTO `+c.table(table)+` (`+columns+`)`)
 	if err != nil {
 		return err

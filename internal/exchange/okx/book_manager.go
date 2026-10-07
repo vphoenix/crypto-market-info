@@ -70,7 +70,7 @@ func NewBookManager(client *Client, instruments []model.Instrument, books map[ui
 	seen := make(map[string]bool)
 	for _, instrument := range m.instruments {
 		book := books[instrument.ID]
-		if err := instrument.Validate(); err != nil || instrument.ID == 0 || instrument.Exchange != "OKX" || instrument.MarketType != model.MarketPerpetual || book == nil || book.InstrumentID() != instrument.ID || seen[instrument.ExchangeSymbol] || m.books[instrument.ID] != nil {
+		if err := instrument.Validate(); err != nil || instrument.ID == 0 || instrument.Exchange != "OKX" || (instrument.MarketType != model.MarketPerpetual && instrument.MarketType != model.MarketSpot) || book == nil || book.InstrumentID() != instrument.ID || seen[instrument.ExchangeSymbol] || m.books[instrument.ID] != nil {
 			return nil, fmt.Errorf("OKX book manager invalid or duplicate instrument %q", instrument.ExchangeSymbol)
 		}
 		seen[instrument.ExchangeSymbol] = true

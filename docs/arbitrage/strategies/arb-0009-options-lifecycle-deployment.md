@@ -12,7 +12,7 @@ collector SHA-256：`3a39581b13a8abe0dcf03383d1d4ae8337a29bf350bb11aec44f5787f98
 
 从提交 `422fac3f12185e64616508eac42725e137d3e6a4` 的隔离源码快照构建，覆盖此前审核的R5文件、应用接入及本次批量写入修复。构建没有包含工作区其他尚未提交的策略改动；完整路径/hash和构建元信息见[构建清单](../../../research/2026-10-04-options-lifecycle-deployment/build-source-manifest.json)。同一独立Agent复审新增修复，无P1/P2，race和真实ClickHouse回归通过，见[审核记录](../../../discuss/0018-options-lifecycle-design-review.md)。
 
-安装unit新增 `OPTIONS_EVIDENCE_DIR=/home/ubuntu/.local/share/crypto-market-info-options/evidence`。其余已安装采集环境参数沿用，4096书、20条WS、256频道等预算使用已审默认值。仅重启主collector；ClickHouse以及其他独立采集服务不随部署重启。
+当时安装unit新增 `OPTIONS_EVIDENCE_DIR=/home/ubuntu/.local/share/crypto-market-info-options/evidence`。2026-10-06 该参数改为兼容保留，期权响应只在内存校验并写定类型数据库，不再依赖或生成原文文件；以下原文核验记录描述历史验收，不代表原文永久留存。其余已安装采集环境参数沿用，4096书、20条WS、256频道等预算使用已审默认值。仅重启主collector；ClickHouse以及其他独立采集服务不随部署重启。
 
 旧二进制及unit保存到 `/home/ubuntu/.local/share/crypto-market-info-collector/deploy-backups/options-r5-20261004T074317Z/`。旧SHA为 `dd55a3a80fbba9bec3b61a18401f41b1ba436322d4de8012f4889fdca6859a21`。部署记录包含启动时间、备份路径及原日志偏移，见[部署身份](../../../research/2026-10-04-options-lifecycle-deployment/deployment-record.json)。
 

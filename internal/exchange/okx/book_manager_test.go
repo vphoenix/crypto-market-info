@@ -18,8 +18,11 @@ func TestBookManagerAppliesTwoRealVenueTopics(t *testing.T) {
 	first := okxInstrument()
 	second := first
 	second.ID = first.ID + 1
-	second.ExchangeSymbol = "ETH-USDT-SWAP"
-	second.BaseAsset = "ETH"
+	second.ExchangeSymbol = "BTC-USDT"
+	second.MarketType = model.MarketSpot
+	second.SettleAsset = nil
+	second.VenueContractVersion = ""
+	second.ContractMultiplier = first.QuantityStepSize
 	books := make(map[uint32]*orderbook.Book)
 	for _, instrument := range []model.Instrument{first, second} {
 		books[instrument.ID], _ = orderbook.New(instrument.ID, 400)

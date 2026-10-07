@@ -9,8 +9,9 @@ import (
 )
 
 const (
-	// BookDepth is the number of levels sampled per side for new minutes.
-	BookDepth = 10
+	// BookDepth is the option depth and maximum depth of the modern encoding.
+	BookDepth       = 10
+	MarketBookDepth = 5
 	// LegacyBookDepth preserves the complete anchors needed to replay old data.
 	LegacyBookDepth = 50
 )
@@ -182,7 +183,7 @@ type MinuteBook struct {
 // ValidateDepth rejects ambiguous encodings and nonzero levels outside the
 // recorded depth. Short books are still padded with zeroes within that depth.
 func (m MinuteBook) ValidateDepth() error {
-	if m.StoredDepth != BookDepth && m.StoredDepth != LegacyBookDepth {
+	if m.StoredDepth != MarketBookDepth && m.StoredDepth != BookDepth && m.StoredDepth != LegacyBookDepth {
 		return fmt.Errorf("unsupported stored book depth %d", m.StoredDepth)
 	}
 	for index := int(m.StoredDepth); index < LegacyBookDepth; index++ {

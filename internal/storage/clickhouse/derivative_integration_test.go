@@ -60,7 +60,12 @@ func derivativeTestSpec(symbol string, native uint64) options.ContractSpec {
 
 func derivativeSyntheticMinute(t *testing.T, id uint32, at time.Time, signed, active, anchor bool) model.DerivativeMinuteBatch {
 	t.Helper()
-	buf, err := sampler.NewDerivativeMinuteBuffer(id, at, signed)
+	return derivativeSyntheticMinuteDepth(t, id, at, signed, active, anchor, 10)
+}
+
+func derivativeSyntheticMinuteDepth(t *testing.T, id uint32, at time.Time, signed, active, anchor bool, depth int) model.DerivativeMinuteBatch {
+	t.Helper()
+	buf, err := sampler.NewDerivativeMinuteBufferWithDepth(id, at, signed, depth)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -84,12 +89,12 @@ func derivativeSyntheticMinute(t *testing.T, id uint32, at time.Time, signed, ac
 			sequence = uint64(second + 1)
 		}
 		s := model.DerivativeSnapshot{InstrumentID: id, SourceTime: received.Add(-time.Millisecond), ReceivedAt: received, Epoch: epoch, ChangeID: sequence}
-		for level := int64(0); level < 10; level++ {
+		for level := int64(0); level < int64(depth); level++ {
 			s.Bids = append(s.Bids, model.Level{PriceTick: bid - level, QtyLot: 7})
 			s.Asks = append(s.Asks, model.Level{PriceTick: 101 + level, QtyLot: 9})
 		}
 		s.Bids[0].QtyLot = qty
-		q := model.DerivativeQuality{Sampled: true, StreamValid: true, MarketKnown: true, MarketOpen: true, SourceTime: s.SourceTime, ReceivedAt: received, CapturedAt: tm, Epoch: epoch, ChangeID: s.ChangeID, LastSnapshotAt: at, MarketStateAt: at, MarketStateBasis: 2, BidLevels: 10, AskLevels: 10}
+		q := model.DerivativeQuality{Sampled: true, StreamValid: true, MarketKnown: true, MarketOpen: true, SourceTime: s.SourceTime, ReceivedAt: received, CapturedAt: tm, Epoch: epoch, ChangeID: s.ChangeID, LastSnapshotAt: at, MarketStateAt: at, MarketStateBasis: 2, BidLevels: uint8(depth), AskLevels: uint8(depth)}
 		if !anchor && second == 0 {
 			s = model.DerivativeSnapshot{}
 			q.StreamValid = false
@@ -266,7 +271,7 @@ func TestDerivativeFoundationDDLIsOptIn(t *testing.T) {
 		t.Fatal(err)
 	}
 	all := strings.Join(statements, "\n")
-	for _, needle := range []string{"origin IN ('fixture','synthetic')", "stored_depth=10", "Array(Int64)", "Array(Nullable(DateTime64(6, 'UTC')))", "member_hashes", "delta_bitmap"} {
+	for _, needle := range []string{"origin IN ('fixture','synthetic')", "stored_depth IN (5,10)", "Array(Int64)", "Array(Nullable(DateTime64(6, 'UTC')))", "member_hashes", "delta_bitmap"} {
 		if !strings.Contains(all, needle) {
 			t.Fatalf("missing schema invariant %s", needle)
 		}

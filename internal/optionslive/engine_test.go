@@ -3,6 +3,7 @@ package optionslive
 import (
 	"fmt"
 	"os"
+	"strings"
 	"testing"
 	"time"
 
@@ -11,6 +12,7 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/exchange/deribit"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 	"github.com/vphoenix/crypto-market-info/internal/options"
+	"github.com/vphoenix/crypto-market-info/internal/orderbook"
 	"github.com/vphoenix/crypto-market-info/internal/replay"
 )
 
@@ -266,5 +268,51 @@ func TestIngressOrdersLateMessagesAndBoundsQueue(t *testing.T) {
 	}
 	if !q.failed {
 		t.Fatal("overflow not reported")
+	}
+}
+
+func TestLiveEngineFiveLevelFuturesKeepsTenLevelOptions(t *testing.T) {
+	e, at, batches := engineFixture(t)
+	var bids, asks []string
+	for level := 0; level < 10; level++ {
+		bids = append(bids, fmt.Sprintf(`["new",%d,2]`, 10-level))
+		asks = append(asks, fmt.Sprintf(`["new",%d,3]`, 11+level))
+	}
+	for _, member := range e.run.Members {
+		b, err := orderbook.NewDerivative(member.InstrumentID, false, 100)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err = b.Reset(e.connections["book"].epoch); err != nil {
+			t.Fatal(err)
+		}
+		e.books[member.InstrumentID] = b
+		raw := []byte(fmt.Sprintf(`{"jsonrpc":"2.0","method":"subscription","params":{"channel":%q,"data":{"type":"snapshot","instrument_name":%q,"timestamp":%d,"change_id":2,"bids":[%s],"asks":[%s]}}}`, "book."+member.Symbol+".100ms", member.Symbol, at.Add(-time.Millisecond).UnixMilli(), strings.Join(bids, ","), strings.Join(asks, ",")))
+		handleTest(t, e, event{At: at.Add(-time.Millisecond), Group: "book", Stream: deribit.StreamEvent{Kind: "message", Channel: "book." + member.Symbol + ".100ms", Epoch: e.connections["book"].epoch, Raw: raw}})
+	}
+	for sec := 0; sec < 60; sec++ {
+		stepTest(t, e, at.Add(time.Duration(sec)*time.Second), true)
+	}
+	if len(*batches) != 1 {
+		t.Fatal("missing complete minute")
+	}
+	futureCount, optionCount := 0, 0
+	for _, book := range (*batches)[0].Books {
+		depth := 10
+		if e.specs[book.InstrumentID].Instrument.MarketType == model.MarketDelivery {
+			depth = 5
+			futureCount++
+		} else {
+			optionCount++
+		}
+		for sec := 0; sec < 60; sec++ {
+			got, err := replay.ReplayDerivative(book, uint8(sec))
+			if err != nil || !got.Quality.ReplayValid || int(got.StoredDepth) != depth || len(got.Snapshot.Bids) != depth || len(got.Snapshot.Asks) != depth || int(got.Quality.BidLevels) != depth {
+				t.Fatalf("id %d depth %d sec %d: %+v %v", book.InstrumentID, depth, sec, got, err)
+			}
+		}
+	}
+	if futureCount == 0 || optionCount == 0 {
+		t.Fatal("fixture lacks mixed contract types")
 	}
 }

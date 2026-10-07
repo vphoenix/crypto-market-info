@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
+	"math/big"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -13,6 +15,115 @@ import (
 
 	"github.com/vphoenix/crypto-market-info/internal/dex"
 )
+
+func TestHashOnlyCollectsAnchoredLogsReceiptsAndQuotesWithoutArchive(t *testing.T) {
+	m := DefaultManifest()
+	blockHash := dex.Digest([]byte("block"))
+	txHash := dex.Digest([]byte("tx"))
+	header := map[string]any{
+		"number": "0x7", "hash": blockHash.String(), "parentHash": dex.Digest([]byte("parent")).String(),
+		"timestamp": "0x64", "baseFeePerGas": "0x1", "miner": m.Addresses["WETH"].String(),
+	}
+	log := map[string]any{
+		"blockNumber": "0x7", "blockHash": blockHash.String(), "transactionHash": txHash.String(),
+		"transactionIndex": "0x0", "logIndex": "0x0", "address": m.LogAddresses()[0],
+		"data": "0x0102", "topics": []string{dex.Digest([]byte("event")).String()}, "removed": false,
+	}
+	tx := map[string]any{
+		"hash": txHash.String(), "blockNumber": "0x7", "blockHash": blockHash.String(),
+		"transactionIndex": "0x0", "from": m.Addresses["USDC"].String(), "to": m.Addresses["WETH"].String(),
+		"type": "0x2", "value": "0x1", "input": "0x0102030405",
+	}
+	receipt := map[string]any{
+		"transactionHash": txHash.String(), "blockNumber": "0x7", "blockHash": blockHash.String(),
+		"transactionIndex": "0x0", "from": tx["from"], "to": tx["to"], "type": "0x2",
+		"status": "0x1", "gasUsed": "0x5208", "effectiveGasPrice": "0x2", "logs": []any{log},
+	}
+	c := testClient(t, func(r *http.Request) (*http.Response, error) {
+		var requests []struct {
+			ID     uint64
+			Method string
+			Params []json.RawMessage
+		}
+		if err := json.NewDecoder(r.Body).Decode(&requests); err != nil {
+			return nil, err
+		}
+		out := make([]map[string]any, 0, len(requests))
+		for _, request := range requests {
+			var result any
+			switch request.Method {
+			case "eth_getBlockByNumber":
+				result = header
+			case "eth_getLogs":
+				var filter struct {
+					BlockHash string
+					Address   []string
+				}
+				if err := json.Unmarshal(request.Params[0], &filter); err != nil || filter.BlockHash != blockHash.String() {
+					return nil, fmt.Errorf("log request lost block hash")
+				}
+				result = []any{}
+				for _, address := range filter.Address {
+					if address == log["address"] {
+						result = []any{log}
+					}
+				}
+			case "eth_getTransactionByHash":
+				result = tx
+			case "eth_getTransactionReceipt":
+				result = receipt
+			case "eth_call":
+				var ref struct {
+					BlockHash        string
+					RequireCanonical bool
+				}
+				if err := json.Unmarshal(request.Params[1], &ref); err != nil || ref.BlockHash != blockHash.String() || !ref.RequireCanonical {
+					return nil, fmt.Errorf("quote request lost canonical block hash")
+				}
+				result = "0x" + word(big.NewInt(42)) + word(big.NewInt(123)) + word(big.NewInt(2)) + word(big.NewInt(9000))
+			default:
+				return nil, fmt.Errorf("unexpected RPC method %s", request.Method)
+			}
+			out = append(out, map[string]any{"jsonrpc": "2.0", "id": request.ID, "result": result})
+		}
+		body, err := json.Marshal(out)
+		if err != nil {
+			return nil, err
+		}
+		return response(string(body)), nil
+	})
+	// A regular file cannot host an archive directory. Any accidental write
+	// fails even when these tests run with elevated filesystem permissions.
+	blocked := filepath.Join(t.TempDir(), "not-a-directory")
+	if err := os.WriteFile(blocked, []byte("sentinel"), 0600); err != nil {
+		t.Fatal(err)
+	}
+	c.Archive = Archive{Dir: filepath.Join(blocked, "evidence"), HashOnly: true}
+	ctx := context.Background()
+	h, err := c.Header(ctx, "latest")
+	if err != nil {
+		t.Fatal(err)
+	}
+	b, err := c.Collect(ctx, h, false)
+	if err != nil || b.Block.LogCoverage != "complete" || b.Block.ReceiptCoverage != "complete" || len(b.Logs) != 1 || len(b.Receipts) != 1 {
+		t.Fatalf("hash-only backfill lost typed facts: block=%+v err=%v", b.Block, err)
+	}
+	if b.Block.Payload == (dex.Hash{}) || b.Block.Hash != blockHash || !b.Block.Time.Equal(time.Unix(100, 0).UTC()) || b.Block.LogMembers != dex.LogDigest(b.Logs) || b.Block.ReceiptMembers != dex.ReceiptDigest(b.Receipts) {
+		t.Fatal("block anchor, UTC time, payload or member digests changed")
+	}
+	rawReceipt, _ := json.Marshal(receipt)
+	r := b.Receipts[0]
+	if r.CalldataHash != dex.Digest([]byte{1, 2, 3, 4, 5}) || r.ReceiptHash != dex.Digest(rawReceipt) || r.GasUsed != 21000 || r.GasPrice.Cmp(big.NewInt(2)) != 0 || r.LogCount != 1 || r.AvailableAt.IsZero() {
+		t.Fatal("receipt values or source digests changed")
+	}
+	q := c.Quotes(ctx, blockHash, []dex.SwapRequest{{TokenIn: m.Addresses["USDC"], TokenOut: m.Addresses["WETH"], Fee: 500, Amount: big.NewInt(100)}})[0]
+	if q.Err != nil || q.Amount.Cmp(big.NewInt(42)) != 0 || q.Payload == (dex.Hash{}) || q.At.IsZero() {
+		t.Fatal("quote values, source digest or time lost", q.Err)
+	}
+	if got, err := os.ReadFile(blocked); err != nil || string(got) != "sentinel" {
+		t.Fatal("collector modified the archive path", err)
+	}
+}
 
 func TestHashOnlyKeepsDigestsWithoutCreatingResponseFiles(t *testing.T) {
 	archive := Archive{Dir: t.TempDir(), HashOnly: true}

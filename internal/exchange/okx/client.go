@@ -19,6 +19,7 @@ type Client struct {
 	Retry         exchange.HTTPRetryConfig
 	WSConnectGate exchange.WaitGate
 	wsGateMu      sync.Mutex
+	loanGate      exchange.WaitGate
 }
 
 // WebsocketConnectGate is shared by all book and funding connections of this client.

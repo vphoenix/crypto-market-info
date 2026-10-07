@@ -44,6 +44,11 @@ func (c *Client) dexInsert(ctx context.Context, table, cols string, rows [][]any
 	if len(rows) == 0 {
 		return nil
 	}
+	var err error
+	cols, rows, err = c.compactOptionInsert(ctx, table, cols, rows)
+	if err != nil {
+		return err
+	}
 	return c.retryWrite(ctx, func(ctx context.Context) error {
 		b, e := c.conn.PrepareBatch(ctx, "INSERT INTO "+c.table(table)+" ("+cols+")")
 		if e != nil {

@@ -21,6 +21,7 @@ type MinuteSink interface {
 type Source struct {
 	InstrumentID uint32
 	Book         BookSource
+	StoredDepth  int // Zero preserves the legacy constructor's ten-level default.
 }
 
 type Engine struct {
@@ -46,6 +47,8 @@ type Engine struct {
 	missedSamples   uint64
 	lastOverrunAt   time.Time
 	lastOverrunID   uint32
+	pendingSources  []Source
+	sourcesAt       time.Time
 }
 
 type queuedMinute struct {
@@ -85,7 +88,15 @@ func NewEngine(sources []Source, sink MinuteSink, queueCapacity int, logger *slo
 		logger = slog.Default()
 	}
 	seen := make(map[uint32]struct{}, len(sources))
-	for _, source := range sources {
+	sources = append([]Source(nil), sources...)
+	for n := range sources {
+		if sources[n].StoredDepth == 0 {
+			sources[n].StoredDepth = model.BookDepth
+		}
+		if sources[n].StoredDepth != 5 && sources[n].StoredDepth != 10 {
+			return nil, fmt.Errorf("unsupported sample depth")
+		}
+		source := sources[n]
 		if source.InstrumentID == 0 || source.Book == nil {
 			return nil, fmt.Errorf("sampler source is invalid")
 		}
@@ -100,6 +111,17 @@ func NewEngine(sources []Source, sink MinuteSink, queueCapacity int, logger *slo
 }
 
 func (e *Engine) Run(ctx context.Context) (result error) {
+	return e.run(ctx, time.Time{})
+}
+
+func (e *Engine) RunAt(ctx context.Context, at time.Time) error {
+	if at.IsZero() || !at.Equal(at.UTC().Truncate(time.Minute)) {
+		return fmt.Errorf("sampler start requires exact UTC minute")
+	}
+	return e.run(ctx, at.UTC())
+}
+
+func (e *Engine) run(ctx context.Context, first time.Time) (result error) {
 	e.mu.Lock()
 	if e.started {
 		e.mu.Unlock()
@@ -125,6 +147,18 @@ func (e *Engine) Run(ctx context.Context) (result error) {
 			}
 		}
 	}()
+	if !first.IsZero() {
+		timer := time.NewTimer(time.Until(first))
+		select {
+		case <-ctx.Done():
+			timer.Stop()
+			return nil
+		case <-timer.C:
+		}
+		if err := e.sampleBefore(first, first.Add(time.Second)); err != nil {
+			return err
+		}
+	}
 	for {
 		now := time.Now().UTC()
 		next := now.Truncate(time.Second).Add(time.Second)
@@ -190,10 +224,15 @@ func (e *Engine) sampleBefore(at, deadline time.Time) error {
 				return e.failLocked(err)
 			}
 		}
+		if !e.sourcesAt.IsZero() && !minute.Before(e.sourcesAt) {
+			e.sources = e.pendingSources
+			e.pendingSources = nil
+			e.sourcesAt = time.Time{}
+		}
 		e.minute = minute
 		e.buffers = make(map[uint32]*MinuteBuffer, len(e.sources))
 		for _, source := range e.sources {
-			buffer, err := NewMinuteBuffer(source.InstrumentID, minute)
+			buffer, err := NewMinuteBufferWithDepth(source.InstrumentID, minute, source.StoredDepth)
 			if err != nil {
 				return err
 			}
@@ -204,7 +243,7 @@ func (e *Engine) sampleBefore(at, deadline time.Time) error {
 		return e.markOverrunLocked(at, 0, startedAt)
 	}
 	for index, source := range e.sources {
-		snapshot, valid := source.Book.Snapshot(model.BookDepth)
+		snapshot, valid := source.Book.Snapshot(source.StoredDepth)
 		if !e.now().Before(deadline) {
 			return e.markOverrunLocked(at, index, startedAt)
 		}
@@ -298,6 +337,37 @@ func (e *Engine) writeCompleted(ctx context.Context) error {
 		e.mu.Unlock()
 		e.logger.Info("completed_minute_written", "minute", queued.MinuteTime, "instruments", len(queued.Batches), "elapsed", elapsed)
 	}
+	return nil
+}
+
+// ScheduleSources changes ownership only after freezing the preceding minute.
+// Each new book must be independently warmed by its adapter before scheduling.
+func (e *Engine) ScheduleSources(sources []Source, at time.Time) error {
+	if at.IsZero() || !at.Equal(at.UTC().Truncate(time.Minute)) {
+		return fmt.Errorf("source switch requires exact UTC minute")
+	}
+	copySources := append([]Source(nil), sources...)
+	seen := map[uint32]bool{}
+	for n := range copySources {
+		s := &copySources[n]
+		if s.StoredDepth == 0 {
+			s.StoredDepth = model.BookDepth
+		}
+		if s.InstrumentID == 0 || s.Book == nil || seen[s.InstrumentID] || (s.StoredDepth != 5 && s.StoredDepth != 10) {
+			return fmt.Errorf("invalid scheduled source")
+		}
+		seen[s.InstrumentID] = true
+	}
+	sort.Slice(copySources, func(i, j int) bool { return copySources[i].InstrumentID < copySources[j].InstrumentID })
+	e.mu.Lock()
+	defer e.mu.Unlock()
+	if e.failure != nil {
+		return e.failure
+	}
+	if at.Compare(e.minute) <= 0 || at.Compare(e.now().UTC().Truncate(time.Minute)) <= 0 || !e.sourcesAt.IsZero() || 2*len(copySources) > e.capacity {
+		return fmt.Errorf("source switch violates time/pending/capacity boundary")
+	}
+	e.pendingSources, e.sourcesAt = copySources, at.UTC()
 	return nil
 }
 

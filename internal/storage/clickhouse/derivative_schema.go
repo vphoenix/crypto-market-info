@@ -33,7 +33,7 @@ func DerivativeSchemaStatements(database string) ([]string, error) {
 	for _, s := range []string{"source_times", "received_times", "captured_times", "last_snapshot_times", "connection_confirmed_times", "rule_published_times", "market_state_times", "connection_epochs", "change_ids", "trading_rule_ids", "market_state_bases", "reasons", "bid_level_counts", "ask_level_counts"} {
 		quality = append(quality, "CONSTRAINT "+s+"_60 CHECK length("+s+") = 60")
 	}
-	return []string{
+	statements := []string{
 		ddl("derivative_contract_spec", `instrument_id UInt32,
 native_instrument_id UInt64,
 creation_time DateTime64(3, 'UTC'),
@@ -80,9 +80,9 @@ bid_prices Array(Int64),
 bid_qtys Array(UInt64),
 ask_prices Array(Int64),
 ask_qtys Array(UInt64),
-CONSTRAINT encoding CHECK stored_depth=10 AND encoding_version=1,
-CONSTRAINT bid_lengths CHECK length(bid_prices)=length(bid_qtys) AND length(bid_prices)<=10,
-CONSTRAINT ask_lengths CHECK length(ask_prices)=length(ask_qtys) AND length(ask_prices)<=10`, "toYYYYMM(minute_time)", "(instrument_id,minute_time,batch_id)"),
+CONSTRAINT encoding CHECK stored_depth IN (5,10) AND encoding_version=1,
+CONSTRAINT bid_lengths CHECK length(bid_prices)=length(bid_qtys) AND length(bid_prices)<=stored_depth,
+CONSTRAINT ask_lengths CHECK length(ask_prices)=length(ask_qtys) AND length(ask_prices)<=stored_depth`, "toYYYYMM(minute_time)", "(instrument_id,minute_time,batch_id)"),
 		ddl("derivative_book_second_delta", `minute_id UInt64,
 second_offset UInt8,
 batch_id FixedString(64),
@@ -106,7 +106,12 @@ anchor_count UInt32,
 delta_count UInt32,
 CONSTRAINT origin_offline CHECK origin IN ('fixture','synthetic'),
 CONSTRAINT member_lengths CHECK length(instrument_ids)=length(member_hashes) AND length(instrument_ids)>0`, "toYYYYMM(minute_time)", "(run_id,minute_time)"),
-	}, nil
+	}
+	for n := range statements {
+		statements[n] = compactDDL(statements[n])
+	}
+	statements = append(statements, "ALTER TABLE "+db+"derivative_book_minute DROP CONSTRAINT IF EXISTS encoding, ADD CONSTRAINT encoding CHECK stored_depth IN (5,10) AND encoding_version=1, DROP CONSTRAINT IF EXISTS bid_lengths, ADD CONSTRAINT bid_lengths CHECK length(bid_prices)=length(bid_qtys) AND length(bid_prices)<=stored_depth, DROP CONSTRAINT IF EXISTS ask_lengths, ADD CONSTRAINT ask_lengths CHECK length(ask_prices)=length(ask_qtys) AND length(ask_prices)<=stored_depth")
+	return statements, nil
 }
 
 func (c *Client) InitDerivativeSchema(ctx context.Context) error {

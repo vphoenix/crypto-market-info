@@ -408,7 +408,7 @@ func (s *catalogSupervisor) persistLoop(queue <-chan *catalogJob) {
 }
 func (s *catalogSupervisor) persist(ctx context.Context, j *catalogJob) error {
 	if j.life != nil {
-		if err := archiveCatalog(s.cfg.EvidenceDir, j.raw, j.life.PayloadHash); err != nil {
+		if err := validateCatalogPayload(j.raw, j.life.PayloadHash); err != nil {
 			return err
 		}
 		return s.sink.WriteOptionsLifecycle(ctx, *j.life)
@@ -445,7 +445,7 @@ func (s *catalogSupervisor) persist(ctx context.Context, j *catalogJob) error {
 		}
 	}
 	r := j.result
-	if err := archiveCatalog(s.cfg.EvidenceDir, r.Raw, r.PayloadHash); err != nil {
+	if err := validateCatalogPayload(r.Raw, r.PayloadHash); err != nil {
 		return err
 	}
 	if j.observation == nil {
@@ -755,7 +755,7 @@ func (s *catalogSupervisor) published(r catalogResult) {
 			clear(s.gate.LockIDs)
 			s.gate.Known = !s.gate.Maintenance || s.gate.MaintenanceID != uuid.Nil
 		} else if o.Kind == "platform" {
-			// Other public assets are archived but do not change these four
+			// Other public assets are recorded but do not change these four
 			// collection families or force their books to resnapshot.
 			if !affectsCatalogPlatform(*o) {
 				return
@@ -1217,6 +1217,12 @@ func (s *catalogSupervisor) buildPlan(now time.Time) {
 		}
 		g := catalogGroup{worker: w}
 		for _, spec := range w.specs {
+			// A late prewarm can be retained alongside a full run while an
+			// earlier plan is being persisted. Keep excess members in wanted
+			// so they receive another shard instead of creating an invalid run.
+			if len(g.specs) == options.MaxLiveBooks {
+				break
+			}
 			if e := wanted[spec.Instrument.ID]; e != nil {
 				g.specs = append(g.specs, e.item.Spec)
 				delete(wanted, spec.Instrument.ID)
@@ -1378,6 +1384,10 @@ func (s *catalogSupervisor) planned(r catalogPlanResult) {
 	p := r.plan
 	p.RowHash = p.Hash()
 	s.tail = &p
+	assigned := make(map[uint32]bool, len(p.InstrumentIDs))
+	for _, id := range p.InstrumentIDs {
+		assigned[id] = true
+	}
 	// Plan publication can finish after its sampling boundary on an ambiguous DB
 	// response. That minute remains missing; new workers never backfill validity.
 	for n := range r.groups {
@@ -1436,7 +1446,10 @@ func (s *catalogSupervisor) planned(r catalogPlanResult) {
 				continue
 			}
 			entry := s.entries[spec.Instrument.ExchangeSymbol]
-			if entry != nil && entry.admitted && entry.item.Spec.Instrument.ID == spec.Instrument.ID && !isTerminal(entry.marketState) && spec.Instrument.ExpiryTime.After(s.now()) {
+			// Only members that arrived after this candidate was built remain
+			// pending here. Members assigned to another run must not be added
+			// back to this worker's warm list and reclaimed by the next plan.
+			if !assigned[spec.Instrument.ID] && entry != nil && entry.admitted && entry.item.Spec.Instrument.ID == spec.Instrument.ID && !isTerminal(entry.marketState) && spec.Instrument.ExpiryTime.After(s.now()) {
 				w.specs = append(w.specs, spec)
 			} else {
 				if s.byID[spec.Instrument.ID] == w {

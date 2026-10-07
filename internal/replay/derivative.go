@@ -20,6 +20,10 @@ type DerivativeResult struct {
 }
 
 func ValidateDerivativeBatch(b model.DerivativeMinuteBatch) error {
+	depth := model.BookDepth
+	if b.Minute != nil {
+		depth = int(b.Minute.StoredDepth)
+	}
 	id, err := model.MinuteID(b.InstrumentID, b.MinuteTime)
 	if err != nil || b.MinuteTime.IsZero() || !b.MinuteTime.Equal(b.MinuteTime.Truncate(time.Minute)) {
 		return fmt.Errorf("invalid derivative minute identity")
@@ -27,7 +31,7 @@ func ValidateDerivativeBatch(b model.DerivativeMinuteBatch) error {
 	var valid uint64
 	for i, q := range b.Quality {
 		at := b.MinuteTime.Add(time.Duration(i) * time.Second)
-		if q.Reason > model.DerivativeMarketClosed || q.BidLevels > model.BookDepth || q.AskLevels > model.BookDepth {
+		if q.Reason > model.DerivativeMarketClosed || int(q.BidLevels) > depth || int(q.AskLevels) > depth {
 			return fmt.Errorf("invalid quality domain at second %d", i)
 		}
 		for _, t := range []time.Time{q.SourceTime, q.ReceivedAt, q.CapturedAt, q.LastSnapshotAt, q.ConnectionConfirmedAt, q.RulePublishedAt, q.MarketStateAt} {
@@ -83,13 +87,13 @@ func ValidateDerivativeBatch(b model.DerivativeMinuteBatch) error {
 		return nil
 	}
 	m := b.Minute
-	if m.ID != id || m.InstrumentID != b.InstrumentID || !m.MinuteTime.Equal(b.MinuteTime) || m.Signed != b.Signed || m.StoredDepth != model.BookDepth || m.EncodingVersion != model.DerivativeEncodingVersion {
+	if m.ID != id || m.InstrumentID != b.InstrumentID || !m.MinuteTime.Equal(b.MinuteTime) || m.Signed != b.Signed || (depth != 5 && depth != 10) || m.EncodingVersion != model.DerivativeEncodingVersion {
 		return fmt.Errorf("invalid derivative encoding/identity")
 	}
 	if m.ValidBitmap&1 == 0 || m.ValidBitmap != valid || m.ValidBitmap&^model.MinuteMask != 0 || m.DeltaBitmap&1 != 0 || m.DeltaBitmap&^m.ValidBitmap != 0 {
 		return fmt.Errorf("invalid derivative minute bitmaps")
 	}
-	if err := model.ValidateDerivativeSides(m.Bids, m.Asks, model.BookDepth, m.Signed); err != nil {
+	if err := model.ValidateDerivativeSides(m.Bids, m.Asks, depth, m.Signed); err != nil {
 		return err
 	}
 	bids, asks := derivativeMap(m.Bids), derivativeMap(m.Asks)
@@ -103,6 +107,9 @@ func ValidateDerivativeBatch(b model.DerivativeMinuteBatch) error {
 				return fmt.Errorf("%w: missing delta at %d", ErrIncompleteDerivativeBatch, second)
 			}
 			d := b.Deltas[index]
+			if len(d.BidChangePrice) > 2*depth || len(d.AskChangePrice) > 2*depth {
+				return fmt.Errorf("delta exceeds stored depth")
+			}
 			index++
 			if d.MinuteID != id || len(d.BidChangePrice)+len(d.AskChangePrice) == 0 {
 				return fmt.Errorf("invalid delta identity/empty delta")
@@ -115,7 +122,7 @@ func ValidateDerivativeBatch(b model.DerivativeMinuteBatch) error {
 			}
 		}
 		if m.ValidBitmap&(1<<second) != 0 {
-			if err := model.ValidateDerivativeSides(derivativeLevels(bids, true), derivativeLevels(asks, false), model.BookDepth, m.Signed); err != nil {
+			if err := model.ValidateDerivativeSides(derivativeLevels(bids, true), derivativeLevels(asks, false), depth, m.Signed); err != nil {
 				return fmt.Errorf("second %d: %w", second, err)
 			}
 			if int(b.Quality[second].BidLevels) != len(bids) || int(b.Quality[second].AskLevels) != len(asks) {
@@ -137,6 +144,9 @@ func ReplayDerivative(b model.DerivativeMinuteBatch, second uint8) (DerivativeRe
 		return DerivativeResult{}, err
 	}
 	r := DerivativeResult{SampleTime: b.MinuteTime.Add(time.Duration(second) * time.Second), StoredDepth: model.BookDepth, Quality: b.Quality[second]}
+	if b.Minute != nil {
+		r.StoredDepth = b.Minute.StoredDepth
+	}
 	if !r.Quality.ReplayValid {
 		return r, nil
 	}

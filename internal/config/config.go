@@ -55,6 +55,10 @@ type Config struct {
 	PerpMaxTotalWSConnections int
 	PerpMaxBufferedEvents     int
 	MaxSampleSources          int
+	MarketBookDepth           int
+	OKXPairedEnabled          bool
+	OKXPairedMaxPairs         int
+	OKXPairedRefresh          time.Duration
 }
 
 func Load() (Config, error) {
@@ -115,6 +119,23 @@ func Load() (Config, error) {
 	if err = loadPerpetualConfig(&cfg); err != nil {
 		return Config{}, err
 	}
+	cfg.MarketBookDepth, err = integer("MARKET_BOOK_DEPTH", 5)
+	if err != nil || (cfg.MarketBookDepth != 5 && cfg.MarketBookDepth != 10) {
+		return Config{}, fmt.Errorf("MARKET_BOOK_DEPTH must be 5 or 10")
+	}
+	cfg.OKXPairedEnabled, err = boolean("OKX_PAIRED_ENABLED", false)
+	if err != nil {
+		return Config{}, err
+	}
+	cfg.OKXPairedMaxPairs, err = integer("OKX_PAIRED_MAX_PAIRS", 256)
+	if err != nil || cfg.OKXPairedMaxPairs > 500 {
+		return Config{}, fmt.Errorf("OKX_PAIRED_MAX_PAIRS must be within 1..500")
+	}
+	cfg.OKXPairedRefresh, err = time.ParseDuration(value("OKX_PAIRED_REFRESH", "30m"))
+	if err != nil || cfg.OKXPairedRefresh < time.Minute {
+		return Config{}, fmt.Errorf("OKX_PAIRED_REFRESH must be at least 1m")
+	}
+	cfg.Options.FutureBookDepth = cfg.MarketBookDepth
 	cfg.Options.Enabled, err = boolean("OPTIONS_ENABLED", false)
 	if err != nil {
 		return Config{}, err

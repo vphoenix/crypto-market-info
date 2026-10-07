@@ -17,6 +17,17 @@ import (
 
 var errDEXFinality = errors.New("DEX finalized chain contradiction; branch paused")
 
+func newDEXCollectorClient(endpoint string) (*ethereum.Client, error) {
+	client, err := ethereum.NewClient(endpoint, "")
+	if err != nil {
+		return nil, err
+	}
+	// Quotes, logs, receipts and recovery read the typed database rows. Keep
+	// source digests without retaining a second copy of every RPC response.
+	client.Archive.HashOnly = true
+	return client, nil
+}
+
 type dexLogRepair struct {
 	Block dex.Block
 	Logs  []dex.Log
@@ -39,7 +50,7 @@ func runDEX(ctx context.Context, cfg config.Config, store *chstore.Client, logge
 	// Source/setup failures remain local; runComponents cancels all CEX streams
 	// on a returned error, so this branch retries internally until shutdown.
 	for ctx.Err() == nil {
-		client, e := ethereum.NewClient(cfg.DEXRPCURL, cfg.DEXEvidenceDir)
+		client, e := newDEXCollectorClient(cfg.DEXRPCURL)
 		if e == nil {
 			_, e = client.Archive.Put(ethereum.ManifestJSON)
 		}

@@ -67,7 +67,7 @@ func TestCompletedMinuteIncludesOnlyAnchorsInStableOrder(t *testing.T) {
 		return &fakeBook{snapshot: sample(id, 1, []model.Level{{PriceTick: 1, QtyLot: 1}}, []model.Level{{PriceTick: 2, QtyLot: 1}}), valid: valid}
 	}
 	b1, b2, b3 := book(1, true), book(2, false), book(3, true)
-	e, err := NewEngine([]Source{{3, b3}, {2, b2}, {1, b1}}, &fakeSink{}, 0, nil)
+	e, err := NewEngine([]Source{{InstrumentID: 3, Book: b3}, {InstrumentID: 2, Book: b2}, {InstrumentID: 1, Book: b1}}, &fakeSink{}, 0, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -96,7 +96,7 @@ func TestCompletedMinuteIncludesOnlyAnchorsInStableOrder(t *testing.T) {
 
 func TestCompletedMinuteEmitsEmptyEnvelope(t *testing.T) {
 	start := time.Date(2026, 8, 19, 1, 2, 0, 0, time.UTC)
-	e, err := NewEngine([]Source{{1, &fakeBook{}}}, &fakeSink{}, 0, nil)
+	e, err := NewEngine([]Source{{InstrumentID: 1, Book: &fakeBook{}}}, &fakeSink{}, 0, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -113,11 +113,11 @@ func TestCompletedMinuteEmitsEmptyEnvelope(t *testing.T) {
 
 func TestMinuteQueueCapacityIncludesWriterOwnedBatches(t *testing.T) {
 	start := time.Date(2026, 8, 19, 1, 2, 0, 0, time.UTC)
-	sources := []Source{{1, &fakeBook{}}, {2, &fakeBook{}}}
+	sources := []Source{{InstrumentID: 1, Book: &fakeBook{}}, {InstrumentID: 2, Book: &fakeBook{}}}
 	if _, err := NewEngine(sources, &fakeSink{}, 3, nil); err == nil {
 		t.Fatal("accepted capacity below two full minutes")
 	}
-	sources = []Source{{1, &fakeBook{snapshot: sample(1, 1, []model.Level{{PriceTick: 1, QtyLot: 1}}, []model.Level{{PriceTick: 2, QtyLot: 1}}), valid: true}}}
+	sources = []Source{{InstrumentID: 1, Book: &fakeBook{snapshot: sample(1, 1, []model.Level{{PriceTick: 1, QtyLot: 1}}, []model.Level{{PriceTick: 2, QtyLot: 1}}), valid: true}}}
 	e, err := NewEngine(sources, &fakeSink{}, 2, nil)
 	if err != nil {
 		t.Fatal(err)
@@ -138,7 +138,7 @@ func TestMinuteQueueCapacityIncludesWriterOwnedBatches(t *testing.T) {
 
 func TestMinuteChannelStillHasTwoEnvelopeLimit(t *testing.T) {
 	start := time.Date(2026, 8, 19, 1, 2, 0, 0, time.UTC)
-	e, _ := NewEngine([]Source{{1, &fakeBook{}}}, &fakeSink{}, 512, nil)
+	e, _ := NewEngine([]Source{{InstrumentID: 1, Book: &fakeBook{}}}, &fakeSink{}, 512, nil)
 	for minute := range 3 {
 		if err := e.SampleAt(start.Add(time.Duration(minute) * time.Minute)); err != nil {
 			t.Fatal(err)
@@ -165,7 +165,7 @@ func TestSamplingDeadlineMarksRemainderInvalidAndContinues(t *testing.T) {
 		return sample(2, int64(calls), []model.Level{{PriceTick: 1, QtyLot: 1}}, []model.Level{{PriceTick: 2, QtyLot: 1}}), true
 	})
 	fast := &fakeBook{snapshot: sample(1, 1, []model.Level{{PriceTick: 1, QtyLot: 1}}, []model.Level{{PriceTick: 2, QtyLot: 1}}), valid: true}
-	e, _ := NewEngine([]Source{{1, fast}, {2, slow}}, &fakeSink{}, 0, nil)
+	e, _ := NewEngine([]Source{{InstrumentID: 1, Book: fast}, {InstrumentID: 2, Book: slow}}, &fakeSink{}, 0, nil)
 	e.now = func() time.Time { return now }
 	if err := e.SampleAt(start); err != nil {
 		t.Fatal(err)
@@ -201,7 +201,7 @@ func TestSamplingDeadlineMarksRemainderInvalidAndContinues(t *testing.T) {
 func TestSamplingAlreadyPastDeadlineMarksWholeSecondInvalid(t *testing.T) {
 	start := time.Date(2026, 8, 19, 1, 2, 0, 0, time.UTC)
 	now := start.Add(2 * time.Second)
-	e, _ := NewEngine([]Source{{1, &fakeBook{snapshot: sample(1, 1, []model.Level{{PriceTick: 1, QtyLot: 1}}, []model.Level{{PriceTick: 2, QtyLot: 1}}), valid: true}}}, &fakeSink{}, 0, nil)
+	e, _ := NewEngine([]Source{{InstrumentID: 1, Book: &fakeBook{snapshot: sample(1, 1, []model.Level{{PriceTick: 1, QtyLot: 1}}, []model.Level{{PriceTick: 2, QtyLot: 1}}), valid: true}}}, &fakeSink{}, 0, nil)
 	e.now = func() time.Time { return now }
 	if err := e.sampleBefore(start, start.Add(time.Second)); err != nil {
 		t.Fatalf("late tick terminated sampler: %v", err)
@@ -217,7 +217,7 @@ func TestSamplingAlreadyPastDeadlineMarksWholeSecondInvalid(t *testing.T) {
 func TestBacklogTerminatesSampling(t *testing.T) {
 	start := time.Date(2026, 8, 19, 1, 2, 0, 0, time.UTC)
 	now := start
-	e, _ := NewEngine([]Source{{1, &fakeBook{}}}, &fakeSink{}, 0, nil)
+	e, _ := NewEngine([]Source{{InstrumentID: 1, Book: &fakeBook{}}}, &fakeSink{}, 0, nil)
 	e.now = func() time.Time { return now }
 	if err := e.SampleAt(start); err != nil {
 		t.Fatal(err)
@@ -238,7 +238,7 @@ func (s failSink) WriteCompletedMinute(context.Context, model.CompletedMinute) e
 func TestWriterFailureTerminatesEngine(t *testing.T) {
 	start := time.Now().UTC().Truncate(time.Minute)
 	failure := errors.New("storage unavailable")
-	e, _ := NewEngine([]Source{{1, &fakeBook{}}}, failSink{failure}, 0, nil)
+	e, _ := NewEngine([]Source{{InstrumentID: 1, Book: &fakeBook{}}}, failSink{failure}, 0, nil)
 	if err := e.SampleAt(start.Add(-time.Minute)); err != nil {
 		t.Fatal(err)
 	}
@@ -254,7 +254,7 @@ func TestWriterFailureTerminatesEngine(t *testing.T) {
 
 func TestWriterReleasesWeightedCapacityAfterWholeEnvelope(t *testing.T) {
 	start := time.Now().UTC().Truncate(time.Minute)
-	e, _ := NewEngine([]Source{{1, &fakeBook{}}}, &fakeSink{}, 0, nil)
+	e, _ := NewEngine([]Source{{InstrumentID: 1, Book: &fakeBook{}}}, &fakeSink{}, 0, nil)
 	if err := e.SampleAt(start); err != nil {
 		t.Fatal(err)
 	}

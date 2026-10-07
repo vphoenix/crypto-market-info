@@ -31,6 +31,9 @@ type instrumentWire struct {
 	TickSz    string  `json:"tickSz"`
 	LotSz     string  `json:"lotSz"`
 	ListTime  *string `json:"listTime"`
+	Category  string  `json:"instCategory"`
+	RuleType  string  `json:"ruleType"`
+	MinSz     string  `json:"minSz"`
 }
 
 func ParseInstruments(payload []byte, marketType model.MarketType) ([]model.Instrument, error) {

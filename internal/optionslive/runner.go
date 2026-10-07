@@ -24,14 +24,16 @@ type Sink interface {
 	WriteOptionsMinute(context.Context, options.LiveEnvelope) error
 }
 type Prepared struct {
-	Run      options.LiveRun
-	Specs    []options.ContractSpec
-	Scopes   []deribit.Scope
-	Metadata []options.MetadataObservation
+	FutureBookDepth int
+	Run             options.LiveRun
+	Specs           []options.ContractSpec
+	Scopes          []deribit.Scope
+	Metadata        []options.MetadataObservation
 }
 
 func Prepare(ctx context.Context, c *deribit.Client, cfg Config, sink Sink) (Prepared, error) {
 	var p Prepared
+	p.FutureBookDepth = cfg.FutureBookDepth
 	if len(cfg.Symbols) == 0 {
 		return p, fmt.Errorf("automatic options collection requires RunCatalog; Prepare is for an explicit fixed run")
 	}
@@ -205,6 +207,7 @@ func Collect(ctx context.Context, c *deribit.Client, p Prepared, sink Sink, logg
 		return err
 	}
 	// Startup evidence is published through the same sequencer as later updates.
+	engine.futureDepth = p.FutureBookDepth
 	for _, o := range p.Metadata {
 		o := o
 		if err = q.offer(event{Metadata: &o}); err != nil {

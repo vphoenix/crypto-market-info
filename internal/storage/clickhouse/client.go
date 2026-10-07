@@ -23,27 +23,29 @@ type Config struct {
 }
 
 type Client struct {
-	storeIdentity      string
-	readOnly           bool // Constructors that set a server readonly session also reject writes locally.
-	conn               driver.Conn
-	database           string
-	writeTimeout       time.Duration
-	maxAttempts        int
-	retryDelay         time.Duration
-	instrumentMu       *sync.Mutex
-	instrumentOnce     sync.Once
-	derivativeMu       sync.Mutex
-	catalogLocks       [1024]chan struct{}
-	catalogLocksOnce   sync.Once
-	catalogMinuteLocks [1024]chan struct{}
-	catalogPlanLock    chan struct{}
-	catalogSlotsOnce   sync.Once
-	catalogSlots       chan struct{}
-	metadataMu         sync.Mutex
-	yieldMu            sync.Mutex
-	yieldLoaded        bool
-	yieldByKey         map[string]yieldRouteEntry
-	yieldMaxID         uint32
+	storeIdentity       string
+	readOnly            bool // Constructors that set a server readonly session also reject writes locally.
+	conn                driver.Conn
+	database            string
+	writeTimeout        time.Duration
+	maxAttempts         int
+	retryDelay          time.Duration
+	instrumentMu        *sync.Mutex
+	instrumentOnce      sync.Once
+	derivativeMu        sync.Mutex
+	optionCompactMu     sync.Mutex
+	optionCompactTables map[string]bool
+	catalogLocks        [1024]chan struct{}
+	catalogLocksOnce    sync.Once
+	catalogMinuteLocks  [1024]chan struct{}
+	catalogPlanLock     chan struct{}
+	catalogSlotsOnce    sync.Once
+	catalogSlots        chan struct{}
+	metadataMu          sync.Mutex
+	yieldMu             sync.Mutex
+	yieldLoaded         bool
+	yieldByKey          map[string]yieldRouteEntry
+	yieldMaxID          uint32
 	// yieldRouteInsert is a narrow fault-injection seam for the ambiguous case
 	// where ClickHouse commits a route batch but the client receives an error.
 	// Production always leaves it nil and uses insertYieldRoutes directly.

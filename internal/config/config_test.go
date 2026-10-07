@@ -112,3 +112,27 @@ func TestAvalancheRPCConfigurationDoesNotProbeOrBlockStartup(t *testing.T) {
 		t.Fatalf("configuration performed %d RPC startup probes", requests.Load())
 	}
 }
+
+func TestMarketDepthAndPairedConfiguration(t *testing.T) {
+	t.Setenv("MARKET_BOOK_DEPTH", "5")
+	t.Setenv("OKX_PAIRED_ENABLED", "true")
+	t.Setenv("OKX_PAIRED_MAX_PAIRS", "256")
+	t.Setenv("OKX_PAIRED_REFRESH", "30m")
+	cfg, err := Load()
+	if err != nil || cfg.MarketBookDepth != 5 || cfg.Options.FutureBookDepth != 5 || !cfg.OKXPairedEnabled || cfg.OKXPairedMaxPairs != 256 {
+		t.Fatalf("cfg=%+v err=%v", cfg, err)
+	}
+	for _, setting := range []struct{ key, value string }{{"MARKET_BOOK_DEPTH", "50"}, {"OKX_PAIRED_MAX_PAIRS", "501"}, {"OKX_PAIRED_REFRESH", "59s"}, {"OKX_PAIRED_ENABLED", "maybe"}} {
+		t.Run(setting.key, func(t *testing.T) {
+			t.Setenv(setting.key, setting.value)
+			if _, err := Load(); err == nil {
+				t.Fatal("invalid setting accepted")
+			}
+		})
+	}
+	t.Setenv("MARKET_BOOK_DEPTH", "10")
+	cfg, err = Load()
+	if err != nil || cfg.Options.FutureBookDepth != 10 {
+		t.Fatal("10-level rollback unavailable", err)
+	}
+}

@@ -13,16 +13,24 @@ type DerivativeMinuteBuffer struct {
 	batch model.DerivativeMinuteBatch
 	next  int
 	last  model.DerivativeSnapshot
+	depth int
 }
 
 func NewDerivativeMinuteBuffer(id uint32, minute time.Time, signed bool) (*DerivativeMinuteBuffer, error) {
+	return NewDerivativeMinuteBufferWithDepth(id, minute, signed, model.BookDepth)
+}
+
+func NewDerivativeMinuteBufferWithDepth(id uint32, minute time.Time, signed bool, depth int) (*DerivativeMinuteBuffer, error) {
+	if depth != 5 && depth != 10 {
+		return nil, fmt.Errorf("derivative sampling depth must be 5 or 10")
+	}
 	if minute.IsZero() || !minute.Equal(minute.Truncate(time.Minute)) {
 		return nil, fmt.Errorf("exact minute required")
 	}
 	if _, err := model.MinuteID(id, minute); err != nil {
 		return nil, err
 	}
-	return &DerivativeMinuteBuffer{batch: model.DerivativeMinuteBatch{InstrumentID: id, MinuteTime: minute.UTC(), Signed: signed}}, nil
+	return &DerivativeMinuteBuffer{batch: model.DerivativeMinuteBatch{InstrumentID: id, MinuteTime: minute.UTC(), Signed: signed}, depth: depth}, nil
 }
 
 func (b *DerivativeMinuteBuffer) Sample(at time.Time, s model.DerivativeSnapshot, q model.DerivativeQuality) error {
@@ -47,7 +55,7 @@ func (b *DerivativeMinuteBuffer) Sample(at time.Time, s model.DerivativeSnapshot
 		if s.InstrumentID != b.batch.InstrumentID {
 			return fmt.Errorf("snapshot identity mismatch")
 		}
-		if err := s.Validate(model.BookDepth, b.batch.Signed); err != nil {
+		if err := s.Validate(b.depth, b.batch.Signed); err != nil {
 			return err
 		}
 		if s.ReceivedAt.After(at) || !s.SourceTime.Equal(q.SourceTime) || !s.ReceivedAt.Equal(q.ReceivedAt) || s.Epoch != q.Epoch || s.ChangeID != q.ChangeID || int(q.BidLevels) != len(s.Bids) || int(q.AskLevels) != len(s.Asks) {
@@ -61,7 +69,7 @@ func (b *DerivativeMinuteBuffer) Sample(at time.Time, s model.DerivativeSnapshot
 	if valid && b.next == 0 {
 		id, _ := model.MinuteID(b.batch.InstrumentID, b.batch.MinuteTime)
 		b.batch.Minute = &model.DerivativeMinute{ID: id, InstrumentID: b.batch.InstrumentID, MinuteTime: b.batch.MinuteTime,
-			EncodingVersion: model.DerivativeEncodingVersion, StoredDepth: model.BookDepth, Signed: b.batch.Signed,
+			EncodingVersion: model.DerivativeEncodingVersion, StoredDepth: uint8(b.depth), Signed: b.batch.Signed,
 			Bids: append([]model.Level(nil), s.Bids...), Asks: append([]model.Level(nil), s.Asks...)}
 	}
 	if valid && b.batch.Minute != nil {

@@ -27,7 +27,7 @@ func OptionsCatalogSchemaStatements(database string) ([]string, error) {
 		return nil, fmt.Errorf("expected five catalog tables")
 	}
 	for n, s := range ss {
-		ss[n] = regexp.MustCompile(`CREATE TABLE IF NOT EXISTS (options_\w+)`).ReplaceAllString(s, "CREATE TABLE IF NOT EXISTS `"+database+"`.`$1`")
+		ss[n] = compactDDL(regexp.MustCompile(`CREATE TABLE IF NOT EXISTS (options_\w+)`).ReplaceAllString(s, "CREATE TABLE IF NOT EXISTS `"+database+"`.`$1`"))
 	}
 	return ss, nil
 }

@@ -48,6 +48,7 @@ func startCatalogWorker(ctx context.Context, cfg Config, r options.LiveRun, spec
 		return nil, err
 	}
 	e.catalog.levelBudget = levels
+	e.futureDepth = cfg.FutureBookDepth
 	writerCtx, writerCancel := context.WithCancel(context.WithoutCancel(ctx))
 	written := make(chan struct{})
 	go func() {

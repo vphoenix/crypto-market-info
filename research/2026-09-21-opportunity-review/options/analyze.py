@@ -22,7 +22,7 @@ def fetch():
       'instruments':f'SELECT * FROM {DB}.instrument FINAL WHERE instrument_id IN (SELECT instrument_id FROM {DB}.derivative_contract_spec)',
       'specs':f'SELECT * FROM {DB}.derivative_contract_spec FINAL',
       'runs':f'SELECT * FROM {DB}.options_live_run FINAL',
-      'commits':f"SELECT * FROM {DB}.options_live_minute_commit FINAL WHERE minute_time <= '{cutoff}'",
+      'commits':f"SELECT run_id,minute_time,batch_id,run_hash,prepared_at,instrument_ids,member_hashes,anchor_count,delta_count,index_ids,index_hashes FROM {DB}.options_live_minute_commit FINAL WHERE minute_time <= '{cutoff}'",
       'rules':f'SELECT * FROM {DB}.derivative_trading_rule FINAL',
       'books':f"SELECT * FROM {DB}.derivative_book_minute FINAL WHERE minute_time <= '{cutoff}'",
       'quality':f"SELECT instrument_id,minute_time,batch_id,row_hash,replay_valid_bitmap,stream_valid_bitmap,market_known_bitmap,market_open_bitmap,source_times[1] AS source_time,received_times[1] AS received_time,trading_rule_ids[1] AS trading_rule_id,reasons[1] AS reason,bid_level_counts[1] AS bid_levels,ask_level_counts[1] AS ask_levels FROM {DB}.derivative_book_quality_minute FINAL WHERE minute_time <= '{cutoff}'",

@@ -28,14 +28,11 @@ func (c Config) catalogDefaults() Config {
 	if c.MaxIngressBytes == 0 {
 		c.MaxIngressBytes = 64 << 20
 	}
-	if c.EvidenceDir == "" {
-		c.EvidenceDir = "var/options-evidence"
-	}
 	return c
 }
 func (c Config) validateCatalog() error {
 	c = c.catalogDefaults()
-	if c.MaxBooks < 1 || c.MaxBooks > 16384 || c.MaxConnections < 3 || c.MaxConnections > 28 || c.ChannelsPerConnection < 1 || c.ChannelsPerConnection > 512 || c.MaxBookLevels < 10 || c.MaxBookLevels > 20000 || c.MaxTotalLevels < int64(c.MaxBookLevels) || c.MaxIngressBytes < 1<<20 || c.EvidenceDir == "" {
+	if c.MaxBooks < 1 || c.MaxBooks > 16384 || c.MaxConnections < 3 || c.MaxConnections > 28 || c.ChannelsPerConnection < 1 || c.ChannelsPerConnection > 512 || c.MaxBookLevels < 10 || c.MaxBookLevels > 20000 || c.MaxTotalLevels < int64(c.MaxBookLevels) || c.MaxIngressBytes < 1<<20 {
 		return fmt.Errorf("invalid options catalog capacity")
 	}
 	return nil

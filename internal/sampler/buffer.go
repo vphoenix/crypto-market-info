@@ -10,6 +10,7 @@ import (
 
 type MinuteBuffer struct {
 	instrumentID uint32
+	depth        int
 	minuteTime   time.Time
 	minuteID     uint64
 	anchored     bool
@@ -21,6 +22,13 @@ type MinuteBuffer struct {
 }
 
 func NewMinuteBuffer(instrumentID uint32, minuteTime time.Time) (*MinuteBuffer, error) {
+	return NewMinuteBufferWithDepth(instrumentID, minuteTime, model.BookDepth)
+}
+
+func NewMinuteBufferWithDepth(instrumentID uint32, minuteTime time.Time, depth int) (*MinuteBuffer, error) {
+	if depth != 5 && depth != 10 {
+		return nil, fmt.Errorf("sampling depth must be 5 or 10")
+	}
 	minuteTime = minuteTime.UTC()
 	if !minuteTime.Equal(minuteTime.Truncate(time.Minute)) {
 		return nil, fmt.Errorf("minute buffer time must be truncated to UTC minute")
@@ -29,7 +37,7 @@ func NewMinuteBuffer(instrumentID uint32, minuteTime time.Time) (*MinuteBuffer, 
 	if err != nil {
 		return nil, err
 	}
-	return &MinuteBuffer{instrumentID: instrumentID, minuteTime: minuteTime, minuteID: id}, nil
+	return &MinuteBuffer{instrumentID: instrumentID, minuteTime: minuteTime, minuteID: id, depth: depth}, nil
 }
 
 func (b *MinuteBuffer) Sample(sampleTime time.Time, snapshot model.BookSnapshot, valid bool) error {
@@ -52,7 +60,7 @@ func (b *MinuteBuffer) Sample(sampleTime time.Time, snapshot model.BookSnapshot,
 	if snapshot.InstrumentID != b.instrumentID {
 		return fmt.Errorf("sample instrument mismatch")
 	}
-	if err := snapshot.Validate(model.BookDepth); err != nil {
+	if err := snapshot.Validate(b.depth); err != nil {
 		return err
 	}
 	if offset == 0 {
@@ -78,7 +86,7 @@ func (b *MinuteBuffer) Batch() (model.MinuteBatch, bool) {
 	if b == nil || !b.anchored {
 		return model.MinuteBatch{}, false
 	}
-	minute := model.MinuteBook{ID: b.minuteID, InstrumentID: b.instrumentID, MinuteTime: b.minuteTime, ValidBitmap: b.valid, StoredDepth: model.BookDepth}
+	minute := model.MinuteBook{ID: b.minuteID, InstrumentID: b.instrumentID, MinuteTime: b.minuteTime, ValidBitmap: b.valid, StoredDepth: uint8(b.depth)}
 	copy(minute.Bids[:], b.initial.Bids)
 	copy(minute.Asks[:], b.initial.Asks)
 	deltas := make([]model.BookDelta, len(b.deltas))

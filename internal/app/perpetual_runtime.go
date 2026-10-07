@@ -18,6 +18,7 @@ import (
 )
 
 type preparedMarkets struct {
+	instruments        []model.Instrument
 	components         []component
 	fundingInstruments []model.Instrument
 	byVenue            map[string][]model.Instrument
@@ -59,6 +60,7 @@ func prepareMarkets(ctx context.Context, cfg config.Config, store *chstore.Clien
 	if err != nil {
 		return m, err
 	}
+	m.instruments = registered
 	all, err := store.Instruments(ctx)
 	if err != nil {
 		return m, err
@@ -97,7 +99,11 @@ func prepareMarkets(ctx context.Context, cfg config.Config, store *chstore.Clien
 			return m, err
 		}
 		books[i.ID] = book
-		sources = append(sources, sampler.Source{InstrumentID: i.ID, Book: book})
+		depth := cfg.MarketBookDepth
+		if depth == 0 {
+			depth = model.MarketBookDepth
+		}
+		sources = append(sources, sampler.Source{InstrumentID: i.ID, Book: book, StoredDepth: depth})
 		if i.MarketType == model.MarketPerpetual {
 			perpetualByVenue[i.Exchange] = append(perpetualByVenue[i.Exchange], i)
 			s, err := d.aliases.Resolve(i)

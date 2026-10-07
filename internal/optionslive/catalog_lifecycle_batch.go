@@ -59,7 +59,7 @@ func (s *catalogSupervisor) persistLifecycles(ctx context.Context, jobs []*catal
 		if err := j.life.Validate(); err != nil {
 			return err
 		}
-		if err := archiveCatalog(s.cfg.EvidenceDir, j.raw, j.life.PayloadHash); err != nil {
+		if err := validateCatalogPayload(j.raw, j.life.PayloadHash); err != nil {
 			return err
 		}
 		observations[n] = *j.life

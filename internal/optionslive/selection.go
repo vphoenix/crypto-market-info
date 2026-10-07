@@ -19,10 +19,16 @@ type Config struct {
 	Symbols                                                        []string
 	MaxBooks, MaxConnections, ChannelsPerConnection, MaxBookLevels int
 	MaxTotalLevels, MaxIngressBytes                                int64
-	EvidenceDir                                                    string
+	// Deprecated: accepted for configuration compatibility; raw responses are
+	// no longer archived. Typed observations and source hashes are stored in DB.
+	EvidenceDir     string
+	FutureBookDepth int // Delivery futures; options always keep ten levels.
 }
 
 func (c Config) Validate() error {
+	if c.FutureBookDepth != 0 && c.FutureBookDepth != 5 && c.FutureBookDepth != 10 {
+		return fmt.Errorf("future book depth must be 5 or 10")
+	}
 	if err := c.validateCatalog(); err != nil {
 		return err
 	}

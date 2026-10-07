@@ -105,6 +105,14 @@ func runMarketSources(ctx context.Context, cfg config.Config, logger *slog.Logge
 		return err
 	}
 	components := markets.components
+	if cfg.OKXPairedEnabled {
+		if err = store.InitOKXPairSchema(ctx); err != nil {
+			return err
+		}
+		components = append(components, component{name: "OKX paired markets", run: func(ctx context.Context) error {
+			return runOKXPaired(ctx, cfg, store, clients.okx, markets.instruments, discovery.Capacity, logger)
+		}})
+	}
 	if cfg.Options.Enabled {
 		components = append(components, component{name: "Deribit options", run: func(ctx context.Context) error {
 			optionsStore, err := store.OptionsWriter(ctx, cfg.ClickHouse)
