@@ -17,7 +17,7 @@ func TestRPCErrorClassificationAndLaunchEvidence(t *testing.T) {
 		message string
 		rate    bool
 		name    string
-	}{{-32016, "over rate limit", true, "rpc_rate_limited(code=-32016)"}, {-32601, "method not found", false, "rpc_method_not_found"}, {-32000, "execution reverted", false, "rpc_remote_error(code=-32000)"}} {
+	}{{-32016, "over rate limit", true, "rpc_rate_limited(code=-32016)"}, {-32011, "request limit reached", true, "rpc_rate_limited(code=-32011)"}, {-32011, "block range too large", false, "rpc_remote_error(code=-32011)"}, {-32601, "method not found", false, "rpc_method_not_found"}, {-32000, "execution reverted", false, "rpc_remote_error(code=-32000)"}} {
 		c := testClient(t, func(*http.Request) (*http.Response, error) {
 			return response(`[{"jsonrpc":"2.0","id":1,"error":{"code":` + fmt.Sprint(tc.code) + `,"message":"` + tc.message + `"}}]`), nil
 		})

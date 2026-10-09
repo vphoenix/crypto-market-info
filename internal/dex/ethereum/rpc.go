@@ -48,7 +48,7 @@ func (e *RPCError) Error() string {
 }
 func (e *RPCError) RateLimited() bool {
 	s := strings.ToLower(e.Message)
-	return e.Code == -32016 || e.Code == -32005 && strings.Contains(s, "rate") || strings.Contains(s, "over rate limit") || strings.Contains(s, "too many requests")
+	return e.Code == -32016 || e.Code == -32005 && strings.Contains(s, "rate") || e.Code == -32011 && strings.Contains(s, "request limit reached") || strings.Contains(s, "over rate limit") || strings.Contains(s, "too many requests")
 }
 
 type HTTPError struct {

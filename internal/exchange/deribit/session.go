@@ -20,7 +20,7 @@ type SessionCommand struct {
 	Generation uint64
 }
 
-func (c *Client) Session(ctx context.Context, initial []string, commands <-chan SessionCommand, emit func(StreamEvent) error) error {
+func (c *Client) Session(ctx context.Context, initial []string, commands <-chan SessionCommand, emit func(StreamEvent) error) (resultErr error) {
 	if len(initial) == 0 || len(initial) > 512 {
 		return fmt.Errorf("invalid initial session channels")
 	}
@@ -34,6 +34,19 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 		return err
 	}
 	defer conn.Close()
+	diag := &sessionDiagnostics{started: time.Now()}
+	defer func() {
+		if resultErr != nil && resultErr != context.Canceled {
+			resultErr = fmt.Errorf("%w; %s", resultErr, diag.summary())
+		}
+	}()
+	originalEmit := emit
+	emit = func(e StreamEvent) error {
+		started := time.Now()
+		err := originalEmit(e)
+		diag.emitMaxNsMax(time.Since(started).Nanoseconds())
+		return err
+	}
 	conn.SetReadLimit(8 << 20)
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
@@ -44,8 +57,9 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 	}
 	defer func() { _ = emit(StreamEvent{Kind: "disconnected", Epoch: epoch, Sequence: seq.Load() + 1}) }()
 	type request struct {
-		id  int
-		cmd SessionCommand
+		id             int
+		cmd            SessionCommand
+		testReceivedAt time.Time
 	}
 	ordinary := make(chan request, 64)
 	priority := make(chan request, 16)
@@ -79,20 +93,38 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 	}()
 	go func() {
 		defer close(done)
+		var deferred *request
 		for {
 			var r request
 			select {
 			case r = <-priority:
 			default:
-				select {
-				case <-ctx.Done():
-					return
-				case r = <-priority:
-				case r = <-readyOrdinary:
+				if deferred != nil {
+					r, deferred = *deferred, nil
+				} else {
+					select {
+					case <-ctx.Done():
+						return
+					case r = <-priority:
+					case r = <-readyOrdinary:
+					}
 				}
 			}
+			gateStarted := time.Now()
 			if err := c.ControlGate.Wait(ctx); err != nil {
 				return
+			}
+			atomicMax(&diag.gateMaxNs, time.Since(gateStarted).Nanoseconds())
+			// A test_request may arrive while the chosen ordinary command waits
+			// for the shared control slot. Give that already-reserved slot to the
+			// heartbeat, retain the ordinary command, and pace it on the next slot.
+			if r.cmd.Method != "public/test" {
+				select {
+				case heartbeat := <-priority:
+					old := r
+					deferred, r = &old, heartbeat
+				default:
+				}
 			}
 			var params any = struct{}{}
 			if r.cmd.Method == "public/set_heartbeat" {
@@ -125,6 +157,12 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 				conn.Close()
 				return
 			}
+			diag.writes.Add(1)
+			diag.lastWriteNs.Store(time.Now().UnixNano())
+			if !r.testReceivedAt.IsZero() {
+				diag.testsSent.Add(1)
+				atomicMax(&diag.testDelayMaxNs, time.Since(r.testReceivedAt).Nanoseconds())
+			}
 			select {
 			case sent <- r:
 			case <-ctx.Done():
@@ -135,9 +173,9 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 	defer func() { cancel(); conn.Close(); <-done; <-gatedDone }()
 	go func() { <-ctx.Done(); conn.Close() }()
 	nextID := 2
-	ordinary <- request{1, SessionCommand{Method: "public/set_heartbeat"}}
-	ordinary <- request{2, SessionCommand{Method: "public/subscribe", Channels: initial}}
-	pending := map[int]request{1: {1, SessionCommand{Method: "public/set_heartbeat"}}, 2: {2, SessionCommand{Method: "public/subscribe", Channels: initial}}}
+	ordinary <- request{id: 1, cmd: SessionCommand{Method: "public/set_heartbeat"}}
+	ordinary <- request{id: 2, cmd: SessionCommand{Method: "public/subscribe", Channels: initial}}
+	pending := map[int]request{1: {id: 1, cmd: SessionCommand{Method: "public/set_heartbeat"}}, 2: {id: 2, cmd: SessionCommand{Method: "public/subscribe", Channels: initial}}}
 	active, used := map[string]bool{}, map[string]bool{}
 	for _, s := range initial {
 		used[s] = true
@@ -146,8 +184,9 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 	// Reader runs independently of gated writes. Bounded frames are consumed by
 	// this single owner in source order, including subscription acknowledgments.
 	type frame struct {
-		raw []byte
-		err error
+		raw    []byte
+		err    error
+		readAt time.Time
 	}
 	frames := make(chan frame, 64)
 	readerDone := make(chan struct{})
@@ -157,6 +196,12 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 		for {
 			conn.SetReadDeadline(time.Now().Add(30 * time.Second))
 			_, raw, err := conn.ReadMessage()
+			readAt := time.Now()
+			if err == nil {
+				diag.reads.Add(1)
+				diag.bytes.Add(int64(len(raw)))
+				diag.lastReadNs.Store(readAt.UnixNano())
+			}
 			if err != nil {
 				raw = nil
 			}
@@ -165,7 +210,8 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 				err = fmt.Errorf("session frame byte budget exceeded")
 			}
 			select {
-			case frames <- frame{raw, err}:
+			case frames <- frame{raw: raw, err: err, readAt: readAt}:
+				atomicMax(&diag.queuePeak, int64(len(frames)))
 			case <-ctx.Done():
 				c.FrameBudget.Release(int64(len(raw)))
 				return
@@ -206,7 +252,7 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 					if queued[id] {
 						return fmt.Errorf("session request queue timeout id %d", id)
 					}
-					return fmt.Errorf("session ACK timeout id %d", id)
+					return fmt.Errorf("session ACK timeout id %d method %s", id, pending[id].cmd.Method)
 				}
 			}
 		case cmd := <-commands:
@@ -230,7 +276,7 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 				}
 			}
 			nextID++
-			r := request{nextID, cmd}
+			r := request{id: nextID, cmd: cmd}
 			pending[nextID] = r
 			queued[nextID] = true
 			deadlines[nextID] = time.Now().Add(90 * time.Second)
@@ -246,6 +292,7 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 			if f.err != nil {
 				return f.err
 			}
+			atomicMax(&diag.frameAgeMaxNs, time.Since(f.readAt).Nanoseconds())
 			c.FrameBudget.Release(int64(len(f.raw)))
 			n := seq.Add(1)
 			var wire struct {
@@ -273,7 +320,7 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 				}
 				return fmt.Errorf("session RPC error %d", wire.Error.Code)
 			}
-			received := time.Now().UTC().Truncate(time.Microsecond)
+			received := f.readAt.UTC().Truncate(time.Microsecond)
 			e := StreamEvent{Kind: "confirm", Epoch: epoch, Sequence: n, Raw: f.raw, ReceivedAt: received}
 			switch {
 			case wire.ID != nil:
@@ -330,7 +377,8 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 				}
 				if wire.Params.Type == "test_request" {
 					nextID++
-					r := request{nextID, SessionCommand{Method: "public/test"}}
+					diag.testsReceived.Add(1)
+					r := request{id: nextID, cmd: SessionCommand{Method: "public/test"}, testReceivedAt: f.readAt}
 					pending[nextID] = r
 					queued[nextID] = true
 					deadlines[nextID] = time.Now().Add(90 * time.Second)
@@ -372,4 +420,30 @@ func (c *Client) Session(ctx context.Context, initial []string, commands <-chan 
 			}
 		}
 	}
+}
+
+// Numeric diagnostics only: no payloads, credentials or protocol state dumps.
+type sessionDiagnostics struct {
+	started                                                      time.Time
+	reads, bytes, writes, queuePeak                              atomic.Int64
+	lastReadNs, lastWriteNs, gateMaxNs, emitMaxNs, frameAgeMaxNs atomic.Int64
+	testsReceived, testsSent, testDelayMaxNs                     atomic.Int64
+}
+
+func atomicMax(v *atomic.Int64, n int64) {
+	for old := v.Load(); n > old; old = v.Load() {
+		if v.CompareAndSwap(old, n) {
+			return
+		}
+	}
+}
+func (s *sessionDiagnostics) emitMaxNsMax(n int64) { atomicMax(&s.emitMaxNs, n) }
+func (s *sessionDiagnostics) summary() string {
+	age := func(ns int64) int64 {
+		if ns == 0 {
+			return -1
+		}
+		return time.Since(time.Unix(0, ns)).Milliseconds()
+	}
+	return fmt.Sprintf("session_diag elapsed_ms=%d reads=%d bytes=%d writes=%d frame_queue_peak=%d frame_age_max_ms=%d emit_max_ms=%d control_gate_max_ms=%d last_read_age_ms=%d last_write_age_ms=%d tests_received=%d tests_sent=%d test_reply_max_ms=%d", time.Since(s.started).Milliseconds(), s.reads.Load(), s.bytes.Load(), s.writes.Load(), s.queuePeak.Load(), s.frameAgeMaxNs.Load()/int64(time.Millisecond), s.emitMaxNs.Load()/int64(time.Millisecond), s.gateMaxNs.Load()/int64(time.Millisecond), age(s.lastReadNs.Load()), age(s.lastWriteNs.Load()), s.testsReceived.Load(), s.testsSent.Load(), s.testDelayMaxNs.Load()/int64(time.Millisecond))
 }

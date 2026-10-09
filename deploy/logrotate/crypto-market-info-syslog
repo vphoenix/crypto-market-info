@@ -1,0 +1,17 @@
+# Installed after removing /var/log/syslog from /etc/logrotate.d/rsyslog.
+# The dedicated timer checks this policy every 15 minutes; daily logrotate
+# also uses the same default state file and its lock.
+/var/log/syslog
+{
+    daily
+    maxsize 100M
+    rotate 3
+    missingok
+    notifempty
+    compress
+    delaycompress
+    sharedscripts
+    postrotate
+        /usr/lib/rsyslog/rsyslog-rotate
+    endscript
+}

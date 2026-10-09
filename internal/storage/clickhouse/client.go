@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"sync"
+	"sync/atomic"
 	"time"
 
 	ch "github.com/ClickHouse/clickhouse-go/v2"
@@ -23,6 +24,7 @@ type Config struct {
 }
 
 type Client struct {
+	discoveryEnabled    atomic.Bool
 	storeIdentity       string
 	readOnly            bool // Constructors that set a server readonly session also reject writes locally.
 	conn                driver.Conn
@@ -42,6 +44,7 @@ type Client struct {
 	catalogSlotsOnce    sync.Once
 	catalogSlots        chan struct{}
 	metadataMu          sync.Mutex
+	discoveryMu         sync.Mutex
 	yieldMu             sync.Mutex
 	yieldLoaded         bool
 	yieldByKey          map[string]yieldRouteEntry

@@ -26,11 +26,12 @@ type Block struct {
 	AvailableAt      time.Time
 }
 type Reader struct {
-	RPC     *ethereum.Client
-	Chain   ChainConfig
-	Members []string
-	Used    int
-	MaxLogs uint32
+	RPC         *ethereum.Client
+	Chain       ChainConfig
+	Members     []string
+	Used        int
+	MaxLogs     uint32
+	SourceQuota *SourceQuota
 	// When source-wide coordination is installed, use small bounded groups.
 	BatchLimit int
 	// RPCMinInterval is configured before use. Zero preserves normal batching.

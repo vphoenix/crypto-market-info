@@ -1,0 +1,11 @@
+[Unit]
+Description=Check syslog rotation every 15 minutes
+
+[Timer]
+OnCalendar=*-*-* *:00/15:00
+AccuracySec=1min
+Persistent=true
+Unit=crypto-market-info-syslog-rotate.service
+
+[Install]
+WantedBy=timers.target

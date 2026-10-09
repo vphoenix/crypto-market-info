@@ -25,15 +25,23 @@ var/across/bin/across-data report --from 2026-10-02T00:00:00Z --to 2026-10-03T00
 | 用途 | 默认入口 | 覆盖环境变量 |
 |---|---|---|
 | Base RPC | `https://mainnet.base.org` | `ACROSS_BASE_RPC_URL` |
+| Base 收据及其费用/区块核验 RPC | 默认沿用 Base RPC；实时unit设为 `https://mainnet.base.org` | `ACROSS_BASE_RECEIPT_RPC_URL` |
 | Arbitrum RPC | `https://arb1.arbitrum.io/rpc` | `ACROSS_ARBITRUM_RPC_URL` |
+| Arbitrum 收据 RPC | 默认沿用 Arbitrum RPC | `ACROSS_ARBITRUM_RECEIPT_RPC_URL` |
 | ETHUSDT、USDCUSDT 公开 BBO | `https://api.binance.com/api/v3/ticker/bookTicker` | manifest 中 `binance_url` |
 | ClickHouse | `127.0.0.1:9000`，库 `crypto_market_info_across` | `--clickhouse`、`--database`；凭据 `ACROSS_CLICKHOUSE_USER` / `ACROSS_CLICKHOUSE_PASSWORD` |
 
 来源只记录主机名，不写带凭据的RPC URL；响应正文仅在内存中解析。币安按用户要求用 `.com`，每 60 秒尝试刷新两个币对，原始十进制价格、数量与时间随 probe 保存。失败不刷新旧报价时间；超过 60 秒不附加到新 probe。
 
+2026-10-09 实时 systemd unit 的 Base 日志/状态 RPC 通过上述环境变量显式配置为 `https://base-rpc.publicnode.com`。原默认端点于10月8日降低读取额度，停用90秒后单块日志仍被限流；新来源已实测链ID、USDC/SpokePool身份、代理实现代码hash、当前日志区块hash和1/64/512块日志查询。PublicNode 对近期交易收据也要求个人归档授权，因此收据及其固定区块的费用/canonical核验通过 `ACROSS_BASE_RECEIPT_RPC_URL` 显式使用原官方端点；已对同一真实交易实测取得完整费用和匹配锚点。每个来源独立按实际hostname使用原共享quota，worker克隆仍共享其故障状态；任一来源确认网络故障仍停止。manifest 默认值保留以兼容原历史，不影响已保存观测身份；日志capture记录PublicNode，收据capture记录官方端点。没有自动切换或静默回退，未配置专项收据端点时行为保持原样。
+
 [manifest](../config/across-research.json) 固定链、token、SpokePool、部署实现与代码 hash。加载 manifest 会核对本地 verified 源文件 SHA-256、实际 bytecode 和嵌入 ABI；部署时须带上其引用的 `research/2026-10-02-across-implementation/verified-*.json`。Base explorer 的源验证标志是部分验证，实际部署 runtime 与 RPC 返回 bytecode 已逐字节对应；Arbitrum 同样进行了实际 bytecode 对应。启动及固定区块读取仍核验链身份、代理实现和 USDC 元数据。证据说明见[协议验证](../research/2026-10-02-across-implementation/protocol-sources.json)。
 
 Base 实测每批 JSON-RPC 最多 10 成员；Arbitrum 每批最多 20。每个worker/链最多 2 个 HTTP 请求在途（多worker合计不受此2请求上限约束，host gate限制发起额度）。区块头按批读取，范围超限或失败会记录状态/hash并尝试更小范围；数据库或证据文件写入失败直接停止，不能被当成范围过大继续网络重抓。
+
+2026-10-09 修正 Base 的 `-32011 / request limit reached` 识别：此错误属于来源限流，不能当作区块范围过大而缩片重试。共享 host gate 依次退避 5/10/20/40 秒，并保留现有 HTTP Retry-After（最多5分钟）；期间少数成功的区块头请求不会重置退避，来源冷却结束满一分钟且后续请求成功才清零退避等级。冷却与等级跨 worker、进程和重启保留，不记录供应商的原始错误文本。只读冷却查询和没有变化的 quota 状态不重复写盘。
+
+常驻 watch 在读取链头前检查共享来源冷却，冷却中的链直接让行。每链一轮发现的网络预算为60秒（繁忙区间实测超过20秒），执行中遇到新增冷却立即让行，覆盖排队、链头、身份核验、日志及实现读取；超时仍以未取消的持久化上下文保存 error/partial，不伪造完整覆盖，也不推进失败区间。一次性 watch 保留顺序扫描且不增加这一总预算。若冷却超过某请求剩余网络预算，直接返回 deadline 而不耗尽该预算。维护和 probe 继续使用各自原有预算；冷却不会被新启动、换库或优先 probe 清除。
 
 历史 unit 显式传 `--rpc-min-interval 500ms`：每个 Reader 拆成单成员串行请求，响应后至少再等500毫秒，取消时停止排队，不生成未发起请求的证据。Header预算包含每个请求及等待，单请求仍有5秒超时。默认0保留实时批量行为。这是单进程节流，不保证两进程合计不触及来源限额；历史限流退出后由systemd退避60秒再续跑。
 
@@ -47,7 +55,7 @@ RPC/API响应在内存中严格解析，定类型事实直接写入数据库，�
 
 用户明确放弃的旧解码缺口，通过原capture的新revision在reason追加`repair_abandoned=user_requested_historical_state_unavailable`，自动partial补采跳过这些capture，重启后仍生效。status仍为partial，原失败原因、成员、链锚点和最终性保留，覆盖查询仍计为缺口；其他新区块和未标记缺采按原逻辑继续。
 
-重启后的积压超过单次`max_log_blocks`时，常驻watch先采当前链头，随后按正常顺序采新块；不让旧历史状态查询拖住当前数据。被跳过的区间仍是明确缺口，由同一个进程已有maintenance worker每轮补一个最多64块的原始扫描区间，两链轮流；只处理已保存capture之间的孔洞，不采首次启动前的数据，也不另启history服务。补采写为catchup，新capture保持自己的可见时间和head最终性，后续Reconcile取得证明才晋级。未知实现或不可用历史状态仍为partial；原始覆盖和完整解码继续分别统计。一次性`watch --once`保持原来的顺序扫描语义。
+重启后的积压超过单次`max_log_blocks`时，常驻watch先采当前链头，随后按正常顺序采新块；不让旧历史状态查询拖住当前数据。被跳过的区间仍是明确缺口，由同一个进程已有maintenance worker每轮补一个最多64块的原始扫描区间，两链轮流；2026-10-09起选择最新孔洞的尾部，再逐片向前补，避免不可用的旧归档孔洞挡住较新数据。选片按覆盖区间并集计算，包括嵌套/重叠capture；只处理已保存capture之间的孔洞，不采首次启动前的数据，也不另启history服务。补采写为catchup，新capture保持自己的可见时间和head最终性，后续Reconcile取得证明才晋级。补采仍用原12秒网络预算；繁忙区间触及本地预算时，下次对同链减半块数（至少1块），此运行内保持较小批次。限流、冷却和归档权限失败不因缩片而重复请求，缺口仍保留。未知实现或不可用历史状态仍为partial，失败孔洞不推进；原始覆盖和完整解码继续分别统计。一次性`watch --once`保持原来的顺序扫描语义。
 
 实时订单包含实际计划和执行的 +2/+5/+10 秒 probe。每轮 probe RPC 预算 5 秒，超时、迟到、跳过、取消都保存。目标延后超过 1 秒不算该档准时样本；失败或孤块查询里的 Filled 状态不能终结订单。超过本地截止而无法再查询时，仅记录 `local_deadline_elapsed_state_unverified` 取消，不声称已经成交。新鲜门槛默认 5 秒，未来时钟容忍 2 秒。
 

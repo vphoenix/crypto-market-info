@@ -15,6 +15,7 @@ import (
 type Collector struct {
 	Manifest           Manifest
 	Readers            map[uint64]*Reader
+	ReceiptReaders     map[uint64]*Reader
 	Store              Store
 	Archive            ethereum.Archive
 	Prices             *Prices
@@ -24,9 +25,10 @@ type Collector struct {
 	receiptDataMissing map[string]bool
 	finalized          map[uint64]Block
 	// Reconcile checks a bounded tail slice per call, persisting each proven group.
-	ReconcileLimit int
-	partialRepair  *partialRepairState
-	rawRepairNext  int
+	ReconcileLimit  int
+	partialRepair   *partialRepairState
+	rawRepairNext   int
+	rawRepairBlocks map[uint64]uint64
 }
 type receiptTask struct {
 	ChainID           uint64
@@ -34,6 +36,12 @@ type receiptTask struct {
 }
 
 func height(n uint64) string { return fmt.Sprintf("0x%x", n) }
+func (c *Collector) receiptReader(chain uint64) *Reader {
+	if r := c.ReceiptReaders[chain]; r != nil {
+		return r
+	}
+	return c.Readers[chain]
+}
 func (c *Collector) load(ctx context.Context) error {
 	if c.loaded {
 		return nil
@@ -267,8 +275,8 @@ func (c *Collector) queueReceipt(chain uint64, block, tx string) {
 	t := receiptTask{chain, block, tx}
 	c.receiptQueue[ID(t)] = t
 }
-func (c *Collector) collectSplit(ctx context.Context, chain, from, to uint64, mode, finality string) ([]Batch, error) {
-	b, e := c.CollectRange(ctx, chain, from, to, mode, finality)
+func (c *Collector) collectSplit(ctx context.Context, chain, from, to uint64, mode, finality string, networkContext ...context.Context) ([]Batch, error) {
+	b, e := c.CollectRange(ctx, chain, from, to, mode, finality, networkContext...)
 	if e == nil {
 		return []Batch{b}, nil
 	}
@@ -280,11 +288,11 @@ func (c *Collector) collectSplit(ctx context.Context, chain, from, to uint64, mo
 		return nil, e
 	}
 	mid := from + (to-from)/2
-	left, e := c.collectSplit(ctx, chain, from, mid, mode, finality)
+	left, e := c.collectSplit(ctx, chain, from, mid, mode, finality, networkContext...)
 	if e != nil {
 		return left, e
 	}
-	right, e := c.collectSplit(ctx, chain, mid+1, to, mode, finality)
+	right, e := c.collectSplit(ctx, chain, mid+1, to, mode, finality, networkContext...)
 	return append(left, right...), e
 }
 func (c *Collector) BlockAtTime(ctx context.Context, chain uint64, target time.Time, end Block) (uint64, error) {
@@ -370,7 +378,7 @@ func (c *Collector) DrainReceipts(ctx context.Context, limit int, networkContext
 	sort.Strings(keys)
 	for _, k := range keys[:min(limit, len(keys))] {
 		t := c.receiptQueue[k]
-		r := c.Readers[t.ChainID]
+		r := c.receiptReader(t.ChainID)
 		r.Members = nil
 		b := c.newBatch(r, "receipts", "research")
 		b.Capture.ExpectedTasks = 1

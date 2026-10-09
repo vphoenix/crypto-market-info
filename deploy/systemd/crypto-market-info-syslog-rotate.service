@@ -1,0 +1,7 @@
+[Unit]
+Description=Check syslog size and retention
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/logrotate --wait-for-state-lock /etc/logrotate.d/crypto-market-info-syslog
+TimeoutStartSec=5min

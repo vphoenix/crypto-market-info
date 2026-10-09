@@ -4,6 +4,8 @@
 
 这些表在整个采集进程中的位置及以后增加其他数据时的扩展原则见[系统总体架构](architecture.md)。
 
+2026-10-09主库六张热表已设置512 MiB单次自动后台合并输入上限，范围为三个 `derivative_book_*` 表、`order_book_second_delta`、`options_catalog_live_minute_commit` 和 `options_catalog_quality_evidence_minute`。这是物理合并调度限制，不改变字段、5/10/50档回放、差量编码或完整性含义；既有大part保留，查询仍按现有规则逻辑去重。三项fsync保持启用，需持续检查part积压及查询成本。同日13:18（北京时间）已按用户同意重启共享实例，启用全局合并读取16 MiB/s、mutation读取8 MiB/s限速；它不限制整机总写入或fsync IOPS。具体现场设置、适用边界和回滚见[合并I/O排查](../research/2026-10-09-clickhouse-merge-io/report.md)。
+
 2026-10-05 重启核验后，五个生产库（主库、Across、LST、Reserve、JustLend keeper）的59张现有 MergeTree 表已显式设置 `fsync_after_insert=1`、`fsync_part_directory=1`、`min_rows_to_fsync_after_merge=1`。插入与合并结果同步落盘，表设置持久保存；新建生产表也应采用这三项设置。它们不改变字段、UTC时间、编码或完整性含义；`CREATE TABLE IF NOT EXISTS`不会覆盖已有设置。本次逐表执行与核验记录见[重启检查目录](../research/2026-10-05-reboot-check/)。同步落盘降低断电风险，不能恢复缺失的行情，也不能代替底层存储的可靠性。
 
 Reserve 拍卖与篮子申赎已在独立库 `crypto_market_info_reserve` 建表，新增 `reserve_capture`、`reserve_folio_state`、`reserve_route_quote`，复用 `dex_log`／`dex_tx_receipt` 定义。实际结构和不变量见 [DDL](reserve-data-schema.sql) 与 [实现说明](reserve-data-implementation.md)；特别是控制表 `receipt_refs` 固定当时引用集合，后续补收据不会改写旧批语义。
@@ -368,6 +370,10 @@ R5复用整数价量事实（期权10档、交割期货默认5档）和固定成
 
 新合约的定义、规则和状态确认后立即预订阅；计划默认在当前UTC分钟之后第二个边界生效，为落盘及预热留出1–2分钟，未来计划队列有界，迟到计划顺延。缺第0秒锚点如实不可回放。T切换后旧writer仅排空<T的冻结分钟，新run立即采样T；查询按唯一生效计划认证owner。全量检查通过计划返回预期/有效/缺失合约及未提交分片，不能只读最新一个run。分钟验证/提交限三路并发，控制证据使用独立连接额度与锁集合，不让整个分钟hash计算阻塞采样入口。
 
+2026-10-09 起 R5 将写库失败与行情接收分离：每个分片保留最多两个待写完整分钟及一个在写分钟。采样线程将已完成的不可变分钟交给后台，后台编码最多四路并发；按展开后的保守大小先预留独立缓存预算（入口预算的两倍，默认128MiB），压缩后释放差额，避免编码占用采样窗口，也避免数据库积压耗尽网络入口预算。缓存只在内存保留，不生成备份文件。等待三路写入槽位不消耗40秒执行预算，取得槽位后才解压并开始计时；暂时失败按原身份和内容退避重试，不销毁采样分片或重订阅。队列或缓存预算耗尽时明确记录 `options minute not queued`，该分钟没有提交标记、查询仍报告缺失，后续接收继续。停服仍最多45秒排空，未落库的内存分钟不能跨进程恢复。盘口连接新建按全局每秒一个错开，初始及恢复订阅每批最多64频道、确认后继续，完整覆盖范围和保存深度不变。
+
+2026-10-09 的持续恢复修订为完整目录刷新预留独立16槽队列，并在共享REST工作线程中优先处理；逐币恢复仍用原64槽队列，两者继续共用请求限速和证据字节预算。刷新时钟使用响应的真实 `observed_at`，同时检查未到期成员实际引用的规则和HTTP状态证据，30分钟开始刷新、35分钟后仍如实无效。批量刷新在途时合并普通已准入成员的恢复查询；未知协议、尚未准入成员及未确认状态屏障仍须独立确认。只取消尚未获取源响应且已被新证据确认的重试，已准备证据的歧义写入重试保持原身份。Deribit WS的 `received_at` 使用独立socket读取线程读完消息时的UTC微秒时间，不使用稍后回调处理时间；控制发送时隙优先回复 `test_request`，普通命令保留到下一时隙，共享限速不绕过。上述修改不改变表结构、档数和差量规则，不补造旧缺失秒。
+
 ### 10.5 辅助表紧凑存储
 
 2026-10-07 增加辅助表的无损紧凑物理格式。上文表字典继续描述读取口径；实际新建表的物理列由 [options_compact.go](../internal/storage/clickhouse/options_compact.go) 转换生成。目录 SQL 是逻辑模板，不能跳过该转换直接作为新格式 DDL。采集启动只幂等建表，已有表不会自动迁移或删除。
@@ -452,6 +458,8 @@ mvp10在LST `Batch` 增加仅用于本机pending恢复的 `RawEvidenceHashes` �
 
 ## JustLend 能源租单清理 keeper
 
+2026-10-08 本地恢复状态升级为 v2 压缩检查点：主 `state.gob` 原子引用按内容哈希命名的候选缓存，先同步缓存再提交主文件，提交后清理旧缓存；状态未改变时跳过写入。预算、冷却、游标与冻结重试批次保持同步持久化，旧单文件状态可迁移读取；不改变七张数据库表、事实摘要、UTC/整数/Decimal 或查询语义。备份需停服并保存主文件及引用缓存；旧二进制不能直接读取新格式。详见[恢复说明](justlend-keeper-data-implementation.md#限速与恢复)。
+
 本链路只采集/校验/查询公开数据，获利分析由其他程序完成。独立库 `crypto_market_info_justlend_keeper` 有七表：capture、index_page、indexed_event、rental_event、tx_receipt、probe、cost_observation（均带 jl_keeper_ 前缀）。定义见[DDL](justlend-keeper-data-schema.sql)，运行与实现见[实现说明](justlend-keeper-data-implementation.md)，[当前设计](justlend-keeper-data-mvp-design.md)和[代码审核](../discuss/0017-justlend-keeper-data-code-review.md)。
 
 金额 UInt256 sun、资源/费用有范围校验的整数、BBO价格/数量 Decimal(38,18)；时间 UTC微秒、地址含0x41前缀21字节、hash32字节。Rent/Return旧/扩展ABI按精确topic及word数严格区分；扩展字段 security_deposit_sun、rent_index 为 Nullable(UInt256)，旧版NULL。实时响应保存SHA和来源时间，模拟为node_latest_unpinned，不能冒充固化历史。
@@ -488,3 +496,22 @@ PublicNode承担节点只读查询，TronGrid事件分页，Binance公开BBO；�
 - `okx_paired_catalog`：UUID、观测时间、生效分钟、借贷观测 ID；依次 SPOT/SWAP/MARGIN/借贷的四组来源 URL/hash/请求与接收时间/原始数据条数；基础币种、两腿 instrument ID 与最小下单数量。四个来源缺一即拒绝。目录提交前与读取时都核对借贷来源、已登记定义以及正公开额度。目录只在 `effective_minute<=查询时间` 时可见。
 
 两表按 UTC 观测月份分区，ReplacingMergeTree 以稳定观测 UUID 去重，重试不换身份；保存规范化行摘要并在读取时验证。公开额度用于界定研究集合，**不是账户实际剩余可借量**；额度系数不是分档边际借贷利率，弃用折扣为空时不能补成零。所有已选永续复用现有资金费率采集，采样频率仍为整点估算与结算后确认。本次不增加分钟成交量表，也不将公开政策冒充账户实际借款成本。
+
+
+## OKX 交易初筛定类型输入与耐久发布（2026-10-08）
+
+新增实现及字段/时间/单位完整合同见[找币数据衔接](discovery-trading-contract.md)，DDL为 `internal/storage/clickhouse/discovery_schema.sql`。独立下一期资金费及标记/币种指数进入 `funding_forecast_observation`；上一完整分钟基础币成交量进入 `cex_trade_bar_1m`；公开标准组费用、资本语义引用和实际公开风险数组分别进入 `cex_fee_schedule_rule`、`cex_collateral_risk_rule`、`okx_public_capital_parameters`。金额/费率/区间为 Decimal(38,18)，时间为 UTC Unix 毫秒，原生目录/政策微秒时间保持不变。
+
+`cex_book_minute_commit` 绑定原分钟快照、保存深度、valid_bitmap 和全部差量集合摘要；writer使用手中完整待写批次生成，禁止事后用现存行补造历史完整证明。`source_publication_intents` 在写事实前耐久固定源身份/摘要/首次知悉及必要源成员元数据；`source_batch_status` 最后固定实际全部完成时点。成员数量及有序摘要绑定 `public_observation_provenance` 的官方URL、响应hash、来源/请求时钟，严格查询读取完全部来源成员后重新核验完整manifest。新事实及intent/complete采用不可变 MergeTree 记录及fsync设置；来源元数据的小型重复记录按稳定身份去重，已发布内容冲突拒绝。
+
+原预测实际混合小时表仅保留原用途，不能替代独立下一期预测。API有原生ts时保存ts；无来源时钟的静态规则明确用请求时点且有固定有效期，不能用新收包时点覆盖旧ts。全目录公开额度与Basic/Regular政策仍属参考，私人账户费用、余额、杠杆和最大借额只留在交易项目私有SQLite。无原始响应JSON备份。现货/期货5档、期权10档及历史10/50档编码保持兼容。
+
+实际隔离验证库 `discovery_validation_20261008_capital_final`：从完整167配对目录中订阅BTC/ETH四条流，UTC 2026-10-07 23:04分钟完整发布，未漏采样，分钟写入941.223606ms；交易严格SQL读者及独立审核SELECT均通过。真实ClickHouse故障/重试/缺失来源与5/10/50混合回放10项顶层测试及4子项通过。隔离验证不是生产常驻替换；旧生产数据未获补造证明，正式迁移、全币覆盖和每日存储/查询负载验收仍需按运维流程进行。证据在交易项目 `artifacts/collector-discovery-sql-tests.txt` 和 `artifacts/public-capture-2026-10-08.log`。
+
+### 分钟发布元数据批量化修复（2026-10-08）
+
+交易发现的分钟发布链路与事实writer使用相同的100产品分块。每块批量读取intent/commit/status三表，逐币验证所有不可变字段、stored_depth及完整delta_seconds；重复记录拒绝，不能以LIMIT 1或map覆盖隐藏冲突。全envelope所有intent耐久完成后才写任意分钟事实；每块依次批量写差量、起点、commit，最后complete。published_ms在全部依赖commit耐久成功后取真实时间。整批或部分成员耐久后ACK丢失，只插入缺失成员并保留原known/published。源观察时间不重置，历史完整性不补造；表结构、5/10/50深度回放与45秒终止限制不变，没有新增原始JSON。
+
+真实隔离ClickHouse：334流、每侧5档、60秒且59秒均有差量，共19706差量行；不开发布链路0.508秒，批量新链路1.145秒；3组并发1002流/59118差量2.578秒。另测101成员跨块、intent/commit/status整批ACK丢失与50行耐久前缀后故障，补齐与重复重试逐币保持时钟并且三表各101唯一行。慢commit时完成时间不能提前，实际篡改深度/秒集合重试拒绝。代表性故障和吞吐已验证，长期全市场部署尚未验收。证据在交易项目 `artifacts/blockers-v051-collector-tests.txt`、`artifacts/blockers-v051-collector-prefix-tests.txt`，独立复核另存；原采集进程未替换。
+
+后续正式部署已于2026-10-08完成，见[部署验收](../research/2026-10-08-okx-five-level-deployment/report.md)。全量运行补充的请求节奏修复只改变发现接口限流及无原生时钟来源的取时位置：`request_without_source_clock` 的 `source_ms` 取成功物理请求经过冷却和门限后的发送时刻，`observed_ms` 仍为接收时刻；每次重试分别经过同一端点门限。来源响应摘要、原生 ts、UTC/Decimal、表结构及历史行保持原语义，未重写已有数据。

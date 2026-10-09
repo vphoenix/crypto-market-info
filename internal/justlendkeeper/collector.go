@@ -48,14 +48,15 @@ type Operation struct {
 	Parent           *Capture
 }
 type Collector struct {
-	Config Config
-	State  *State
-	Path   string
-	API    *Client
-	Store  Store
-	Now    func() time.Time
-	Log    func(string)
-	Sleep  func(context.Context, time.Duration) error
+	Config      Config
+	State       *State
+	Path        string
+	API         *Client
+	Store       Store
+	Now         func() time.Time
+	Log         func(string)
+	Sleep       func(context.Context, time.Duration) error
+	stateWriter stateWriter
 }
 
 func NewCollector(cfg Config, s *State, path string, a Archive, store Store) *Collector {
@@ -78,7 +79,7 @@ func Sleep(ctx context.Context, d time.Duration) error {
 		return nil
 	}
 }
-func (c *Collector) Save() error { return SaveState(c.Path, *c.State) }
+func (c *Collector) Save() error { return c.stateWriter.Save(c.Path, *c.State) }
 func (c *Collector) NewOperation(kind, mode, source string) Operation {
 	now := UTC(c.Now())
 	contract, _ := HexAddress(ContractHex)

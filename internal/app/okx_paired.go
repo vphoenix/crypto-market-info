@@ -358,6 +358,9 @@ func collectOKXPaired(ctx context.Context, cfg config.Config, store *chstore.Cli
 					return err
 				}
 			}
+			staged.start(func(ctx context.Context) error {
+				return runDiscoveryFacts(ctx, client, store, catalog.Observation.Pairs, logger)
+			})
 			if cfg.FundingEnabled && len(staged.perpetuals) > 0 {
 				now := time.Now().UTC().Truncate(time.Millisecond)
 				pending, err := store.LoadPendingFundingConfirmations(ctx, now.Add(-funding.StartupBackfillWindow), now)

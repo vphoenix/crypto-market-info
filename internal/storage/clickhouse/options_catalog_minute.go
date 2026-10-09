@@ -31,21 +31,34 @@ type catalogCommit struct {
 }
 
 func (c *Client) WriteOptionsCatalogMinute(ctx context.Context, e options.CatalogEnvelope) error {
+	return c.WriteOptionsCatalogMinuteLazy(ctx, e.Live.RunID, e.Live.MinuteTime, func() (options.CatalogEnvelope, error) { return e, nil })
+}
+
+// Expand only after admission: waiting workers retain compressed typed minutes.
+func (c *Client) WriteOptionsCatalogMinuteLazy(ctx context.Context, run uuid.UUID, minute time.Time, load func() (options.CatalogEnvelope, error)) error {
 	if c.readOnly {
 		return fmt.Errorf("read only")
 	}
 
-	unlock, err := c.catalogLock(ctx, "minute:"+e.Live.RunID.String()+e.Live.MinuteTime.String())
+	unlock, err := c.catalogLock(ctx, "minute:"+run.String()+minute.String())
 	if err != nil {
 		return err
 	}
 	defer unlock()
 	c.catalogSlotsOnce.Do(func() { c.catalogSlots = make(chan struct{}, 3) })
-	select {
-	case c.catalogSlots <- struct{}{}:
-		defer func() { <-c.catalogSlots }()
-	case <-ctx.Done():
-		return ctx.Err()
+	// Waiting for the shared writer slot is not database execution time. The
+	// caller owns cancellation/drain; each admitted attempt has its own budget.
+	ctx, release, err := acquireCatalogWriteSlot(ctx, c.catalogSlots, 40*time.Second)
+	if err != nil {
+		return err
+	}
+	defer release()
+	e, err := load()
+	if err != nil {
+		return err
+	}
+	if e.Live.RunID != run || !e.Live.MinuteTime.Equal(minute) {
+		return fmt.Errorf("lazy catalog minute identity mismatch")
 	}
 	if err := e.Validate(); err != nil {
 		return err
@@ -122,6 +135,16 @@ func (c *Client) WriteOptionsCatalogMinute(ctx context.Context, e options.Catalo
 		}
 		return c.derivativeInserted("catalog_commit")
 	})
+}
+
+func acquireCatalogWriteSlot(ctx context.Context, slots chan struct{}, executionBudget time.Duration) (context.Context, func(), error) {
+	select {
+	case slots <- struct{}{}:
+	case <-ctx.Done():
+		return nil, nil, ctx.Err()
+	}
+	attempt, cancel := context.WithTimeout(ctx, executionBudget)
+	return attempt, func() { cancel(); <-slots }, nil
 }
 func (c *Client) LoadOptionsCatalogMinute(ctx context.Context, run uuid.UUID, minute time.Time) (options.CatalogEnvelope, error) {
 	var e options.CatalogEnvelope

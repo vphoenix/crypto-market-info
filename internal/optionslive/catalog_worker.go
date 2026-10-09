@@ -3,7 +3,6 @@ package optionslive
 import (
 	"context"
 	"errors"
-	"fmt"
 	"github.com/google/uuid"
 	"github.com/vphoenix/crypto-market-info/internal/exchange"
 	"github.com/vphoenix/crypto-market-info/internal/options"
@@ -23,11 +22,14 @@ type catalogWorker struct {
 	done      chan struct{}
 }
 
-func startCatalogWorker(ctx context.Context, cfg Config, r options.LiveRun, specs []options.ContractSpec, sink CatalogSink, budget, levels *exchange.BufferBudget, recover func(uint32), resetIndex func(), logger *slog.Logger, failed chan<- uuid.UUID) (*catalogWorker, error) {
+func startCatalogWorker(ctx context.Context, cfg Config, r options.LiveRun, specs []options.ContractSpec, sink CatalogSink, budget, levels *exchange.BufferBudget, cache *catalogMinuteCache, recover func(uint32), resetIndex func(), logger *slog.Logger, failed chan<- uuid.UUID) (*catalogWorker, error) {
 	ctx, cancel := context.WithCancel(ctx)
 	w := &catalogWorker{id: uuid.New(), q: newIngress(time.Now()), run: r, specs: specs, cancel: cancel, done: make(chan struct{})}
 	w.q.budget = budget
-	batches := make(chan options.CatalogEnvelope, 2)
+	if cache == nil {
+		cache = newCatalogMinuteCache(2 * cfg.catalogDefaults().MaxIngressBytes)
+	}
+	batches := make(chan *catalogPendingMinute, 2)
 	errs := make(chan error, 1)
 	fail := func(e error) {
 		select {
@@ -36,11 +38,22 @@ func startCatalogWorker(ctx context.Context, cfg Config, r options.LiveRun, spec
 		}
 	}
 	e, err := newCatalogEngine(r, specs, time.Now(), cfg.MaxBookLevels, recover, resetIndex, func(v options.CatalogEnvelope) error {
+		if len(batches) == cap(batches) {
+			logger.Error("options minute not queued", "run", v.Live.RunID, "minute", v.Live.MinuteTime, "error", "catalog minute queue full")
+			return nil
+		}
+		pending, err := captureCatalogMinute(v, cache)
+		if err != nil {
+			logger.Error("options minute not queued", "run", v.Live.RunID, "minute", v.Live.MinuteTime, "error", err)
+			return nil // Missing commit is explicit; keep the live book connection.
+		}
 		select {
-		case batches <- v:
+		case batches <- pending:
 			return nil
 		default:
-			return fmt.Errorf("catalog minute queue full")
+			pending.release()
+			logger.Error("options minute not queued", "run", v.Live.RunID, "minute", v.Live.MinuteTime, "error", "catalog minute queue full")
+			return nil
 		}
 	})
 	if err != nil {
@@ -53,18 +66,8 @@ func startCatalogWorker(ctx context.Context, cfg Config, r options.LiveRun, spec
 	written := make(chan struct{})
 	go func() {
 		defer close(written)
-		for b := range batches {
-			if time.Since(b.Live.PreparedAt) > 45*time.Second {
-				fail(fmt.Errorf("catalog minute write expired"))
-				return
-			}
-			attempt, stop := context.WithTimeout(writerCtx, 40*time.Second)
-			err := sink.WriteOptionsCatalogMinute(attempt, b)
-			stop()
-			if err != nil {
-				fail(err)
-				return
-			}
+		if err := writeCatalogMinutes(writerCtx, batches, sink, logger); err != nil && writerCtx.Err() == nil {
+			fail(err)
 		}
 	}()
 	go func() {
@@ -85,6 +88,9 @@ func startCatalogWorker(ctx context.Context, cfg Config, r options.LiveRun, spec
 				<-written
 			}
 			writerCancel()
+			for pending := range batches {
+				pending.release()
+			}
 		}()
 		timer := time.NewTicker(10 * time.Millisecond)
 		defer timer.Stop()

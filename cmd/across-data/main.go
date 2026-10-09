@@ -167,24 +167,37 @@ func run(ctx context.Context, args []string) error {
 	if _, e = archive.Put(m.Raw); e != nil {
 		return e
 	}
-	c := &across.Collector{Manifest: m, Readers: map[uint64]*across.Reader{}, Store: store, Archive: archive}
-	for _, ch := range m.Chains {
-		rpc, e := ethereum.NewClient(ch.Endpoint(), *evidence)
+	c := &across.Collector{Manifest: m, Readers: map[uint64]*across.Reader{}, ReceiptReaders: map[uint64]*across.Reader{}, Store: store, Archive: archive}
+	makeReader := func(ch across.ChainConfig, endpoint string) (*across.Reader, error) {
+		rpc, e := ethereum.NewClient(endpoint, *evidence)
 		if e != nil {
-			return e
+			return nil, e
 		}
 		quota, e := across.NewSourceQuota(*quotaDir, rpc.SourceID, *quotaInterval, *quotaBurst)
 		if e != nil {
-			return e
+			return nil, e
 		}
 		rpc.Archive.HashOnly = true
 		rpc.BeforeRequest = quota.Before
 		rpc.AfterRequest = quota.After
 		rpc.AuditFailures = true
-		c.Readers[ch.ChainID] = across.NewReader(rpc, ch)
-		c.Readers[ch.ChainID].BatchLimit = *quotaBurst
-		c.Readers[ch.ChainID].MaxLogs = m.MaxLogs
-		c.Readers[ch.ChainID].RPCMinInterval = *rpcMinInterval
+		r := across.NewReader(rpc, ch)
+		r.SourceQuota, r.BatchLimit, r.MaxLogs, r.RPCMinInterval = quota, *quotaBurst, m.MaxLogs, *rpcMinInterval
+		return r, nil
+	}
+	for _, ch := range m.Chains {
+		r, e := makeReader(ch, ch.Endpoint())
+		if e != nil {
+			return e
+		}
+		c.Readers[ch.ChainID] = r
+		if endpoint := ch.ReceiptEndpoint(); endpoint != ch.Endpoint() {
+			r, e := makeReader(ch, endpoint)
+			if e != nil {
+				return e
+			}
+			c.ReceiptReaders[ch.ChainID] = r
+		}
 	}
 	if !*noPrices {
 		c.Prices = &across.Prices{URL: m.BinanceURL, Archive: ethereum.Archive{HashOnly: true}}

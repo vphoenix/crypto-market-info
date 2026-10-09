@@ -21,6 +21,7 @@ const MinuteWriteBatchInstruments = 100
 // WriteCompletedMinute validates the entire envelope before its first insert.
 // Each chunk's deltas become durable before its minute visibility rows appear.
 func (c *Client) WriteCompletedMinute(ctx context.Context, completed model.CompletedMinute) error {
+	known := model.CeilMilliseconds(time.Now().UTC())
 	if completed.MinuteTime.IsZero() || !completed.MinuteTime.Equal(completed.MinuteTime.UTC().Truncate(time.Minute)) {
 		return fmt.Errorf("completed minute requires an exact UTC minute")
 	}
@@ -30,6 +31,22 @@ func (c *Client) WriteCompletedMinute(ctx context.Context, completed model.Compl
 		}
 		if err := validateBatch(batch); err != nil {
 			return fmt.Errorf("instrument %d: %w", batch.Minute.InstrumentID, err)
+		}
+	}
+	var publications []publicationRecord
+	if c.discoveryEnabled.Load() {
+		publications = make([]publicationRecord, len(completed.Batches))
+		for n, batch := range completed.Batches {
+			p, err := minutePublication(batch, known)
+			if err != nil {
+				return err
+			}
+			publications[n] = p
+		}
+		for offset := 0; offset < len(publications); offset += MinuteWriteBatchInstruments {
+			if err := c.beginMinutePublications(ctx, publications[offset:min(offset+MinuteWriteBatchInstruments, len(publications))], completed.Batches[offset:min(offset+MinuteWriteBatchInstruments, len(publications))]); err != nil {
+				return err
+			}
 		}
 	}
 	for offset := 0; offset < len(completed.Batches); offset += MinuteWriteBatchInstruments {
@@ -52,6 +69,11 @@ func (c *Client) WriteCompletedMinute(ctx context.Context, completed model.Compl
 			return nil
 		}); err != nil {
 			return fmt.Errorf("completed minute chunk %d: %w", offset/MinuteWriteBatchInstruments, err)
+		}
+		if len(publications) > 0 {
+			if err := c.publishMinuteChunk(ctx, chunk, publications[offset:offset+len(chunk)]); err != nil {
+				return fmt.Errorf("publish completed minute chunk: %w", err)
+			}
 		}
 	}
 	return nil

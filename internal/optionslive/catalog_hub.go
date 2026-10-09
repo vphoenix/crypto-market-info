@@ -8,6 +8,7 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/exchange/deribit"
 	"github.com/vphoenix/crypto-market-info/internal/options"
 	"log/slog"
+	"slices"
 	"strings"
 	"sync"
 	"time"
@@ -47,10 +48,11 @@ type bookHub struct {
 	indexes      map[string]options.IndexSample
 	resetIndex   chan struct{}
 	wg           sync.WaitGroup
+	dialGate     *exchange.RequestGate
 }
 
 func newBookHub(ctx context.Context, c *deribit.Client, cfg Config, logger *slog.Logger) *bookHub {
-	h := &bookHub{ctx: ctx, c: c, cfg: cfg, logger: logger, routes: map[uint32]*bookRoute{}, recovery: map[uint32]bool{}, workers: map[uuid.UUID]*catalogWorker{}, indexes: map[string]options.IndexSample{}, resetIndex: make(chan struct{}, 1)}
+	h := &bookHub{ctx: ctx, c: c, cfg: cfg, logger: logger, routes: map[uint32]*bookRoute{}, recovery: map[uint32]bool{}, workers: map[uuid.UUID]*catalogWorker{}, indexes: map[string]options.IndexSample{}, resetIndex: make(chan struct{}, 1), dialGate: exchange.NewRequestGate(time.Second)}
 	h.wg.Add(2)
 	go h.maintain()
 	go h.runIndex()
@@ -171,11 +173,15 @@ func (h *bookHub) assign(r *bookRoute) {
 }
 func (h *bookHub) runPhysical(ctx context.Context, p *bookPhysical) {
 	defer h.wg.Done()
-	if exchange.Wait(ctx, 100*time.Millisecond) {
+	if h.dialGate.Wait(ctx) == nil && exchange.Wait(ctx, 100*time.Millisecond) {
 		h.mu.Lock()
 		channels := make([]string, 0, len(p.routes))
 		for ch := range p.routes {
 			channels = append(channels, ch)
+		}
+		slices.Sort(channels)
+		channels = channels[:min(len(channels), 64)]
+		for _, ch := range channels {
 			p.requested[ch] = true
 		}
 		h.mu.Unlock()
@@ -288,6 +294,8 @@ func (h *bookHub) maintain() {
 						channels = append(channels, ch)
 					}
 				}
+				slices.Sort(channels)
+				channels = channels[:min(len(channels), 64)]
 				if len(channels) > 0 {
 					select {
 					case p.commands <- deribit.SessionCommand{Method: "public/subscribe", Channels: channels}:

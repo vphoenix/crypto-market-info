@@ -97,11 +97,7 @@ func NewState(target string, c Config) State {
 	return State{Version: 1, Target: target, ConfigHash: Hex(c.Hash()), SolidAnchors: map[uint64]string{}, Sources: map[string]SourceLimit{}, EventCursors: map[string]time.Time{}, IdentityStatus: "unknown"}
 }
 func SaveState(path string, s State) error {
-	b, e := Freeze(s)
-	if e != nil {
-		return e
-	}
-	return Atomic(path, append([]byte(Hash(b)), b...))
+	return (&stateWriter{}).Save(path, s)
 }
 func LoadState(path, target string, c Config) (State, error) {
 	b, e := os.ReadFile(path)
@@ -116,7 +112,7 @@ func LoadState(path, target string, c Config) (State, error) {
 		return State{}, errors.New("state_checksum_failed")
 	}
 	var s State
-	if e = Thaw(b[32:], &s); e != nil {
+	if e = decodeState(path, b[32:], &s); e != nil {
 		return s, e
 	}
 	if s.Version != 1 || s.Target != target || s.ConfigHash != Hex(c.Hash()) || s.Sources == nil {

@@ -42,7 +42,7 @@ systemctl --user status crypto-market-info-justlend-keeper.service
 journalctl --user -u crypto-market-info-justlend-keeper.service -n 30 --no-pager
 ```
 
-持久路径：二进制 `var/justlend-keeper/bin/justlend-keeper-data`、状态 `var/justlend-keeper/state/state.gob`；旧归档 `var/justlend-keeper/evidence/` 仅供一次性migrate-pages使用，正常采集/导出不依赖该目录；数据导出 `var/justlend-keeper/exports/<UTC时间戳>/`。不要删状态以恢复运行；状态校验损坏、配置或数据库身份不符会停止。
+持久路径：二进制 `var/justlend-keeper/bin/justlend-keeper-data`、状态 `var/justlend-keeper/state/`（主 `state.gob` 及其引用缓存）；旧归档 `var/justlend-keeper/evidence/` 仅供一次性migrate-pages使用，正常采集/导出不依赖该目录；数据导出 `var/justlend-keeper/exports/<UTC时间戳>/`。不要删状态以恢复运行；状态校验损坏、配置或数据库身份不符会停止。
 
 ### 构建与配置
 
@@ -71,6 +71,10 @@ go build -buildvcs=false -o /tmp/justlend-keeper-data.next ./cmd/justlend-keeper
 状态绑定 ClickHouse 地址、库名与配置 SHA。修改来源 URL、caller 或每日预算后不能直接沿用原状态；当前没有自动配置迁移命令。仅调整域名网络路由时无需改 JSON。迁移需保留原限速、冷却和当日预算，不能通过新状态目录重置这些信息。
 
 ## 限速与恢复
+
+2026-10-08 起本机恢复状态使用 v2 检查点：`state.gob` 保存压缩后的请求额度、冷却、游标、待提交批次等进度；较大的候选租单缓存独立保存为一个 `state.gob.candidates-<SHA256>` 文件，只有内容变化时才重写。内存保留一份深拷贝用于比较，状态未变化时不执行文件写入或 fsync。请求发送前的预算预约、响应后的限流期限和冻结批次的同步持久化时机保持不变，没有按时间延迟这些关键写入。
+
+更新缓存时先同步新缓存，再原子替换并同步引用它的 `state.gob`，最后删除旧缓存；中途退出只能恢复替换前或替换后的完整状态，未引用的中间缓存于下次成功保存时清理。校验失败或引用缓存缺失会停止恢复，不能当成空缓存继续。新版自动读取旧单文件格式并在首次保存时迁移；旧二进制不能读取 v2，回滚前必须停服务，用新版 `LoadState` 读取当前完整状态并转换为旧 checksum + gob 格式，不能直接恢复较早备份来重置当日额度。备份、搬迁或恢复时必须在停服状态下一起保留 `state.gob` 和它引用的缓存文件。这些文件属于运行恢复状态，不是 API/RPC 原始响应归档。
 
 第一次请求至少等五秒；每次启动前五分钟，所有来源的相邻请求至少五秒。此后全局至少一秒，始终只有一个请求在途。TronGrid 和所有后台请求分别再受五秒间隔约束。启动检查、分页、交易/收据/区块补证据以及每次重试均受限。上限是第一分钟 12 次、前五分钟 60 次；实际数量会因响应耗时更低。闲置不积攒额度，错过的 probe 不补发。
 
@@ -176,7 +180,7 @@ GROUP BY status;
 
 ## 备份与后续验收
 
-恢复运行需要同一时点的七表数据、`state.gob`及对应配置／二进制版本；CSV报告可以重建，不能代替源数据。备份时暂停keeper unit，确认进程已退出，再保存该研究库七表及DDL、状态；完成后恢复unit，其他采集器无需停止。恢复只针对keeper研究库，沿用当日预算／来源阻断，不覆盖主行情库。正常恢复与导出不需要manifest/raw文件；完整分页进度与数据库成员摘要必须通过校验。
+恢复运行需要同一时点的七表数据、完整状态目录（`state.gob` 及其引用的候选缓存）及对应配置／二进制版本；CSV报告可以重建，不能代替源数据。备份时暂停keeper unit，确认进程已退出，再保存该研究库七表及DDL、状态；完成后恢复unit，其他采集器无需停止。恢复只针对keeper研究库，沿用当日预算／来源阻断，不覆盖主行情库。正常恢复与导出不需要manifest/raw文件；完整分页进度与数据库成员摘要必须通过校验。
 
 已有失败修复的Native快照、原状态和SHA清单在[验收目录](../research/2026-10-03-keeper-implementation/)，这不是自动备份服务。不要仅恢复数据库或仅恢复较旧state后宣称恢复完整；需核对原批次身份、冻结待办及已用预算。当前没有自动状态迁移、备份或队列排空命令。
 

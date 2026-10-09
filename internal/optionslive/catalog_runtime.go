@@ -102,6 +102,7 @@ type catalogSupervisor struct {
 	logger                                   *slog.Logger
 	hub                                      *bookHub
 	budget, levels, jobsBudget               *exchange.BufferBudget
+	minuteCache                              *catalogMinuteCache
 	mu                                       sync.Mutex // protects immediate invalidation routes, never held over database I/O
 	workers                                  []*catalogWorker
 	byID                                     map[uint32]*catalogWorker
@@ -111,6 +112,7 @@ type catalogSupervisor struct {
 	generation                               atomic.Uint64
 	incoming                                 chan deribit.StreamEvent
 	jobs                                     chan *catalogJob
+	scopeJobs                                chan *catalogJob
 	lifeJobs                                 chan *catalogJob
 	persisted                                chan catalogResult
 	commands                                 chan deribit.SessionCommand
@@ -122,6 +124,7 @@ type catalogSupervisor struct {
 	scopes                                   map[string]time.Time
 	inflight                                 map[string]*catalogJob
 	retries                                  []scheduledCatalogJob
+	lastHealth                               time.Time
 }
 
 func (s *catalogSupervisor) now() time.Time {
@@ -172,6 +175,9 @@ func runCatalogClient(parent context.Context, cfg Config, c *deribit.Client, sin
 	ctx, cancel := context.WithCancel(parent)
 	defer cancel()
 	s := &catalogSupervisor{ctx: ctx, cfg: cfg, c: c, sink: sink, logger: logger, budget: &exchange.BufferBudget{Limit: cfg.MaxIngressBytes}, levels: &exchange.BufferBudget{Limit: cfg.MaxTotalLevels}, jobsBudget: &exchange.BufferBudget{Limit: 32 << 20}, byID: map[uint32]*catalogWorker{}, pendingStates: map[string]pendingState{}, orphanStates: map[string]options.LifecycleObservation{}, scopeGenerations: map[string]uint64{}, uncertainScopes: map[string]bool{}, uncertainSymbols: map[string]bool{}, protocolScopes: map[string]bool{}, attempted: map[string]time.Time{}, entries: map[string]*catalogEntry{}, incoming: make(chan deribit.StreamEvent, 128), jobs: make(chan *catalogJob, 64), persisted: make(chan catalogResult, 128), commands: make(chan deribit.SessionCommand, 64), failed: make(chan uuid.UUID, 256), plans: make(chan catalogPlanResult, 1), session: uuid.New(), scopes: map[string]time.Time{}, inflight: map[string]*catalogJob{}}
+	// Six periodic scope refreshes must not wait behind thousands of per-symbol
+	// repairs. Both queues still share one REST worker and the same rate gate.
+	s.scopeJobs = make(chan *catalogJob, 16)
 	tail, err := sink.LatestOptionsPlan(ctx)
 	if err == nil {
 		s.tail = &tail
@@ -181,6 +187,7 @@ func runCatalogClient(parent context.Context, cfg Config, c *deribit.Client, sin
 	// Reading and queued book events share one task-wide byte allowance.
 	// A decoded frame transfers its reservation to the destination ingress.
 	c.FrameBudget = s.budget
+	s.minuteCache = newCatalogMinuteCache(2 * cfg.MaxIngressBytes)
 	s.hub = newBookHub(ctx, c, cfg, logger)
 	var wg sync.WaitGroup
 	s.lifeJobs = make(chan *catalogJob, s.evidenceQueueLimit())
@@ -355,6 +362,8 @@ func (s *catalogSupervisor) enqueue(j *catalogJob) bool {
 	queue := s.jobs
 	if j.life != nil && s.lifeJobs != nil {
 		queue = s.lifeJobs
+	} else if j.life == nil && j.kind == "catalog" && s.scopeJobs != nil {
+		queue = s.scopeJobs
 	}
 	if !j.barrierCaptured && j.life == nil {
 		j.barrierCaptured = true
@@ -390,20 +399,37 @@ func (s *catalogSupervisor) enqueue(j *catalogJob) bool {
 }
 func (s *catalogSupervisor) persistLoop(queue <-chan *catalogJob) {
 	for {
+		j, ok := nextCatalogJob(s.ctx, s.scopeJobs, queue)
+		if !ok {
+			return
+		}
+		ctx, cancel := context.WithTimeout(s.ctx, 30*time.Second)
+		err := s.persist(ctx, j)
+		cancel()
 		select {
+		case s.persisted <- catalogResult{j, err}:
 		case <-s.ctx.Done():
 			return
-		case j := <-queue:
-
-			ctx, cancel := context.WithTimeout(s.ctx, 30*time.Second)
-			err := s.persist(ctx, j)
-			cancel()
-			select {
-			case s.persisted <- catalogResult{j, err}:
-			case <-s.ctx.Done():
-				return
-			}
 		}
+	}
+}
+
+func nextCatalogJob(ctx context.Context, scopes, ordinary <-chan *catalogJob) (*catalogJob, bool) {
+	if ctx.Err() != nil {
+		return nil, false
+	}
+	select {
+	case j := <-scopes:
+		return j, true
+	default:
+	}
+	select {
+	case <-ctx.Done():
+		return nil, false
+	case j := <-scopes:
+		return j, true
+	case j := <-ordinary:
+		return j, true
 	}
 }
 func (s *catalogSupervisor) persist(ctx context.Context, j *catalogJob) error {
@@ -877,8 +903,9 @@ func (s *catalogSupervisor) published(r catalogResult) {
 		delete(s.uncertainScopes, j.scope.String())
 	}
 	s.mu.Unlock()
-	if j.kind == "catalog" && j.epoch == s.epoch {
-		s.scopes[j.scope.String()] = s.now()
+	if j.kind == "catalog" && j.epoch == s.epoch && scopeCurrent {
+		// A delayed durable retry cannot give old source evidence a new lifetime.
+		s.scopes[j.scope.String()] = o.ObservedAt
 	}
 	for _, item := range cat.Instruments {
 		name := item.Spec.Instrument.ExchangeSymbol
@@ -1059,6 +1086,22 @@ func (s *catalogSupervisor) tick(now time.Time) {
 	}
 	for _, scope := range catalogScopes() {
 		last := s.scopes[scope.String()]
+		// A later, partial refresh or creation may have updated the scope clock
+		// without renewing an individual member's referenced state/rule evidence.
+		for _, e := range s.entries {
+			if e.scope != scope || !e.item.Spec.Instrument.ExpiryTime.After(now) {
+				continue
+			}
+			observations := []time.Time{e.state.ObservedAt}
+			if e.state.StateKind == 2 {
+				observations = append(observations, e.state.StateObservedAt)
+			}
+			for _, observed := range observations {
+				if !observed.IsZero() && (last.IsZero() || observed.Before(last)) {
+					last = observed
+				}
+			}
+		}
 		s.mu.Lock()
 		uncertain := s.uncertainScopes[scope.String()]
 		s.mu.Unlock()
@@ -1068,6 +1111,15 @@ func (s *catalogSupervisor) tick(now time.Time) {
 	}
 	remaining := s.retries[:0]
 	for _, r := range s.retries {
+		if s.confirmationSatisfied(r.job, now) {
+			s.jobsBudget.Release(r.job.reserved)
+			r.job.reserved = 0
+			key := r.job.scope.String() + ":" + r.job.symbol
+			if s.inflight[key] == r.job {
+				delete(s.inflight, key)
+			}
+			continue
+		}
 		if r.job.life == nil && r.job.symbol != "" {
 			if e := s.entries[r.job.symbol]; e != nil && (isTerminal(e.marketState) || !e.item.Spec.Instrument.ExpiryTime.After(now)) {
 				s.jobsBudget.Release(r.job.reserved)
@@ -1116,6 +1168,17 @@ func (s *catalogSupervisor) tick(now time.Time) {
 		s.mu.Unlock()
 		needsConfirmation := pending.epoch == s.epoch && pending.sequence != e.appliedSequence || uncertain || !e.state.Known || e.state.Epoch != s.epoch || !e.admitted && !isTerminal(e.marketState)
 		key := e.scope.String() + ":" + name
+		// A fresh same-epoch bulk observation can repair ordinary uncertainty.
+		// Protocol errors or unresolved source-state barriers still require the
+		// independent per-symbol confirmation used by the existing strict path.
+		bulk := s.inflight[e.scope.String()]
+		s.mu.Lock()
+		protocolUnknown := s.protocolScopes[e.scope.String()]
+		s.mu.Unlock()
+		barrierPending := pending.epoch == s.epoch && pending.sequence != e.appliedSequence
+		if bulk != nil && bulk.epoch == s.epoch && e.admitted && !uncertain && !protocolUnknown && !barrierPending {
+			continue
+		}
 		if s.lifecycleReady && needsConfirmation && now.Sub(s.attempted[key]) >= time.Minute {
 			s.requestInstrument(e.scope, name)
 		}
@@ -1145,6 +1208,66 @@ func (s *catalogSupervisor) tick(now time.Time) {
 	if s.dirty && !s.planning && s.unresolved == nil {
 		s.buildPlan(now)
 	}
+	s.logHealth(now)
+}
+
+// Only cancel work that has not captured any source response. Prepared evidence
+// keeps its identity and still persists after an ambiguous database result.
+func (s *catalogSupervisor) confirmationSatisfied(j *catalogJob, now time.Time) bool {
+	if j.life != nil || j.symbol == "" || j.result != nil || j.observation != nil {
+		return false
+	}
+	e := s.entries[j.symbol]
+	if e == nil || !e.state.Known || e.state.Epoch != s.epoch || e.state.ObservedAt.IsZero() || now.Sub(e.state.ObservedAt) > 30*time.Minute {
+		return false
+	}
+	if e.state.StateKind == 2 && (e.state.StateObservedAt.IsZero() || now.Sub(e.state.StateObservedAt) > 30*time.Minute) {
+		return false
+	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	pending := s.pendingStates[j.symbol]
+	return !s.uncertainSymbols[j.symbol] && !s.protocolScopes[j.scope.String()] &&
+		(pending.epoch != s.epoch || pending.sequence == e.appliedSequence)
+}
+
+func (s *catalogSupervisor) logHealth(now time.Time) {
+	if s.logger == nil {
+		return
+	}
+	if !s.lastHealth.IsZero() && now.Sub(s.lastHealth) < time.Minute {
+		return
+	}
+	s.lastHealth = now
+	unknown, staleRules, staleStates := 0, 0, 0
+	for _, e := range s.entries {
+		if !e.item.Spec.Instrument.ExpiryTime.After(now) {
+			continue
+		}
+		if !e.state.Known || e.state.Epoch != s.epoch {
+			unknown++
+		}
+		if e.state.ObservedAt.IsZero() || now.Sub(e.state.ObservedAt) > options.CatalogEvidenceMaxAge {
+			staleRules++
+		}
+		if e.state.StateKind == 2 && (e.state.StateObservedAt.IsZero() || now.Sub(e.state.StateObservedAt) > options.CatalogEvidenceMaxAge) {
+			staleStates++
+		}
+	}
+	s.mu.Lock()
+	uncertainScopes, protocolScopes := len(s.uncertainScopes), len(s.protocolScopes)
+	s.mu.Unlock()
+	s.logger.Info("options catalog runtime health", "entries", len(s.entries), "unknown_entries", unknown,
+		"stale_rule_entries", staleRules, "stale_state_entries", staleStates, "uncertain_scopes", uncertainScopes, "protocol_scopes", protocolScopes,
+		"scope_jobs", len(s.scopeJobs), "symbol_jobs", len(s.jobs), "retry_jobs", len(s.retries),
+		"ingress_bytes", s.budget.Used(), "pending_minute_bytes", s.minuteCacheBytes())
+}
+
+func (s *catalogSupervisor) minuteCacheBytes() int64 {
+	if s.minuteCache == nil {
+		return 0
+	}
+	return s.minuteCache.budget.Used()
 }
 func (s *catalogSupervisor) workerFailed(id uuid.UUID) {
 	s.mu.Lock()
@@ -1412,7 +1535,7 @@ func (s *catalogSupervisor) planned(r catalogPlanResult) {
 		}
 		var err error
 		if w == nil {
-			w, err = startCatalogWorker(s.ctx, s.cfg, g.run, g.specs, s.sink, s.budget, s.levels, s.hub.recover, func() {
+			w, err = startCatalogWorker(s.ctx, s.cfg, g.run, g.specs, s.sink, s.budget, s.levels, s.minuteCache, s.hub.recover, func() {
 				select {
 				case s.hub.resetIndex <- struct{}{}:
 				default:
@@ -1554,7 +1677,7 @@ func (s *catalogSupervisor) prewarm(e *catalogEntry) {
 	if w == nil {
 		r := options.LiveRun{ID: uuid.New(), StartedAt: s.now().UTC().Truncate(time.Microsecond), RESTURL: s.cfg.RESTURL, WSURL: s.cfg.WSURL, Selection: options.CatalogSelection, Indexes: []string{spec.IndexID}, Members: []options.LiveMember{{InstrumentID: id, Symbol: spec.Instrument.ExchangeSymbol, DefinitionHash: spec.DefinitionHash(), IndexID: spec.IndexID}}}
 		var err error
-		w, err = startCatalogWorker(s.ctx, s.cfg, r, []options.ContractSpec{spec}, s.sink, s.budget, s.levels, s.hub.recover, func() {
+		w, err = startCatalogWorker(s.ctx, s.cfg, r, []options.ContractSpec{spec}, s.sink, s.budget, s.levels, s.minuteCache, s.hub.recover, func() {
 			select {
 			case s.hub.resetIndex <- struct{}{}:
 			default:

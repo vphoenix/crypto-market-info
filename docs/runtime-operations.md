@@ -1,6 +1,20 @@
 # 当前部署与运行说明
 
-最近核实：2026-10-07（Asia/Shanghai；含期权辅助存储精简）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
+最近核实：2026-10-09（Asia/Shanghai；含期权写入与恢复修复）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
+
+2026-10-09 13:18:30–13:18:41（北京时间），用户同意后已安装 `/home/ubuntu/.config/systemd/user/crypto-market-info-clickhouse.service.d/merge-io.conf` 并重启共享ClickHouse，生产回读 `max_merges_bandwidth_for_server=16777216`（合并读取16 MiB/s）、`max_mutations_bandwidth_for_server=8388608`（mutation读取8 MiB/s）。重启命令耗时10.95秒，HTTP探针观察到不可用约9.73秒；原unit、background_pool_size16、warning/console=false日志及六表fsync/512 MiB合并上限保持。Across、Reserve、keeper因断连各自动重启一次，13:21七个项目unit已全部active/running，四个低频专项库均有恢复后可见观测；主collector及LST未重启。13:19:59–13:24:58五分钟独立观测，虚拟盘平均8.56%、P95为17.74%、最高36.11%，主库单分区part最高13→12，无明显积压。13:19–13:24六分钟计划/提交全部完整，13:20保留一次真实Deribit异常EOF造成的642个无效秒，其余五分钟全秒有效；13:21的188,280个期权/期货成员秒及原五路CEX300秒实际回放通过。此前OKX新增332流来源目录错误仍存在。限速控制合并/mutation读取，短窗口未覆盖GB级大合并，也不承诺整机I/O或Windows物理盘不再满载。配置、部署、观测和回滚见[合并I/O排查](../research/2026-10-09-clickhouse-merge-io/report.md)。该drop-in覆盖ExecStart，以后修改基础unit启动命令时必须同步此覆盖配置；当前备份在 `var/deployments/clickhouse-merge-limits-20261009T051828Z/`。
+
+2026-10-09 12:53:42–12:53:43（北京时间）已对主库六张热表设置 `max_bytes_to_merge_at_max_space_in_pool=536870912`（512 MiB）：三个 `derivative_book_*` 表、`order_book_second_delta`、`options_catalog_live_minute_commit` 和 `options_catalog_quality_evidence_minute`。只改变后续后台合并的输入大小上限，原 DDL 其他部分及三项 fsync 完全相同；六个生产服务未重启，其他项目表设置保持。12:54期权3,138成员/99分片的188,280个成员秒，以及原五条行情流300秒实际回放通过。另发现新增OKX配对流最后分钟为11:56，调优前已有缺口，来源目录持续报 `invalid SPOT catalog identity`；不能将五条原始流通过表述为167对全覆盖恢复。全局16/8 MiB/s合并/mutation读取限速已在隔离同版本实例验证，但**未安装、未应用**；当前版本需重启且实例含其他项目库，需要协调连接中断。磁盘短窗口不能证明宿主机100%峰值已消除。应用清单、独立观测、查询验收、限制与回滚见[合并I/O排查](../research/2026-10-09-clickhouse-merge-io/report.md)。
+
+2026-10-09 03:53:19 已部署期权目录优先恢复与心跳发送调度修复，主collector SHA-256 `62cd86c7a21ea6c7ec8803bedb69746b8883c7ab60d37a61a89b1cca3d208f68`。完整目录刷新使用独立有界优先队列，真实观测时间及成员证据年龄决定刷新，不被逐币恢复队列或延迟落库掩盖；状态屏障和歧义证据重试保留。WS接收时间采用socket读完时刻，控制限速期间收到心跳后优先使用已预留时隙回复。现货/期货5档、期权10档、自动新增/到期退出保持。现场33分钟观察已跨过真实30分钟刷新，六类目录04:23:32–04:23:41全部成功；3,118成员的29个全覆盖分钟无缺成员/分片或元数据过期，28分钟全秒有效，04:02保留一次272–320毫秒的单秒采样迟滞。03:56及刷新后04:24两个分钟各187,080秒实际回放全部有效；已有OKX167对现货/永续回放也通过。观察期间无期权连接/写入告警，不能据此承诺未来永无网络或调度缺口。源快照、程序备份与真实失败记录见[本轮修复记录](../research/2026-10-09-options-stability-fix/report.md)。本次仅重启主collector，其他服务及unit内容保持。
+
+2026-10-09 03:15:38（北京时间）已部署 ClickHouse 日志降级，生产 user unit 显式设置 `logger.level=warning`、`logger.console=false`、`logger.size=100M`、`logger.count=3`；`system.server_settings`已回读确认。数据库重启约7秒，主collector/LST/Reserve未重启，Across与Keeper因数据库断开各自动重启一次并恢复写入。主collector新增OKX分支因写入积压自动重建，03:18/03:19只有原五条流，03:20/03:21全337条流60/60有效恢复；期权有队列溢出与真实过渡缺失，继续保留其不稳定记录，不宣称全量恢复。命令行logger覆盖以system.server_settings为实际口径。ClickHouse自己的warning/error文件保留，collector期权诊断继续保存。syslog原由控制台→journald（ForwardToSyslog=yes）→rsyslog重复存储大量Trace/Debug；降级后15秒仅增加2.6KiB。用户在Ubuntu终端完成管理员认证后，03:22:08已执行受限维护命令 [cleanup-clickhouse-syslog.py](../tools/maintenance/cleanup-clickhouse-syslog.py)：原位截断syslog并删除四个旧syslog文件，实测释放349.4GiB，03:25根分区可用约757GiB。专用root syslog轮转timer已enabled/active，每15分钟检查daily/maxsize100M/rotate3策略，下一检查03:30；其他系统日志规则保持。syslog复测15秒仅增加2061字节，当前约30KiB。完整执行记录见[日志维护](../research/2026-10-09-clickhouse-log-audit/execution.md)。原unit、有限故障样本和实际部署记录保留在 `var/deployments/clickhouse-logging-20261009/`。
+
+2026-10-09 00:50:34 增加期权连接的数字诊断版本，当前主 collector SHA-256 为 `f879ada4fca5cf2569db77993c29d676eddbd166a4d83d8461c4e027043406f6`。此前写入与采样修复通过全量回放，但仍周期发生ACK/心跳连接关闭；本版在连接错误中记录ACK方法、控制门限等待、帧排队、回调时延及读写计数，不记录原始响应。当前完整分钟回放通过（01:01共3094成员、185640合约秒全部有效）；此前周期连接故障未唯一归因，继续保留诊断，不能据短窗口承诺长期网络稳定。
+
+2026-10-09 00:33:58 已部署期权恢复修复版，该次主 collector SHA-256 为 `fd8626cdba0662e6cd7437ffc798ec415f8efca2cfc0a246f212a0eb2cb62dae`。暂时写库失败保留同批身份重试，40秒执行预算从取得写入槽位后开始；分钟缓存使用独立128MiB默认预算，压缩在后台限四路并发，采样线程只交接完成分钟。新建盘口连接错开、订阅每批最多64频道；期权10档及其他五档深度、目录自动发现和现有 unit 配置保持。原程序备份 `var/deployments/options-recovery-20261009/collector.before`，切换与逐秒验收见[修复记录](../research/2026-10-09-options-recovery-fix/report.md)。
+
+2026-10-08 22:17:50 已部署新版主 collector；22:27:30 在保留交易所冷却时间后，补充部署公开规则接口的逐端点、逐物理请求限速修复。该次部署二进制 SHA-256 为 `87bb9b1d0d16425afd5fa403c1e02a60dbc42bdd3fcdff98ce6ecb144a751ff2`。已安装 unit 启用 `MARKET_BOOK_DEPTH=5`、`OKX_PAIRED_ENABLED=true`、`OKX_PAIRED_MAX_PAIRS=256`、`OKX_PAIRED_REFRESH=30m`，其他来源配置保持原值。OKX 当前公开配对目录为 167 对、334 条盘口，含原有 BTC 两腿，实际新增 332 条；期权保持每侧10档，现货、永续及交割期货每侧5档。新增找币数据表已在正式库创建，完整覆盖、时间和验收边界见[部署记录](../research/2026-10-08-okx-five-level-deployment/report.md)。原二进制和 unit 位于 `var/deployments/okx-five-level-20261008/`。本次只更新公开采集服务，未启动交易程序。
 
 2026-10-07 02:14:10（Asia/Shanghai）已部署主collector紧凑期权辅助存储版本，现行SHA-256为 `ccec72f25771ad48fb275e2b80675f9d3a3f59f1073b8512a18953add0bd51fa`。五张辅助表迁移18,504,278条逻辑记录，全部原字段逐批精确核验；相同数据物理占用10.75 GB→4.49 GB，净减少6.26 GB。历史2,862合约/171,720合约秒迁移前后实际回放完全相同；新02:17分钟2,866合约/90分片/171,960有效合约秒实际回放及原摘要核验通过后，已删除五个旧展开副本。02:19分钟仍完整提交，五路CEX各60有效秒，服务active/running、NRestarts0，原文目录未重建。主采集器切换暂停约56秒，启动过渡按真实缺失/无效记录；不填造停机盘口。精确微秒、序号和档数仍可恢复，未删除唯一事实或降低深度、频率、覆盖；fsync设置已继承。测量不是每日增长，实际范围、测试、查询兼容及边界见[本轮清理记录](../research/2026-10-07-options-redundancy-prune/report.md)。
 
@@ -21,7 +35,7 @@
 | 全量永续验收 collector | 用户级 systemd unit `crypto-market-info-perp-soak.service`；独立二进制与数据库 | `crypto_market_info_perp_soak_20260928`；仅三家共有 USDT 永续盘口和资金费率，不重复采集现货与收益 |
 | 桌面状态指示器 | 图形会话用户级 systemd unit `crypto-market-info-status-indicator.service`；Python/Gtk AppIndicator | 每 30 秒只读检查生产 unit、五路盘口及最新收益写入；不访问交易所、不写数据库 |
 
-本项目不使用 Redis、PostgreSQL、消息队列或其他项目的服务。生产CEX永续保持BTC显式列表及现有收益配置；Deribit期权auto已部署R5持续全量发现。永续全量验收服务当前停用。具体构建版本用下文 `go version -m` 查询，不以当前仓库 HEAD 推断正在运行的二进制版本。
+本项目不使用 Redis、PostgreSQL、消息队列或其他项目的服务。基础 CEX 分支保持 BTC 显式列表及现有收益配置，新增 OKX 独立配对分支覆盖可公开借贷 USDT 现货/永续完整交集；Deribit期权auto已部署R5持续全量发现。永续全量验收服务当前停用。具体构建版本用下文 `go version -m` 查询，不以当前仓库 HEAD 推断正在运行的二进制版本。
 
 AVAX 第二阶段已于 2026-08-27 部署。collector unit 保持 `AVAX_YIELD_ENABLED=true`，新增 BENQI sAVAX、Ankr ankrAVAX、BENQI AVAX 借贷三条 Runner；启动时已对生产 `yield_observation` 幂等补齐两列，并成功写入三条首批同区块观测。
 
@@ -86,10 +100,12 @@ ClickHouse unit 以前台模式运行数据库并在启动阶段轮询 `/ping`�
 
 | 分支 | 当前启用范围 | 采集频率 |
 |---|---|---|
-| Binance、OKX 盘口 | 各自的 BTC/USDT 现货及 BTC/USDT 线性永续，共四个交易流 | 每秒采样，结束的分钟批量写入 |
-| 永续资金费率 | 上述两个永续合约 | 公共 WebSocket 估算；REST 确认实际结算值 |
+| Binance 盘口 | BTC/USDT 现货及线性永续，两条交易流，每侧5档 | 每秒采样，结束的分钟批量写入 |
+| OKX 盘口 | 可公开借贷 USDT 现货/永续配对，部署时167对、334条交易流，每侧5档 | 每秒采样，结束的分钟批量写入；目录每30分钟复核 |
+| 永续资金费率 | 已启用的 Binance、Bybit、OKX 永续合约 | 公共 WebSocket 估算及既有整点保存；REST 确认实际结算值 |
+| OKX 找币辅助数据 | 独立资金费预测、标记/指数、完整分钟成交量、公开费用及资本规则 | 各币独立轮询，来源时间、有效期限和发布证据入库；实时账户条件由交易项目复核 |
 | Bybit USDT 线性永续 | `BTCUSDT`，已部署启用 | 每秒盘口采样；公共 ticker 估算并由 REST 确认实际资金费率 |
-| Deribit 期权 | BTC/ETH币本位和USDC线性四族；全部未到期期权及交割期货，四个指数 | 每秒前10档与指数；生命周期推送，目录每30分钟及重连后复核 |
+| Deribit 期权 | BTC/ETH币本位和USDC线性四族；全部未到期期权及交割期货，四个指数 | 期权每秒前10档、交割期货前5档及指数；生命周期推送，目录每30分钟及重连后复核 |
 | Ethereum DEX | 主网4个策略池、2个成本参考池及Sky相关状态；每块固定58条状态报价 | 每2秒检查新区块；按区块hash采集并跟踪最终性 |
 | JustLend | 四条固定 TRX 路线 | 每小时 |
 | TRON 原生质押 | 前 127 名 SR | 每 6 小时 |
@@ -327,7 +343,11 @@ Watch主循环对明确的RPC传输/读取超时、截断及HTTP429/5xx保留游
 
 ## Across 独立研究采集器（2026-10-03 修复）
 
+2026-10-09 排查确认 Base 公共 RPC 的 `-32011` 文本为 `request limit reached`，单块日志同样被拒绝；充分冷却90秒后仍拒绝。已修正限流分类和跨成功请求的退避等级，常驻发现会跳过冷却来源且每链网络工作最多60秒，执行中遇到新增冷却立即让行；拒绝保留为 error/partial，不推进未成功的区间。独立核验链身份、实现代码与日志锚点后，实时 unit 显式设置 `ACROSS_BASE_RPC_URL=https://base-rpc.publicnode.com`；Arbitrum 保留原来源。maintenance 从最新保留孔洞的尾部逐片向前补，旧归档权限限制不会挡住较新孔洞；失败仍保留。原 Base 端点的 quota、数据库和旧缺口标记保留，历史服务继续 disabled。只更新 Across 二进制与该实时 unit，不设置自动来源切换。部署及实际两链落库结果见[本轮记录](../research/2026-10-09-across-repair/report.md)。
+
 当前运行实时 `crypto-market-info-across.service`，磁盘binary为 `var/across/bin/across-data`，工作目录仓库根，使用实时库 `crypto_market_info_across` 和证据 `var/across/evidence`。只有一个writer进程，report只读，不要手工启动同库第二个writer。user linger已开启。固定历史unit模板仍保留，但已disabled，其独立库和归档已按用户要求删除。
+
+2026-10-09 同轮收据接口验收发现 PublicNode 要求个人归档授权，包含约一分钟前的交易；不能仅凭日志恢复交付全部费用。实时unit进一步显式设置 `ACROSS_BASE_RECEIPT_RPC_URL=https://mainnet.base.org`，只将Base收据及相应费用/区块核验留在已实测可用的官方端点。两个来源分别保留host gate和真实source_id，默认CLI及没有设置覆盖的其他链保持原样；无自动来源回退。
 
 2026-10-03用户明确收窄采集范围：首次启动前的数据不再回补。已停止并禁用 `crypto-market-info-across-history.service`（inactive/dead、MainPID=0、disabled）。核对所有history事实均早于实时首次已保存区块（Base 52077937、Arbitrum 510991304），没有可补实时缺口的数据；已删除独立库 `crypto_market_info_across_history`、`var/across/history-evidence`（75,702个归档文件）和导出的历史报告数据，保留修复说明及少量验证统计。实时库、实时证据、RPC冷却状态均保留。实时unit继续active/running、enabled：首次无保存游标时从当时链头开始，以后从已保存位置续采；只修补其已有采集范围内的缺块、partial和缺收据，并继续最终性核验。重启实时服务不重置首次采集起点。
 
@@ -397,7 +417,9 @@ var/lst/lst-data report --out var/lst-reports/latest
 
 ## JustLend keeper 独立研究采集（2026-10-03）
 
-当前版本（2026-10-04 02:09:06北京时间启动）已去除请求/响应/summary文件归档：正常采集内存严格解析后直接落库，后台补查及export/report只读DB。七表包括新增jl_keeper_index_page，3244旧成功页进度已本地迁移，旧六表行数/内容指纹不变；state预算/游标保留。实际binary SHA256为480b8d916a21bf2bf013c55a2b954444fbf2d85ed2cac1865dba0c58295a7b47，原unit/路由/限速不改，自启动保留。旧evidence及其硬链接备份已清理，正常目录不存在时采集/后台/30天导出均验证通过。详细范围及持续运行记录见[本轮验证](../research/2026-10-04-keeper-no-raw/validation.md)和[独立审核](../discuss/0019-justlend-keeper-no-raw-review.md)。
+2026-10-08 22:58:37（北京时间）已部署本地状态写入优化，binary SHA256 `1ea617be1680aeda37c4b5fab5f51893f8df85d571746b23e36d12608d0c6a17`。v2 将常写进度和较大候选缓存分开压缩保存，跳过未变化状态；原请求预算、冷却、采集频率和冻结重试的同步持久化保持不变。旧单文件状态原位迁移，正常目录只保留主文件及其引用缓存，原响应归档仍不生成。备份须停服保存完整状态目录；旧 binary 不能直接读取 v2，回滚需先转换当前状态，不能用旧备份重置预算。修改和实测见[本轮记录](../research/2026-10-08-keeper-state-io/report.md)。
+
+历史版本（2026-10-04 02:09:06北京时间启动）已去除请求/响应/summary文件归档：正常采集内存严格解析后直接落库，后台补查及export/report只读DB。七表包括新增jl_keeper_index_page，3244旧成功页进度已本地迁移，旧六表行数/内容指纹不变；state预算/游标保留。实际binary SHA256为480b8d916a21bf2bf013c55a2b954444fbf2d85ed2cac1865dba0c58295a7b47，原unit/路由/限速不改，自启动保留。旧evidence及其硬链接备份已清理，正常目录不存在时采集/后台/30天导出均验证通过。详细范围及持续运行记录见[本轮验证](../research/2026-10-04-keeper-no-raw/validation.md)和[独立审核](../discuss/0019-justlend-keeper-no-raw-review.md)。
 
 按用户要求已启用常驻用户服务 `crypto-market-info-justlend-keeper.service`，2026-10-03 03:02:31 Asia/Shanghai 首次启动；本次边界与报告修复后13:43:36恢复，修复验证版本14:13:14启动，14:33:36曾因两次transport_error停止；该停止判定过于敏感，用户明确要求恢复后，14:55:43（北京时间）已启动并恢复自启动，当前active/running、UnitFileState=enabled。独立库 `crypto_market_info_justlend_keeper` 初版五表已建（当前七表），不接入主盘口 collector。该次二进制 SHA-256 为 `c264480c1eb67456fe242ce1e2368c26f0dd21f9269e3e660bc473eaa9d0b182`（最终报告优化版已安装并实际运行）；同目录其他模块同时维修，使用已提交依赖加keeper补丁的独立快照构建，只安装keeper程序。先前四条无法跨进程核验的报价提交保留原撤回状态，本次不改旧事实／摘要。实际服务、游标和验证证据见[修复记录](../research/2026-10-03-keeper-repair/validation.md)。
 
@@ -469,8 +491,10 @@ PublicNode `tron-rpc.publicnode.com` 承担只读节点数据，事件分页仍�
 
 本次 CEX 04:29–10:44 CST 共376个分钟缺失，无法精确事后补回；不要填入重启后的盘口冒充历史。共享 ClickHouse 的另一个项目表 `crypto_grid_trading.quality_events_raw` 仍有旧分片 `UNKNOWN_CODEC`，本轮只定位并记录，没有删改该项目数据。Across 的部分 Arbitrum 历史状态及旧 LST 缺口仍按原限制保留。操作、实际查询、补采程序和完整 race 回归见[重启核查与修复](../research/2026-10-05-reboot-recovery/report.md)。
 
-### 2026-10-07：5档与 OKX 配对版本待部署
+### 2026-10-07：5档与 OKX 配对版本交付时状态
 
 用户选择“期权10档、现货/永续/交割期货5档，补齐 OKX 可借贷 USDT 现货/永续配对”。代码与仓库中的 systemd 模板已加入 `MARKET_BOOK_DEPTH=5`、`OKX_PAIRED_ENABLED=true`、`OKX_PAIRED_MAX_PAIRS=256`、`OKX_PAIRED_REFRESH=30m`。本轮为编程和审核，**尚未覆盖安装二进制、安装 unit 或重启生产采集器**；线上实际深度仍以数据库 `stored_depth` 与运行二进制为准。新版本细节与验证见 [实现说明](okx-paired-five-level.md)。
+
+该段记录 10 月 7 日交付时状态；10 月 8 日已实际部署，当前版本与验收见本文顶部及部署记录。
 
 部署时先备份实际二进制和 unit，停止原采集器后安装已验证版本，保持现有其他来源环境配置。新现货/期货从新分钟写5档；期权继续10档。核验新配对目录、相应两腿有效秒、资金费率及来源政策时间。回退时设 `MARKET_BOOK_DEPTH=10`、`OKX_PAIRED_ENABLED=false`，用支持5/10/50回放的新查询程序读取混合历史，不删除或重写已有历史。

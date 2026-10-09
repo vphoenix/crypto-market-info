@@ -36,7 +36,7 @@ func (c *Client) InitOKXPairSchema(ctx context.Context) error {
 			return err
 		}
 	}
-	return nil
+	return c.InitDiscoverySchema(ctx)
 }
 func (c *Client) WriteOKXLoanPolicy(ctx context.Context, p model.OKXLoanPolicy) error {
 	if err := p.Validate(); err != nil {
@@ -67,10 +67,27 @@ func (c *Client) WriteOKXLoanPolicy(ctx context.Context, p model.OKXLoanPolicy) 
 	if !model.ValidDigest(hash) {
 		return fmt.Errorf("cannot hash loan observation")
 	}
+	publication := publicationRecord{Kind: "okx_public_loan_policy", ID: p.ID.String(), Hash: hash, Codec: "go-reference-json-v1", SourceMS: p.RequestedAt.UnixMilli(), ObservedMS: p.ObservedAt.UnixMilli(), KnownMS: model.CeilMilliseconds(time.Now().UTC())}
+	if c.discoveryEnabled.Load() {
+		known, err := c.beginDiscoveryIntent(ctx, publication)
+		if err != nil {
+			return err
+		}
+		publication.KnownMS = known
+	}
 	values := []any{p.ID, p.RequestedAt, p.ObservedAt, p.SourceURL, p.PayloadHash, ccys, rates, limits, override, orates, lf, ll, lc, st, quotas, discounts, coeffs, hash}
-	return c.retryWrite(ctx, func(ctx context.Context) error {
-		return c.insertDerivativeRows(ctx, "okx_public_loan_policy", loanColumns, [][]any{values})
-	})
+	if err := c.retryWrite(ctx, func(ctx context.Context) error {
+		if err := c.insertDerivativeRows(ctx, "okx_public_loan_policy", loanColumns, [][]any{values}); err != nil {
+			return err
+		}
+		return c.derivativeInserted("okx_public_loan_policy")
+	}); err != nil {
+		return err
+	}
+	if !c.discoveryEnabled.Load() {
+		return nil
+	}
+	return c.discoveryPublication(ctx, publication)
 }
 func (c *Client) WriteOKXPairCatalog(ctx context.Context, o model.OKXPairObservation) error {
 	if err := o.Validate(); err != nil {
@@ -104,10 +121,27 @@ func (c *Client) WriteOKXPairCatalog(ctx context.Context, o model.OKXPairObserva
 	if !model.ValidDigest(hash) {
 		return fmt.Errorf("cannot hash pair observation")
 	}
+	publication := publicationRecord{Kind: "okx_paired_catalog", ID: o.ID.String(), Hash: hash, Codec: "go-reference-json-v1", SourceMS: o.RequestedAt[0].UnixMilli(), ObservedMS: o.ObservedAt.UnixMilli(), KnownMS: model.CeilMilliseconds(time.Now().UTC()), EffectiveMS: o.EffectiveMinute.UnixMilli()}
+	if c.discoveryEnabled.Load() {
+		known, err := c.beginDiscoveryIntent(ctx, publication)
+		if err != nil {
+			return err
+		}
+		publication.KnownMS = known
+	}
 	values := []any{o.ID, o.ObservedAt, o.EffectiveMinute, o.LoanPolicyID, o.SourceURLs, o.SourceHashes, o.RequestedAt, o.ReceivedAt, o.RawCounts, bases, spots, perps, sm, pm, hash}
-	return c.retryWrite(ctx, func(ctx context.Context) error {
-		return c.insertDerivativeRows(ctx, "okx_paired_catalog", pairColumns, [][]any{values})
-	})
+	if err := c.retryWrite(ctx, func(ctx context.Context) error {
+		if err := c.insertDerivativeRows(ctx, "okx_paired_catalog", pairColumns, [][]any{values}); err != nil {
+			return err
+		}
+		return c.derivativeInserted("okx_paired_catalog")
+	}); err != nil {
+		return err
+	}
+	if !c.discoveryEnabled.Load() {
+		return nil
+	}
+	return c.discoveryPublication(ctx, publication)
 }
 func (c *Client) LatestOKXLoanPolicy(ctx context.Context, at time.Time) (model.OKXLoanPolicy, error) {
 	return c.readOKXLoanPolicy(ctx, "observed_at<=? ORDER BY observed_at DESC,observation_id DESC LIMIT 1", at.UTC())

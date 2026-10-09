@@ -135,6 +135,17 @@ func (c ChainConfig) Endpoint() string {
 	return c.DefaultRPC
 }
 
+// ReceiptEndpoint is an explicit source setting, never an error-triggered
+// fallback. Absent an override, every method continues using Endpoint.
+func (c ChainConfig) ReceiptEndpoint() string {
+	if strings.HasSuffix(c.RPCEnv, "_RPC_URL") {
+		if s := os.Getenv(strings.TrimSuffix(c.RPCEnv, "_RPC_URL") + "_RECEIPT_RPC_URL"); s != "" {
+			return s
+		}
+	}
+	return c.Endpoint()
+}
+
 // Verify the allowlist against the archived explorer response, including its
 // SHA-256, bytecode, and the exact event layouts used by this decoder.
 func (m Manifest) verifyEvidence(root string) error {

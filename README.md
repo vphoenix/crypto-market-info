@@ -6,6 +6,7 @@
 
 - Binance、OKX 现货及永续合约 L2 盘口，以及 Bybit USDT 线性永续 L2 盘口，新采样默认每侧5档；
 - OKX 可公开借贷的 USDT 现货/永续配对动态采集（开关默认关闭），完整范围及新挂牌衔接见[5档与配对实现](docs/okx-paired-five-level.md)；
+- OKX 下一期独立资金费预测、标记与币种指数、完整分钟成交量、公开费用与借币/抵押档位、耐久发布元数据（已完成隔离真实 SQL 验证，常驻部署待替换；[找币数据合同](docs/discovery-trading-contract.md)）；
 - Ethereum Uniswap v3＋Sky 协议兑换状态、56档闭环报价及日志/回执（默认关闭；[采集与判断说明](docs/dex-arbitrage-implementation.md)）；
 - Deribit BTC/ETH 币本位与 USDC 期权每秒10档、同到期交割期货每秒5档，以及元数据与指数（默认关闭；[使用说明](docs/arbitrage/strategies/arb-0009-options-live.md)）；
 - Binance、OKX 和 Bybit 永续资金费率；

@@ -68,8 +68,8 @@ func TestCatalogTickRecoversUnknownAdmittedMember(t *testing.T) {
 		s.scopes[scope.String()] = now
 	}
 	s.tick(now)
-	if len(s.jobs) != 1 || (<-s.jobs).symbol != e.item.Spec.Instrument.ExchangeSymbol {
-		t.Fatal("admitted unknown member had no independent recovery request")
+	if len(s.jobs) != 1 || (<-s.jobs).kind != "catalog" || s.inflight[e.scope.String()] == nil {
+		t.Fatal("admitted member with expired evidence had no bulk recovery request")
 	}
 }
 
@@ -145,7 +145,7 @@ func TestCatalogDroppedUnknownOpenSchedulesIndependentConfirmation(t *testing.T)
 		s.scopes[scope.String()] = now
 	}
 	s.tick(now)
-	if len(s.jobs) != 1 || (<-s.jobs).symbol != name {
+	if !queuedSymbol(s, name) {
 		t.Fatal("unknown new open state lost its recovery intent until the next bulk directory")
 	}
 }
@@ -373,11 +373,8 @@ func TestCatalogTickReconfirmsLostLatestState(t *testing.T) {
 		s.scopes[scope.String()] = now
 	}
 	s.tick(now)
-	if len(s.jobs) != 1 {
-		t.Fatal("lost durable event left pending state permanently unconfirmed")
-	}
-	j := <-s.jobs
-	if j.symbol != e.item.Spec.Instrument.ExchangeSymbol || j.kind != "instrument" || j.barrierSequence != 9 {
+	j := s.inflight[e.scope.String()+":"+e.item.Spec.Instrument.ExchangeSymbol]
+	if j == nil || j.symbol != e.item.Spec.Instrument.ExchangeSymbol || j.kind != "instrument" || j.barrierSequence != 9 {
 		t.Fatal("repair did not capture latest symbol barrier")
 	}
 }
@@ -393,9 +390,19 @@ func TestCatalogTickConfirmsInactiveCreationWithoutOpenPush(t *testing.T) {
 		s.scopes[scope.String()] = now
 	}
 	s.tick(now)
-	if len(s.jobs) != 1 || (<-s.jobs).symbol != e.item.Spec.Instrument.ExchangeSymbol {
+	if !queuedSymbol(s, e.item.Spec.Instrument.ExchangeSymbol) {
 		t.Fatal("inactive creation waited forever for an open notification")
 	}
+}
+
+// Scope refreshes may coexist with mandatory independent symbol confirmation.
+func queuedSymbol(s *catalogSupervisor, symbol string) bool {
+	for len(s.jobs) != 0 {
+		if (<-s.jobs).symbol == symbol {
+			return true
+		}
+	}
+	return false
 }
 
 func TestBookRecoveryCooldownRetainsRecoveryIntent(t *testing.T) {

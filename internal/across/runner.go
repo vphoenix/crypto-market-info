@@ -423,7 +423,16 @@ func (c *Collector) worker() *Collector {
 		rr.MaxLogs = r.MaxLogs
 		rr.RPCMinInterval = r.RPCMinInterval
 		rr.BatchLimit = r.BatchLimit
+		rr.SourceQuota = r.SourceQuota
 		out.Readers[chain] = rr
+	}
+	if len(c.ReceiptReaders) != 0 {
+		out.ReceiptReaders = map[uint64]*Reader{}
+		for chain, r := range c.ReceiptReaders {
+			rr := NewReader(r.RPC.Clone(), r.Chain)
+			rr.MaxLogs, rr.RPCMinInterval, rr.BatchLimit, rr.SourceQuota = r.MaxLogs, r.RPCMinInterval, r.BatchLimit, r.SourceQuota
+			out.ReceiptReaders[chain] = rr
+		}
 	}
 	return out
 }
@@ -589,15 +598,43 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 		}
 		for _, chain := range c.Manifest.Chains {
 			r := c.Readers[chain.ChainID]
-			h, err := r.Header(ctx, "latest")
+			if r.SourceQuota != nil {
+				delay, err := r.SourceQuota.Cooldown(ctx)
+				if err != nil {
+					return err
+				}
+				if delay > 0 {
+					if progress != nil {
+						progress(fmt.Sprintf("chain=%d source_cooldown_ms=%d", chain.ChainID, delay.Milliseconds()))
+					}
+					continue
+				}
+			}
+			// Limit this source's whole discovery attempt, including quota
+			// waits. Persist failures using ctx so an expired network budget
+			// cannot discard evidence or hold the peer chain indefinitely.
+			var rpcCtx context.Context
+			var rpcCancel context.CancelFunc
+			if once {
+				rpcCtx, rpcCancel = context.WithCancel(ctx)
+			} else {
+				// Busy healthy ranges may need more than twenty seconds. A
+				// cooldown starting after the precheck still yields immediately
+				// instead of consuming this longer network budget.
+				rpcCtx = context.WithValue(ctx, discoveryQuotaKey{}, true)
+				rpcCtx, rpcCancel = context.WithTimeout(rpcCtx, time.Minute)
+			}
+			h, err := r.Header(rpcCtx, "latest")
 			if err != nil {
+				rpcCancel()
 				if progress != nil {
 					progress(fmt.Sprintf("chain=%d head_unavailable: %v", chain.ChainID, err))
 				}
 				continue
 			}
 			if !verified[chain.ChainID] {
-				if err = r.PreflightIdentity(ctx, h); err != nil {
+				if err = r.PreflightIdentity(rpcCtx, h); err != nil {
+					rpcCancel()
 					if progress != nil {
 						progress(fmt.Sprintf("chain=%d preflight: %v", chain.ChainID, err))
 					}
@@ -607,10 +644,12 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 			}
 			n, end, scan := watchLogWindow(w.Cursors[chain.ChainID], h.Number, uint64(c.Manifest.MaxLogBlocks), once)
 			if !scan {
+				rpcCancel()
 				anySuccess = true
 				continue
 			}
-			batches, err := c.collectSplit(ctx, chain.ChainID, n, end, "live", "head")
+			batches, err := c.collectSplit(ctx, chain.ChainID, n, end, "live", "head", rpcCtx)
+			rpcCancel()
 			if err != nil && fatalCollectorError(err) {
 				return err
 			}
@@ -787,9 +826,11 @@ func firstUncovered(from, to uint64, rr []blockInterval) uint64 {
 }
 
 func (c *Collector) networkFaultError() error {
-	for _, r := range c.Readers {
-		if e := r.RPC.ConfirmedNetworkFault(); e != nil {
-			return e
+	for _, readers := range []map[uint64]*Reader{c.Readers, c.ReceiptReaders} {
+		for _, r := range readers {
+			if e := r.RPC.ConfirmedNetworkFault(); e != nil {
+				return e
+			}
 		}
 	}
 	return nil

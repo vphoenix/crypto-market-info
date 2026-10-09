@@ -15,6 +15,7 @@ import (
 )
 
 type probePriorityKey struct{}
+type discoveryQuotaKey struct{}
 
 func probeContext(ctx context.Context) context.Context {
 	return context.WithValue(ctx, probePriorityKey{}, true)
@@ -82,9 +83,13 @@ func (q *SourceQuota) state(ctx context.Context, update func(*[4]int64) (time.Du
 	for i := range s {
 		s[i] = int64(binary.LittleEndian.Uint64(raw[i*8:]))
 	}
+	original := s
 	wait, err := update(&s)
 	if err != nil {
 		return 0, err
+	}
+	if n == len(raw) && s == original {
+		return wait, nil
 	}
 	for i := range s {
 		binary.LittleEndian.PutUint64(raw[i*8:], uint64(s[i]))
@@ -94,14 +99,28 @@ func (q *SourceQuota) state(ctx context.Context, update func(*[4]int64) (time.Du
 	}
 	return wait, nil
 }
+
+// Cooldown reads the shared provider backoff without consuming admission or
+// changing its timestamps. Discovery can yield to another chain immediately.
+func (q *SourceQuota) Cooldown(ctx context.Context) (time.Duration, error) {
+	return q.state(ctx, func(s *[4]int64) (time.Duration, error) {
+		return max(time.Duration(s[1]-time.Now().UnixNano()), time.Duration(0)), nil
+	})
+}
 func (q *SourceQuota) Before(ctx context.Context, members int) error {
 	if members < 1 || members > q.Burst {
 		return fmt.Errorf("source_quota_batch_exceeds_burst: %d", members)
 	}
 	urgent, _ := ctx.Value(probePriorityKey{}).(bool)
+	discovery, _ := ctx.Value(discoveryQuotaKey{}).(bool)
 	for {
+		var providerCooldown int64
 		wait, err := q.state(ctx, func(s *[4]int64) (time.Duration, error) {
 			now := time.Now().UnixNano()
+			providerCooldown = s[1]
+			if discovery && providerCooldown > now {
+				return 0, errors.New("rpc_source_cooldown")
+			}
 			// All batch sizes compete for the same next admission. Borrowing
 			// credits for small requests lets a stream of probes permanently
 			// starve the three-member header batches needed by history.
@@ -150,6 +169,9 @@ func (q *SourceQuota) Before(ctx context.Context, members int) error {
 		if wait <= 0 {
 			return nil
 		}
+		if deadline, ok := ctx.Deadline(); ok && !time.Unix(0, providerCooldown).Before(deadline) {
+			return context.DeadlineExceeded
+		}
 		if err = sleepContext(ctx, min(wait, 100*time.Millisecond)); err != nil {
 			return err
 		}
@@ -164,7 +186,12 @@ func (q *SourceQuota) After(_ int, err error) {
 	defer cancel()
 	_, _ = q.state(ctx, func(s *[4]int64) (time.Duration, error) {
 		if err == nil {
-			s[3] = 0
+			// A cheap header succeeding just after backoff does not prove that
+			// an expensive log query has recovered. Preserve escalation until
+			// the source has had a full minute without another rate limit.
+			if time.Now().UnixNano() >= s[1]+int64(time.Minute) {
+				s[3] = 0
+			}
 			return 0, nil
 		}
 		s[3] = min(s[3]+1, int64(4))

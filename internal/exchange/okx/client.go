@@ -20,6 +20,9 @@ type Client struct {
 	WSConnectGate exchange.WaitGate
 	wsGateMu      sync.Mutex
 	loanGate      exchange.WaitGate
+	publicGate    exchange.WaitGate
+	discountGate  exchange.WaitGate
+	riskTierGate  exchange.WaitGate
 }
 
 // WebsocketConnectGate is shared by all book and funding connections of this client.
@@ -33,7 +36,7 @@ func (c *Client) WebsocketConnectGate() exchange.WaitGate {
 }
 
 func NewClient() *Client {
-	return &Client{HTTP: &http.Client{Timeout: 15 * time.Second}, BaseURL: "https://www.okx.com", Retry: exchange.DefaultHTTPRetryConfig()}
+	return &Client{HTTP: &http.Client{Timeout: 15 * time.Second}, BaseURL: "https://www.okx.com", Retry: exchange.DefaultHTTPRetryConfig(), publicGate: exchange.NewRequestGate(100 * time.Millisecond)}
 }
 
 func (c *Client) Instruments(ctx context.Context, marketType model.MarketType) ([]model.Instrument, error) {

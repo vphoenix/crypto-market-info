@@ -37,7 +37,7 @@ func rawRecoveryCapture(chain, from, to uint64) Capture {
 	return Capture{CaptureId: ID([3]uint64{chain, from, to}), ChainId: chain, CaptureKind: "logs", Canonical: true, Committed: true, Status: "complete", CompletedTasks: 1, FromBlock: Ptr(from), ToBlock: Ptr(to), Revision: 1}
 }
 
-func TestWatchRawGapRecoveryKeepsOriginalStartAndResumes(t *testing.T) {
+func TestWatchRawGapRecoveryPrioritizesRecentWithinOriginalBoundsAndResumes(t *testing.T) {
 	m := runnerManifest(t)
 	chain, _ := m.Chain(8453)
 	requested := [][2]uint64{}
@@ -67,7 +67,7 @@ func TestWatchRawGapRecoveryKeepsOriginalStartAndResumes(t *testing.T) {
 	if err := c.RepairRawGapStep(context.Background()); err != nil {
 		t.Fatal(err)
 	}
-	if len(requested) != 2 || requested[0] != [2]uint64{110, 173} || requested[1] != [2]uint64{174, 237} {
+	if len(requested) != 2 || requested[0] != [2]uint64{936, 999} || requested[1] != [2]uint64{872, 935} {
 		t.Fatalf("unexpected recovery ranges: %v", requested)
 	}
 	for _, cap := range store.caps[2:] {
@@ -136,7 +136,57 @@ func TestWatchRawGapFailedSourceRetainsHoleAndAllowsPeer(t *testing.T) {
 	if next := firstUncovered(100, 1000, historyIntervals(c.captures, 8453, false)); next != 110 {
 		t.Fatalf("failed query erased the gap: next=%d", next)
 	}
-	if next := firstUncovered(100, 1000, historyIntervals(c.captures, 42161, false)); next != 174 {
-		t.Fatalf("peer did not progress: next=%d", next)
+	if window, ok := newestRawGap(historyIntervals(c.captures, 42161, false)); !ok || window.From != 110 || window.To != 935 {
+		t.Fatalf("peer did not fill the recent tail: window=%+v", window)
+	}
+}
+
+func TestNewestRawGapUsesUnionAndDoesNotInventCoverage(t *testing.T) {
+	for _, tc := range []struct {
+		covered  []blockInterval
+		from, to uint64
+		gap      bool
+	}{
+		{[]blockInterval{{100, 199}, {110, 120}, {200, 210}}, 0, 0, false},
+		{[]blockInterval{{100, 199}, {110, 120}, {210, 220}}, 200, 209, true},
+		{[]blockInterval{{100, 109}, {200, 209}, {300, 309}}, 210, 299, true},
+		{[]blockInterval{{100, 109}}, 0, 0, false},
+	} {
+		window, ok := newestRawGap(tc.covered)
+		if ok != tc.gap || window.From != tc.from || window.To != tc.to {
+			t.Fatalf("%+v -> %+v found=%v", tc.covered, window, ok)
+		}
+	}
+}
+
+func TestWatchRawGapNewHolePrecedesUnrecoverableOldHole(t *testing.T) {
+	m := runnerManifest(t)
+	chain, _ := m.Chain(8453)
+	var requested [2]uint64
+	r := protocolChainReader(t, chain, func(method string, p json.RawMessage) (any, bool) {
+		if method != "eth_getLogs" {
+			return nil, false
+		}
+		var args []map[string]string
+		if err := json.Unmarshal(p, &args); err != nil {
+			t.Fatal(err)
+		}
+		requested[0], _ = q64(args[0]["fromBlock"])
+		requested[1], _ = q64(args[0]["toBlock"])
+		if requested[0] < 210 {
+			t.Fatal("old blocked hole delayed new recovery", requested)
+		}
+		return []any{}, true
+	})
+	store := &coreStore{caps: []Capture{rawRecoveryCapture(8453, 100, 109), rawRecoveryCapture(8453, 200, 209), rawRecoveryCapture(8453, 300, 309)}}
+	c := Collector{Manifest: m, Store: store, Readers: map[uint64]*Reader{8453: r}, Archive: r.RPC.Archive}
+	if err := c.RepairRawGapStep(context.Background()); err != nil {
+		t.Fatal(err)
+	}
+	if requested != [2]uint64{236, 299} {
+		t.Fatal(requested)
+	}
+	if next := firstUncovered(100, 309, historyIntervals(c.captures, 8453, false)); next != 110 {
+		t.Fatal("old hole falsely marked covered", next)
 	}
 }
