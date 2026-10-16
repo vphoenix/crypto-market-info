@@ -11,6 +11,7 @@ import argparse
 import dataclasses
 import datetime as dt
 import json
+import os
 import pathlib
 import shlex
 import subprocess
@@ -85,11 +86,13 @@ class HealthSnapshot:
     yield_age_seconds: int | None
     checked_at: dt.datetime
     errors: tuple[str, ...]
+    backend: str = "clickhouse"
+    history_complete: bool | None = None
 
     def text(self) -> str:
         lines = [
             f"状态: {self.summary}",
-            f"ClickHouse: {'正常' if self.clickhouse_ok else '异常'}",
+            f"{'MySQL' if self.backend == 'mysql' else 'ClickHouse'}: {'正常' if self.clickhouse_ok else '异常'}",
             f"生产 collector: {'运行中' if self.collector_active else '未运行'}",
             f"永续验收: {'运行中' if self.soak_active else '未运行'}",
         ]
@@ -100,6 +103,8 @@ class HealthSnapshot:
             )
         if self.yield_age_seconds is not None:
             lines.append(f"最近收益写入: {format_age(self.yield_age_seconds)}前")
+        if self.history_complete is not None:
+            lines.append("历史核验: " + ("完成" if self.history_complete else "尚未完成"))
         lines.extend(f"错误: {error}" for error in self.errors)
         lines.append(f"检查时间: {self.checked_at.astimezone():%Y-%m-%d %H:%M:%S}")
         return "\n".join(lines)
@@ -178,7 +183,7 @@ def classify(
     if not collector_active:
         return "down", "生产 collector 未运行"
     if not clickhouse_ok:
-        return "down", "ClickHouse 或盘口查询异常"
+        return "down", "数据库或盘口查询异常"
     if len(streams) != EXPECTED_STREAM_COUNT:
         return "down", f"仅发现 {len(streams)}/{EXPECTED_STREAM_COUNT} 条生产行情流"
     if any(stream.age_seconds < 0 or stream.age_seconds > 240 for stream in streams):
@@ -192,7 +197,7 @@ def classify(
     return "healthy", "生产采集正常"
 
 
-def probe(base_url: str, database: str) -> HealthSnapshot:
+def probe(base_url: str, database: str, backend: str = "clickhouse", storage_check: str = "/home/ubuntu/crypto-market-info/var/storage/bin/storage-check", mysql_socket: str = "/home/ubuntu/crypto-market-info/var/storage/mysql/run/mysql.sock", password_file: str = "/home/ubuntu/.config/crypto-market-info-storage/cmi_query-password") -> HealthSnapshot:
     checked_at = dt.datetime.now(dt.timezone.utc)
     errors: list[str] = []
 
@@ -207,8 +212,17 @@ def probe(base_url: str, database: str) -> HealthSnapshot:
 
     streams: tuple[StreamHealth, ...] = ()
     clickhouse_ok = False
+    history_complete = None
+    mysql_data = None
     try:
-        rows = fetch_clickhouse_json(base_url, database, BOOK_QUERY)
+        if backend == "mysql":
+            command = [storage_check, "--socket", mysql_socket, "--user", "cmi_query", "--password-file", password_file, "--database", database]
+            result = subprocess.run(command, capture_output=True, text=True, timeout=8, check=True)
+            mysql_data = json.loads(result.stdout)
+            rows = mysql_data.get("streams") or []
+            history_complete = bool(mysql_data["history_complete"])
+        elif backend == "clickhouse":
+            rows = fetch_clickhouse_json(base_url, database, BOOK_QUERY)
         streams = tuple(
             StreamHealth(
                 exchange=str(row["exchange"]),
@@ -228,7 +242,11 @@ def probe(base_url: str, database: str) -> HealthSnapshot:
     yield_ok = False
     if clickhouse_ok:
         try:
-            rows = fetch_clickhouse_json(base_url, database, YIELD_QUERY)
+            if backend == "mysql":
+                age = mysql_data.get("yield_age_seconds")
+                rows = [{"latest_collected": age is not None, "age_seconds": age}]
+            else:
+                rows = fetch_clickhouse_json(base_url, database, YIELD_QUERY)
             if rows and rows[0].get("latest_collected"):
                 yield_age_seconds = int(rows[0]["age_seconds"])
                 yield_ok = True
@@ -254,6 +272,8 @@ def probe(base_url: str, database: str) -> HealthSnapshot:
         yield_age_seconds=yield_age_seconds,
         checked_at=checked_at,
         errors=tuple(errors),
+        backend=backend,
+        history_complete=history_complete,
     )
 
 
@@ -283,7 +303,7 @@ class IndicatorApplication:
 
         self.menu = Gtk.Menu()
         self.summary_item = self._label("生产采集：检查中")
-        self.db_item = self._label("ClickHouse：检查中")
+        self.db_item = self._label("数据库：检查中")
         self.book_item = self._label("盘口：检查中")
         self.yield_item = self._label("收益：检查中")
         self.soak_item = self._label("永续验收：检查中")
@@ -328,7 +348,7 @@ class IndicatorApplication:
         return True
 
     def _refresh_worker(self) -> None:
-        snapshot = probe(self.args.clickhouse_url, self.args.database)
+        snapshot = probe(self.args.clickhouse_url, self.args.database, self.args.backend, self.args.storage_check, self.args.mysql_socket, self.args.mysql_password_file)
         self.GLib.idle_add(self.apply_snapshot, snapshot)
 
     def apply_snapshot(self, snapshot: HealthSnapshot) -> bool:
@@ -337,7 +357,7 @@ class IndicatorApplication:
         self.indicator.set_icon_full(str(icon_path), snapshot.summary)
         self.summary_item.set_label(f"生产采集：{snapshot.summary}")
         self.db_item.set_label(
-            f"ClickHouse：{'正常' if snapshot.clickhouse_ok else '异常'}"
+            f"{'MySQL' if snapshot.backend == 'mysql' else 'ClickHouse'}：{'正常' if snapshot.clickhouse_ok else '异常'}"
         )
 
         if snapshot.streams:
@@ -416,6 +436,10 @@ class IndicatorApplication:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--interval", type=int, default=30, help="检查间隔秒数，最小 10 秒")
+    parser.add_argument("--backend", choices=("clickhouse", "mysql"), default=os.environ.get("STORAGE_BACKEND", "clickhouse"))
+    parser.add_argument("--storage-check", default="/home/ubuntu/crypto-market-info/var/storage/bin/storage-check")
+    parser.add_argument("--mysql-socket", default="/home/ubuntu/crypto-market-info/var/storage/mysql/run/mysql.sock")
+    parser.add_argument("--mysql-password-file", default="/home/ubuntu/.config/crypto-market-info-storage/cmi_query-password")
     parser.add_argument("--clickhouse-url", default="http://127.0.0.1:8123")
     parser.add_argument("--database", default="crypto_market_info")
     parser.add_argument(
@@ -432,7 +456,7 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     if args.once:
-        snapshot = probe(args.clickhouse_url, args.database)
+        snapshot = probe(args.clickhouse_url, args.database, args.backend, args.storage_check, args.mysql_socket, args.mysql_password_file)
         print(snapshot.text())
         return {"healthy": 0, "degraded": 1, "down": 2}[snapshot.state]
 

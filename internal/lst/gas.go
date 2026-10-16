@@ -154,6 +154,9 @@ func (c *Collector) GasPass(ctx context.Context, maxTransactions int) error {
 	if c.Store == nil || c.RPC == nil {
 		return errors.New("gas_collector_unconfigured")
 	}
+	if c.runtime != nil {
+		return c.runtimeGasPass(ctx, maxTransactions)
+	}
 	captures, e := c.Store.LSTCaptures(ctx, c.Manifest.Hash)
 	if e != nil {
 		return e
@@ -195,6 +198,10 @@ func (c *Collector) GasPass(ctx context.Context, maxTransactions int) error {
 		return e
 	}
 	samples = samples[:min(maxTransactions, len(samples))]
+	return c.runGasSamples(ctx, batches, samples)
+}
+func (c *Collector) runGasSamples(ctx context.Context, batches []Batch, samples []gasSample) error {
+	var e error
 	groups := map[int][]string{}
 	order := []int{}
 	for _, s := range samples {

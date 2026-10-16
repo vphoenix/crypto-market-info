@@ -32,30 +32,42 @@ func CoveredThrough(caps []Capture, start uint64) uint64 {
 // A bounded retry of one incomplete receipt range. Never revises the earlier
 // capture's availability or receipt references; a new committed attempt is used.
 func (c *Collector) RepairReceipts(ctx context.Context, final, safe dex.Block, progress func(string)) error {
-	caps, e := c.Store.ReserveCaptures(ctx, Hash(c.Manifest.Hash))
-	if e != nil {
-		return e
-	}
-	latest := map[string]Capture{}
-	for _, v := range caps {
-		if v.Canonical && v.Committed && v.CaptureKind == "logs" {
-			old, ok := latest[v.CaptureId]
-			if !ok || v.AvailableAt.After(old.AvailableAt) {
-				latest[v.CaptureId] = v
+	var v Capture
+	if c.runtime != nil {
+		candidate, ok, err := c.runtimeReceiptCandidate(ctx)
+		if err != nil {
+			return err
+		}
+		if !ok {
+			return nil
+		}
+		v = candidate
+	} else {
+		caps, e := c.Store.ReserveCaptures(ctx, Hash(c.Manifest.Hash))
+		if e != nil {
+			return e
+		}
+		latest := map[string]Capture{}
+		for _, v := range caps {
+			if v.Canonical && v.Committed && v.CaptureKind == "logs" {
+				old, ok := latest[v.CaptureId]
+				if !ok || v.AvailableAt.After(old.AvailableAt) {
+					latest[v.CaptureId] = v
+				}
 			}
 		}
-	}
-	pending := []Capture{}
-	for _, v := range latest {
-		if v.LogCoverage == "complete" && v.ReceiptCoverage != "complete" {
-			pending = append(pending, v)
+		pending := []Capture{}
+		for _, v := range latest {
+			if v.LogCoverage == "complete" && v.ReceiptCoverage != "complete" {
+				pending = append(pending, v)
+			}
 		}
+		if len(pending) == 0 {
+			return nil
+		}
+		sort.Slice(pending, func(i, j int) bool { return pending[i].AvailableAt.Before(pending[j].AvailableAt) })
+		v = pending[0]
 	}
-	if len(pending) == 0 {
-		return nil
-	}
-	sort.Slice(pending, func(i, j int) bool { return pending[i].AvailableAt.Before(pending[j].AvailableAt) })
-	v := pending[0]
 	a, e := c.Header(ctx, ethereum.Height(v.FromBlock))
 	if e != nil {
 		return e
@@ -78,7 +90,7 @@ func (c *Collector) RepairReceipts(ctx context.Context, final, safe dex.Block, p
 	if e != nil {
 		return e
 	}
-	if e = c.Store.WriteReserveBatch(ctx, batch); e != nil {
+	if e = c.writeBatch(ctx, batch); e != nil {
 		return e
 	}
 	progress(fmt.Sprintf("receipt_retry blocks=%d..%d receipts=%d/%d coverage=%s reason=%s", v.FromBlock, v.ToBlock, len(batch.Receipts), batch.Capture.ExpectedReceipts, batch.Capture.ReceiptCoverage, batch.Capture.Reason))

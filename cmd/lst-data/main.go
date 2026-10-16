@@ -19,16 +19,18 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/dex/ethereum"
 	"github.com/vphoenix/crypto-market-info/internal/lst"
 	"github.com/vphoenix/crypto-market-info/internal/model"
+	"github.com/vphoenix/crypto-market-info/internal/runtimecheckpoint"
+	"github.com/vphoenix/crypto-market-info/internal/storage/backend"
 	"github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
 )
 
-func run(ctx context.Context, args []string) error {
+func run(ctx context.Context, args []string) (result error) {
 	if len(args) == 0 {
-		return errors.New("usage: lst-data init-schema|probe|watch|backfill|report [flags]")
+		return errors.New("usage: lst-data init-schema|probe|watch|backfill|report|runtime-convert|runtime-verify|runtime-rollback|runtime-handoff [flags]")
 	}
 	command := args[0]
 	switch command {
-	case "init-schema", "probe", "watch", "backfill", "report":
+	case "init-schema", "probe", "watch", "backfill", "report", "runtime-convert", "runtime-verify", "runtime-rollback", "runtime-handoff":
 	default:
 		return errors.New("unknown_command")
 	}
@@ -47,6 +49,12 @@ func run(ctx context.Context, args []string) error {
 	from := fs.String("from", "", "report start UTC RFC3339")
 	to := fs.String("to", "", "report end UTC RFC3339")
 	out := fs.String("out", "var/lst-reports", "report directory or probe manifest output file")
+	runtimeDir := fs.String("runtime-state-dir", "var/lst/runtime", "verified local runtime state")
+	handoffPlan := fs.String("runtime-handoff-plan", "", "frozen finite operation manifest for stopped-service maintenance")
+	runtimeInput := fs.String("runtime-input-inventory", "", "frozen migrated/pending/unreadable input inventory; required for conversion")
+	epochFile := fs.String("runtime-epoch-file", os.Getenv("LST_RUNTIME_EPOCH_FILE"), "database restore epoch outside backups")
+	runtimeExport := fs.String("runtime-export", "", "new current-state export directory for verify/rollback")
+	legacyRecovery := fs.Bool("legacy-history-recovery", false, "explicit controlled legacy watch reconstruction")
 	if e := fs.Parse(args[1:]); e != nil {
 		return e
 	}
@@ -62,6 +70,34 @@ func run(ctx context.Context, args []string) error {
 		defer cancel()
 	}
 	cfg := clickhouse.Config{Addresses: []string{*address}, Database: *database, Username: os.Getenv("LST_CLICKHOUSE_USER"), Password: os.Getenv("LST_CLICKHOUSE_PASSWORD")}
+	if *runtimeDir == "" || *legacyRecovery && command != "watch" || *runtimeExport != "" && command != "runtime-verify" && command != "runtime-rollback" {
+		return errors.New("invalid_runtime_flags")
+	}
+	if command == "runtime-handoff" && *handoffPlan == "" || command != "runtime-handoff" && *handoffPlan != "" {
+		return errors.New("runtime_handoff_requires_explicit_plan")
+	}
+	if command == "runtime-convert" && *runtimeInput == "" {
+		return errors.New("runtime_conversion_requires_input_inventory")
+	}
+	if command == "runtime-rollback" && *runtimeExport == "" {
+		return errors.New("runtime_rollback_requires_export")
+	}
+	storage, configErr := backend.Environment("LST_", cfg, command == "report")
+	if configErr != nil {
+		return configErr
+	}
+	useRuntime := storage.Name == "mysql" && command == "watch" && !*legacyRecovery || strings.HasPrefix(command, "runtime-")
+	if useRuntime && (storage.Name != "mysql" || *epochFile == "") {
+		return errors.New("runtime_state_requires_mysql_and_explicit_epoch_file")
+	}
+	if storage.Name == "mysql" && command == "backfill" {
+		if _, err := os.Stat(*runtimeDir); err == nil {
+			return errors.New("active_runtime_requires_frozen_maintenance_handoff")
+		} else if !os.IsNotExist(err) {
+			return err
+		}
+	}
+
 	if command == "report" {
 		m, e := lst.LoadManifest(*manifest)
 		if e != nil {
@@ -81,11 +117,14 @@ func run(ctx context.Context, args []string) error {
 				return e
 			}
 		}
-		store, e := clickhouse.OpenDEXReader(ctx, cfg)
+		store, e := backend.OpenLST(ctx, storage)
 		if e != nil {
 			return e
 		}
 		defer store.Close()
+		if e = backend.RequireCompleteHistory(ctx, store); e != nil {
+			return e
+		}
 		return lst.Report(ctx, store, m, start.UTC(), end.UTC(), *out)
 	}
 	if e := os.MkdirAll(*state, 0700); e != nil {
@@ -101,7 +140,7 @@ func run(ctx context.Context, args []string) error {
 	}
 	defer syscall.Flock(int(lock.Fd()), syscall.LOCK_UN)
 	if command == "init-schema" {
-		store, e := clickhouse.Open(ctx, cfg)
+		store, e := backend.OpenLST(ctx, storage)
 		if e != nil {
 			return e
 		}
@@ -164,7 +203,7 @@ func run(ctx context.Context, args []string) error {
 		if e != nil {
 			return errors.New("invalid_pause_live_logs")
 		}
-		if pauseLiveLogs && command != "watch" {
+		if pauseLiveLogs && command != "watch" && !strings.HasPrefix(command, "runtime-") {
 			return errors.New("pause_live_logs_only_for_watch")
 		}
 	}
@@ -242,7 +281,7 @@ func run(ctx context.Context, args []string) error {
 		return errors.New("manifest_not_pinned_run_probe_first")
 	}
 	// Collection opens the existing research database; only init-schema performs DDL.
-	store, e := clickhouse.OpenLSTWriter(ctx, cfg)
+	store, e := backend.OpenLST(ctx, storage)
 	if e != nil {
 		return e
 	}
@@ -266,8 +305,78 @@ func run(ctx context.Context, args []string) error {
 		return errors.New("receipts_mode_requires_explicit_one_to_eight_block_gap")
 	}
 	c := &lst.Collector{RPC: rpc, LogRPC: logRPC, LogMode: logMode, PauseLiveLogs: pauseLiveLogs, CEX: cex, Manifest: m, Store: store, Archive: archive, StateDir: *state, MarketInterval: marketInterval, EntryRoutesPerRound: entryRoutes, PruneCommittedResponses: pruneResponses}
-	if command == "watch" {
+	if command == "watch" || strings.HasPrefix(command, "runtime-") {
 		c.LiveLogsFromBlock = *fromBlock
+	}
+	if useRuntime {
+		provider, ok := store.(interface {
+			RuntimeBinding(context.Context, string, string, uint32) (runtimecheckpoint.Binding, error)
+		})
+		if !ok {
+			return errors.New("backend_lacks_runtime_binding")
+		}
+		check := func(ctx context.Context) (runtimecheckpoint.Binding, error) {
+			return provider.RuntimeBinding(ctx, lst.RuntimeScopeHash(c), *epochFile, 1)
+		}
+		binding, err := check(ctx)
+		if err != nil {
+			return err
+		}
+		targetLock, err := runtimecheckpoint.LockTarget(binding)
+		if err != nil {
+			return err
+		}
+		defer targetLock.Close()
+		progress := func(s string) { log.Print(s) }
+		if command == "runtime-convert" {
+			report, err := c.ConvertRuntime(ctx, *runtimeDir, binding, *runtimeInput, check, progress)
+			if printErr := json.NewEncoder(os.Stdout).Encode(report); err == nil {
+				err = printErr
+			}
+			return err
+		}
+		if command == "runtime-handoff" {
+			ctx = runtimecheckpoint.MaintenanceContext(ctx)
+		}
+		if err = c.OpenRuntime(ctx, *runtimeDir, binding, progress); err != nil {
+			return err
+		}
+		defer func() { result = errors.Join(result, c.CloseRuntime()) }()
+		if command == "runtime-handoff" {
+			report, err := c.HandoffRuntime(ctx, *handoffPlan)
+			if err != nil {
+				return err
+			}
+			actual, err := check(ctx)
+			if err != nil {
+				return err
+			}
+			if actual != binding {
+				return runtimecheckpoint.ErrConflict
+			}
+			return json.NewEncoder(os.Stdout).Encode(report)
+		}
+		if command == "runtime-verify" {
+			report, err := c.InspectRuntime(ctx, *runtimeExport)
+			if err != nil {
+				return err
+			}
+			return json.NewEncoder(os.Stdout).Encode(report)
+		}
+		if command == "runtime-rollback" {
+			report, err := c.RollbackRuntime(ctx, *runtimeExport)
+			if err != nil {
+				return err
+			}
+			actual, err := check(ctx)
+			if err != nil {
+				return err
+			}
+			if actual != binding {
+				return runtimecheckpoint.ErrConflict
+			}
+			return json.NewEncoder(os.Stdout).Encode(report)
+		}
 	}
 	// Validate the target before trusting persisted cursors/pending batches.
 	targetFile := filepath.Join(*state, "database-target")

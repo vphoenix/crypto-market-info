@@ -13,7 +13,9 @@ import (
 	"github.com/google/uuid"
 	"github.com/vphoenix/crypto-market-info/internal/options"
 	"github.com/vphoenix/crypto-market-info/internal/replay"
+	"github.com/vphoenix/crypto-market-info/internal/storage/backend"
 	"github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 )
 
 func main() {
@@ -44,7 +46,11 @@ func run() error {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
-	c, err := clickhouse.OpenReadOnly(ctx, clickhouse.Config{Addresses: []string{*addr}, Database: *db, Username: *user, Password: os.Getenv("CLICKHOUSE_PASSWORD")})
+	cfg, err := backend.Environment("", clickhouse.Config{Addresses: []string{*addr}, Database: *db, Username: *user, Password: os.Getenv("CLICKHOUSE_PASSWORD")}, true)
+	if err != nil {
+		return err
+	}
+	c, err := backend.OpenOptions(ctx, cfg)
 	if err != nil {
 		return err
 	}
@@ -71,7 +77,7 @@ func run() error {
 	return fmt.Errorf("instrument not in committed offline batch")
 }
 
-func printLive(ctx context.Context, c *clickhouse.Client, id uuid.UUID, at time.Time, instrument uint32) error {
+func printLive(ctx context.Context, c contracts.OptionsStore, id uuid.UUID, at time.Time, instrument uint32) error {
 	if id == uuid.Nil {
 		has, err := c.HasOptionsCatalog(ctx)
 		if err != nil {

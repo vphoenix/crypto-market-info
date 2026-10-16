@@ -29,6 +29,9 @@ type Collector struct {
 	partialRepair   *partialRepairState
 	rawRepairNext   int
 	rawRepairBlocks map[uint64]uint64
+	runtime         *runtimeOwner
+	runtimeProbe    *runtimeProbeTransition
+	runtimePartial  *runtimePartialTransition
 }
 type receiptTask struct {
 	ChainID           uint64
@@ -43,6 +46,9 @@ func (c *Collector) receiptReader(chain uint64) *Reader {
 	return c.Readers[chain]
 }
 func (c *Collector) load(ctx context.Context) error {
+	if c.runtime != nil {
+		return c.runtime.view(ctx, func(s *runtimeState) (any, error) { return s.captureView(), nil }, &c.captures)
+	}
 	if c.loaded {
 		return nil
 	}
@@ -75,6 +81,13 @@ func (c *Collector) persist(ctx context.Context, b *Batch, headers []EvidenceHea
 	b.Capture.AvailableAt = Now()
 	if e := ArchiveBatch(c.Archive, b, headers, refs); e != nil {
 		return fmt.Errorf("across_write_frozen_capture_%s: archive: %w", Hex(b.Capture.CaptureId), e)
+	}
+	if c.runtime != nil {
+		w := runtimeWrite{Version: 1, Batch: b, Probe: c.runtimeProbe, Partial: c.runtimePartial}
+		if err := c.runtime.writeBatchEffects(ctx, c.Store, w); err != nil {
+			return fmt.Errorf("across_write_frozen_capture_%s: %w", Hex(b.Capture.CaptureId), err)
+		}
+		return nil
 	}
 	if e := c.Store.WriteAcrossBatch(ctx, *b); e != nil {
 		return fmt.Errorf("across_write_frozen_capture_%s: %w", Hex(b.Capture.CaptureId), e)
@@ -269,6 +282,9 @@ func (c *Collector) CollectRange(ctx context.Context, chain, from, to uint64, mo
 	return b, nil
 }
 func (c *Collector) queueReceipt(chain uint64, block, tx string) {
+	if c.runtime != nil {
+		return
+	} // derived atomically from the committed batch
 	if c.receiptQueue == nil {
 		c.receiptQueue = map[string]receiptTask{}
 	}
@@ -395,7 +411,12 @@ func (c *Collector) DrainReceipts(ctx context.Context, limit int, networkContext
 			continue
 		}
 		if row.BlockHash != t.BlockHash {
-			delete(c.receiptQueue, k)
+			if c.runtime == nil {
+				delete(c.receiptQueue, k)
+			}
+			// The runtime owner retains this uncertain dependency until its
+			// parent revision confirms the branch change. A receipt from another
+			// hash does not prove that this task completed.
 			continue
 		}
 		row.CaptureId = b.Capture.CaptureId
@@ -428,7 +449,21 @@ func (c *Collector) Reconcile(ctx context.Context, chain uint64, networkContext 
 	if len(networkContext) > 0 {
 		rpcCtx = networkContext[0]
 	}
-	if e := c.load(ctx); e != nil {
+	if c.runtime != nil {
+		if err := c.runtimeResumeInvalidations(ctx); err != nil {
+			return err
+		}
+		limit := c.ReconcileLimit
+		if limit <= 0 {
+			limit = 24
+		}
+		if err := c.runtime.view(ctx, func(s *runtimeState) (any, error) {
+			rows := s.reconcileCaptures(chain, limit)
+			return rows, s.ioError()
+		}, &c.captures); err != nil {
+			return err
+		}
+	} else if e := c.load(ctx); e != nil {
 		return e
 	}
 	r := c.Readers[chain]
@@ -516,6 +551,13 @@ func (c *Collector) Reconcile(ctx context.Context, chain uint64, networkContext 
 		}
 		proofReason := "finality_proof=" + proof.String()
 		if len(bad) > 0 {
+			if c.runtime != nil {
+				if err = c.runtimeMarkInvalidation(ctx, chain, bad, proofReason); err != nil {
+					return err
+				}
+				checked++
+				continue
+			}
 			for j, other := range c.captures {
 				if other.ChainId != chain || !other.Canonical || !anchored(other) {
 					continue
@@ -557,7 +599,16 @@ func anchored(v Capture) bool {
 	return v.FromBlock != nil && v.ToBlock != nil && v.FromHash != nil && v.ToHash != nil
 }
 func (c *Collector) revise(ctx context.Context, idx int, v Capture) error {
+	expected := v.Revision
 	v.Revision++
+	if c.runtime != nil {
+		actual, err := c.runtime.writeRevision(ctx, c.Store, expected, v)
+		if err != nil {
+			return fmt.Errorf("across_write_frozen_capture_%s: revision: %w", Hex(v.CaptureId), err)
+		}
+		c.captures[idx] = actual
+		return nil
+	}
 	if err := c.Store.WriteAcrossRevision(ctx, v); err != nil {
 		return fmt.Errorf("across_write_frozen_capture_%s: revision: %w", Hex(v.CaptureId), err)
 	}

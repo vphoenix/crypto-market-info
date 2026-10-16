@@ -2,6 +2,8 @@ package sampler
 
 import (
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"fmt"
 	"log/slog"
 	"sort"
@@ -9,6 +11,7 @@ import (
 	"time"
 
 	"github.com/vphoenix/crypto-market-info/internal/model"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 )
 
 type BookSource interface {
@@ -251,6 +254,7 @@ func (e *Engine) sampleBefore(at, deadline time.Time) error {
 			return e.failLocked(fmt.Errorf("instrument %d: %w", source.InstrumentID, err))
 		}
 	}
+	e.previewLocked(at)
 	e.sampleDurations = observeDuration(e.sampleDurations, e.sampleCount, 3600, e.now().Sub(startedAt))
 	e.sampleCount++
 	return nil
@@ -266,6 +270,7 @@ func (e *Engine) markOverrunLocked(at time.Time, firstMissed int, startedAt time
 			return e.failLocked(fmt.Errorf("mark missed instrument %d: %w", source.InstrumentID, err))
 		}
 	}
+	e.previewLocked(at)
 	e.sampleOverruns++
 	e.missedSamples += uint64(len(e.sources) - firstMissed)
 	e.lastOverrunAt = at
@@ -282,7 +287,7 @@ func (e *Engine) markOverrunLocked(at time.Time, firstMissed int, startedAt time
 }
 
 func (e *Engine) enqueueCompletedLocked() error {
-	completed := model.CompletedMinute{MinuteTime: e.minute, Batches: make([]model.MinuteBatch, 0, len(e.sources))}
+	completed := model.CompletedMinute{MinuteTime: e.minute, KnownFromMS: model.CeilMilliseconds(e.now().UTC()), Batches: make([]model.MinuteBatch, 0, len(e.sources))}
 	for _, source := range e.sources {
 		batch, ok := e.buffers[source.InstrumentID].Batch()
 		if !ok {
@@ -400,4 +405,26 @@ func durationP99(values []time.Duration) time.Duration {
 	ordered := append([]time.Duration(nil), values...)
 	sort.Slice(ordered, func(i, j int) bool { return ordered[i] < ordered[j] })
 	return ordered[(len(ordered)*99+99)/100-1]
+}
+
+func (e *Engine) previewLocked(at time.Time) {
+	sink, ok := e.sink.(contracts.PreviewSink)
+	if !ok {
+		return
+	}
+	hash := sha256.New()
+	for _, source := range e.sources {
+		fmt.Fprintf(hash, "%d/", source.InstrumentID)
+	}
+	frame := contracts.PreviewFrame{At: at, Kind: "cex", Scope: "cex:" + hex.EncodeToString(hash.Sum(nil))}
+	for _, source := range e.sources {
+		b := e.buffers[source.InstrumentID]
+		valid := b.valid&(uint64(1)<<at.Second()) != 0
+		book := contracts.PreviewBook{InstrumentID: source.InstrumentID, StoredDepth: uint8(source.StoredDepth), Valid: valid, Anchored: b.anchored}
+		if valid {
+			book.Snapshot = cloneSnapshot(b.lastValid)
+		}
+		frame.Books = append(frame.Books, book)
+	}
+	sink.OfferPreview(frame)
 }

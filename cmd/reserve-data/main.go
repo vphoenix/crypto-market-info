@@ -19,15 +19,18 @@ import (
 
 	"github.com/vphoenix/crypto-market-info/internal/dex/ethereum"
 	"github.com/vphoenix/crypto-market-info/internal/reserve"
+	"github.com/vphoenix/crypto-market-info/internal/runtimecheckpoint"
+	"github.com/vphoenix/crypto-market-info/internal/storage/backend"
 	"github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 )
 
-func run(ctx context.Context, args []string) error {
+func run(ctx context.Context, args []string) (result error) {
 	if len(args) == 0 {
-		return errors.New("usage: reserve-data init-schema|migrate-receipts|watch|backfill|simulate|report [flags]")
+		return errors.New("usage: reserve-data init-schema|migrate-receipts|watch|backfill|simulate|report|runtime-convert|runtime-verify|runtime-rollback|runtime-handoff [flags]")
 	}
 	cmd := args[0]
-	if cmd != "init-schema" && cmd != "migrate-receipts" && cmd != "watch" && cmd != "backfill" && cmd != "simulate" && cmd != "report" {
+	if cmd != "init-schema" && cmd != "migrate-receipts" && cmd != "watch" && cmd != "backfill" && cmd != "simulate" && cmd != "report" && cmd != "runtime-convert" && cmd != "runtime-verify" && cmd != "runtime-rollback" && cmd != "runtime-handoff" {
 		return errors.New("unknown command")
 	}
 	f := flag.NewFlagSet(cmd, flag.ContinueOnError)
@@ -57,6 +60,12 @@ func run(ctx context.Context, args []string) error {
 	outDir := f.String("out", "", "report: optional directory for coverage/activity/candidates CSV")
 	simulationLimit := f.Int("simulation-limit", 2, "simulate: maximum complete routes, 1..6")
 	reportManifest := f.String("manifest-hash", "", "report an explicitly selected historical manifest identity")
+	runtimeDir := f.String("runtime-state-dir", "var/reserve/runtime", "verified local runtime state")
+	handoffPlan := f.String("runtime-handoff-plan", "", "frozen finite operation manifest for stopped-service maintenance")
+	runtimeInput := f.String("runtime-input-inventory", "", "frozen migrated/pending/unreadable input inventory; required for conversion")
+	epochFile := f.String("runtime-epoch-file", os.Getenv("RESERVE_RUNTIME_EPOCH_FILE"), "database restore epoch outside backups")
+	runtimeExport := f.String("runtime-export", "", "new current-state export directory for verify/rollback")
+	legacyRecovery := f.Bool("legacy-history-recovery", false, "explicit controlled legacy watch reconstruction")
 	if e := f.Parse(args[1:]); e != nil {
 		return e
 	}
@@ -67,30 +76,62 @@ func run(ctx context.Context, args []string) error {
 		return errors.New("invalid_watch_cadence")
 	}
 	cfg := clickhouse.Config{Addresses: []string{*addr}, Database: *db, Username: os.Getenv("RESERVE_CLICKHOUSE_USER"), Password: os.Getenv("RESERVE_CLICKHOUSE_PASSWORD")}
-	var store *clickhouse.Client
+	if *runtimeDir == "" || *legacyRecovery && cmd != "watch" || *runtimeExport != "" && cmd != "runtime-verify" && cmd != "runtime-rollback" {
+		return errors.New("invalid_runtime_flags")
+	}
+	if cmd == "runtime-handoff" && *handoffPlan == "" || cmd != "runtime-handoff" && *handoffPlan != "" {
+		return errors.New("runtime_handoff_requires_explicit_plan")
+	}
+	if cmd == "runtime-convert" && *runtimeInput == "" {
+		return errors.New("runtime_conversion_requires_input_inventory")
+	}
+	if cmd == "runtime-rollback" && *runtimeExport == "" {
+		return errors.New("runtime_rollback_requires_export")
+	}
+	storage, configErr := backend.Environment("RESERVE_", cfg, cmd == "report")
+	if configErr != nil {
+		return configErr
+	}
+	useRuntime := storage.Name == "mysql" && cmd == "watch" && !*legacyRecovery || strings.HasPrefix(cmd, "runtime-")
+	if useRuntime && (storage.Name != "mysql" || *epochFile == "") {
+		return errors.New("runtime_state_requires_mysql_and_explicit_epoch_file")
+	}
+	if storage.Name == "mysql" && (cmd == "backfill" || cmd == "migrate-receipts" || cmd == "simulate") {
+		if _, err := os.Stat(*runtimeDir); err == nil {
+			return errors.New("active_runtime_requires_frozen_maintenance_handoff")
+		} else if !os.IsNotExist(err) {
+			return err
+		}
+	}
+	var store contracts.ReserveStore
 	var e error
 	if cmd == "report" {
 
-		store, e = clickhouse.OpenDEXReader(ctx, cfg)
+		store, e = backend.OpenReserve(ctx, storage)
 	} else {
 		if e = os.MkdirAll(*evidence, 0700); e != nil {
 			return e
 		}
-		lock, e := os.OpenFile(filepath.Join(*evidence, "writer.lock"), os.O_CREATE|os.O_RDWR, 0600)
-		if e != nil {
-			return e
+		lock, lockErr := os.OpenFile(filepath.Join(*evidence, "writer.lock"), os.O_CREATE|os.O_RDWR, 0600)
+		if lockErr != nil {
+			return lockErr
 		}
 		defer lock.Close()
 		if e = syscall.Flock(int(lock.Fd()), syscall.LOCK_EX|syscall.LOCK_NB); e != nil {
 			return errors.New("reserve_writer_already_running")
 		}
 		defer syscall.Flock(int(lock.Fd()), syscall.LOCK_UN)
-		store, e = clickhouse.Open(ctx, cfg)
+		store, e = backend.OpenReserve(ctx, storage)
 	}
 	if e != nil {
 		return e
 	}
 	defer store.Close()
+	if cmd == "report" {
+		if e = backend.RequireCompleteHistory(ctx, store); e != nil {
+			return e
+		}
+	}
 	if cmd != "report" {
 		if e = store.InitReserveSchema(ctx); e != nil {
 			return e
@@ -135,6 +176,87 @@ func run(ctx context.Context, args []string) error {
 		enc := json.NewEncoder(os.Stdout)
 		enc.SetIndent("", "  ")
 		return enc.Encode(report)
+	}
+	collector := &reserve.Collector{Manifest: m, Store: store, StartBlock: *from, SnapshotBudget: *snapshotBudget, SimulateEvery: *simulateEvery}
+	if *reconcileManifest != "" {
+		h, e := dex.ParseHash(*reconcileManifest)
+		if e != nil {
+			return e
+		}
+		if h == m.Hash {
+			return errors.New("reconcile_manifest_must_differ")
+		}
+		collector.RelatedManifests = []dex.Hash{h}
+	}
+	progress := func(s string) { log.Print(s) }
+	if useRuntime {
+		provider, ok := store.(interface {
+			RuntimeBinding(context.Context, string, string, uint32) (runtimecheckpoint.Binding, error)
+		})
+		if !ok {
+			return errors.New("backend_lacks_runtime_binding")
+		}
+		check := func(ctx context.Context) (runtimecheckpoint.Binding, error) {
+			return provider.RuntimeBinding(ctx, reserve.RuntimeScopeHash(m, collector.RelatedManifests, *from), *epochFile, 1)
+		}
+		binding, err := check(ctx)
+		if err != nil {
+			return err
+		}
+		targetLock, err := runtimecheckpoint.LockTarget(binding)
+		if err != nil {
+			return err
+		}
+		defer targetLock.Close()
+		if cmd == "runtime-convert" {
+			report, err := collector.ConvertRuntime(ctx, *runtimeDir, binding, *runtimeInput, check, progress)
+			if printErr := json.NewEncoder(os.Stdout).Encode(report); err == nil {
+				err = printErr
+			}
+			return err
+		}
+		if cmd == "runtime-handoff" {
+			ctx = runtimecheckpoint.MaintenanceContext(ctx)
+		}
+		if err = collector.OpenRuntime(ctx, *runtimeDir, binding, progress); err != nil {
+			return err
+		}
+		defer func() { result = errors.Join(result, collector.CloseRuntime()) }()
+		if cmd == "runtime-handoff" {
+			report, err := collector.HandoffRuntime(ctx, *handoffPlan)
+			if err != nil {
+				return err
+			}
+			actual, err := check(ctx)
+			if err != nil {
+				return err
+			}
+			if actual != binding {
+				return runtimecheckpoint.ErrConflict
+			}
+			return json.NewEncoder(os.Stdout).Encode(report)
+		}
+		if cmd == "runtime-verify" {
+			report, err := collector.InspectRuntime(ctx, *runtimeExport)
+			if err != nil {
+				return err
+			}
+			return json.NewEncoder(os.Stdout).Encode(report)
+		}
+		if cmd == "runtime-rollback" {
+			report, err := collector.RollbackRuntime(ctx, *runtimeExport)
+			if err != nil {
+				return err
+			}
+			actual, err := check(ctx)
+			if err != nil {
+				return err
+			}
+			if actual != binding {
+				return runtimecheckpoint.ErrConflict
+			}
+			return json.NewEncoder(os.Stdout).Encode(report)
+		}
 	}
 	endpoint := os.Getenv("RESERVE_RPC_URL")
 	if endpoint == "" {
@@ -185,18 +307,7 @@ func run(ctx context.Context, args []string) error {
 	if e = reserve.SaveRules(*rules, m); e != nil {
 		return e
 	}
-	collector := &reserve.Collector{RPC: rpc, Manifest: m, Store: store, StartBlock: *from, SnapshotBudget: *snapshotBudget, SimulateEvery: *simulateEvery}
-	if *reconcileManifest != "" {
-		h, e := dex.ParseHash(*reconcileManifest)
-		if e != nil {
-			return e
-		}
-		if h == m.Hash {
-			return errors.New("reconcile_manifest_must_differ")
-		}
-		collector.RelatedManifests = []dex.Hash{h}
-	}
-	progress := func(s string) { log.Print(s) }
+	collector.RPC = rpc
 	if cmd == "simulate" {
 		if *simulationLimit < 1 || *simulationLimit > 6 {
 			return errors.New("invalid_simulation_limit")
@@ -254,4 +365,13 @@ func main() {
 		}
 		os.Exit(1)
 	}
+}
+
+func storageConfig(ch clickhouse.Config, readOnly bool) backend.Config {
+	cfg, e := backend.Environment("RESERVE_", ch, readOnly)
+	if e != nil {
+		fmt.Fprintln(os.Stderr, e)
+		os.Exit(1)
+	}
+	return cfg
 }

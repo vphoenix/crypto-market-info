@@ -1,0 +1,16 @@
+[Unit]
+Description=Crypto market data Redis (private Unix socket, durable sealed delivery)
+After=default.target
+
+[Service]
+Environment=DOCKER_API_VERSION=1.45
+Type=simple
+WorkingDirectory=%h/crypto-market-info
+ExecStart=/usr/bin/docker run --rm --name crypto-market-info-redis --network none --restart no --memory 1024m --memory-swap 1536m --user 1000:1000 --cpus 1 --mount type=bind,src=%h/crypto-market-info/var/storage/redis/data,dst=/data --mount type=bind,src=%h/crypto-market-info/var/storage/redis/run,dst=/run/cmi --mount type=bind,src=%h/crypto-market-info/deploy/storage/redis.conf,dst=/usr/local/etc/redis/cmi.conf,readonly redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499 redis-server /usr/local/etc/redis/cmi.conf
+ExecStop=/usr/bin/docker stop --time 60 crypto-market-info-redis
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=90
+
+[Install]
+WantedBy=default.target

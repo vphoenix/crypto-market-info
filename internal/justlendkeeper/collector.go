@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
+	"github.com/vphoenix/crypto-market-info/internal/runtimecheckpoint"
 )
 
 type Store interface {
@@ -23,6 +24,8 @@ type ReceiptLogs struct {
 	Logs    []Log
 }
 type Operation struct {
+	RuntimeApplied bool
+
 	Discoveries []RawEvent
 
 	Kind             string
@@ -48,15 +51,18 @@ type Operation struct {
 	Parent           *Capture
 }
 type Collector struct {
-	Config      Config
-	State       *State
-	Path        string
-	API         *Client
-	Store       Store
-	Now         func() time.Time
-	Log         func(string)
-	Sleep       func(context.Context, time.Duration) error
-	stateWriter stateWriter
+	Config          Config
+	State           *State
+	Path            string
+	API             *Client
+	Store           Store
+	Now             func() time.Time
+	Log             func(string)
+	Sleep           func(context.Context, time.Duration) error
+	stateWriter     stateWriter
+	runtime         *runtimeOwner
+	storageFailures uint32
+	storageRetryAt  time.Time
 }
 
 func NewCollector(cfg Config, s *State, path string, a Archive, store Store) *Collector {
@@ -79,7 +85,15 @@ func Sleep(ctx context.Context, d time.Duration) error {
 		return nil
 	}
 }
-func (c *Collector) Save() error { return c.stateWriter.Save(c.Path, *c.State) }
+func (c *Collector) Save() error {
+	if c.runtime != nil {
+		return c.runtime.save(c.State)
+	}
+	if c.State.Runtime != nil {
+		return errors.New("keeper_runtime_owner_missing")
+	}
+	return c.stateWriter.Save(c.Path, *c.State)
+}
 func (c *Collector) NewOperation(kind, mode, source string) Operation {
 	now := UTC(c.Now())
 	contract, _ := HexAddress(ContractHex)
@@ -445,7 +459,17 @@ func (c *Collector) Hydrate(o *Operation) error {
 	}
 	return nil
 }
-func (c *Collector) Finish(ctx context.Context, o *Operation) error {
+func (c *Collector) Finish(ctx context.Context, o *Operation) (result error) {
+	if c.runtime != nil && o.RuntimeApplied {
+		return nil
+	}
+	var operation runtimecheckpoint.Operation
+	committed := false
+	defer func() {
+		if committed && result != nil && c.runtime != nil {
+			c.runtime.fail(result)
+		}
+	}()
 	if !o.Frozen {
 		if !o.Failed && (o.Kind == "page" && o.Batch.Capture.CaptureMode != "bootstrap" || o.Kind == "enrichment") {
 			if e := c.Hydrate(o); e != nil {
@@ -573,9 +597,23 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) error {
 	if e := c.prepareIndexPage(o); e != nil {
 		return e
 	}
+	if c.runtime != nil {
+		var err error
+		operation, err = c.runtimeBegin(o)
+		if err != nil {
+			return err
+		}
+	}
 	if e := c.Store.WriteKeeperBatch(ctx, o.Batch); e != nil {
 		return e
 	}
+	if c.runtime != nil {
+		committed = true
+		if err := c.runtimeCommitted(o.Batch); err != nil {
+			return err
+		}
+	}
+
 	if o.Kind == "identity" {
 		c.State.IdentityAt = o.Batch.Capture.AvailableAt
 		c.State.IdentityStatus = "unknown"
@@ -653,9 +691,13 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) error {
 		}
 	}
 	c.Log(fmt.Sprintf("capture=%s kind=%s status=%s indexed=%d events=%d receipts=%d probes=%d costs=%d reason=%s", o.Batch.Capture.CaptureId, o.Kind, o.Batch.Capture.Status, len(o.Batch.IndexedEvents), len(o.Batch.Events), len(o.Batch.Receipts), len(o.Batch.Probes), len(o.Batch.Costs), o.Batch.Capture.Reason))
+	if c.runtime != nil {
+		return c.runtimeApplied(o, operation)
+	}
 	return nil
 }
 func (c *Collector) Step(ctx context.Context) (bool, time.Time, error) {
+	c.runtimeMetrics()
 	now := c.Now()
 	next := now.Add(time.Second)
 	sort.SliceStable(c.State.Ops, func(i, j int) bool { return c.operationPriority(c.State.Ops[i]) < c.operationPriority(c.State.Ops[j]) })

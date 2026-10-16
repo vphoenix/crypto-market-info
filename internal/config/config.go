@@ -8,14 +8,19 @@ import (
 	"time"
 
 	"github.com/vphoenix/crypto-market-info/internal/optionslive"
+	"github.com/vphoenix/crypto-market-info/internal/storage/backend"
 	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
 	"github.com/vphoenix/crypto-market-info/internal/universe"
 	"github.com/vphoenix/crypto-market-info/internal/yield/solana"
 )
 
 type Config struct {
+	Storage                   backend.Config
 	DEXEnabled                bool
 	DEXRPCURL                 string
+	DEXRuntimeDir             string
+	DEXRuntimeEpochFile       string
+	DEXLegacyRecovery         bool
 	DEXEvidenceDir            string
 	Options                   optionslive.Config
 	ClickHouse                chstore.Config
@@ -116,6 +121,10 @@ func Load() (Config, error) {
 		MarinadeValidatorsBaseURL: value("MARINADE_VALIDATORS_BASE_URL", "https://validators-api.marinade.finance"), KaminoBaseURL: value("KAMINO_BASE_URL", "https://api.kamino.finance"),
 		SaveBaseURL: value("SAVE_BASE_URL", "https://api.solend.fi"), MinuteQueueCapacity: queue,
 	}
+	cfg.Storage, err = backend.Environment("", cfg.ClickHouse, false)
+	if err != nil {
+		return Config{}, err
+	}
 	if err = loadPerpetualConfig(&cfg); err != nil {
 		return Config{}, err
 	}
@@ -184,6 +193,12 @@ func Load() (Config, error) {
 	}
 	cfg.DEXRPCURL = value("DEX_ETH_RPC_URL", "https://ethereum-rpc.publicnode.com")
 	cfg.DEXEvidenceDir = value("DEX_EVIDENCE_DIR", "var/dex-evidence")
+	cfg.DEXRuntimeDir = value("DEX_RUNTIME_STATE_DIR", "var/dex/runtime")
+	cfg.DEXRuntimeEpochFile = value("DEX_RUNTIME_EPOCH_FILE", "")
+	cfg.DEXLegacyRecovery, err = boolean("DEX_LEGACY_HISTORY_RECOVERY", false)
+	if err != nil {
+		return Config{}, err
+	}
 	return cfg, nil
 }
 

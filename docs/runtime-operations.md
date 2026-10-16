@@ -1,6 +1,87 @@
 # 当前部署与运行说明
 
-最近核实：2026-10-09（Asia/Shanghai；含期权写入与恢复修复）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
+2026-10-16 10:26（UTC+8）资本规则扩展已安装：隔离 MySQL 的安装、新旧格式读取、故障回滚和稳定重试验证通过，生产主库新增三张 8 KiB 压缩页专项表及 schema 登记。既有 schema 与历史迁移断点逐字不变，三条生产旧观测的内容、来源及发布时间核验一致。管理和只读核验工具已更新；常驻采集器未替换，新写入开关仍关闭，采集、writer、Redis 和历史迁移继续停止。详见[执行记录](../research/2026-10-16-capital-versions/report.md)。
+
+2026-10-16（UTC+8）压缩转换完成：137 张项目 MySQL 表（125 业务表、12 控制表）已验证为原生 `COMPRESSED`、8 KiB 压缩页；实际分配空间 54.51 → 21.92 GiB。列、索引、分区、schema_version 和历史迁移断点保持，采集与历史迁移继续停止，binlog 保持关闭。详见[压缩执行记录](../research/2026-10-16-mysql-compression/report.md)。
+
+2026-10-16（UTC+8）压缩转换进行中：按用户“改成压缩”，后台任务 `crypto-market-info-mysql-compression-20261016.service` 正将明确范围内 125 张业务表及 12 张控制表逐表重建为 `ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=8`，随后核验行数、逻辑样本、索引及分区。采集器、writer 和历史迁移保持停止，binlog 保持关闭；压缩完成不会恢复这些服务。动态进度在 `var/storage/mysql-compression/20261016/status.json`，边界及验证见[执行记录](../research/2026-10-16-mysql-compression/report.md)。
+
+2026-10-16（UTC+8）最新用户指令：已通过 `deploy/storage/mysql.cnf` 的 `skip-log-bin` 关闭生产 MySQL binlog，并正常重启核验 `@@log_bin=0`；原实例 UUID、redo 提交同步和 doublewrite 保持，旧 binlog 文件保留。历史迁移 run `1955f202-b4be-4775-ba6b-61bea9ae47ce` 已按用户要求暂停，不自动恢复；数据库重启前后全部迁移断点一致。采集器、四个低频服务、writer 和 Redis 保持停止，生产 MySQL 与共享 ClickHouse 运行。证据在 `var/storage/history-migration/20261016/binlog-disabled/`，迁移当前状态见[执行记录](../research/2026-10-16-history-migration/report.md)。以下为此前阶段记录。
+
+2026-10-16（UTC+8）：采集运行状态源码已接入 Across、Reserve、LST、Keeper 和主 DEX，并新增显式转换、核验、回退及有限维护交接。用户已停止项目，本轮保持 collector、四个低频服务、writer、生产 MySQL/Redis 停止；只读核对发现原 ClickHouse 服务仍运行，本轮未操作它。未转换生产状态、未替换生产二进制，历史导入仍暂停。测试、工具产物和未完成的联合容量验收见[实施记录](../research/2026-10-15-runtime-state-improvement/report.md)，命令与恢复边界见[恢复协议](redis-mysql-migration/runtime-state-operations.md)。
+
+2026-10-15 16:13:45（UTC+8）：writer `e3b2a94e…` 已部署共用事务超时错误处理修复，Keeper 为 `df29ff71…`；单元、vet 及真实自动回滚/原身份重试回归通过。准备队列扩展已撤回且从未上线，保持双提交、双准备和原连接/内存预算。隔离测试库已于 16:16:26 正常退出并保留数据。按用户最新边界停止追加性能优化，转入设计讨论；容量、排空和最终稳定性没有通过，历史导入继续暂停。
+
+2026-10-15 15:54:49（UTC+8）：Keeper 已更新为 `df29ff71…`，修复事务超时被 `sql.ErrTxDone` 掩盖后错误退出；真实自动回滚、无部分事实和原身份重试回归通过。writer 仍为 `348a184b…`，吞吐约 103 批/分钟、积压约一万批，容量、排空及最终稳定性未通过。设计逐项状态见[实施记录](../research/2026-10-14-write-backlog-improvement/report.md)顶部核对表。
+
+2026-10-15 15:23:48（UTC+8）：writer `348a184b…` 已部署期权分钟事实主键页预取，仅在原只读准备池执行三张表的有界主键读取；最终事实、冲突和发布检查保持。单元、vet 及新增“预取不持代次锁/随后事实变化仍拒绝/同一身份恢复”隔离回归通过。collector `cff3066…` 继续采集，正在重建完整队列索引并测量下一段吞吐；容量、排空与 24 小时仍待通过。
+
+2026-10-15 14:47:44（UTC+8）：writer `380f2c33…` 已部署，六张唯一分钟事实表改用普通 INSERT 检查新键，冲突须完整回滚后按原协议重试；周期 schema 校验每池一次核对全部 33 项。新增冲突/代次回归、八个真实进程中断边界、发布不变量及双副本 writer 回归全部通过。collector `cff3066…` 继续运行，writer 的双提交/双准备、连接预算和原队列保留。当前重建完整队列索引并等待周期校验；容量、排空、P99 和最终 24 小时仍未通过，正式历史导入暂停。
+
+2026-10-15 12:52（UTC+8）：collector `cff3066…` 已部署发现事实事务外预取和同批 instrument 批量读取，四项隔离事务回归通过（68.260 s）；writer `7d111d…` 保持运行。独占发布事务、首次已知意图、数据/代次/资源均保留。当前进入无构建负载观察；来源预热、积压排空、完整范围容量和最终 24 小时仍待验收，正式历史导入暂停。
+
+2026-10-15 12:33（UTC+8）：采集器 `7628e2…`、writer `7d111d…` 已部署，原代次、队列、表结构与资源保留。补充事务外 CEX 发布索引预取、发布完整性复核、Redis 超时落盘时间预算及健康连接复用；生产交付入口双 worker / 7 批实际双副本回归通过（14.296 s）。直接 Redis 测试的环境超时保留，容量、排空延迟和最终 24 小时尚未通过，继续执行原方案，正式历史导入仍停止。
+
+2026-10-15 08:46（UTC+8）当前 writer 为 `a07869…`（文件头预读建议及 PID 指标），collector `bdd00c…`、Keeper `56595f…`、Reserve `6808e2…`；双提交 worker、64 MiB 准备 / 32 MiB 缓存，已关闭不合格窗口的额外帧复制。生产 MySQL 为 2 GiB buffer / 3.5 GiB 容器、binlog 缓存 4 MiB；隔离 MySQL 512 MiB / 1.5 GiB 已停止且保留定义、数据。观察器 v8 新增实际 PID 绑定，旧截止不自动放行。容量仍未通过，正式历史导入和容量控制器停止；已按用户要求继续执行原方案，继续优化与验收，表结构和资源范围保留。下文为历史记录，最新证据见[实施记录](../research/2026-10-14-write-backlog-improvement/report.md)。
+
+2026-10-15 08:25（UTC+8）当前 writer 为 `1995c5…`（缓存诊断版），collector `bdd00c…`、Keeper `56595f…`；双提交 worker、原代次保留。生产 MySQL 已结束 2.5 GiB 试验，恢复 2 GiB buffer / 3.5 GiB 容器，binlog 事务缓存 4 MiB。隔离 MySQL 保留原数据和 UUID，独立 512 MiB buffer / 1.5 GiB 容器。现无活动容量控制器，正式历史导入暂停；观察器 v8 的旧截止不等于通过。正验证 Reserve 组合游标重复扫描修复，尚未宣称积压排空、1.5×R 或 24 小时验收完成。此前窗口与阶段在下文保留为历史记录，最新证据见[实施记录](../research/2026-10-14-write-backlog-improvement/report.md)。
+
+2026-10-15 05:30（UTC+8）最新部署：collector `a2174bcff5061d642c7013b4a31545628c07b8605104d2ea88c8f1690ac129df`、writer `c88ac624372078d277ce922d48769f15142c9c335de7bb35acb7aaa9505c15e8`，代次 1、双提交 worker。单项身份缓存和事务时长汇总已部署，binlog 事务缓存 4 MiB 已固化。生产 MySQL 正在试验 1.5 GiB 缓存 / 3 GiB 容器，隔离仍 1 GiB / 2.5 GiB；刷盘与 CPU 不变，试验未固化。Docker 本地协商超时已用经验证的 API 1.45 避开，当前数据库没有重启。新原始窗口 05:33—07:03，有限控制器 `cmi-backlog-streaming-gap-validation.service`，只读观察 `cmi-backlog-observation-final-v8.service`。实际吞吐、完整覆盖和持续稳定性仍未通过，不恢复正式历史导入。下文是先前阶段；最新状态与回退入口见[实施记录](../research/2026-10-14-write-backlog-improvement/report.md)。
+
+2026-10-15 04:37（UTC+8）已补充部署 DEX 流式缺口查询，当前 collector SHA-256 `69c4d2e0571330b620245ad1014f94cde8ff028ee3421181fe78f5d133b8cc9e`，04:37:11 启动；writer 保持下段版本。14.2 万高度的只读对照为旧 102 ms、新 28 ms，结果均为无内部缺口，新查询无排序或临时表；旧查询本次也未产生落盘临时表，所以该项不能解释全部 I/O。04:23、04:24 的全范围分钟最后分片仍达到 183、294 秒，运行验收未通过。`cmi-backlog-dex-index-validation.service` 已停止且旧帧保留，新的最终容量窗口待本轮瓶颈修复后确定；旧观察 deadline 不能当作本轮自动通过时间。正式历史导入继续暂停。
+
+2026-10-15 04:15（UTC+8）最新部署：collector `dc68416cfbbe918a6e7b0d9f0dba40bfe60ce7f318b418598f22810bbf0d43ce`、writer `d832574cf7fdf52525f7aadb548d67588ad18820d9555b5c3de14e3f425644ff`，启动分别为 04:15:23 与 04:15:49。已部署不可变规则与计划的事务外准备、DEX 批量写入和 UInt8 成交量确认标志修复。代次 1、双提交 worker、连接预算 14/16、MySQL 1 GiB 缓存与 2.5 GiB 容器上限保留。原件及回滚包在 `var/storage/write-backlog-improvement/`。新真实样本窗口为 04:25—05:55；预热缺口、小计划和排空后的短暂正常均不算验收通过。容量、P99 与 24 小时运行检查仍在执行，正式历史导入保持暂停。下文为较早阶段记录，最新证据见[实施记录](../research/2026-10-14-write-backlog-improvement/report.md)。
+
+2026-10-15 03:41（UTC+8）现场：主采集器已部署 DEX 索引使用修复，实际 SHA-256 `2ff3d61aef62113d4aab013fde18cd1059b0ccfc389cf39f181bc0d89f85d49b`；writer 仍用 `531107de1b45b570e018db15a150c5af4ffb58fc5d9e404bb1c0662d1fc7ceb8`、双提交 worker，实时连接预算 14/16。生产/隔离 MySQL 均已固化 1 GiB 缓存和 2.5 GiB 容器限额，CPU 与持久化设置保留。四个 DEX 非唯一索引实测共约 72.5 MiB，主采集器启动检查索引形态，维护查询显式使用索引。实际进程切换为 03:19:11—03:19:12，之后预热另计。
+
+仍未通过运行验收：期权目录已加载 2,806 个成员，但新计划只发布到 38 个，日志反复出现计划超时和边界过期。已定位计划事务内通过同一双连接池加载不可变引用，正在验证事务外准备修复；DEX 批量写入修复也在本轮代码中，尚未部署。该段旧队列下降不能当作完整输入吞吐通过。旧容量控制器已停止且原始样本保留，新冻结窗口待修复部署后确定。正式历史导入持续暂停。最新结果见[实施记录](../research/2026-10-14-write-backlog-improvement/report.md)，下文较早阶段保留为历史证据。
+
+2026-10-15 02:28 已继续部署写入积压改进：writer 增加 CEX 直接解码、同一事务的大批次分块准备及分配前数组边界保护；真实进程 SIGKILL、隔离 Redis 重启、分块故障回滚和完整回放已测试。主采集器补修复 OKX 目录刷新因临时存储错误退出整组采集的问题，原采样代继续运行，只对同一元数据操作退避。发现元数据发布去掉重复查询，来源证明改为有界批量写。主采集器与 writer 最后于 02:27:41 重启，来源重新预热时间另计；producer generation 保持 1。writer SHA-256 为 `531107de1b45b570e018db15a150c5af4ffb58fc5d9e404bb1c0662d1fc7ceb8`，collector 为 `1cdd92a04e648857812e08780f94594f8002bf64a01e4e49527c7b18ed6e1523`。MySQL 缓存扩容试验未见收益且接近容器内存上限，已退回原 512 MiB；提交持久化设置保持。
+
+02:38:13 起进行第二次资源试验：生产与隔离 MySQL 均为 1 GiB 缓存、2.5 GiB 容器内存，配置暂未固化；持久化设置保留。当前 writer 仍为双 worker，候选第三 worker 在隔离验证中。02:43 后测试负载引起积压反弹，已终止该轮测试并降低后续测试并行度，详情见实施记录。
+
+02:08 和 02:12 快照中旧积压为零，但本轮仍出现反弹，**尚未通过稳定性验收**。修复前有缺口的样本保留；新的有限原始捕获窗口为 02:44—04:14（UTC+8），unit 为 `cmi-backlog-post-retry-validation.service`，状态在 `var/storage/write-backlog-improvement/post-retry-validation/validation-status.json`。最新只读观察 `cmi-backlog-observation-final-v6.service` 到 2026-10-16 02:27:41 自动结束。完整输入覆盖、60 分钟 1.5 倍回放、排空后 P99 和 24 小时稳定性仍须验收。缺分片或整分钟缺失不会被低延迟统计掩盖。正式历史导入继续暂停；[实施记录](../research/2026-10-14-write-backlog-improvement/report.md)列出部署、真实故障测试、试验回退和未完成项。
+
+2026-10-14 已部署[写入积压改进](redis-mysql-migration/write-backlog-improvement.md)：Keeper 使用服务端 SELECT 15 秒上限、runner 退避、完整窗口 keyset 分页和 frontier 索引；writer 使用统一 Redis/spool 调度、两个提交 worker、两个准备任务、32 MiB 不可变缓存、64 MiB 准备预算及不可变分钟共享代次锁。主采集器在该阶段更新了元数据批量路径，后续补充部署见上文；producer generation 保持 1；实时账户连接预算为 14/16。写入器诊断在 `var/storage/writer.log`，上限 64 MiB 加一份轮转，源码和实际二进制回滚包在 `var/storage/write-backlog-improvement/`。21:50 首次完整索引观测到旧积压为零，22:34 一次 Redis/spool 同时为空；此后仍有延迟波动和积压反弹，**尚未通过稳定性验收**。90 分钟冻结真实样本和隔离验证工具在同一私有目录及 `tools/storage/backlog-validation/`，持续观察辅助 unit 为 `cmi-backlog-observation.service`，到部署满 24 小时自动结束。历史导入仍暂停，不能把短窗口排空视作正式迁移放行。阶段结果见[实施记录](../research/2026-10-14-write-backlog-improvement/report.md)。
+
+2026-10-14 17:22:58（北京时间），按用户要求，仅对共享 ClickHouse 的 `crypto_grid_trading.trades_raw` 和 `crypto_grid_trading.quality_events_raw` 执行 `SYSTEM STOP MERGES`，暂停两张表因 `UNKNOWN_CODEC` 反复失败的后台合并。两条命令均成功，随后合并列表为空；暂停前后两张表的活动分片数量、行数和磁盘字节数一致。共享数据库继续运行，采集服务未因本次操作启停。该措施暂停重试，尚未修复旧数据读取错误；执行与负荷对照记录见[本次暂停目录](../research/2026-10-14-disk-write-audit/pause-abnormal-merges-092157Z/)，恢复命令保存在该目录的 `resume-merges.sql`，应在旧数据问题处理后择机执行。数据库重启或表重新挂载后应复核暂停状态。
+
+17:23:24–17:25:24 两分钟复测，25 次合并检查均为空，ClickHouse 进程写入计数增量为 0，暂停后未再出现这两张表的合并错误。Ubuntu 虚拟盘写入从暂停前 30 秒样本的 8.54 MiB/s 降至 6.47 MiB/s，忙碌率从 79.73% 降至 75.88%，剩余负荷仍高。后一个窗口 MySQL/Redis 实际块设备写入分别约 1.97/1.01 MiB/s，MySQL 读取约 2.49 MiB/s；两窗口其他负荷并不相同，不能将差额当作固定优化收益，也不能直接换算宿主机磁盘忙碌率。[对照统计](../research/2026-10-14-disk-write-audit/pause-abnormal-merges-092157Z/comparison.json)和[最终核验](../research/2026-10-14-disk-write-audit/pause-abnormal-merges-092157Z/verification.json)保留原始边界。
+
+2026-10-14 已按用户授权停止旧五个采集进程，启动 MySQL 新版 collector、Across、Reserve、LST、Keeper 及新 writer；实际二进制、后端和正式代次均核验。固定启动尾部逐字段及实际恢复通过，新 CEX/期权分钟回放通过。**运行验收仍未完全通过**：OKX 配对全体预热失败、writer/spool 积压增长、Keeper 间歇 MySQL 超时自动重启。现有采集保持运行并保存实际 partial/无效状态；本次未迁移其余历史，完整历史查询关闭。详情及停采边界见[切换报告](../research/2026-10-14-cutover/report.md)。下面较早日期记录为历史证据，现场状态以私有 `var/storage/cutover/20261014/` 记录和实时检查为准。
+
+
+2026-10-14 纠正切换前复制范围：原 59 表整表预置任务已正常停止，不再要求它全部完成才能上线；旧服务继续运行。按[新版实际启动调用](redis-mysql-migration/startup-dependencies.md)缩减范围，封存快照的 DEX 恢复只需 76 批、4408 条报价，已复制并独立核验，余下旧发布/报价历史在切换后迁移。真实启动复测又定位并修复期权计划无查询索引造成的超时，已在线安装两个非唯一索引（合计 128 KiB）。用户已授权条件满足后直接切换，最终尾部同步和实际恢复验证尚待完成；未启动新采集或激活正式 producer。
+
+Redis/MySQL 的安装与编程准备已完成，检查路径见[实现交付与检查入口](redis-mysql-migration/implementation-status.md)。2026-10-13 按用户限定授权开始导入固定快照中的 59 张启动依赖表、验证恢复并暂存新服务配置；正式 MySQL 已含导入事实，执行结果见私有目录 `var/storage/bootstrap-preparation/20261013/`。两个新数据库用户 unit 已运行；新 writer 保持 inactive。原五个采集服务继续使用原二进制、原配置和 ClickHouse，没有切换或激活正式 MySQL producer。完整盘口历史尚未迁移，正式切换前仍须补齐快照后的增量并刷新恢复状态。
+
+最近核实：2026-10-13（Asia/Shanghai；含源历史全量读取、Reserve 源坏块定点恢复与后续历史成员恢复，其他既有记录保留各自日期）。本文记录 `/home/ubuntu/crypto-market-info` 所在机器的实际部署，不是另一套部署方案。路径、版本和启用配置变更后同步更新本文；运行状态仍以现场检查为准，不保存固定 PID。
+
+2026-10-13 17:43:37（北京时间）完成后续源历史恢复：补回原始 116 条 DEX 报价、154 条 DEX 日志、1 条 Keeper 探测和 14,114 条 Keeper 索引页。全部经原提交成员 SHA-256 或原文件校验和认证、隔离与源表回读复核，原提交声明和来源时间保持。原 27 个 DEX 问题批次中 21 批恢复完整，剩余 6 批缺 290 条报价/13 条收据；Keeper 全量重核 289,048 个已提交批次，探测和成功分页缺口消除，仅剩 2 条原费用观测缺失。CEX 活动坏 part 中定位到一个含连续 64 KiB 清零的压缩块，未找到原始副本，原 31 个文件保全且哈希未改。当前剩余缺口需要原始备份或其他原始证据，未补造数据或接受历史缺口。正式 MySQL 125 张业务表精确计数仍全部为零；原五个采集服务、ClickHouse 及迁移写入器 PID/重启计数与此前审核一致，写入器仍 inactive，没有迁移、切换服务、撤回提交、删除或隔离原件。本轮为定点恢复，未重新全量扫描 125 张源表；[恢复报告](../research/2026-10-13-source-recovery/report.md)保留证据和边界，下文全库核查为修复前快照。
+
+2026-10-13 14:46:52（北京时间）完成 125 张迁移源表全字段全量读取，124 张通过；CEX `order_book_second_delta/202609_90466_116798_41` 活动分片报校验和错误，指定 part 再查确认，同表其余约 9,349 万行读取通过。业务核查另确认 DEX 27 个已提交批次缺成员、Keeper 3 个已提交批次各缺 1 条事实；它们会阻断迁移读取或领域校验。Keeper 14,114 个历史成功分页仍缺索引页，普通兼容校验允许页为空，不等于分页完整。Across/LST 全量已提交成员核查通过。新定位的旧损坏不表示刚刚发生；不能以分片总行数当作损失数。此次未修复、隔离、删除源数据或切换服务，原服务 PID/重启计数与 Reserve 修复后记录相同，新 writer 仍 inactive。共享实例其他项目的旧活动坏块仍在；详细边界见[源完整性报告](../research/2026-10-13-source-integrity/report.md)。
+
+2026-10-13 13:44:35（北京时间）已人工修复 Reserve `reserve_folio_state` 的 `202610_7483_7487_2` 读取阻塞。从 `/lost+found` 的错配文件内部找回 5 条原始状态，48 个压缩流的校验和全部通过；其中 3 条与原已提交 capture 的完整成员 SHA-256 逐一吻合，隔离库写入回读的 Native 字节也完全一致。恢复源表并再次验证后，仅将原坏 part 移到 detached，原件与取证副本的文件哈希保持。没有撤回 capture、修改原时间或编造值；另 2 条没有存续提交声明，保留为未发布事实。修复后状态表全字段读取、10,355 个快照状态成员及全部 62,502 个已提交 Reserve 批次的业务校验通过。各原采集服务和 ClickHouse 继续运行，未启停服务，新 writer 仍 inactive，未执行 MySQL 迁移。独立审计库 `cmi_reserve_recovery_20261013` 不属于正式迁移范围；[修复证据](../research/2026-10-13-reserve-recovery/resolution-summary.json)与[交付记录](redis-mysql-migration/implementation-status.md)保留恢复过程和边界。该结果不等于其他库的全部历史已完成全量校验。
+
+2026-10-10 重启后恢复：18:31:55正常启动，当前initramfs检查日志报告恢复journal及孤立inode后clean；EXT4错误计数保持0。当前启动参数没有force fsck，未获得先前一次性强制检查的完整输出，不宣称全盘完整性已证明。原ClickHouse已恢复且停止崩溃；核验后将41个实际为普通文件的part路径原样移至`var/recovery/rootfs-20261010-quarantine/`，另单独DETACH Keeper校验失败的14116行索引页part，均保留原件且未绕过校验。ClickHouse另自动保留700个broken-on-start parts，含旧合并覆盖块，数量不能当作损失行数。
+
+先找回2份原始证据，再全量核验100457个已提交日志/收据capture，剩余2个缺fill成员、2个缺紧凑证据；对这4个损坏批次追加存储撤回修订并保留来源身份、时间、成员承诺和canonical。原来源定点重采Base 52416516..52416526，补回3条fill并保存完整finalized新批次；Arbitrum 513465719..513465802原始扫描及新证据完成，但历史implementation调用被原来源拒绝，保持partial。两次有界backfill在日志提交后因可选旧收据补查达到120秒上限，不能将命令退出124当作日志未提交；新成员及证据均另行核验。原watch已恢复，r2二进制及来源/额度不改。
+
+主collector、Reserve、Keeper已持续落库，19:19选定分钟334条OKX配对流和3002个衍生成员全部60秒实际回放通过；新现货/期货5档，2960个期权10档、42个交割期货5档。仍如实保留短暂无效秒，不能承诺所有分钟永远全秒有效。CEX实际可见最后旧完整分钟16:51，五条基础流到18:50恢复，全部337条到18:51恢复；中间实时盘口未补造。LST的Blockpi gate及两份日志游标被文件系统损坏，原件保留后从同来源/原流已核验备份恢复，其他host禁用/冷却和所有原请求限制不改。原RPC暂时521后已恢复；两次已调度市场报价四腿ok/fresh及资金费新批次核验通过。游标由原watch从保留Start和数据库连续覆盖重新计算，19:39:42已补入新的完整日志范围并继续推进；仍有旧积压，不能把旧备份Next当作覆盖证明。
+
+本轮六个原unit保持enabled；所有`90-rootfs-maintenance.conf`和维护flag已清理，一次性GRUB条目已按内容匹配清理，普通`grub.cfg`验证未改。Reserve安装启动错误修复，SHA-256为`16828f47175de67a06262045ce50fbe07e22a246be5a55578dde31ab977f5a95`，数据库不可用时返回原错误而非nil Client panic，隔离race/vet和真实失败探针通过。历史损坏和Keeper分页缺口仍保留，不宣称全部历史完整；其他项目旧UNKNOWN_CODEC分片未改。完整操作与验收见[恢复记录](../research/2026-10-10-reboot-check/report.md)及[最终只读状态](../research/2026-10-10-reboot-check/final-health.json)。
+
+2026-10-10 18:01 修复准备：已停止本项目六个采集/数据库unit，并为它们添加 `90-rootfs-maintenance.conf`；以 `var/recovery/rootfs-maintenance-20261010.flag` 阻止在核验前自动启动，原enabled状态、原unit和I/O限速drop-in保持不变。维护保护清单在[maintenance.json](../research/2026-10-10-reboot-check/maintenance.json)。已修复并安装Reserve启动时的错误变量遮蔽：数据库Open失败正确返回原错误，避免nil Client初始化schema而panic；安装SHA-256为 `16828f47175de67a06262045ce50fbe07e22a246be5a55578dde31ab977f5a95`，race、vet及真实关闭端口失败探针通过。同源隔离构建与原程序备份在 `var/deployments/reserve-startup-20261010/`。通过现有Docker管理权限准备**一次性**GRUB入口 `crypto-rootfs-repair-20261010`，下次启动当前内核时设置 `ro fsck.mode=force fsck.repair=preen`；普通 `grub.cfg` 未改，原环境块已备份。只自动处理无需人工决策的文件系统修复；严重不一致可停在启动修复界面，不能认为磁盘已修复。当时尚未发起重启；用户18:03确认后已安排正常重启，当前恢复结果见上文；[启动计划与回滚记录](../research/2026-10-10-reboot-check/boot-plan.json)。启动返回后先核验fsck结果和内核EXT4错误，再在维护保护下恢复数据库并检查part/历史完整性，最后移除已记录的维护保护、恢复原采集服务；不要在重启后直接另起writer或清空游标。
+
+2026-10-10 17:39 重启后检查：本机于17:01:29启动，根文件系统 `/dev/sda2`（EXT4，挂载于 `/`）从17:01:44起记录错误，17:39:57内核计数已达41,680。内核报告目录校验和错误及 deleted inode referenced；ClickHouse 在加载 DEX、Across、Reserve 的历史 part 时遇到 `Structure needs cleaning` 并以134崩溃，HTTP ping及只读查询无法完成。Across、LST、Reserve、Keeper循环重启；主collector虽active，但CEX初始化和DEX写入持续因数据库连接拒绝/重置失败，不能视为采集正常。主collector日志中最后确认写入的是16:52分钟（5条原始流和332条新增流），本次启动后的日志没有分钟写入、DEX落库、收益写入或期权计划发布成功记录；该日志结论不代替数据库完整性检查。Across安装二进制仍为r2且SHA-256与原部署一致。Reserve启动还出现nil Client的schema初始化panic。当前无法核验历史是否完整或量化损失；应先在停止使用该文件系统后进行离线文件系统检查/修复，再恢复数据库并校验数据。此次仅只读诊断，未启停服务、改配置或删除/隔离数据；[现场证据](../research/2026-10-10-reboot-check/check.json)。
+
+2026-10-10 16:08:41 已部署 Across `across-exit-recovery-20261010-r2`，安装和运行 SHA-256 均为 `d2481fdad64bad398e3255cc055316d312e3cdb17af7ee41f2e31b5e4e4dee66`。内部请求或 worker 的 `context.Canceled` 不再当作正常退出；只有 signal context 已取消才正常退出，明确 `network_issue_stop` 仍以 2 停止待处理。第一版于15:57恢复，15:58:33真实内部取消已以1退出并由systemd自动重启；原始23:08退出的触发错误没有日志，不能唯一还原。最终版启动恢复及每分钟收据核查按512个capture读取、逐批完整校验并释放事实，不保留全历史事实副本；跨批收据优先、unknown费用单次重试、canonical/revision及原采集起点保持。另记录发起worker错误后才取消其他worker，便于区分原始错误与连带取消。当前两链继续落库，停采旧孔洞仍在回补，不能用最新高度宣称历史已完整。三包race和vet通过，实际成员回读、内存与写入观测见[本轮修复记录](../research/2026-10-10-across-recovery/report.md)。原RPC、quota、unit及其他采集服务保持；共享数据库未主动重启。旧表失败合并仅作90秒暂停对比并已恢复，未修改或删除其数据；整体I/O及期权采样迟滞尚未证明彻底解决。程序备份及隔离构建在 `var/deployments/across-exit-recovery-20261010/`。
+
+2026-10-09 16:18共享ClickHouse自动重启，16:18:38重新active，watchdog `NRestarts=2`，退出根因尚未确定。本轮没有修改数据库unit。Reserve16:18:26因本机数据库连接重置退出，自动重启后继续写入13条报价快照；Across、keeper同期重启，目前均active，主collector与LST进程保持。该事件发生在下段16:17检查之后，不能用先前重启计数0宣称始终稳定。16:27读库，预测和确认分钟成交量仍覆盖167币种，16:26全337条五档行情各60秒有效；期权计划3,082成员/97分片提交齐全但仍有927个无效成员秒。16:25普通CEX与期权也保留真实采样缺失。修复覆盖范围和未解决事项见[本轮修复记录](../research/2026-10-09-collector-recovery-fix/report.md)。
+
+2026-10-09 16:08:57 补充部署独立发现事实采集，当前主 collector SHA-256 `74aa673c4849ed44ade339f03a67699d1e4fb07ee18ceb4af456afc5394dfb1c`；Reserve 仍为下段版本。资金费预测、上一完整分钟成交量及参考规则分别严格验证/发布；分钟未确认或费率组未知不再丢弃已完整预测，预测接口失败也不再阻断完整成交量。市场事实先采集，规则失败不推进其刷新时间，也不生成费用或资本许可。八组 race、go vet、单独 HTTPS 部分失败回归通过。仅重启主 collector，其他服务及 unit 保持；备份与源码快照另存 `var/deployments/collector-recovery-20261009-v2/`。16:17预测与确认分钟成交量均覆盖167币种，USDC也有真实发布，费用未知保持；16:11–16:16全337条盘口各60秒有效，16:12全部OKX20,040秒实际回放通过。同分钟期权按实际计划核齐3,082成员/97分片，184,920秒全部回放有效（3,040期权10档、42期货5档）。预测覆盖不等于所有输入和账户条件齐全；16:15期权仍有170个无效成员秒，不能宣布稳定性彻底解决。详细截止范围、失败证据与剩余问题见[本轮修复记录](../research/2026-10-09-collector-recovery-fix/report.md)。
+
+2026-10-09 15:45:57 已部署 OKX 配对目录与 Reserve 异常恢复修复。主 collector SHA-256 `d19ab0ce5b8356a39e0f731ec0e89a1b743c789702b821170ff2737b65f13936`，Reserve SHA-256 `896623908f2f0c1318cbcdbca549ae3aca60911eff5749baf8fd39ab99e37b25`。OKX 非 live 条目允许缺少交易分类，但身份和重复检查、live 条目的严格完整性校验保留；目录错误日志明确是否仍有活动分支。原 45 秒写入积压终止保护保留，恢复分支现在可重新解析真实目录。15:48 全337条 CEX 盘口各60秒有效，167对/334条 OKX 五档盘口的20,040秒实际回放通过；15:51一次真实WS恢复缺口后，15:52重新达到337条全秒有效。期权15:49全3,138成员/99分片的188,280秒实际回放通过，3,096期权为10档、42交割期货为5档；后续仍记录真实连接关闭和采样迟滞，不承诺逐秒永无缺口。Reserve 区分 null 区块、链重组和永久错误，重组先刷新最终性、修订旧分支并回退日志游标，未提交结果不入库。六组 race 测试和 go vet 通过。只重启主 collector 和 Reserve，unit/drop-in 不变，其他服务 PID 未因本次部署改变；原程序与源码快照在 `var/deployments/collector-recovery-20261009/`，详情见[修复记录](../research/2026-10-09-collector-recovery-fix/report.md)。停采及重启预热形成的旧行情缺口没有补造。
 
 2026-10-09 13:18:30–13:18:41（北京时间），用户同意后已安装 `/home/ubuntu/.config/systemd/user/crypto-market-info-clickhouse.service.d/merge-io.conf` 并重启共享ClickHouse，生产回读 `max_merges_bandwidth_for_server=16777216`（合并读取16 MiB/s）、`max_mutations_bandwidth_for_server=8388608`（mutation读取8 MiB/s）。重启命令耗时10.95秒，HTTP探针观察到不可用约9.73秒；原unit、background_pool_size16、warning/console=false日志及六表fsync/512 MiB合并上限保持。Across、Reserve、keeper因断连各自动重启一次，13:21七个项目unit已全部active/running，四个低频专项库均有恢复后可见观测；主collector及LST未重启。13:19:59–13:24:58五分钟独立观测，虚拟盘平均8.56%、P95为17.74%、最高36.11%，主库单分区part最高13→12，无明显积压。13:19–13:24六分钟计划/提交全部完整，13:20保留一次真实Deribit异常EOF造成的642个无效秒，其余五分钟全秒有效；13:21的188,280个期权/期货成员秒及原五路CEX300秒实际回放通过。此前OKX新增332流来源目录错误仍存在。限速控制合并/mutation读取，短窗口未覆盖GB级大合并，也不承诺整机I/O或Windows物理盘不再满载。配置、部署、观测和回滚见[合并I/O排查](../research/2026-10-09-clickhouse-merge-io/report.md)。该drop-in覆盖ExecStart，以后修改基础unit启动命令时必须同步此覆盖配置；当前备份在 `var/deployments/clickhouse-merge-limits-20261009T051828Z/`。
 
@@ -31,11 +112,14 @@
 | 服务 | 实际运行方式 | 连接与用途 |
 |---|---|---|
 | ClickHouse | 用户级 systemd unit `crypto-market-info-clickhouse.service`；宿主机原生二进制以前台模式运行并带 ClickHouse watchdog；核实版本 `26.8.1.1825` | HTTP `127.0.0.1:8123`；native `127.0.0.1:9000`；数据库 `crypto_market_info` |
-| collector | 用户级 systemd unit `crypto-market-info-collector.service`；直接运行编译后的单个二进制 | 依赖 ClickHouse 健康后启动，采集盘口、资金费率、TRX/SOL/AVAX 收益及 Ethereum DEX 链上数据；没有独立 HTTP 服务端口 |
+| collector | 用户级 systemd unit `crypto-market-info-collector.service`；直接运行编译后的单个二进制 | 当前使用 MySQL 后端，盘口封口批次持久交付到 Redis/spool，独立 writer 入库；其余定类型数据按各自事务写入；没有独立 HTTP 服务端口 |
+| MySQL | 用户级 systemd unit `crypto-market-info-mysql.service`；无网络 Docker 容器 | 当前新事实与提交证明；私有 Unix socket；ClickHouse 保留源历史 |
+| Redis | 用户级 systemd unit `crypto-market-info-redis.service`；无网络 Docker 容器 | 盘口预览与持久待写批次，AOF、noeviction；spool 为磁盘持久副本 |
+| storage writer | 用户级 systemd unit `crypto-market-info-storage-writer.service` | 同一进程内两个提交 worker，统一处理 Redis/spool；不自动恢复正式历史导入 |
 | 全量永续验收 collector | 用户级 systemd unit `crypto-market-info-perp-soak.service`；独立二进制与数据库 | `crypto_market_info_perp_soak_20260928`；仅三家共有 USDT 永续盘口和资金费率，不重复采集现货与收益 |
 | 桌面状态指示器 | 图形会话用户级 systemd unit `crypto-market-info-status-indicator.service`；Python/Gtk AppIndicator | 每 30 秒只读检查生产 unit、五路盘口及最新收益写入；不访问交易所、不写数据库 |
 
-本项目不使用 Redis、PostgreSQL、消息队列或其他项目的服务。基础 CEX 分支保持 BTC 显式列表及现有收益配置，新增 OKX 独立配对分支覆盖可公开借贷 USDT 现货/永续完整交集；Deribit期权auto已部署R5持续全量发现。永续全量验收服务当前停用。具体构建版本用下文 `go version -m` 查询，不以当前仓库 HEAD 推断正在运行的二进制版本。
+2026-10-14 切换后使用本项目专用 MySQL、Redis 和 spool；下文较早的 ClickHouse 部署记录仅作为历史。基础 CEX 分支保持 BTC 显式列表及现有收益配置，新增 OKX 独立配对分支覆盖可公开借贷 USDT 现货/永续完整交集；Deribit期权auto已部署R5持续全量发现。永续全量验收服务当前停用。具体构建版本用下文 `go version -m` 查询，不以当前仓库 HEAD 推断正在运行的二进制版本。
 
 AVAX 第二阶段已于 2026-08-27 部署。collector unit 保持 `AVAX_YIELD_ENABLED=true`，新增 BENQI sAVAX、Ankr ankrAVAX、BENQI AVAX 借贷三条 Runner；启动时已对生产 `yield_observation` 幂等补齐两列，并成功写入三条首批同区块观测。
 
@@ -498,3 +582,7 @@ PublicNode `tron-rpc.publicnode.com` 承担只读节点数据，事件分页仍�
 该段记录 10 月 7 日交付时状态；10 月 8 日已实际部署，当前版本与验收见本文顶部及部署记录。
 
 部署时先备份实际二进制和 unit，停止原采集器后安装已验证版本，保持现有其他来源环境配置。新现货/期货从新分钟写5档；期权继续10档。核验新配对目录、相应两腿有效秒、资金费率及来源政策时间。回退时设 `MARKET_BOOK_DEPTH=10`、`OKX_PAIRED_ENABLED=false`，用支持5/10/50回放的新查询程序读取混合历史，不删除或重写已有历史。
+
+Keeper 的 runtime-convert / runtime-verify / runtime-rollback / runtime-handoff 和原 State/Ops 扩展已接入源码并完成领域恢复回归，尚未用于生产；不要仅凭命令已存在切换服务。新模式的 watch、preflight、resume-source 需要同一已核验运行目录与外部恢复世代；维护、转换和回退步骤见 [运行状态操作说明](redis-mysql-migration/runtime-state-operations.md)。历史导入继续暂停。
+
+主 DEX 的本地运行状态代码仍在验收，生产尚未转换。新模式使用 `DEX_RUNTIME_STATE_DIR`、`DEX_RUNTIME_EPOCH_FILE`；显式转换/核验/回退命令为 `dex-runtime-state`。它只处理 DEX 分支，主 collector 的真实停机与缺失区间必须纳入转换记录；正常启动不默认重建全历史。详见 [操作说明](redis-mysql-migration/runtime-state-operations.md)与实施记录。

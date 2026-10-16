@@ -15,6 +15,7 @@ import (
 
 	"github.com/vphoenix/crypto-market-info/internal/app"
 	"github.com/vphoenix/crypto-market-info/internal/config"
+	"github.com/vphoenix/crypto-market-info/internal/storage/backend"
 	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
 )
 
@@ -48,7 +49,7 @@ func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
 	if *initDEX {
-		store, e := chstore.Open(ctx, cfg.ClickHouse)
+		store, e := backend.OpenDEX(ctx, cfg.Storage)
 		if e != nil {
 			fatal(e)
 		}
@@ -94,7 +95,7 @@ func main() {
 		if parseErr != nil {
 			fatal(parseErr)
 		}
-		store, openErr := chstore.Open(ctx, cfg.ClickHouse)
+		store, openErr := backend.OpenMain(ctx, backend.Reader(cfg.Storage))
 		if openErr != nil {
 			fatal(openErr)
 		}

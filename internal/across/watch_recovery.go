@@ -44,12 +44,16 @@ func newestRawGap(covered []blockInterval) (HistoryRange, bool) {
 // the most recently captured block. Old archive restrictions cannot delay a
 // newer recoverable hole. Partial ABI/state coverage remains partial.
 func (c *Collector) RepairRawGapStep(ctx context.Context, networkContext ...context.Context) error {
-	if err := c.load(ctx); err != nil {
-		return err
-	}
-	caps, err := latestReadCaptures(c.captures)
-	if err != nil {
-		return err
+	var caps []Capture
+	var err error
+	if c.runtime == nil {
+		if err = c.load(ctx); err != nil {
+			return err
+		}
+		caps, err = latestReadCaptures(c.captures)
+		if err != nil {
+			return err
+		}
 	}
 	count := len(c.Manifest.Chains)
 	for offset := 0; offset < count; offset++ {
@@ -59,10 +63,33 @@ func (c *Collector) RepairRawGapStep(ctx context.Context, networkContext ...cont
 			continue
 		}
 		covered := historyIntervals(caps, chain, false)
-		if len(covered) == 0 {
+		if c.runtime != nil {
+			covered, err = c.runtimeOrLegacyCoverage(ctx, chain, false)
+			if err != nil {
+				return err
+			}
+		}
+		if len(covered) == 0 && c.runtime == nil {
 			continue
 		}
 		window, ok := newestRawGap(covered)
+		if c.runtime != nil {
+			var result struct {
+				Window HistoryRange
+				Found  bool
+			}
+			err = c.runtime.view(ctx, func(s *runtimeState) (any, error) {
+				w, found := s.newestRawGap(chain)
+				return struct {
+					Window HistoryRange
+					Found  bool
+				}{w, found}, nil
+			}, &result)
+			if err != nil {
+				return err
+			}
+			window, ok = result.Window, result.Found
+		}
 		if !ok {
 			continue
 		}

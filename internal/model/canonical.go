@@ -15,7 +15,10 @@ import (
 // Batches is immutable after handoff, sorted by instrument ID, and may be empty.
 type CompletedMinute struct {
 	MinuteTime time.Time
-	Batches    []MinuteBatch
+	// KnownFromMS freezes first knowledge at the completion handoff. A storage
+	// caller preparing its own minute may leave zero to capture it at preparation.
+	KnownFromMS int64
+	Batches     []MinuteBatch
 }
 
 type CanonicalMapping struct {

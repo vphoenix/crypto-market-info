@@ -2,6 +2,7 @@ package reserve
 
 import (
 	"context"
+	"errors"
 	"github.com/vphoenix/crypto-market-info/internal/dex"
 	"github.com/vphoenix/crypto-market-info/internal/dex/ethereum"
 	"strconv"
@@ -46,6 +47,9 @@ func (c *Collector) Headers(ctx context.Context, numbers []uint64) (map[uint64]d
 func TransientRPC(e error) bool {
 	if e == nil {
 		return false
+	}
+	if errors.Is(e, ethereum.ErrBlockUnavailable) {
+		return true
 	}
 	if ethereum.IsRateLimited(e) {
 		return true

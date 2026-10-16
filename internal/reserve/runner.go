@@ -14,6 +14,9 @@ import (
 // captures. A previously finalized hash conflict is fatal. It does not fetch
 // replacement quotes for old blocks or advance their availability timestamps.
 func (c *Collector) Reconcile(ctx context.Context, finalized, safe dex.Block) error {
+	if c.runtime != nil {
+		return c.runtimeReconcile(ctx, finalized, safe)
+	}
 	c.Rewind = 0
 	caps, e := c.Store.ReserveCaptures(ctx, Hash(c.Manifest.Hash))
 	if e != nil {
@@ -159,7 +162,7 @@ func (c *Collector) Backfill(ctx context.Context, from, to uint64, chunk uint64,
 			if e != nil {
 				return e
 			}
-			if e = c.Store.WriteReserveBatch(ctx, batch); e != nil {
+			if e = c.writeBatch(ctx, batch); e != nil {
 				return e
 			}
 			progress(fmt.Sprintf("backfill blocks=%d..%d logs=%d receipts=%d/%d coverage=%s reason=%s", start, end, len(batch.Logs), len(batch.Receipts), batch.Capture.ExpectedReceipts, batch.Capture.LogCoverage, batch.Capture.Reason))
@@ -228,11 +231,20 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 	if c.StartBlock > 0 {
 		lastLog = c.StartBlock - 1
 	}
-	caps, e := c.Store.ReserveCaptures(ctx, Hash(c.Manifest.Hash))
+	if c.runtime != nil {
+		e = c.runtime.view(ctx, func(s *runtimeState) (any, error) {
+			return s.cursor(Hash(c.Manifest.Hash), lastLog, c.StartBlock == 0), s.err
+		}, &lastLog)
+	} else {
+		var caps []Capture
+		caps, e = c.Store.ReserveCaptures(ctx, Hash(c.Manifest.Hash))
+		if e == nil {
+			lastLog = ContiguousLiveCursor(caps, lastLog, c.StartBlock == 0)
+		}
+	}
 	if e != nil {
 		return e
 	}
-	lastLog = ContiguousLiveCursor(caps, lastLog, c.StartBlock == 0)
 	var lastQuote time.Time
 	var lastSimulation time.Time
 	var nextLogAttempt time.Time
@@ -249,6 +261,27 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 	lastReceiptRepair := time.Now()
 	var priorHead dex.Block
 	logChunk := uint64(512)
+	if c.runtime != nil {
+		var saved runtimeCadence
+		if e = c.runtime.view(ctx, func(s *runtimeState) (any, error) { return s.Cadence, s.err }, &saved); e != nil {
+			return e
+		}
+		lastQuote, lastSimulation, nextLogAttempt = saved.LastQuote, saved.LastSimulation, saved.NextLogAttempt
+		active, burstUntil, pendingSnapshot = saved.Active, saved.BurstUntil, saved.PendingSnapshot
+		pendingReconcile = saved.PendingReconcile
+		if !saved.LastReconcile.IsZero() {
+			lastReconcile = saved.LastReconcile
+		}
+		if !saved.LastReceiptRepair.IsZero() {
+			lastReceiptRepair = saved.LastReceiptRepair
+		}
+		if saved.LogChunk != 0 {
+			logChunk = saved.LogChunk
+		}
+	}
+	saveCadence := func() error {
+		return c.saveCadence(ctx, runtimeCadence{LastQuote: lastQuote, LastSimulation: lastSimulation, NextLogAttempt: nextLogAttempt, LastReconcile: lastReconcile, LastReceiptRepair: lastReceiptRepair, Active: active, BurstUntil: burstUntil, PendingSnapshot: pendingSnapshot, PendingReconcile: pendingReconcile, LogChunk: logChunk})
+	}
 	for {
 		if ctx.Err() != nil {
 			return ctx.Err()
@@ -285,13 +318,18 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 				}
 				b, e := c.Logs(ctx, from, to, "live", "head")
 				if e != nil {
+					if errors.Is(e, ethereum.ErrBlockNoLongerCanonical) {
+						pendingReconcile, pendingSnapshot = true, true
+						progress("logs_reorg_retry: " + e.Error())
+						goto poll
+					}
 					if TransientRPC(e) {
 						progress("logs_retry: " + e.Error())
 						goto poll
 					}
 					return e
 				}
-				if e = c.Store.WriteReserveBatch(ctx, b); e != nil {
+				if e = c.writeBatch(ctx, b); e != nil {
 					return e
 				}
 				if b.Capture.LogCoverage == "complete" {
@@ -308,13 +346,18 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 			if pendingSnapshot || lastQuote.IsZero() || headChanged && (active || head.Number <= burstUntil) || time.Since(lastQuote) >= 60*time.Second {
 				b, e := c.Snapshot(ctx, head, "live")
 				if e != nil {
+					if errors.Is(e, ethereum.ErrBlockNoLongerCanonical) {
+						pendingReconcile, pendingSnapshot = true, true
+						progress("snapshot_reorg_retry: " + e.Error())
+						goto poll
+					}
 					if TransientRPC(e) {
 						progress("snapshot_retry: " + e.Error())
 						goto poll
 					}
 					return e
 				}
-				if e = c.Store.WriteReserveBatch(ctx, b); e != nil {
+				if e = c.writeBatch(ctx, b); e != nil {
 					return e
 				}
 				pendingSnapshot = b.Capture.StateCoverage != "complete"
@@ -342,9 +385,12 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 			lastHash = head.Hash
 		}
 		if once {
-			return nil
+			return saveCadence()
 		}
 	poll:
+		if e = saveCadence(); e != nil {
+			return e
+		}
 		if e = c.RPC.WaitReady(ctx); e != nil {
 			return e
 		}

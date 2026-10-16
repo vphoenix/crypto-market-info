@@ -14,7 +14,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/vphoenix/crypto-market-info/internal/config"
 	"github.com/vphoenix/crypto-market-info/internal/model"
-	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
+	"github.com/vphoenix/crypto-market-info/internal/storage/backend"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 )
 
 type replayCheck struct {
@@ -31,18 +32,18 @@ type replayCheck struct {
 	MaxMicroseconds   int64       `json:"max_microseconds"`
 }
 type report struct {
-	Status              string                     `json:"status"`
-	FullSoakVerified    bool                       `json:"full_soak_verified"`
-	Database            string                     `json:"database"`
-	CheckedAt           time.Time                  `json:"checked_at"`
-	MinimumDuration     string                     `json:"minimum_duration"`
-	RunAgeSeconds       int64                      `json:"run_age_seconds"`
-	RecentWindowSeconds int64                      `json:"recent_window_seconds"`
-	Data                chstore.PerpetualDataCheck `json:"data"`
-	Replays             []replayCheck              `json:"replays"`
-	Pending             []string                   `json:"pending"`
-	Failures            []string                   `json:"failures"`
-	Notes               []string                   `json:"notes"`
+	Status              string                       `json:"status"`
+	FullSoakVerified    bool                         `json:"full_soak_verified"`
+	Database            string                       `json:"database"`
+	CheckedAt           time.Time                    `json:"checked_at"`
+	MinimumDuration     string                       `json:"minimum_duration"`
+	RunAgeSeconds       int64                        `json:"run_age_seconds"`
+	RecentWindowSeconds int64                        `json:"recent_window_seconds"`
+	Data                contracts.PerpetualDataCheck `json:"data"`
+	Replays             []replayCheck                `json:"replays"`
+	Pending             []string                     `json:"pending"`
+	Failures            []string                     `json:"failures"`
+	Notes               []string                     `json:"notes"`
 }
 
 func main() { os.Exit(run()) }
@@ -91,7 +92,7 @@ func run() int {
 	r.Database = cfg.ClickHouse.Database
 	ctx, cancel := context.WithTimeout(context.Background(), *timeout)
 	defer cancel()
-	client, err := chstore.OpenReadOnly(ctx, cfg.ClickHouse)
+	client, err := backend.OpenPerpetualReader(ctx, backend.WithDatabase(cfg.Storage, cfg.ClickHouse.Database))
 	if err != nil {
 		return fail(err)
 	}
@@ -124,7 +125,7 @@ func run() int {
 	if selectedConfig.Capacity.FundingEnabled == nil {
 		r.Pending = append(r.Pending, "run selection config does not declare FundingEnabled; funding requirements are unknown")
 	}
-	byVenue := make(map[string][]chstore.PerpetualSourceCheck)
+	byVenue := make(map[string][]contracts.PerpetualSourceCheck)
 	expectedVenues := make(map[string]bool)
 	for _, s := range r.Data.Sources {
 		expectedVenues[s.Exchange] = true
@@ -153,7 +154,7 @@ func run() int {
 			}
 			return candidates[i].ChangedPriceLevels < candidates[j].ChangedPriceLevels
 		})
-		for index, s := range []chstore.PerpetualSourceCheck{candidates[len(candidates)-1], candidates[0]} {
+		for index, s := range []contracts.PerpetualSourceCheck{candidates[len(candidates)-1], candidates[0]} {
 			class := "active"
 			if index == 1 {
 				class = "low_activity"
@@ -199,7 +200,7 @@ func run() int {
 	return finish(0)
 }
 
-func sourcePending(s chstore.PerpetualSourceCheck, through time.Time, minimum time.Duration, fundingRequired bool) []string {
+func sourcePending(s contracts.PerpetualSourceCheck, through time.Time, minimum time.Duration, fundingRequired bool) []string {
 	var pending []string
 	if s.MinuteRows == 0 || s.FirstMinute == nil || s.LatestMinute == nil {
 		return []string{fmt.Sprintf("%s %s has no completed minute", s.Exchange, s.Symbol)}

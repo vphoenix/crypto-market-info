@@ -19,6 +19,7 @@ import (
 )
 
 type BookHealthSnapshot struct {
+	LastResync                                                                                       *wsstream.ResyncEvent
 	ExpectedInstruments, ReadyInstruments, InvalidInstruments, ResyncingInstruments, ConnectedShards int
 	OldestSourceTime                                                                                 time.Time
 	Reconnects, Resyncs, QueuePeak, QueueOverflows                                                   uint64
@@ -147,11 +148,15 @@ func validateWSEndpoint(endpoint string) error {
 }
 
 func (m *BookManager) runConnection(ctx context.Context, targets []*wsstream.Target) error {
-	return wsstream.RunConnection(ctx, wsstream.Config{Endpoint: m.WSEndpoint, Dialer: m.Dialer, ConnectGate: m.ConnectGate, Protocol: streamProtocol{channel: "books"}, Targets: targets, BatchSize: 20, QueueCapacity: m.QueueCapacity, PreAckCapacity: m.PreAckCapacity, AckPerTopic: true, Resync: true, ControlInterval: m.ControlInterval, MaxControlsPerHour: 400, PingInterval: m.PingInterval, SilenceTimeout: m.SilenceTimeout, SubscribeTimeout: m.SubscribeTimeout, Stats: &m.stats})
+	return wsstream.RunConnection(ctx, wsstream.Config{Endpoint: m.WSEndpoint, Dialer: m.Dialer, ConnectGate: m.ConnectGate, Protocol: streamProtocol{channel: "books"}, Targets: targets, BatchSize: 20, QueueCapacity: m.QueueCapacity, PreAckCapacity: m.PreAckCapacity, AckPerTopic: true, Resync: true, AllowQuietActive: true, ControlInterval: m.ControlInterval, MaxControlsPerHour: 400, PingInterval: m.PingInterval, SilenceTimeout: m.SilenceTimeout, SubscribeTimeout: m.SubscribeTimeout, Stats: &m.stats})
 }
 
 func (m *BookManager) HealthSnapshot() BookHealthSnapshot {
 	h := BookHealthSnapshot{ExpectedInstruments: len(m.instruments), ConnectedShards: int(m.stats.Connected.Load()), Reconnects: m.stats.Reconnects.Load(), Resyncs: m.stats.Resyncs.Load(), QueuePeak: m.stats.QueuePeak.Load(), QueueOverflows: m.stats.QueueOverflows.Load()}
+	if event := m.stats.LastResync.Load(); event != nil {
+		copy := *event
+		h.LastResync = &copy
+	}
 	for _, instrument := range m.instruments {
 		view := m.books[instrument.ID].View()
 		switch view.State {

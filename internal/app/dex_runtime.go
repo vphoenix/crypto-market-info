@@ -7,7 +7,9 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/config"
 	"github.com/vphoenix/crypto-market-info/internal/dex"
 	"github.com/vphoenix/crypto-market-info/internal/dex/ethereum"
-	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
+	"github.com/vphoenix/crypto-market-info/internal/dexruntime"
+	"github.com/vphoenix/crypto-market-info/internal/runtimecheckpoint"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 	"log/slog"
 	"sort"
 	"sync"
@@ -29,13 +31,14 @@ func newDEXCollectorClient(endpoint string) (*ethereum.Client, error) {
 }
 
 type dexLogRepair struct {
-	Block dex.Block
-	Logs  []dex.Log
+	Expected uint64
+	Block    dex.Block
+	Logs     []dex.Log
 }
 type dexRunner struct {
 	pendingLogs     *dexLogRepair
 	client          *ethereum.Client
-	store           *chstore.Client
+	store           contracts.DEXStore
 	logger          *slog.Logger
 	pendingLive     *dex.Batch
 	pendingBackfill *dex.Batch
@@ -46,7 +49,33 @@ type dexRunner struct {
 	receiptRetry    map[dex.Hash]time.Time
 }
 
-func runDEX(ctx context.Context, cfg config.Config, store *chstore.Client, logger *slog.Logger) error {
+func runDEX(ctx context.Context, cfg config.Config, store contracts.DEXStore, logger *slog.Logger) (result error) {
+	if cfg.Storage.Name == "mysql" && !cfg.DEXLegacyRecovery {
+		if cfg.DEXRuntimeDir == "" || cfg.DEXRuntimeEpochFile == "" {
+			return errors.New("DEX MySQL runtime requires verified state and restore epoch")
+		}
+		provider, ok := store.(interface {
+			RuntimeBinding(context.Context, string, string, uint32) (runtimecheckpoint.Binding, error)
+		})
+		if !ok {
+			return errors.New("DEX runtime binding unavailable")
+		}
+		binding, err := provider.RuntimeBinding(ctx, ethereum.ManifestHash().String(), cfg.DEXRuntimeEpochFile, 1)
+		if err != nil {
+			return err
+		}
+		lock, err := runtimecheckpoint.LockTarget(binding)
+		if err != nil {
+			return err
+		}
+		defer lock.Close()
+		owned, err := dexruntime.Open(ctx, cfg.DEXRuntimeDir, binding, ethereum.ManifestHash(), store, logger)
+		if err != nil {
+			return err
+		}
+		defer func() { result = errors.Join(result, owned.CloseRuntime()) }()
+		store = owned
+	}
 	// Source/setup failures remain local; runComponents cancels all CEX streams
 	// on a returned error, so this branch retries internally until shutdown.
 	for ctx.Err() == nil {
@@ -199,7 +228,7 @@ func (r *dexRunner) liveStep(ctx context.Context) error {
 
 func (r *dexRunner) maintenanceStep(ctx context.Context) error {
 	if r.pendingLogs != nil {
-		if e := r.store.CompleteDEXLogs(ctx, r.pendingLogs.Block, r.pendingLogs.Logs); e != nil {
+		if e := completeDEXRuntimeLogs(ctx, r.store, r.pendingLogs.Block, r.pendingLogs.Logs, r.pendingLogs.Expected); e != nil {
 			return e
 		}
 		r.pendingLogs = nil
@@ -338,12 +367,14 @@ func (r *dexRunner) reconcile(ctx context.Context, head dex.Block) error {
 			}
 		}
 		if canonical != b.Canonical || state != b.Finality {
+			expected := b.Revision
 			b.Canonical = canonical
 			b.Finality = state
 			b.Revision = max(b.Revision+1, uint64(dex.Now().UnixMicro()))
-			if e = r.store.WriteDEXBlock(ctx, b); e != nil {
+			if b, e = writeDEXRuntimeBlock(ctx, r.store, b, expected); e != nil {
 				return e
 			}
+			canonical, state = b.Canonical, b.Finality
 		}
 		if canonical && state == "finalized" && (checkpoint == nil || b.Number > checkpoint.Number) {
 			copy := b
@@ -421,6 +452,7 @@ func (r *dexRunner) retryLogs(ctx context.Context) (bool, error) {
 		if e != nil {
 			return true, e
 		}
+		expected := b.Revision
 		b.Payload = evidence
 		b.LogCoverage = "complete"
 		b.LogCount = uint32(len(logs))
@@ -429,8 +461,8 @@ func (r *dexRunner) retryLogs(ctx context.Context) (bool, error) {
 		if len(logs) == 0 {
 			b.ReceiptCoverage = "complete"
 		}
-		r.pendingLogs = &dexLogRepair{Block: b, Logs: logs}
-		if e = r.store.CompleteDEXLogs(ctx, b, logs); e != nil {
+		r.pendingLogs = &dexLogRepair{Block: b, Logs: logs, Expected: expected}
+		if e = completeDEXRuntimeLogs(ctx, r.store, b, logs, expected); e != nil {
 			return true, e
 		}
 		r.pendingLogs = nil
@@ -460,6 +492,7 @@ func (r *dexRunner) completeReceipts(ctx context.Context, b dex.Block) error {
 			return nil
 		}
 	}
+	expected := b.Revision
 	b.ReceiptCoverage = "complete"
 	b.ReceiptCount = uint32(len(rr))
 	b.ReceiptMembers = dex.ReceiptDigest(rr)
@@ -472,7 +505,8 @@ func (r *dexRunner) completeReceipts(ctx context.Context, b dex.Block) error {
 		return e
 	}
 	b.Payload = evidence
-	return r.store.WriteDEXBlock(ctx, b)
+	_, e = writeDEXRuntimeBlock(ctx, r.store, b, expected)
+	return e
 }
 
 func checkDEXHead(head dex.Block, last, checkpoint *dex.Block) error {
@@ -488,4 +522,24 @@ func checkDEXHead(head dex.Block, last, checkpoint *dex.Block) error {
 		return fmt.Errorf("stale RPC head below last observed height")
 	}
 	return nil
+}
+
+// Preserve the raw backend API for explicitly selected legacy recovery. Native
+// state returns the actual revision, so a stale successful SQL no-op cannot
+// make the runner install a planned finalized checkpoint that did not commit.
+func writeDEXRuntimeBlock(ctx context.Context, store contracts.DEXStore, b dex.Block, expected uint64) (dex.Block, error) {
+	if owned, ok := store.(interface {
+		WriteRuntimeBlock(context.Context, dex.Block, uint64) (dex.Block, error)
+	}); ok {
+		return owned.WriteRuntimeBlock(ctx, b, expected)
+	}
+	return b, store.WriteDEXBlock(ctx, b)
+}
+func completeDEXRuntimeLogs(ctx context.Context, store contracts.DEXStore, b dex.Block, logs []dex.Log, expected uint64) error {
+	if owned, ok := store.(interface {
+		CompleteRuntimeLogs(context.Context, dex.Block, []dex.Log, uint64) error
+	}); ok {
+		return owned.CompleteRuntimeLogs(ctx, b, logs, expected)
+	}
+	return store.CompleteDEXLogs(ctx, b, logs)
 }

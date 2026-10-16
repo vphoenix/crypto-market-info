@@ -1,5 +1,9 @@
 # 系统总体架构
 
+存储后端通过按职责划分的接口选择 ClickHouse 或 MySQL；Redis/MySQL 的实现和检查入口见[交付说明](redis-mysql-migration/implementation-status.md)。实际部署与历史迁移状态以[运行说明](runtime-operations.md)为准。
+
+2026-10-16 采集运行状态源码已接入 Across、Reserve、LST、Keeper 和主 DEX：低频 collector 由一个管理者维护覆盖和待办，网络 worker 保留独立证据缓冲；本地冻结操作、checkpoint 与领域提交核验共同支持恢复，正常循环不从历史表重建状态。设计和当前实现边界见[方案](redis-mysql-migration/runtime-state-improvement.md)及[实施记录](../research/2026-10-15-runtime-state-improvement/report.md)。此改造尚未部署，不改变盘口编码、Redis/spool 交付或 writer 并发。
+
 本文是项目的全局入口，说明当前各类采集任务如何组合运行，以及以后增加其他公开数据时应放在哪一层。盘口编码、表字段和具体收益公式仍以各专项文档为准。
 
 ## 1. 目标与边界
@@ -335,3 +339,9 @@ LST 独立服务应另查其 unit、最近 market 时间、协议与报价成员
 - [JustLend keeper 实现与运行说明](justlend-keeper-data-implementation.md)：独立六表采集器、发送预算、状态恢复、健康查询及报告口径；[目标设计](justlend-keeper-data-mvp-design.md)另列已实现与待验收部分。
 
 2026-10-07 新增的 OKX 配对链路独立于“至少两站共有”集合，复用同一 instrument 注册器、价格序列校验、分钟 writer 与资金费率模块。目录30分钟复核、新集合先预热，在已记录的 UTC 分钟边界替换采样源；公开借贷政策每分钟完整观测写入专表。详见 [5档与配对实现](okx-paired-five-level.md)。
+
+2026-10-15 LST 运行状态源码改造：沿用原 pending 文件作为冻结 payload，通过硬链接保留恢复引用；原事务确认后由单一状态管理者维护日志连续覆盖、未最终确认 market、followup 与 gas 工作集合。正常调度按工作集合领取任务，历史登记仅用于显式分页转换/受控恢复与具体事实核验。该实现仍在验证，尚未替换生产 LST；部署证据见[状态改造记录](../research/2026-10-15-runtime-state-improvement/report.md)。
+
+Keeper 的运行状态扩展（未部署）复用原单线程 Collector/Step 作为唯一 owner，原 State/Ops 保存请求预算和冻结批次，分页工作集合保存未完成窗口与 enrichment 依赖。原事务成功后直接更新依赖；正常循环不重查整个历史窗口。当前/上一份 checkpoint 与未覆盖原操作共同恢复，首次转换和回退使用独立显式入口。实现和上线状态见 [运行状态实施记录](../research/2026-10-15-runtime-state-improvement/report.md)。
+
+主 DEX 已确认正常循环的全历史高度遍历，已接入独立的 `dexruntime`：live/maintenance 网络循环保留并行，单一 owner 接收冻结的区块提交/修订/补日志结果，维护连续覆盖及尚未最终确认工作页。CEX/期权 writer、Redis/spool 和资金费/收益 runner 不共用该 owner。尚未部署；按准确身份读取事实与必要链上确认仍保留。

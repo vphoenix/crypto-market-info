@@ -55,19 +55,11 @@ func (c *Collector) refreshRepairReceipts(ctx context.Context, includeUnknown bo
 		}
 		selected = append(selected, cap)
 	}
-	loaded, err := LoadBatches(ctx, c.Store, selected)
-	if err != nil {
-		return err
-	}
 	queued := map[string]receiptTask{}
 	refunds, transfers := map[string]bool{}, map[string]bool{}
 	complete := map[string]bool{}
 	known := map[string]bool{}
-	for _, cap := range selected {
-		if err := loaded.Errors[cap.CaptureId]; err != nil {
-			return err
-		}
-		b := loaded.Batches[cap.CaptureId]
+	err = visitRecoveryBatches(ctx, c.Store, selected, func(b Batch) error {
 		for _, v := range b.Transfers {
 			transfers[ID(receiptTask{v.ChainId, v.BlockHash, v.TxHash})] = true
 		}
@@ -86,7 +78,7 @@ func (c *Collector) refreshRepairReceipts(ctx context.Context, includeUnknown bo
 				refunds[ID(task)] = true
 			}
 		}
-		if cap.CaptureKind == "receipts" && cap.CompletedTasks == 1 {
+		if b.Capture.CaptureKind == "receipts" && b.Capture.CompletedTasks == 1 {
 			for _, receipt := range b.Receipts {
 				task := receiptTask{receipt.ChainId, receipt.BlockHash, receipt.TxHash}
 				key := ID(task)
@@ -95,6 +87,10 @@ func (c *Collector) refreshRepairReceipts(ctx context.Context, includeUnknown bo
 				complete[key] = complete[key] || receipt.FeeComplete
 			}
 		}
+		return nil
+	})
+	if err != nil {
+		return err
 	}
 	c.receiptDataMissing = map[string]bool{}
 	for key := range queued {
@@ -522,6 +518,9 @@ func partialKey(cap Capture, window HistoryRange) string {
 // Callers refresh c.captures through their existing maintenance snapshot; this
 // method never replaces capture facts or calls a second source/route.
 func (c *Collector) RepairPartialStep(ctx context.Context, networkContext ...context.Context) error {
+	if c.runtime != nil {
+		return c.runtimeRepairPartialStep(ctx, networkContext...)
+	}
 	if err := c.load(ctx); err != nil {
 		return err
 	}
@@ -542,6 +541,12 @@ func (c *Collector) RepairPartialStep(ctx context.Context, networkContext ...con
 			continue
 		}
 		decoded := historyIntervals(latest, cap.ChainId, true)
+		if c.runtime != nil {
+			decoded, err = c.runtimeOrLegacyCoverage(ctx, cap.ChainId, true)
+			if err != nil {
+				return err
+			}
+		}
 		for from := *cap.FromBlock; from <= *cap.ToBlock; {
 			window, ok := historyUncovered(from, *cap.ToBlock, decoded)
 			if !ok {
@@ -567,6 +572,11 @@ func (c *Collector) RepairPartialStep(ctx context.Context, networkContext ...con
 	}
 	candidate := candidates[state.cursor%len(candidates)]
 	state.cursor++
+	return c.runPartialCandidate(ctx, candidate, networkContext...)
+}
+
+func (c *Collector) runPartialCandidate(ctx context.Context, candidate partialCandidate, networkContext ...context.Context) error {
+	state := c.partialRepair
 	window := candidate.window
 	rpcCtx := ctx
 	if len(networkContext) != 0 && networkContext[0] != nil {

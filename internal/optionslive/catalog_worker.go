@@ -6,6 +6,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/vphoenix/crypto-market-info/internal/exchange"
 	"github.com/vphoenix/crypto-market-info/internal/options"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 	"log/slog"
 	"sync"
 	"time"
@@ -59,6 +60,9 @@ func startCatalogWorker(ctx context.Context, cfg Config, r options.LiveRun, spec
 	if err != nil {
 		cancel()
 		return nil, err
+	}
+	if p, ok := sink.(contracts.PreviewSink); ok {
+		e.preview = p.OfferPreview
 	}
 	e.catalog.levelBudget = levels
 	e.futureDepth = cfg.FutureBookDepth

@@ -3,6 +3,7 @@ package optionslive
 import (
 	"context"
 	"fmt"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 	"log/slog"
 	"slices"
 	"sort"
@@ -205,6 +206,9 @@ func Collect(ctx context.Context, c *deribit.Client, p Prepared, sink Sink, logg
 	})
 	if err != nil {
 		return err
+	}
+	if p, ok := sink.(contracts.PreviewSink); ok {
+		engine.preview = p.OfferPreview
 	}
 	// Startup evidence is published through the same sequencer as later updates.
 	engine.futureDepth = p.FutureBookDepth

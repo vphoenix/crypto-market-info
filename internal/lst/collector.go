@@ -13,6 +13,7 @@ import (
 )
 
 type Collector struct {
+	runtime                 *runtimeOwner
 	RPC                     *RPC
 	LogRPC                  *RPC // optional events and historical queue identity; primary headers anchor the chain
 	LogMode                 string

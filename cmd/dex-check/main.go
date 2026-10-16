@@ -10,7 +10,7 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/dex"
 	"github.com/vphoenix/crypto-market-info/internal/dex/ethereum"
 	"github.com/vphoenix/crypto-market-info/internal/dexarb"
-	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
+	"github.com/vphoenix/crypto-market-info/internal/storage/backend"
 	"math/big"
 	"os"
 	"path/filepath"
@@ -104,7 +104,7 @@ func run() error {
 	if *costs && *reportDir == "" {
 		return fmt.Errorf("quote-costs-rpc requires report-dir for evidence")
 	}
-	store, e := chstore.OpenDEXReader(ctx, cfg.ClickHouse)
+	store, e := backend.OpenDEX(ctx, backend.Reader(cfg.Storage))
 	if e != nil {
 		return e
 	}

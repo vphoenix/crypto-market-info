@@ -63,7 +63,11 @@ func (c *Collector) FlushPending(ctx context.Context) error {
 	if e := Validate(b); e != nil {
 		return e
 	}
-	if e := c.Store.WriteLST(ctx, b); e != nil {
+	if c.runtime != nil {
+		if e := c.runtimeFlushPending(ctx, file, b); e != nil {
+			return e
+		}
+	} else if e := c.Store.WriteLST(ctx, b); e != nil {
 		return e
 	}
 	if c.PruneCommittedResponses {
@@ -73,6 +77,9 @@ func (c *Collector) FlushPending(ctx context.Context) error {
 		if len(b.RawEvidenceHashes) != 0 {
 			log.Printf("raw_evidence_released capture_id=%s candidates=%d diagnostic=%t", b.Capture.CaptureId, len(b.RawEvidenceHashes), needsRawDiagnostic(b))
 		}
+	}
+	if c.runtime != nil {
+		return removeRuntimePending(file)
 	}
 	return os.Remove(file)
 }
@@ -98,17 +105,25 @@ type followupState struct {
 
 func followupKey(ref string, delay uint32) string { return Hex(ref) + fmt.Sprintf(":%d", delay) }
 func (c *Collector) restoreFollowups(ctx context.Context) (followupState, error) {
-	s := followupState{Done: map[string]bool{}}
+	if c.runtime != nil {
+		var result followupState
+		err := c.runtime.view(ctx, func(s *runtimeState) (any, error) { return s.followups(Now()) }, &result)
+		return result, err
+	}
 	caps, e := c.Store.LSTCaptures(ctx, c.Manifest.Hash)
 	if e != nil {
-		return s, e
+		return followupState{}, e
 	}
-	cut := Now().Add(-31 * 24 * time.Hour)
+	return restoreFollowupsAt(caps, Now(), func(cap Capture) (Batch, error) { return c.Store.LSTBatch(ctx, cap) })
+}
+func restoreFollowupsAt(caps []Capture, at time.Time, load func(Capture) (Batch, error)) (followupState, error) {
+	s := followupState{Done: map[string]bool{}}
+	cut := at.Add(-31 * 24 * time.Hour)
 	for _, cap := range caps {
 		if cap.CaptureKind != "market" || !cap.Committed || cap.StartedAt.Before(cut) {
 			continue
 		}
-		b, e := c.Store.LSTBatch(ctx, cap)
+		b, e := load(cap)
 		if e != nil {
 			return s, e
 		}
@@ -229,6 +244,9 @@ func (c *Collector) liveLogCursorPath() string {
 }
 
 func (c *Collector) logProgress(ctx context.Context) (logProgress, error) {
+	if c.runtime != nil {
+		return c.runtimeLogProgress(ctx)
+	}
 	file := c.liveLogCursorPath()
 	var p logProgress
 	e := readGob(file, &p)
@@ -314,7 +332,15 @@ func (c *Collector) catchUpOldLogGap(ctx, commitCtx context.Context, finalized B
 	}
 	old := *c
 	old.LiveLogsFromBlock = 0
-	if _, err := os.Stat(old.liveLogCursorPath()); os.IsNotExist(err) {
+	if c.runtime != nil {
+		var exists bool
+		if err := c.runtime.view(ctx, func(s *runtimeState) (any, error) { _, ok := s.Cursors[0]; return ok, s.err }, &exists); err != nil {
+			return err
+		}
+		if !exists {
+			return nil
+		}
+	} else if _, err := os.Stat(old.liveLogCursorPath()); os.IsNotExist(err) {
 		return nil
 	} else if err != nil {
 		return err
@@ -341,7 +367,7 @@ func (c *Collector) catchUpOldLogGap(ctx, commitCtx context.Context, finalized B
 	}
 	p.result(&old, to, fetchErr)
 	p.RangeSize = min(p.RangeSize, uint64(32))
-	if err := writeGob(old.liveLogCursorPath(), p); err != nil {
+	if err := old.saveLogProgress(commitCtx, p); err != nil {
 		return err
 	}
 	progress(fmt.Sprintf("old_log_gap from=%d to=%d status=%s next=%d target=%d request=%d finalization=%d claim=%d reason=%q", from, to, b.Capture.Status, p.Next, c.LiveLogsFromBlock-1, len(b.Requests), len(b.Finalizations), len(b.Claims), b.Capture.Reason))
@@ -367,6 +393,9 @@ func (c *Collector) FinalizePending(ctx context.Context) error {
 	return c.finalizePending(ctx, nil)
 }
 func (c *Collector) finalizePending(ctx context.Context, finalized *Block) error {
+	if c.runtime != nil {
+		return c.runtimeFinalizePending(ctx, finalized)
+	}
 	caps, e := c.Store.LSTCaptures(ctx, c.Manifest.Hash)
 	if e != nil {
 		return e
@@ -612,6 +641,21 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 	}
 	nextMetadata := Now().Add(6 * time.Hour)
 	funding := fundingSchedule{}
+	if c.runtime != nil {
+		var saved runtimeSchedule
+		if err = c.runtime.view(ctx, func(s *runtimeState) (any, error) { return s.Schedule, s.err }, &saved); err != nil {
+			return err
+		}
+		nextLogs, nextOldGap, nextGas, nextMarket = saved.NextLogs, saved.NextOldGap, saved.NextGas, saved.NextMarket
+		if !saved.NextMetadata.IsZero() {
+			nextMetadata = saved.NextMetadata
+		}
+		funding = saved.Funding
+	}
+	saveSchedule := func() error {
+		return c.saveRuntimeSchedule(ctx, runtimeSchedule{NextLogs: nextLogs, NextOldGap: nextOldGap, NextGas: nextGas, NextMarket: nextMarket, NextMetadata: nextMetadata, Funding: funding})
+	}
+
 	for {
 		if err := ctx.Err(); err != nil {
 			return err
@@ -621,9 +665,20 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 		if err := c.FlushPending(ctx); err != nil {
 			return err
 		}
+		if c.runtime != nil {
+			if err = c.runtime.view(ctx, func(s *runtimeState) (any, error) { return s.Schedule.Funding, s.err }, &funding); err != nil {
+				return err
+			}
+		}
 		start := Now()
 		marketRan := !start.Before(nextMarket)
 		if marketRan {
+			if c.runtime != nil {
+				s, err = c.restoreFollowups(ctx)
+				if err != nil {
+					return err
+				}
+			}
 			slots := 25
 			if c.EntryRoutesPerRound == 1 {
 				slots = 22
@@ -676,7 +731,7 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 				}
 			}
 			if once {
-				return nil
+				return saveSchedule()
 			}
 			nextMarket = start.Add(c.marketInterval())
 		}
@@ -766,7 +821,7 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 				// Use a new local error for this job. A previous finality/funding
 				// failure must never silently skip an otherwise healthy log pass.
 				var logErr error
-				if cursor.Next == 0 {
+				if cursor.Next == 0 || c.runtime != nil {
 					cursor, logErr = c.logProgress(quiet)
 				}
 				if logErr == nil && !cursor.sourceAllowed(c.logSourceIdentity()) {
@@ -797,7 +852,7 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 						}
 						cursor.result(c, cursorTo, fetchErr)
 						progress(fmt.Sprintf("log_scan mode=%s planned_from=%d planned_to=%d status=%s covered_to=%d next=%d finalized=%d backlog_blocks=%d request=%d finalization=%d claim=%d reason=%q", c.LogMode, from, to, logs.Capture.Status, coveredTo, cursor.Next, end.Number, end.Number+1-cursor.Next, len(logs.Requests), len(logs.Finalizations), len(logs.Claims), logs.Capture.Reason))
-						if writeErr := writeGob(c.liveLogCursorPath(), cursor); writeErr != nil {
+						if writeErr := c.saveLogProgress(ctx, cursor); writeErr != nil {
 							cancel()
 							return writeErr
 						}
@@ -853,6 +908,9 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 			nextGas = Now().Add(5 * time.Minute)
 		}
 		cancel()
+		if err = saveSchedule(); err != nil {
+			return err
+		}
 		progress(fmt.Sprintf("http_stats=%v", c.RPC.Transport.Stats()))
 		if err := waitContext(ctx, time.Until(start.Add(time.Minute))); err != nil {
 			return err

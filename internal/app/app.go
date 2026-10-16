@@ -11,7 +11,7 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/funding"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 	"github.com/vphoenix/crypto-market-info/internal/optionslive"
-	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
+	"github.com/vphoenix/crypto-market-info/internal/storage/backend"
 	marketyield "github.com/vphoenix/crypto-market-info/internal/yield"
 	"github.com/vphoenix/crypto-market-info/internal/yield/aave"
 	"github.com/vphoenix/crypto-market-info/internal/yield/ankr"
@@ -45,7 +45,7 @@ func Run(ctx context.Context, cfg config.Config, logger *slog.Logger) error {
 	if cfg.DEXEnabled {
 		return runIndependentSources(ctx, logger, 10*time.Second,
 			component{name: "Ethereum DEX", run: func(ctx context.Context) error {
-				store, err := chstore.Open(ctx, cfg.ClickHouse)
+				store, err := backend.OpenDEX(ctx, cfg.Storage)
 				if err != nil {
 					return err
 				}
@@ -92,7 +92,7 @@ func runMarketSources(ctx context.Context, cfg config.Config, logger *slog.Logge
 	if err != nil {
 		return err
 	}
-	store, err := chstore.Open(ctx, cfg.ClickHouse)
+	store, err := backend.OpenMain(ctx, cfg.Storage)
 	if err != nil {
 		return err
 	}
@@ -115,7 +115,7 @@ func runMarketSources(ctx context.Context, cfg config.Config, logger *slog.Logge
 	}
 	if cfg.Options.Enabled {
 		components = append(components, component{name: "Deribit options", run: func(ctx context.Context) error {
-			optionsStore, err := store.OptionsWriter(ctx, cfg.ClickHouse)
+			optionsStore, err := backend.OptionsWriter(ctx, cfg.Storage, store)
 			if err != nil {
 				return err
 			}

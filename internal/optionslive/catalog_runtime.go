@@ -1457,14 +1457,7 @@ func (s *catalogSupervisor) submitPlan(candidate catalogPlanResult) {
 		var err error
 		if s.now().Before(p.EffectiveMinute.Add(-time.Second)) {
 			ctx, cancel := context.WithDeadline(s.ctx, p.EffectiveMinute.Add(-time.Second))
-			for _, g := range groups {
-				if g.retire || g.worker != nil && g.worker.persisted && g.run.ID == g.worker.run.ID {
-					continue
-				}
-				if err = s.sink.WriteOptionsRun(ctx, g.run); err != nil {
-					break
-				}
-			}
+			err = persistCatalogPlanRuns(ctx, s.sink, groups)
 			if err == nil {
 				err = s.sink.WriteOptionsPlan(ctx, p)
 			}
@@ -1488,6 +1481,30 @@ func (s *catalogSupervisor) submitPlan(candidate catalogPlanResult) {
 		case <-s.ctx.Done():
 		}
 	}()
+}
+
+func persistCatalogPlanRuns(ctx context.Context, sink CatalogSink, groups []catalogGroup) error {
+	runs := make([]options.LiveRun, 0, len(groups))
+	for _, g := range groups {
+		if g.retire || g.worker != nil && g.worker.persisted && g.run.ID == g.worker.run.ID {
+			continue
+		}
+		runs = append(runs, g.run)
+	}
+	if len(runs) == 0 {
+		return nil
+	}
+	if batch, ok := sink.(interface {
+		WriteOptionsRuns(context.Context, []options.LiveRun) error
+	}); ok {
+		return batch.WriteOptionsRuns(ctx, runs)
+	}
+	for _, r := range runs {
+		if err := sink.WriteOptionsRun(ctx, r); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func (s *catalogSupervisor) planned(r catalogPlanResult) {

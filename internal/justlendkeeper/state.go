@@ -48,6 +48,8 @@ type Candidate struct {
 	SeedNext     time.Time
 }
 type State struct {
+	Runtime *runtimeWork
+
 	SolidAnchors map[uint64]string
 
 	CohortChanges []CohortChange
@@ -97,6 +99,9 @@ func NewState(target string, c Config) State {
 	return State{Version: 1, Target: target, ConfigHash: Hex(c.Hash()), SolidAnchors: map[uint64]string{}, Sources: map[string]SourceLimit{}, EventCursors: map[string]time.Time{}, IdentityStatus: "unknown"}
 }
 func SaveState(path string, s State) error {
+	if s.Runtime != nil {
+		return errors.New("keeper_native_runtime_requires_its_checkpoint_writer")
+	}
 	return (&stateWriter{}).Save(path, s)
 }
 func LoadState(path, target string, c Config) (State, error) {

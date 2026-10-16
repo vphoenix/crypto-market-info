@@ -20,6 +20,14 @@ const OKXCapitalVersion = "okx-multicurrency-cross-v1"
 const OKXReferenceProfile = "okx-multicurrency-usdt-reference-v1"
 const OKXInterestVersion = "okx-hourly-base-debt-v1"
 
+// DiscoveryFact is one independently validated public observation. Availability
+// of a different fact (for example a fee rule) cannot validate or invalidate it.
+type DiscoveryFact interface {
+	Kind() string
+	Body() map[string]any
+	Validate() error
+}
+
 // Source timestamps are exchange timestamps, or explicitly identified request
 // observations for source APIs that do not expose an observation clock.
 type PublicSource struct {
@@ -72,7 +80,7 @@ type TradeBar struct {
 
 func (f TradeBar) Kind() string { return "cex_trade_bar_1m" }
 func (f TradeBar) Body() map[string]any {
-	final := 0
+	final := uint8(0)
 	if f.Final {
 		final = 1
 	}
@@ -117,8 +125,19 @@ func (f ReferenceFee) Validate() error {
 	return validatePublicSources(f.Sources)
 }
 
-type DiscountTier struct{ Minimum, Maximum, Rate, Penalty decimal.Decimal }
-type RiskTier struct{ Minimum, Maximum, Initial, Maintenance, MaximumLeverage decimal.Decimal }
+type DiscountTier struct {
+	Minimum decimal.Decimal `ch:"minimum"`
+	Maximum decimal.Decimal `ch:"maximum"`
+	Rate    decimal.Decimal `ch:"rate"`
+	Penalty decimal.Decimal `ch:"penalty"`
+}
+type RiskTier struct {
+	Minimum         decimal.Decimal `ch:"minimum"`
+	Maximum         decimal.Decimal `ch:"maximum"`
+	Initial         decimal.Decimal `ch:"initial"`
+	Maintenance     decimal.Decimal `ch:"maintenance"`
+	MaximumLeverage decimal.Decimal `ch:"maximum_leverage"`
+}
 type CapitalParameters struct {
 	ID                                              string
 	InstrumentID                                    uint32
@@ -168,6 +187,9 @@ func (f CapitalParameters) Validate() error {
 	if f.ID == "" || f.InstrumentID == 0 || f.Base == "" || !f.BorrowLeverage.IsPositive() || !ValidDigest(f.ModelHash) || f.SourceMS <= 0 || f.SourceMS > f.ObservedMS || f.EffectiveMS > f.ObservedMS || f.ValidUntilMS <= f.ObservedMS {
 		return fmt.Errorf("invalid public capital parameter identity/time")
 	}
+	if !ReferenceDecimal(f.BorrowLeverage) {
+		return fmt.Errorf("capital leverage outside Decimal(38,18)")
+	}
 	for _, tiers := range [][]DiscountTier{f.QuoteDiscount, f.BaseDiscount} {
 		if len(tiers) == 0 {
 			return fmt.Errorf("discount tiers missing")
@@ -175,6 +197,11 @@ func (f CapitalParameters) Validate() error {
 		end := decimal.Zero
 		previous := decimal.NewFromInt(1)
 		for _, t := range tiers {
+			for _, n := range []decimal.Decimal{t.Minimum, t.Maximum, t.Rate, t.Penalty} {
+				if !ReferenceDecimal(n) {
+					return fmt.Errorf("discount tier outside Decimal(38,18)")
+				}
+			}
 			if !t.Minimum.Equal(end) || !t.Maximum.GreaterThan(end) || t.Rate.IsNegative() || t.Rate.GreaterThan(previous) || t.Penalty.IsNegative() || t.Penalty.GreaterThan(decimal.NewFromInt(1)) {
 				return fmt.Errorf("invalid discount tier coverage")
 			}
@@ -188,6 +215,11 @@ func (f CapitalParameters) Validate() error {
 		}
 		end := decimal.Zero
 		for _, t := range tiers {
+			for _, n := range []decimal.Decimal{t.Minimum, t.Maximum, t.Initial, t.Maintenance, t.MaximumLeverage} {
+				if !ReferenceDecimal(n) {
+					return fmt.Errorf("risk tier outside Decimal(38,18)")
+				}
+			}
 			if t.Minimum.LessThan(end) || !t.Maximum.GreaterThan(end) || !t.Initial.IsPositive() || t.Maintenance.IsNegative() || t.Maintenance.GreaterThan(t.Initial) || !t.MaximumLeverage.IsPositive() {
 				return fmt.Errorf("invalid risk tier coverage")
 			}

@@ -3,7 +3,7 @@ package clickhouse
 import (
 	"context"
 	"github.com/google/uuid"
-	"github.com/vphoenix/crypto-market-info/internal/options"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 	"time"
 )
 
@@ -13,13 +13,7 @@ func (c *Client) HasOptionsCatalog(ctx context.Context) (bool, error) {
 	return n == 1, err
 }
 
-type CatalogPlanSnapshot struct {
-	Plan                                    options.CollectionPlan
-	MinuteTime                              time.Time
-	ExpectedBooks, ValidBooks, MissingBooks int
-	MissingRuns                             []uuid.UUID
-	Runs                                    []options.LiveEnvelope
-}
+type CatalogPlanSnapshot = contracts.CatalogPlanSnapshot
 
 // Every expected owner is queried. A missing shard is an explicit gap rather
 // than being hidden by selecting the most recently created run.

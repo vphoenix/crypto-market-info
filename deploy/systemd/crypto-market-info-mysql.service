@@ -1,0 +1,16 @@
+[Unit]
+Description=Crypto market data MySQL (private Unix socket)
+After=default.target
+
+[Service]
+Environment=DOCKER_API_VERSION=1.45
+Type=simple
+WorkingDirectory=%h/crypto-market-info
+ExecStart=/usr/bin/docker run --rm --name crypto-market-info-mysql --network none --restart no --memory 3584m --memory-swap 4096m --user 1000:1000 --cpus 2 --mount type=bind,src=%h/crypto-market-info/var/storage/mysql/data,dst=/var/lib/mysql --mount type=bind,src=%h/crypto-market-info/var/storage/mysql/run,dst=/run/cmi --mount type=bind,src=%h/crypto-market-info/deploy/storage/mysql.cnf,dst=/etc/mysql/conf.d/cmi.cnf,readonly --mount type=bind,src=%h/.config/crypto-market-info-storage/mysql-root-password,dst=/run/secrets/mysql-root-password,readonly --env MYSQL_ROOT_PASSWORD_FILE=/run/secrets/mysql-root-password mysql@sha256:6ea90827b1100f8f2ae306a539f86d2c264a26ed435a2a9f75551dd5c3aeb242
+ExecStop=/usr/bin/docker stop --time 120 crypto-market-info-mysql
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=150
+
+[Install]
+WantedBy=default.target

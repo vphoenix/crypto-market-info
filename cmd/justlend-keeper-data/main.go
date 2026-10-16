@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"flag"
 	"fmt"
@@ -14,16 +15,18 @@ import (
 	"time"
 
 	keeper "github.com/vphoenix/crypto-market-info/internal/justlendkeeper"
+	"github.com/vphoenix/crypto-market-info/internal/runtimecheckpoint"
+	"github.com/vphoenix/crypto-market-info/internal/storage/backend"
 	"github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
 )
 
-func run(ctx context.Context, args []string) error {
+func run(ctx context.Context, args []string) (result error) {
 	if len(args) == 0 {
-		return errors.New("usage: justlend-keeper-data init-schema|migrate-pages|preflight|backfill|watch|export|report|resume-source [flags]")
+		return errors.New("usage: justlend-keeper-data init-schema|migrate-pages|preflight|backfill|watch|export|report|resume-source|runtime-convert|runtime-verify|runtime-rollback|runtime-handoff [flags]")
 	}
 	command := args[0]
 	switch command {
-	case "init-schema", "migrate-pages", "preflight", "backfill", "watch", "export", "report", "resume-source":
+	case "init-schema", "migrate-pages", "preflight", "backfill", "watch", "export", "report", "resume-source", "runtime-convert", "runtime-verify", "runtime-rollback", "runtime-handoff":
 	default:
 		return errors.New("unknown_command")
 	}
@@ -41,6 +44,12 @@ func run(ctx context.Context, args []string) error {
 	toText := f.String("to", "", "exclusive UTC RFC3339 end")
 	out := f.String("out", "var/justlend-keeper/exports/"+time.Now().UTC().Format("20060102T150405.000000000Z"), "new directory for authenticated data export")
 	source := f.String("source", "", "source to unblock explicitly: publicnode, trongrid or binance")
+	runtimeDir := f.String("runtime-state-dir", "var/justlend-keeper/runtime", "verified local runtime state")
+	handoffPlan := f.String("runtime-handoff-plan", "", "frozen finite operation manifest for stopped-service maintenance")
+	runtimeInput := f.String("runtime-input-inventory", "", "frozen migrated/pending/unreadable input inventory; required for conversion")
+	epochFile := f.String("runtime-epoch-file", os.Getenv("JUSTLEND_KEEPER_RUNTIME_EPOCH_FILE"), "external database restore epoch")
+	runtimeExport := f.String("runtime-export", "", "new current-state export directory for verify/rollback")
+	legacyRecovery := f.Bool("legacy-history-recovery", false, "explicit watch using current legacy recovery state")
 	if e := f.Parse(args[1:]); e != nil {
 		return e
 	}
@@ -58,6 +67,33 @@ func run(ctx context.Context, args []string) error {
 		return e
 	}
 	chcfg := clickhouse.Config{Addresses: []string{*addr}, Database: *db, Username: os.Getenv("JUSTLEND_KEEPER_CLICKHOUSE_USER"), Password: os.Getenv("JUSTLEND_KEEPER_CLICKHOUSE_PASSWORD")}
+	if *runtimeDir == "" || *legacyRecovery && command != "watch" || *runtimeExport != "" && command != "runtime-verify" && command != "runtime-rollback" {
+		return errors.New("invalid_runtime_options")
+	}
+	if command == "runtime-handoff" && *handoffPlan == "" || command != "runtime-handoff" && *handoffPlan != "" {
+		return errors.New("runtime_handoff_requires_explicit_plan")
+	}
+	if command == "runtime-convert" && *runtimeInput == "" {
+		return errors.New("runtime_conversion_requires_input_inventory")
+	}
+	if command == "runtime-rollback" && *runtimeExport == "" {
+		return errors.New("runtime_rollback_requires_current_state_export")
+	}
+	storage, e := backend.Environment("JUSTLEND_KEEPER_", chcfg, command == "export" || command == "report")
+	if e != nil {
+		return e
+	}
+	useRuntime := storage.Name == "mysql" && (command == "watch" && !*legacyRecovery || command == "resume-source" || command == "preflight") || strings.HasPrefix(command, "runtime-")
+	if useRuntime && (storage.Name != "mysql" || *epochFile == "") {
+		return errors.New("runtime_state_requires_mysql_and_epoch_file")
+	}
+	if command == "backfill" || command == "migrate-pages" {
+		if _, err := os.Stat(*runtimeDir); err == nil {
+			return errors.New("runtime_state_requires_explicit_maintenance_handoff")
+		} else if !os.IsNotExist(err) {
+			return err
+		}
+	}
 	now := time.Now().UTC()
 	end := now
 	if command == "backfill" {
@@ -89,11 +125,14 @@ func run(ctx context.Context, args []string) error {
 	}
 	archive := keeper.Archive{Dir: *evidence}
 	if command == "export" || command == "report" {
-		store, e := clickhouse.OpenDEXReader(ctx, chcfg)
+		store, e := backend.OpenKeeper(ctx, storage)
 		if e != nil {
 			return e
 		}
 		defer store.Close()
+		if e = backend.RequireCompleteHistory(ctx, store); e != nil {
+			return e
+		}
 		return keeper.Export(ctx, store, archive, cfg, start, end, *out)
 	}
 	lockPath := filepath.Join(os.TempDir(), fmt.Sprintf("crypto-market-info-justlend-keeper-%d.lock", os.Getuid()))
@@ -106,7 +145,7 @@ func run(ctx context.Context, args []string) error {
 		return errors.New("keeper_command_already_running")
 	}
 	defer syscall.Flock(int(lock.Fd()), syscall.LOCK_UN)
-	if command == "resume-source" {
+	if command == "resume-source" && !useRuntime {
 		if *source != "publicnode" && *source != "trongrid" && *source != "binance" {
 			return errors.New("invalid_resume_source")
 		}
@@ -124,7 +163,7 @@ func run(ctx context.Context, args []string) error {
 		return nil
 	}
 	if command == "init-schema" {
-		store, e := clickhouse.Open(ctx, chcfg)
+		store, e := backend.OpenKeeper(ctx, storage)
 		if e != nil {
 			return e
 		}
@@ -135,7 +174,7 @@ func run(ctx context.Context, args []string) error {
 		fmt.Printf("keeper schema ready: %s (7 tables)\n", *db)
 		return nil
 	}
-	store, e := clickhouse.OpenKeeperWriter(ctx, chcfg)
+	store, e := backend.OpenKeeper(ctx, storage)
 	if e != nil {
 		return e
 	}
@@ -148,9 +187,101 @@ func run(ctx context.Context, args []string) error {
 		fmt.Printf("legacy page progress migrated: %d; captures and members unchanged\n", count)
 		return nil
 	}
-	s, e := keeper.LoadState(keeper.StateFile(*stateDir), *addr+"/"+*db, cfg)
-	if e != nil {
-		return e
+	s := keeper.NewState(*addr+"/"+*db, cfg)
+	if !useRuntime || command == "runtime-convert" {
+		if command == "runtime-convert" {
+			if _, err := os.Stat(keeper.StateFile(*stateDir)); err != nil {
+				return err
+			}
+		}
+		s, e = keeper.LoadState(keeper.StateFile(*stateDir), *addr+"/"+*db, cfg)
+		if e != nil {
+			return e
+		}
+	}
+	c := keeper.NewCollector(cfg, &s, keeper.StateFile(*stateDir), archive, store)
+	c.Log = func(s string) { log.Print(s) }
+	if useRuntime {
+		provider, ok := store.(interface {
+			RuntimeBinding(context.Context, string, string, uint32) (runtimecheckpoint.Binding, error)
+		})
+		if !ok {
+			return errors.New("backend_lacks_runtime_binding")
+		}
+		check := func(ctx context.Context) (runtimecheckpoint.Binding, error) {
+			return provider.RuntimeBinding(ctx, keeper.Hex(cfg.Hash()), *epochFile, 1)
+		}
+		binding, err := check(ctx)
+		if err != nil {
+			return err
+		}
+		targetLock, err := runtimecheckpoint.LockTarget(binding)
+		if err != nil {
+			return err
+		}
+		defer targetLock.Close()
+		if command == "runtime-convert" {
+			report, err := c.ConvertRuntime(ctx, *runtimeDir, binding, *runtimeInput, check, c.Log)
+			if printErr := json.NewEncoder(os.Stdout).Encode(report); err == nil {
+				err = printErr
+			}
+			return err
+		}
+		if command == "runtime-handoff" {
+			ctx = runtimecheckpoint.MaintenanceContext(ctx)
+		}
+		if err = c.OpenRuntime(ctx, *runtimeDir, binding); err != nil {
+			return err
+		}
+		defer func() { result = errors.Join(result, c.CloseRuntime()) }()
+		if command == "runtime-handoff" {
+			report, err := c.HandoffRuntime(ctx, *handoffPlan)
+			if err != nil {
+				return err
+			}
+			actual, err := check(ctx)
+			if err != nil {
+				return err
+			}
+			if actual != binding {
+				return runtimecheckpoint.ErrConflict
+			}
+			return json.NewEncoder(os.Stdout).Encode(report)
+		}
+		if command == "runtime-verify" {
+			report, err := c.InspectRuntime(ctx, *runtimeExport)
+			if err != nil {
+				return err
+			}
+			return json.NewEncoder(os.Stdout).Encode(report)
+		}
+		if command == "runtime-rollback" {
+			report, err := c.RollbackRuntime(ctx, *runtimeExport)
+			if err != nil {
+				return err
+			}
+			actual, err := check(ctx)
+			if err != nil {
+				return err
+			}
+			if actual != binding {
+				return runtimecheckpoint.ErrConflict
+			}
+			return json.NewEncoder(os.Stdout).Encode(report)
+		}
+		if command == "resume-source" {
+			if *source != "publicnode" && *source != "trongrid" && *source != "binance" {
+				return errors.New("invalid_resume_source")
+			}
+			limit := s.Sources[*source]
+			limit.Blocked = false
+			s.Sources[*source] = limit
+			if err = c.Save(); err != nil {
+				return err
+			}
+			fmt.Printf("source unblocked: %s; budget and cooldown retained\n", *source)
+			return nil
+		}
 	}
 	for _, o := range s.Ops {
 		if command == "watch" && o.Batch.Capture.CaptureMode == "backfill" {
@@ -162,8 +293,6 @@ func run(ctx context.Context, args []string) error {
 	}
 	ctx, cancel := context.WithTimeout(ctx, *duration)
 	defer cancel()
-	c := keeper.NewCollector(cfg, &s, keeper.StateFile(*stateDir), archive, store)
-	c.Log = func(s string) { log.Print(s) }
 	if command == "watch" {
 		c.EnsureHistory(*historyDays)
 	}

@@ -98,3 +98,8 @@ func (b *DerivativeMinuteBuffer) Complete() (model.DerivativeMinuteBatch, error)
 	}
 	return model.CloneDerivativeBatch(b.batch), nil
 }
+
+// SampleQuality returns the validity derived by the minute buffer for preview.
+func (b *DerivativeMinuteBuffer) SampleQuality(at time.Time) model.DerivativeQuality {
+	return b.batch.Quality[at.Second()]
+}

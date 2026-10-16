@@ -11,6 +11,7 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/options"
 	"github.com/vphoenix/crypto-market-info/internal/orderbook"
 	"github.com/vphoenix/crypto-market-info/internal/sampler"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 )
 
 type connection struct {
@@ -24,6 +25,7 @@ type metaState struct {
 	known       bool
 }
 type engine struct {
+	preview      func(contracts.PreviewFrame)
 	run          options.LiveRun
 	specs        map[uint32]options.ContractSpec
 	books        map[uint32]*orderbook.DerivativeBook
@@ -229,6 +231,10 @@ func (e *engine) sample(at, now time.Time) error {
 			}
 		}
 	}
+	preview := contracts.PreviewFrame{At: at, Scope: e.run.ID.String(), Kind: "options_live"}
+	if e.catalog != nil {
+		preview.Kind = "options_catalog"
+	}
 	late := now.Before(at) || now.After(at.Add(250*time.Millisecond))
 	for _, member := range e.run.Members {
 		id := member.InstrumentID
@@ -293,6 +299,15 @@ func (e *engine) sample(at, now time.Time) error {
 		if err := e.buffers[id].Sample(at, s, q); err != nil {
 			return err
 		}
+		if e.preview != nil {
+			quality := e.buffers[id].SampleQuality(at)
+			snapshot := model.DerivativeSnapshot{}
+			if quality.ReplayValid {
+				snapshot = model.CloneDerivative(s)
+			}
+			preview.Derivatives = append(preview.Derivatives, contracts.PreviewDerivative{InstrumentID: id, Snapshot: snapshot, Quality: quality})
+		}
+
 	}
 	for n, id := range e.run.Indexes {
 		s := e.indexes[id]
@@ -310,6 +325,12 @@ func (e *engine) sample(at, now time.Time) error {
 			s.ReceivedAt = s.ReceivedAt.UTC().Truncate(time.Microsecond)
 		}
 		e.indexMinutes[n].Samples[at.Second()] = s
+		if e.preview != nil {
+			preview.Indexes = append(preview.Indexes, contracts.PreviewIndex{IndexID: id, Sample: s})
+		}
+	}
+	if e.preview != nil {
+		e.preview(preview)
 	}
 	if at.Second() == 59 {
 		batch := options.LiveEnvelope{RunID: e.run.ID, RunHash: e.run.Hash(), MinuteTime: e.minute, PreparedAt: e.now().UTC().Truncate(time.Microsecond), Indexes: e.indexMinutes}

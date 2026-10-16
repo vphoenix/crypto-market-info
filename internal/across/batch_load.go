@@ -51,6 +51,34 @@ type BatchLoadStats struct {
 	TotalMicros int64   `json:"load_and_validate_microseconds"`
 }
 
+// Recovery only needs order and receipt identities, not a retained copy of every
+// historical fact. Validate every requested member with the existing loader,
+// then release each bounded chunk before reading the next one.
+const recoveryReadCaptureLimit = 512
+
+func visitRecoveryBatches(ctx context.Context, store Store, captures []Capture, visit func(Batch) error) error {
+	for start := 0; start < len(captures); start += recoveryReadCaptureLimit {
+		chunk := captures[start:min(start+recoveryReadCaptureLimit, len(captures))]
+		loaded, err := LoadBatches(ctx, store, chunk)
+		if err != nil {
+			return err
+		}
+		for _, cap := range chunk {
+			if err := ctx.Err(); err != nil {
+				return err
+			}
+			if err := loaded.Errors[cap.CaptureId]; err != nil {
+				return err
+			}
+			if err := visit(loaded.Batches[cap.CaptureId]); err != nil {
+				return err
+			}
+			delete(loaded.Batches, cap.CaptureId)
+		}
+	}
+	return nil
+}
+
 // LoadBatches never changes row identity, timestamps, digests or revision. Its
 // caller selects latest revisions before canonical/committed filtering. Even an
 // optimized backend must return the exact requested capture and member set.

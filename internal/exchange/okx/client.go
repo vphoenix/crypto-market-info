@@ -14,15 +14,16 @@ import (
 )
 
 type Client struct {
-	HTTP          *http.Client
-	BaseURL       string
-	Retry         exchange.HTTPRetryConfig
-	WSConnectGate exchange.WaitGate
-	wsGateMu      sync.Mutex
-	loanGate      exchange.WaitGate
-	publicGate    exchange.WaitGate
-	discountGate  exchange.WaitGate
-	riskTierGate  exchange.WaitGate
+	HTTP              *http.Client
+	BaseURL           string
+	Retry             exchange.HTTPRetryConfig
+	WSConnectGate     exchange.WaitGate
+	wsGateMu          sync.Mutex
+	loanGate          exchange.WaitGate
+	publicGate        exchange.WaitGate
+	discountGate      exchange.WaitGate
+	riskTierGate      exchange.WaitGate
+	discountResponses discountResponseCache
 }
 
 // WebsocketConnectGate is shared by all book and funding connections of this client.

@@ -23,6 +23,7 @@ type Store interface {
 	ReserveReceipt(context.Context, dex.Anchor, dex.Hash) (dex.Receipt, bool, error)
 }
 type Collector struct {
+	runtime          *runtimeOwner
 	RPC              *ethereum.Client
 	Manifest         Manifest
 	Store            Store

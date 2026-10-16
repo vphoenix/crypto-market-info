@@ -1,6 +1,8 @@
 # Reserve 公开数据采集首版
 
 当前七表及响应留存政策见「2026-10-04 数据库存储修正」，请求优化见文末「2026-10-05 完整性优先的请求修正」；前文运行记录保留其历史日期。
+
+2026-10-09 修复实时 Watch 的可恢复区块异常：`eth_getBlockByNumber/Hash` 的 `null` 结果按有类型的暂时无区块处理，严格解析失败不再与它混同。日志、快照采集中途遇到链重组时，丢弃未提交结果，刷新链头与最终性，执行原有 orphan 修订和连续游标回退后重试；finalized 哈希冲突和写库错误继续停止。整流程故障测试覆盖空响应后恢复、日志/快照中途重组、旧日志失效、坏数量字段拒绝和持久化失败。数量错误增加 number/timestamp/base fee 字段位置，旧日志仅有 `invalid_quantity`，无法据此证明每次退出均由空区块引起。表结构、采样报价语义及 manifest 版本保持 `reserve-r5-mvp-3`。
 2026-10-02 已建立独立库 `crypto_market_info_reserve` 并实现 `cmd/reserve-data`。一个 Go 进程、五张定类型表、一个 SHA256/gzip 原始证据目录；不调用交易接口、不使用钱包。正常运行只访问 [Ethereum PublicNode RPC](https://ethereum-rpc.publicnode.com)，使用 HTTPS JSON-RPC POST。官方目录只在手选地址时使用，运行不依赖目录网站。
 
 首个白名单是 Ethereum DFX `0x188d12eb13a5eadd0867074ce8354b1ad6f4790b`，链上 r5.0.0，完整六成分，share 与六成分 decimals 均为18。配置见 `config/reserve-ethereum.json`：15条经实际 factory/pool 查询核验的有限路径，包括六成分、share、WETH 与 USDT 参考，每资产最多两条、每条最多两跳。白名单固定地址和 decimals，转账语义明确标为待联合交易模拟验证；没有将 Quoter 成功当成交易执行证明。新资产、代理实现或 decimals 不匹配时仍保留完整状态，停止相应经济报价。
@@ -252,3 +254,9 @@ var/reserve/reserve-data migrate-receipts \
 日志从数据库连续成功覆盖的下一块起抓，每片最多512块，逐条保留片内所有白名单事件及所需完整收据。成功提交后才推进日志游标。授权、429或超时不会再缩片；仅明确的日志范围/结果数量限制会二分，成功后逐步恢复至512，避免永久退成单块。单块范围复用同一份起止header，后续canonical校验保留。`rpc_archive_auth_required`尝试仍保存missing，保留原游标，每5分钟才重新检查一次；不通过细分、跳过范围或服务反复重启处理授权失败。收据补采和来源429持久冷却沿用原规则。
 
 这减少请求浪费，但不能解除来源权限，也不能把缺失报价补造为当时已知。完整性以canonical/committed成功区间并集、事件/收据成员校验及真实可用时间验收，不以最高区块或失败次数代替。未改变表结构、数据粒度、manifest身份、RPC来源或路由；实际二进制身份与实网观察见[本轮记录](../research/2026-10-05-reserve-cadence/report.md)。
+
+### 运行状态改造（实现中，未部署）
+
+按 [运行状态设计](redis-mysql-migration/runtime-state-improvement.md) 接入单一状态管理者和本地恢复链。连续日志覆盖、未确认 capture、每个 manifest 的 finalized 锚点、最新有效收据 attempt 分别维护；正常 Reconcile/RepairReceipts 不重新加载完整历史清单。原始 attempt、报价可用时间、收据完整性条件和来源配额保持原语义。大待办分页，完整收据引用按需从冻结对象读取。
+
+显式转换、正常启动与回退入口见 [运行状态操作](redis-mysql-migration/runtime-state-operations.md)。代码/测试和实际部署状态见 [实施记录](../research/2026-10-15-runtime-state-improvement/report.md)；此段不是上线记录。

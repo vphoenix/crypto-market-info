@@ -13,7 +13,7 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/model"
 	"github.com/vphoenix/crypto-market-info/internal/orderbook"
 	"github.com/vphoenix/crypto-market-info/internal/sampler"
-	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 	"github.com/vphoenix/crypto-market-info/internal/universe"
 )
 
@@ -27,7 +27,7 @@ type preparedMarkets struct {
 	health             map[string]func() any
 }
 
-func prepareMarkets(ctx context.Context, cfg config.Config, store *chstore.Client, clients venueClients, d PerpetualDiscovery, logger *slog.Logger) (preparedMarkets, error) {
+func prepareMarkets(ctx context.Context, cfg config.Config, store contracts.MainStore, clients venueClients, d PerpetualDiscovery, logger *slog.Logger) (preparedMarkets, error) {
 	m := preparedMarkets{byVenue: make(map[string][]model.Instrument)}
 	definitions := []model.Instrument{}
 	for _, v := range []struct {
@@ -175,7 +175,7 @@ func prepareMarkets(ctx context.Context, cfg config.Config, store *chstore.Clien
 	return m, nil
 }
 
-func commitPerpetualRun(ctx context.Context, store *chstore.Client, d PerpetualDiscovery, m preparedMarkets, logger *slog.Logger) error {
+func commitPerpetualRun(ctx context.Context, store contracts.MainStore, d PerpetualDiscovery, m preparedMarkets, logger *slog.Logger) error {
 	if err := store.WritePerpetualUniverseRun(ctx, m.run, m.members); err != nil {
 		return err
 	}

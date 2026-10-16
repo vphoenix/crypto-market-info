@@ -387,7 +387,10 @@ func TestHeaderFailureCannotReviseFinalityOrCursor(t *testing.T) {
 	if TransientRPC(errors.New("finalized_hash_conflict")) {
 		t.Fatal("finalized hash conflict treated as transport retry")
 	}
-	for _, s := range []string{"rpc_batch_invalid_ids_or_envelope", "evidence_write_failed", "rpc_http_403", "rpc_method_error"} {
+	if !TransientRPC(fmt.Errorf("canonical lookup: %w", ethereum.ErrBlockUnavailable)) {
+		t.Fatal("typed absent block not retryable")
+	}
+	for _, s := range []string{"rpc_batch_invalid_ids_or_envelope", "evidence_write_failed", "rpc_http_403", "rpc_method_error", "invalid_quantity", "header_number: invalid_quantity", "block_unavailable", "block_no_longer_canonical"} {
 		if TransientRPC(errors.New(s)) {
 			t.Fatal("persistent or integrity error retried", s)
 		}

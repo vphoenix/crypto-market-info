@@ -83,7 +83,8 @@ func TestPairedCatalogUsesOnlyPublicEndpointsAndHashes(t *testing.T) {
 		}
 		kind := r.URL.Query().Get("instType")
 		wire := pairWire(kind, "BTC")
-		fmt.Fprintf(w, `{"code":"0","data":[{"instType":%q,"instId":%q,"state":"live","instCategory":"1","ruleType":"normal","baseCcy":"BTC","quoteCcy":"USDT","ctType":"linear","settleCcy":"USDT","ctVal":"0.01","ctMult":"1","ctValCcy":"BTC","tickSz":"0.1","lotSz":%q,"minSz":%q,"listTime":"1597026383085"}]}`, kind, wire.InstID, wire.LotSz, wire.MinSz)
+		preopen := pairWire(kind, "NEW")
+		fmt.Fprintf(w, `{"code":"0","data":[{"instType":%q,"instId":%q,"state":"live","instCategory":"1","ruleType":"normal","baseCcy":"BTC","quoteCcy":"USDT","ctType":"linear","settleCcy":"USDT","ctVal":"0.01","ctMult":"1","ctValCcy":"BTC","tickSz":"0.1","lotSz":%q,"minSz":%q,"listTime":"1597026383085"},{"instType":%q,"instId":%q,"state":"preopen","instCategory":"","ruleType":""}]}`, kind, wire.InstID, wire.LotSz, wire.MinSz, kind, preopen.InstID)
 	}))
 	defer server.Close()
 	c := NewClient()
@@ -94,6 +95,13 @@ func TestPairedCatalogUsesOnlyPublicEndpointsAndHashes(t *testing.T) {
 	}
 	if len(got.Observation.Pairs) != 1 || len(got.Observation.SourceHashes) != 4 || !model.ValidDigest(got.Policy.PayloadHash) || got.Observation.LoanPolicyID != got.Policy.ID {
 		t.Fatal("missing complete public evidence")
+	}
+	// Recovery creates a fresh collector/client rather than relying on an old
+	// in-memory catalog; the complete public response must work in both cases.
+	fresh := NewClient()
+	fresh.BaseURL = server.URL
+	if retry, err := fresh.PairedCatalog(context.Background(), 256); err != nil || len(retry.Observation.Pairs) != 1 {
+		t.Fatal("fresh generation could not recover", err)
 	}
 }
 
@@ -128,6 +136,39 @@ func TestPartialCatalogSelectionFieldsRejectWholeBatch(t *testing.T) {
 			}
 			if _, err := MatchPairedCatalogs(spot, swaps, margin, policy, 256); err == nil {
 				t.Fatal("malformed catalog silently shrank universe")
+			}
+		})
+	}
+}
+
+func TestNonLiveCatalogRowsDoNotBlockCompleteLiveUniverse(t *testing.T) {
+	policy, err := ParseLoanPolicy([]byte(loanFixture))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, state := range []string{"preopen", "suspend", "test"} {
+		t.Run(state, func(t *testing.T) {
+			groups := [][]instrumentWire{{pairWire("SPOT", "BTC")}, {pairWire("SWAP", "BTC")}, {pairWire("MARGIN", "BTC")}}
+			for n, kind := range []string{"SPOT", "SWAP", "MARGIN"} {
+				row := instrumentWire{InstType: kind, InstID: "NEW-USDT", State: state}
+				if kind == "SWAP" {
+					row.InstID += "-SWAP"
+				}
+				groups[n] = append(groups[n], row)
+			}
+			pairs, err := MatchPairedCatalogs(groups[0], groups[1], groups[2], policy, 256)
+			if err != nil || len(pairs) != 1 || pairs[0].Base != "BTC" {
+				t.Fatalf("nonlive terms blocked live BTC: %+v %v", pairs, err)
+			}
+			// Exclusion cannot bypass identity checks, even for preopen rows.
+			for n := range groups {
+				duplicate := append(append([]instrumentWire(nil), groups[n]...), groups[n][1])
+				old := groups[n]
+				groups[n] = duplicate
+				if _, err := MatchPairedCatalogs(groups[0], groups[1], groups[2], policy, 256); err == nil {
+					t.Fatal("duplicate nonlive identity accepted")
+				}
+				groups[n] = old
 			}
 		})
 	}

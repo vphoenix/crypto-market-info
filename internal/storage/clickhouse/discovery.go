@@ -43,11 +43,7 @@ func (c *Client) InitDiscoverySchema(ctx context.Context) error {
 	return nil
 }
 
-type discoveryFact interface {
-	Kind() string
-	Body() map[string]any
-	Validate() error
-}
+type discoveryFact = model.DiscoveryFact
 type publicationRecord struct {
 	Kind, ID, Hash, Codec         string
 	SourceMS, ObservedMS, KnownMS int64

@@ -221,3 +221,9 @@ systemctl --user start crypto-market-info-justlend-keeper.service
 migrate-pages持全局锁，仅访问本地旧manifest与数据库，批量交叉核验索引成员来源hash/时间后写分页进度，不发HTTP。重复执行已迁移记录时不需旧归档。维护不能disable服务或重置state。归档清理必须在分页迁移及无归档恢复/导出验证完成后进行；新的正常采集不产生原始请求、响应或summary文件。已删除原文后旧归档版binary不能直接回滚；数据库/state不删除。
 
 独立审核见[0019](../discuss/0019-justlend-keeper-no-raw-review.md)，真实验证、清理范围及二进制hash见[本轮记录](../research/2026-10-04-keeper-no-raw/validation.md)。历史研究Report函数只作原fixture测试兼容，CLI不调用，不能用它读取清理后的数据。
+
+## 本地运行状态改造（2026-10-15，实现中）
+
+按 [运行状态方案](redis-mysql-migration/runtime-state-improvement.md) 扩展已有 `State/Ops`；实际测试、转换和部署以 [实施记录](../research/2026-10-15-runtime-state-improvement/report.md) 为准，当前未上线。已接入待完成窗口的分页链、父 capture 和 enrichment 完成状态：只有整条链符合原 `indexWindowComplete` 且每个父批次有完整子结果，才能推进 EvidenceCursors；EventCursors 的来源分页进度保持独立。
+
+正常新模式不再调用历史 `KeeperNextEnrichment` / `KeeperEvidenceFrontier` 来重建自己的待办。按明确身份读取选中父批次和原事务的完整性验证继续保留。原 MySQL 服务端/上下文期限、单任务在途和错误退避不变；未决批次仍冻结原身份后写库，结果未知保留原操作。持久格式、首次转换和当前状态回退入口见 [操作说明](redis-mysql-migration/runtime-state-operations.md)。

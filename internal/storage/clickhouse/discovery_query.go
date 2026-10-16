@@ -5,16 +5,11 @@ import (
 	"fmt"
 	"github.com/shopspring/decimal"
 	"github.com/vphoenix/crypto-market-info/internal/model"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 	"time"
 )
 
-type DiscoveryProof struct {
-	Kind, ID, Hash, Codec                                   string
-	SourceMS, ObservedMS, KnownMS, PublishedMS, EffectiveMS int64
-	InstrumentID                                            uint32
-	SourceCount                                             uint16
-	ProvenanceHash                                          string
-}
+type DiscoveryProof = contracts.DiscoveryProof
 
 func (c *Client) latestDiscoveryProof(ctx context.Context, kind string, instrument uint32, asOf time.Time) (DiscoveryProof, error) {
 	var p DiscoveryProof

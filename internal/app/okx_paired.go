@@ -3,6 +3,7 @@ package app
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/vphoenix/crypto-market-info/internal/config"
 	"github.com/vphoenix/crypto-market-info/internal/exchange"
@@ -11,13 +12,26 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/model"
 	"github.com/vphoenix/crypto-market-info/internal/orderbook"
 	"github.com/vphoenix/crypto-market-info/internal/sampler"
-	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 	"io"
 	"log/slog"
 	"sync"
 	"syscall"
 	"time"
 )
+
+var errPairedWarmTimeout = errors.New("paired books did not all warm within 60s")
+
+// A cold start has no live book generation to retain. Keep every subscribed
+// source running once any valid snapshot exists; the sampler still rejects
+// each invalid source independently. Replacement keeps its all-ready barrier.
+func allowInitialPairedSampling(hasSampler bool, err error, g *pairedGeneration) bool {
+	if hasSampler || !errors.Is(err, errPairedWarmTimeout) || g.manager == nil || g.ctx.Err() != nil {
+		return false
+	}
+	h := g.manager.HealthSnapshot()
+	return h.ExpectedInstruments == len(g.sources) && h.ReadyInstruments > 0
+}
 
 type pairCapacity struct{ Pairs, AdditionalSources, PeakWSConnections, PeakBufferedEvents int }
 
@@ -92,7 +106,7 @@ func extraPairDefinitions(pairs []model.OKXPairMember, owned []model.Instrument)
 	}
 	return extra
 }
-func registerPairCatalog(ctx context.Context, store *chstore.Client, catalog *okx.PairedCatalog) error {
+func registerPairCatalog(ctx context.Context, store contracts.MainStore, catalog *okx.PairedCatalog) error {
 	var defs []model.Instrument
 	for _, p := range catalog.Observation.Pairs {
 		defs = append(defs, p.Spot, p.Perpetual)
@@ -196,17 +210,17 @@ func (g *pairedGeneration) warm(ctx context.Context) error {
 		case err := <-g.errors:
 			return err
 		case <-deadline.C:
-			return fmt.Errorf("paired books did not all warm within 60s")
+			return errPairedWarmTimeout
 		case <-ticker.C:
 		}
 	}
 }
-func runOKXPaired(ctx context.Context, cfg config.Config, store *chstore.Client, client *okx.Client, owned []model.Instrument, legacy CapacityPlan, logger *slog.Logger) error {
+func runOKXPaired(ctx context.Context, cfg config.Config, store contracts.MainStore, client *okx.Client, owned []model.Instrument, legacy CapacityPlan, logger *slog.Logger) error {
 	return runIndependentSources(ctx, logger, 10*time.Second, component{name: "OKX paired markets", run: func(ctx context.Context) error {
 		return collectOKXPaired(ctx, cfg, store, client, owned, legacy, logger)
 	}})
 }
-func collectOKXPaired(ctx context.Context, cfg config.Config, store *chstore.Client, client *okx.Client, owned []model.Instrument, legacy CapacityPlan, logger *slog.Logger) error {
+func collectOKXPaired(ctx context.Context, cfg config.Config, store contracts.MainStore, client *okx.Client, owned []model.Instrument, legacy CapacityPlan, logger *slog.Logger) error {
 	if err := store.InitOKXPairSchema(ctx); err != nil {
 		return err
 	}
@@ -280,7 +294,7 @@ func collectOKXPaired(ctx context.Context, cfg config.Config, store *chstore.Cli
 			catalog, err := client.PairedCatalog(attempt, cfg.OKXPairedMaxPairs)
 			stopAttempt()
 			if err != nil {
-				logger.Error("OKX paired catalog unavailable; retaining existing streams", "error", err)
+				logger.Error("OKX paired catalog unavailable; retrying", "error", err, "active_generation", active != nil)
 				refresh.Reset(time.Minute)
 				continue
 			}
@@ -296,7 +310,9 @@ func collectOKXPaired(ctx context.Context, cfg config.Config, store *chstore.Cli
 				refresh.Reset(time.Minute)
 				continue
 			}
-			if err = registerPairCatalog(ctx, store, &catalog); err != nil {
+			if err = retryPairedMetadata(ctx, logger, "register catalog definitions and loan policy", func(attempt context.Context) error {
+				return registerPairCatalog(attempt, store, &catalog)
+			}); err != nil {
 				return err
 			}
 			extra = extraPairDefinitions(catalog.Observation.Pairs, owned)
@@ -306,7 +322,9 @@ func collectOKXPaired(ctx context.Context, cfg config.Config, store *chstore.Cli
 			}
 			if key == fingerprint {
 				catalog.Observation.EffectiveMinute = time.Now().UTC().Truncate(time.Minute).Add(time.Minute)
-				if err = store.WriteOKXPairCatalog(ctx, catalog.Observation); err != nil {
+				if err = retryPairedMetadata(ctx, logger, "publish unchanged catalog", func(attempt context.Context) error {
+					return store.WriteOKXPairCatalog(attempt, catalog.Observation)
+				}); err != nil {
 					return err
 				}
 				refresh.Reset(cfg.OKXPairedRefresh)
@@ -327,10 +345,14 @@ func collectOKXPaired(ctx context.Context, cfg config.Config, store *chstore.Cli
 				}
 			})
 			if err = staged.warm(ctx); err != nil {
-				staged.stop()
-				logger.Error("OKX paired warm-up failed; retaining old generation", "error", err)
-				refresh.Reset(time.Minute)
-				continue
+				if allowInitialPairedSampling(engine != nil, err, staged) {
+					logger.Warn("OKX paired initial sampling starts with incomplete books", "health", staged.manager.HealthSnapshot())
+				} else {
+					staged.stop()
+					logger.Error("OKX paired warm-up failed; retaining old generation", "error", err)
+					refresh.Reset(time.Minute)
+					continue
+				}
 			}
 			effective := time.Now().UTC().Truncate(time.Minute).Add(2 * time.Minute)
 			catalog.Observation.EffectiveMinute = effective
@@ -382,6 +404,21 @@ func collectOKXPaired(ctx context.Context, cfg config.Config, store *chstore.Cli
 				hourly.schedule(staged.perpetuals, staged.estimates, effective)
 			}
 			logger.Info("OKX paired catalog scheduled", "pairs", len(catalog.Observation.Pairs), "additional_sources", len(extra), "effective_minute", effective, "capacity", capacity)
+			if staged.manager != nil {
+				g, e := staged, engine
+				g.start(func(ctx context.Context) error {
+					ticker := time.NewTicker(30 * time.Second)
+					defer ticker.Stop()
+					for {
+						select {
+						case <-ctx.Done():
+							return ctx.Err()
+						case <-ticker.C:
+							logger.Info("OKX paired runtime health", "books", g.manager.HealthSnapshot(), "sampler", e.HealthSnapshot())
+						}
+					}
+				})
+			}
 			if !exchange.Wait(ctx, time.Until(effective.Add(time.Second))) {
 				staged.stop()
 				if parent.Err() != nil {

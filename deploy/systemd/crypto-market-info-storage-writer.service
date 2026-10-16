@@ -1,0 +1,19 @@
+[Unit]
+Description=Crypto market data sealed minute writer (prepared, enable at cutover)
+After=crypto-market-info-mysql.service crypto-market-info-redis.service
+Requires=crypto-market-info-mysql.service
+
+[Service]
+Type=simple
+WorkingDirectory=%h/crypto-market-info
+ExecStart=%h/crypto-market-info/var/storage/bin/storage-writer --socket %h/crypto-market-info/var/storage/mysql/run/mysql.sock --user cmi_live --password-file %h/.config/crypto-market-info-storage/cmi_live-password --redis-socket %h/crypto-market-info/var/storage/redis/run/redis.sock --spool %h/crypto-market-info/var/storage/spool --databases crypto_market_info --workers 1 --preparers 2 --prepare-bytes 67108864 --cache-bytes 33554432 --log-file %h/crypto-market-info/var/storage/writer.log
+Environment=GOMEMLIMIT=384MiB
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=90
+MemoryMax=512M
+TasksMax=64
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

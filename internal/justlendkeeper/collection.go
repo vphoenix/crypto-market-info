@@ -5,6 +5,8 @@ import (
 	"errors"
 	"strings"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 // A single background operation is restored from the committed source pages.
@@ -128,7 +130,13 @@ func (c *Collector) restoreEnrichment(ctx context.Context) error {
 		return nil
 	}
 	c.State.NextEnrichment = c.Now().Add(5 * time.Second)
-	parent, err := r.KeeperNextEnrichment(ctx, c.Config.Hash(), c.Now().UTC())
+	var parent *Capture
+	var err error
+	if c.runtime != nil {
+		parent, err = c.State.Runtime.next(c.Now().UTC())
+	} else {
+		parent, err = r.KeeperNextEnrichment(ctx, c.Config.Hash(), c.Now().UTC())
+	}
 	if err != nil {
 		return err
 	}
@@ -213,6 +221,20 @@ func (c *Collector) advanceEvidence(ctx context.Context, kind string) error {
 	if !c.State.IndexingEnabled {
 		return nil
 	}
+	if c.runtime != nil {
+		for i := 0; i < 32; i++ {
+			old := c.State.EvidenceCursors[kind]
+			at, err := c.State.Runtime.advance(kind, old, c.State.EventCursors[kind])
+			if err != nil {
+				return c.runtime.fail(err)
+			}
+			if !at.After(old) {
+				break
+			}
+			c.State.EvidenceCursors[kind] = at
+		}
+		return nil
+	}
 	r, ok := c.Store.(CollectionReader)
 	if !ok {
 		return nil
@@ -242,6 +264,11 @@ func (c *Collector) indexWindowComplete(ctx context.Context, caps []Capture) (bo
 	if err != nil {
 		return false, err
 	}
+	return indexWindowCompletePages(caps, pages)
+}
+
+// Shared original strict predicate; conversion compares frozen inputs with it.
+func indexWindowCompletePages(caps []Capture, pages map[uuid.UUID]IndexPage) (bool, error) {
 	byToken := map[string]IndexPage{}
 	scanID := ""
 	for _, cap := range caps {

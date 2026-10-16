@@ -211,10 +211,13 @@ func MatchPairedCatalogs(spot, swap, margin []instrumentWire, policy model.OKXLo
 		seen := map[string]bool{}
 		for _, w := range rows {
 			expected := []string{"SPOT", "SWAP", "MARGIN"}[n]
-			if w.InstType != expected || w.InstID == "" || strings.TrimSpace(w.InstID) != w.InstID || w.State == "" || strings.TrimSpace(w.State) != w.State || w.Category == "" || w.RuleType == "" || seen[w.InstID] {
+			if w.InstType != expected || w.InstID == "" || strings.TrimSpace(w.InstID) != w.InstID || w.State == "" || strings.TrimSpace(w.State) != w.State || seen[w.InstID] {
 				return nil, fmt.Errorf("invalid %s catalog identity", expected)
 			}
 			seen[w.InstID] = true
+			// Preopen instruments can legitimately omit classification and trading
+			// terms. They are outside the live universe; their identity must still
+			// be valid and unique. Live rows remain subject to strict validation.
 			if w.State != "live" {
 				continue
 			}

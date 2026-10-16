@@ -1,8 +1,12 @@
 # 市场数据存储数据字典
 
+2026-10-15 新增本地运行状态编码的实现说明见[运行状态工具与恢复协议](redis-mysql-migration/runtime-state-operations.md)。这是待部署的状态/恢复格式，不新增 MySQL 事实表，也不改变现有盘口编码、数据完整性或历史迁移状态；实施与验证进度见[记录](../research/2026-10-15-runtime-state-improvement/report.md)。
+
 本数据字典定义当前阶段的六个市场与收益核心表：交易标的表 `instrument`、分钟完整盘口表 `order_book_minute`、分钟内秒级差量表 `order_book_second_delta`、整点资金费率表 `funding_rate_hourly`、收益路线表 `yield_route` 和收益观测表 `yield_observation`；另定义三个永续共有交易对元数据表 `instrument_canonical_mapping`、`perpetual_universe_run` 和 `perpetual_universe_member`。
 
 这些表在整个采集进程中的位置及以后增加其他数据时的扩展原则见[系统总体架构](architecture.md)。
+
+Redis/MySQL 后端已切换为正式采集与分钟写入后端，ClickHouse 旧数据及启动依赖快照继续保留；正式历史导入暂停，完整迁移状态仍为 false。[实现交付](redis-mysql-migration/implementation-status.md)列出部署和验证状态；[逐表 MySQL 映射](../internal/storage/mysql/mapping.json)覆盖 125 张表。数组/命名 Tuple 使用 v1 定类型二进制编码（版本、类型摘要、长度限制），UInt256 为 BINARY(32)，UUID 为 BINARY(16)，Decimal 为 DECIMAL(38,18)，UTC 时间为 DATETIME 对应精度；NULL 和空数组分别编码。CEX 第一版保留 50 档物理列，按 stored_depth 精确读取。事实与 ingest_batch/ingest_member 在同一事务提交；没有成员证明的 CEX 分钟不会被回放接口作为已提交事实。普通 MergeTree 的全部物理副本用 _occurrence 保留，按完整字段规范字节排序，包括同键内容不同的副本；发布读者仍拒绝任何重复发布。相同不可变事实的运行时读取保持幂等。2026-10-13 起已按用户限定范围导入独立封存快照中的启动依赖；正式 producer 已激活，实际运行路径与验收状态见 `docs/runtime-operations.md`。
 
 2026-10-09主库六张热表已设置512 MiB单次自动后台合并输入上限，范围为三个 `derivative_book_*` 表、`order_book_second_delta`、`options_catalog_live_minute_commit` 和 `options_catalog_quality_evidence_minute`。这是物理合并调度限制，不改变字段、5/10/50档回放、差量编码或完整性含义；既有大part保留，查询仍按现有规则逻辑去重。三项fsync保持启用，需持续检查part积压及查询成本。同日13:18（北京时间）已按用户同意重启共享实例，启用全局合并读取16 MiB/s、mutation读取8 MiB/s限速；它不限制整机总写入或fsync IOPS。具体现场设置、适用边界和回滚见[合并I/O排查](../research/2026-10-09-clickhouse-merge-io/report.md)。
 
@@ -11,6 +15,8 @@
 Reserve 拍卖与篮子申赎已在独立库 `crypto_market_info_reserve` 建表，新增 `reserve_capture`、`reserve_folio_state`、`reserve_route_quote`，复用 `dex_log`／`dex_tx_receipt` 定义。实际结构和不变量见 [DDL](reserve-data-schema.sql) 与 [实现说明](reserve-data-implementation.md)；特别是控制表 `receipt_refs` 固定当时引用集合，后续补收据不会改写旧批语义。
 
 2026-10-04 Reserve `reserve-r5-mvp-3` 共七表，另含联合模拟 `reserve_route_simulation` 和完整交易明细 `reserve_receipt_data`。按用户要求，Reserve 的 API/RPC 返回只在内存中严格解析，定类型数据直接入库，响应正文不落文件。来源 payload hash、成员摘要、UTC 时间与区块锚点仍保存；hash 不承诺原文可下载，报告标注 `raw_response_policy=not_retained`。此项仅修改 Reserve，其他采集器的归档政策以各自说明为准。
+
+2026-10-09 Reserve 恢复路径区分两种错误：RPC 区块结果为 `null` 时返回有类型的 `block_unavailable`，没有有效区块锚点，按原六秒轮询重试；数量字段缺失、格式错误和身份不匹配仍严格拒绝。实时日志或快照结束复查发现 `block_no_longer_canonical` 时，不提交该批，先刷新 latest/safe/finalized 并核对已有未最终确认批次，旧分支记录标记 orphaned 并回退日志游标，再重新采集。已最终确认哈希冲突和持久化完整性错误仍终止。未重新生成旧区块的历史报价；表结构、批次提交身份、来源摘要和原文不留存规则保持。
 
 `reserve_receipt_data` 按 `(chain_id,block_hash,tx_hash)` 唯一，按 block_time 的 UTC 月分区，ReplacingMergeTree。保存原始 receipt/calldata SHA256、二进制 calldata、tx_index、完整日志数量和 `Array(Tuple(log_index UInt32,emitter FixedString(20),topics Array(FixedString(32)),data String))`；包括 Folio 白名单外的日志。空日志必须有明确零数量的行，缺行不能当空。`data_hash` 使用确定性二进制编码，覆盖锚点、原哈希与全部明细；仅排除自身和迁移可用时间 `materialized_at`。校验摘要、数量、calldata hash/selector、唯一有序 log_index 和原 capture 所引用日志后才允许共享回执复用。摘要/回执事实及明细先落库，capture 最后提交。旧 capture 的 `receipt_refs`、成员摘要与首次可见时间不变；旧原文只由离线 `migrate-receipts` 读取一次，迁移全部通过后才清理。版本化配置、ABI、只读模拟编译产物另存小型 rules 目录；备份七表和该目录即可，不依赖响应归档。
 
@@ -424,6 +430,8 @@ R5复用整数价量事实（期权10档、交割期货默认5档）和固定成
 
 用户放弃的历史解码补采用capture新revision追加reason标记`repair_abandoned=user_requested_historical_state_unavailable`。自动partial补采跳过该标记；status仍为partial，已存事实、成员摘要、链锚点和最终性均保留。放弃修补不增加完整解码覆盖，也不代表该区间没有交易。
 
+2026-10-10 文件系统损坏后，对全量核验明确证明成员丢失或原始紧凑证据丢失的四个capture执行了人工存储完整性撤回：追加更高revision，仅将`committed`设为false并记录`storage_integrity_loss`原因，保留原始source status、canonical/finality、身份、来源时间、链锚点、成员数量和哈希；事实行不删除、不改写。查询和恢复先选最新revision，再筛committed，不能把旧成功版本重新计入完整覆盖。此操作属于有前后字段核验记录的故障维护例外，普通`WriteAcrossRevision`和冻结重试规则仍禁止变更committed或成员。对应区间重新请求来源，使用新的capture ID、实际采集时间和证据；不得重造旧payload或沿用旧时间。具体四个记录及核验见[存储撤回审计](../research/2026-10-10-reboot-check/across-storage-withdrawal.json)。
+
 `across_receipt_transfers`每份收据保存一行原生USDC Transfer全集：交易/区块锚点、token、收据成功状态、来源hash、UTC可用时间，以及等长的log_indices/senders/recipients/amounts_raw数组。index严格递增且唯一，金额为UInt256。成功解析但无Transfer保存空数组，缺少这行表示尚未获得全集，不能当成零笔。正常收据capture先写收据及Transfer事实，最后提交capture。新成员表编号7；原六组成员编码及旧数据摘要不变。查询核验最新revision、canonical/committed、精确计数及摘要。
 
 旧留存退款收据通过`migrate-transfers`本地解析入库，新增`receipt_transfers` capture保留原始来源时间和链锚点，不修改旧事实及旧capture的成员摘要，也不向链请求历史。迁移可重跑；旧退款缺少Transfer，即使费用已知也进入现有补采队列，并优先于旧未知费用重试；已删除的普通收据原文不伪造空Transfer。退款查询只读取定类型全集。capture成员/区块时间及最终性复核还保存紧凑元数据，查询不再逐份回读RPC/API正文。重组revision只改canonical/finality/说明，旧成功版本不会重新出现。跨capture按不可变链上事实去重，采集时间和payload格式不同不算协议冲突。
@@ -500,6 +508,8 @@ PublicNode承担节点只读查询，TronGrid事件分页，Binance公开BBO；�
 
 ## OKX 交易初筛定类型输入与耐久发布（2026-10-08）
 
+2026-10-16 资本规则无损精简设计见[存储与交付协议](redis-mysql-migration/storage-design.md#2026-10-16-数据精简设计先改代码暂不操作数据库)。三个可选 MySQL 专项扩展表分别保存折扣内容版本、风险内容版本和轻量资本观测；保持原完整逻辑事实、来源与发布时间，新物理表示以独立 codec 标识。压缩完成后已在隔离 MySQL 验证事务、新旧读取和重试，并显式安装三张生产 8 KiB 压缩页扩展表。写入开关仍关闭，采集及历史迁移保持暂停；旧 125 表迁移映射、既有 schema 登记及迁移断点保持，未重写历史。实际边界与验证见[执行记录](../research/2026-10-16-capital-versions/report.md)。
+
 新增实现及字段/时间/单位完整合同见[找币数据衔接](discovery-trading-contract.md)，DDL为 `internal/storage/clickhouse/discovery_schema.sql`。独立下一期资金费及标记/币种指数进入 `funding_forecast_observation`；上一完整分钟基础币成交量进入 `cex_trade_bar_1m`；公开标准组费用、资本语义引用和实际公开风险数组分别进入 `cex_fee_schedule_rule`、`cex_collateral_risk_rule`、`okx_public_capital_parameters`。金额/费率/区间为 Decimal(38,18)，时间为 UTC Unix 毫秒，原生目录/政策微秒时间保持不变。
 
 `cex_book_minute_commit` 绑定原分钟快照、保存深度、valid_bitmap 和全部差量集合摘要；writer使用手中完整待写批次生成，禁止事后用现存行补造历史完整证明。`source_publication_intents` 在写事实前耐久固定源身份/摘要/首次知悉及必要源成员元数据；`source_batch_status` 最后固定实际全部完成时点。成员数量及有序摘要绑定 `public_observation_provenance` 的官方URL、响应hash、来源/请求时钟，严格查询读取完全部来源成员后重新核验完整manifest。新事实及intent/complete采用不可变 MergeTree 记录及fsync设置；来源元数据的小型重复记录按稳定身份去重，已发布内容冲突拒绝。
@@ -515,3 +525,79 @@ PublicNode承担节点只读查询，TronGrid事件分页，Binance公开BBO；�
 真实隔离ClickHouse：334流、每侧5档、60秒且59秒均有差量，共19706差量行；不开发布链路0.508秒，批量新链路1.145秒；3组并发1002流/59118差量2.578秒。另测101成员跨块、intent/commit/status整批ACK丢失与50行耐久前缀后故障，补齐与重复重试逐币保持时钟并且三表各101唯一行。慢commit时完成时间不能提前，实际篡改深度/秒集合重试拒绝。代表性故障和吞吐已验证，长期全市场部署尚未验收。证据在交易项目 `artifacts/blockers-v051-collector-tests.txt`、`artifacts/blockers-v051-collector-prefix-tests.txt`，独立复核另存；原采集进程未替换。
 
 后续正式部署已于2026-10-08完成，见[部署验收](../research/2026-10-08-okx-five-level-deployment/report.md)。全量运行补充的请求节奏修复只改变发现接口限流及无原生时钟来源的取时位置：`request_without_source_clock` 的 `source_ms` 取成功物理请求经过冷却和门限后的发送时刻，`observed_ms` 仍为接收时刻；每次重试分别经过同一端点门限。来源响应摘要、原生 ts、UTC/Decimal、表结构及历史行保持原语义，未重写已有数据。
+
+2026-10-09 发现事实恢复修复：独立资金费预测与上一完整分钟成交量分别请求、分别严格验证并发布。一方来源失败、分钟尚未确认、资本参考暂缺或公开费率组不受支持，均不阻断另一方已完整取得的事实。预测仍必须包含其全部资金费、mark 与两种币价来源；未确认分钟没有成交量提交，未知手续费没有规则提交。参考规则沿用独立的失败重试与有效期；查询/交易复核仍须同时取得所需全部输入，不能把已发布预测当成费用与资本规则已经齐全。采集优先执行市场事实，来源时钟和身份不重置，表结构与发布摘要保持。
+
+
+### Redis/MySQL 审核修复（2026-10-13）
+
+2026-10-16 用户要求将 MySQL 表改为压缩存储：采用 InnoDB 原生 `ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=8`，作用于业务表和 `cmi_storage` 控制表；分区表逐个核对真实 InnoDB 分区的 `ROW_FORMAT` 与 `ZIP_PAGE_SIZE=8192`，不能只看表级选项。仅改变物理页存储，列、主键、索引、分区边界、BLOB codec、精度、成员摘要与重复行语义保持。目录中的历史映射 DDL 及其摘要继续作为冻结迁移的身份；实际安装 DDL 由管理员应用压缩策略，生成的 `schema.sql` 同步输出压缩格式。既有表通过显式离线重建转换，采集器启动不执行 ALTER，历史迁移保持用户要求的暂停状态。执行状态和压缩效果见 `var/storage/mysql-compression/20261016/`。
+
+普通 MergeTree 的迁移组允许内容不同的原始副本，完整保留字段与重数并独立核对多重集。它不选择胜出记录，也不改变发布查询的歧义拒绝规则。目标已有部分同键副本时禁止机械追加；保留冲突等待明确裁决。旧迁移器把这种源组误报为不可变键覆盖时，仅在同一 run/块内全部原始副本逐字段回读一致、诊断中的两份原摘要均被保存后，记录 `preserved_complete_source_multiset_ambiguity` 裁决；原诊断记录保留，业务歧义不解除。
+
+MySQL 的 `jl_keeper_capture` 另有管理员安装的 `cmi_keeper_capture_time(capture_started_at,capture_id)` 非唯一索引，用于 UTC 微秒半开时间窗口和最新批次读取。它只增加查询索引，物理列映射、迁移摘要和原字段不变；安装时验证完整列顺序、可见性和非前缀形态，同名异形拒绝覆盖，collector 仅检查不执行 DDL。每行额外保存 8 字节 DATETIME(6) 与 16 字节 UUID，另有 InnoDB 记录和页开销；本次 290,432 条历史声明实测额外占用 611 页（10,010,624 字节，约 9.55 MiB），记录在准备目录的 `keeper-time-index-install.log`。迁移闭包读取按实际主键分页，Across 每页以有界批量读取逐批核验原声明、修订号和全部成员摘要。
+
+2026-10-14 运行复核发现待补充选择的 `NOT IN` 被优化为逐父记录执行的关联子查询，现场遗留 SELECT 超过 200 秒。改为一次性物化完成/冷却/重试已用尽的子记录集合，并增加两个非唯一元数据索引：`cmi_keeper_enrichment_parent(config_hash,capture_kind(32),committed,status(16),requested_from,capture_started_at,capture_id)` 和 `cmi_keeper_enrichment_child(config_hash,capture_kind(32),committed,parent_capture_id,status(16),available_at)`。字符串使用字节前缀索引，查询仍比较完整字段，不以索引前缀替代状态判断；只对父候选排序和子记录分组。两个索引每行键内容至多 113/105 字节（不含 BLOB 前缀长度标记、InnoDB 主键、记录及页开销），本次约 30 万行表上实测父索引 1963 页（32,161,792 字节）、子索引 1899 页（31,113,216 字节），合计 63,275,008 字节（约 60.3 MiB），详见切换记录的 `keeper-enrichment-index-shapes-and-size.log`。它们不索引盘口价格，也不改变原字段、主键、迁移摘要或历史完成状态；管理员在线安装，采集账户不执行 DDL。
+
+
+MySQL `options_collection_plan` 的物理主键仍为 `(session_id,revision)`。管理员额外安装非唯一索引 `cmi_options_plan_id(plan_id)` 与 `cmi_options_plan_time(effective_minute,plan_id)`；实际启动复测发现无索引的计划 ID 查询会扫描历史大数组、超过原 30 秒读取限制。最新计划先只取 ID，再通过 ID 索引读取完整计划，写入接续同样先定位前序；摘要、直接前序及重复生效边界检查保持。两个索引不新增唯一约束，保留原历史歧义；不改变物理列映射或迁移行摘要。每行额外索引键为 16 字节 UUID、8 字节 DATETIME(6) 加 16 字节 UUID，另含原主键、InnoDB 记录及页开销；本次 824 条封存计划实测各 4 页、合计 131,072 字节（128 KiB），执行计划为索引反向扫描一项，证据见 `research/2026-10-14-startup-dependencies/installed-options-plan-indexes.log`。
+
+启动依赖准备新增 `cmi_storage.bootstrap_source_gap` 控制表，保存用户明确放弃的历史提交键、完整原始定类型行及 SHA256、原因和证据路径。它不改写原始 `committed`、修订号、成员数量或摘要；仅允许 bootstrap 的恢复闭包验证识别完全一致的旧声明。正常批次查询仍执行原完整性检查，缺成员批次不能成为有效事实。同键内容改变、未知批次或其他表不适用此例外。迁移报告显式列出缺口数量，存在登记缺口时 `finalize` 拒绝打开完整历史。
+
+旧端持续写入时，启动依赖可以从独立 ClickHouse 快照库读取；只允许保守清单中的 59 张表，不包括高频盘口和分钟发布记录。快照保留原引擎、版本列和普通 MergeTree 的重复行；源 DDL、快照 DDL 和整个清单摘要共同固定 run。复制及独立验证仍逐字段核对完整键范围、重复次数和原始类型编码。普通不重叠小块使用有界批量写入及全字段回读；冲突、修订和大键组继续使用原审计路径。快照通过不代表服务已切换，切换前仍须停旧端排空后补齐快照后的增量。
+
+CEX 缓冲交付 codec=2 在原 50 档物理快照/差量编码之外增加定类型 `Tuple(known_from_ms Int64, books String)` 二进制信封；`books` 是原始 codec 字节，不是 JSON 或字符串价格。采样完成时冻结首次知晓时间；重试复用同一交付，手工调用准备接口时也须保留同一 `KnownFromMS`。Redis/spool 持久化整个带摘要的交付，无需预先访问 MySQL。消费者恢复时将该时间用于 intent，并在同一事务内写事实、发布和交付证明；重试不重置 known/published。codec=1 保持可读，其旧发现交付仍须使用预先耐久的 intent，缺失则拒绝补造。
+
+分钟 writer 的新事实路径仅对 `order_book_minute`、`order_book_second_delta`、`derivative_book_minute`、`derivative_book_second_delta`、`derivative_book_quality_minute` 和 `options_catalog_quality_evidence_minute` 使用普通批量 INSERT 的唯一键检查，且要求表不保存历史 multiplicity。任一事实重复键均先确认整个事务回滚，再用同一交付身份、内容、计划、代次和首次知晓时间执行原完整读取与摘要检查；回滚未确认则留待恢复，不在当前调用内重试。两个尝试共用 40 秒期限，不能把事实重复键当作整批成功。发布、元数据与历史重数的完整检查保持，表结构和编码不变。
+
+分钟 writer 的只读准备池另外预取期权快照、质量和 catalog 证据表的完整主键页，只投影 instrument_id，不读取宽字段；仅对有锚点的分钟预取快照，每次最多 500 个键（当前 live 信封最多 32 个成员）。原 ASCII 64 字节 batch_id、压缩后的 32 字节 compact_batch_id 及证据 run_id 分别按实际主键传参。预取不保存内容或缺失证明、不取得代次锁，后续普通 INSERT、完整回滚重试和发布校验保持；准备时间与内存仍计入原 writer 预算。
+
+writer 启动和周期校验对每个既有连接池各执行一次有界 schema 查询，完整核对全部 33 张分钟依赖表；缺失、重复、版本或 DDL 摘要不符均拒绝继续。物理连接重建仍独立校验，兼容性失败会清空不可变缓存；合并查询不降低检查范围，也不增加连接池配额。
+
+普通 MergeTree 的 `_occurrence` 保留物理重复，查询不对相同内容做通用折叠。发布身份重复仍属无效；单次已提交事实的写入重试保持幂等。UUID 迁移游标采用与源 ClickHouse 相同的后 64 位优先顺序；UInt256 按完整 256 位整数比较。
+
+迁移控制表 `state=5` 表示 CEX 字段校验完成、查询发布待完成。两张盘口表的历史分钟全部校验并具有 `ingest_member`/`ingest_batch` 证明后才一起标记 `state=2`；`finalize` 再核验覆盖，避免中断后提前宣告完成。该状态使用既有整数列，无业务表 DDL 变更。
+
+Redis 旧分钟预览以全部保留帧的成员并集检查提交证明，不要求存在第 59 秒。清理扫描游标持续推进，删除前核对预览版本；未提交分钟无 TTL，当前及上一分钟仍保留。
+
+2026-10-13 第二轮源查询修复：迁移游标解码后按源列类型构造 SQL 参数。UInt256 以十进制字符串传参并显式 `toUInt256(?)`；DateTime64 以原列 0/3/6 位小数的 UTC 字符串传参并显式 `toDateTime64(?, scale, 'UTC')`，避免驱动默认的整秒格式化。上下界采用同一转换，分别保持 `>` 和 `<=`，保证原始上界行可被纳入、已完成下界行不被重复分页读取。二进制检查点、事实编码、表结构及源时间语义不变，没有浮点数转换。
+
+切换最后同步采用独立封存的启动子集，逐字段独立重读后仅标记 `MigrationRowsVerified=5`；它不调用全历史领域扫描，不能由 finalize 接受为完整历史。真正恢复依赖仍通过实际 collector 读取核验。Reserve 的最终性修订允许更新 capture 级 `payload_hash`（`Reconcile` 的链头证明），原成员摘要、成员锚点、观察时间和窗口保持不可变；同版本异内容及已 finalized 的降级仍拒绝。该规则同时用于 live revision 与迁移 revision，避免合法最终性证据更新阻断新服务。
+
+
+2026-10-14 写入积压改进：已封口的 CEX、`options_live`、`options_catalog` 分钟使用专用不可变提交路径。事务内对 producer generation/holder 取得 `FOR SHARE` 并一直持有到提交或回滚；身份分配、计划发布、发现事实及链上修订仍使用原有 `FOR UPDATE` 串行路径。代次激活仍为独占 CAS，不能越过正在提交的分钟。
+
+分钟事务先 INSERT 既有 `cmi_storage.ingest_batch` 的完整身份与摘要，再复核有效计划、写入事实及领域提交记录，最后更新本事务刚插入行的 `committed_at` 并 COMMIT。占位行在提交前对已提交读不可见，失败时与事实一同回滚；只把该 INSERT 的唯一键冲突作为竞争批次处理，回滚后严格核对全部身份、分钟、codec、成员数及摘要。已存在的成功行只核验，不改摘要或完成时间。ACK 仍须取得匹配的持久提交证明。
+
+2026-10-15 补充有界准备：CEX v1/v2 字节格式保持不变，直接读入整数切片，保留 50 档物理锚点。大 CEX 批次逐本校验、计算原成员及发布摘要，再按约 1 MiB 工作块写入立即解除目录链接的私有临时准备文件；临时块有长度和摘要校验，提交时在同一个事务中依次加载，只有全部成员完成才发布原 ingest_batch。准备文件关闭或进程被终止后由系统回收，恢复依据仍为原 Redis/spool 字节；它不属于新的持久事实或队列格式。任一块失败、损坏或成员数不符都会回滚整批，未提交原件仍保留。期权宽数组在分配前检查既有 32 本、4 个指数、59 个差量及固定 60 秒数组的约束，不修改合法数据的编码或质量规则。
+
+Keeper 新增管理索引 `cmi_keeper_evidence_frontier(config_hash,capture_kind(32),committed,status(16),event_kind(32),requested_to,requested_from,capture_started_at,capture_id)`。前缀列仍按完整值过滤；它服务于链窗口进度查询，不改变事实字段或批次编码。现场索引占 2,222 个 InnoDB 页，即 36,405,248 字节（约 34.7 MiB）。同条件 EXPLAIN 的扫描估算从 301,535 行降至 106 行，此为计划估算；持续运行耗时另行验收。显式安装命令为 `storage-migrate init-schema`；可独立撤销 `ALTER TABLE crypto_market_info_justlend_keeper.jl_keeper_capture DROP INDEX cmi_keeper_evidence_frontier, ALGORITHM=INPLACE, LOCK=NONE`，无需撤销事实。新索引增加每次 capture 写入的索引维护，实际写入成本在运行报告中记录。
+
+2026-10-15 OKX 采样有效性修复：已确认订阅、收到完整快照且序列连续的盘口，在共享连接持续健康时可长时间无价格变化。这些秒保留有效位及上一状态，不因单条流 30 秒无消息而伪造断档；收到下一次真实更新仍按原序列规则校验。等待初始快照的流仍有期限，未确认订阅、序列缺口、队列溢出和连接失败仍使相关数据无效。首次配对采集保留全部来源，已有合法快照的流可开始采样，未就绪流独立恢复；替换已运行来源代次保留完整预热要求。表结构、5/10/50 档编码、UTC 时间和整数价格/数量不变。
+
+
+2026-10-15 DEX 查询辅助索引：主库 `dex_tx_receipt` 增加非唯一 `cmi_receipt_hash(chain_id,block_hash,tx_hash)`，保留所有高度的同哈希物理匹配及冲突拒绝；不通过增加 block_number 筛选隐藏错误高度记录。`dex_block` 增加非唯一 `cmi_dex_committed(chain_id,manifest_hash,canonical,committed,block_number)`、`cmi_dex_pending(chain_id,manifest_hash,canonical,committed,log_coverage(16),receipt_coverage(16),block_number)`、`cmi_dex_finality(chain_id,manifest_hash,finality(16),block_number)`。覆盖字段仍以完整值筛选，字符串前缀只用于索引定位；缺口、待补、最终性与排序规则不变。维护查询显式使用该索引，collector 启动只核验形态，管理员通过 `storage-migrate install-dex-indexes --family crypto_market_info --target ...` 安装；同名异形、不可见或非预期唯一索引拒绝。首次主库实测四个索引共 76,005,376 字节，后续随事实增长；每条新回执额外索引键约 80 字节，每条区块的三个键合计约 298 字节，另有页和记录开销。没有增加按价格的检索索引。物理事实列映射和迁移摘要保留，回退先换回兼容程序再删除辅助索引，详见实施记录。
+
+2026-10-15 写入准备补充：不可变衍生品规则按原 `trading_rule_id` 与完整字段摘要在事务外有界读取，不缓存缺失结果；最终 INSERT 仍在原独占代次事务内，同批全部 SQL 块共同提交/回滚。并发重复键在回滚后重新读取完整身份与内容，不能把普通唯一键冲突当作成功。计划的不可变 run、合约与目录证据也在事务外准备，既有发布的内容、前序与生效边界仍在事务内复核。DEX 同批事实批量写入保留完整成员和共享回执证明。以上没有改变事实列、multiplicity、first-knowledge 或迁移行摘要。TradeBar `is_final` 使用 UInt8 的 Go 值，JSON 中的 0/1 与旧业务摘要保持一致。
+
+DEX 历史内部缺口检查现在在单条 SELECT 的一致快照内按 `cmi_dex_committed` 覆盖索引顺序流式读取高度，不再使用全历史窗口排序/物化；重复高度、最早内部缺口和 manifest/canonical/committed/chain 筛选保持。读取结束时检查完整结果错误，内存不随历史高度数增长，没有缓存“无缺口”结论。
+
+writer 的 32 MiB 不可变资料缓存现按单项合约/规则身份保存，跨分组共享已核验项，仅批量读取缺项；保留排序、完整身份/内容校验、独立返回值、无负缓存以及 schema/代次隔离。计划前的新 run 组可按原身份有界批量写入，同一组的全部 SQL 块共同提交/回滚；计划的前序与生效边界仍单独在原互斥事务内复核。以上没有改写现有事实字段、编码或摘要。
+
+
+2026-10-15 发现事实批量写入补充：同次取得的完整资金费预测与已确认成交量，以及资本参数与其参考事实，可按原观测身份组成最多 32 条、准备后不超过 8 MiB 的同步写入组。同组 instrument 只读取一次，来源角色、时间和全部 payload hash 仍逐事实验证；不同事实类型保持各自表。首次已知 intent 单独耐久保存，事实、完整 provenance 与发布状态在原独占代次事务中共同提交，任意 SQL 块冲突全部回滚。重试沿用已存 known/published 时间，查询全部物理 occurrence，重复、未 complete 或发布时间早于 known 的既有状态均拒绝。组失败后采集器仍可对原观测分别重试，保留单一来源失败不阻断另一完整事实的行为；返回成功仍要求实际提交，没有新增异步任务表。
+
+
+2026-10-15 Keeper enrichment 选择补充：复用已有 parent/child 辅助索引，将 live/catchup 与其他非 bootstrap 来源分两级选择，单级按 requested_from、capture_started_at、capture_id 顺序读取，避免每轮按优先级表达式排序全部历史候选。两个级别与最终 capture 读取使用同一个只读 REPEATABLE READ 快照，保留原优先级、NULL 排序、完成子批次、三次尝试上限和严格 30 分钟冷却边界；子批次继续按现有索引成组计算，不改成对每个历史 parent 反复扫描所有子记录。没有新增索引、事实字段或写入锁。
+
+
+2026-10-15 writer 启动恢复补充：Redis ready 索引恢复仅按有界页读取 header/state/digest 与现有 score，不在领取前展开所有盘口 payload。补索引脚本在同一 Redis 原子操作中重验 sealed 状态、header 与 digest，ACK/清理并发发生时不复活已提交批次；租约及独立 retry_at 不变。内容仍在领取后完整解码与哈希核验，损坏内容保留并拒绝 ACK。候选分页按原始 zset 页长推进，不能把并发 ACK 后较少的有效 header 当作扫描结束。诊断区分启动阶段及其有限执行时间，并记录 Redis 索引是否完成；验收同时要求新鲜 writer 指标以及两处索引完整，不能用陈旧的空队列指标放行。
+
+2026-10-15 LST 本地恢复编码扩展（尚未部署）：业务表及原 `pending-batch.gob` 编码不变，新增定类型 runtime checkpoint 保存原分段起点、连续覆盖、分页待办引用与恢复绑定。操作意图引用原 pending 的同一 inode；当前和上一份 checkpoint 所需引用都安全覆盖后才回收。保留最近处理 pending 的身份/摘要，防止“已提交并纳入 checkpoint、工作 pending 尚未删除”的重启重复派生子待办。恢复绑定包含实际库/server UUID、schema、采集参数、producer generation/holder 及数据库备份之外的恢复世代；任何不匹配都要求显式恢复，不以尾行时间戳证明历史一致。
+
+Keeper 本地状态的运行状态扩展正在实现，尚未部署：保留原 State/Ops 与冷候选对象，增加定类型分页窗口/父子依赖和带目标/恢复世代绑定的 current、previous checkpoint。SQL 前以硬链接复用已经同步的冻结 Ops 所在 checkpoint，当前进度与派生工作及应用边界一起提交到本地状态。新本地编码保留已知零值指针，不改变 Keeper 表、capture/member 摘要或原数据库事务。转换/当前状态回退的边界见 [运行状态操作说明](redis-mysql-migration/runtime-state-operations.md)，实际验收见其实施记录。
+
+主 DEX 本地状态扩展正在实现：最终覆盖压缩为连续高度区间，尚未最终确认的实际工作按 `(height, block_hash)` 分页，同高度多个 canonical 记录按原高度存在语义处理。记录原 block/batch/revision 和期望旧修订后才允许 SQL；成功返回后读取准确主键的实际当前版本，防止旧修订的成功 no-op 恢复过时 finality。没有新增数据库状态表或修改 DEX 事实键。正常 gap 查询不再遍历完整历史；转换和旧版回退仍显式核对完整适用输入，当前尚未部署。
+
+
+运行态维护清单同属于本地 checkpoint 格式：记录原始清单摘要、有限操作的不可变引用、下一项位置及完成标记。进度与领域状态在同一 checkpoint 安装；未完成交接拒绝普通采集启动。原操作附带领域任务身份，同一任务未决时拒绝另一修订，原身份重试可继续。没有新增 MySQL 事实表、Redis 队列或永久变更日志。维护 payload 使用原定类型编码与硬链接，二进制哈希和已知零值不经 JSON 往返；具体入口见 `docs/redis-mysql-migration/runtime-state-operations.md`。以上为代码协议，不代表生产已转换或部署。

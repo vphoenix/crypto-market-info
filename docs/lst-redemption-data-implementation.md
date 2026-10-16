@@ -162,3 +162,13 @@ systemctl --user status crypto-market-info-lst.service
 
 
 mvp8显式暂停日志时，启动身份锚点使用真实latest头（启动日志identity_anchor=latest），仍完整核验chain、proxy实现、官方code pins、decimals、池与固定Multicall runtime；EIP-1898 requireCanonical不变。mvp9所有watch预检都用真实latest，实际日志仍须finalized与对应历史ABI证据。当前身份不能证明旧日志ABI或完成历史覆盖，因此旧游标/缺口保留；每条行情的head/finalized状态仍由真实锚点及随后finality复核区分。暂停的独立LogRPC初始化链检查同时跳过，避免停用/冷却的旧来源挡住当前主源；恢复日志后仍重新校验来源。
+
+### 2026-10-15 运行状态改造（源码实施中，尚未部署）
+
+MySQL 新入口保留原 `pending-batch.gob` 格式、来源预算目录和每个日志分段的原始起点。提交前将 pending 原文件硬链接到恢复对象目录，再保存带原 capture 身份的操作意图；数据库事务确认后才更新状态。删除工作目录中的 pending 不会删除 checkpoint 恢复链仍需的原件。提交结果未知时重试同一批次；最终性修订读取实际已提交 revision，不能把存储拒绝覆盖的旧结果写回状态。
+
+单一状态管理者维护连续日志覆盖、未最终确认 market、31 天 followup、原 30 天完整 UTC 日 gas 采样窗口及调度时间。实际待办按身份分页；正常 `GasPass` 只读取选中事务对应的原父批次，保持每天每类前两个哈希、完成后不递补第三个及十笔上限。空闲轮询和正常重启不重读 capture 历史。来源冷却与 quota 仍由原持久 transport 管理。
+
+显式命令为 `runtime-convert`、`runtime-verify`、`runtime-rollback`，共用原 `lst.lock`，另锁定实际数据库和 producer。`--runtime-state-dir` 默认 `var/lst/runtime`，恢复世代由 `--runtime-epoch-file` 或 `LST_RUNTIME_EPOCH_FILE` 指定，必须存于数据库备份之外。转换前停止服务并冻结相关写入；保留完整原状态目录，以原采集参数（包括 `--from-block`）构建绑定。转换按 capture 主键分页保存断点，只有旧逻辑与冻结输入对照通过后才发布 checkpoint；缺失原游标不会自动改从当前链头开始。
+
+`runtime-verify --runtime-export <新目录>` 导出当前完整恢复链。回退先用 `runtime-rollback --runtime-export <新目录>` 核验当前数据库和待办，写回当前连续游标，再使用显式 `watch --legacy-history-recovery` 重建；不得恢复升级前的旧游标或删除预算文件。涉及当前覆盖/待办的历史导入仍须维护交接，不能在运行中静默补写。生产切换、资源指标及联合验收以[实施记录](../research/2026-10-15-runtime-state-improvement/report.md)为准。

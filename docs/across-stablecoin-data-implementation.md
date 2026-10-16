@@ -1,5 +1,7 @@
 # Across 稳定币中继数据采集
 
+2026-10-15：运行状态改造正在验证，尚未部署。新版将覆盖、未确认 capture、收据/transfer 待办与 probe 工作交给单一状态管理者，网络 worker 使用独立证据缓冲；收据以原身份分页，正常循环不重读全部 capture 和历史明细。MySQL 正常启动要求显式转换后的 checkpoint；转换、核验、回退及恢复世代接口见[运行状态工具](redis-mysql-migration/runtime-state-operations.md)，测试和实际上线边界见[实施记录](../research/2026-10-15-runtime-state-improvement/report.md)。旧来源限制、未知费用和历史缺口不会因状态转换被标成完整。
+
 2026-10-02 已实现独立命令 `cmd/across-data`，并在现有 ClickHouse 实例创建 `crypto_market_info_across` 的专项表（现为八张）。范围是 Base ↔ Arbitrum One 原生 USDC；同时保留这两个 SpokePool 的其他路线事实，用来识别退款混合来源与研究覆盖缺口。程序采集公开数据，报告输出费用空间，不产生净盈利承诺。
 
 ## 使用

@@ -1,6 +1,7 @@
 package ethereum
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"errors"
@@ -10,6 +11,14 @@ import (
 	"sort"
 	"time"
 )
+
+// A null block result is a valid RPC response from a node that has not yet
+// learned the requested block. It supplies no block identity or usable state.
+var ErrBlockUnavailable = errors.New("block_unavailable")
+
+// Callers must refresh chain heads and reconcile their unfinalized captures
+// before retrying work whose block was replaced during collection.
+var ErrBlockNoLongerCanonical = errors.New("block_no_longer_canonical")
 
 func quantityResult(r Result, bits int) (*big.Int, error) {
 	if r.Err != nil {
@@ -52,21 +61,24 @@ func parseHeader(r Result, method, tag string) (dex.Block, error) {
 	if r.Err != nil {
 		return b, r.Err
 	}
+	if bytes.Equal(bytes.TrimSpace(r.Raw), []byte("null")) {
+		return b, fmt.Errorf("%s tag=%s: %w", method, tag, ErrBlockUnavailable)
+	}
 	var v struct{ Number, Hash, ParentHash, Timestamp, BaseFeePerGas, Miner string }
 	if json.Unmarshal(r.Raw, &v) != nil {
 		return b, errors.New("header_encoding")
 	}
 	n, e := Quantity(v.Number, 64)
 	if e != nil {
-		return b, e
+		return b, fmt.Errorf("header_number: %w", e)
 	}
 	ts, e := Quantity(v.Timestamp, 63)
 	if e != nil {
-		return b, e
+		return b, fmt.Errorf("header_timestamp: %w", e)
 	}
 	fee, e := Quantity(v.BaseFeePerGas, 256)
 	if e != nil {
-		return b, e
+		return b, fmt.Errorf("header_base_fee: %w", e)
 	}
 	h, e := dex.ParseHash(v.Hash)
 	if e != nil {
@@ -99,7 +111,7 @@ func (c *Client) Canonical(ctx context.Context, b dex.Block) error {
 		return e
 	}
 	if now.Hash != b.Hash {
-		return errors.New("block_no_longer_canonical")
+		return ErrBlockNoLongerCanonical
 	}
 	return nil
 }

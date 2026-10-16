@@ -49,7 +49,10 @@ func ProbeOpen(d Deposit, p OrderProbe) bool {
 	return p.ProbeStatus == "ok" && p.FillStatus != nil && *p.FillStatus < 2 && p.PausedFills != nil && !*p.PausedFills && p.ContractTime != nil && *p.ContractTime <= uint64(d.FillDeadline) && (!exclusive(d) || *p.ContractTime > uint64(d.ExclusivityDeadline))
 }
 func (w *watcher) add(d Deposit, origin string, m Manifest) bool {
-	if !route(d, m) || uint64(d.FillDeadline) < uint64(Now().Unix()) {
+	return w.addAt(d, origin, m, Now())
+}
+func (w *watcher) addAt(d Deposit, origin string, m Manifest, at time.Time) bool {
+	if !route(d, m) || uint64(d.FillDeadline) < uint64(at.Unix()) {
 		return true
 	}
 	k := orderKey(d)
@@ -61,7 +64,7 @@ func (w *watcher) add(d Deposit, origin string, m Manifest) bool {
 	}
 	p := &pendingOrder{Deposit: d, Origin: origin}
 	w.Orders[k] = p
-	w.Tasks = append(w.Tasks, probeTask{k, Now(), nil, "baseline"})
+	w.Tasks = append(w.Tasks, probeTask{k, at, nil, "baseline"})
 	if origin == "live" && !exclusive(d) {
 		w.follow(k, d.AvailableAt)
 		p.Followups = true
@@ -73,7 +76,12 @@ func (w *watcher) follow(k string, base time.Time) {
 		w.Tasks = append(w.Tasks, probeTask{k, base.Add(time.Duration(d) * time.Millisecond), Ptr(d), "followup"})
 	}
 }
-func (c *Collector) restore(ctx context.Context) (*watcher, error) {
+func (c *Collector) restore(ctx context.Context, conversionTime ...time.Time) (*watcher, error) {
+	if c.runtime != nil {
+		var w watcher
+		err := c.runtime.view(ctx, func(s *runtimeState) (any, error) { return s.Watch, nil }, &w)
+		return &w, err
+	}
 	if e := c.load(ctx); e != nil {
 		return nil, e
 	}
@@ -88,26 +96,16 @@ func (c *Collector) restore(ctx context.Context) (*watcher, error) {
 			selected = append(selected, cap)
 		}
 	}
-	loaded, e := LoadBatches(ctx, c.Store, selected)
-	if e != nil {
-		return nil, e
-	}
 	w := &watcher{Orders: map[string]*pendingOrder{}, Cursors: map[uint64]uint64{}}
+	knownReceipts := map[string]bool{}
 	// Restore only canonical committed evidence; restored orders never inherit live continuity.
-	for _, cap := range c.captures {
-		if !cap.Canonical || !cap.Committed {
-			continue
-		}
-
-		if cap.CaptureKind != "logs" && cap.CaptureKind != "receipts" {
-			continue
-		}
-		if loadErr := loaded.Errors[cap.CaptureId]; loadErr != nil {
-			return nil, loadErr
-		}
-		b := loaded.Batches[cap.CaptureId]
+	e = visitRecoveryBatches(ctx, c.Store, selected, func(b Batch) error {
 		for _, d := range b.Deposits {
-			w.add(d, "restart", c.Manifest)
+			if len(conversionTime) > 0 {
+				w.addAt(d, "restart", c.Manifest, conversionTime[0])
+			} else {
+				w.add(d, "restart", c.Manifest)
+			}
 		}
 		for _, f := range b.Fills {
 			ch, ok := c.Manifest.Chain(f.ChainId)
@@ -121,15 +119,20 @@ func (c *Collector) restore(ctx context.Context) (*watcher, error) {
 				c.queueReceipt(r.ChainId, r.BlockHash, r.TxHash)
 			}
 		}
-	}
-	// Receipt retries are recoverable from the immutable event facts on restart.
-	for _, cap := range c.captures {
-		if cap.Canonical && cap.Committed && cap.CaptureKind == "receipts" && cap.CompletedTasks == 1 {
-			b := loaded.Batches[cap.CaptureId]
+		if b.Capture.CaptureKind == "receipts" && b.Capture.CompletedTasks == 1 {
 			for _, r := range b.Receipts {
-				delete(c.receiptQueue, ID(receiptTask{r.ChainId, r.BlockHash, r.TxHash}))
+				knownReceipts[ID(receiptTask{r.ChainId, r.BlockHash, r.TxHash})] = true
 			}
 		}
+		return nil
+	})
+	if e != nil {
+		return nil, e
+	}
+	// Apply successful receipts after all chunks, so a later duplicate event
+	// cannot reintroduce work already completed in an earlier chunk.
+	for key := range knownReceipts {
+		delete(c.receiptQueue, key)
 	}
 	for _, chain := range c.Manifest.Chains {
 		rr := logIntervals(c.captures, chain.ChainID)
@@ -261,6 +264,9 @@ func priorityProbe(o *pendingOrder, task probeTask, at time.Time, m Manifest) bo
 }
 
 func (c *Collector) runTasks(ctx context.Context, w *watcher, backgroundContext ...context.Context) error {
+	if c.runtime != nil {
+		return c.runtimeRunTasks(ctx)
+	}
 	at := Now()
 	sort.SliceStable(w.Tasks, func(i, j int) bool {
 		rank := func(t probeTask) int {
@@ -418,6 +424,7 @@ func nextProbeWake(w *watcher) time.Duration {
 // member list. ClickHouse remains owned by this one writer process.
 func (c *Collector) worker() *Collector {
 	out := &Collector{Manifest: c.Manifest, Store: c.Store, Archive: c.Archive, Prices: c.Prices, Readers: map[uint64]*Reader{}, ReconcileLimit: c.ReconcileLimit}
+	out.runtime = c.runtime
 	for chain, r := range c.Readers {
 		rr := NewReader(r.RPC.Clone(), r.Chain)
 		rr.MaxLogs = r.MaxLogs
@@ -443,6 +450,9 @@ type discoveredOrder struct {
 }
 
 func (c *Collector) probeLoop(ctx context.Context, w *watcher, input <-chan discoveredOrder) error {
+	if c.runtime != nil {
+		return c.runtimeProbeLoop(ctx)
+	}
 	for {
 		// Drain discovery before selecting the next actual deadline.
 		for {
@@ -559,9 +569,20 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 	var workers sync.WaitGroup
 	if !once {
 		workers.Add(2)
-		go func() { defer workers.Done(); errs <- probe.probeLoop(ctx, w, input); cancel() }()
+		runWorker := func(name string, run func() error) {
+			defer workers.Done()
+			err := run()
+			if err != nil && ctx.Err() == nil && progress != nil {
+				// Log the initiating failure before canceling its peers; their
+				// resulting write cancellations must not hide this diagnostic.
+				progress(fmt.Sprintf("watch_worker_failed worker=%s error=%v", name, err))
+			}
+			errs <- err
+			cancel()
+		}
+		go runWorker("probe", func() error { return probe.probeLoop(ctx, w, input) })
 		maintenance := c.worker()
-		go func() { defer workers.Done(); errs <- maintenance.maintenanceLoop(ctx, progress); cancel() }()
+		go runWorker("maintenance", func() error { return maintenance.maintenanceLoop(ctx, progress) })
 		defer func() { cancel(); workers.Wait() }()
 	}
 	verified := map[uint64]bool{}
@@ -577,7 +598,7 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 			return err
 		default:
 		}
-		if !Now().Before(refresh) {
+		if c.runtime == nil && !Now().Before(refresh) {
 			caps, err := c.Store.AcrossCaptures(ctx, c.Manifest.Hash)
 			if err != nil {
 				return err
@@ -597,6 +618,13 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 			refresh = Now().Add(30 * time.Second)
 		}
 		for _, chain := range c.Manifest.Chains {
+			if c.runtime != nil {
+				cursor, err := c.runtimeDiscoveryCursor(ctx, chain.ChainID, once)
+				if err != nil {
+					return err
+				}
+				w.Cursors[chain.ChainID] = cursor
+			}
 			r := c.Readers[chain.ChainID]
 			if r.SourceQuota != nil {
 				delay, err := r.SourceQuota.Cooldown(ctx)
@@ -653,7 +681,11 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 			if err != nil && fatalCollectorError(err) {
 				return err
 			}
-			next := firstUncovered(n, end, logIntervals(c.captures, chain.ChainID))
+			ranges, rangeErr := c.runtimeOrLegacyCoverage(ctx, chain.ChainID, false)
+			if rangeErr != nil {
+				return rangeErr
+			}
+			next := firstUncovered(n, end, ranges)
 			if next > n {
 				w.Cursors[chain.ChainID] = next - 1
 				anySuccess = true
@@ -663,6 +695,9 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 				progress(fmt.Sprintf("chain=%d capture: %v", chain.ChainID, err))
 			}
 			for _, b := range batches {
+				if c.runtime != nil {
+					continue
+				} // owner derives durable child work
 				for _, d := range b.Deposits {
 					origin := "catchup"
 					if d.LiveReceivedAt != nil {
@@ -711,6 +746,9 @@ func (c *Collector) Watch(ctx context.Context, once bool, progress func(string))
 	}
 }
 func (c *Collector) maintenanceLoop(ctx context.Context, progress func(string)) error {
+	if c.runtime != nil {
+		return c.runtimeMaintenanceLoop(ctx, progress)
+	}
 	refresh := Now().Add(time.Minute)
 	if err := c.PrepareRepair(ctx); err != nil {
 		return err

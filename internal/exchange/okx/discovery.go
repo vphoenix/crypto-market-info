@@ -3,6 +3,7 @@ package okx
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
@@ -234,32 +235,37 @@ func ParseDiscoveryBar(i model.Instrument, response PublicResponse) (model.Trade
 	return result, result.Validate()
 }
 func (c *Client) DiscoveryMarketFacts(ctx context.Context, i model.Instrument) (model.FundingPrediction, model.TradeBar, error) {
+	forecast, forecastErr := c.DiscoveryFundingPrediction(ctx, i)
+	bar, barErr := c.DiscoveryTradeBar(ctx, i)
+	return forecast, bar, errors.Join(forecastErr, barErr)
+}
+
+func (c *Client) DiscoveryFundingPrediction(ctx context.Context, i model.Instrument) (model.FundingPrediction, error) {
 	f, err := c.DiscoveryPublic(ctx, "/api/v5/public/funding-rate", url.Values{"instId": {i.ExchangeSymbol}})
 	if err != nil {
-		return model.FundingPrediction{}, model.TradeBar{}, err
+		return model.FundingPrediction{}, err
 	}
 	m, err := c.DiscoveryPublic(ctx, "/api/v5/public/mark-price", url.Values{"instType": {"SWAP"}, "instId": {i.ExchangeSymbol}})
 	if err != nil {
-		return model.FundingPrediction{}, model.TradeBar{}, err
+		return model.FundingPrediction{}, err
 	}
 	index, err := c.DiscoveryPublic(ctx, "/api/v5/market/index-tickers", url.Values{"instId": {i.BaseAsset + "-USD"}})
 	if err != nil {
-		return model.FundingPrediction{}, model.TradeBar{}, err
+		return model.FundingPrediction{}, err
 	}
 	quoteIndex, err := c.DiscoveryPublic(ctx, "/api/v5/market/index-tickers", url.Values{"instId": {"USDT-USD"}})
 	if err != nil {
-		return model.FundingPrediction{}, model.TradeBar{}, err
+		return model.FundingPrediction{}, err
 	}
-	forecast, err := ParseDiscoveryForecast(i, f, m, index, quoteIndex)
-	if err != nil {
-		return model.FundingPrediction{}, model.TradeBar{}, err
-	}
+	return ParseDiscoveryForecast(i, f, m, index, quoteIndex)
+}
+
+func (c *Client) DiscoveryTradeBar(ctx context.Context, i model.Instrument) (model.TradeBar, error) {
 	candles, err := c.DiscoveryPublic(ctx, "/api/v5/market/candles", url.Values{"instId": {i.ExchangeSymbol}, "bar": {"1m"}, "limit": {"5"}})
 	if err != nil {
-		return model.FundingPrediction{}, model.TradeBar{}, err
+		return model.TradeBar{}, err
 	}
-	bar, err := ParseDiscoveryBar(i, candles)
-	return forecast, bar, err
+	return ParseDiscoveryBar(i, candles)
 }
 
 type discountWire struct {
@@ -388,7 +394,7 @@ func ParseDiscoveryRisk(response PublicResponse, i model.Instrument, borrow bool
 	return result, nil
 }
 func (c *Client) DiscoveryCapital(ctx context.Context, i model.Instrument, modelHash string, borrowLeverage decimal.Decimal) (model.CapitalParameters, error) {
-	d, err := c.DiscoveryPublic(ctx, "/api/v5/public/discount-rate-interest-free-quota", nil)
+	d, err := c.discoveryDiscount(ctx)
 	if err != nil {
 		return model.CapitalParameters{}, err
 	}

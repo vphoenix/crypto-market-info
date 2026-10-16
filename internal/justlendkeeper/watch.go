@@ -429,8 +429,15 @@ func (c *Collector) Run(ctx context.Context, watch bool, maxPages uint32) error 
 		}
 		c.Schedule(watch)
 		if watch {
-			if e := c.restoreEnrichment(ctx); e != nil {
-				return e
+			if !c.Now().Before(c.storageRetryAt) {
+				if e := c.restoreEnrichment(ctx); e != nil {
+					if ctx.Err() != nil || !temporaryStorage(e) {
+						return e
+					}
+					c.deferStorageRetry(e)
+				} else {
+					c.storageFailures = 0
+				}
 			}
 		}
 		if e := c.Save(); e != nil {
@@ -467,7 +474,14 @@ func (c *Collector) Run(ctx context.Context, watch bool, maxPages uint32) error 
 		}
 		progress, next, e := c.Step(ctx)
 		if e != nil {
-			return e
+			if ctx.Err() != nil || !temporaryStorage(e) {
+				return e
+			}
+			wait := c.deferStorageRetry(e)
+			if e = c.Sleep(ctx, wait); e != nil {
+				return e
+			}
+			continue
 		}
 		if !progress {
 			wait := next.Sub(c.Now())

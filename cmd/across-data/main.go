@@ -17,22 +17,25 @@ import (
 
 	"github.com/vphoenix/crypto-market-info/internal/across"
 	"github.com/vphoenix/crypto-market-info/internal/dex/ethereum"
+	"github.com/vphoenix/crypto-market-info/internal/runtimecheckpoint"
+	"github.com/vphoenix/crypto-market-info/internal/storage/backend"
 	"github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 )
 
 var buildVersion = "development"
 var buildUTC = "unknown"
 
-func run(ctx context.Context, args []string) error {
+func run(ctx context.Context, args []string) (result error) {
 	if len(args) == 1 && (args[0] == "version" || args[0] == "--version") {
 		fmt.Printf("across-data %s built_utc=%s\n", buildVersion, buildUTC)
 		return nil
 	}
 	if len(args) == 0 {
-		return errors.New("usage: across-data init-schema|preflight|backfill|history|watch|report|prune-responses|migrate-transfers [flags]")
+		return errors.New("usage: across-data init-schema|preflight|backfill|history|watch|report|prune-responses|migrate-transfers|runtime-convert|runtime-verify|runtime-rollback|runtime-handoff [flags]")
 	}
 	cmd := args[0]
-	if cmd != "init-schema" && cmd != "preflight" && cmd != "backfill" && cmd != "history" && cmd != "watch" && cmd != "report" && cmd != "prune-responses" && cmd != "migrate-transfers" {
+	if cmd != "init-schema" && cmd != "preflight" && cmd != "backfill" && cmd != "history" && cmd != "watch" && cmd != "report" && cmd != "prune-responses" && cmd != "migrate-transfers" && cmd != "runtime-convert" && cmd != "runtime-verify" && cmd != "runtime-rollback" && cmd != "runtime-handoff" {
 		return errors.New("unknown command")
 	}
 	f := flag.NewFlagSet(cmd, flag.ContinueOnError)
@@ -56,6 +59,12 @@ func run(ctx context.Context, args []string) error {
 	quotaInterval := f.Duration("rpc-quota-interval", 400*time.Millisecond, "cooperating processes minimum member pacing")
 	quotaBurst := f.Int("rpc-burst", 3, "maximum source burst and batch members")
 	rpcMinInterval := f.Duration("rpc-min-interval", 0, "minimum per-chain cooldown between single-member RPC requests; 0 preserves batching")
+	runtimeDir := f.String("runtime-state-dir", "var/across/runtime", "verified local runtime state; never implicitly rebuilt")
+	handoffPlan := f.String("runtime-handoff-plan", "", "frozen finite operation manifest for stopped-service maintenance")
+	runtimeInput := f.String("runtime-input-inventory", "", "frozen migrated/pending/unreadable input inventory; required for conversion")
+	epochFile := f.String("runtime-epoch-file", os.Getenv("ACROSS_RUNTIME_EPOCH_FILE"), "database restore epoch outside database backups")
+	runtimeExport := f.String("runtime-export", "", "new destination for a current-state backup during verify/rollback")
+	legacyRecovery := f.Bool("legacy-history-recovery", false, "explicit controlled rollback: rebuild watch state from current database history")
 	if e := f.Parse(args[1:]); e != nil {
 		return e
 	}
@@ -74,10 +83,37 @@ func run(ctx context.Context, args []string) error {
 	if *rpcMinInterval < 0 {
 		return errors.New("rpc_min_interval_must_be_nonnegative")
 	}
+	if *runtimeDir == "" || *legacyRecovery && cmd != "watch" || *runtimeExport != "" && cmd != "runtime-verify" && cmd != "runtime-rollback" {
+		return errors.New("invalid_runtime_state_options")
+	}
+	if cmd == "runtime-handoff" && *handoffPlan == "" || cmd != "runtime-handoff" && *handoffPlan != "" {
+		return errors.New("runtime_handoff_requires_explicit_plan")
+	}
+	if cmd == "runtime-convert" && *runtimeInput == "" {
+		return errors.New("runtime_conversion_requires_input_inventory")
+	}
+	if cmd == "runtime-rollback" && *runtimeExport == "" {
+		return errors.New("runtime_rollback_requires_current_state_export")
+	}
 	if *database == "crypto_market_info" || *database == "crypto_market_info_fullcheck" || *database == "crypto_market_info_reserve" {
 		return errors.New("requires_separate_across_database")
 	}
 	cfg := clickhouse.Config{Addresses: []string{*address}, Database: *database, Username: os.Getenv("ACROSS_CLICKHOUSE_USER"), Password: os.Getenv("ACROSS_CLICKHOUSE_PASSWORD")}
+	storage, e := backend.Environment("ACROSS_", cfg, cmd == "report" || cmd == "prune-responses")
+	if e != nil {
+		return e
+	}
+	useRuntime := storage.Name == "mysql" && cmd == "watch" && !*legacyRecovery || strings.HasPrefix(cmd, "runtime-")
+	if useRuntime && (storage.Name != "mysql" || *epochFile == "") {
+		return errors.New("runtime_state_requires_mysql_and_explicit_epoch_file")
+	}
+	if storage.Name == "mysql" && (cmd == "history" || cmd == "backfill" || cmd == "migrate-transfers") {
+		if _, err := os.Stat(*runtimeDir); err == nil {
+			return errors.New("active_runtime_requires_frozen_maintenance_handoff_before_external_writes")
+		} else if !os.IsNotExist(err) {
+			return err
+		}
+	}
 	if cmd != "report" && cmd != "prune-responses" {
 		// A per-database lock remains stable across evidence-directory choices.
 		lockDir := filepath.Join(os.TempDir(), "crypto-market-info-across-locks")
@@ -95,17 +131,17 @@ func run(ctx context.Context, args []string) error {
 		}
 		defer syscall.Flock(int(lock.Fd()), syscall.LOCK_UN)
 	}
-	var store *clickhouse.Client
-	var e error
-	if cmd == "report" || cmd == "prune-responses" {
-		store, e = clickhouse.OpenDEXReader(ctx, cfg)
-	} else {
-		store, e = clickhouse.Open(ctx, cfg)
-	}
+	var store contracts.AcrossStore
+	store, e = backend.OpenAcross(ctx, storage)
 	if e != nil {
 		return e
 	}
 	defer store.Close()
+	if cmd == "report" {
+		if e = backend.RequireCompleteHistory(ctx, store); e != nil {
+			return e
+		}
+	}
 	if cmd != "report" && cmd != "prune-responses" {
 		if e = store.InitAcrossSchema(ctx); e != nil {
 			return e
@@ -168,6 +204,76 @@ func run(ctx context.Context, args []string) error {
 		return e
 	}
 	c := &across.Collector{Manifest: m, Readers: map[uint64]*across.Reader{}, ReceiptReaders: map[uint64]*across.Reader{}, Store: store, Archive: archive}
+	if useRuntime {
+		provider, ok := store.(interface {
+			RuntimeBinding(context.Context, string, string, uint32) (runtimecheckpoint.Binding, error)
+		})
+		if !ok {
+			return errors.New("backend_lacks_runtime_binding")
+		}
+		check := func(ctx context.Context) (runtimecheckpoint.Binding, error) {
+			return provider.RuntimeBinding(ctx, across.Hex(m.Hash), *epochFile, 1)
+		}
+		binding, err := check(ctx)
+		if err != nil {
+			return err
+		}
+		targetLock, err := runtimecheckpoint.LockTarget(binding)
+		if err != nil {
+			return err
+		}
+		defer targetLock.Close()
+		progress := func(line string) { log.Print(line) }
+		if cmd == "runtime-convert" {
+			report, err := c.ConvertRuntime(ctx, *runtimeDir, binding, *runtimeInput, check, progress)
+			if printErr := json.NewEncoder(os.Stdout).Encode(report); err == nil {
+				err = printErr
+			}
+			return err
+		}
+		if cmd == "runtime-handoff" {
+			ctx = runtimecheckpoint.MaintenanceContext(ctx)
+		}
+		if err = c.OpenRuntime(ctx, *runtimeDir, binding, progress); err != nil {
+			return err
+		}
+		defer func() { result = errors.Join(result, c.CloseRuntime()) }()
+		if cmd == "runtime-handoff" {
+			report, err := c.HandoffRuntime(ctx, *handoffPlan)
+			if err != nil {
+				return err
+			}
+			actual, err := check(ctx)
+			if err != nil {
+				return err
+			}
+			if actual != binding {
+				return runtimecheckpoint.ErrConflict
+			}
+			return json.NewEncoder(os.Stdout).Encode(report)
+		}
+		if cmd == "runtime-verify" {
+			report, err := c.InspectRuntime(ctx, *runtimeExport)
+			if err != nil {
+				return err
+			}
+			return json.NewEncoder(os.Stdout).Encode(report)
+		}
+		if cmd == "runtime-rollback" {
+			report, err := c.RollbackRuntime(ctx, *runtimeExport)
+			if err != nil {
+				return err
+			}
+			actual, err := check(ctx)
+			if err != nil {
+				return err
+			}
+			if actual != binding {
+				return runtimecheckpoint.ErrConflict
+			}
+			return json.NewEncoder(os.Stdout).Encode(report)
+		}
+	}
 	makeReader := func(ch across.ChainConfig, endpoint string) (*across.Reader, error) {
 		rpc, e := ethereum.NewClient(endpoint, *evidence)
 		if e != nil {
@@ -299,11 +405,37 @@ func main() {
 	log.SetFlags(log.LstdFlags | log.LUTC)
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancel()
-	if e := run(ctx, os.Args[1:]); e != nil && !errors.Is(e, context.Canceled) {
-		log.Print(e)
-		if strings.Contains(e.Error(), "network_issue_stop") {
-			os.Exit(2)
+	if e := run(ctx, os.Args[1:]); e != nil {
+		code := commandExitCode(ctx, e)
+		if code == 0 {
+			return
 		}
+		log.Print(e)
+		os.Exit(code)
+	}
+}
+
+// Only cancellation of the signal context is an intentional shutdown. A worker
+// or database request can return context.Canceled while that context is still
+// live; treating it as success prevents systemd's on-failure restart.
+func commandExitCode(ctx context.Context, err error) int {
+	if err == nil {
+		return 0
+	}
+	if strings.Contains(err.Error(), "network_issue_stop") {
+		return 2
+	}
+	if ctx.Err() != nil && errors.Is(err, context.Canceled) {
+		return 0
+	}
+	return 1
+}
+
+func storageConfig(ch clickhouse.Config, readOnly bool) backend.Config {
+	cfg, e := backend.Environment("ACROSS_", ch, readOnly)
+	if e != nil {
+		fmt.Fprintln(os.Stderr, e)
 		os.Exit(1)
 	}
+	return cfg
 }

@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 	"math/rand"
 	"time"
 
@@ -42,42 +43,9 @@ func OpenReadOnly(ctx context.Context, cfg Config) (*Client, error) {
 	return &Client{conn: conn, database: cfg.Database, writeTimeout: 10 * time.Second, maxAttempts: 1, readOnly: true}, nil
 }
 
-type PerpetualSourceCheck struct {
-	InstrumentID         uint32     `json:"instrument_id"`
-	Exchange             string     `json:"exchange"`
-	Symbol               string     `json:"symbol"`
-	CanonicalMarketKey   string     `json:"canonical_market_key"`
-	MinuteRows           uint64     `json:"minute_rows"`
-	ValidSeconds         uint64     `json:"valid_seconds"`
-	RecentValidSeconds   uint64     `json:"recent_valid_seconds"`
-	InvalidMinuteRows    uint64     `json:"invalid_minute_rows"`
-	FirstMinute          *time.Time `json:"first_minute"`
-	LatestMinute         *time.Time `json:"latest_minute"`
-	ChangedPriceLevels   uint64     `json:"changed_price_levels"`
-	FundingRows          uint64     `json:"funding_rows"`
-	EstimatedFundingRows uint64     `json:"estimated_funding_rows"`
-	ActualFundingRows    uint64     `json:"actual_funding_rows"`
-	LatestFundingHour    *time.Time `json:"latest_funding_hour"`
-}
-
-type PerpetualPartCheck struct {
-	Table               string `json:"table"`
-	PhysicalRows        uint64 `json:"physical_rows"`
-	DataCompressedBytes uint64 `json:"data_compressed_bytes"`
-	BytesOnDisk         uint64 `json:"bytes_on_disk"`
-}
-
-type PerpetualDataCheck struct {
-	Run                     model.PerpetualUniverseRun `json:"run"`
-	RunSupersededAt         *time.Time                 `json:"run_superseded_at"`
-	BookFrom                time.Time                  `json:"book_from"`
-	BookThroughExclusive    time.Time                  `json:"book_through_exclusive"`
-	FundingFrom             time.Time                  `json:"funding_from"`
-	FundingThroughExclusive time.Time                  `json:"funding_through_exclusive"`
-	RecentFrom              time.Time                  `json:"recent_from"`
-	Sources                 []PerpetualSourceCheck     `json:"sources"`
-	DatabaseParts           []PerpetualPartCheck       `json:"database_parts"`
-}
+type PerpetualSourceCheck = contracts.PerpetualSourceCheck
+type PerpetualPartCheck = contracts.PerpetualPartCheck
+type PerpetualDataCheck = contracts.PerpetualDataCheck
 
 // CheckPerpetualData aggregates final logical facts by committed run members.
 // The fact tables do not carry run_id; their attribution is member/time scoped.

@@ -8,7 +8,7 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/exchange/okx"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 	"github.com/vphoenix/crypto-market-info/internal/sampler"
-	chstore "github.com/vphoenix/crypto-market-info/internal/storage/clickhouse"
+	"github.com/vphoenix/crypto-market-info/internal/storage/backend"
 	"log/slog"
 	"strings"
 	"time"
@@ -26,7 +26,7 @@ func RunDiscoveryProbe(ctx context.Context, cfg config.Config, assets []string, 
 	if err != nil {
 		return err
 	}
-	store, err := chstore.Open(ctx, cfg.ClickHouse)
+	store, err := backend.OpenMain(ctx, cfg.Storage)
 	if err != nil {
 		return err
 	}

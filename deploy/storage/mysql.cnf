@@ -1,0 +1,27 @@
+[mysqld]
+skip-networking
+mysqlx=OFF
+socket=/run/cmi/mysql.sock
+pid-file=/run/cmi/mysql.pid
+default-time-zone=+00:00
+character-set-server=utf8mb4
+collation-server=utf8mb4_0900_bin
+sql-mode=STRICT_ALL_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE
+innodb-buffer-pool-size=2048M
+innodb-redo-log-capacity=256M
+innodb-flush-log-at-trx-commit=1
+# These sync/cache settings apply only if binary logging is explicitly re-enabled.
+sync-binlog=1
+binlog-cache-size=4M
+innodb-doublewrite=ON
+innodb-flush-method=O_DIRECT
+max-connections=24
+max-allowed-packet=32M
+# Disabled by explicit user instruction on 2026-10-16; retain existing log files.
+skip-log-bin
+server-id=1
+# Retained for explicit re-enablement; no existing recovery history is deleted.
+binlog-expire-logs-seconds=0
+
+[client]
+socket=/run/cmi/mysql.sock

@@ -52,6 +52,13 @@ type Statistics struct {
 	Connected                                      atomic.Int64
 	Reconnects, Resyncs, QueuePeak, QueueOverflows atomic.Uint64
 	StaleTargets                                   atomic.Uint64
+	LastResync                                     atomic.Pointer[ResyncEvent]
+}
+
+type ResyncEvent struct {
+	Topic  string
+	Reason string
+	At     time.Time
 }
 
 type Config struct {
@@ -66,7 +73,10 @@ type Config struct {
 	// Funding topics may legitimately be quiet while other topics and the
 	// heartbeat prove that the shared connection is healthy. Expire only that
 	// observation; retain the uninterrupted venue snapshot/delta cache.
-	StaleTargetOnly                                                 bool
+	StaleTargetOnly bool
+	// Quiet active books remain valid while the acknowledged connection is
+	// alive. Initial snapshots and every later sequence are still checked.
+	AllowQuietActive                                                bool
 	OnStale                                                         func(topic string)
 	ControlInterval, PingInterval, SilenceTimeout, SubscribeTimeout time.Duration
 	MaxControlsPerHour                                              int
@@ -290,6 +300,11 @@ func RunConnection(ctx context.Context, cfg Config) (result error) {
 			return cause
 		}
 		cfg.Stats.Resyncs.Add(1)
+		reason := cause.Error()
+		if len(reason) > 512 {
+			reason = reason[:512]
+		}
+		cfg.Stats.LastResync.Store(&ResyncEvent{Topic: target.Topic, Reason: reason, At: time.Now().UTC()})
 		target.generation.Add(1)
 		target.phase = awaitingUnsubscribe
 		target.lastMessage = time.Time{}
@@ -420,6 +435,9 @@ func RunConnection(ctx context.Context, cfg Config) (result error) {
 					}
 				}
 				for _, target := range cfg.Targets {
+					if cfg.AllowQuietActive && target.phase == active {
+						continue
+					}
 					if (target.phase == active || target.phase == awaitingSnapshot) && !target.lastMessage.IsZero() && now.Sub(target.lastMessage) > cfg.SilenceTimeout {
 						if cfg.StaleTargetOnly {
 							target.Invalidate("topic stale or missing initial snapshot")
