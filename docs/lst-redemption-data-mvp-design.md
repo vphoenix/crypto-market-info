@@ -1,5 +1,7 @@
 # LST 折价买入、官方赎回与对冲：最小采集设计
 
+2026-10-19：当前固定两条路线经实际数据复核后已结束实验，LST 专属服务停止且取消开机自启。以下保留原设计，不代表仍在采集；历史数据及恢复状态保留，见[停止决策与验收](../research/2026-10-19-lst-retirement/report.md)。
+
 状态：2026-10-02 已实现采集程序并在独立研究库建表，2026-10-03 已启用常驻 `crypto-market-info-lst.service`。当前按用户要求只持续实时采集，补采限于断线缺口，不运行本设计中的大范围历史回补；dRPC 的历史合约状态与日志接口分别核验，日志覆盖仍受端点拒绝限制。本文件保留原设计目标与可选历史功能，实际部署/操作以[运行说明](lst-redemption-data-implementation.md)为准。代码审核：[0016](../discuss/0016-lst-redemption-data-code-review.md)，DDL：[lst-redemption-data-schema.sql](lst-redemption-data-schema.sql)，设计审核：[0014](../discuss/0014-lst-redemption-data-design-review.md)，语法与公开来源验证：[记录](../research/2026-10-02-lst-design/validation.md)。
 
 ## 1. 范围与要回答的问题

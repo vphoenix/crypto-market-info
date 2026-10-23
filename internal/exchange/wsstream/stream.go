@@ -76,7 +76,10 @@ type Config struct {
 	StaleTargetOnly bool
 	// Quiet active books remain valid while the acknowledged connection is
 	// alive. Initial snapshots and every later sequence are still checked.
-	AllowQuietActive                                                bool
+	AllowQuietActive bool
+	// OnReady runs once, on the owner loop, after all targets have acknowledged
+	// subscriptions and established valid snapshots. It must not block.
+	OnReady                                                         func()
 	OnStale                                                         func(topic string)
 	ControlInterval, PingInterval, SilenceTimeout, SubscribeTimeout time.Duration
 	MaxControlsPerHour                                              int
@@ -313,6 +316,7 @@ func RunConnection(ctx context.Context, cfg Config) (result error) {
 		delete(preAck, target.Topic)
 		return enqueue("unsubscribe", []string{target.Topic})
 	}
+	readyNotified := false
 	apply := func(event streamEvent) error {
 		target := byTopic[event.message.Topic]
 		if event.generation != target.generation.Load() || target.phase == awaitingUnsubscribe {
@@ -334,6 +338,19 @@ func RunConnection(ctx context.Context, cfg Config) (result error) {
 		if ready {
 			target.phase = active
 			target.lastMessage = time.Now()
+			if !readyNotified && cfg.OnReady != nil {
+				allReady := true
+				for _, other := range cfg.Targets {
+					if other.phase != active {
+						allReady = false
+						break
+					}
+				}
+				if allReady {
+					readyNotified = true
+					cfg.OnReady()
+				}
+			}
 		}
 		return nil
 	}

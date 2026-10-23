@@ -1,12 +1,14 @@
 # Across 稳定币中继数据采集
 
-2026-10-15：运行状态改造正在验证，尚未部署。新版将覆盖、未确认 capture、收据/transfer 待办与 probe 工作交给单一状态管理者，网络 worker 使用独立证据缓冲；收据以原身份分页，正常循环不重读全部 capture 和历史明细。MySQL 正常启动要求显式转换后的 checkpoint；转换、核验、回退及恢复世代接口见[运行状态工具](redis-mysql-migration/runtime-state-operations.md)，测试和实际上线边界见[实施记录](../research/2026-10-15-runtime-state-improvement/report.md)。旧来源限制、未知费用和历史缺口不会因状态转换被标成完整。
+2026-10-24 00:25:22（UTC+8）已部署并重启：Across 的 DNS、拒绝连接、网络不可达、TLS 验证失败和传输/读取故障不再永久锁存；当前请求仍失败并保留来源证据，由原共享 quota 按 5/10/20/40 秒冷却后在后续循环重试。冷却和等级跨 worker、进程重启保留，冷却结束满一分钟且请求成功后才清零。TLS 证书验证和原 RPC 来源保持，不自动切换来源或代理。本地取消、操作预算、解析错误不计入网络退避，429 继续按供应商限流处理。CLI 遗留网络停止错误改为普通失败退出码 1，两个已安装 unit 均移除退出码 2 禁止重启；实时失败重启间隔仍为 15 秒，已禁用的历史模板为 60 秒。生产 hash-only 模式仍将来源 hostname、错误类别和安全错误码写入运行日志。已核验两链新日志批次实际提交；部署与测试边界见[修复记录](../research/2026-10-24-across-network-recovery/report.md)，现行路径见[运行说明](runtime-operations.md)。
+
+2026-10-16 已上线运行状态改造：覆盖、未确认 capture、收据/transfer 待办与 probe 工作交给单一状态管理者，网络 worker 使用独立证据缓冲；收据以原身份分页，正常循环不重读全部 capture 和历史明细。MySQL 正常启动要求显式转换后的 checkpoint；转换、核验、回退及恢复世代接口见[运行状态工具](redis-mysql-migration/runtime-state-operations.md)，测试和实际上线边界见[实施记录](../research/2026-10-15-runtime-state-improvement/report.md)。旧来源限制、未知费用和历史缺口不会因状态转换被标成完整。
 
 2026-10-02 已实现独立命令 `cmd/across-data`，并在现有 ClickHouse 实例创建 `crypto_market_info_across` 的专项表（现为八张）。范围是 Base ↔ Arbitrum One 原生 USDC；同时保留这两个 SpokePool 的其他路线事实，用来识别退款混合来源与研究覆盖缺口。程序采集公开数据，报告输出费用空间，不产生净盈利承诺。
 
 ## 使用
 
-在仓库根目录运行：
+以下是最初 ClickHouse 开发环境的命令示例；生产已使用 MySQL 和 systemd，实际程序、环境与状态路径以[运行说明](runtime-operations.md)为准。在独立开发环境的仓库根目录运行：
 
 ```bash
 go build -o var/across/bin/across-data ./cmd/across-data
@@ -35,7 +37,7 @@ var/across/bin/across-data report --from 2026-10-02T00:00:00Z --to 2026-10-03T00
 
 来源只记录主机名，不写带凭据的RPC URL；响应正文仅在内存中解析。币安按用户要求用 `.com`，每 60 秒尝试刷新两个币对，原始十进制价格、数量与时间随 probe 保存。失败不刷新旧报价时间；超过 60 秒不附加到新 probe。
 
-2026-10-09 实时 systemd unit 的 Base 日志/状态 RPC 通过上述环境变量显式配置为 `https://base-rpc.publicnode.com`。原默认端点于10月8日降低读取额度，停用90秒后单块日志仍被限流；新来源已实测链ID、USDC/SpokePool身份、代理实现代码hash、当前日志区块hash和1/64/512块日志查询。PublicNode 对近期交易收据也要求个人归档授权，因此收据及其固定区块的费用/canonical核验通过 `ACROSS_BASE_RECEIPT_RPC_URL` 显式使用原官方端点；已对同一真实交易实测取得完整费用和匹配锚点。每个来源独立按实际hostname使用原共享quota，worker克隆仍共享其故障状态；任一来源确认网络故障仍停止。manifest 默认值保留以兼容原历史，不影响已保存观测身份；日志capture记录PublicNode，收据capture记录官方端点。没有自动切换或静默回退，未配置专项收据端点时行为保持原样。
+2026-10-09 实时 systemd unit 的 Base 日志/状态 RPC 通过上述环境变量显式配置为 `https://base-rpc.publicnode.com`。原默认端点于10月8日降低读取额度，停用90秒后单块日志仍被限流；新来源已实测链ID、USDC/SpokePool身份、代理实现代码hash、当前日志区块hash和1/64/512块日志查询。PublicNode 对近期交易收据也要求个人归档授权，因此收据及其固定区块的费用/canonical核验通过 `ACROSS_BASE_RECEIPT_RPC_URL` 显式使用原官方端点；已对同一真实交易实测取得完整费用和匹配锚点。每个来源独立按实际hostname使用原共享quota，worker克隆共享来源额度与冷却；网络故障保留失败后退避重试，不永久停止其他worker。manifest 默认值保留以兼容原历史，不影响已保存观测身份；日志capture记录PublicNode，收据capture记录官方端点。没有自动切换或静默回退，未配置专项收据端点时行为保持原样。
 
 [manifest](../config/across-research.json) 固定链、token、SpokePool、部署实现与代码 hash。加载 manifest 会核对本地 verified 源文件 SHA-256、实际 bytecode 和嵌入 ABI；部署时须带上其引用的 `research/2026-10-02-across-implementation/verified-*.json`。Base explorer 的源验证标志是部分验证，实际部署 runtime 与 RPC 返回 bytecode 已逐字节对应；Arbitrum 同样进行了实际 bytecode 对应。启动及固定区块读取仍核验链身份、代理实现和 USDC 元数据。证据说明见[协议验证](../research/2026-10-02-across-implementation/protocol-sources.json)。
 
@@ -95,4 +97,4 @@ report和恢复采用每512个capture固定六次事实SELECT，逐capture校验
 
 报告窗口按存款block_time选订单，匹配可使用之后已保存的成交/probe；coverage统计当前manifest的全部已保存capture。费用空间不扣未知成本，net_profit_usdt仍null；它不能给出稳定盈利或无机会结论。两库相同事件不可直接相加。`version`和服务启动日志给出构建标识；部署应核对磁盘、两服务/proc/exe的SHA-256一致，具体修改及实际验收见[修复记录](../research/2026-10-03-across-repair/validation.md)。
 
-归档校验使用固定8个worker，每批1000个capture，RPC payload按hash共享一次校验；完整性要求不变。报告写入phase-progress.jsonl记录SQL、归档和总进度，取消或超时的运行不能凭已有CSV或旧summary视为完成。probe每轮最多执行一个网络任务；fresh live baseline与准时followup优先，已经迟到的样本不得抢占新单。restart与open_check使用普通额度，新live到达时可取消其网络工作，失败证据仍用父context提交，reason记probe_preempted_for_live；本地预算耗尽记probe_budget_exhausted/RPC层rpc_operation_budget_exhausted。已知近期live deadline前不启动普通长任务。普通任务预算12秒，优先任务5秒；超时/late仍是未知样本。优先额度只在第一次实际准入时开始固定窗口，最多4秒，窗口内RPC及排队均不续约；过期后为后台保留一个成员间隔的可用额度机会，供应商cooldown不能消耗此让行窗口。各批大小使用相同的下一次准入时间，按成员数预留后续间隔，避免小请求持续借走大批次额度。链RPC确认DNS、TLS或不可达错误后CLI以2退出，两unit禁止自动重试，等待用户处理网络。
+归档校验使用固定8个worker，每批1000个capture，RPC payload按hash共享一次校验；完整性要求不变。报告写入phase-progress.jsonl记录SQL、归档和总进度，取消或超时的运行不能凭已有CSV或旧summary视为完成。probe每轮最多执行一个网络任务；fresh live baseline与准时followup优先，已经迟到的样本不得抢占新单。restart与open_check使用普通额度，新live到达时可取消其网络工作，失败证据仍用父context提交，reason记probe_preempted_for_live；本地预算耗尽记probe_budget_exhausted/RPC层rpc_operation_budget_exhausted。已知近期live deadline前不启动普通长任务。普通任务预算12秒，优先任务5秒；超时/late仍是未知样本。优先额度只在第一次实际准入时开始固定窗口，最多4秒，窗口内RPC及排队均不续约；过期后为后台保留一个成员间隔的可用额度机会，供应商cooldown不能消耗此让行窗口。各批大小使用相同的下一次准入时间，按成员数预留后续间隔，避免小请求持续借走大批次额度。链RPC的DNS、TLS或不可达错误保留为失败观测，并经过共享来源冷却后重试；来源身份、TLS和链上校验继续执行。程序若仍需退出则交由unit失败重启，不能因一次网络错误无限期停采。

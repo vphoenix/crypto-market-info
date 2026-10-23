@@ -3,7 +3,6 @@ package across
 import (
 	"context"
 	"encoding/json"
-	"errors"
 	"net"
 	"net/http"
 	"strings"
@@ -54,8 +53,12 @@ func TestReceiptSourcePreservesAnchorsFeesAndActualSource(t *testing.T) {
 			})
 			r.Chain = chain
 			r.RPC.SourceID = "receipts.example"
+			transport := r.RPC.HTTP.Transport
 			if fail {
-				r.RPC.BeforeRequest = func(context.Context, int) error { return errors.New("receipt_source_unavailable") }
+				r.RPC.AuditFailures = true
+				r.RPC.HTTP.Transport = protocolTransport(func(*http.Request) (*http.Response, error) {
+					return nil, &net.DNSError{Err: "temporary resolver failure", IsTemporary: true}
+				})
 			}
 			store := &coreStore{}
 			task := receiptTask{8453, hash, tx}
@@ -71,6 +74,23 @@ func TestReceiptSourcePreservesAnchorsFeesAndActualSource(t *testing.T) {
 			if fail {
 				if b.Capture.Status != "error" || b.Capture.CompletedTasks != 0 || len(c.receiptQueue) != 1 {
 					t.Fatal("failure erased queue or claimed coverage")
+				}
+				if err := c.networkFaultError(); err != nil {
+					t.Fatal("receipt DNS failure permanently stopped collection", err)
+				}
+				r.RPC.HTTP.Transport = transport
+				if err := c.DrainReceipts(context.Background(), 1); err != nil {
+					t.Fatal(err)
+				}
+				if len(store.caps) != 2 || len(c.receiptQueue) != 0 {
+					t.Fatal("receipt retry did not complete retained work")
+				}
+				recovered := store.batches[store.caps[1].CaptureId]
+				if recovered.Capture.CaptureId == b.Capture.CaptureId || recovered.Capture.CompletedTasks != 1 || len(recovered.Receipts) != 1 || recovered.Receipts[0].BlockHash != hash || len(recovered.Transfers) != 1 {
+					t.Fatal("retry lost receipt anchor or rewrote failure identity")
+				}
+				if _, err := ReadCaptureEvidence(c.Archive, b.Capture); err != nil {
+					t.Fatal("failed attempt lost evidence", err)
 				}
 			} else {
 				if len(b.Receipts) != 1 || !b.Receipts[0].FeeComplete || b.Receipts[0].TotalFeeWei.String() != "650" || b.Receipts[0].BlockHash != hash || len(b.Transfers) != 1 || len(c.receiptQueue) != 0 {
@@ -88,7 +108,7 @@ func TestReceiptSourcePreservesAnchorsFeesAndActualSource(t *testing.T) {
 	}
 }
 
-func TestReceiptSourceConfirmedFaultIsSharedWithWorkerAndStopsWatch(t *testing.T) {
+func TestReceiptSourceDNSFailureDoesNotStopOtherWorkers(t *testing.T) {
 	c, _ := priorityProbeCollector(t)
 	r := protocolChainReader(t, c.Manifest.Chains[0], nil)
 	c.ReceiptReaders = map[uint64]*Reader{8453: r}
@@ -100,7 +120,7 @@ func TestReceiptSourceConfirmedFaultIsSharedWithWorkerAndStopsWatch(t *testing.T
 	if result := clone.One(context.Background(), "eth_chainId", nil); result.Err == nil {
 		t.Fatal("fixture missing fault")
 	}
-	if err := c.networkFaultError(); err == nil || !strings.Contains(err.Error(), "network_issue_stop") {
-		t.Fatal("receipt source fault hidden", err)
+	if err := c.networkFaultError(); err != nil {
+		t.Fatal("receipt source fault stopped unrelated workers", err)
 	}
 }

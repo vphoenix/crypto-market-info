@@ -27,6 +27,8 @@
 
 `runtime-verify` 会恢复已接纳的原操作，因此不是纯只读检查。只检查本地格式时使用下述独立工具。回退不能用升级前状态覆盖当前状态，也不能仅替换旧二进制后让它忽略新未决操作。不能恢复的停机实时观测仍记为缺失。
 
+Across 转换保留已按存储故障协议撤回的日志登记：只有 `committed=false`、具有完整区块锚点且原因以 `storage_integrity_loss: ` 开头的记录，才进入转换报告的 `WithdrawnDeclarations`。原身份、范围、成员声明和损坏原因完整保留，不进入有效覆盖或事实恢复。普通未提交登记和已提交但成员不可读的批次仍阻止发布。旧版转换中断后，可从已冻结并核对摘要的登记页恢复这种分类，再执行原有完整新旧对照；不改写 MySQL 记录，也不把历史缺失标成完整。
+
 ## 独立恢复工具
 
 `runtime-state verify|export|recover-previous` 使用 `--state-dir`、`--binding`；导出或恢复上一份时另给尚不存在的 `--destination`。`binding` 是已核验转换清单中的完整绑定对象。上一份恢复总是写到新目录，保留损坏来源。`verify` 和 `export` 也接受未完成维护交接，输出其完整计划和进度；不执行 SQL、不解除采集启动屏障，保持源恢复文件不变。工具成功只证明本地恢复链可以解析，随后仍须领域提交核验。
@@ -41,7 +43,7 @@
 
 对影响活跃覆盖、canonical/finality、旧缺口或待跟踪对象的人工修复，使用同样的冻结交接和明确 ID/范围清单；纯最终历史的导入仍受原迁移容量门槛约束。禁止等待采集器周期扫表自行发现外部变化。
 
-## Reserve 显式入口（尚未部署）
+## Reserve 显式入口
 
 `reserve-data runtime-convert|runtime-verify|runtime-rollback` 与 Across 使用相同的恢复世代和维护边界。参数为 `--runtime-state-dir`（默认 `var/reserve/runtime`）、`--runtime-epoch-file`（或 `RESERVE_RUNTIME_EPOCH_FILE`）、`--runtime-export`。绑定包含当前/related manifests 和原 `--from` 起点；转换与 watch 必须一致。普通 MySQL watch 要求已核验状态，显式旧逻辑恢复才使用 `--legacy-history-recovery`。
 
@@ -51,7 +53,7 @@
 
 Across 和 Reserve 保留原路径锁，并额外按真实 server UUID、数据库及 producer 加锁。该锁与 manifest、evidence 路径无关；它不替代 SQL producer generation fencing。
 
-## LST 显式入口（尚未部署）
+## LST 显式入口
 
 `lst-data runtime-convert|runtime-verify|runtime-rollback` 继续取得原 `state-dir/lst.lock`，并锁定实际数据库/producer。参数为 `--runtime-state-dir`（默认 `var/lst/runtime`）、`--runtime-epoch-file`（或 `LST_RUNTIME_EPOCH_FILE`）、`--runtime-export`。转换时使用与 watch 一致的 manifest、`--from-block`、日志模式、市场间隔、每轮路线数和日志暂停设置。
 
@@ -63,9 +65,9 @@ Across 和 Reserve 保留原路径锁，并额外按真实 server UUID、数据�
 
 `tools/storage/runtime-state/input-inventory.py --service across|reserve|lst|keeper|dex --server production|isolated --out <新文件> [--evidence <项目内证据文件>]` 只读现有 migration metadata。它核对固定 server UUID，在只读一致性事务中记录迁移计划的上下界、已核验覆盖和原不可读记录；不遍历业务事实，不启动历史迁移，不创建状态或轮换世代。
 
-清单保留 `verified_rows_only`（状态 5）与完整表核验的区别，未列出的源范围一律未知。每类元数据最多 4,096 条，额外哨兵发现溢出时拒绝发布，不拿截断清单宣称完整。输出不覆盖已有文件，文件和目录同步；外部证据只记录路径、长度和 SHA-256。五个领域的转换入口均要求该清单：低频命令使用 `--runtime-input-inventory`，DEX 使用 `--input-inventory`。第一次分页读取前将原始清单摘要和内容纳入 checkpoint；续跑拒绝更换，后续 checkpoint/导出保留原引用。工具本身不证明运行依赖齐备，仍须按冻结范围完成领域对照。未知范围不被标成完整历史；尚未对生产执行。
+清单保留 `verified_rows_only`（状态 5）与完整表核验的区别，未列出的源范围一律未知。每类元数据最多 4,096 条，额外哨兵发现溢出时拒绝发布，不拿截断清单宣称完整。输出不覆盖已有文件，文件和目录同步；外部证据只记录路径、长度和 SHA-256。五个领域的转换入口均要求该清单：低频命令使用 `--runtime-input-inventory`，DEX 使用 `--input-inventory`。第一次分页读取前将原始清单摘要和内容纳入 checkpoint；续跑拒绝更换，后续 checkpoint/导出保留原引用。工具本身不证明运行依赖齐备，仍须按冻结范围完成领域对照。未知范围不被标成完整历史；2026-10-16 首次生产转换已执行，具体范围和原输入摘要见实施记录对应的部署清单。
 
-## Keeper 显式入口（尚未部署）
+## Keeper 显式入口
 
 `justlend-keeper-data runtime-convert|runtime-verify|runtime-rollback` 保留原命令进程锁，并锁定真实数据库/producer。共同参数为 `--runtime-state-dir`（默认 `var/justlend-keeper/runtime`）、`--runtime-epoch-file`（或 `JUSTLEND_KEEPER_RUNTIME_EPOCH_FILE`）以及核验/回退使用的 `--runtime-export`。MySQL 的 watch、preflight、resume-source 使用同一份已核验状态；resume-source 只解除指定来源的 blocked 标记，保留预算和冷却。
 
@@ -75,7 +77,7 @@ Across 和 Reserve 保留原路径锁，并额外按真实 server UUID、数据�
 
 正常循环从提交结果更新窗口，缺页、重复输入 token、混合 scan、断开的空结束页或未完成子批次都不能推进 EvidenceCursors。回退先导出当前恢复链，核对当前工作依赖，再生成旧版可读的当前 State；旧格式无法无损表达未决状态时拒绝回退，不能静默把已知零改成未知。外部 backfill/migrate-pages 发现已有 runtime 目录时要求显式维护交接，不等待正常循环重扫历史。
 
-## 主 DEX 显式入口（尚未部署）
+## 主 DEX 显式入口
 
 `dex-runtime-state convert|verify|rollback` 使用主采集器的 backend/producer 配置与 Ethereum manifest。参数为 `--state-dir`（默认 `var/dex/runtime`）、`--epoch-file`（或 `DEX_RUNTIME_EPOCH_FILE`）、`--export`。转换应在主 collector 停止并冻结所有相关 DEX 写者后执行；真实目标锁和 producer 检查继续保留。该工具不构造 RPC 客户端。首次转换遍历全部适用的区块登记，以可续跑页游标和流式输入摘要保存进度，再次遍历核对冻结输入，并按旧高度相邻规则独立计算缺口。
 

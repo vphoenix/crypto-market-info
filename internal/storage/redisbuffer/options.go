@@ -49,6 +49,9 @@ func (b *Buffer) acceptOptions(ctx context.Context, d contracts.Delivery) error 
 	if e = b.begin(ctx, conn, d, planned); e != nil {
 		return e
 	}
+	// Bound queued commands while amortizing the round trip. Sealing still
+	// checks every member digest, then WAITAOF confirms this same connection.
+	pipe := conn.Pipeline()
 	for n, p := range all {
 		key := fmt.Sprintf("%s:book:%s:%s:%d:%s:%d:%d", b.prefix, d.Database, d.Kind, d.Generation, d.ID, d.Minute.Unix()/60, n)
 		raw, e := codec.Encode(optionPartType, map[string]any{"kind": p.Kind, "id": p.ID, "payload": string(p.Raw)})
@@ -57,12 +60,18 @@ func (b *Buffer) acceptOptions(ctx context.Context, d contracts.Delivery) error 
 		}
 		h := sha256.Sum256(raw)
 		hash := hex.EncodeToString(h[:])
-		if e = conn.Eval(ctx, memberScript, []string{key}, hash, "payload", raw).Err(); e != nil {
-			return conflict(e)
+		pipe.Eval(ctx, memberScript, []string{key, b.batchKey(d.Database, d.ID)}, hash, hex.EncodeToString(d.Digest[:]), "payload", raw)
+		if pipe.Len() >= 32 {
+			if _, e = pipe.Exec(ctx); e != nil {
+				return conflict(e)
+			}
 		}
 		keys = append(keys, key)
 		memberKeys = append(memberKeys, key)
 		digests = append(digests, hash)
+	}
+	if _, e = pipe.Exec(ctx); e != nil {
+		return conflict(e)
 	}
 	header, e := codec.Encode(headerType, map[string]any{"database": d.Database, "kind": d.Kind, "id": d.ID, "service": d.Service, "generation": d.Generation, "minute": d.Minute, "digest": d.Digest[:], "members": d.Members, "codec": d.Codec, "keys": memberKeys})
 	if e != nil {

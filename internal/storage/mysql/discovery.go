@@ -184,7 +184,7 @@ func (c *Client) discoveryIntents(ctx context.Context, tx *sql.Tx, publications 
 	if err != nil {
 		return nil, err
 	}
-	if err = insertAbsentImmutableRows(ctx, tx, c.table(t.Name), t, missing); err != nil {
+	if err = c.insertSourceRows(ctx, tx, t.Name, missing); err != nil {
 		return nil, err
 	}
 	return knownTimes, nil
@@ -225,7 +225,7 @@ func (c *Client) publishDiscoveryRows(ctx context.Context, tx *sql.Tx, publicati
 	if err != nil {
 		return err
 	}
-	return insertAbsentImmutableRows(ctx, tx, c.table(t.Name), t, missing)
+	return c.insertSourceRows(ctx, tx, t.Name, missing)
 }
 
 func (c *Client) WriteDiscoveryFact(ctx context.Context, f discoveryFact) error {
@@ -397,6 +397,12 @@ func (c *Client) WriteDiscoveryFacts(ctx context.Context, facts []model.Discover
 	}
 	return c.transaction(ctx, func(tx *sql.Tx) error {
 		for _, kind := range kinds {
+			if kind == "public_observation_provenance" {
+				if err := c.putProvenanceRows(ctx, tx, groups[kind]); err != nil {
+					return err
+				}
+				continue
+			}
 			t, err := c.mapping(kind)
 			if err != nil {
 				return err

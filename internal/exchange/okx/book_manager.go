@@ -110,12 +110,18 @@ func (m *BookManager) Run(ctx context.Context) error {
 			defer workers.Done()
 			delay := m.ReconnectBase
 			for ctx.Err() == nil {
-				err := m.runConnection(ctx, targets)
+				var readyAt time.Time
+				err := m.runConnectionReady(ctx, targets, func() { readyAt = time.Now() })
 				if ctx.Err() != nil {
 					return
 				}
+				// A recovered session must not inherit the retry penalty forever.
+				// Repeated failures before/soon after snapshots still back off.
+				if !readyAt.IsZero() && time.Since(readyAt) >= m.ReconnectMax {
+					delay = m.ReconnectBase
+				}
 				m.stats.Reconnects.Add(1)
-				m.Logger.Error("OKX book shard disconnected", "shard", index, "targets", len(targets), "error", err)
+				m.Logger.Error("OKX book shard disconnected", "shard", index, "targets", len(targets), "retry_base_ms", delay.Milliseconds(), "error", err)
 				if !exchange.Wait(ctx, m.ReconnectJitter(delay)) {
 					return
 				}
@@ -148,7 +154,11 @@ func validateWSEndpoint(endpoint string) error {
 }
 
 func (m *BookManager) runConnection(ctx context.Context, targets []*wsstream.Target) error {
-	return wsstream.RunConnection(ctx, wsstream.Config{Endpoint: m.WSEndpoint, Dialer: m.Dialer, ConnectGate: m.ConnectGate, Protocol: streamProtocol{channel: "books"}, Targets: targets, BatchSize: 20, QueueCapacity: m.QueueCapacity, PreAckCapacity: m.PreAckCapacity, AckPerTopic: true, Resync: true, AllowQuietActive: true, ControlInterval: m.ControlInterval, MaxControlsPerHour: 400, PingInterval: m.PingInterval, SilenceTimeout: m.SilenceTimeout, SubscribeTimeout: m.SubscribeTimeout, Stats: &m.stats})
+	return m.runConnectionReady(ctx, targets, nil)
+}
+
+func (m *BookManager) runConnectionReady(ctx context.Context, targets []*wsstream.Target, onReady func()) error {
+	return wsstream.RunConnection(ctx, wsstream.Config{Endpoint: m.WSEndpoint, Dialer: m.Dialer, ConnectGate: m.ConnectGate, Protocol: streamProtocol{channel: "books"}, Targets: targets, BatchSize: 20, QueueCapacity: m.QueueCapacity, PreAckCapacity: m.PreAckCapacity, AckPerTopic: true, Resync: true, AllowQuietActive: true, OnReady: onReady, ControlInterval: m.ControlInterval, MaxControlsPerHour: 400, PingInterval: m.PingInterval, SilenceTimeout: m.SilenceTimeout, SubscribeTimeout: m.SubscribeTimeout, Stats: &m.stats})
 }
 
 func (m *BookManager) HealthSnapshot() BookHealthSnapshot {

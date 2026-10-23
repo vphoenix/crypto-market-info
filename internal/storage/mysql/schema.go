@@ -118,6 +118,24 @@ func Mapping(database, name string) (Table, error) {
 				return t, nil
 			}
 		}
+		quality, err := qualityStorageMappings()
+		if err != nil {
+			return Table{}, err
+		}
+		for _, t := range quality {
+			if t.Name == name {
+				return t, nil
+			}
+		}
+		sources, err := sourceStorageMappings()
+		if err != nil {
+			return Table{}, err
+		}
+		for _, t := range sources {
+			if t.Name == name {
+				return t, nil
+			}
+		}
 	}
 	return Table{}, fmt.Errorf("unmapped table %s.%s", database, name)
 }

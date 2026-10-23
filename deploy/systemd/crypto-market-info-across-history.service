@@ -11,7 +11,6 @@ TimeoutStartSec=infinity
 TimeoutStopSec=30
 RemainAfterExit=yes
 Restart=on-failure
-RestartPreventExitStatus=2
 RestartSec=60
 KillSignal=SIGTERM
 UMask=0077

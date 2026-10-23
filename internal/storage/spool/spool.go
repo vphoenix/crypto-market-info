@@ -4,6 +4,7 @@ package spool
 
 import (
 	"bytes"
+	"compress/zlib"
 	"context"
 	"crypto/sha256"
 	"encoding/binary"
@@ -26,6 +27,7 @@ const MaxPayload = 32 << 20
 
 var label = regexp.MustCompile(`^[a-zA-Z0-9_.:-]{1,160}$`)
 var magic = []byte{'C', 'M', 'I', 'S', 1}
+var compressedMagic = []byte{'C', 'M', 'I', 'S', 2}
 
 func Validate(d contracts.Delivery) error {
 	for _, s := range []string{d.Database, d.Kind, d.ID, d.Service} {
@@ -46,11 +48,43 @@ func Name(d contracts.Delivery) string {
 	return hex.EncodeToString(h[:]) + ".batch"
 }
 func Marshal(d contracts.Delivery) ([]byte, error) {
+	return marshal(d, false)
+}
+
+// MarshalCompressed changes only the disk envelope, never the logical codec,
+// identity or digest. Small/incompressible deliveries retain the v1 format.
+func MarshalCompressed(d contracts.Delivery) ([]byte, error) {
+	return marshal(d, true)
+}
+
+func marshal(d contracts.Delivery, compress bool) ([]byte, error) {
 	if e := Validate(d); e != nil {
 		return nil, e
 	}
+	payload := d.Payload
+	compressed := false
+	if compress && len(payload) >= 1024 {
+		var packed bytes.Buffer
+		w, e := zlib.NewWriterLevel(&packed, zlib.BestSpeed)
+		if e != nil {
+			return nil, e
+		}
+		if _, e = w.Write(payload); e != nil {
+			return nil, e
+		}
+		if e = w.Close(); e != nil {
+			return nil, e
+		}
+		if packed.Len()+4 < len(payload) {
+			payload, compressed = packed.Bytes(), true
+		}
+	}
 	b := new(bytes.Buffer)
-	b.Write(magic)
+	if compressed {
+		b.Write(compressedMagic)
+	} else {
+		b.Write(magic)
+	}
 	for _, s := range []string{d.Database, d.Kind, d.ID, d.Service} {
 		binary.Write(b, binary.BigEndian, uint16(len(s)))
 		b.WriteString(s)
@@ -61,14 +95,17 @@ func Marshal(d contracts.Delivery) ([]byte, error) {
 	binary.Write(b, binary.BigEndian, d.Members)
 	binary.Write(b, binary.BigEndian, uint32(len(d.Payload)))
 	b.Write(d.Digest[:])
-	b.Write(d.Payload)
+	if compressed {
+		binary.Write(b, binary.BigEndian, uint32(len(payload)))
+	}
+	b.Write(payload)
 	h := sha256.Sum256(b.Bytes())
 	b.Write(h[:])
 	return b.Bytes(), nil
 }
 func Unmarshal(raw []byte) (contracts.Delivery, error) {
 	var d contracts.Delivery
-	if len(raw) < 5+32 || len(raw) > MaxPayload+1024 || !bytes.Equal(raw[:5], magic) {
+	if len(raw) < 5+32 || len(raw) > MaxPayload+1024 || (!bytes.Equal(raw[:5], magic) && !bytes.Equal(raw[:5], compressedMagic)) {
 		return d, fmt.Errorf("invalid spool header")
 	}
 	h := sha256.Sum256(raw[:len(raw)-32])
@@ -98,11 +135,39 @@ func Unmarshal(raw []byte) (contracts.Delivery, error) {
 	if _, e := io.ReadFull(r, d.Digest[:]); e != nil {
 		return d, e
 	}
-	if n > MaxPayload || int(n) != r.Len() {
+	if n == 0 || n > MaxPayload {
 		return d, fmt.Errorf("invalid spool payload length")
 	}
-	d.Payload = make([]byte, n)
-	io.ReadFull(r, d.Payload)
+	if bytes.Equal(raw[:5], compressedMagic) {
+		var stored uint32
+		if e := binary.Read(r, binary.BigEndian, &stored); e != nil {
+			return d, e
+		}
+		if stored == 0 || stored >= n || int(stored) != r.Len() {
+			return d, fmt.Errorf("invalid compressed spool length")
+		}
+		z, e := zlib.NewReader(r)
+		if e != nil {
+			return d, e
+		}
+		d.Payload, e = io.ReadAll(io.LimitReader(z, int64(n)+1))
+		closeErr := z.Close()
+		if e != nil {
+			return d, e
+		}
+		if closeErr != nil {
+			return d, closeErr
+		}
+		if len(d.Payload) != int(n) || r.Len() != 0 {
+			return d, fmt.Errorf("compressed spool size or trailing data mismatch")
+		}
+	} else {
+		if int(n) != r.Len() {
+			return d, fmt.Errorf("invalid spool payload length")
+		}
+		d.Payload = make([]byte, n)
+		io.ReadFull(r, d.Payload)
+	}
 	d.Minute = time.Unix(sec, 0).UTC()
 	return d, Validate(d)
 }
@@ -155,12 +220,7 @@ func syncDir(dir string) error {
 	return f.Sync()
 }
 func same(a, b contracts.Delivery) bool {
-	x, e := Marshal(a)
-	if e != nil {
-		return false
-	}
-	y, e := Marshal(b)
-	return e == nil && bytes.Equal(x, y)
+	return Validate(a) == nil && Validate(b) == nil && a.SameHeader(b) && bytes.Equal(a.Payload, b.Payload)
 }
 func read(path string) (contracts.Delivery, error) {
 	f, e := os.Open(path)
@@ -182,7 +242,7 @@ func read(path string) (contracts.Delivery, error) {
 	return Unmarshal(a)
 }
 func (q *Queue) Accept(ctx context.Context, d contracts.Delivery) error {
-	raw, e := Marshal(d)
+	raw, e := MarshalCompressed(d)
 	if e != nil {
 		return e
 	}
@@ -271,11 +331,11 @@ func (q *Queue) List(ctx context.Context) ([]contracts.Delivery, error) {
 			if filepath.Ext(f.Name()) != ".batch" {
 				continue
 			}
-			s, e := f.Info()
+			c, e := readHeader(filepath.Join(q.Directory, f.Name()))
 			if e != nil {
 				return e
 			}
-			total += s.Size()
+			total += c.Bytes + 1024
 			if total > MaxPayload+1024 || len(out) >= 128 {
 				return fmt.Errorf("spool listing exceeds memory limit; consume using Next")
 			}

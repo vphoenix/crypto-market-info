@@ -1,5 +1,43 @@
 # 当前部署与运行说明
 
+2026-10-24 00:25:22（UTC+8）已部署 Across 网络故障恢复修复并重启实时服务。此前一次 Arbitrum DNS 错误被程序永久锁存，退出码 2 又被 unit 禁止自动重启，导致自 10 月 19 日 18:49:54 停采。现在来源网络故障保留失败证据，经共享 quota 按 5/10/20/40 秒冷却后重试；两个已安装 unit 均取消退出码 2 的重启例外，实时失败重启间隔仍为 15 秒。运行版本 `across-network-recovery-20261024`，实际程序为 `var/storage/bootstrap-preparation/20261013/bin/across-data`。00:32 的数据库核验确认 Base、Arbitrum 都有重启后 `complete/committed/canonical` 的新日志批次，证据哈希与区块范围一致；这些样本的最终性仍为 `head`，不代表四天缺口或费用已补齐。历史服务仍 inactive/disabled，其他服务未重启。构建、测试边界和部署证据见[修复记录](../research/2026-10-24-across-network-recovery/report.md)。下文较早网络停采规则均为历史行为。
+
+2026-10-19 21:16/21:34（UTC+8）磁盘尖峰修正：Redis 自动 AOF 重写改为最小 256 MiB、增长 400%，每秒同步与交付确认保留，配置文件和在线值一致。三张来源登记 `_v2` 扩展采用内部自增主键集中追加、唯一哈希索引核验身份，新旧历史联合读取并保留冲突与首次知晓语义。21:34:35 主 collector/writer 已切换并重启，PID=1545384/1545376，writer `--source-storage-v2` 与 collector `MYSQL_SOURCE_STORAGE_V2=true` 已启用；原质量存储开关继续生效。旧表、队列与 producer 代次保持，正式 MySQL/Redis 未重启，Reserve/LST 仍停用。隔离实库 race/回归及相同输入布局对照通过，登记组件读盘/写入分别减少约 94.85%/85.96%，但新增索引与新旧联合读取有空间/查询成本，不能当作整盘降幅。重启初期交易所目录 HTTP 超时后自动恢复，21:40 已通过新旧实际发布/来源摘要只读核验；启动期缺失不补造。21:41–21:46 五分钟平均磁盘忙碌率 15.88%、最高 86.06%，Redis 重写 1 次、同期延迟同步计数无新增。最终 634 批全部提交、待写/旧待写/阻塞为零；每分钟 2722 个期权成员持续落库，但 UTC 13:43 的位图仍缺 1920 个成员秒，来源缺失如实保留。没有扩大 buffer pool 或强制 swapoff，采样工具已补齐内存/换页/AOF 计数。完整设计、验收及回退限制见[本轮记录](redis-mysql-migration/io-spike-fix-20261019.md)。
+
+2026-10-19 20:55–20:57（UTC+8）用户再次采样后的只读复查：整盘平均忙碌率 45.18%、约一秒区间最高 93.61%，MySQL 平均写入 4.19 MiB/s，旧质量表写入仍为零，质量改造持续生效。剩余尖峰伴随本项目来源登记表慢随机读和分钟集中提交；Redis 在 20:55:14、20:56:05、20:57:05 连续自动重写 AOF，后两次与分钟封口重叠。最高一组还叠加 Codex 缺页读取和系统换入，不能将全部尖峰归于 AOF。旧待写始终为零，分钟待写在约 10–20 秒后清零；采样前另有来源恢复缺口，队列清零不代表全秒数据完整。ClickHouse 写入为零，Reserve/LST 保持停用。本轮未改服务或配置；[证据、归因边界及后续优先级](redis-mysql-migration/io-spikes-after-quality-20261019.md)。
+
+2026-10-19 19:43 重启主 collector/storage-writer，19:52:26（UTC+8）补齐任务客户端能力继承后再次仅重启 writer；19:53 已确认质量存储降写入版本正式生效。三张独立扩展表用于按分钟集中保存盘口质量、共享目录质量 profile 和成员引用；旧历史兼容读取，未重写历史、清队列或改变 producer generation/holder。MySQL doublewrite 保持 ON、提交同步保持 1，正式 MySQL/Redis 未重启；Reserve/LST 保持停用。生产同口径隔离测试的 60 个逻辑分钟、111,410 个成员全部精确读回，质量组件的数据页/redo/doublewrite 合计减少 52.35%，提交尾延迟和整批读回未退步；该比例不能当作整盘降幅。新版写入开关为 `--quality-storage-v2`，回退写入时仍须保留兼容新表的新版二进制。上线后 19:53–19:56 三分钟样本的整盘平均忙碌率为 40.18%、MySQL 写 4.64 MiB/s；五个完整分钟每分钟 2,714 个成员持续落库，450 批全部提交且待写/旧待写/阻塞为零。短时观察不代替全天验收，综合历史健康查询仍有超时。[实施、验证与上线记录](redis-mysql-migration/quality-storage-implementation-20261019.md)。
+
+2026-10-19 doublewrite 写入放大核验：线上 MySQL 8.4.11 的页大小为 16 KiB，质量热点表和提交登记表实际为 8 KiB 压缩页；对应版本官方源码确认 doublewrite 将压缩页置于 16 KiB 槽位并写出槽位区间。17:09–17:11 样本的保护写入可精确换算成 48,497 个槽位，与数据文件写次数基本吻合，解释了主库约 3.27 MiB/s、保护约 6.29 MiB/s 的比例。只读回读保持 doublewrite=ON、2 GiB buffer pool、256 MiB redo、I/O capacity=10000/20000。本轮仅核验并写方案；[减少刷页与 DETECT_ONLY 取舍](redis-mysql-migration/doublewrite-reduction-plan-20261019.md)明确区分完整恢复保护与降低保护的路线，未改生产设置。
+
+2026-10-19 17:09–17:11（UTC+8）用户处理合并后的复查：ClickHouse 12 次合并查询均为空、进程写计数为零。整盘平均忙碌率仍为 66.30%，写请求平均完成时间已从上一轮 19.29 ms 降至 0.94 ms，平均未完成 I/O 从 15.12 降至 3.91。当前主要写入来自本项目 MySQL/Redis（约 11.03/1.47 MiB/s）；MySQL doublewrite 文件约 6.29 MiB/s，主库业务文件约 3.27 MiB/s，质量两表占其中 50.8%。登记/来源表的 8 KiB 小读取仍平均耗时 37–47 ms，十秒高负荷片段读耗时约 155 ms，需要同时处理写入成本和慢读。相邻两分钟交付 291 批、近期待写从 103 降至零，旧待写始终为零；Reserve/LST 文件写入为零。本轮未改服务或数据库；[对照、文件归因及后续方向](redis-mysql-migration/io-after-merge-fix-20261019.md)。
+
+2026-10-19 16:19–16:21（UTC+8）宿主机采样归因：整盘平均忙碌率 65.33%，一段 8.10 秒达 94.10%，该段读取主要来自共享 ClickHouse。日志确认另一项目 `crypto_grid_trading.trades_raw` 正反复执行同一个合并，在旧分片 `202609_1277496_1299305_389/rule_id.size.bin` 报 `UNKNOWN_CODEC` 后重试；10 月 14 日曾暂停的该表合并已恢复，具体恢复原因尚未确认。本项目 MySQL/Redis 同期写计数约 5.82/1.16 MiB/s，质量表仍是主库业务表写入重点，Reserve/LST 文件写入为零；writer 旧待处理始终为零。此次只分析采样和现有日志，未再次暂停合并或改服务；[完整证据、计数边界与处理顺序](redis-mysql-migration/io-attribution-20261019.md)。
+
+2026-10-19 凌晨积压回溯（01:00–02:15）：输入保持约 95 批/分钟，01:00–02:00 完成交付降至 69 批/分钟，待处理增加 1,520 批。历史 sysstat 证实换页和 I/O 等待加重；代码及日志还定位到 collector 元数据排他事务会阻塞分钟写入、Redis 候选读取和 ACK 慢响应会占用调度及提交路径。883 秒 AOF 重写约 01:56 才开始，是加重因素而非最初起因。02:37:32 旧待处理首次重新归零，不作为故障已根治的证据。没有改程序或服务；[时间线、耗时及阻塞路径](redis-mysql-migration/backlog-cause-20261019.md)。
+
+2026-10-19 02:14（UTC+8）只读磁盘复查：Reserve、LST 保持 inactive/disabled、PID=0，两库观察期间没有新增文件写入。02:06:54–02:10:53 整盘平均忙碌率 71.98%，MySQL 写入约 7.06 MiB/s；主库占项目业务表写入约 99.2%，重点仍为期权盘口及质量记录。MySQL/Redis 主进程分别约有 512/95 MiB 内存位于 swap；Redis 一次 AOF 重写耗时 883 秒，期间出现读取及持久化超时。当前为今天新形成的期权积压，重写结束后有所缓解，但 02:13:49 仍有 1,514 批旧待写、最早逻辑分钟 01:43，不能沿用 10 月 16 日的“旧积压为零”结论。本轮没有重启、改参数或清队列；[实测、归因及后续方向](redis-mysql-migration/io-recheck-20261019.md)。
+
+2026-10-19 01:50:32（UTC+8）：按用户要求，复核收益后已结束当前 LST 两条赎回路线实验，执行 `systemctl --user disable --now crypto-market-info-lst.service`。实际为 inactive/dead、MainPID=0、disabled，开机启动链接已移除；Ubuntu 重启不再通过现有启动路径拉起 LST。历史数据、程序和恢复状态保留，本轮仅操作 LST；Reserve 已由并行任务另行停用，其余采集器及共享存储保持。不要依据下文历史健康检查重新启动 LST；[决策、复算与停用验收](../research/2026-10-19-lst-retirement/report.md)。
+
+2026-10-19 01:48（UTC+8）：按用户要求复核四项目评估及报告后的新数据，结束当前DFX的Reserve采集试验。原评估7,268次成功联合模拟全部负毛利；报告截止后新增20次成功模拟也全部为负，当前没有活动拍卖。已执行`systemctl --user disable --now crypto-market-info-reserve.service`，实际为inactive/dead、MainPID=0、disabled，默认目标启动链接已移除，无残留Reserve采集进程。Ubuntu重启后应保持停用；日常维护不要把它当故障自动启用。本轮只操作Reserve，历史数据、队列和恢复状态保留。停用前后立即对照其他服务未变；01:50复核时LST已同期另行停用，本轮未恢复，其他服务仍与停止前一致。结论限于当前DFX路线，不代表所有Reserve市场没有机会；[复核与停采记录](../research/2026-10-19-reserve-retirement/report.md)包含具体口径、证据及验收。下文较早的Reserve运行状态均为历史记录。
+
+2026-10-16 21:52（UTC+8）只读复查：六服务保持原 PID、active，五分钟旧待写/阻塞为零，整盘平均忙碌率 31.51%，MySQL/Redis 进程写入约 8.37/1.50 MiB/s。控制面显示目录齐全，但 SQL 位图发现部分期权分钟缺失可回放盘口；13:48 UTC 最重，13:49 已大幅恢复但仍缺 78 个成员秒，不能据目录就绪宣称全秒采集正常。新增候选为 Redis 期权交付/预览值压缩及压缩后评估 AOF 重写频率；本轮未改程序或参数。实测、缺口与取舍见[二次复查](redis-mysql-migration/io-reduction-followup-20261016.md)。
+
+2026-10-16 21:24（UTC+8）最终复核：collector `53068b5c…`、writer `bfb279a6…` 已于 20:31:59 正常重启，上线 spool v2 无损压缩、Redis 已提交残留回收和成员 pipeline。六服务 active、零重启，原队列、generation、holder、epoch 和 checkpoint 保留。5/30/5 分钟 MySQL 刷盘对照结束，候选值未证明稳定收益，已恢复 `10000/20000` 且未固化；本轮不能宣称整盘写入明显降低。最终待写/旧积压为零，UTC 13:21 的 337 条 CEX 和 2,958 条期权全 60 秒有效；观察期间仍有来源失败和短暂重同步。质量字段共享仅完成只读原型，未重建生产表。完整版本、验证、性能边界和 v2 回退限制见[本轮实施记录](redis-mysql-migration/io-reduction-20261016.md)。
+
+2026-10-16 19:06:48（UTC+8）：collector 已补充部署为 `db43d2db…`，LST 为 18:21:54 部署的 `8ab85729…`。修复收益重采冲突/精度、期权规则刷新阻塞分钟写入、OKX 重连退避重置、LST 范围日志追赶，以及本轮跨周期复核新发现的目录失败重复通知导致分片溢出。writer 和其余采集保持运行，原队列、状态断点和 producer generation 保留，历史迁移仍暂停。首版完整输入窗口磁盘平均忙碌率 36.91%、十秒峰值 75.98%，两个周期规则批次刷新期间持续入库，40 分钟内 writer 锁超时及旧待写为零；18:59 后的期权缺数区间已排除，不能据此宣称物理写入明显下降或所有来源全秒正常。真实数据库回归、相关 race、最终版本状态、测试环境限制及未解决项见[修复记录](redis-mysql-migration/realtime-repair-20261016.md)。
+
+2026-10-16 17:47（UTC+8）磁盘负载回升诊断：17:42:33—17:45:33 三分钟只读采样平均忙碌率 35.39%，十秒区间最高 72.78%，整机读/写 0.90/15.73 MiB/s；MySQL 进程读/写 0.37/5.84 MiB/s。六服务仍为原 PID、active、零重启，各次队列快照均为零，未出现旧待写持续增长。回查前一小时，writer 有 40 次 MySQL 1205 锁超时，集中于 17:30—17:40；同期期权交易规则刷新每批 822/936/1,148 条，事务外准备最长 26.61 秒，writePreparedTradingRules 事务主体最长 22.79 秒。代码确认目录状态约 30 分钟刷新，规则写事务对 collector 的 producer_generation 行持排他锁，分钟提交对同一行持共享锁，长规则事务会阻塞实时 writer；此时间对应关系和代码路径明确，但未捕获用户所见峰值当时的逐秒磁盘数据，不能据此分摊整个历史峰值。当前采样期间 writer 无告警，Redis 有一次 AOF 重写且延迟 fsync 计数未增加，MySQL 无新增 buffer pool/redo 等待或容器内存限额事件。此前五分钟低负载样本不能证明所有刷新周期稳定；后续应优先减少规则刷新重复读取和长事务占锁，并跨完整刷新周期验证。本轮仅诊断，未更改配置、数据或服务。证据：`var/storage/io-recurrence/20261016T0942/summary.json`。
+
+2026-10-16 16:48（UTC+8）实时数据健康复核：不能将写入队列排空等同于全部来源正常。MySQL 中 16:44 的 CEX 分钟有 337 条，其中 317 条全 60 秒有效、20 条 OKX 盘口部分秒无效；16:45 同组预期 337 条中仅查到 323 条，其中 317 条全秒有效、6 条不完整，14 条无该分钟记录。日志显示 OKX 第 0 个连接组的 20 个目标反复超时/重同步，16:46:50—16:47:20 已恢复 332 个配对目标就绪；此前缺失不能据此视为补齐。16:44、16:45 的期权各 2,944 个成员均全 60 秒有效，16:44 的 sampled/stream/replay/market-known/open 位图均完整。近十五分钟有 11 个收益来源反复在 write 阶段失败，7 个为 immutable storage content conflict，4 个为小数精度超过 18 位；部分 Aave/Marinade/Jito/Kamino/OKX 路线最新已存观测仍在 10 月 12—13 日，JustLend 在 10 月 14 日。LST 的 16:42 市场批次已提交但为 partial，来源对冲盘口超时、标记价冷却导致当轮可用 entry=0，日志回补仍落后约 4,347 块；主 DEX、Reserve、Keeper 可见新提交/推进，Across 仍有来源额度及既有缺口。16:47:53 Redis/spool 待写均为零。此轮只读诊断，未修复这些数据完整性问题，证据在 `var/storage/realtime-health/20261016T0843/`。
+
+2026-10-16 16:38（UTC+8）只读复测：16:32:05—16:37:05 连续五分钟磁盘平均忙碌率 26.74%，30 个十秒区间最高 55.84%，物理读/写约 0.53/19.92 MiB/s；MySQL 进程写约 7.87 MiB/s、Redis 约 1.16 MiB/s。同期 writer 新增约 97.2 批/分钟、成功提交约 97.0 批/分钟，十秒指标采样的待写峰值 51 批，旧待写与阻塞均为零；完整观察到的四个逻辑分钟均提交 337 条 CEX 盘口和 2,944 个期权成员，期权最后一批在封口后 12.23—15.91 秒提交。16:37:47 复核 Redis 待写与 spool 均自动排空，六服务 active、零重启，实际二进制哈希全部匹配部署清单。本轮 writer 无告警或锁超时，Redis 延迟 fsync 计数未增长；此前约 57 分钟也未形成持续待写积压。按主键抽查 16:30 完整分钟的 97 条 MySQL 提交登记，批次身份和成员数均与日志相符。仍有来源接口、规则校验和收益内容冲突等采集告警；上述结果属于正常生产负载观察，不能代表所有来源完整或额外压力、24 小时验收通过。本轮未修改服务、配置或数据，证据位于 `var/storage/runtime-state-recheck/20261016T0832/summary.json`。
+
+2026-10-16 15:20:50（UTC+8）：按用户要求停止六个服务，清空主采集器待写队列后，已上线运行状态改造版本。五个领域均完成生产状态转换及最终二进制核验；六个实际进程 SHA-256 与构建清单一致，恢复世代文件位于 `var/storage/recovery-epochs/`，五个采集 unit 新增 `zzz-runtime-state.conf`。本次从队列移除 52 个去重交付 ID，保留 MySQL 已提交事实、原采集起点、限流/冷却与历史导入暂停状态。Across 转换补充兼容四条已审计的历史存储撤回登记，仍排除其有效覆盖；相关完整回归与 race 检查通过。部署、转换、版本、停机时间和上线后观察证据位于 `var/storage/runtime-state-deployment/20261016T0650/`，汇总为 `deployment-result.json`。
+
+15:31:42—15:33:42 的两分钟完整范围观察：337 条 CEX 盘口、2,968 个期权成员，每分钟新增和成功提交均约 98 批，窗口前后去重积压均为零；对应两个逻辑分钟的期权最后一批分别在封口后 45.55 秒、33.74 秒提交。同期 120 秒磁盘平均忙碌率 46.45%，物理读/写约 0.89/22.08 MiB/s，其中 MySQL 进程写约 9.46 MiB/s、Redis 约 1.42 MiB/s。六个服务均 active、零重启。仍观察到两次 writer 锁等待超时后重试成功，以及 DEX/元数据超时和部分来源校验错误；不能把该短窗口当作全来源健康、60 分钟容量或 24 小时稳定性验收通过。下文为各次操作的历史记录。
+
 2026-10-16 10:26（UTC+8）资本规则扩展已安装：隔离 MySQL 的安装、新旧格式读取、故障回滚和稳定重试验证通过，生产主库新增三张 8 KiB 压缩页专项表及 schema 登记。既有 schema 与历史迁移断点逐字不变，三条生产旧观测的内容、来源及发布时间核验一致。管理和只读核验工具已更新；常驻采集器未替换，新写入开关仍关闭，采集、writer、Redis 和历史迁移继续停止。详见[执行记录](../research/2026-10-16-capital-versions/report.md)。
 
 2026-10-16（UTC+8）压缩转换完成：137 张项目 MySQL 表（125 业务表、12 控制表）已验证为原生 `COMPRESSED`、8 KiB 压缩页；实际分配空间 54.51 → 21.92 GiB。列、索引、分区、schema_version 和历史迁移断点保持，采集与历史迁移继续停止，binlog 保持关闭。详见[压缩执行记录](../research/2026-10-16-mysql-compression/report.md)。
@@ -429,25 +467,26 @@ Watch主循环对明确的RPC传输/读取超时、截断及HTTP429/5xx保留游
 
 2026-10-09 排查确认 Base 公共 RPC 的 `-32011` 文本为 `request limit reached`，单块日志同样被拒绝；充分冷却90秒后仍拒绝。已修正限流分类和跨成功请求的退避等级，常驻发现会跳过冷却来源且每链网络工作最多60秒，执行中遇到新增冷却立即让行；拒绝保留为 error/partial，不推进未成功的区间。独立核验链身份、实现代码与日志锚点后，实时 unit 显式设置 `ACROSS_BASE_RPC_URL=https://base-rpc.publicnode.com`；Arbitrum 保留原来源。maintenance 从最新保留孔洞的尾部逐片向前补，旧归档权限限制不会挡住较新孔洞；失败仍保留。原 Base 端点的 quota、数据库和旧缺口标记保留，历史服务继续 disabled。只更新 Across 二进制与该实时 unit，不设置自动来源切换。部署及实际两链落库结果见[本轮记录](../research/2026-10-09-across-repair/report.md)。
 
-当前运行实时 `crypto-market-info-across.service`，磁盘binary为 `var/across/bin/across-data`，工作目录仓库根，使用实时库 `crypto_market_info_across` 和证据 `var/across/evidence`。只有一个writer进程，report只读，不要手工启动同库第二个writer。user linger已开启。固定历史unit模板仍保留，但已disabled，其独立库和归档已按用户要求删除。
+当前运行实时 `crypto-market-info-across.service`，磁盘 binary 为 `var/storage/bootstrap-preparation/20261013/bin/across-data`，由已安装的 `zz-redis-mysql-cutover.conf` 指定；`zzz-runtime-state.conf` 指定现有状态目录与恢复世代。工作目录为仓库根，使用 MySQL 实时库 `crypto_market_info_across`、证据 `var/across/evidence` 和状态 `var/across/runtime`。只有一个采集写者，report 只读；不要手工启动同库第二个 writer。user linger 已开启。固定历史 unit 模板仍保留，但已 disabled，其独立库和归档已按用户要求删除。
 
 2026-10-09 同轮收据接口验收发现 PublicNode 要求个人归档授权，包含约一分钟前的交易；不能仅凭日志恢复交付全部费用。实时unit进一步显式设置 `ACROSS_BASE_RECEIPT_RPC_URL=https://mainnet.base.org`，只将Base收据及相应费用/区块核验留在已实测可用的官方端点。两个来源分别保留host gate和真实source_id，默认CLI及没有设置覆盖的其他链保持原样；无自动来源回退。
 
 2026-10-03用户明确收窄采集范围：首次启动前的数据不再回补。已停止并禁用 `crypto-market-info-across-history.service`（inactive/dead、MainPID=0、disabled）。核对所有history事实均早于实时首次已保存区块（Base 52077937、Arbitrum 510991304），没有可补实时缺口的数据；已删除独立库 `crypto_market_info_across_history`、`var/across/history-evidence`（75,702个归档文件）和导出的历史报告数据，保留修复说明及少量验证统计。实时库、实时证据、RPC冷却状态均保留。实时unit继续active/running、enabled：首次无保存游标时从当时链头开始，以后从已保存位置续采；只修补其已有采集范围内的缺块、partial和缺收据，并继续最终性核验。重启实时服务不重置首次采集起点。
 
-此前历史unit使用一条 `history --range 8453:50783591:52079591 --range 42161:500994686:511000892`，固定窗口约对应2026-09-02至2026-10-02，每链一轮64块、独立退避与补解码；现在已停用，不再执行该窗口。实时普通失败15秒重启；已确认网络故障以2退出，unit配置RestartPreventExitStatus=2，保持停止待用户处理。
+此前历史unit使用一条 `history --range 8453:50783591:52079591 --range 42161:500994686:511000892`，固定窗口约对应2026-09-02至2026-10-02，每链一轮64块、独立退避与补解码；现在已停用，不再执行该窗口。2026-10-24修正后，网络故障在进程内按共享quota冷却后重试，不再锁存为永久停止。实时进程失败仍由systemd在15秒后重启，两个unit均不再配置`RestartPreventExitStatus=2`；遗留网络停止错误以普通失败码1退出。
 
-两进程共同使用 `var/across/rpc-quota` 的host gate，默认400ms/成员、每批最多3成员，所有批次共同等待上一批额度后准入，限流共享冷却。仅fresh live baseline及准时followup获准后有固定最多4秒优先窗口，不续租，届满按实际额度可用时间让行一个成员间隔；restart/open_check没有优先额度，且可被新live到达取消其网络工作。此预算不证明源端额度，也不约束不使用此gate的应用。不要删quota文件清冷却；不会自动改路由/代理。默认RPC仍为 `https://mainnet.base.org` 和 `https://arb1.arbitrum.io/rpc`，行情为用户指定 `https://api.binance.com`。对明确限流与网络错误分别排查；确认连通性故障先停止修复工作并告知用户。
+两进程共同使用 `var/across/rpc-quota` 的host gate，默认400ms/成员、每批最多3成员，所有批次共同等待上一批额度后准入，限流共享冷却。仅fresh live baseline及准时followup获准后有固定最多4秒优先窗口，不续租，届满按实际额度可用时间让行一个成员间隔；restart/open_check没有优先额度，且可被新live到达取消其网络工作。此预算不证明源端额度，也不约束不使用此gate的应用。不要删quota文件清冷却；不会自动改路由/代理。默认RPC仍为 `https://mainnet.base.org` 和 `https://arb1.arbitrum.io/rpc`，行情为用户指定 `https://api.binance.com`。对明确限流与网络错误分别记录并退避重试，持续故障需报告来源与失败类别；不得把排障期间的操作约束固化为生产采集器永久禁止恢复。
 
 ```bash
 systemctl --user status crypto-market-info-across.service crypto-market-info-across-history.service
 journalctl --user -u crypto-market-info-across.service -n 30 --no-pager
 journalctl --user -u crypto-market-info-across-history.service -n 30 --no-pager
-var/across/bin/across-data version
-var/across/bin/across-data report --out var/across/reports/live-latest
+var/storage/bootstrap-preparation/20261013/bin/across-data version
 ```
 
-升级前停止Across实时unit并确认历史unit保持停止，保存旧binary和unit；构建候选版本，测试后原子替换磁盘binary、复制unit、daemon-reload，只启动实时unit，历史unit保持disabled，除非用户重新要求历史回补。部署后以`systemctl show ... -p MainPID`取得实时PID，对磁盘和`/proc/PID/exe`做sha256sum，验证没有deleted旧映像；启动日志含构建版本。只管理Across服务，不停止其他项目collector。此前双服务修复的构建、进度、报告与剩余缺口见[修复验收](../research/2026-10-03-across-repair/validation.md)，其运行快照先于本次范围收窄。
+`report` 必须显式使用与实时服务一致的 MySQL backend、只读连接配置和证据目录；普通 shell 不会继承 unit 环境，直接沿用旧命令可能查询 ClickHouse。当前完整历史查询仍受迁移完整性检查约束。
+
+升级时先构建候选版本并测试，再停止 Across 实时 unit、确认历史 unit 保持停止，保存旧 binary 和 unit；核对实际 `ExecStart` 后原子替换对应 binary、复制 unit、保留现有 drop-in 并 daemon-reload，只启动实时 unit。历史 unit 保持 disabled，除非用户重新要求历史回补。部署后以 `systemctl show ... -p MainPID` 取得实时 PID，对磁盘和 `/proc/PID/exe` 做 sha256sum，验证没有 deleted 旧映像；本地状态恢复后启动日志含构建版本，还须核验新批次实际入库。只管理 Across 服务，不停止其他项目 collector。本次网络恢复版本的构建、备份与验证见[修复记录](../research/2026-10-24-across-network-recovery/report.md)；此前双服务修复见[旧验收](../research/2026-10-03-across-repair/validation.md)，其运行快照先于范围收窄。
 
 健康检查使用[Across只读SQL](across-data-health.sql)：每链最近capture时间、fixed窗口raw/decoded union、finalized待核验量、最终性晋级新增revision、费用完整性去重和probe准时/取消要分开。原始coverage推进不能替代完整事实；pending积压要测趋势。成功返回finalized头不等于整尾已核验；只认实际存储的已证明revision。report performance明确SQL和归档耗时，finality策略明确包括head，不把报告存在当作盈利成立。
 
@@ -458,6 +497,8 @@ var/across/bin/across-data report --out var/across/reports/live-latest
 备份和恢复须同时保留每库七表、相应完整evidence目录、manifest及其引用的verified实现文件。恢复前停止对应unit并验证成员/归档摘要，不删除源错误证据或重写旧capture。启动时旧partial/费用unknown安排新capture尝试补齐；暂缺历史状态/未知实现仍保持unknown，换RPC应由用户配置并重新验证，不能静默回退到latest。当前无需私钥或真实账户凭据。
 
 ## LST 独立研究采集（2026-10-02 UTC）
+
+**当前状态（2026-10-19）：已结束实验并停止采集，disabled，Ubuntu 重启不自启。** 当前两条路线的 9,367 条 finalized 可用报价没有正链上毛利，继续原样采集无新增研究必要。报价、日志、资金费、后续询价和维护请求随专属进程一起停止，保留数据库和恢复状态。下面启动/健康检查为历史记录和将来经明确决定恢复时的技术参考，不是要求服务保持 active。[停用记录](../research/2026-10-19-lst-retirement/report.md)。
 
 **当前恢复验收（2026-10-05 11:22 北京时间）：** 已部署mvp11，active/running、enabled、NRestarts0。机器10:42重启后LST自动启动，但日志积压且游标曾领先实际DB覆盖8块；本轮人工补1852块，修改恢复为从保留Start重建完整连续前缀，自动补回断口并验证重启后跳过已补大段。Next26123313与DB连续覆盖一致，11:19、11:21两轮四腿ok/fresh/canonical；48个本次boot后批次校验和原文清理通过。旧2296块缺口仍低速补，停机报价不能重建，资金费实际结算已补回。程序SHA256 `77b5545b6ac6d74f5e3b9730b5d5a247ba5b28c75dfb29fdb4f6c4abb2536a59`，原unit/路由/端点/限速不改，不建旧程序备份。见[修复记录](../research/2026-10-05-lst-reboot-check/report.md)。
 

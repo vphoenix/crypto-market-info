@@ -18,6 +18,8 @@ local digest=redis.call('HGET',KEYS[1],'digest')
 if digest and digest~=ARGV[1] then return redis.error_reply('CMI_CONFLICT') end
 local header=redis.call('HGET',KEYS[1],'header')
 if header and header~=ARGV[2] then return redis.error_reply('CMI_CONFLICT') end
+local state=redis.call('HGET',KEYS[1],'state')
+if state and state~='collecting' and state~='sealed' and state~='committed' then return redis.error_reply('CMI_STATE') end
 if not digest then redis.call('HSET',KEYS[1],'digest',ARGV[1],'header',ARGV[2],'state','collecting') end
 return 1`
 

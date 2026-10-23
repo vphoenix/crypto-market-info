@@ -35,26 +35,34 @@ type Config struct {
 	// The minute writer prepares cold publication/fact index pages before fencing.
 	PrefetchMinuteIndexes bool
 	CapitalRuleVersions   bool
+	// QualityStorageV2 writes new minutes to the optional lossless quality tables.
+	// Installed extensions remain readable when this write switch is disabled.
+	QualityStorageV2 bool
+	SourceStorageV2  bool
 	// Family selects an explicit reviewed mapping when Database is an isolated
 	// validation database. Production normally leaves this empty.
 	Family   string
 	Producer Producer
 }
 type Client struct {
-	db                    *sql.DB
-	database              string
-	readOnly              bool
-	family                string
-	producer              Producer
-	writeOnce             sync.Once
-	writeSlot             chan struct{}
-	discoveryEnabled      atomic.Bool
-	queue                 contracts.DurableQueue
-	queueClose            func() error
-	preview               func(contracts.PreviewFrame)
-	metadata              *MetadataCache
-	prefetchMinuteIndexes bool
-	capitalRuleVersions   bool
+	db                      *sql.DB
+	database                string
+	readOnly                bool
+	family                  string
+	producer                Producer
+	writeOnce               sync.Once
+	writeSlot               chan struct{}
+	discoveryEnabled        atomic.Bool
+	queue                   contracts.DurableQueue
+	queueClose              func() error
+	preview                 func(contracts.PreviewFrame)
+	metadata                *MetadataCache
+	prefetchMinuteIndexes   bool
+	capitalRuleVersions     bool
+	qualityStorageV2        bool
+	qualityStorageAvailable bool
+	sourceStorageV2         bool
+	sourceStorageAvailable  bool
 }
 
 func Connect(ctx context.Context, cfg Config) (*sql.DB, error) {
@@ -195,11 +203,35 @@ func Open(ctx context.Context, cfg Config) (*Client, error) {
 		}
 		cfg.SchemaTables = append(append([]string(nil), cfg.SchemaTables...), CapitalVersionTableNames()...)
 	}
+	if cfg.QualityStorageV2 {
+		if family != "crypto_market_info" {
+			return nil, fmt.Errorf("quality storage requires main schema family")
+		}
+		cfg.SchemaTables = append(append([]string(nil), cfg.SchemaTables...), QualityStorageTableNames()...)
+	}
+	if cfg.SourceStorageV2 {
+		if family != "crypto_market_info" {
+			return nil, fmt.Errorf("source storage requires main schema family")
+		}
+		cfg.SchemaTables = append(append([]string(nil), cfg.SchemaTables...), SourceStorageTableNames()...)
+	}
 	db, e := Connect(ctx, cfg)
 	if e != nil {
 		return nil, e
 	}
-	return &Client{db: db, database: cfg.Database, family: cfg.Family, readOnly: cfg.ReadOnly, producer: cfg.Producer, prefetchMinuteIndexes: cfg.PrefetchMinuteIndexes, capitalRuleVersions: cfg.CapitalRuleVersions}, nil
+	c := &Client{db: db, database: cfg.Database, family: cfg.Family, readOnly: cfg.ReadOnly, producer: cfg.Producer, prefetchMinuteIndexes: cfg.PrefetchMinuteIndexes, capitalRuleVersions: cfg.CapitalRuleVersions, qualityStorageV2: cfg.QualityStorageV2}
+	c.sourceStorageV2 = cfg.SourceStorageV2
+	if family == "crypto_market_info" {
+		if e = c.discoverQualityStorage(ctx); e != nil {
+			db.Close()
+			return nil, e
+		}
+		if e = c.discoverSourceStorage(ctx); e != nil {
+			db.Close()
+			return nil, e
+		}
+	}
+	return c, nil
 }
 func (c *Client) Close() error {
 	if c == nil || c.db == nil {

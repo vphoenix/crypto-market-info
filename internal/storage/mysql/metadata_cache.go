@@ -137,6 +137,11 @@ func (c *Client) SetMetadataCache(cache *MetadataCache) { c.metadata = cache }
 func (c *Client) WithProducer(p Producer) *Client {
 	out := &Client{db: c.db, database: c.database, readOnly: c.readOnly, family: c.family, producer: p, metadata: c.metadata}
 	out.prefetchMinuteIndexes = c.prefetchMinuteIndexes
+	out.capitalRuleVersions = c.capitalRuleVersions
+	out.qualityStorageV2 = c.qualityStorageV2
+	out.qualityStorageAvailable = c.qualityStorageAvailable
+	out.sourceStorageV2 = c.sourceStorageV2
+	out.sourceStorageAvailable = c.sourceStorageAvailable
 	out.discoveryEnabled.Store(c.discoveryEnabled.Load())
 	return out
 }

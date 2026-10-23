@@ -18,8 +18,24 @@ func ExtendPartitions(ctx context.Context, db *sql.DB, family, target string, th
 	if e != nil {
 		return e
 	}
+	tables := append([]Table(nil), catalog.Tables...)
+	if family == "crypto_market_info" {
+		for _, name := range QualityStorageTableNames() {
+			var installed int
+			if e = db.QueryRowContext(ctx, "SELECT COUNT(*) FROM cmi_storage.schema_version WHERE database_name=? AND table_name=?", target, name).Scan(&installed); e != nil {
+				return e
+			}
+			if installed != 0 {
+				table, err := Mapping(family, name)
+				if err != nil {
+					return err
+				}
+				tables = append(tables, table)
+			}
+		}
+	}
 	selected := 0
-	for _, t := range catalog.Tables {
+	for _, t := range tables {
 		if t.Database != family || !strings.Contains(t.DDL, "PARTITION BY RANGE COLUMNS") {
 			continue
 		}

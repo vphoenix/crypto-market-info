@@ -15,7 +15,7 @@ func optionCompactFields(table string) []compactField {
 	rle := func(name, typ string) compactField { return compactField{name, typ, "rle"} }
 	var fields []compactField
 	switch table {
-	case "derivative_book_quality_minute":
+	case "derivative_book_quality_minute", qualityMinuteV2:
 		fields = []compactField{hexField("batch_id"), hexField("row_hash")}
 		for _, name := range []string{"source_times", "received_times", "captured_times", "last_snapshot_times", "connection_confirmed_times", "rule_published_times", "market_state_times"} {
 			fields = append(fields, compactField{name, "Array(Nullable(DateTime64(6, 'UTC')))", "time"})

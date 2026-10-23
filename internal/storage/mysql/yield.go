@@ -6,8 +6,10 @@ import (
 	"fmt"
 	"math"
 	"reflect"
+	"time"
 
 	"github.com/vphoenix/crypto-market-info/internal/storage/codec"
+	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 	marketyield "github.com/vphoenix/crypto-market-info/internal/yield"
 )
 
@@ -121,13 +123,116 @@ func (c *Client) WriteYieldBatch(ctx context.Context, b marketyield.Batch) error
 				}
 			}
 			byIdentity[route.Identity()] = route
-			if e = c.putValues(ctx, tx, "yield_observation", yieldObservationColumns, observationValues(route.ID, item.Observation)); e != nil {
+			if e = c.writeYieldObservation(ctx, tx, route.ID, item.Observation); e != nil {
 				return e
 			}
 		}
 		_, e = tx.ExecContext(ctx, "UPDATE cmi_storage.identity_allocator SET next_id=? WHERE database_name=? AND kind='yield'", next, c.database)
 		return e
 	})
+}
+
+// Source history endpoints return overlapping observation times on each poll.
+// collected_at orders refreshed observations; a delivery retry keeps that time
+// fixed. A stale retry never replaces a newer observation, and equal versions
+// still require an exact full-row match.
+func (c *Client) writeYieldObservation(ctx context.Context, tx *sql.Tx, id uint32, o marketyield.YieldObservation) error {
+	t, err := c.mapping("yield_observation")
+	if err != nil {
+		return err
+	}
+	r, err := namedRecord(yieldObservationColumns, observationValues(id, o))
+	if err != nil {
+		return err
+	}
+	hash, err := rowHash(t, r)
+	if err != nil {
+		return err
+	}
+	where, args, err := rowPredicate(t, r)
+	if err != nil {
+		return err
+	}
+	old, err := readRecords(ctx, tx, c.table(t.Name), t, "WHERE "+where+" FOR UPDATE", args...)
+	if err != nil {
+		return err
+	}
+	if len(old) > 1 {
+		return contracts.ErrConflict
+	}
+	if len(old) == 1 {
+		previous := old[0]
+		version := previous["collected_at"].(time.Time)
+		if o.CollectedAt.Before(version) {
+			return nil
+		}
+		if o.CollectedAt.Equal(version) {
+			priorHash, e := rowHash(t, previous)
+			if e != nil {
+				return e
+			}
+			if hash != priorHash {
+				return contracts.ErrConflict
+			}
+			return nil
+		}
+		// A refresh cannot change a known chain anchor or downgrade finality.
+		for _, name := range []string{"block_height", "block_hash"} {
+			if previous[name] != nil {
+				var column *codec.Type
+				for _, col := range t.Columns {
+					if col.Name == name {
+						column = col.Type
+						break
+					}
+				}
+				a, e := codec.Encode(column, previous[name])
+				if e != nil {
+					return e
+				}
+				b, e := codec.Encode(column, r[name])
+				if e != nil {
+					return e
+				}
+				if string(a) != string(b) {
+					return contracts.ErrConflict
+				}
+			}
+		}
+		finalityRank := func(v any) int {
+			if v == nil {
+				return 0
+			}
+			var s string
+			switch x := v.(type) {
+			case string:
+				s = x
+			case *string:
+				if x == nil {
+					return 0
+				}
+				s = *x
+			default:
+				return -1
+			}
+			switch s {
+			case "finalized", "finalized_anchor":
+				return 3
+			case "safe":
+				return 2
+			case "unfinalized":
+				return 1
+			}
+			return -1
+		}
+		if finalityRank(r["finality"]) < finalityRank(previous["finality"]) {
+			return contracts.ErrConflict
+		}
+		if _, err = tx.ExecContext(ctx, "DELETE FROM "+c.table(t.Name)+" WHERE "+where, args...); err != nil {
+			return err
+		}
+	}
+	return insertRecord(ctx, tx, c.table(t.Name), t, r)
 }
 
 var _ marketyield.Sink = (*Client)(nil)

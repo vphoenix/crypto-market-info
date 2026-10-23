@@ -75,7 +75,7 @@ func (c *Collector) originalRuntimeCursors() (map[uint64]logProgress, error) {
 			return nil, runtimecheckpoint.ErrRecovery
 		}
 		if p.RangeSize == 0 {
-			p.RangeSize = c.liveLogBlocks()
+			p.RangeSize = c.initialLogBlocks()
 		}
 		p.RangeSize = min(p.RangeSize, c.liveLogBlocks())
 		result[segment] = p

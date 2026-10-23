@@ -214,7 +214,7 @@ JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer�
 ## 文档
 
 - [Ethereum DEX 采集与判断](docs/dex-arbitrage-implementation.md)：五表、固定路线、只读报告及成本情景。
-- [Reserve 拍卖与篮子申赎](docs/reserve-data-implementation.md)：DFX 六成分、三档金额、五表、查询和回补边界。
+- [Reserve 拍卖与篮子申赎](docs/reserve-data-implementation.md)：当前DFX试验已于2026-10-19停止并取消开机自启；保留历史数据、查询及实现说明。
 - [Across 稳定币中继](docs/across-stablecoin-data-implementation.md)：Base／Arbitrum USDC、七表、实时 probe 与独立历史回补。
 - [JustLend keeper](docs/justlend-keeper-data-implementation.md)：TRON 租赁清理事件、收据、只读模拟与资源成本。
 - [LST 采集运行说明](docs/lst-redemption-data-implementation.md)：独立七表、常驻服务、限速、断线恢复、健康查询与当前来源限制。

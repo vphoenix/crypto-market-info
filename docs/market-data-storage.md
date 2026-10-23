@@ -1,5 +1,11 @@
 # 市场数据存储数据字典
 
+2026-10-19 MySQL 增加来源登记追加布局扩展：`source_publication_intents_v2`、`source_batch_status_v2`、`public_observation_provenance_v2` 保留对应旧表的全部逻辑字段、键哈希、来源证明和物理重复语义。以内部 `BIGINT UNSIGNED AUTO_INCREMENT` 的 `_storage_id` 作聚簇主键，原 `_key_hash`（前两表还包括 `_occurrence`）成为唯一身份索引；原业务查询索引保留。内部序号不属于业务身份、原始内容或迁移摘要。新记录集中追加，随机访问主要落到较小的身份索引；新索引的空间/写入成本计入对照，不承诺总存储空间下降。事务核验同时读取新旧身份与内容，来源意图的首次知晓时间、事实/来源/发布状态的原子提交不变。查询在同一语句快照中合并两种格式并保持原排序、LIMIT 和重复行检测。安装完整扩展后，新版客户端自动兼容读取；写开关 `MYSQL_SOURCE_STORAGE_V2` / `--source-storage-v2` 默认关闭。旧表与冻结迁移清单不重写，回退写入须保留新版读取能力。[布局、实测与上线记录](redis-mysql-migration/io-spike-fix-20261019.md)。
+
+2026-10-19 MySQL 增加可选质量存储扩展，安装与上线状态见[实施记录](redis-mysql-migration/quality-storage-implementation-20261019.md)。`derivative_book_quality_minute_v2` 保留旧表全部物理字段及 RLE 编码，主键改为 `(minute_time,instrument_id,compact_batch_id)`，另以窄索引支持 `(instrument_id,minute_time)`。目录证据按八组原定类型 RLE 字段拆成 `options_catalog_quality_profile_minute` 和 `options_catalog_quality_member_minute`：profile 主键 `(minute_time,profile_hash)`，成员主键 `(minute_time,run_id,instrument_id,compact_batch_id)`，并保留原 evidence row hash。profile hash 覆盖版本、UTC 分钟及带长度边界的字段编码；NULL、微秒、证据 UUID 和连接代次均不归并。三表保持 8 KiB 页压缩和月分区，属于独立运行时扩展，不改变冻结的 125 表迁移映射、原交付 codec 或批次哈希。profile、成员、原分钟提交声明与 ingest_batch 同事务提交。读取合并新旧格式并拒绝重复成员、缺失 profile 或摘要不符；关闭新写入开关仍读取新格式，启用新格式后不能回退到不识别新表的旧二进制。新结构只保存切换后的新分钟，不重写历史。
+
+2026-10-16 spool 增加 `CMIS 02` 无损压缩信封，保留 v1 读取、原交付身份和逻辑 codec；调度内存预算按解压后长度核算。Redis 可凭 MySQL 完整提交身份回收 collecting 残留，父批次状态检查防止迟到成员重建。事实表、盘口/质量位图及历史编码保持。格式、测试和回退限制见[降写入实施记录](redis-mysql-migration/io-reduction-20261016.md)。
+
 2026-10-15 新增本地运行状态编码的实现说明见[运行状态工具与恢复协议](redis-mysql-migration/runtime-state-operations.md)。这是待部署的状态/恢复格式，不新增 MySQL 事实表，也不改变现有盘口编码、数据完整性或历史迁移状态；实施与验证进度见[记录](../research/2026-10-15-runtime-state-improvement/report.md)。
 
 本数据字典定义当前阶段的六个市场与收益核心表：交易标的表 `instrument`、分钟完整盘口表 `order_book_minute`、分钟内秒级差量表 `order_book_second_delta`、整点资金费率表 `funding_rate_hourly`、收益路线表 `yield_route` 和收益观测表 `yield_observation`；另定义三个永续共有交易对元数据表 `instrument_canonical_mapping`、`perpetual_universe_run` 和 `perpetual_universe_member`。
@@ -209,6 +215,10 @@ length(ask_change_prices) = length(ask_change_qtys)
 两表为一对多关系：`yield_route` 保存收益产品及资产路径的稳定定义，`yield_observation` 通过 `yield_route_id` 保存该路线在某个 UTC 时刻、某个额度档位的完整收益快照。路线主键为 `yield_route_id`；观测逻辑键为 `(yield_route_id, observation_time, tier_no)`，并按 `observation_time` 的月份分区。
 
 收益数据量较低，每次有效采集直接保存完整快照，不使用盘口的分钟锚点和秒级差量编码。时间统一使用 UTC，利率、金额、费用、额度和兑换比例均使用 `Decimal`，不得经过二进制浮点数。
+
+收益批次先验证来源值的符号、范围和语义，再用十进制运算向零截断到 `Decimal(38,18)` 的 18 位小数，之后再次验证；不允许借截断隐藏负利率、超出 100% 的费用，或把必须为正的兑换比例截成零。整数部分必须小于 `10^20`；`pool_cash` 仍要求来源值原本就能精确表示为 18 位小数。来源 payload hash 保留原始响应的证据身份，未知值保持 NULL。底层通用 codec 仍拒绝未标准化的超精度值。
+
+MySQL 实时收益写入以 `collected_at`（UTC 毫秒）作为同一观测逻辑键的刷新版本：较新的采集可更新来源修订值与摘要；较旧批次重试不覆盖新值；相同版本必须整行一致，否则整批回滚。已有区块高度或哈希不得改变或丢失，最终性只能保持或提升。路线分配、观测刷新与整批提交仍在同一事务中，不改变表结构或主键。历史迁移的通用不可变行冲突检查保持，恢复迁移时仍须显式处理与实时刷新重叠的历史行，不能自动覆盖新数据。
 
 收益路线和观测独立于盘口及资金费率表：收益率中不合并永续资金费率，也不重复保存做空市场深度。`unbonding_seconds` 为 `Nullable(UInt64)`：`0` 表示明确没有制度性等待，正整数表示协议规定的固定等待秒数，`NULL` 表示等待信息未知或无法预先确定固定秒数；该字段不保证流动性充足或实际即时到账。完整字段字典和筛选语义见 [ARB-0016 收益数据采集设计](arbitrage/strategies/arb-0016-yield-data.md)；TRX 的 JustLend 与原生质押采集、区块锚点和写入规则见 [ARB-0016 TRX 收益采集实现设计](arbitrage/strategies/arb-0016-trx-yield-implementation.md)；SOL 第一阶段的 bSOL、JitoSOL、mSOL、验证者白名单和 Marinade Native 见 [ARB-0016 SOL 收益采集第一阶段实现设计](arbitrage/strategies/arb-0016-sol-yield-phase-1.md)。
 
@@ -430,7 +440,7 @@ R5复用整数价量事实（期权10档、交割期货默认5档）和固定成
 
 用户放弃的历史解码补采用capture新revision追加reason标记`repair_abandoned=user_requested_historical_state_unavailable`。自动partial补采跳过该标记；status仍为partial，已存事实、成员摘要、链锚点和最终性均保留。放弃修补不增加完整解码覆盖，也不代表该区间没有交易。
 
-2026-10-10 文件系统损坏后，对全量核验明确证明成员丢失或原始紧凑证据丢失的四个capture执行了人工存储完整性撤回：追加更高revision，仅将`committed`设为false并记录`storage_integrity_loss`原因，保留原始source status、canonical/finality、身份、来源时间、链锚点、成员数量和哈希；事实行不删除、不改写。查询和恢复先选最新revision，再筛committed，不能把旧成功版本重新计入完整覆盖。此操作属于有前后字段核验记录的故障维护例外，普通`WriteAcrossRevision`和冻结重试规则仍禁止变更committed或成员。对应区间重新请求来源，使用新的capture ID、实际采集时间和证据；不得重造旧payload或沿用旧时间。具体四个记录及核验见[存储撤回审计](../research/2026-10-10-reboot-check/across-storage-withdrawal.json)。
+2026-10-10 文件系统损坏后，对全量核验明确证明成员丢失或原始紧凑证据丢失的四个capture执行了人工存储完整性撤回：追加更高revision，仅将`committed`设为false并记录`storage_integrity_loss`原因，保留原始source status、canonical/finality、身份、来源时间、链锚点、成员数量和哈希；事实行不删除、不改写。查询和恢复先选最新revision，再筛committed，不能把旧成功版本重新计入完整覆盖。此操作属于有前后字段核验记录的故障维护例外，普通`WriteAcrossRevision`和冻结重试规则仍禁止变更committed或成员。对应区间重新请求来源，使用新的capture ID、实际采集时间和证据；不得重造旧payload或沿用旧时间。具体四个记录及核验见[存储撤回审计](../research/2026-10-10-reboot-check/across-storage-withdrawal.json)。运行状态转换将这些已撤回登记完整保留在 `WithdrawnDeclarations` 中，继续排除其有效覆盖；普通未决提交或新的事实损坏仍需单独恢复，不能套用此分类放行。
 
 `across_receipt_transfers`每份收据保存一行原生USDC Transfer全集：交易/区块锚点、token、收据成功状态、来源hash、UTC可用时间，以及等长的log_indices/senders/recipients/amounts_raw数组。index严格递增且唯一，金额为UInt256。成功解析但无Transfer保存空数组，缺少这行表示尚未获得全集，不能当成零笔。正常收据capture先写收据及Transfer事实，最后提交capture。新成员表编号7；原六组成员编码及旧数据摘要不变。查询核验最新revision、canonical/committed、精确计数及摘要。
 

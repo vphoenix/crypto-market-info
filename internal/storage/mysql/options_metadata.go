@@ -38,6 +38,9 @@ func scanRecord(r record, cols string, dest ...any) error {
 	return nil
 }
 func (c *Client) records(ctx context.Context, q executor, name, where string, args ...any) ([]record, error) {
+	if c.sourceStorageAvailable && sourceStorageTable(name) {
+		return c.sourceRecords(ctx, q, name, where, args...)
+	}
 	t, e := c.mapping(name)
 	if e != nil {
 		return nil, e

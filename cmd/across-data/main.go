@@ -287,6 +287,7 @@ func run(ctx context.Context, args []string) (result error) {
 		rpc.BeforeRequest = quota.Before
 		rpc.AfterRequest = quota.After
 		rpc.AuditFailures = true
+		rpc.Diagnostic = logRPCFailure
 		r := across.NewReader(rpc, ch)
 		r.SourceQuota, r.BatchLimit, r.MaxLogs, r.RPCMinInterval = quota, *quotaBurst, m.MaxLogs, *rpcMinInterval
 		return r, nil
@@ -423,12 +424,22 @@ func commandExitCode(ctx context.Context, err error) int {
 		return 0
 	}
 	if strings.Contains(err.Error(), "network_issue_stop") {
-		return 2
+		// Preserve a legacy network error even during signal cancellation,
+		// but report an ordinary failure so supervisors may restart it.
+		return 1
 	}
 	if ctx.Err() != nil && errors.Is(err, context.Canceled) {
 		return 0
 	}
 	return 1
+}
+
+// Hash-only RPC evidence cannot be reread for diagnostics. Keep the already
+// sanitized failure class in operational logs without request URLs or payloads.
+func logRPCFailure(d ethereum.RPCDiagnostic) {
+	if d.Failure != "" && d.ErrorClass != "" {
+		log.Printf("rpc_failure source=%s class=%s failure=%s", d.Source, d.ErrorClass, d.Failure)
+	}
 }
 
 func storageConfig(ch clickhouse.Config, readOnly bool) backend.Config {

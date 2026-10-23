@@ -610,6 +610,15 @@ func Run(ctx context.Context, cfg Config, logger *slog.Logger) error {
 				workers.Add(1)
 				go func() {
 					defer workers.Done()
+					collectCtx, collectCancel := context.WithTimeout(runCtx, 2*time.Second)
+					n, collectErr := buffer.CleanupCommittedCollecting(collectCtx, cfg.Databases[0], time.Now().UTC(), read.Committed)
+					collectCancel()
+					if n > 0 {
+						logger.Info("committed Redis partial copies retired", "batches", n)
+					}
+					if collectErr != nil {
+						logger.Warn("Redis partial copy cleanup deferred", "error", collectErr)
+					}
 					c, cancel := context.WithTimeout(runCtx, 5*time.Second)
 					defer cancel()
 					e := buffer.Cleanup(c, cfg.Databases[0], time.Now().UTC(), 100)

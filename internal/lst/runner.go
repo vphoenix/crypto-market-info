@@ -272,7 +272,7 @@ func (c *Collector) logProgress(ctx context.Context) (logProgress, error) {
 		return p, errors.New("live_cursor_start_mismatch")
 	}
 	if p.RangeSize == 0 {
-		p.RangeSize = c.liveLogBlocks()
+		p.RangeSize = c.initialLogBlocks()
 	}
 	p.RangeSize = min(p.RangeSize, c.liveLogBlocks())
 	caps, e := c.Store.LSTCaptures(ctx, c.Manifest.Hash)
@@ -315,7 +315,7 @@ func (c *Collector) logProgress(ctx context.Context) (logProgress, error) {
 		if e != nil {
 			return p, e
 		}
-		p = logProgress{Manifest: c.Manifest.Hash, Start: head.Number, Next: head.Number, RangeSize: c.liveLogBlocks(), CoverageStartedAt: head.Time}
+		p = logProgress{Manifest: c.Manifest.Hash, Start: head.Number, Next: head.Number, RangeSize: c.initialLogBlocks(), CoverageStartedAt: head.Time}
 	}
 	if e = writeGob(file, p); e != nil {
 		return p, e
@@ -1003,7 +1003,7 @@ func (c *Collector) Backfill(ctx context.Context, days, maxRanges int, progress 
 	}
 	recoverHistorical(&p, caps)
 	if p.RangeSize == 0 {
-		p.RangeSize = c.liveLogBlocks()
+		p.RangeSize = c.initialLogBlocks()
 	}
 	if e = writeGob(file, p); e != nil {
 		return e

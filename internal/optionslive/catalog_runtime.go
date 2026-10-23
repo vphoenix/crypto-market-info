@@ -1742,11 +1742,18 @@ func (s *catalogSupervisor) markScopeUnknown(scope deribit.Scope) {
 	s.uncertainScopes[scope.String()] = true
 	for id, w := range s.byID {
 		for _, spec := range w.specs {
+			// byID already visits every owned member. Only inspect that
+			// member's scope; broadcasting once for every spec in its shard
+			// turns a 32-member invalidation into 1,024 queued events.
+			if spec.Instrument.ID != id {
+				continue
+			}
 			own, _ := symbolScope(spec.Instrument.ExchangeSymbol)
 			if scope.Currency == "" || own == scope {
 				state := catalogState{InstrumentID: id}
 				_ = w.q.offer(event{State: &state})
 			}
+			break
 		}
 	}
 }

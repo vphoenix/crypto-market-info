@@ -10,7 +10,6 @@ Environment=ACROSS_BASE_RPC_URL=https://base-rpc.publicnode.com
 Environment=ACROSS_BASE_RECEIPT_RPC_URL=https://mainnet.base.org
 ExecStart=%h/crypto-market-info/var/across/bin/across-data watch --database crypto_market_info_across --evidence var/across/evidence
 Restart=on-failure
-RestartPreventExitStatus=2
 RestartSec=15
 KillSignal=SIGTERM
 TimeoutStopSec=30

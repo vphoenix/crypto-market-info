@@ -39,6 +39,9 @@ func (c *Client) prefetchCEXPublications(ctx context.Context, publications []pub
 // Prefetch only bounded covering keys. It never returns absence/content proofs;
 // the caller's final transaction must still inspect every physical occurrence.
 func (c *Client) prefetchImmutableKeys(ctx context.Context, table Table, input []record) error {
+	if c.sourceStorageAvailable && sourceStorageTable(table.Name) {
+		return c.prefetchSourceIdentities(ctx, table, input)
+	}
 	if !table.HashedKey || len(input) == 0 {
 		return nil
 	}

@@ -37,6 +37,8 @@ func run() error {
 	preparers := flag.Int("preparers", 2, "bounded preparation workers, 1 or 2")
 	prepareBytes := flag.Int64("prepare-bytes", 64<<20, "decoded preparation byte budget")
 	cacheBytes := flag.Int64("cache-bytes", 32<<20, "immutable metadata byte budget")
+	sourceV2 := flag.Bool("source-storage-v2", false, "write administratively installed append-layout source registry tables")
+	qualityV2 := flag.Bool("quality-storage-v2", false, "write administratively installed minute quality/profile tables")
 	logFile := flag.String("log-file", "", "optional private bounded JSON log (64 MiB plus one rotated file)")
 	archiveDir := flag.String("archive-dir", "", "optional bounded .batch fixture capture directory")
 	archiveFrom := flag.String("archive-from", "", "inclusive fixture UTC minute RFC3339")
@@ -66,7 +68,7 @@ func run() error {
 		output = file
 	}
 	logger := slog.New(slog.NewJSONHandler(output, nil))
-	err := writer.Run(ctx, writer.Config{MySQL: mysql.Config{Socket: *socket, Username: *user, PasswordFile: *password, MaxConnections: 2}, Redis: redisbuffer.Config{Socket: *redisSocket, Prefix: *prefix, WaitTimeout: 2 * time.Second}, Spool: *dir, Databases: strings.Split(*databases, ","), Workers: *workers, Preparers: *preparers, PrepareBytes: *prepareBytes, CacheBytes: *cacheBytes, Once: *once, ArchiveDir: *archiveDir, ArchiveFrom: from, ArchiveTo: to}, logger)
+	err := writer.Run(ctx, writer.Config{MySQL: mysql.Config{Socket: *socket, Username: *user, PasswordFile: *password, MaxConnections: 2, QualityStorageV2: *qualityV2, SourceStorageV2: *sourceV2}, Redis: redisbuffer.Config{Socket: *redisSocket, Prefix: *prefix, WaitTimeout: 2 * time.Second}, Spool: *dir, Databases: strings.Split(*databases, ","), Workers: *workers, Preparers: *preparers, PrepareBytes: *prepareBytes, CacheBytes: *cacheBytes, Once: *once, ArchiveDir: *archiveDir, ArchiveFrom: from, ArchiveTo: to}, logger)
 	// Only cancellation of the signal context is an intentional shutdown.
 	// A cancelled internal request must remain a failure so systemd can retry.
 	if ctx.Err() != nil && errors.Is(err, context.Canceled) {

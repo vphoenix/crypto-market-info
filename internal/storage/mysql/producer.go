@@ -59,6 +59,10 @@ func ActivateProducer(ctx context.Context, db *sql.DB, service string, expected 
 	return generation, nil
 }
 func (c *Client) fence(ctx context.Context, tx *sql.Tx) error {
+	return c.fenceLock(ctx, tx, false)
+}
+
+func (c *Client) fenceLock(ctx context.Context, tx *sql.Tx, shared bool) error {
 	p := c.producer
 	if p.Service == "" || p.Generation == 0 || p.Holder == uuid.Nil {
 		return fmt.Errorf("writer requires an explicitly activated producer")
@@ -68,7 +72,11 @@ func (c *Client) fence(ctx context.Context, tx *sql.Tx) error {
 	// on producer_generation. Independent services lock independent rows.
 	var gen uint64
 	var holder []byte
-	if e := tx.QueryRowContext(ctx, "SELECT generation,holder FROM cmi_storage.producer_generation WHERE service=? FOR UPDATE", p.Service).Scan(&gen, &holder); e != nil {
+	lock := " FOR UPDATE"
+	if shared {
+		lock = " FOR SHARE"
+	}
+	if e := tx.QueryRowContext(ctx, "SELECT generation,holder FROM cmi_storage.producer_generation WHERE service=?"+lock, p.Service).Scan(&gen, &holder); e != nil {
 		return e
 	}
 	if gen != p.Generation || !bytes.Equal(holder, p.Holder[:]) {
@@ -78,6 +86,18 @@ func (c *Client) fence(ctx context.Context, tx *sql.Tx) error {
 }
 func (c *Client) transaction(ctx context.Context, fn func(*sql.Tx) error) (err error) {
 	caller, _, _, _ := runtime.Caller(1)
+	return c.transactionWithFence(ctx, fn, false, caller)
+}
+
+// Immutable rules do not modify the minute publication state. A shared fence
+// pins their generation through the entire atomic batch without stopping minute
+// commits. Producer activation still takes the exclusive generation lock.
+func (c *Client) tradingRuleTransaction(ctx context.Context, fn func(*sql.Tx) error) error {
+	caller, _, _, _ := runtime.Caller(1)
+	return c.transactionWithFence(ctx, fn, true, caller)
+}
+
+func (c *Client) transactionWithFence(ctx context.Context, fn func(*sql.Tx) error, shared bool, caller uintptr) (err error) {
 	var lockTime, bodyTime, commitTime time.Duration
 	defer func() {
 		name := "unknown"
@@ -110,7 +130,7 @@ func (c *Client) transaction(ctx context.Context, fn func(*sql.Tx) error) (err e
 	}
 	defer tx.Rollback()
 	started := time.Now()
-	e = c.fence(ctx, tx)
+	e = c.fenceLock(ctx, tx, shared)
 	lockTime = time.Since(started)
 	if e != nil {
 		return e

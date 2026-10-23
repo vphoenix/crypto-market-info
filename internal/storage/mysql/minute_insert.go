@@ -20,7 +20,7 @@ func insertNewMinuteFacts(ctx context.Context, table Table) bool {
 	switch table.Name {
 	case "order_book_minute", "order_book_second_delta",
 		"derivative_book_minute", "derivative_book_second_delta",
-		"derivative_book_quality_minute", "options_catalog_quality_evidence_minute":
+		"derivative_book_quality_minute", "options_catalog_quality_evidence_minute", qualityMinuteV2, qualityMember:
 		return true
 	}
 	return false

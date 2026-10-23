@@ -76,7 +76,7 @@ func TestMVP9ExplicitCursorRestartsAndRecoversOnlyContinuousNewCoverage(t *testi
 	add(108, 120, "complete", true, true, "head")
 	c := Collector{Manifest: m, RPC: &RPC{Transport: tr, URL: "https://primary.example"}, Store: store, StateDir: t.TempDir(), LiveLogsFromBlock: 100, LogMode: "range"}
 	oldFile, oldBytes := mvp9OldCursor(t, &c)
-	if c.liveLogBlocks() != 8 || c.logInterval() != time.Minute || c.liveLogCursorPath() == oldFile {
+	if c.liveLogBlocks() != 32 || c.logInterval() != time.Minute || c.liveLogCursorPath() == oldFile {
 		t.Fatal("new segment inherited old range schedule or cursor")
 	}
 	first, e := c.logProgress(context.Background())

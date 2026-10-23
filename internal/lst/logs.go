@@ -42,10 +42,24 @@ func (c *Collector) logSourceIdentity() string {
 }
 
 func (c *Collector) liveLogBlocks() uint64 {
-	if c.LogMode == "receipts" || c.LiveLogsFromBlock != 0 {
+	if c.LogMode == "receipts" {
 		return min(uint64(8), c.Manifest.MaxLogBlocks)
 	}
+	if c.LiveLogsFromBlock != 0 {
+		// Range RPC fetches a contiguous interval in one request. Keeping its
+		// cap at the receipts mode's eight blocks barely outpaced new blocks,
+		// leaving a restart gap for many hours. Existing cursors grow by one
+		// after success and still shrink on range/budget failures.
+		return min(uint64(32), c.Manifest.MaxLogBlocks)
+	}
 	return c.Manifest.MaxLogBlocks
+}
+
+func (c *Collector) initialLogBlocks() uint64 {
+	if c.LiveLogsFromBlock != 0 {
+		return min(uint64(8), c.liveLogBlocks())
+	}
+	return c.liveLogBlocks()
 }
 
 func (c *Collector) logInterval() time.Duration {

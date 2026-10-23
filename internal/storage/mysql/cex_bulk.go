@@ -115,7 +115,7 @@ func (c *Client) publicationRows(ctx context.Context, tx *sql.Tx, name string, p
 		where = "WHERE " + strings.Join(predicates, " OR ") + " ORDER BY source_kind,source_id,`_occurrence` FOR UPDATE"
 	}
 	started := time.Now()
-	rows, e := readRecords(ctx, tx, c.table(name), t, where, args...)
+	rows, e := c.sourceLockedRows(ctx, tx, name, where, args...)
 	if trace := bulkTrace(ctx, name); trace != nil {
 		trace.ReadMS += float64(time.Since(started)) / float64(time.Millisecond)
 	}
@@ -182,8 +182,7 @@ func (c *Client) publishCEXMinutes(ctx context.Context, tx *sql.Tx, b model.Comp
 			missing = append(missing, r)
 		}
 	}
-	intentTable, _ := c.mapping("source_publication_intents")
-	if e = insertAbsentImmutableRows(ctx, tx, c.table(intentTable.Name), intentTable, missing); e != nil {
+	if e = c.insertSourceRows(ctx, tx, "source_publication_intents", missing); e != nil {
 		return e
 	}
 	minuteRows := []record{}
@@ -229,6 +228,5 @@ func (c *Client) publishCEXMinutes(ctx context.Context, tx *sql.Tx, b model.Comp
 		}
 		statusRows = append(statusRows, r)
 	}
-	statusTable, _ := c.mapping("source_batch_status")
-	return insertAbsentImmutableRows(ctx, tx, c.table(statusTable.Name), statusTable, statusRows)
+	return c.insertSourceRows(ctx, tx, "source_batch_status", statusRows)
 }

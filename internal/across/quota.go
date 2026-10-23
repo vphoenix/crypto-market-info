@@ -179,7 +179,7 @@ func (q *SourceQuota) Before(ctx context.Context, members int) error {
 }
 func (q *SourceQuota) After(_ int, err error) {
 	// Local cancellation/queue deadlines do not impose provider backoff.
-	if err != nil && !ethereum.IsRateLimited(err) {
+	if err != nil && !ethereum.IsRateLimited(err) && !ethereum.IsNetworkFailure(err) {
 		return
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
@@ -188,7 +188,7 @@ func (q *SourceQuota) After(_ int, err error) {
 		if err == nil {
 			// A cheap header succeeding just after backoff does not prove that
 			// an expensive log query has recovered. Preserve escalation until
-			// the source has had a full minute without another rate limit.
+			// the source has had a full minute without another rate/network failure.
 			if time.Now().UnixNano() >= s[1]+int64(time.Minute) {
 				s[3] = 0
 			}

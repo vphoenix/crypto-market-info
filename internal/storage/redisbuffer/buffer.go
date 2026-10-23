@@ -11,6 +11,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/google/uuid"
@@ -27,10 +28,12 @@ type Config struct {
 	SoftBytes      int64
 }
 type Buffer struct {
-	client *redis.Client
-	prefix string
-	wait   time.Duration
-	soft   int64
+	client          *redis.Client
+	prefix          string
+	wait            time.Duration
+	soft            int64
+	collectingMu    sync.Mutex
+	collectingPages map[string]*collectingPage
 }
 
 var identity = regexp.MustCompile(`^[a-zA-Z0-9_.:-]{1,160}$`)
@@ -105,11 +108,14 @@ func (b *Buffer) memory(ctx context.Context) (int64, error) {
 }
 
 const memberScript = `
+local state=redis.call('HGET',KEYS[2],'state')
+if state~='collecting' and state~='sealed' and state~='committed' then return redis.error_reply('CMI_STATE') end
+if redis.call('HGET',KEYS[2],'digest')~=ARGV[2] then return redis.error_reply('CMI_CONFLICT') end
 local old=redis.call('HGET',KEYS[1],'digest')
 if old and old~=ARGV[1] then return redis.error_reply('CMI_CONFLICT') end
 if redis.call('TYPE',KEYS[1]).ok~='none' and redis.call('TYPE',KEYS[1]).ok~='hash' then return redis.error_reply('CMI_WRONGTYPE') end
 redis.call('HSET',KEYS[1],'digest',ARGV[1])
-for i=2,#ARGV,2 do redis.call('HSET',KEYS[1],ARGV[i],ARGV[i+1]) end
+for i=3,#ARGV,2 do redis.call('HSET',KEYS[1],ARGV[i],ARGV[i+1]) end
 return 1`
 const sealScript = `
 local kind=redis.call('TYPE',KEYS[1]).ok
@@ -176,6 +182,7 @@ func (b *Buffer) Accept(ctx context.Context, d contracts.Delivery) error {
 	keys := []string{b.batchKey(d.Database, d.ID), b.readyKey(d.Database)}
 	digests := []any{}
 	memberKeys := []string{}
+	pipe := conn.Pipeline()
 	for _, batch := range completed.Batches {
 		key := b.bookKey(d, batch.Minute.InstrumentID)
 		payload, e := codec.EncodeBookDelivery(model.CompletedMinute{MinuteTime: d.Minute, KnownFromMS: completed.KnownFromMS, Batches: []model.MinuteBatch{batch}}, d.Codec)
@@ -195,7 +202,7 @@ func (b *Buffer) Accept(ctx context.Context, d contracts.Delivery) error {
 		}
 		// Every changed second is individually typed, while unchanged/invalid
 		// seconds are represented by the final validity bitmap.
-		args := []any{hex.EncodeToString(hash[:]), "anchor", anchorRaw, "valid", valid}
+		args := []any{hex.EncodeToString(hash[:]), hex.EncodeToString(d.Digest[:]), "anchor", anchorRaw, "valid", valid}
 		for _, delta := range batch.Deltas {
 			raw, e := codec.EncodeDelta(delta)
 			if e != nil {
@@ -203,12 +210,18 @@ func (b *Buffer) Accept(ctx context.Context, d contracts.Delivery) error {
 			}
 			args = append(args, fmt.Sprintf("d:%02d", delta.SecondOffset), raw)
 		}
-		if e = conn.Eval(ctx, memberScript, []string{key}, args...).Err(); e != nil {
-			return conflict(e)
+		pipe.Eval(ctx, memberScript, []string{key, b.batchKey(d.Database, d.ID)}, args...)
+		if pipe.Len() >= 32 {
+			if _, e = pipe.Exec(ctx); e != nil {
+				return conflict(e)
+			}
 		}
 		keys = append(keys, key)
 		memberKeys = append(memberKeys, key)
 		digests = append(digests, hex.EncodeToString(hash[:]))
+	}
+	if _, e = pipe.Exec(ctx); e != nil {
+		return conflict(e)
 	}
 	header, e := codec.Encode(headerType, map[string]any{"database": d.Database, "kind": d.Kind, "id": d.ID, "service": d.Service, "generation": d.Generation, "minute": d.Minute, "digest": d.Digest[:], "members": d.Members, "codec": d.Codec, "keys": memberKeys})
 	if e != nil {

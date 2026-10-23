@@ -16,6 +16,7 @@ import (
 )
 
 type rulePreparedKey struct{}
+type ruleTransactionKey struct{}
 
 func (c *Client) prepareTradingRuleRows(ctx context.Context, rules []options.TradingRule) ([]record, error) {
 	ids := []uint32{}
@@ -166,7 +167,12 @@ func (c *Client) writePreparedTradingRules(ctx context.Context, rules []options.
 				return e
 			}
 		}
-		err = c.transaction(ctx, func(tx *sql.Tx) error {
+		err = c.tradingRuleTransaction(ctx, func(tx *sql.Tx) error {
+			if hook, ok := ctx.Value(ruleTransactionKey{}).(func() error); ok {
+				if e := hook(); e != nil {
+					return e
+				}
+			}
 			return insertAbsentImmutableRows(ctx, tx, c.table(table.Name), table, missing)
 		})
 		var duplicate *mysqlDriver.MySQLError

@@ -2,6 +2,7 @@ package mysql
 
 import (
 	"context"
+	"database/sql"
 	"errors"
 	"fmt"
 	"os"
@@ -13,6 +14,84 @@ import (
 	"github.com/vphoenix/crypto-market-info/internal/options"
 	"github.com/vphoenix/crypto-market-info/internal/storage/contracts"
 )
+
+func TestTradingRuleDoesNotBlockMinuteCommit(t *testing.T) {
+	c := integrationClient(t)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
+	defer cancel()
+	_, envelope := liveDBFixture(t, c)
+	rule, err := c.LoadDerivativeTradingRule(ctx, envelope.Books[0].Quality[0].TradingRuleID)
+	if err != nil {
+		t.Fatal(err)
+	}
+	rule.ObservedAt = rule.ObservedAt.Add(time.Hour)
+	rule.KnownFrom = rule.KnownFrom.Add(time.Hour)
+	rule.EffectiveFrom = rule.EffectiveFrom.Add(time.Hour)
+	at := time.Now().UTC().Truncate(time.Minute).Add(-time.Hour)
+	ds, err := c.PrepareBookDeliveries(ctx, model.CompletedMinute{MinuteTime: at, Batches: []model.MinuteBatch{testBatch(t, 1, at, 5)}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	p, err := c.PrepareDelivery(ctx, ds[0])
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer p.Close()
+	entered, release := make(chan struct{}), make(chan struct{})
+	released := false
+	defer func() {
+		if !released {
+			close(release)
+		}
+	}()
+	blocked := context.WithValue(ctx, ruleTransactionKey{}, func() error {
+		close(entered)
+		select {
+		case <-release:
+			return nil
+		case <-ctx.Done():
+			return ctx.Err()
+		}
+	})
+	done := make(chan error, 1)
+	go func() { done <- c.WriteDerivativeTradingRules(blocked, []options.TradingRule{rule}) }()
+	select {
+	case <-entered:
+	case err := <-done:
+		t.Fatal("rule write failed before transaction", err)
+	case <-ctx.Done():
+		t.Fatal("rules never acquired generation")
+	}
+	// A real minute publication must complete while the rule transaction is open.
+	minuteCtx, stop := context.WithTimeout(ctx, 3*time.Second)
+	err = c.WithProducer(c.producer).CommitPrepared(minuteCtx, p)
+	stop()
+	if err != nil {
+		t.Fatal("rule refresh blocked minute commit", err)
+	}
+	if ok, e := c.Committed(ctx, ds[0]); e != nil || !ok {
+		t.Fatal("minute not durably published", ok, e)
+	}
+	// The same shared generation protection must still prevent activation.
+	probe, err := c.db.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelReadCommitted})
+	if err != nil {
+		t.Fatal(err)
+	}
+	var generation uint64
+	err = probe.QueryRowContext(ctx, "SELECT generation FROM cmi_storage.producer_generation WHERE service=? FOR UPDATE NOWAIT", c.producer.Service).Scan(&generation)
+	probe.Rollback()
+	if err == nil {
+		t.Fatal("producer activation was not fenced by open rule batch")
+	}
+	close(release)
+	released = true
+	if err = <-done; err != nil {
+		t.Fatal(err)
+	}
+	if _, err = c.LoadDerivativeTradingRule(ctx, rule.ID()); err != nil {
+		t.Fatal("rule batch was not committed", err)
+	}
+}
 
 func TestTradingRulePreparationWaitRaceAtomicityAndFencing(t *testing.T) {
 	c := minimalOptionsPlanClient(t)

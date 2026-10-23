@@ -165,6 +165,14 @@ func (b *Batch) NormalizeAndValidate() error {
 		if err := item.Observation.Validate(); err != nil {
 			return fmt.Errorf("item %d observation: %w", index, err)
 		}
+		if err := item.Observation.normalizeDecimals(); err != nil {
+			return fmt.Errorf("item %d observation: %w", index, err)
+		}
+		// Validate again: a positive ratio smaller than the storage quantum
+		// must not silently become a valid zero ratio.
+		if err := item.Observation.Validate(); err != nil {
+			return fmt.Errorf("item %d normalized observation: %w", index, err)
+		}
 	}
 	return nil
 }

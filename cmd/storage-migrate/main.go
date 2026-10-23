@@ -114,7 +114,7 @@ func run(ctx context.Context, args []string) error {
 		}
 		fmt.Printf("read-only snapshot: %d tables\n", len(tables))
 		return nil
-	case "init-schema", "init-all-schemas", "activate-producer", "provision-account", "extend-partitions", "install-receipt-index", "install-dex-indexes", "install-capital-versions":
+	case "init-schema", "init-all-schemas", "activate-producer", "provision-account", "extend-partitions", "install-receipt-index", "install-dex-indexes", "install-capital-versions", "install-quality-storage", "install-source-storage":
 		f := flag.NewFlagSet(args[0], flag.ContinueOnError)
 		socket := f.String("socket", "", "private MySQL Unix socket")
 		user := f.String("user", "", "DDL account")
@@ -144,6 +144,16 @@ func run(ctx context.Context, args []string) error {
 		}
 		defer db.Close()
 		switch args[0] {
+		case "install-source-storage":
+			if *family != "crypto_market_info" || *target == "" {
+				return fmt.Errorf("source storage requires explicit main family and target")
+			}
+			return store.InstallSourceStorageSchema(ctx, db, *target)
+		case "install-quality-storage":
+			if *family != "crypto_market_info" || *target == "" {
+				return fmt.Errorf("quality storage requires explicit main family and target")
+			}
+			return store.InstallQualityStorageSchema(ctx, db, *target)
 		case "install-capital-versions":
 			if *family != "crypto_market_info" || *target == "" {
 				return fmt.Errorf("capital versions require explicit main family and target")

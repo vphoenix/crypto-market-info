@@ -1,8 +1,12 @@
 # 系统总体架构
 
+2026-10-19：LST 固定赎回路线研究已结束，专属 `crypto-market-info-lst.service` 停止且取消开机自启；现有模块和历史查询保留。下文 LST 链路说明描述实现结构，不表示仍在运行，详见[复核与停用记录](../research/2026-10-19-lst-retirement/report.md)。
+
+2026-10-16 交付层采用兼容旧版的 spool v2 无损压缩；Redis 成员按最多 32 条命令分组，封口及同连接 WAITAOF 仍确认全部成员。writer 通过原子 MySQL 提交凭据回收遗留 collecting 副本，父批次状态门控防止迟到重建。模型、采样和回放分层保持，详见[实施记录](redis-mysql-migration/io-reduction-20261016.md)。
+
 存储后端通过按职责划分的接口选择 ClickHouse 或 MySQL；Redis/MySQL 的实现和检查入口见[交付说明](redis-mysql-migration/implementation-status.md)。实际部署与历史迁移状态以[运行说明](runtime-operations.md)为准。
 
-2026-10-16 采集运行状态源码已接入 Across、Reserve、LST、Keeper 和主 DEX：低频 collector 由一个管理者维护覆盖和待办，网络 worker 保留独立证据缓冲；本地冻结操作、checkpoint 与领域提交核验共同支持恢复，正常循环不从历史表重建状态。设计和当前实现边界见[方案](redis-mysql-migration/runtime-state-improvement.md)及[实施记录](../research/2026-10-15-runtime-state-improvement/report.md)。此改造尚未部署，不改变盘口编码、Redis/spool 交付或 writer 并发。
+2026-10-16 15:20（UTC+8）采集运行状态改造已部署到 Across、Reserve、LST、Keeper 和主 DEX：低频 collector 由一个管理者维护覆盖和待办，网络 worker 保留独立证据缓冲；本地冻结操作、checkpoint 与领域提交核验共同支持恢复，正常循环不从历史表重建状态。设计和当前实现边界见[方案](redis-mysql-migration/runtime-state-improvement.md)及[实施记录](../research/2026-10-15-runtime-state-improvement/report.md)。此改造不改变盘口编码、Redis/spool 交付或 writer 并发，后续修复及实际版本见[运行说明](runtime-operations.md)。
 
 本文是项目的全局入口，说明当前各类采集任务如何组合运行，以及以后增加其他公开数据时应放在哪一层。盘口编码、表字段和具体收益公式仍以各专项文档为准。
 
@@ -21,7 +25,7 @@
 - SOL 的 bSOL、JitoSOL、mSOL、laineSOL、JupSOL、hSOL、配置白名单验证者和 Marinade Native 收益；
 - Kamino Main SOL、Save Main SOL 的基础存款收益；
 - AVAX 的 OKX 公开出借 APR、Aave V3/V4 WAVAX 基础存款历史 APY，以及 BENQI sAVAX、Ankr ankrAVAX、BENQI AVAX 基础借贷的链上观测（默认关闭，实际启用范围以运行说明为准）；
-- 独立的 Ethereum Lido stETH/wstETH 定额报价、赎回事件与 Binance ETHUSDT 对冲/实际资金费观测，运行在 `crypto-market-info-lst.service`。
+- 独立的 Ethereum Lido stETH/wstETH 定额报价、赎回事件与 Binance ETHUSDT 对冲/实际资金费观测；专属 `crypto-market-info-lst.service` 已于 2026-10-19 结束实验并停用，历史保留。
 
 项目以后还可能增加其他 CEX、DEX、收益协议、链状态、桥和二层流通状态、借贷费率、指数或标记价格、手续费及 gas 等公开数据。当前六张核心表及三张永续集合元数据表不是最终边界；新数据必须有与语义一致的定类型模型。
 

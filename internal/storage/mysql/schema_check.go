@@ -58,7 +58,14 @@ func (c *Client) checkSchema(ctx context.Context, names []string) error {
 // InitMinuteSchema validates the entire writer table set in one bounded read.
 // Periodic checks must not repeatedly queue behind the preparation workers.
 func (c *Client) InitMinuteSchema(ctx context.Context) error {
-	if err := c.checkSchema(ctx, MinuteSchemaTables()); err != nil {
+	names := MinuteSchemaTables()
+	if c.qualityStorageAvailable {
+		names = append(names, QualityStorageTableNames()...)
+	}
+	if c.sourceStorageAvailable {
+		names = append(names, SourceStorageTableNames()...)
+	}
+	if err := c.checkSchema(ctx, names); err != nil {
 		return err
 	}
 	c.discoveryEnabled.Store(true)

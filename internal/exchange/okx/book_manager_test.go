@@ -10,9 +10,72 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"strings"
+	"sync/atomic"
 	"testing"
 	"time"
 )
+
+func TestBookManagerResetsBackoffAfterRecoveredSession(t *testing.T) {
+	instrument := okxInstrument()
+	book, _ := orderbook.New(instrument.ID, 400)
+	var connections atomic.Int32
+	upgrader := websocket.Upgrader{}
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		conn, err := upgrader.Upgrade(w, r, nil)
+		if err != nil {
+			return
+		}
+		defer conn.Close()
+		attempt := connections.Add(1)
+		var req struct {
+			ID   string
+			Args []struct{ InstID string }
+		}
+		if conn.ReadJSON(&req) != nil {
+			return
+		}
+		if attempt != 3 {
+			return
+		}
+		_ = conn.WriteJSON(map[string]any{"id": req.ID, "event": "subscribe", "arg": map[string]string{"channel": "books", "instId": instrument.ExchangeSymbol}})
+		_ = conn.WriteMessage(websocket.TextMessage, []byte(fmt.Sprintf(`{"arg":{"channel":"books","instId":%q},"action":"snapshot","data":[{"asks":[["101","1","0","1"]],"bids":[["100","2","0","1"]],"ts":"1000","prevSeqId":-1,"seqId":10}]}`, instrument.ExchangeSymbol)))
+		time.Sleep(100 * time.Millisecond)
+	}))
+	defer server.Close()
+	m, err := NewBookManager(NewClient(), []model.Instrument{instrument}, map[uint32]*orderbook.Book{instrument.ID: book}, 20, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	m.WSEndpoint = "ws" + strings.TrimPrefix(server.URL, "http")
+	m.ConnectGate = exchange.NewRequestGate(0)
+	m.ReconnectBase, m.ReconnectMax = 10*time.Millisecond, 40*time.Millisecond
+	m.PingInterval = time.Hour
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+	var delays []time.Duration
+	m.ReconnectJitter = func(d time.Duration) time.Duration {
+		if book.View().State == orderbook.StateValid {
+			t.Error("disconnect retained a valid book")
+		}
+		delays = append(delays, d)
+		if len(delays) == 4 {
+			cancel()
+		}
+		return 0
+	}
+	if err = m.Run(ctx); err != nil {
+		t.Fatal(err)
+	}
+	want := []time.Duration{10 * time.Millisecond, 20 * time.Millisecond, 10 * time.Millisecond, 20 * time.Millisecond}
+	if len(delays) != len(want) {
+		t.Fatal("unexpected retries", delays)
+	}
+	for i := range want {
+		if delays[i] != want[i] {
+			t.Fatal("recovery retained old backoff", delays)
+		}
+	}
+}
 
 func TestBookManagerAppliesTwoRealVenueTopics(t *testing.T) {
 	first := okxInstrument()

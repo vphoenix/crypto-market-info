@@ -139,11 +139,19 @@ func (c *Client) insertDerivativeBooks(ctx context.Context, tx *sql.Tx, id strin
 		}
 	}
 	for _, name := range []string{"derivative_book_second_delta", "derivative_book_minute", "derivative_book_quality_minute"} {
-		t, e := c.mapping(name)
+		target := name
+		if name == "derivative_book_quality_minute" && len(books) > 0 {
+			var err error
+			target, err = c.qualityWriteTable(ctx, tx, name, qualityMinuteV2, books[0].MinuteTime, id)
+			if err != nil {
+				return err
+			}
+		}
+		t, e := c.mapping(target)
 		if e != nil {
 			return e
 		}
-		if e = putImmutableRows(ctx, tx, c.table(name), t, recordsByTable[name]); e != nil {
+		if e = putImmutableRows(ctx, tx, c.table(target), t, recordsByTable[name]); e != nil {
 			return e
 		}
 	}
@@ -219,7 +227,7 @@ func (c *Client) loadDerivativeBookRows(ctx context.Context, e options.BookEnvel
 		e.Batches = append(e.Batches, model.DerivativeMinuteBatch{InstrumentID: x, MinuteTime: e.MinuteTime})
 	}
 	// Scope by batch first, so extra members are detected as well as missing ones.
-	rows, err := c.records(ctx, c.db, "derivative_book_quality_minute", "WHERE minute_time=? AND compact_batch_id=? ORDER BY instrument_id", e.MinuteTime, digestBytes(id))
+	rows, err := c.loadDerivativeQuality(ctx, e.MinuteTime, id)
 	if err != nil {
 		return e, err
 	}

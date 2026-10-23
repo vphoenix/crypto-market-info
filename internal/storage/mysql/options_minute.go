@@ -282,7 +282,7 @@ func (c *Client) persistOptionsCatalogRows(ctx context.Context, tx *sql.Tx, r op
 		rows[n].RowHash = rows[n].Hash()
 		evidenceHashes = append(evidenceHashes, rows[n].RowHash)
 	}
-	if err = putModelsBulk(ctx, c, tx, "options_catalog_quality_evidence_minute", rows); err != nil {
+	if err = c.putQualityEvidence(ctx, tx, rows); err != nil {
 		return err
 	}
 	indexes, indexHashes, err := c.insertCatalogIndexes(ctx, tx, id, e.Live)
@@ -335,7 +335,7 @@ func (c *Client) LoadOptionsCatalogMinute(ctx context.Context, run uuid.UUID, mi
 	if err != nil {
 		return e, err
 	}
-	e.Evidence, err = readModels[options.QualityEvidence](ctx, c, c.db, "options_catalog_quality_evidence_minute", "WHERE run_id=? AND minute_time=? AND compact_batch_id=? ORDER BY instrument_id", run[:], minute, digestBytes(v.BatchID))
+	e.Evidence, err = c.loadQualityEvidence(ctx, run, minute, v.BatchID)
 	if err != nil {
 		return e, err
 	}
@@ -343,7 +343,8 @@ func (c *Client) LoadOptionsCatalogMinute(ctx context.Context, run uuid.UUID, mi
 		return e, fmt.Errorf("evidence count mismatch")
 	}
 	for n, q := range e.Evidence {
-		if q.BatchID != v.BatchID || q.RowHash != q.Hash() || q.Hash() != v.EvidenceHashes[n] {
+		hash := q.Hash()
+		if q.BatchID != v.BatchID || q.RowHash != hash || hash != v.EvidenceHashes[n] {
 			return e, fmt.Errorf("evidence digest mismatch")
 		}
 	}

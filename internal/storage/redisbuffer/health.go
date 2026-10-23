@@ -12,10 +12,10 @@ import (
 )
 
 type Health struct {
-	UsedBytes                                int64  `json:"used_bytes"`
-	Ready                                    uint64 `json:"ready_batches"`
-	OldestLagSeconds                         int64  `json:"oldest_ready_lag_seconds"`
-	Collecting, Sealed, Committed, Abandoned uint64
+	UsedBytes                                         int64  `json:"used_bytes"`
+	Ready                                             uint64 `json:"ready_batches"`
+	OldestLagSeconds                                  int64  `json:"oldest_ready_lag_seconds"`
+	Collecting, Sealed, Committed, Abandoned, Retired uint64
 }
 
 func (b *Buffer) Inspect(ctx context.Context, database string) (Health, error) {
@@ -58,6 +58,8 @@ func (b *Buffer) Inspect(ctx context.Context, database string) (Health, error) {
 				out.Committed++
 			case "abandoned":
 				out.Abandoned++
+			case "retired":
+				out.Retired++
 			}
 		}
 		cursor = next

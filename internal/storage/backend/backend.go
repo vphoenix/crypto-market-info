@@ -62,6 +62,14 @@ func Environment(prefix string, ch clickhouse.Config, readOnly bool) (Config, er
 	if e != nil {
 		return cfg, fmt.Errorf("invalid MYSQL_CAPITAL_RULE_VERSIONS")
 	}
+	cfg.MySQL.QualityStorageV2, e = strconv.ParseBool(value("MYSQL_QUALITY_STORAGE_V2", "false"))
+	if e != nil {
+		return cfg, fmt.Errorf("invalid MYSQL_QUALITY_STORAGE_V2")
+	}
+	cfg.MySQL.SourceStorageV2, e = strconv.ParseBool(value("MYSQL_SOURCE_STORAGE_V2", "false"))
+	if e != nil {
+		return cfg, fmt.Errorf("invalid MYSQL_SOURCE_STORAGE_V2")
+	}
 	if cfg.MySQL.Socket == "" || cfg.MySQL.Username == "" || cfg.MySQL.PasswordFile == "" {
 		return cfg, fmt.Errorf("MySQL requires explicit socket, user, password-file")
 	}

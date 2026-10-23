@@ -47,7 +47,7 @@ func readHeader(path string) (contracts.Candidate, error) {
 	if _, e = io.ReadFull(f, prefix[:]); e != nil {
 		return out, e
 	}
-	if !bytes.Equal(prefix[:], magic) {
+	if !bytes.Equal(prefix[:], magic) && !bytes.Equal(prefix[:], compressedMagic) {
 		return out, fmt.Errorf("invalid spool header")
 	}
 	d := &out.Header
@@ -80,6 +80,15 @@ func readHeader(path string) (contracts.Candidate, error) {
 	}
 	d.Minute = time.Unix(sec, 0).UTC()
 	out.Bytes = int64(size)
+	stored := size
+	if bytes.Equal(prefix[:], compressedMagic) {
+		if e = binary.Read(f, binary.BigEndian, &stored); e != nil {
+			return out, e
+		}
+		if stored == 0 || stored >= size {
+			return out, fmt.Errorf("invalid compressed spool length")
+		}
+	}
 	pos, e := f.Seek(0, io.SeekCurrent)
 	if e != nil {
 		return out, e
@@ -88,7 +97,7 @@ func readHeader(path string) (contracts.Candidate, error) {
 	if e != nil {
 		return out, e
 	}
-	if size == 0 || size > MaxPayload || st.Size() != pos+int64(size)+32 || d.Generation == 0 || d.Codec == 0 || d.Members == 0 || !d.Minute.Equal(d.Minute.Truncate(time.Minute)) {
+	if size == 0 || size > MaxPayload || st.Size() != pos+int64(stored)+32 || d.Generation == 0 || d.Codec == 0 || d.Members == 0 || !d.Minute.Equal(d.Minute.Truncate(time.Minute)) {
 		return out, fmt.Errorf("invalid spool envelope length")
 	}
 	if filepath.Base(path) != Name(*d) {

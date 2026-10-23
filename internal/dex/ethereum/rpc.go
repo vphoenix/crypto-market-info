@@ -65,6 +65,29 @@ func IsRateLimited(err error) bool {
 	return errors.As(err, &r) && r.RateLimited() || errors.As(err, &h) && h.Status == 429
 }
 
+// TransportError exposes only stable failure codes and sanitized diagnostic
+// classes. The underlying error can contain RPC credentials and is not retained.
+type TransportError struct {
+	Code, Class string
+}
+
+func (e *TransportError) Error() string { return e.Code }
+
+// IsNetworkFailure excludes local cancellation, operation budgets, HTTP status
+// failures and protocol parsing errors from source-wide network cooldowns.
+func IsNetworkFailure(err error) bool {
+	var transport *TransportError
+	if !errors.As(err, &transport) {
+		return false
+	}
+	switch transport.Code {
+	case "rpc_transport_failure", "rpc_transport_timeout", "rpc_response_read_failed", "rpc_response_read_timeout", "rpc_response_truncated":
+		return true
+	default:
+		return false
+	}
+}
+
 type Client struct {
 	url, SourceID string
 	HTTP          *http.Client
@@ -75,6 +98,10 @@ type Client struct {
 	AfterRequest  func(int, error)
 	AuditFailures bool
 	Diagnostic    func(RPCDiagnostic)
+	// Opt in to recovering on later requests instead of permanently stopping the
+	// source after confirmed DNS, connection or certificate failures. This does
+	// not retry within a request or change TLS verification.
+	RetryNetworkFailures bool
 	// Optional policies used by other collectors in this shared workspace.
 	BatchSize     int
 	Timeout       time.Duration
@@ -93,7 +120,7 @@ func NewClient(endpoint, dir string) (*Client, error) {
 // Clone reserves HTTP slots for a worker while sharing transport and quota.
 // Maintenance quota waiters cannot occupy every slot of a timed probe worker.
 func (c *Client) Clone() *Client {
-	return &Client{url: c.url, SourceID: c.SourceID, HTTP: c.HTTP, Archive: c.Archive, slots: make(chan struct{}, 2), BeforeRequest: c.BeforeRequest, AfterRequest: c.AfterRequest, AuditFailures: c.AuditFailures, Diagnostic: c.Diagnostic, BatchSize: c.BatchSize, Timeout: c.Timeout, WaitForSource: c.WaitForSource, networkFault: c.networkFault}
+	return &Client{url: c.url, SourceID: c.SourceID, HTTP: c.HTTP, Archive: c.Archive, slots: make(chan struct{}, 2), BeforeRequest: c.BeforeRequest, AfterRequest: c.AfterRequest, AuditFailures: c.AuditFailures, Diagnostic: c.Diagnostic, RetryNetworkFailures: c.RetryNetworkFailures, BatchSize: c.BatchSize, Timeout: c.Timeout, WaitForSource: c.WaitForSource, networkFault: c.networkFault}
 }
 func (c *Client) Batch(ctx context.Context, calls []Call) []Result {
 	out := make([]Result, len(calls))
@@ -199,8 +226,14 @@ func (c *Client) group(ctx context.Context, calls []Call) []Result {
 	var responseHeaders http.Header
 	var diagnosticError error
 	archiveFailure := func(code string, status int, raw []byte) []Result {
+		var failure error = errors.New(code)
+		transport := &TransportError{Code: code, Class: safeNetworkError(diagnosticError)}
+		// HTTP 429 has its own cooldown, even when its body cannot be read.
+		if status != http.StatusTooManyRequests && !errors.Is(diagnosticError, context.Canceled) && IsNetworkFailure(transport) {
+			failure = transport
+		}
 		if !c.AuditFailures {
-			return fail(errors.New(code), dex.Hash{})
+			return fail(failure, dex.Hash{})
 		}
 		c.rememberNetworkFault(diagnosticError)
 		h, err := c.archiveRPC(body, started, status, responseHeaders, raw, code, diagnosticError, trace)
@@ -210,7 +243,7 @@ func (c *Client) group(ctx context.Context, calls []Call) []Result {
 		if e := c.ConfirmedNetworkFault(); e != nil {
 			return fail(e, h)
 		}
-		return fail(errors.New(code), h)
+		return fail(failure, h)
 	}
 	resp, e := c.HTTP.Do(req)
 	if e != nil {

@@ -23,6 +23,16 @@ func (c *Client) prefetchOptionsFacts(ctx context.Context, live options.LiveEnve
 	if catalog != nil {
 		names = append(names, "options_catalog_quality_evidence_minute")
 	}
+	if c.qualityStorageV2 {
+		for n, name := range names {
+			if name == "derivative_book_quality_minute" {
+				names[n] = qualityMinuteV2
+			}
+			if name == "options_catalog_quality_evidence_minute" {
+				names[n] = qualityMember
+			}
+		}
+	}
 	for _, name := range names {
 		for offset := 0; offset < len(live.Books); offset += 500 {
 			ids := make([]any, 0, min(500, len(live.Books)-offset))
@@ -40,7 +50,7 @@ func (c *Client) prefetchOptionsFacts(ctx context.Context, live options.LiveEnve
 				// The anchor table retains the original 64-byte ASCII digest.
 				predicate = "`minute_time`=? AND `batch_id`=?"
 				args = []any{live.MinuteTime, id}
-			} else if name == "options_catalog_quality_evidence_minute" {
+			} else if name == "options_catalog_quality_evidence_minute" || name == qualityMember {
 				predicate = "`run_id`=? AND " + predicate
 				args = []any{live.RunID[:], live.MinuteTime, compactID}
 			}

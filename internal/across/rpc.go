@@ -46,6 +46,11 @@ type Reader struct {
 }
 
 func NewReader(rpc *ethereum.Client, c ChainConfig) *Reader {
+	// A temporary source failure must not permanently poison this reader or
+	// its workers. SourceQuota coordinates retry pacing across all of them.
+	if rpc != nil {
+		rpc.RetryNetworkFailures = true
+	}
 	return &Reader{RPC: rpc, Chain: c, MaxLogs: 10000}
 }
 func (r *Reader) batch(ctx context.Context, calls []ethereum.Call) []ethereum.Result {

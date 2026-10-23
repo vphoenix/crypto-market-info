@@ -22,6 +22,9 @@ type networkFault struct {
 }
 
 func (c *Client) rememberNetworkFault(e error) {
+	if c.RetryNetworkFailures {
+		return
+	}
 	class := safeNetworkError(e)
 	switch class {
 	case "dns_not_found", "dns_error", "tls_certificate_error", "connection_refused", "network_unreachable", "host_unreachable":
@@ -36,10 +39,11 @@ func (c *Client) rememberNetworkFault(e error) {
 	c.networkFault.class = class
 }
 
-// Timeouts and resets alone do not prove a route/DNS/TLS problem. Only specific
-// connection diagnostics stop the opt-in collector rather than auto-retrying.
+// Timeouts and resets alone do not prove a route/DNS/TLS problem. Specific
+// connection diagnostics stop audited collectors unless they explicitly opt in
+// to recovery through RetryNetworkFailures.
 func (c *Client) ConfirmedNetworkFault() error {
-	if c.networkFault == nil {
+	if c.RetryNetworkFailures || c.networkFault == nil {
 		return nil
 	}
 	c.networkFault.mu.Lock()

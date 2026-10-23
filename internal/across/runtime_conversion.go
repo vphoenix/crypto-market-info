@@ -52,6 +52,62 @@ type RuntimeConversionReport struct {
 	Active, Partial, Receipts, Orders int
 	CheckpointBytes                   int
 	Verified                          bool
+	// Explicit historical integrity withdrawals remain unavailable. They never
+	// contribute coverage or facts, but retain their full declaration in the
+	// conversion provenance (including when resuming an older conversion).
+	WithdrawnDeclarations []Capture
+}
+
+func runtimeWithdrawnDeclaration(cap Capture) bool {
+	return !cap.Committed && cap.CaptureKind == "logs" && anchored(cap) &&
+		strings.HasPrefix(cap.Reason, "storage_integrity_loss: ")
+}
+
+// Older converters recorded audited storage withdrawals as unreadable input.
+// Recover only that classification from the frozen, hash-checked header pages.
+// Ordinary uncommitted declarations and unreadable committed facts still block
+// publication; no database row, coverage interval or member payload is changed.
+func (p *conversionPlan) retainWithdrawals(ctx context.Context, files *runtimecheckpoint.Store) error {
+	if len(p.Report.Unreadable) == 0 {
+		return nil
+	}
+	wanted := map[string]bool{}
+	for _, message := range p.Report.Unreadable {
+		wanted[message] = true
+	}
+	retained := map[string]bool{}
+	for _, ref := range p.Pages {
+		if err := ctx.Err(); err != nil {
+			return err
+		}
+		raw, err := files.ReadObject(ref)
+		if err != nil {
+			return err
+		}
+		var page []Capture
+		if err = runtimecheckpoint.UnmarshalTyped(raw, &page); err != nil {
+			return err
+		}
+		for _, cap := range page {
+			message := Hex(cap.CaptureId) + ": uncommitted declaration"
+			if !wanted[message] || !runtimeWithdrawnDeclaration(cap) {
+				continue
+			}
+			if p.HeaderDigests[cap.CaptureId] != ID(cap) || retained[message] {
+				return runtimecheckpoint.ErrConflict
+			}
+			p.Report.WithdrawnDeclarations = append(p.Report.WithdrawnDeclarations, cap)
+			retained[message] = true
+		}
+	}
+	var unresolved []string
+	for _, message := range p.Report.Unreadable {
+		if !retained[message] {
+			unresolved = append(unresolved, message)
+		}
+	}
+	p.Report.Unreadable = unresolved
+	return nil
 }
 
 func conversionDigest(captures map[string]string) string {
@@ -332,7 +388,11 @@ func (c *Collector) ConvertRuntime(ctx context.Context, dir string, binding runt
 			}
 			p.HeaderDigests[cap.CaptureId] = ID(cap)
 			if !cap.Committed {
-				p.Report.Unreadable = append(p.Report.Unreadable, Hex(cap.CaptureId)+": uncommitted declaration")
+				if runtimeWithdrawnDeclaration(cap) {
+					p.Report.WithdrawnDeclarations = append(p.Report.WithdrawnDeclarations, cap)
+				} else {
+					p.Report.Unreadable = append(p.Report.Unreadable, Hex(cap.CaptureId)+": uncommitted declaration")
+				}
 				continue
 			}
 			if err = p.State.capture(cap); err != nil {
@@ -400,6 +460,9 @@ func (c *Collector) ConvertRuntime(ctx context.Context, dir string, binding runt
 		if progress != nil {
 			progress(fmt.Sprintf("conversion_facts pages=%d/%d batches=%d", p.FactPage, len(p.Pages), p.Report.FactBatches))
 		}
+	}
+	if err = p.retainWithdrawals(ctx, files); err != nil {
+		return p.Report, err
 	}
 	if len(p.Report.Unreadable) > 0 {
 		return p.Report, errors.New("runtime_conversion_unreadable_ranges_retained; explicit recovery required")
