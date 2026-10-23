@@ -494,6 +494,12 @@ TronGrid源页内存严格解析并计算SHA后，将全部目标能源事件写
 
 ### 提交、兼容和导出
 
+2026-10-24 机会探测增加两个可选专项表：`jl_keeper_rental_state_observation` 和 `jl_keeper_rental_state_batch`。前者是 `getRentInfo(address,address,uint256)` 的定类型结果，按 `(capture_id, observation_index)` 定位；保留 pair/resource、origin、caller、UTC 请求/接收/可用时间、前后块头、实现身份、API/TVM/错误、energy 与请求/响应 SHA256。返回值分别为 `security_deposit_sun Nullable(UInt256)`、`rent_index Nullable(UInt256)` 和 `liquidatable Nullable(Bool)`，没有租赁 amount；NULL 为未知，false 与零必须精确保留。状态查询不复用 liquidation probe 的奖励语义，`liquidatable=true` 不是可执行或可获奖的保证。
+
+新 `capture_kind=rental_state` 强制有 batch proof，保存 capture 身份、`row_count` 与 `jl-keeper-fact-v1` 成员摘要；零行失败批次也必须有空集合摘要。旧 Capture 字段、125 表迁移目录与旧四类成员摘要不变。旧 kind 不允许新成员或 proof。两扩展表先写、Capture 最后发布；读取包含预期空表，缺 proof、多行、重复 index 或摘要不符均拒绝，重试另外比较 proof，不能只比较旧 Capture。MySQL 两表采用 8 KiB InnoDB 压缩页和独立 runtime mapping，无新的历史扫描索引；ClickHouse 按 capture UTC 月分区。机会模式启动只检查扩展，缺表禁止发送新检查；仅七表的旧历史读取仍可用，已安装扩展时不会忽略额外成员。
+
+MySQL 使用显式 `storage-migrate install-keeper-rental-state --family crypto_market_info_justlend_keeper --target <数据库> ...` 安装，不运行旧 `generate_schema.py` 或改变历史 schema hash；ClickHouse 使用显式 `justlend-keeper-data init-rental-state-schema`。普通采集不执行 DDL。新导出格式 `jl-keeper-data-export-v3` 加入 `rental_states.csv` 与 `rental_state_batches.csv`，proof digest 输出十六进制；CSV 延续 `unknown` 空值表示。它们均按 Capture 认证，不声称 latest 查询是固化历史；尾部 head 失败保留已严格解析的 tuple 和已经发生的 probe，但降为 unknown，不能认证正奖励。
+
 Capture追加 indexed_rows UInt32 DEFAULT0、indexed_digest Nullable(FixedString(32)) DEFAULT NULL、parent_capture_id Nullable(UUID) DEFAULT NULL。旧四类事实及固定二进制 jl-keeper-fact-v1 摘要不变；新索引表有单独摘要，空索引页也须非NULL摘要。成员先写、Capture最后提交，预期0行表也读取认证。Frozen重试复用原ID、起始时间及成员，旧表默认NULL/旧gob已验证兼容。旧分页前缀（含页间停机）从原窗口空token重索引，旧已存事实不删除。旧Frozen批次原样完成后恢复，预算和冷却不清空。
 
 init-schema幂等创建第七表index_page并保留既有兼容列，collector不做DDL。所有表按冻结capture_started_at月分区；索引表按ordinal查询，事实查询按各自typed主键。查询时间显式DateTime64(6,'UTC')，不使用驱动默认整秒time.Time绑定。

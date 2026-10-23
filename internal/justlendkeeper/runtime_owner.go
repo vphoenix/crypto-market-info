@@ -23,6 +23,7 @@ type runtimeSnapshot struct {
 	Version    uint32
 	State      State
 	Candidates runtimecheckpoint.Reference
+	Scheduler  *runtimecheckpoint.Reference
 }
 type runtimeOwner struct {
 	files                        *runtimecheckpoint.Store
@@ -31,6 +32,7 @@ type runtimeOwner struct {
 	poison                       error
 	metricsAt                    time.Time
 	written, fileSyncs, dirSyncs uint64
+	scheduler                    *SchedulerState
 }
 
 func runtimeCompress(v any) ([]byte, error) {
@@ -74,7 +76,7 @@ func runtimeDecode(raw []byte, files *runtimecheckpoint.Store, loadCandidates bo
 	if err := runtimeExpand(raw, &cp); err != nil {
 		return cp, err
 	}
-	if cp.Version != 1 || cp.State.Runtime == nil || len(cp.State.Candidates) != 0 {
+	if (cp.Version != 1 && cp.Version != 2) || cp.State.Runtime == nil || len(cp.State.Candidates) != 0 || cp.State.Scheduler != nil || (cp.Version == 2 && cp.Scheduler == nil) || (cp.Version == 1 && (cp.Scheduler != nil || needsTypedCheckpoint(cp.State))) {
 		return cp, runtimecheckpoint.ErrRecovery
 	}
 	if loadCandidates {
@@ -85,12 +87,28 @@ func runtimeDecode(raw []byte, files *runtimecheckpoint.Store, loadCandidates bo
 		if err = runtimeExpand(raw, &cp.State.Candidates); err != nil {
 			return cp, err
 		}
+		if cp.Scheduler != nil {
+			raw, err = files.ReadObject(*cp.Scheduler)
+			if err != nil {
+				return cp, err
+			}
+			cp.State.Scheduler = &SchedulerState{}
+			if err = runtimeExpand(raw, cp.State.Scheduler); err != nil {
+				return cp, err
+			}
+			if cp.State.Scheduler.Version != 1 {
+				return cp, errors.New("unsupported_keeper_scheduler_version")
+			}
+		}
 	}
 	return cp, nil
 }
 func (o *runtimeOwner) save(s *State) error {
 	if o.poison != nil {
 		return o.poison
+	}
+	if s.Scheduler == nil && needsTypedCheckpoint(*s) {
+		return o.fail(errors.New("rental_state_requires_scheduler"))
 	}
 	refs, err := s.Runtime.references()
 	if err != nil {
@@ -106,6 +124,8 @@ func (o *runtimeOwner) save(s *State) error {
 	}
 	candidates := normalized.Candidates
 	normalized.Candidates = nil
+	scheduler := normalized.Scheduler
+	normalized.Scheduler = nil
 	cp := runtimeSnapshot{Version: 1, State: normalized}
 	if o.last == nil || !reflect.DeepEqual(candidates, o.candidates) {
 		raw, err := runtimeCompress(candidates)
@@ -120,6 +140,24 @@ func (o *runtimeOwner) save(s *State) error {
 		cp.Candidates = o.last.Candidates
 	}
 	refs = append(refs, cp.Candidates)
+	if scheduler != nil {
+		// Old binaries must fail closed rather than discard retry generations.
+		cp.Version = 2
+		if o.last == nil || !reflect.DeepEqual(scheduler, o.scheduler) {
+			raw, err := runtimeCompress(*scheduler)
+			if err != nil {
+				return o.fail(err)
+			}
+			ref, err := o.files.PutObject(raw)
+			if err != nil {
+				return o.fail(err)
+			}
+			cp.Scheduler = &ref
+		} else {
+			cp.Scheduler = o.last.Scheduler
+		}
+		refs = append(refs, *cp.Scheduler)
+	}
 	if o.last != nil && reflect.DeepEqual(cp, *o.last) && !o.files.Due() {
 		return nil
 	}
@@ -133,7 +171,7 @@ func (o *runtimeOwner) save(s *State) error {
 	if err = o.files.Checkpoint(raw, refs); err != nil {
 		return o.fail(err)
 	}
-	o.last, o.candidates = &cp, candidates
+	o.last, o.candidates, o.scheduler = &cp, candidates, scheduler
 	return nil
 }
 func (o *runtimeOwner) fail(err error) error {

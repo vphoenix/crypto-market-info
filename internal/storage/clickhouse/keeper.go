@@ -224,6 +224,11 @@ func (c *Client) KeeperBatch(ctx context.Context, cap justlendkeeper.Capture) (j
 			b.IndexPage = &p
 		}
 	}
+	out := map[uuid.UUID]justlendkeeper.Batch{cap.CaptureId: b}
+	if err := c.readKeeperRentalStates(ctx, out, []uuid.UUID{cap.CaptureId}); err != nil {
+		return b, err
+	}
+	b = out[cap.CaptureId]
 	return b, justlendkeeper.Validate(b)
 }
 
@@ -300,6 +305,9 @@ func (c *Client) KeeperBatches(ctx context.Context, caps []justlendkeeper.Captur
 		b.IndexPage = &page
 		out[id] = b
 	}
+	if err := c.readKeeperRentalStates(ctx, out, ids); err != nil {
+		return nil, err
+	}
 	for _, b := range out {
 		if e = justlendkeeper.Validate(b); e != nil {
 			return nil, e
@@ -343,8 +351,14 @@ func (c *Client) WriteKeeperBatch(ctx context.Context, b justlendkeeper.Batch) e
 				return e
 			}
 		}
-		_, e = c.KeeperBatch(ctx, v)
-		return e
+		existing, err := c.KeeperBatch(ctx, v)
+		if err != nil {
+			return err
+		}
+		if !justlendkeeper.RentalStateProofEqual(existing.RentalStateProof, b.RentalStateProof) {
+			return errors.New("rental_state_retry_mutated")
+		}
+		return nil
 	}
 	if b.IndexPage != nil {
 		if e := c.WriteKeeperIndexPages(ctx, []justlendkeeper.IndexPage{*b.IndexPage}); e != nil {
@@ -367,6 +381,9 @@ func (c *Client) WriteKeeperBatch(ctx context.Context, b justlendkeeper.Batch) e
 		return e
 	}
 	if e = keeperPartial(ctx, c, "jl_keeper_indexed_event", b.Capture.CaptureId, b.IndexedEvents); e != nil {
+		return e
+	}
+	if e = c.writeKeeperRentalState(ctx, b); e != nil {
 		return e
 	}
 	for _, w := range []struct {

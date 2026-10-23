@@ -136,6 +136,9 @@ func Seal(b *Batch) {
 		c.IndexedRows = uint32(len(b.IndexedEvents))
 		c.IndexedDigest = Ptr(digest(b.IndexedEvents))
 	}
+	if c.CaptureKind == "rental_state" {
+		b.RentalStateProof = &RentalStateBatchProof{CaptureId: c.CaptureId, CaptureStartedAt: c.CaptureStartedAt, RowCount: uint32(len(b.RentalStates)), Digest: digest(b.RentalStates)}
+	}
 	c.Committed = true
 }
 func Validate(b Batch) error {
@@ -146,7 +149,7 @@ func Validate(b Batch) error {
 	if c.CompletedTasks > c.ExpectedTasks || c.SelectedCandidates > c.DiscoveredCandidates {
 		return errors.New("invalid_capture_counts")
 	}
-	if int(c.EventRows+c.ReceiptRows+c.ProbeRows+c.CostRows+c.IndexedRows) > 500 {
+	if uint64(c.EventRows)+uint64(c.ReceiptRows)+uint64(c.ProbeRows)+uint64(c.CostRows)+uint64(c.IndexedRows)+uint64(len(b.RentalStates)) > 500 {
 		return errors.New("batch_exceeds_500")
 	}
 	if c.EventRows != uint32(len(b.Events)) || c.EventDigest != digest(b.Events) || c.ReceiptRows != uint32(len(b.Receipts)) || c.ReceiptDigest != digest(b.Receipts) || c.ProbeRows != uint32(len(b.Probes)) || c.ProbeDigest != digest(b.Probes) || c.CostRows != uint32(len(b.Costs)) {
@@ -156,6 +159,9 @@ func Validate(b Batch) error {
 		return errors.New("capture_members_mismatch")
 	}
 	if err := validateIndexed(b); err != nil {
+		return err
+	}
+	if err := validateRentalStates(b); err != nil {
 		return err
 	}
 	for _, r := range b.Events {
@@ -175,8 +181,8 @@ func Validate(b Batch) error {
 		if r.CaptureId != c.CaptureId || !r.CaptureStartedAt.Equal(c.CaptureStartedAt) || r.StateBinding != "node_latest_unpinned" || r.CallerAddress == r.Renter || r.CallerAddress == r.Receiver {
 			return errors.New("invalid_probe")
 		}
-		if r.Status == "success_reward" {
-			return errors.New("success_fixture_not_certified")
+		if err := validatePositiveProbe(r); err != nil {
+			return err
 		}
 	}
 	for _, r := range b.Costs {

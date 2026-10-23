@@ -108,6 +108,17 @@ func Mapping(database, name string) (Table, error) {
 			return t, nil
 		}
 	}
+	if database == keeperRentalFamily {
+		tables, err := keeperRentalStateMappings()
+		if err != nil {
+			return Table{}, err
+		}
+		for _, t := range tables {
+			if t.Name == name {
+				return t, nil
+			}
+		}
+	}
 	if database == "crypto_market_info" {
 		tables, err := capitalVersionMappings()
 		if err != nil {

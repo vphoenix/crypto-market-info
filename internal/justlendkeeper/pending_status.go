@@ -42,9 +42,13 @@ func ReadPendingStatus(path string) (PendingStatus, error) {
 	}
 	var state State
 	body := raw[32:]
-	if bytes.HasPrefix(body, []byte(checkpointMagic)) {
+	if bytes.HasPrefix(body, []byte(checkpointMagic)) || bytes.HasPrefix(body, []byte(typedCheckpointMagic)) {
 		var cp checkpoint
-		if err = expandCheckpoint(body[len(checkpointMagic):], &cp); err != nil {
+		expand, magic := expandCheckpoint, checkpointMagic
+		if bytes.HasPrefix(body, []byte(typedCheckpointMagic)) {
+			expand, magic = runtimeExpand, typedCheckpointMagic
+		}
+		if err = expand(body[len(magic):], &cp); err != nil {
 			return out, err
 		}
 		if len(cp.CandidateHash) != 32 || len(cp.State.Candidates) != 0 {

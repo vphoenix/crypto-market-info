@@ -1,0 +1,75 @@
+{
+  "scope": "Current public read-only queries plus bounded offline bytecode inspection; no signed transaction, broadcast, deployment, or complete TVM replay.",
+  "implementation_address_hex": "418cb94f0ccb41cc8de909e00b01edef6a717ade8c",
+  "node_abi_entries": 0,
+  "implementation_creation_bytecode_sha256": "c66f4e441f88f9bc0b2cf31be8417c5ea220596cfc49dd9abfebf85cf92c3782",
+  "same_bytecode_as_2026_10_02": true,
+  "runtime_offset_in_creation_bytes": 62,
+  "getRentInfo": {
+    "signature": "getRentInfo(address,address,uint256)",
+    "selector": "c449d2a9",
+    "returns": [
+      "uint256 securityDepositSun updated to current",
+      "uint256 currentRentIndex",
+      "bool liquidatable deposit-reserve check"
+    ],
+    "output_bytes": 96,
+    "output_bool_constraint": "entire third word must be exactly integer 0 or 1",
+    "abi_source": "https://docs.justlend.org/developers/abis/energy-market.json",
+    "semantics_source": "https://docs.justlend.org/developers/energy_rental/#current-rental-order-information-updated-to-current",
+    "real_saved_false_fixture": "research/2026-10-02-keeper-design/rent-info.raw",
+    "real_saved_false_fixture_sha256": "ed2559f47f62da51db7a0d1b89dbc00ed69dd5357cd630848a96bfc8ad1874e9"
+  },
+  "liquidate": {
+    "signature": "liquidate(address,address,uint256)",
+    "selector": "26c01303",
+    "downloaded_selected_abi_contains_function": false,
+    "node_abi_contains_function": false,
+    "documented_return": "uint256 liquidation reward",
+    "signature_source": "https://docs.justlend.org/developers/energy_rental/#liquidate",
+    "runtime_dispatch_entry": "0x06e2",
+    "entry_native_callvalue_guard_hex": "5b3480156106ee57600080fd",
+    "single_word_return_encoder_hex": "5b6040519081526020016103db56",
+    "return_trampoline_hex": "5b60405180910390f3",
+    "limited_bytecode_conclusion": "Selector dispatch reaches a native CALLVALUE nonzero rejection guard; normal return continuation encodes one 32-byte word. This is not a complete control-flow proof or TVM execution fixture."
+  },
+  "public_queries": [
+    {
+      "url": "https://api.trongrid.io/wallet/getcontract",
+      "request": {
+        "value": "41c60a6f5c81431c97ed01b61698b6853557f3afd4",
+        "visible": false
+      },
+      "started_at_utc": "2026-10-23T16:52:48.340451+00:00",
+      "received_at_utc": "2026-10-23T16:52:48.921862+00:00",
+      "http_status": 200,
+      "response_sha256": "e7dc92f75114e07eaba88d6e1e68aa029230c49090d96be7a125d5f6fa91e08d"
+    },
+    {
+      "url": "https://api.trongrid.io/wallet/triggerconstantcontract",
+      "request": {
+        "owner_address": "41020c064bab81eb2ef520f1cc2a26f5f1867e29b3",
+        "contract_address": "41c60a6f5c81431c97ed01b61698b6853557f3afd4",
+        "function_selector": "implementation()",
+        "call_value": 0,
+        "visible": false
+      },
+      "started_at_utc": "2026-10-23T16:52:53.922985+00:00",
+      "received_at_utc": "2026-10-23T16:52:54.444449+00:00",
+      "http_status": 200,
+      "response_sha256": "9be3a2b8782870ba8a4144eaa5c0ea1e7e6beccdae3702f8bd2b36217ac5c5ba"
+    },
+    {
+      "url": "https://api.trongrid.io/wallet/getcontract",
+      "request": {
+        "value": "418cb94f0ccb41cc8de909e00b01edef6a717ade8c",
+        "visible": false
+      },
+      "started_at_utc": "2026-10-23T16:52:59.953673+00:00",
+      "received_at_utc": "2026-10-23T16:53:00.542540+00:00",
+      "http_status": 200,
+      "response_sha256": "310cf4559113d8a6cd39911d6762c97842ecd5ead9a059caf973237152dd53f8"
+    }
+  ],
+  "test_scope": "Only rent-info.raw.json is a captured constant-call response. Positive cases in reward_validation_test.go are synthetic; no real positive liquidation constant response or local TVM replay is claimed."
+}

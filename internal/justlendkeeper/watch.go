@@ -83,11 +83,16 @@ func (c *Collector) SelectCohort() {
 		can.Stratum = uint8(a)
 		can.Lifecycle = Hex(row.TxId) + ":" + can.Origin.Name
 		c.State.Cohort = append(c.State.Cohort, can)
-		c.AddSeed(can)
+		if !c.Opportunities {
+			c.AddSeed(can)
+		}
 	}
 	c.State.BootstrapReady = true
 }
 func (c *Collector) AddSeed(can Candidate) {
+	if c.Opportunities {
+		return
+	}
 	for i := range c.State.Cohort {
 		member := &c.State.Cohort[i]
 		if member.Renter == can.Renter && member.Receiver == can.Receiver {
@@ -121,6 +126,9 @@ func (c *Collector) AddSeed(can Candidate) {
 // One bounded re-verification at a time, without resetting the fixed cohort,
 // source cooldowns or daily budget. A decoder revision can recover old failures.
 func (c *Collector) RetrySeed() {
+	if c.Opportunities {
+		return
+	}
 	if c.Active("seed") {
 		return
 	}
@@ -191,7 +199,7 @@ func (c *Collector) Schedule(watch bool) {
 			}
 		}
 	}
-	if watch && c.State.BootstrapReady && !c.Active("seed") {
+	if watch && !c.Opportunities && c.State.BootstrapReady && !c.Active("seed") {
 		c.RefillCohort()
 		c.RetrySeed()
 	}
@@ -340,7 +348,9 @@ func (c *Collector) Schedule(watch bool) {
 	}
 	// Warmup's five-second gate cannot sustain three-request probes alongside
 	// the other due tasks inside the admission deadline. Do not queue them.
-	if !c.Active("probe") && !now.Before(c.State.NextProbe) && c.lifecycleCurrent(now) && !now.Before(c.API.Limiter.Started.Add(5*time.Minute)) {
+	if c.Opportunities {
+		c.scheduleResearch(now)
+	} else if !c.Active("probe") && !now.Before(c.State.NextProbe) && c.lifecycleCurrent(now) && !now.Before(c.API.Limiter.Started.Add(5*time.Minute)) {
 		n := len(c.State.Cohort)
 		if n > 0 {
 			c.AddProbe(c.State.Cohort[int(c.State.Rotation)%n], now)
@@ -374,7 +384,11 @@ func (c *Collector) EnsureHistory(days int) {
 }
 
 func (c *Collector) lifecycleCurrent(now time.Time) bool {
-	for _, kind := range []string{"RentResource", "ReturnResource"} {
+	kinds := []string{"RentResource", "ReturnResource"}
+	if c.Opportunities {
+		kinds = append(kinds, "Liquidate")
+	}
+	for _, kind := range kinds {
 		at := c.State.EventCursors[kind]
 		if c.State.IndexingEnabled {
 			at = c.State.EvidenceCursors[kind]
@@ -499,6 +513,9 @@ func (c *Collector) Run(ctx context.Context, watch bool, maxPages uint32) error 
 }
 
 func (c *Collector) RefillCohort() {
+	if c.Opportunities {
+		return
+	}
 	pool := append([]Candidate(nil), c.State.Candidates...)
 	sort.Slice(pool, func(i, j int) bool {
 		return Hash([]byte("keeper-cohort-v1"+pool[i].Renter+pool[i].Receiver)) < Hash([]byte("keeper-cohort-v1"+pool[j].Renter+pool[j].Receiver))

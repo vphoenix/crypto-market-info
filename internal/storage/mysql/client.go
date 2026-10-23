@@ -45,6 +45,9 @@ type Config struct {
 	Producer Producer
 }
 type Client struct {
+	keeperRentalSchemaMu sync.Mutex
+	keeperRentalSchemaChecked bool
+	keeperRentalSchemaAvailable bool
 	db                      *sql.DB
 	database                string
 	readOnly                bool

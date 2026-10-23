@@ -1,5 +1,18 @@
 # JustLend keeper 公开数据采集实现
 
+## 2026-10-24 机会探测源码更新（尚未部署）
+
+新版 `watch` 默认 `--opportunity-probes=true`：保留固定 cohort 审计，新增候选池的动态机会轮转。研究/机会按 1:3 分配准入次数，seed 核验也占机会槽；空 lane 可借用。始终只有一条 seed/probe/rental_state 请求链，完成后至少等 30 秒。每次实际 RPC（包括重试）至少间隔 5 秒，并共用原 40,000 次/UTC 日总预算、来源冷却和阻断。旧检查点有多条研究待办时也顺序排空；冻结数据库重试保留原身份。
+
+机会链先完成来源事件核验，再读取 `getRentInfo` 的押金、rentIndex、liquidatable；仅可信 true 才追加只读清算模拟。false 不等于关闭，核验失败不生成空 probe。核验次数按原始事件代际保存，上限三次、退避 30 分钟；轮转不重置次数，新来源代际可重新核验。优先重查此前可清算项，但每四个机会准入至少保留一次公平轮转。Liquidate、Rent、Return 的证据游标都必须在 5 分钟内。尚未核验的新代际和晚到的旧结果不能相互污染。
+
+新模式要求两张独立订单状态/批次证明表，普通 watch 启动仅检查，不创建表。MySQL 使用显式 `storage-migrate install-keeper-rental-state --family crypto_market_info_justlend_keeper --target <目标库>`，其连接参数遵循原管理工具；ClickHouse 使用 `justlend-keeper-data init-rental-state-schema`。MySQL 的同名 init 命令只检查已安装表。没有扩展表时可以显式 `--opportunity-probes=false` 运行旧固定样本模式；新检查链的未决批次仍需要扩展表完成原身份提交，不能删除待办。
+
+生产用 native runtime 将 scheduler 保存为独立不可变对象；机会模式快照版本为 2，旧版本为 1 的快照仍可读。legacy 文件恢复支持旧单文件/v2，新订单状态使用 typed v3 检查点和独立 `.scheduler-<hash>`，确保已知 false/zero 不变成 NULL。候选池不会因轮转重写；未变化不写盘。旧二进制拒绝新格式，回退应使用本版程序关闭机会模式并保留状态；不要直接用旧备份/旧程序覆盖当前预算、待办与核验次数。完整备份须保留整个 runtime 或 legacy 状态目录，以及当前全部九张表。
+
+源码、测试与 I/O 测量见[设计](superpowers/specs/2026-10-24-keeper-opportunity-probes-design.md)和[验收记录](superpowers/validation/2026-10-24-keeper-opportunity-probes.md)。本次没有安装生产表、替换服务二进制或重启采集；以下部署日期和旧模式参数是历史记录。
+
+
 2026-10-04：已实现 Go 命令，独立研究库 `crypto_market_info_justlend_keeper` 的七张表。设计见[最小方案](justlend-keeper-data-mvp-design.md)，代码独立审核见[本轮审核](../discuss/0019-justlend-keeper-no-raw-review.md)，实际验收见[验证记录](../research/2026-10-04-keeper-no-raw/validation.md)。
 
 2026-10-05 11:22 CST 重启后复核：常驻服务 active/running、enabled，停机大窗口已自动补采。另发现停机前本地游标与现存数据库覆盖之间各少一片：Liquidate/RentResource 的 20:27:06–20:27:36 UTC、ReturnResource 的 20:27:13–20:27:43 UTC。11:20–11:21 CST 使用原 Collector、单进程锁和持久预算定点补采，三片均无事件、一页且分页穷尽，完整写入来源哈希和分页表；实时游标未回退，恢复后来源/明细游标继续推进。按完整扫描窗口并集验证停机前至当前无内部断口，实际成员摘要导出通过。未保留响应正文、未修改路由或自启动。完整操作、SQL、验证及不能补回的盘口缺失见[重启修复记录](../research/2026-10-05-reboot-recovery/report.md)。
@@ -33,7 +46,7 @@ var/justlend-keeper/bin/justlend-keeper-data watch --duration 168h
 var/justlend-keeper/bin/justlend-keeper-data export --days 30
 ```
 
-`init-schema` 是唯一显式建库建表命令。采集连接只打开已有库；`report` 使用只读连接，不发外部 HTTP，不执行 DDL。采集、建表与来源恢复命令使用同一 UID 的全局文件锁；换数据库或状态目录不能同时启动另一份采集器。`report` 不占用此锁，可以在服务运行时执行；并行报告应使用不同输出目录。
+`init-schema` 显式维护原七表；订单状态扩展使用上文独立安装命令。采集连接只打开已有库；`report` 使用只读连接，不发外部 HTTP，不执行 DDL。采集、建表与来源恢复命令使用同一 UID 的全局文件锁；换数据库或状态目录不能同时启动另一份采集器。`report` 不占用此锁，可以在服务运行时执行；并行报告应使用不同输出目录。
 
 用户级服务源文件为 `deploy/systemd/crypto-market-info-justlend-keeper.service`。服务每次运行上限七天，退出后等待 60 秒恢复，所有进度和限速状态保留。退出登录后由已启用 Linger 的用户服务管理器继续运行。实际状态以以下命令为准：
 
@@ -96,7 +109,7 @@ watch 缓速初始化六个 Rent/Return 年龄窗口，每个最多十页，共�
 
 事件 HTTP 查询使用 `[floor(from,秒),ceil(to,秒))` 包络，供应商返回值必须位于包络内，地址／种类／ABI／交易身份仍严格核验；包络边缘合法事件按原逻辑 `[from,to)` 裁剪，保留完整原页和排除数。分页链接必须保持同一个包络。升级时未冻结的小数 watch 待办以 `legacy_fractional_window_replaced` 提交原失败记录；新扫描从原游标所在秒重扫，最多重叠一秒，收据位置与 canonical 身份去重。旧 Frozen 数据库重试保持原样，原预算、冷却、游标不清空。失败窗口保留原分页 token，1／2／4／8／16／30分钟退避，成功后才推进游标；每天重查失败也按此恢复。
 
-冷启动前五分钟不新增probe；已有模拟观测仍完成后置头。probe 一次只调度一个样本，最早每6秒轮转一次，最多5个／30秒，不积攒轮次。Rent/Return 样本证据游标落后当前超过5分钟时暂停新 probe，待事件追上再恢复。未验证样本仍如实 skipped；30秒期限仅拒绝尚未发出模拟的过时待办，一旦模拟尝试已经发出就保留观测并补完后置块头，实际前后范围全部记录。链参数与身份检查每五分钟，TRXUSDT 报价每分钟。
+旧固定样本模式（`--opportunity-probes=false`）冷启动前五分钟不新增probe；已有模拟观测仍完成后置头。probe 一次只调度一个样本，最早每6秒轮转一次，最多5个／30秒，不积攒轮次。Rent/Return 样本证据游标落后当前超过5分钟时暂停新 probe，待事件追上再恢复。未验证样本仍如实 skipped；30秒期限仅拒绝尚未发出模拟的过时待办，一旦模拟尝试已经发出就保留观测并补完后置块头，实际前后范围全部记录。链参数与身份检查每五分钟，TRXUSDT 报价每分钟。
 
 watch 默认不做三十日奖励历史回补；当前unit显式加 `--history-days 30`，可与原watch待办一起恢复，无需删除队列或切换命令。独立 backfill 可用 `--max-pages`、`--duration` 分段；首次冻结起止时间，恢复仍用原窗口和分页游标，不能用新的默认 now 再开一套滚动历史。以下示例只适用于当前状态没有 watch 待办的新部署：
 
@@ -114,7 +127,7 @@ var/justlend-keeper/bin/justlend-keeper-data backfill --days 30 --max-pages 20 -
 
 最新只读模拟为 `node_latest_unpinned`；前后块头给出观测范围，不能当作某个固化历史块的执行结果。API true 与 TVM 成功分别解析，公共 caller 必须为正常 EOA 且不同于 renter/receiver。
 
-## 七表与写入
+## 原七表及订单状态扩展
 
 七表为 `jl_keeper_index_page`、`jl_keeper_capture`、`jl_keeper_indexed_event`、`jl_keeper_rental_event`、`jl_keeper_tx_receipt`、`jl_keeper_probe`、`jl_keeper_cost_observation`，DDL 见[表结构](justlend-keeper-data-schema.sql)。UTC 微秒；金额 UInt256 sun，价格/数量 Decimal(38,18)，hash/address 是二进制 FixedString。缺失 fee 或资源信息保留 NULL。
 
@@ -128,13 +141,13 @@ var/justlend-keeper/bin/justlend-keeper-data backfill --days 30 --max-pages 20 -
 
 ## 纯数据导出
 
-`export` 与兼容命令 `report` 只导出 captures/indexed_events/verified_events/receipts/probes/cost_observations/index_pages 七张 CSV 和 metadata.json；不生成利润、年化、episode、集中度或成本情景报告。`--from/--to` 按 capture_started_at 半开窗口过滤，`--days` 只查询、不回补。目录必须不存在，默认使用 UTC 时间戳；先在临时目录写完、认证成功后整体发布。
+`export` 与兼容命令 `report` 导出原 captures/indexed_events/verified_events/receipts/probes/cost_observations/index_pages 七张 CSV，另加 rental_states/rental_state_batches 两张 CSV 和 metadata.json（v3格式）；不生成利润、年化、episode、集中度或成本情景报告。`--from/--to` 按 capture_started_at 半开窗口过滤，`--days` 只查询、不回补。目录必须不存在，默认使用 UTC 时间戳；先在临时目录写完、认证成功后整体发布。
 
-captures.csv 保留窗口内撤回/未提交/其他配置的审计记录；这些记录的成员不进入认证输出。其他六份 CSV 仅输出 committed=true、当前 config_hash 的成员，每256个capture批读所有成员表。即使期望0行也读取并校验；子批次还核对父capture身份、窗口和发现数；分页记录核对来源hash和时间。金额完整输出整数，Nullable 用 unknown，hash/地址输出 hex，嵌套内部转账作为无损 JSON 单元格。metadata明确原响应不保留、不能重新解析核验原JSON；导出不读取文件归档。
+captures.csv 保留窗口内撤回/未提交/其他配置的审计记录；这些记录的成员不进入认证输出。除 captures 外的 CSV 仅输出 committed=true、当前 config_hash 的成员，每256个capture批读所有成员表。即使期望0行也读取并校验；子批次还核对父capture身份、窗口和发现数；分页记录核对来源hash和时间。金额完整输出整数，Nullable 用 unknown，hash/地址输出 hex，嵌套内部转账作为无损 JSON 单元格。metadata明确原响应不保留、不能重新解析核验原JSON；导出不读取文件归档。
 
 索引观测与固化事实分开读取。索引页 complete 不证明整个窗口分页完成，更不证明已收据核验。Rent/Return 后台核验仅覆盖固定样本；complete 且 selected_candidates=0 的子批次不代表父页所有索引行已核验。后台事实 available_at 为核验完成时刻，完整上下文有效可用时间为 max(row.available_at,capture.available_at)；block_time 是链时间。失败子批次最多尝试3次、至少间隔30分钟，父子状态可查询，不自动标为核验完整。
 
-模拟仍保留真实 TVM/API 状态和 NULL。`revert` 只表示明确 REVERT，其他明确 TVM 失败为 tvm_failure，不能视作网络错误；成功奖励 fixture 未认证，禁止写 success_reward。这是结果分类与完整性校验，不做机会判断。历史研究 Report 函数保留作旧测试兼容，命令行不调用它。
+模拟仍保留真实 TVM/API 状态和 NULL。`revert` 只表示明确 REVERT，其他明确 TVM 失败为 tvm_failure，不能视作网络错误；尚未取得真实正奖励模拟 fixture；现在按每笔返回值、唯一匹配的 Liquidate 日志和实际原生 TRX 支付三者一致，结合 API/TVM、实现身份、来源哈希和前后块范围认证 success_reward。缺证据或矛盾保留 unknown；资源撤回记录不能当作现金奖励。测试中的正奖励为明确标注的 synthetic 响应，不代表真实获利。历史研究 Report 函数保留作旧测试兼容，命令行不调用它。
 
 ## 数据健康检查与排查
 
@@ -180,7 +193,7 @@ GROUP BY status;
 
 ## 备份与后续验收
 
-恢复运行需要同一时点的七表数据、完整状态目录（`state.gob` 及其引用的候选缓存）及对应配置／二进制版本；CSV报告可以重建，不能代替源数据。备份时暂停keeper unit，确认进程已退出，再保存该研究库七表及DDL、状态；完成后恢复unit，其他采集器无需停止。恢复只针对keeper研究库，沿用当日预算／来源阻断，不覆盖主行情库。正常恢复与导出不需要manifest/raw文件；完整分页进度与数据库成员摘要必须通过校验。
+恢复运行需要同一时点的当前全部表数据（启用扩展后九表）、完整状态目录（`state.gob` 及其引用的候选缓存）及对应配置／二进制版本；CSV报告可以重建，不能代替源数据。备份时暂停keeper unit，确认进程已退出，再保存该研究库当前全部表及DDL、状态；完成后恢复unit，其他采集器无需停止。恢复只针对keeper研究库，沿用当日预算／来源阻断，不覆盖主行情库。正常恢复与导出不需要manifest/raw文件；完整分页进度与数据库成员摘要必须通过校验。
 
 已有失败修复的Native快照、原状态和SHA清单在[验收目录](../research/2026-10-03-keeper-implementation/)，这不是自动备份服务。不要仅恢复数据库或仅恢复较旧state后宣称恢复完整；需核对原批次身份、冻结待办及已用预算。当前没有自动状态迁移、备份或队列排空命令。
 

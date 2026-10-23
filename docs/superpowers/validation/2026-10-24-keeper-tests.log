@@ -1,0 +1,6 @@
+ok  	github.com/vphoenix/crypto-market-info/internal/justlendkeeper	32.505s
+ok  	github.com/vphoenix/crypto-market-info/internal/runtimecheckpoint	16.421s
+ok  	github.com/vphoenix/crypto-market-info/internal/storage/mysql	0.534s
+ok  	github.com/vphoenix/crypto-market-info/internal/storage/clickhouse	0.135s
+ok  	github.com/vphoenix/crypto-market-info/cmd/justlend-keeper-data	0.007s
+?   	github.com/vphoenix/crypto-market-info/cmd/storage-migrate	[no test files]

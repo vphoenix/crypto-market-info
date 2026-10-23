@@ -23,6 +23,7 @@ type Request struct {
 	Background bool
 	Attempts   uint8
 	NotBefore  time.Time
+	Research   bool // Seed, rental-state and liquidation requests share a durable rate gate.
 }
 type Evidence struct {
 	Source       string     `json:"source_id"`
@@ -101,14 +102,14 @@ func (c *Client) Send(ctx context.Context, r Request) (Evidence, []byte, error) 
 			req.Header.Set("TRON-PRO-API-KEY", key)
 		}
 	}
-	if e = c.Limiter.Reserve(r.Source, r.Background); e != nil {
+	if e = c.Limiter.ReserveRequest(r); e != nil {
 		return ev, nil, e
 	}
 	ev.Started = UTC(c.Now())
 	res, e := c.HTTP.Do(req)
 	if e != nil {
 		ev.Available = UTC(c.Now())
-		c.Limiter.ExtendGap(r.Source, r.Background, ev.Available)
+		c.Limiter.ExtendRequestGap(r, ev.Available)
 		if se := c.Limiter.Save(); se != nil {
 			return ev, nil, se
 		}
@@ -121,7 +122,7 @@ func (c *Client) Send(ctx context.Context, r Request) (Evidence, []byte, error) 
 	defer res.Body.Close()
 	ev.Received = Ptr(UTC(c.Now()))
 	ev.Status = res.StatusCode
-	c.Limiter.ExtendGap(r.Source, r.Background, *ev.Received)
+	c.Limiter.ExtendRequestGap(r, *ev.Received)
 	if e = c.Limiter.Status(r.Source, res.StatusCode, RetryAfter(res.Header.Get("Retry-After"), c.Now())); e != nil {
 		return ev, nil, e
 	}

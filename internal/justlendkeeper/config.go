@@ -23,7 +23,7 @@ type Config struct {
 	QuoteAPIURL string   `json:"quote_api_url"`
 	Callers     []string `json:"callers"`
 	DailyBudget uint32   `json:"daily_budget"`
-	// Positive reward classification remains gated until the successful ABI is verified.
+	// Positive rewards require matching per-response return/log/payment evidence.
 }
 
 func DefaultConfig() Config {

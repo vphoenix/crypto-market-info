@@ -61,38 +61,40 @@ type State struct {
 	HistoryTo      time.Time
 	HistoryCursor  time.Time
 
-	Version         uint32
-	Target          string
-	ConfigHash      string
-	Day             string
-	Used            uint32
-	NextGlobal      time.Time
-	NextBackground  time.Time
-	Sources         map[string]SourceLimit
-	Scans           []Scan
-	Candidates      []Candidate
-	Cohort          []Candidate
-	CohortId        uuid.UUID
-	Rotation        uint32
-	BootstrapReady  bool
-	Ops             []Operation
-	NextEvents      time.Time
-	NextProbe       time.Time
-	NextCosts       time.Time
-	NextQuote       time.Time
-	NextIdentity    time.Time
-	Implementation  string
-	CodeHash        string
-	IdentityAt      time.Time
-	IdentityStatus  string
-	CallersValid    []string
-	EventCursors    map[string]time.Time
-	RescanDay       string
-	LastSolidNumber uint64
-	LastSolidHash   string
-	IndexingEnabled bool
-	EvidenceCursors map[string]time.Time
-	NextEnrichment  time.Time
+	Version             uint32
+	Target              string
+	ConfigHash          string
+	Day                 string
+	Used                uint32
+	NextGlobal          time.Time
+	NextBackground      time.Time
+	Sources             map[string]SourceLimit
+	Scans               []Scan
+	Candidates          []Candidate
+	Cohort              []Candidate
+	CohortId            uuid.UUID
+	Rotation            uint32
+	BootstrapReady      bool
+	Ops                 []Operation
+	NextEvents          time.Time
+	NextProbe           time.Time
+	NextCosts           time.Time
+	NextQuote           time.Time
+	NextIdentity        time.Time
+	Implementation      string
+	CodeHash            string
+	IdentityAt          time.Time
+	IdentityStatus      string
+	CallersValid        []string
+	EventCursors        map[string]time.Time
+	RescanDay           string
+	LastSolidNumber     uint64
+	LastSolidHash       string
+	IndexingEnabled     bool
+	EvidenceCursors     map[string]time.Time
+	NextEnrichment      time.Time
+	NextResearchRequest time.Time
+	Scheduler           *SchedulerState
 }
 
 func NewState(target string, c Config) State {
@@ -171,8 +173,21 @@ func (l *Limiter) Ready(source string, background bool) time.Time {
 	return next
 }
 func (l *Limiter) Reserve(source string, background bool) error {
+	return l.ReserveRequest(Request{Source: source, Background: background})
+}
+
+func (l *Limiter) ReadyRequest(r Request) time.Time {
+	next := l.Ready(r.Source, r.Background)
+	if r.Research && next.Before(l.State.NextResearchRequest) {
+		next = l.State.NextResearchRequest
+	}
+	return next
+}
+
+func (l *Limiter) ReserveRequest(req Request) error {
+	source, background := req.Source, req.Background
 	now := UTC(l.Now())
-	if now.Before(l.Ready(source, background)) || l.State.Sources[source].Blocked {
+	if now.Before(l.ReadyRequest(req)) || l.State.Sources[source].Blocked {
 		return errors.New("request_not_ready")
 	}
 	day := now.Format("2006-01-02")
@@ -200,7 +215,17 @@ func (l *Limiter) Reserve(source string, background bool) error {
 		l.State.NextBackground = now.Add(5 * time.Second)
 	}
 	l.State.Used++
+	if req.Research {
+		l.State.NextResearchRequest = now.Add(5 * time.Second)
+	}
 	return l.Save()
+}
+
+func (l *Limiter) ExtendRequestGap(r Request, at time.Time) {
+	l.ExtendGap(r.Source, r.Background, at)
+	if r.Research && l.State.NextResearchRequest.Before(at.Add(5*time.Second)) {
+		l.State.NextResearchRequest = at.Add(5 * time.Second)
+	}
 }
 
 // ExtendGap anchors the next attempt after an observed response (or transport

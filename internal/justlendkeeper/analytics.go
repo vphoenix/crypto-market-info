@@ -262,7 +262,7 @@ func readManifest(a Archive, cap Capture) (Manifest, error) {
 	if m.Version != "keeper-v1" || m.Capture != cap.CaptureId.String() {
 		return m, errors.New("manifest_capture_mismatch")
 	}
-	if m.DigestEncoding != "jl-keeper-fact-v1" && (m.DigestEncoding != "" || cap.EventRows+cap.ReceiptRows+cap.ProbeRows+cap.CostRows != 0 || cap.IndexedDigest != nil || cap.CaptureKind == "enrichment") {
+	if m.DigestEncoding != "jl-keeper-fact-v1" && (m.DigestEncoding != "" || cap.EventRows+cap.ReceiptRows+cap.ProbeRows+cap.CostRows != 0 || cap.IndexedDigest != nil || cap.CaptureKind == "enrichment" || cap.CaptureKind == "rental_state") {
 		return m, errors.New("manifest_digest_encoding_unsupported")
 	}
 	if cap.ParentCaptureId != nil && (m.ParentCapture != cap.ParentCaptureId.String() || len(m.ParentManifestHash) != 64) {

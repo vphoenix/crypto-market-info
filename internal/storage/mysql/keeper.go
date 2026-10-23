@@ -281,6 +281,9 @@ func (c *Client) keeperBatch(ctx context.Context, q executor, cap keeper.Capture
 			b.IndexPage = &p
 		}
 	}
+	if err := c.readKeeperRentalState(ctx, q, &b); err != nil {
+		return b, err
+	}
 	return b, keeper.Validate(b)
 }
 func (c *Client) KeeperBatch(ctx context.Context, cap keeper.Capture) (result keeper.Batch, err error) {
@@ -406,8 +409,14 @@ func (c *Client) WriteKeeperBatch(ctx context.Context, b keeper.Batch) error {
 					return e
 				}
 			}
-			_, e = c.keeperBatch(ctx, tx, old[0])
-			return e
+			existing, err := c.keeperBatch(ctx, tx, old[0])
+			if err != nil {
+				return err
+			}
+			if !keeper.RentalStateProofEqual(existing.RentalStateProof, b.RentalStateProof) {
+				return contracts.ErrConflict
+			}
+			return nil
 		}
 		if e = c.keeperAnchors(ctx, tx, b); e != nil {
 			return e
@@ -430,6 +439,9 @@ func (c *Client) WriteKeeperBatch(ctx context.Context, b keeper.Batch) error {
 			return e
 		}
 		if e = putModels(ctx, c, tx, "jl_keeper_cost_observation", b.Costs); e != nil {
+			return e
+		}
+		if e = c.writeKeeperRentalState(ctx, tx, b); e != nil {
 			return e
 		}
 		if _, e = c.keeperBatch(ctx, tx, b.Capture); e != nil {

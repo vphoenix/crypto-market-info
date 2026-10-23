@@ -313,7 +313,7 @@ func (c *Collector) operationPriority(o Operation) int {
 			return 0
 		}
 	}
-	if o.Kind == "probe" && o.probeAttempted() {
+	if (o.Kind == "probe" || o.Kind == "rental_state") && o.probeAttempted() {
 		return 1
 	}
 	if o.Kind == "index_page" {

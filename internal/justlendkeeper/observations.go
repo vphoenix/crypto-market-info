@@ -42,7 +42,24 @@ func ParseConstant(b []byte) (string, error) {
 	}
 	return s.Constant[0], nil
 }
-func ParseProbe(b []byte, ev Evidence, can Candidate, caller string, scheduled time.Time, c *Collector) (Probe, error) {
+
+type constantExecution struct {
+	Result struct {
+		Result  *bool  `json:"result"`
+		Code    string `json:"code"`
+		Message string `json:"message"`
+	} `json:"result"`
+	Energy      *uint64  `json:"energy_used"`
+	Penalty     *uint64  `json:"energy_penalty"`
+	Constant    []string `json:"constant_result"`
+	Transaction struct {
+		Ret []map[string]json.RawMessage `json:"ret"`
+	} `json:"transaction"`
+	Logs     []Log           `json:"logs"`
+	Internal json.RawMessage `json:"internal_transactions"`
+}
+
+func parseConstantExecution(b []byte, ev Evidence, can Candidate, caller string, scheduled time.Time, c *Collector) (Probe, constantExecution, bool, error) {
 	p := Probe{ResourceType: 1, Renter: can.Renter, Receiver: can.Receiver, CallerAddress: caller, ScheduledAt: UTC(scheduled), RequestStartedAt: Ptr(ev.Started), ResponseReceivedAt: ev.Received, AvailableAt: ev.Available, EndpointView: "wallet_latest", StateBinding: "node_latest_unpinned", IdentityStatus: c.State.IdentityStatus, Status: "unknown", RewardConsistency: "incomplete", CandidateOriginTx: Ptr(mustHex(can.Origin.Transaction)), CandidateOriginEventIndex: Ptr(can.Origin.Index)}
 	p.ContractAddress, _ = HexAddress(ContractHex)
 	if c.State.Implementation != "" {
@@ -54,7 +71,7 @@ func ParseProbe(b []byte, ev Evidence, can Candidate, caller string, scheduled t
 	if !c.State.IdentityAt.IsZero() {
 		p.ImplementationCheckedAt = Ptr(c.State.IdentityAt)
 	}
-	if ev.Available.Sub(c.State.IdentityAt) > 10*time.Minute {
+	if c.State.IdentityAt.IsZero() || c.State.IdentityAt.After(ev.Started) || ev.Available.Sub(c.State.IdentityAt) > 10*time.Minute {
 		p.IdentityStatus = "unknown"
 	}
 	if ev.RequestHash != "" {
@@ -63,23 +80,9 @@ func ParseProbe(b []byte, ev Evidence, can Candidate, caller string, scheduled t
 	if ev.ResponseHash != "" {
 		p.ResponsePayloadHash = Ptr(mustHex(ev.ResponseHash))
 	}
-	var s struct {
-		Result struct {
-			Result  *bool  `json:"result"`
-			Code    string `json:"code"`
-			Message string `json:"message"`
-		} `json:"result"`
-		Energy      *uint64  `json:"energy_used"`
-		Penalty     *uint64  `json:"energy_penalty"`
-		Constant    []string `json:"constant_result"`
-		Transaction struct {
-			Ret []map[string]json.RawMessage `json:"ret"`
-		} `json:"transaction"`
-		Logs     []Log           `json:"logs"`
-		Internal json.RawMessage `json:"internal_transactions"`
-	}
+	var s constantExecution
 	if e := Decode(b, &s); e != nil {
-		return p, e
+		return p, s, false, e
 	}
 	p.ApiSuccess = s.Result.Result
 	p.EnergyUsed = s.Energy
@@ -92,11 +95,11 @@ func ParseProbe(b []byte, ev Evidence, can Candidate, caller string, scheduled t
 		if s.Result.Code == "OTHER_ERROR" && vmExecutionException(p.ErrorMessage) {
 			p.Status = "tvm_failure"
 		}
-		return p, nil
+		return p, s, false, nil
 	}
-	if len(s.Transaction.Ret) != 1 {
+	if len(s.Transaction.Ret) != 1 || s.Transaction.Ret[0] == nil {
 		p.ErrorCode = "missing_tvm_result"
-		return p, nil
+		return p, s, false, nil
 	}
 	if cr, ok := s.Transaction.Ret[0]["contractRet"]; ok && string(cr) != "1" && string(cr) != "\"SUCCESS\"" {
 		p.TvmResult = "contractRet:" + string(cr)
@@ -105,23 +108,38 @@ func ParseProbe(b []byte, ev Evidence, can Candidate, caller string, scheduled t
 		} else {
 			p.Status = classifyTVMFailure(p.TvmResult, p.ErrorMessage, s.Constant)
 		}
-		return p, nil
+		return p, s, false, nil
 	}
 	p.TvmResult = "SUCESS_default"
 	if raw, ok := s.Transaction.Ret[0]["ret"]; ok {
 		p.TvmResult = string(raw)
 		if string(raw) == "\"FAILED\"" || string(raw) == "1" {
 			p.Status = classifyTVMFailure(p.TvmResult, p.ErrorMessage, s.Constant)
-			return p, nil
+			return p, s, false, nil
 		}
 		if string(raw) != "\"SUCESS\"" && string(raw) != "0" {
 			p.ErrorCode = "unknown_tvm_result"
-			return p, nil
+			return p, s, false, nil
 		}
 	}
-	if strings.Contains(strings.ToUpper(p.ErrorMessage), "REVERT") || (len(s.Constant) > 0 && strings.HasPrefix(s.Constant[0], "08c379a0")) {
+	if strings.Contains(strings.ToUpper(p.ErrorMessage), "REVERT") || (len(s.Constant) > 0 && len(s.Constant[0])%64 == 8 && strings.HasPrefix(s.Constant[0], "08c379a0")) {
 		p.Status = "revert"
-		return p, nil
+		return p, s, false, nil
+	}
+	if (s.Result.Code != "" && s.Result.Code != "SUCCESS") || s.Result.Message != "" {
+		if p.ErrorCode == "" {
+			p.ErrorCode = "contradictory_execution_message"
+		}
+		return p, s, false, nil
+	}
+	p.ErrorCode = ""
+	return p, s, true, nil
+}
+
+func ParseProbe(b []byte, ev Evidence, can Candidate, caller string, scheduled time.Time, c *Collector) (Probe, error) {
+	p, s, ready, err := parseConstantExecution(b, ev, can, caller, scheduled, c)
+	if err != nil || !ready {
+		return p, err
 	}
 	if len(s.Constant) != 1 || len(s.Constant[0]) != 64 {
 		p.ErrorCode = "unknown_success_abi"
@@ -132,43 +150,27 @@ func ParseProbe(b []byte, ev Evidence, can Candidate, caller string, scheduled t
 		return p, e
 	}
 	p.RewardReturnSun = new(big.Int).SetBytes(raw)
-	reward := big.NewInt(0)
-	logCount := 0
-	for _, l := range s.Logs {
-		row, e := DecodeLog(l)
-		if e == nil && row.EventKind == "liquidate" && row.Renter == can.Renter && row.Receiver == can.Receiver && row.Liquidator != nil && *row.Liquidator == caller {
-			reward.Add(reward, row.RewardSun)
-			logCount++
-		}
-	}
-	if logCount > 0 {
-		p.RewardLogSun = reward
-	}
-	if len(s.Internal) > 0 {
-		ts, e := Transfers(s.Internal)
-		if e != nil {
-			return p, e
-		}
-		sum := big.NewInt(0)
-		for _, t := range ts {
-			if !t.Rejected && t.Sender == p.ContractAddress && t.Recipient == caller {
-				sum.Add(sum, &t.AmountSun)
-			}
-		}
-		p.RewardTransferSun = sum
-	}
-	if p.RewardLogSun != nil && p.RewardTransferSun != nil {
-		if p.RewardLogSun.Cmp(p.RewardReturnSun) == 0 && p.RewardTransferSun.Cmp(p.RewardReturnSun) == 0 {
-			p.RewardConsistency = "matched"
-		} else {
-			p.RewardConsistency = "mismatch"
-		}
+	if e = applyProbeRewardEvidence(&p, s.Logs, s.Internal); e != nil {
+		// Preserve independently decoded return/log values even when the trace
+		// is malformed; an invalid cash trace cannot certify a positive result.
+		p.RewardConsistency = "incomplete"
+		p.ErrorCode = "reward_evidence_invalid"
+		return p, nil
 	}
 	if p.RewardReturnSun.Sign() == 0 && p.IdentityStatus == "verified_manifest" && p.RewardConsistency != "mismatch" {
 		p.Status = "success_zero"
 		return p, nil
 	}
-	p.ErrorCode = "success_fixture_not_certified"
+	if p.RewardReturnSun.Sign() > 0 && p.RewardConsistency == "matched" && probeIdentityVerified(p) {
+		p.Status = "success_reward"
+		p.ErrorCode = ""
+		return p, nil
+	}
+	if !probeIdentityVerified(p) {
+		p.ErrorCode = "implementation_identity_unverified"
+	} else {
+		p.ErrorCode = "reward_evidence_" + p.RewardConsistency
+	}
 	return p, nil
 }
 

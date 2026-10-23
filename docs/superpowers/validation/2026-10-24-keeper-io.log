@@ -1,0 +1,10 @@
+=== RUN   TestRuntimeSchedulerFixedSequenceIO
+=== RUN   TestRuntimeSchedulerFixedSequenceIO/false
+    scheduler_checkpoint_test.go:199: opportunity=false requests=60 completed_chains=20 bytes=815151 file_syncs=160 directory_syncs=240 checkpoint_bytes=4223 cold_rewrites=0 idle_writes=0
+=== RUN   TestRuntimeSchedulerFixedSequenceIO/true
+    scheduler_checkpoint_test.go:199: opportunity=true requests=60 completed_chains=20 bytes=3250988 file_syncs=200 directory_syncs=320 checkpoint_bytes=4300 cold_rewrites=0 idle_writes=0
+--- PASS: TestRuntimeSchedulerFixedSequenceIO (33.28s)
+    --- PASS: TestRuntimeSchedulerFixedSequenceIO/false (8.84s)
+    --- PASS: TestRuntimeSchedulerFixedSequenceIO/true (24.44s)
+PASS
+ok  	github.com/vphoenix/crypto-market-info/internal/justlendkeeper	33.289s

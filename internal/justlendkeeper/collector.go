@@ -28,27 +28,31 @@ type Operation struct {
 
 	Discoveries []RawEvent
 
-	Kind             string
-	ScanID           string
-	Requests         []Request
-	Evidence         []Evidence
-	Batch            Batch
-	RawEvents        []RawEvent
-	Headers          []Header
-	Receipts         []ReceiptLogs
-	NextFingerprint  string
-	Frozen           bool
-	Failed           bool
-	NotBefore        time.Time
-	Candidate        *Candidate
-	IdentityAddress  string
-	IdentityCode     string
-	Scheduled        time.Time
-	Caller           string
-	ValidCallers     []string
-	ExcludedBoundary uint32
-	ExcludedResource uint32
-	Parent           *Capture
+	Kind               string
+	ScanID             string
+	Requests           []Request
+	Evidence           []Evidence
+	Batch              Batch
+	RawEvents          []RawEvent
+	Headers            []Header
+	Receipts           []ReceiptLogs
+	NextFingerprint    string
+	Frozen             bool
+	Failed             bool
+	NotBefore          time.Time
+	Candidate          *Candidate
+	IdentityAddress    string
+	IdentityCode       string
+	Scheduled          time.Time
+	Caller             string
+	ValidCallers       []string
+	ExcludedBoundary   uint32
+	ExcludedResource   uint32
+	Parent             *Capture
+	ResearchLane       string
+	ResearchGeneration string
+	ResearchBefore     *Header
+	ResearchAfter      *Header
 }
 type Collector struct {
 	Config          Config
@@ -63,6 +67,7 @@ type Collector struct {
 	runtime         *runtimeOwner
 	storageFailures uint32
 	storageRetryAt  time.Time
+	Opportunities   bool
 }
 
 func NewCollector(cfg Config, s *State, path string, a Archive, store Store) *Collector {
@@ -289,12 +294,20 @@ func (c *Collector) Process(o *Operation, r Request, ev Evidence, b []byte) erro
 			return errors.New("missing_implementation_bytecode")
 		}
 		o.IdentityCode = Hash(code)
-	case "identity_before", "identity_after", "probe_before", "probe_after", "cost_before", "cost_after":
+	case "identity_before", "identity_after", "probe_before", "probe_after", "cost_before", "cost_after", "rental_state_before", "rental_state_after":
 		h, e := ParseBlock(b, false)
 		if e != nil {
 			return e
 		}
 		o.Headers = append(o.Headers, h)
+		if r.Role == "rental_state_before" {
+			o.ResearchBefore = &h
+		}
+		if r.Role == "rental_state_after" {
+			o.ResearchAfter = &h
+		}
+	case "rental_state":
+		return c.processRentalState(o, ev, b)
 	case "probe":
 		p, e := ParseProbe(b, ev, *o.Candidate, o.Caller, o.Scheduled, c)
 		if e != nil {
@@ -496,7 +509,7 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) (result error) {
 				o.Batch.Capture.Reason = "identity_manifest_mismatch"
 			}
 		}
-		if o.Kind == "probe" {
+		if o.Kind == "probe" || o.Kind == "rental_state" {
 			for i := range o.Batch.Probes {
 				p := &o.Batch.Probes[i]
 				if len(o.Headers) > 0 {
@@ -515,9 +528,18 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) (result error) {
 					p.Status = "unknown"
 					p.ErrorCode = "missing_head_range"
 				}
+				if p.Status == "success_reward" {
+					if e := validatePositiveProbe(*p); e != nil {
+						p.Status = "unknown"
+						p.ErrorCode = e.Error()
+					}
+				}
 			}
 		}
 		completedAt := UTC(c.Now())
+		if o.Kind == "rental_state" {
+			c.finalizeRentalStates(o, completedAt)
+		}
 		if o.Kind == "enrichment" {
 			for i := range o.Batch.Events {
 				o.Batch.Events[i].AvailableAt = completedAt
@@ -560,6 +582,9 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) (result error) {
 		}
 		manifest := Manifest{Version: "keeper-v1", DigestEncoding: "jl-keeper-fact-v1", Capture: cap.CaptureId.String(), Kind: o.Kind, ScanID: o.ScanID, FingerprintOut: o.NextFingerprint, Requests: o.Evidence, CohortID: c.State.CohortId.String(), Selection: "stratified-15-15-20-fixed-hash-keeper-cohort-v1", Rotation: c.State.Rotation, Changes: c.State.CohortChanges, ExcludedBoundary: o.ExcludedBoundary}
 		manifest.ExcludedResource = o.ExcludedResource
+		if o.ResearchLane != "" {
+			manifest.Selection = "keeper-opportunity-v1/" + o.ResearchLane + "/" + o.ResearchGeneration
+		}
 		if o.Parent != nil {
 			manifest.ParentCapture = o.Parent.CaptureId.String()
 			manifest.ParentManifestHash = Hex(o.Parent.EvidenceManifestHash)
@@ -676,13 +701,14 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) (result error) {
 	if (o.Kind == "page" || o.Kind == "index_page") && !o.Failed && o.Batch.Capture.CaptureMode != "bootstrap" && o.Batch.Capture.EventKind != "Liquidate" {
 		c.AddCandidates(o.Discoveries)
 	}
-	if o.Kind == "seed" || o.Kind == "page" || o.Kind == "enrichment" {
+	if (o.Kind == "seed" || o.Kind == "page" || o.Kind == "enrichment") && (o.Kind != "seed" || o.ResearchGeneration == "" || c.researchGenerationCurrent(o)) {
+		c.observeResearchEvents(o.Batch.Events)
 		c.ApplyEvents(o.Batch.Events)
 	}
 	if e := c.evidenceProgress(ctx, *o); e != nil {
 		return e
 	}
-	if o.Kind == "seed" && o.Failed && o.Candidate != nil {
+	if o.Kind == "seed" && o.Failed && o.Candidate != nil && o.ResearchGeneration == "" {
 		for i := range c.State.Cohort {
 			can := &c.State.Cohort[i]
 			if can.Renter == o.Candidate.Renter && can.Receiver == o.Candidate.Receiver {
@@ -690,7 +716,8 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) (result error) {
 			}
 		}
 	}
-	c.Log(fmt.Sprintf("capture=%s kind=%s status=%s indexed=%d events=%d receipts=%d probes=%d costs=%d reason=%s", o.Batch.Capture.CaptureId, o.Kind, o.Batch.Capture.Status, len(o.Batch.IndexedEvents), len(o.Batch.Events), len(o.Batch.Receipts), len(o.Batch.Probes), len(o.Batch.Costs), o.Batch.Capture.Reason))
+	c.completeResearch(o)
+	c.Log(fmt.Sprintf("capture=%s kind=%s status=%s indexed=%d events=%d receipts=%d probes=%d rental_states=%d costs=%d reason=%s", o.Batch.Capture.CaptureId, o.Kind, o.Batch.Capture.Status, len(o.Batch.IndexedEvents), len(o.Batch.Events), len(o.Batch.Receipts), len(o.Batch.Probes), len(o.Batch.RentalStates), len(o.Batch.Costs), o.Batch.Capture.Reason))
 	if c.runtime != nil {
 		return c.runtimeApplied(o, operation)
 	}
@@ -721,6 +748,21 @@ func (c *Collector) Step(ctx context.Context) (bool, time.Time, error) {
 			return true, next, c.Save()
 		}
 		r := o.Requests[0]
+		if !c.researchTurn(o, now) {
+			continue
+		}
+		// Old checkpoints have no per-request flag. Infer it from operation kind
+		// so recovery cannot bypass the actual-request gate.
+		if o.Kind == "seed" || o.Kind == "probe" || o.Kind == "rental_state" {
+			r.Research = true
+		}
+		if o.ResearchGeneration != "" && (r.Role == "rental_state" || r.Role == "probe") && !c.researchGenerationCurrent(o) {
+			o.Failed = true
+			o.Batch.Capture.Status, o.Batch.Capture.Reason = "partial", "stale_candidate_generation"
+			o.Requests = researchTrailingHead(o.Requests)
+			c.rotate(i)
+			return true, next, c.Save()
+		}
 		if o.Kind == "probe" && !o.probeAttempted() && now.After(o.Scheduled.Add(30*time.Second)) {
 			o.Failed = true
 			o.Batch.Capture.Status = "skipped"
@@ -729,7 +771,7 @@ func (c *Collector) Step(ctx context.Context) (bool, time.Time, error) {
 			c.rotate(i)
 			return true, next, c.Save()
 		}
-		ready := c.API.Limiter.Ready(r.Source, r.Background)
+		ready := c.API.Limiter.ReadyRequest(r)
 		if ready.Before(r.NotBefore) {
 			ready = r.NotBefore
 		}
@@ -748,6 +790,9 @@ func (c *Collector) Step(ctx context.Context) (bool, time.Time, error) {
 		}
 		o.Evidence = append(o.Evidence, ev)
 		if ev.Error != "" {
+			if r.Role == "rental_state" {
+				c.errorRentalState(o, ev)
+			}
 			if r.Role == "probe" {
 				p := c.ErrorProbe(o, ev)
 				o.Batch.Probes = append(o.Batch.Probes, p)
@@ -769,7 +814,11 @@ func (c *Collector) Step(ctx context.Context) (bool, time.Time, error) {
 			o.Failed = true
 			o.Batch.Capture.Status = "error"
 			o.Batch.Capture.Reason = ev.Error
-			o.Requests = nil
+			if r.Role == "rental_state" || r.Role == "probe" {
+				o.Requests = researchTrailingHead(o.Requests)
+			} else {
+				o.Requests = nil
+			}
 			c.rotate(i)
 			return true, next, c.Save()
 		}
@@ -781,7 +830,11 @@ func (c *Collector) Step(ctx context.Context) (bool, time.Time, error) {
 			o.Failed = true
 			o.Batch.Capture.Status = "partial"
 			o.Batch.Capture.Reason = e.Error()
-			o.Requests = nil
+			if r.Role == "rental_state" || r.Role == "probe" {
+				o.Requests = researchTrailingHead(o.Requests)
+			} else {
+				o.Requests = nil
+			}
 		}
 		c.rotate(i)
 		return true, next, c.Save()
@@ -890,6 +943,11 @@ func (c *Collector) ApplyEvents(events []RentalEvent) {
 				can.Origin = RawFromRow(r)
 			} else if r.EventKind == "liquidate" || (r.EventKind == "return" && r.AmountSun.Cmp(big.NewInt(0)) == 0) {
 				can.Closed = true
+			} else if (c.Opportunities || c.State.Scheduler != nil) && r.EventKind == "return" {
+				// A fixed member may no longer be in the bounded discovery cache.
+				// Advance its authenticated observation generation on partial returns
+				// while retaining the actual rental lifecycle and cohort membership.
+				can.Origin = RawFromRow(r)
 			}
 		}
 	}

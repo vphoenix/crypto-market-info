@@ -198,11 +198,13 @@ type CostObservation struct {
 	PayloadHash                 *string          `ch:"payload_hash"`
 }
 type Batch struct {
-	Capture       Capture
-	Events        []RentalEvent
-	Receipts      []TxReceipt
-	Probes        []Probe
-	Costs         []CostObservation
-	IndexedEvents []IndexedEvent
-	IndexPage     *IndexPage
+	Capture          Capture
+	Events           []RentalEvent
+	Receipts         []TxReceipt
+	Probes           []Probe
+	Costs            []CostObservation
+	IndexedEvents    []IndexedEvent
+	IndexPage        *IndexPage
+	RentalStates     []RentalStateObservation
+	RentalStateProof *RentalStateBatchProof
 }
