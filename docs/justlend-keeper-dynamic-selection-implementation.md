@@ -1,6 +1,6 @@
 # Keeper 动态 40＋10：实现与运行
 
-2026-10-24（UTC+8）。实现依据[设计](justlend-keeper-dynamic-selection-design.md)。代码和离线验证已完成；实际切换时间、进程和数据检查以本文末尾运行验收为准。
+2026-10-24（UTC+8）。实现依据[设计](justlend-keeper-dynamic-selection-design.md)，04:09:37 已在原 Keeper 服务上线。实际进程和数据检查见本文末尾运行验收。
 
 ## 调度与数据
 
@@ -58,4 +58,26 @@ v3 启用后不能直接换回旧 binary 或恢复旧备份重置预算。临时
 
 ## 运行验收
 
-切换与持续观察完成后在此记录实际结果。getter 的可信 false、未知和失败必须如实保留；程序正常上线不等于当前一定存在可获奖机会。
+2026-10-24 04:09:37（UTC+8）原 `crypto-market-info-justlend-keeper.service` 已启动新版。实现提交 `ad8f540cc`，实际二进制 SHA-256 为 `0792ebca7172421c5852e1a3a01aa9c09cb524f935e3752767a6f90cb20a7d55`；与 `/proc/<pid>/exe` 核验一致，unit 保持 enabled。发布位置为 `var/justlend-keeper/releases/dynamic-40-10-20261023T193153Z/`，审计和完整旧状态备份在私有 `var/deployments/keeper-dynamic-40-10-20261023T193153Z/`。
+
+六张新增表已实际安装并读回核验，均为 8 KiB 压缩页。转换按页认证重放 26,794 个非空事件批次，恢复 1,447 个订单身份；发现时间再按源 `available_at` 校正。转换前后 UTC 日 2026-10-23 的请求预算均为 24,753，没有 HTTP 请求。原 config、恢复 epoch、producer/代次和来源限制保持。
+
+启动后实时索引继续推进，新增事件已进入候选页；04:10 时集合为 1,448 个身份、1,181 个未标记关闭。集合包括关闭位置保留记录，不能把 1,448 当作活动租约数。全历史分页继续以每分钟最多一个新历史源页推进，当前仍标 `all_discovered_orders_history_incomplete`。
+
+04:21 的短窗口验收通过，服务持续 active/running、enabled，自动重启计数为零。实际首组准入和结果为：
+
+| 槽位 | 准入时间（UTC+8） | 实际 lane / 原因 | 实际完成结果 |
+|---|---|---|---|
+| 1 | 04:15:36 | focus / pressure_verified | getter ok，liquidatable=false |
+| 2 | 04:16:23 | focus / pressure_verified | getter ok，liquidatable=false |
+| 3 | 04:17:38 | focus / pressure_verified | getter ok，liquidatable=false |
+| 4 | 04:18:46 | focus / pressure_verified | getter ok，liquidatable=false |
+| 5 | 04:19:31 | explore / oldest_waiting | 来源事件核验与 getter 完成，liquidatable=false |
+
+正式只读客户端按原 typed 成员摘要及 proof 实际认证了 5 个 `rental_state`、2 个 `rental_rate` 和 1 个 `events` 批次。getter/费率均为 ok，缺少必要块头、请求/响应哈希或实现身份的成功记录为零；没有正奖励 probe，符合只有可信 true 才模拟的规则。认证结果与日志保存在上述私有部署目录，未将账户明细写入版本库。
+
+04:21:27 候选集合为 2,268 个身份、2,000 个未标记关闭，已超过旧 1,500 上限。实时索引持续推进、runtime 恢复错误为零；后台事件核验有 `missing_block_header` 的 partial 批次，如实保留，不能宣称全部历史核验成功。当前仅完成首组 4＋1 的线上检查，完整 50 名额轮次尚在执行，尚未封口写入轮次专表；不将离线 50 槽回归当作生产整轮已完成，也不以约十二分钟观察代替全天稳定性。
+
+04:11:30–04:17:45 的进程计数采样中，Keeper 自身实际写入约 306 KiB/s、读取约 30 KiB/s；运行目录约 3 MiB。窗口包含实时抓取、历史补采和动态查询，未测同窗旧版对照，也不含 MySQL、Redis 或共享磁盘，因此不能作为本次新增磁盘负载或永久数据增长的估计。
+
+getter 的可信 false、未知和失败如实保留；程序正常上线不等于当前一定存在可获奖机会。

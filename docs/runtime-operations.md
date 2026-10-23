@@ -1,6 +1,6 @@
 # 当前部署与运行说明
 
-2026-10-24（UTC+8）Keeper 机会探测源码已在隔离分支实现，尚未部署。新 watch 默认开启有界机会轮转，要求独立两表扩展；仅修改源码不会改变当前常驻进程。升级入口、旧模式开关、检查点版本及回退限制见[Keeper 实现说明](justlend-keeper-data-implementation.md#2026-10-24-机会探测源码更新尚未部署)与[验收记录](superpowers/validation/2026-10-24-keeper-opportunity-probes.md)。本次未操作生产 schema、二进制或服务，下面仍是原部署记录。
+2026-10-24 04:09:37（UTC+8）已将 Keeper 切换为 `dynamic-40-10-v1`：每轮最多 50 个不同订单、40 个重点与 10 个探索交错准入。原七表保留，新增六张状态、费率和调度审计专表；v1 runtime 完整认证转换为 v3，转换不消耗 RPC 日预算。实际进程、数据入库与调度验收见[动态实现与运行](justlend-keeper-dynamic-selection-implementation.md)及[验证记录](superpowers/validation/2026-10-24-keeper-dynamic-selection.md)。原 producer/代次、来源和预算保留。全历史仍在后台补采，发现集合不代表已独立证明全市场完整覆盖；此条替代此前“机会探测尚未部署”的状态。
 
 2026-10-24 00:25:22（UTC+8）已部署 Across 网络故障恢复修复并重启实时服务。此前一次 Arbitrum DNS 错误被程序永久锁存，退出码 2 又被 unit 禁止自动重启，导致自 10 月 19 日 18:49:54 停采。现在来源网络故障保留失败证据，经共享 quota 按 5/10/20/40 秒冷却后重试；两个已安装 unit 均取消退出码 2 的重启例外，实时失败重启间隔仍为 15 秒。运行版本 `across-network-recovery-20261024`，实际程序为 `var/storage/bootstrap-preparation/20261013/bin/across-data`。00:32 的数据库核验确认 Base、Arbitrum 都有重启后 `complete/committed/canonical` 的新日志批次，证据哈希与区块范围一致；这些样本的最终性仍为 `head`，不代表四天缺口或费用已补齐。历史服务仍 inactive/disabled，其他服务未重启。构建、测试边界和部署证据见[修复记录](../research/2026-10-24-across-network-recovery/report.md)。下文较早网络停采规则均为历史行为。
 
