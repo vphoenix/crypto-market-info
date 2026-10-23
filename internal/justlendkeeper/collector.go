@@ -53,21 +53,25 @@ type Operation struct {
 	ResearchGeneration string
 	ResearchBefore     *Header
 	ResearchAfter      *Header
+	DynamicRPCAttempts uint32
+	DynamicSlot        uint8
+	DynamicRound       uuid.UUID
 }
 type Collector struct {
-	Config          Config
-	State           *State
-	Path            string
-	API             *Client
-	Store           Store
-	Now             func() time.Time
-	Log             func(string)
-	Sleep           func(context.Context, time.Duration) error
-	stateWriter     stateWriter
-	runtime         *runtimeOwner
-	storageFailures uint32
-	storageRetryAt  time.Time
-	Opportunities   bool
+	Config           Config
+	State            *State
+	Path             string
+	API              *Client
+	Store            Store
+	Now              func() time.Time
+	Log              func(string)
+	Sleep            func(context.Context, time.Duration) error
+	stateWriter      stateWriter
+	runtime          *runtimeOwner
+	storageFailures  uint32
+	storageRetryAt   time.Time
+	DynamicSelection bool
+	Opportunities    bool
 }
 
 func NewCollector(cfg Config, s *State, path string, a Archive, store Store) *Collector {
@@ -91,6 +95,12 @@ func Sleep(ctx context.Context, d time.Duration) error {
 	}
 }
 func (c *Collector) Save() error {
+	if c.State.Dynamic != nil && c.State.Scheduler == nil {
+		c.scheduler()
+	}
+	if c.State.Dynamic != nil && c.State.Dynamic.err != nil {
+		return c.State.Dynamic.err
+	}
 	if c.runtime != nil {
 		return c.runtime.save(c.State)
 	}
@@ -306,6 +316,8 @@ func (c *Collector) Process(o *Operation, r Request, ev Evidence, b []byte) erro
 		if r.Role == "rental_state_after" {
 			o.ResearchAfter = &h
 		}
+	case "rental_rate":
+		return c.processRentalRate(o, ev, b)
 	case "rental_state":
 		return c.processRentalState(o, ev, b)
 	case "probe":
@@ -537,6 +549,9 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) (result error) {
 			}
 		}
 		completedAt := UTC(c.Now())
+		if o.Kind == "rental_rate" {
+			c.finalizeRentalRates(o, completedAt)
+		}
 		if o.Kind == "rental_state" {
 			c.finalizeRentalStates(o, completedAt)
 		}
@@ -673,6 +688,7 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) (result error) {
 				s.Pages++
 				s.Fingerprint = o.NextFingerprint
 				s.Done = s.Fingerprint == ""
+				c.completeDynamicHistory(*s)
 				if s.Done && strings.HasPrefix(s.ID, "history:") {
 					c.State.HistoryCursor = s.To
 				}
@@ -716,6 +732,9 @@ func (c *Collector) Finish(ctx context.Context, o *Operation) (result error) {
 			}
 		}
 	}
+	if c.State.Dynamic != nil {
+		c.dynamicApplyBatch(o.Batch)
+	}
 	c.completeResearch(o)
 	c.Log(fmt.Sprintf("capture=%s kind=%s status=%s indexed=%d events=%d receipts=%d probes=%d rental_states=%d costs=%d reason=%s", o.Batch.Capture.CaptureId, o.Kind, o.Batch.Capture.Status, len(o.Batch.IndexedEvents), len(o.Batch.Events), len(o.Batch.Receipts), len(o.Batch.Probes), len(o.Batch.RentalStates), len(o.Batch.Costs), o.Batch.Capture.Reason))
 	if c.runtime != nil {
@@ -753,8 +772,16 @@ func (c *Collector) Step(ctx context.Context) (bool, time.Time, error) {
 		}
 		// Old checkpoints have no per-request flag. Infer it from operation kind
 		// so recovery cannot bypass the actual-request gate.
-		if o.Kind == "seed" || o.Kind == "probe" || o.Kind == "rental_state" {
+		if o.Kind == "seed" || o.Kind == "probe" || o.Kind == "rental_state" || o.Kind == "rental_rate" {
 			r.Research = true
+		}
+		if c.DynamicSelection && (r.Role == "rental_state" || r.Role == "probe") && (c.dynamicCoverage().IsZero() || now.Sub(c.dynamicCoverage()) > 5*time.Minute) {
+			o.Failed = true
+			o.Batch.Capture.Status = "partial"
+			o.Batch.Capture.Reason = "stale_dynamic_source_coverage"
+			o.Requests = researchTrailingHead(o.Requests)
+			c.rotate(i)
+			return true, next, c.Save()
 		}
 		if o.ResearchGeneration != "" && (r.Role == "rental_state" || r.Role == "probe") && !c.researchGenerationCurrent(o) {
 			o.Failed = true
@@ -784,12 +811,16 @@ func (c *Collector) Step(ctx context.Context) (bool, time.Time, error) {
 			}
 			continue
 		}
+		r.AttemptCapture = o.Batch.Capture.CaptureId.String()
 		ev, b, e := c.API.Send(ctx, r)
 		if e != nil {
 			return false, next, e
 		}
 		o.Evidence = append(o.Evidence, ev)
 		if ev.Error != "" {
+			if r.Role == "rental_rate" {
+				c.errorRentalRate(o, ev)
+			}
 			if r.Role == "rental_state" {
 				c.errorRentalState(o, ev)
 			}
@@ -814,7 +845,7 @@ func (c *Collector) Step(ctx context.Context) (bool, time.Time, error) {
 			o.Failed = true
 			o.Batch.Capture.Status = "error"
 			o.Batch.Capture.Reason = ev.Error
-			if r.Role == "rental_state" || r.Role == "probe" {
+			if r.Role == "rental_state" || r.Role == "probe" || r.Role == "rental_rate" {
 				o.Requests = researchTrailingHead(o.Requests)
 			} else {
 				o.Requests = nil
@@ -830,7 +861,7 @@ func (c *Collector) Step(ctx context.Context) (bool, time.Time, error) {
 			o.Failed = true
 			o.Batch.Capture.Status = "partial"
 			o.Batch.Capture.Reason = e.Error()
-			if r.Role == "rental_state" || r.Role == "probe" {
+			if r.Role == "rental_state" || r.Role == "probe" || r.Role == "rental_rate" {
 				o.Requests = researchTrailingHead(o.Requests)
 			} else {
 				o.Requests = nil
@@ -856,6 +887,9 @@ func (o Operation) probeAttempted() bool {
 	return false
 }
 func (c *Collector) AddCandidates(events []RawEvent) {
+	if c.DynamicSelection {
+		return
+	}
 	for _, re := range events {
 		r, e := EventRow(re)
 		if e != nil {
@@ -901,6 +935,9 @@ func (c *Collector) AddCandidates(events []RawEvent) {
 	}
 }
 func (c *Collector) ApplyEvents(events []RentalEvent) {
+	if c.DynamicSelection {
+		return
+	}
 	sort.Slice(events, func(i, j int) bool {
 		a, b := events[i], events[j]
 		if a.BlockNumber != b.BlockNumber {

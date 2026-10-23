@@ -125,6 +125,9 @@ func schedulerPath(path, hash string) string { return path + ".scheduler-" + Hex
 // The original gob format omits pointers to known false/zero. New observations
 // use the typed codec; older readers reject v3 instead of silently losing facts.
 func needsTypedCheckpoint(s State) bool {
+	if s.Dynamic != nil {
+		return true
+	}
 	if s.Scheduler != nil {
 		return true
 	}

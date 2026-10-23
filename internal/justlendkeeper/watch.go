@@ -190,11 +190,14 @@ func (c *Collector) Active(kind string) bool {
 }
 func (c *Collector) Schedule(watch bool) {
 	if watch {
+		c.ensureDynamicHistory()
+	}
+	if watch {
 		c.retireFractionalWatch()
 		// Failed daily/history pages retry their original window and token.
 		for i := range c.State.Scans {
 			s := &c.State.Scans[i]
-			if s.Done && s.Failed && (strings.HasPrefix(s.ID, "rescan:") || strings.HasPrefix(s.ID, "history:")) && !c.Now().Before(s.RetryAt) {
+			if s.Done && s.Failed && (strings.HasPrefix(s.ID, "rescan:") || strings.HasPrefix(s.ID, "history:") || strings.HasPrefix(s.ID, "dynamic-history:")) && !c.Now().Before(s.RetryAt) {
 				s.Done, s.Failed = false, false
 			}
 		}
@@ -210,7 +213,7 @@ func (c *Collector) Schedule(watch bool) {
 			continue
 		}
 		kept = append(kept, sc)
-		if sc.Done && !sc.Failed && strings.HasPrefix(sc.ID, "history:") {
+		if sc.Done && !sc.Failed && (strings.HasPrefix(sc.ID, "history:") || strings.HasPrefix(sc.ID, "dynamic-history:")) {
 			kept = kept[:len(kept)-1]
 		}
 	}
@@ -263,13 +266,16 @@ func (c *Collector) Schedule(watch bool) {
 			}
 		}
 		if !active {
+			if strings.HasPrefix(s.ID, "dynamic-history:") && !c.allowDynamicHistory(s) {
+				continue
+			}
 			c.AddPage(s)
 		}
 	}
 	if !watch || !c.State.BootstrapReady {
 		return
 	}
-	if c.State.HistoryCursor.Before(c.State.HistoryTo) {
+	if !c.DynamicSelection && c.State.HistoryCursor.Before(c.State.HistoryTo) {
 		active := false
 		for _, sc := range c.State.Scans {
 			if strings.HasPrefix(sc.ID, "history:") {

@@ -617,3 +617,19 @@ Keeper 本地状态的运行状态扩展正在实现，尚未部署：保留原 
 
 
 运行态维护清单同属于本地 checkpoint 格式：记录原始清单摘要、有限操作的不可变引用、下一项位置及完成标记。进度与领域状态在同一 checkpoint 安装；未完成交接拒绝普通采集启动。原操作附带领域任务身份，同一任务未决时拒绝另一修订，原身份重试可继续。没有新增 MySQL 事实表、Redis 队列或永久变更日志。维护 payload 使用原定类型编码与硬链接，二进制哈希和已知零值不经 JSON 往返；具体入口见 `docs/redis-mysql-migration/runtime-state-operations.md`。以上为代码协议，不代表生产已转换或部署。
+
+
+## 2026-10-24 Keeper 动态检查扩展
+
+动态 40＋10 模式新增四张定类型专表，属于原 Keeper 低频链路；原 capture、七张旧表及冻结 125 表迁移清单不改。模型定义在 `internal/justlendkeeper/dynamic_model.go`，MySQL 为独立 runtime 映射、8 KiB 压缩页；ClickHouse 为 `ReplacingMergeTree`。安装、导出和恢复见[实现与运行](justlend-keeper-dynamic-selection-implementation.md)。
+
+| 表 | 键与语义 |
+|---|---|
+| `jl_keeper_rental_rate` | `(capture_id, observation_index)`；rate 为 Nullable(UInt256)，scale 为 UInt64=1e18；请求/响应 UTC 时间和哈希、前后块高/hash/time、实现身份、API/TVM 状态、latest 未固定状态绑定；失败保持 NULL/unknown |
+| `jl_keeper_rental_rate_batch` | `capture_id`；同 capture 起始时间、row_count、定类型编码 digest；0 行失败批次也必须有 proof |
+| `jl_keeper_selection_member` | `(capture_id,slot_no)`；round/订单/generation、请求及实际 lane、选中时间/原因、nullable A/D/r/t0、origin/输入摘要、rate/state 来源 capture 引用、覆盖时间、结果/子 capture、RPC 预留次数 |
+| `jl_keeper_selection_round` | `capture_id`；round_id/policy、开始/结束时间、40/10 目标和实际数量、终止原因、订单身份/隔离数、最长未尝试和未成功秒数、来源覆盖语义、member_count/member_digest，兼作本轮 proof |
+
+`selection_round` 与 `rental_rate` 是独立 capture kind，不混入链上事实表。成员先写、proof/capture 最后提交；预期为空的表也读取认证，重试比较独立 proof，不因原 capture 未新增 digest 而接受内容变化。采样输入在准入时冻结；整数交叉乘法得到的压力只用于选择，不是收益率或已可清算事实。RPC 计数包括发送边界不确定的持久预算预留。
+
+native snapshot v3 的新字段只能追加到原结构末尾：旧 typed codec 的 presence tree 按字段位置编号，前插字段会破坏旧 NULL/已知零/false 的恢复。已增加部署 v1 布局回归。订单、检查、不可变轮成员使用独立页/引用，current/previous checkpoint 一起保护；runtime 原预算、冷却、producer 和恢复世代保持。旧 binary 拒绝新格式，回退使用兼容读取程序。导出 v4 增加四份 typed CSV。

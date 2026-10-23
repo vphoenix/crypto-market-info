@@ -45,27 +45,30 @@ type Config struct {
 	Producer Producer
 }
 type Client struct {
-	keeperRentalSchemaMu sync.Mutex
-	keeperRentalSchemaChecked bool
-	keeperRentalSchemaAvailable bool
-	db                      *sql.DB
-	database                string
-	readOnly                bool
-	family                  string
-	producer                Producer
-	writeOnce               sync.Once
-	writeSlot               chan struct{}
-	discoveryEnabled        atomic.Bool
-	queue                   contracts.DurableQueue
-	queueClose              func() error
-	preview                 func(contracts.PreviewFrame)
-	metadata                *MetadataCache
-	prefetchMinuteIndexes   bool
-	capitalRuleVersions     bool
-	qualityStorageV2        bool
-	qualityStorageAvailable bool
-	sourceStorageV2         bool
-	sourceStorageAvailable  bool
+	keeperDynamicSchemaMu        sync.Mutex
+	keeperDynamicSchemaChecked   bool
+	keeperDynamicSchemaAvailable bool
+	keeperRentalSchemaMu         sync.Mutex
+	keeperRentalSchemaChecked    bool
+	keeperRentalSchemaAvailable  bool
+	db                           *sql.DB
+	database                     string
+	readOnly                     bool
+	family                       string
+	producer                     Producer
+	writeOnce                    sync.Once
+	writeSlot                    chan struct{}
+	discoveryEnabled             atomic.Bool
+	queue                        contracts.DurableQueue
+	queueClose                   func() error
+	preview                      func(contracts.PreviewFrame)
+	metadata                     *MetadataCache
+	prefetchMinuteIndexes        bool
+	capitalRuleVersions          bool
+	qualityStorageV2             bool
+	qualityStorageAvailable      bool
+	sourceStorageV2              bool
+	sourceStorageAvailable       bool
 }
 
 func Connect(ctx context.Context, cfg Config) (*sql.DB, error) {

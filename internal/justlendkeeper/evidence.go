@@ -139,6 +139,13 @@ func Seal(b *Batch) {
 	if c.CaptureKind == "rental_state" {
 		b.RentalStateProof = &RentalStateBatchProof{CaptureId: c.CaptureId, CaptureStartedAt: c.CaptureStartedAt, RowCount: uint32(len(b.RentalStates)), Digest: digest(b.RentalStates)}
 	}
+	if c.CaptureKind == "rental_rate" {
+		b.RateProof = &RentalRateBatchProof{CaptureId: c.CaptureId, CaptureStartedAt: c.CaptureStartedAt, RowCount: uint32(len(b.Rates)), Digest: digest(b.Rates)}
+	}
+	if c.CaptureKind == "selection_round" && b.SelectionRound != nil {
+		b.SelectionRound.MemberCount = uint32(len(b.Selections))
+		b.SelectionRound.MemberDigest = digest(b.Selections)
+	}
 	c.Committed = true
 }
 func Validate(b Batch) error {
@@ -159,6 +166,9 @@ func Validate(b Batch) error {
 		return errors.New("capture_members_mismatch")
 	}
 	if err := validateIndexed(b); err != nil {
+		return err
+	}
+	if err := validateDynamic(b); err != nil {
 		return err
 	}
 	if err := validateRentalStates(b); err != nil {

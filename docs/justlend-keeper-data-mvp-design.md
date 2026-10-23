@@ -1,5 +1,7 @@
 # JustLend keeper：公开数据采集设计
 
+2026-10-24 新增[动态 40＋10 检查](justlend-keeper-dynamic-selection-design.md)，实现、安装和实际运行验收见[实现说明](justlend-keeper-dynamic-selection-implementation.md)。下文固定样本口径保留为历史；实际启用模式以运行记录为准。
+
 2026-10-03 按用户要求调整为纯数据采集。获利、年化、机会 episode 和盈亏判断由其他程序完成；当前命令不执行这些分析。实现见[实现说明](justlend-keeper-data-implementation.md)，独立 Agent 审核见[审核记录](../discuss/0017-justlend-keeper-data-code-review.md)，本次实际验收见[采集拆分记录](../research/2026-10-03-keeper-collection-split/validation.md)。此前研究报告留在 research，不能当作当前采集器输出。
 
 ## 1. 范围与来源

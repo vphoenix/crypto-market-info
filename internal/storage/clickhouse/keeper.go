@@ -229,6 +229,10 @@ func (c *Client) KeeperBatch(ctx context.Context, cap justlendkeeper.Capture) (j
 		return b, err
 	}
 	b = out[cap.CaptureId]
+	if err := c.readKeeperDynamic(ctx, out, []uuid.UUID{cap.CaptureId}); err != nil {
+		return b, err
+	}
+	b = out[cap.CaptureId]
 	return b, justlendkeeper.Validate(b)
 }
 
@@ -308,6 +312,9 @@ func (c *Client) KeeperBatches(ctx context.Context, caps []justlendkeeper.Captur
 	if err := c.readKeeperRentalStates(ctx, out, ids); err != nil {
 		return nil, err
 	}
+	if err := c.readKeeperDynamic(ctx, out, ids); err != nil {
+		return nil, err
+	}
 	for _, b := range out {
 		if e = justlendkeeper.Validate(b); e != nil {
 			return nil, e
@@ -355,7 +362,7 @@ func (c *Client) WriteKeeperBatch(ctx context.Context, b justlendkeeper.Batch) e
 		if err != nil {
 			return err
 		}
-		if !justlendkeeper.RentalStateProofEqual(existing.RentalStateProof, b.RentalStateProof) {
+		if !justlendkeeper.RentalStateProofEqual(existing.RentalStateProof, b.RentalStateProof) || !justlendkeeper.DynamicProofEqual(existing, b) {
 			return errors.New("rental_state_retry_mutated")
 		}
 		return nil
@@ -381,6 +388,9 @@ func (c *Client) WriteKeeperBatch(ctx context.Context, b justlendkeeper.Batch) e
 		return e
 	}
 	if e = keeperPartial(ctx, c, "jl_keeper_indexed_event", b.Capture.CaptureId, b.IndexedEvents); e != nil {
+		return e
+	}
+	if e = c.writeKeeperDynamic(ctx, b); e != nil {
 		return e
 	}
 	if e = c.writeKeeperRentalState(ctx, b); e != nil {

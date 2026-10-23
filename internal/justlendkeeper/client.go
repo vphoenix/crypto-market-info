@@ -15,15 +15,16 @@ import (
 )
 
 type Request struct {
-	Source     string
-	Path       string
-	Body       []byte
-	Role       string
-	Key        string
-	Background bool
-	Attempts   uint8
-	NotBefore  time.Time
-	Research   bool // Seed, rental-state and liquidation requests share a durable rate gate.
+	Source         string
+	Path           string
+	Body           []byte
+	Role           string
+	Key            string
+	Background     bool
+	Attempts       uint8
+	NotBefore      time.Time
+	Research       bool // Seed, rental-state and liquidation requests share a durable rate gate.
+	AttemptCapture string
 }
 type Evidence struct {
 	Source       string     `json:"source_id"`

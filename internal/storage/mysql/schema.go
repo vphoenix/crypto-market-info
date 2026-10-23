@@ -110,6 +110,11 @@ func Mapping(database, name string) (Table, error) {
 	}
 	if database == keeperRentalFamily {
 		tables, err := keeperRentalStateMappings()
+		if err == nil {
+			var more []Table
+			more, err = keeperDynamicMappings()
+			tables = append(tables, more...)
+		}
 		if err != nil {
 			return Table{}, err
 		}

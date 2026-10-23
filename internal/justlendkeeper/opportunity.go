@@ -66,6 +66,10 @@ func newerResearchCandidate(a, b Candidate) bool {
 	return a.Verified && !b.Verified
 }
 func (c *Collector) currentResearchCandidate(can Candidate) (Candidate, bool) {
+	if c.DynamicSelection && c.State.Dynamic != nil {
+		o, ok := c.State.Dynamic.getOrder(dynamicPair(can))
+		return o.Candidate, ok
+	}
 	var latest Candidate
 	found := false
 	for _, pool := range [][]Candidate{c.State.Candidates, c.State.Cohort} {
@@ -234,6 +238,10 @@ func (c *Collector) selectOpportunity(now time.Time) (researchDecision, bool) {
 }
 
 func (c *Collector) scheduleResearch(now time.Time) {
+	if c.DynamicSelection {
+		c.scheduleDynamic(now)
+		return
+	}
 	if !c.Opportunities || !c.State.BootstrapReady || c.Active("seed") || c.Active("probe") || c.Active("rental_state") || !c.lifecycleCurrent(now) || now.Before(c.API.Limiter.Started.Add(5*time.Minute)) {
 		return
 	}
@@ -323,8 +331,18 @@ func (c *Collector) researchGenerationCurrent(o *Operation) bool {
 		return false
 	}
 	can, ok := c.currentResearchCandidate(*o.Candidate)
-	if !ok || !eligibleResearchOrigin(can) {
+	if o.DynamicSlot != 0 && c.State.Dynamic != nil {
+		current, exists := c.State.Dynamic.getOrder(dynamicPair(*o.Candidate))
+		can, ok = current.Candidate, exists
+	}
+	if !ok || (!c.DynamicSelection && !eligibleResearchOrigin(can)) || c.DynamicSelection && can.Closed {
 		return false
+	}
+	if (c.DynamicSelection || o.DynamicSlot != 0) && o.Kind != "seed" {
+		current, exists := c.State.Dynamic.getOrder(dynamicPair(can))
+		if !exists || current.Candidate.Ambiguous || current.ClosurePending {
+			return false
+		}
 	}
 	generation := o.ResearchGeneration
 	if generation == "" {
@@ -351,6 +369,9 @@ func researchPositionAfter(r RentalEvent, e ResearchEntry) bool {
 	return r.BlockNumber > e.LastNumber || (r.BlockNumber == e.LastNumber && (*r.TransactionIndex > e.LastTx || (*r.TransactionIndex == e.LastTx && *r.ReceiptLogIndex > e.LastLog)))
 }
 func (c *Collector) observeResearchEvents(events []RentalEvent) {
+	if c.DynamicSelection {
+		return
+	}
 	if !c.Opportunities || len(events) == 0 {
 		return
 	}
@@ -441,6 +462,10 @@ func (c *Collector) applyResearchSeed(o *Operation) {
 	s.Ledger[o.ResearchGeneration] = e
 }
 func (c *Collector) completeResearch(o *Operation) {
+	if c.State.Dynamic != nil && (o.DynamicSlot != 0 || o.Kind == "rental_rate") {
+		c.completeDynamic(o)
+		return
+	}
 	if (!c.Opportunities && c.State.Scheduler == nil) || (o.Kind != "seed" && o.Kind != "probe" && o.Kind != "rental_state") {
 		return
 	}

@@ -76,7 +76,7 @@ func runtimeDecode(raw []byte, files *runtimecheckpoint.Store, loadCandidates bo
 	if err := runtimeExpand(raw, &cp); err != nil {
 		return cp, err
 	}
-	if (cp.Version != 1 && cp.Version != 2) || cp.State.Runtime == nil || len(cp.State.Candidates) != 0 || cp.State.Scheduler != nil || (cp.Version == 2 && cp.Scheduler == nil) || (cp.Version == 1 && (cp.Scheduler != nil || needsTypedCheckpoint(cp.State))) {
+	if (cp.Version != 3 && cp.State.Dynamic != nil) || (cp.Version == 3 && cp.State.Dynamic == nil) || (cp.Version != 1 && cp.Version != 2 && cp.Version != 3) || cp.State.Runtime == nil || len(cp.State.Candidates) != 0 || cp.State.Scheduler != nil || ((cp.Version == 2 || cp.Version == 3) && cp.Scheduler == nil) || (cp.Version == 1 && (cp.Scheduler != nil || needsTypedCheckpoint(cp.State))) {
 		return cp, runtimecheckpoint.ErrRecovery
 	}
 	if loadCandidates {
@@ -113,6 +113,13 @@ func (o *runtimeOwner) save(s *State) error {
 	refs, err := s.Runtime.references()
 	if err != nil {
 		return o.fail(err)
+	}
+	if s.Dynamic != nil {
+		more, e := s.Dynamic.references()
+		if e != nil {
+			return o.fail(e)
+		}
+		refs = append(refs, more...)
 	}
 	raw, err := runtimecheckpoint.MarshalTyped(*s)
 	if err != nil {
@@ -158,6 +165,9 @@ func (o *runtimeOwner) save(s *State) error {
 		}
 		refs = append(refs, *cp.Scheduler)
 	}
+	if s.Dynamic != nil {
+		cp.Version = 3
+	}
 	if o.last != nil && reflect.DeepEqual(cp, *o.last) && !o.files.Due() {
 		return nil
 	}
@@ -185,6 +195,9 @@ func (o *runtimeOwner) capacity(s *State) error {
 	// design separates it from the newly added hot working-state budget.
 	m := o.files.Metrics()
 	added := s.Runtime.memoryBytes() + m.HotBytes - m.CheckpointBytes + m.VerifiedMetadataBytes
+	if s.Dynamic != nil && s.Dynamic.orders != nil {
+		added += s.Dynamic.orders.MemoryBytes() + s.Dynamic.checks.MemoryBytes()
+	}
 	if added > 16<<20 {
 		return fmt.Errorf("keeper added runtime bytes=%d: %w", added, runtimecheckpoint.ErrCapacity)
 	}
@@ -316,7 +329,31 @@ func (c *Collector) OpenRuntime(ctx context.Context, dir string, binding runtime
 	}
 	*c.State = cp.State
 	c.runtime = &runtimeOwner{files: files, metricsAt: time.Now()}
+	if c.State.Dynamic != nil {
+		if err = c.State.Dynamic.open(files); err != nil {
+			files.Close()
+			c.runtime = nil
+			return err
+		}
+	}
 	fail := func(err error) error { files.Close(); c.runtime = nil; return err }
+	// Prime the comparison from the installed snapshot. A restart without new
+	// work must not rewrite candidate/scheduler objects or the checkpoint.
+	baselineRaw, primeErr := runtimecheckpoint.MarshalTyped(*c.State)
+	if primeErr != nil {
+		return fail(primeErr)
+	}
+	var baseline State
+	if primeErr = runtimecheckpoint.UnmarshalTyped(baselineRaw, &baseline); primeErr != nil {
+		return fail(primeErr)
+	}
+	c.runtime.candidates = baseline.Candidates
+	baseline.Candidates = nil
+	c.runtime.scheduler = baseline.Scheduler
+	baseline.Scheduler = nil
+	installed := runtimeSnapshot{Version: cp.Version, State: baseline, Candidates: cp.Candidates, Scheduler: cp.Scheduler}
+	c.runtime.last = &installed
+
 	// Every uncovered SQL attempt has a link to the original frozen Ops entry.
 	for after := uint64(0); ; {
 		pending := files.Pending(after, 16)
@@ -412,5 +449,18 @@ func (c *Collector) runtimeMetrics() {
 		}
 	}
 	c.Log(fmt.Sprintf("runtime_state %s checkpoint_age_ms=%d checkpoint_bytes=%d recovery_bytes=%d recovery_peak_bytes=%d heap_bytes=%d rss_bytes=%d event_progress=%v evidence_progress=%v error=%v working_hot_bytes=%d pending_ops=%d uncheckpointed=%d written_bytes_per_second=%d file_syncs=%d directory_syncs=%d", c.State.Runtime.summary(), now.Sub(m.CheckpointAt).Milliseconds(), m.CheckpointBytes, m.RecoveryBytes, m.PeakRecoveryBytes, memory.HeapAlloc, rss, c.State.EventCursors, c.State.EvidenceCursors, o.poison, c.State.Runtime.memoryBytes(), len(c.State.Ops), m.Uncheckpointed, rate, m.FileSyncs-o.fileSyncs, m.DirectorySyncs-o.dirSyncs))
+	if w := c.State.Dynamic; w != nil {
+		slots := uint8(0)
+		round := ""
+		if w.Round != nil {
+			slots = w.Round.Slots
+			round = w.Round.ID.String()
+		}
+		rate := "unknown"
+		if w.Rate != nil && now.Sub(w.Rate.AvailableAt) <= 5*time.Minute {
+			rate = w.Rate.Status
+		}
+		c.Log(fmt.Sprintf("keeper_dynamic_health policy=%s ready=%v population=%d open=%d round=%s slots=%d rate=%s history_scope=%s", DynamicPolicy, w.Ready, w.population(), w.orders.Eligible(), round, slots, rate, w.CoverageScope))
+	}
 	o.metricsAt, o.written, o.fileSyncs, o.dirSyncs = now, m.WrittenBytes, m.FileSyncs, m.DirectorySyncs
 }

@@ -21,7 +21,7 @@ func realtimeScan(s Scan) bool { return strings.HasPrefix(s.ID, "watch:") }
 
 func (c *Collector) indexRows(o *Operation, p Page, next string) error {
 	o.Kind = "index_page"
-	if s := c.scan(o.ScanID); s != nil && (strings.HasPrefix(s.ID, "history:") || strings.HasPrefix(s.ID, "rescan:")) {
+	if s := c.scan(o.ScanID); s != nil && (strings.HasPrefix(s.ID, "history:") || strings.HasPrefix(s.ID, "rescan:") || strings.HasPrefix(s.ID, "dynamic-history:")) {
 		o.Batch.Capture.CaptureMode = "history"
 	}
 	o.Batch.Capture.CaptureKind = "event_index"
@@ -191,6 +191,9 @@ func (c *Collector) restoreEnrichment(ctx context.Context) error {
 			o.Batch.Capture.CoverageScope = "sampled_rental_events"
 			row, _ := EventRow(raw)
 			for _, member := range c.State.Cohort {
+				if c.DynamicSelection {
+					break
+				}
 				if member.Renter == row.Renter && member.Receiver == row.Receiver {
 					selected = true
 					break
@@ -308,6 +311,21 @@ func indexWindowCompletePages(caps []Capture, pages map[uuid.UUID]IndexPage) (bo
 }
 
 func (c *Collector) operationPriority(o Operation) int {
+	if c.DynamicSelection {
+		if (o.Kind == "rental_state" || o.Kind == "rental_rate" || o.Kind == "probe") && o.probeAttempted() {
+			return 0
+		}
+		if o.Kind == "index_page" {
+			if sc := c.scan(o.ScanID); sc != nil && realtimeScan(*sc) {
+				return 1
+			}
+			return 4
+		}
+		if o.DynamicSlot != 0 {
+			return 2
+		}
+		return 3
+	}
 	if o.Kind == "index_page" {
 		if s := c.scan(o.ScanID); s != nil && realtimeScan(*s) {
 			return 0

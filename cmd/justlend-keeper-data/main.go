@@ -22,11 +22,11 @@ import (
 
 func run(ctx context.Context, args []string) (result error) {
 	if len(args) == 0 {
-		return errors.New("usage: justlend-keeper-data init-schema|init-rental-state-schema|migrate-pages|preflight|backfill|watch|export|report|resume-source|runtime-convert|runtime-verify|runtime-rollback|runtime-handoff [flags]")
+		return errors.New("usage: justlend-keeper-data init-schema|init-rental-state-schema|init-dynamic-schema|dynamic-rebuild|migrate-pages|preflight|backfill|watch|export|report|resume-source|runtime-convert|runtime-verify|runtime-rollback|runtime-handoff [flags]")
 	}
 	command := args[0]
 	switch command {
-	case "init-schema", "init-rental-state-schema", "migrate-pages", "preflight", "backfill", "watch", "export", "report", "resume-source", "runtime-convert", "runtime-verify", "runtime-rollback", "runtime-handoff":
+	case "init-schema", "init-dynamic-schema", "dynamic-rebuild", "init-rental-state-schema", "migrate-pages", "preflight", "backfill", "watch", "export", "report", "resume-source", "runtime-convert", "runtime-verify", "runtime-rollback", "runtime-handoff":
 	default:
 		return errors.New("unknown_command")
 	}
@@ -50,6 +50,7 @@ func run(ctx context.Context, args []string) (result error) {
 	epochFile := f.String("runtime-epoch-file", os.Getenv("JUSTLEND_KEEPER_RUNTIME_EPOCH_FILE"), "external database restore epoch")
 	runtimeExport := f.String("runtime-export", "", "new current-state export directory for verify/rollback")
 	legacyRecovery := f.Bool("legacy-history-recovery", false, "explicit watch using current legacy recovery state")
+	dynamic := f.Bool("dynamic-selection", false, "watch: dynamic 40 focus + 10 exploration; requires explicit dynamic-rebuild and extension schema")
 	opportunities := f.Bool("opportunity-probes", true, "watch: bounded dynamic rental-state checks alongside the fixed cohort; requires the rental-state extension schema")
 	if e := f.Parse(args[1:]); e != nil {
 		return e
@@ -84,7 +85,10 @@ func run(ctx context.Context, args []string) (result error) {
 	if e != nil {
 		return e
 	}
-	useRuntime := storage.Name == "mysql" && (command == "watch" && !*legacyRecovery || command == "resume-source" || command == "preflight") || strings.HasPrefix(command, "runtime-")
+	useRuntime := command == "dynamic-rebuild" || storage.Name == "mysql" && (command == "watch" && !*legacyRecovery || command == "resume-source" || command == "preflight") || strings.HasPrefix(command, "runtime-")
+	if *dynamic && !useRuntime {
+		return errors.New("dynamic_selection_requires_mysql_native_runtime")
+	}
 	if useRuntime && (storage.Name != "mysql" || *epochFile == "") {
 		return errors.New("runtime_state_requires_mysql_and_epoch_file")
 	}
@@ -180,6 +184,13 @@ func run(ctx context.Context, args []string) (result error) {
 		return e
 	}
 	defer store.Close()
+	if command == "init-dynamic-schema" {
+		ext, ok := store.(interface{ InitKeeperDynamicSchema(context.Context) error })
+		if !ok {
+			return errors.New("backend_lacks_dynamic_schema")
+		}
+		return ext.InitKeeperDynamicSchema(ctx)
+	}
 	if command == "init-rental-state-schema" {
 		extension, ok := store.(interface{ InitKeeperRentalStateSchema(context.Context) error })
 		if !ok {
@@ -191,7 +202,7 @@ func run(ctx context.Context, args []string) (result error) {
 		fmt.Printf("keeper rental-state extension ready: %s (2 tables)\n", *db)
 		return nil
 	}
-	if command == "watch" && *opportunities {
+	if command == "watch" && (*opportunities || *dynamic) {
 		extension, ok := store.(interface{ CheckKeeperRentalStateSchema(context.Context) error })
 		if !ok {
 			return errors.New("backend_lacks_rental_state_schema")
@@ -221,8 +232,18 @@ func run(ctx context.Context, args []string) (result error) {
 		}
 	}
 	c := keeper.NewCollector(cfg, &s, keeper.StateFile(*stateDir), archive, store)
-	c.Opportunities = command == "watch" && *opportunities
+	c.Opportunities = command == "watch" && (*opportunities || *dynamic)
+	c.DynamicSelection = *dynamic || command == "dynamic-rebuild"
 	c.Log = func(s string) { log.Print(s) }
+	if *dynamic || command == "dynamic-rebuild" {
+		ext, ok := store.(interface{ CheckKeeperDynamicSchema(context.Context) error })
+		if !ok {
+			return errors.New("backend_lacks_dynamic_schema")
+		}
+		if e = ext.CheckKeeperDynamicSchema(ctx); e != nil {
+			return e
+		}
+	}
 	if useRuntime {
 		provider, ok := store.(interface {
 			RuntimeBinding(context.Context, string, string, uint32) (runtimecheckpoint.Binding, error)
@@ -256,6 +277,13 @@ func run(ctx context.Context, args []string) (result error) {
 			return err
 		}
 		defer func() { result = errors.Join(result, c.CloseRuntime()) }()
+		if command == "dynamic-rebuild" {
+			return c.RebuildDynamic(ctx)
+		}
+		if command == "watch" && *dynamic && (s.Dynamic == nil || !s.Dynamic.Ready) {
+			return errors.New("dynamic_selection_requires_explicit_dynamic_rebuild")
+		}
+
 		if command == "runtime-handoff" {
 			report, err := c.HandoffRuntime(ctx, *handoffPlan)
 			if err != nil {

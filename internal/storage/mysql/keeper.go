@@ -284,6 +284,9 @@ func (c *Client) keeperBatch(ctx context.Context, q executor, cap keeper.Capture
 	if err := c.readKeeperRentalState(ctx, q, &b); err != nil {
 		return b, err
 	}
+	if err := c.readKeeperDynamic(ctx, q, &b); err != nil {
+		return b, err
+	}
 	return b, keeper.Validate(b)
 }
 func (c *Client) KeeperBatch(ctx context.Context, cap keeper.Capture) (result keeper.Batch, err error) {
@@ -309,23 +312,6 @@ func (c *Client) KeeperBatch(ctx context.Context, cap keeper.Capture) (result ke
 		return keeper.Batch{}, contracts.ErrConflict
 	}
 	return c.keeperBatch(ctx, c.db, rows[0])
-}
-func (c *Client) KeeperBatches(ctx context.Context, caps []keeper.Capture) (map[uuid.UUID]keeper.Batch, error) {
-	if len(caps) > 256 {
-		return nil, fmt.Errorf("keeper bulk read exceeds quota")
-	}
-	out := map[uuid.UUID]keeper.Batch{}
-	for _, cap := range caps {
-		if _, ok := out[cap.CaptureId]; ok {
-			return nil, contracts.ErrConflict
-		}
-		b, e := c.KeeperBatch(ctx, cap)
-		if e != nil {
-			return nil, e
-		}
-		out[cap.CaptureId] = b
-	}
-	return out, nil
 }
 func (c *Client) keeperAnchors(ctx context.Context, q executor, b keeper.Batch) error {
 	known := map[uint64]string{}
@@ -413,7 +399,7 @@ func (c *Client) WriteKeeperBatch(ctx context.Context, b keeper.Batch) error {
 			if err != nil {
 				return err
 			}
-			if !keeper.RentalStateProofEqual(existing.RentalStateProof, b.RentalStateProof) {
+			if !keeper.RentalStateProofEqual(existing.RentalStateProof, b.RentalStateProof) || !keeper.DynamicProofEqual(existing, b) {
 				return contracts.ErrConflict
 			}
 			return nil
@@ -442,6 +428,9 @@ func (c *Client) WriteKeeperBatch(ctx context.Context, b keeper.Batch) error {
 			return e
 		}
 		if e = c.writeKeeperRentalState(ctx, tx, b); e != nil {
+			return e
+		}
+		if e = c.writeKeeperDynamic(ctx, tx, b); e != nil {
 			return e
 		}
 		if _, e = c.keeperBatch(ctx, tx, b.Capture); e != nil {

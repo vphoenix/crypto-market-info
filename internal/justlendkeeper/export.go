@@ -37,8 +37,8 @@ func Export(ctx context.Context, r ReportReader, _ Archive, cfg Config, from, to
 		return err
 	}
 	defer os.RemoveAll(tmp)
-	types := []any{Capture{}, IndexedEvent{}, RentalEvent{}, TxReceipt{}, Probe{}, CostObservation{}, IndexPage{}, RentalStateObservation{}, RentalStateBatchProof{}}
-	names := []string{"captures", "indexed_events", "verified_events", "receipts", "probes", "cost_observations", "index_pages", "rental_states", "rental_state_batches"}
+	types := []any{Capture{}, IndexedEvent{}, RentalEvent{}, TxReceipt{}, Probe{}, CostObservation{}, IndexPage{}, RentalStateObservation{}, RentalStateBatchProof{}, RentalRateObservation{}, RentalRateBatchProof{}, SelectionMember{}, SelectionRound{}}
+	names := []string{"captures", "indexed_events", "verified_events", "receipts", "probes", "cost_observations", "index_pages", "rental_states", "rental_state_batches", "rental_rates", "rental_rate_batches", "selection_members", "selection_rounds"}
 	files := make([]*os.File, len(types))
 	writers := make([]*csv.Writer, len(types))
 	counts := make([]uint64, len(types))
@@ -174,7 +174,15 @@ func Export(ctx context.Context, r ReportReader, _ Archive, cfg Config, from, to
 			if b.RentalStateProof != nil {
 				proofs = []RentalStateBatchProof{*b.RentalStateProof}
 			}
-			rows := []any{[]Capture{}, b.IndexedEvents, b.Events, b.Receipts, b.Probes, b.Costs, pages, b.RentalStates, proofs}
+			var rateProofs []RentalRateBatchProof
+			if b.RateProof != nil {
+				rateProofs = []RentalRateBatchProof{*b.RateProof}
+			}
+			var rounds []SelectionRound
+			if b.SelectionRound != nil {
+				rounds = []SelectionRound{*b.SelectionRound}
+			}
+			rows := []any{[]Capture{}, b.IndexedEvents, b.Events, b.Receipts, b.Probes, b.Costs, pages, b.RentalStates, proofs, b.Rates, rateProofs, b.Selections, rounds}
 			for i, list := range rows {
 				v := reflect.ValueOf(list)
 				for j := 0; j < v.Len(); j++ {
@@ -216,7 +224,7 @@ func Export(ctx context.Context, r ReportReader, _ Archive, cfg Config, from, to
 	}
 	meta := map[string]any{"format": "jl-keeper-data-export-v2", "from": UTC(from), "to": UTC(to), "time_filter": "capture_started_at, [from,to)", "created_at": time.Now().UTC(), "validation": "database row counts and stable member digests; original API/RPC bodies are not retained or reverified", "raw_responses_retained": false, "null": "unknown; never zero", "indexed_events": "provider observations; block hash and receipt position are unverified", "verified_events": "receipt-verified solid block facts; rental events cover the selected sample", "rows": map[string]uint64{}}
 	meta["capture_audit"] = "all capture rows in window, including retracted or foreign-config captures; their members are excluded"
-	meta["format"] = "jl-keeper-data-export-v3"
+	meta["format"] = "jl-keeper-data-export-v4"
 	meta["rental_states"] = "getRentInfo observations; node latest is unpinned; liquidatable is not proof of an executable reward; NULL is unknown"
 	meta["member_filter"] = "committed=true AND config_hash=" + Hex(cfg.Hash())
 	meta["effective_available_at"] = "max(row.available_at,capture.available_at); block_time is chain time, not local availability"

@@ -207,4 +207,8 @@ type Batch struct {
 	IndexPage        *IndexPage
 	RentalStates     []RentalStateObservation
 	RentalStateProof *RentalStateBatchProof
+	Rates            []RentalRateObservation
+	RateProof        *RentalRateBatchProof
+	Selections       []SelectionMember
+	SelectionRound   *SelectionRound
 }

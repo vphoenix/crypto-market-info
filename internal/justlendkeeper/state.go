@@ -95,6 +95,7 @@ type State struct {
 	NextEnrichment      time.Time
 	NextResearchRequest time.Time
 	Scheduler           *SchedulerState
+	Dynamic             *dynamicWork
 }
 
 func NewState(target string, c Config) State {
@@ -215,6 +216,15 @@ func (l *Limiter) ReserveRequest(req Request) error {
 		l.State.NextBackground = now.Add(5 * time.Second)
 	}
 	l.State.Used++
+	if req.AttemptCapture != "" {
+		for i := range l.State.Ops {
+			op := &l.State.Ops[i]
+			if op.DynamicSlot != 0 && op.Batch.Capture.CaptureId.String() == req.AttemptCapture {
+				op.DynamicRPCAttempts++
+				break
+			}
+		}
+	}
 	if req.Research {
 		l.State.NextResearchRequest = now.Add(5 * time.Second)
 	}

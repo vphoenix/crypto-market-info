@@ -67,7 +67,7 @@ func (c *Collector) finalizeRentalStates(o *Operation, completed time.Time) {
 // Pin one request chain even when a pre-upgrade checkpoint contains several
 // legacy operations. Frozen SQL retries are resolved separately and send no RPC.
 func (c *Collector) researchTurn(o *Operation, now time.Time) bool {
-	if !c.Opportunities || (o.Kind != "seed" && o.Kind != "probe" && o.Kind != "rental_state") {
+	if !c.Opportunities || (o.Kind != "seed" && o.Kind != "probe" && o.Kind != "rental_state" && o.Kind != "rental_rate") {
 		return true
 	}
 	s := c.scheduler()
