@@ -58,7 +58,7 @@ func (r *Runtime) defaults() error {
 		return fmt.Errorf("OKX runtime requires instrument and book")
 	}
 	if r.WSEndpoint == "" {
-		r.WSEndpoint = "wss://ws.okx.com:8443/ws/v5/public"
+		r.WSEndpoint = "wss://ws.okx.com:443/ws/v5/public"
 	}
 	if r.Dialer == nil {
 		r.Dialer = websocket.DefaultDialer

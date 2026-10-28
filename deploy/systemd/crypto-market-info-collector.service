@@ -18,6 +18,7 @@ Environment=MARKET_BOOK_DEPTH=5
 Environment=OKX_PAIRED_ENABLED=true
 Environment=OKX_PAIRED_MAX_PAIRS=256
 Environment=OKX_PAIRED_REFRESH=30m
+Environment=OKX_WS_URL=wss://ws.okx.com:443/ws/v5/public
 Environment=OPTIONS_ENABLED=true
 Environment=OPTIONS_SYMBOLS=auto
 Environment=OPTIONS_EVIDENCE_DIR=/home/ubuntu/.local/share/crypto-market-info-options/evidence

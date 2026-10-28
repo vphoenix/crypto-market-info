@@ -1,6 +1,6 @@
 [Unit]
 Description=Crypto market data MySQL (private Unix socket)
-After=default.target
+# default.target starts this service; ordering after it creates a startup cycle.
 
 [Service]
 Environment=DOCKER_API_VERSION=1.45

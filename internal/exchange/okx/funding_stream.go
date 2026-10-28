@@ -171,7 +171,7 @@ func (r *FundingRuntime) defaults() error {
 		seenIDs[instrument.ID] = true
 	}
 	if r.WSEndpoint == "" {
-		r.WSEndpoint = "wss://ws.okx.com:8443/ws/v5/public"
+		r.WSEndpoint = "wss://ws.okx.com:443/ws/v5/public"
 	}
 	if r.Dialer == nil {
 		r.Dialer = websocket.DefaultDialer

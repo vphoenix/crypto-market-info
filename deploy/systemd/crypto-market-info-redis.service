@@ -1,6 +1,6 @@
 [Unit]
 Description=Crypto market data Redis (private Unix socket, durable sealed delivery)
-After=default.target
+# default.target starts this service; ordering after it creates a startup cycle.
 
 [Service]
 Environment=DOCKER_API_VERSION=1.45

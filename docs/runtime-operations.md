@@ -1,5 +1,9 @@
 # 当前部署与运行说明
 
+2026-10-29 01:11:41（UTC+8）修复 OKX 全部停采：自 10-27 17:03 起 OKX 在 8443 端口连接上先推送 `64010 WebSocket port 8443 will be retired soon`，适配器将 notice 视为连接错误，导致全部 OKX 盘口与资金费连接循环重连；CEX 从 10-27 09:10 UTC 的 337 路逐步降至 09:35 UTC 起仅剩 Binance/Bybit 3 路，其间约 31.6 小时的 OKX 实时盘口无法补回。实测 443 端口无该 notice、快照/增量正常。collector unit 新增 `OKX_WS_URL=wss://ws.okx.com:443/ws/v5/public`（实际二进制未替换，按配置读取），同步把代码四处默认值改为 443；安装前 unit 备份在 `var/storage/okx-port-443/20261029/`。重启后 332/332 配对盘口就绪，17:17、17:18 UTC 两个分钟 337/337 CEX 及 2,646 个期权成员全部 60 秒有效。同晚另有两次约 12 分钟的期权/盘口缺失（13:39–13:51 UTC 含 systemd-oomd 杀 collector，15:40–15:52 UTC 换页风暴致 MySQL 锁等待），由整机内存压力引起，本次未处理。
+
+2026-10-25 服务器重启后修复启动依赖环：MySQL/Redis 的 `After=default.target` 与依赖它们的采集服务形成循环，systemd 在 14:48:49（UTC+8）取消了存储启动任务。已备份并仅删除两个已安装 unit 中该顺序配置，同步修正仓库模板；default.target 验证不再有循环诊断。14:57:39 启动 MySQL/Redis，14:58:18 恢复 writer、collector、Across、Keeper；加上 ClickHouse，七个服务均 active/running、enabled、NRestarts=0。15:08 只读核验 15:05 分钟的 337 路 CEX 及 2,878 个 Deribit 成员全部 60 秒有效，DEX/Keeper 有新提交。仍有新写入排队，Across Arbitrum 的最新运行锚点尚未推进到重启后，不能据进程运行宣称全部来源追平。Reserve/LST、Across 历史和永续验收继续 disabled，正式历史迁移未恢复；[修复、数据验证与边界](../research/2026-10-25-reboot-recovery/report.md)。
+
 2026-10-24 04:09:37（UTC+8）已将 Keeper 切换为 `dynamic-40-10-v1`：每轮最多 50 个不同订单、40 个重点与 10 个探索交错准入。原七表保留，新增六张状态、费率和调度审计专表；v1 runtime 完整认证转换为 v3，转换不消耗 RPC 日预算。实际进程、数据入库与调度验收见[动态实现与运行](justlend-keeper-dynamic-selection-implementation.md)及[验证记录](superpowers/validation/2026-10-24-keeper-dynamic-selection.md)。原 producer/代次、来源和预算保留。全历史仍在后台补采，发现集合不代表已独立证明全市场完整覆盖；此条替代此前“机会探测尚未部署”的状态。
 
 2026-10-24 00:25:22（UTC+8）已部署 Across 网络故障恢复修复并重启实时服务。此前一次 Arbitrum DNS 错误被程序永久锁存，退出码 2 又被 unit 禁止自动重启，导致自 10 月 19 日 18:49:54 停采。现在来源网络故障保留失败证据，经共享 quota 按 5/10/20/40 秒冷却后重试；两个已安装 unit 均取消退出码 2 的重启例外，实时失败重启间隔仍为 15 秒。运行版本 `across-network-recovery-20261024`，实际程序为 `var/storage/bootstrap-preparation/20261013/bin/across-data`。00:32 的数据库核验确认 Base、Arbitrum 都有重启后 `complete/committed/canonical` 的新日志批次，证据哈希与区块范围一致；这些样本的最终性仍为 `head`，不代表四天缺口或费用已补齐。历史服务仍 inactive/disabled，其他服务未重启。构建、测试边界和部署证据见[修复记录](../research/2026-10-24-across-network-recovery/report.md)。下文较早网络停采规则均为历史行为。
@@ -260,7 +264,7 @@ SOL 的九条固定路线及对应日志 `source`：
 |---|---|
 | Binance REST | 现货 `https://data-api.binance.vision`；永续 `https://fapi.binance.com` |
 | Binance WebSocket | 现货 `wss://stream.binance.com:443/ws`；永续盘口 `wss://fstream.binance.com/public/ws`；资金费率 `wss://fstream.binance.com/market/ws` |
-| OKX | REST `https://www.okx.com`；WebSocket `wss://ws.okx.com:8443/ws/v5/public` |
+| OKX | REST `https://www.okx.com`；WebSocket `wss://ws.okx.com:443/ws/v5/public`（2026-10-27 起 8443 端口被 OKX 以 64010 通知退役） |
 | Bybit | REST `https://api.bybit.com`；线性合约 WebSocket `wss://stream.bybit.com/v5/public/linear` |
 | JustLend / TRON | `https://openapi.just.network` / `https://api.trongrid.io` |
 | Solana RPC | `https://api.mainnet.solana.com`；用于链上池状态、身份和区块锚点校验 |

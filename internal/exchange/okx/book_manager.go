@@ -65,7 +65,7 @@ func NewBookManager(client *Client, instruments []model.Instrument, books map[ui
 	if logger == nil {
 		logger = slog.Default()
 	}
-	m := &BookManager{WSEndpoint: "wss://ws.okx.com:8443/ws/v5/public", Dialer: websocket.DefaultDialer, ConnectGate: client.WebsocketConnectGate(), Logger: logger, ReconnectBase: time.Second, ReconnectMax: 30 * time.Second, ReconnectJitter: exchange.AddJitter, books: make(map[uint32]*orderbook.Book)}
+	m := &BookManager{WSEndpoint: "wss://ws.okx.com:443/ws/v5/public", Dialer: websocket.DefaultDialer, ConnectGate: client.WebsocketConnectGate(), Logger: logger, ReconnectBase: time.Second, ReconnectMax: 30 * time.Second, ReconnectJitter: exchange.AddJitter, books: make(map[uint32]*orderbook.Book)}
 	m.instruments = append([]model.Instrument(nil), instruments...)
 	sort.Slice(m.instruments, func(i, j int) bool { return m.instruments[i].ExchangeSymbol < m.instruments[j].ExchangeSymbol })
 	seen := make(map[string]bool)
