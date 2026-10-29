@@ -1,5 +1,7 @@
 # 系统总体架构
 
+2026-10-30：JustLend keeper 独立采集已停止且取消开机自启（市场小、被两家秒级抢单垄断）；源码、命令与研究库保留。下文 keeper 链路说明描述实现结构，不表示仍在运行，详见[运行说明](runtime-operations.md)。
+
 2026-10-19：LST 固定赎回路线研究已结束，专属 `crypto-market-info-lst.service` 停止且取消开机自启；现有模块和历史查询保留。下文 LST 链路说明描述实现结构，不表示仍在运行，详见[复核与停用记录](../research/2026-10-19-lst-retirement/report.md)。
 
 2026-10-16 交付层采用兼容旧版的 spool v2 无损压缩；Redis 成员按最多 32 条命令分组，封口及同连接 WAITAOF 仍确认全部成员。writer 通过原子 MySQL 提交凭据回收遗留 collecting 副本，父批次状态门控防止迟到重建。模型、采样和回放分层保持，详见[实施记录](redis-mysql-migration/io-reduction-20261016.md)。

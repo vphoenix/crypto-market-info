@@ -14,7 +14,7 @@
 | 公开借币利率与额度 | public/interest-rate-loan-quota，daily rate与基础币额；Basic/Regular/override/config分项 | 无原生观察时间，明确标记请求观察；不冒充账户实际条款 |
 | 抵押与风险 | public/discount-rate-interest-free-quota及position-tiers | typed marginal discount/liqPenaltyRate/imr/mmr/maxLever；reference borrow lever5明确为假设，执行换成私人实际值 |
 
-永续档查询 SWAP/cross/instFamily=BASE-USDT，原生合约区间转为基础币。多币种借币档必须 MARGIN/cross/ccy=BASE，按 minSz/maxSz基础币区间，不能用instId/baseMaxLoan替代。实际币级响应可无ccy字段，必须把请求URL范围固定在来源元数据，拒绝非空币对身份或显式错币。缺失/null collateralRestrict不视为抵押许可。
+永续档查询 SWAP/cross/instFamily=BASE-USDT，原生合约区间转为基础币；换算乘积先去掉继承自 `DECIMAL(38,18)` 乘数的末尾零，再做 18 位小数范围校验，只有真实精度超过 18 位才拒收（2026-10-30 修复：此前 500.001 这类精确边界被表示成 20 位小数而误拒）。多币种借币档必须 MARGIN/cross/ccy=BASE，按 minSz/maxSz基础币区间，不能用instId/baseMaxLoan替代。实际币级响应可无ccy字段，必须把请求URL范围固定在来源元数据，拒绝非空币对身份或显式错币。缺失/null collateralRestrict不视为抵押许可。
 
 表定义在 `internal/storage/clickhouse/discovery_schema.sql`，定类型模型在 `internal/model/discovery.go`，API采集在 `internal/exchange/okx/discovery.go`，循环在 `internal/app/discovery_runner.go`，writer/query在 `internal/storage/clickhouse/discovery*.go`。OKX_PAIRED_ENABLED 配对运行中自动启用；每币采集失败不刷新旧观察的时间，重试不会把上期已结算数据改成预测。公开请求共享限流，代际切换取消并等待旧 worker。
 

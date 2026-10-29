@@ -1,5 +1,9 @@
 # 当前部署与运行说明
 
+2026-10-30 00:41:28（UTC+8）：按用户要求停止 JustLend keeper 采集，执行 `systemctl --user disable --now crypto-market-info-justlend-keeper.service`。进程约 1 秒正常退出，最后一批 index_page 为 complete；实际为 inactive、disabled，default.target 启动链接已移除，桌面状态指示器不监控该服务。依据：10-24 动态选择上线后约 6,700 次 `getRentInfo` 无一可清算，同期 62 次真实清算中我方离清算最近的一次检查仍早 8.8 分钟；10-23 至 10-29 全市场毛奖励约 483 TRX/日（约 160 USDT），两家地址拿走约 95%，并在可清算后秒级出手。要参与需自建低延迟节点、精确计时与私钥自动发单，超出本项目边界。研究库 `crypto_market_info_justlend_keeper`、状态目录、源码与命令全部保留；Ubuntu 重启后应保持停用，不要依据下文旧记录重新启用。
+
+2026-10-30 00:41:15（UTC+8）：collector 重新部署，修复 OKX 永续风险档位误拒。自 10-16 MySQL 切换起，合约面值从 `DECIMAL(38,18)` 读回带 18 位小数，档位边界（如 5000.01 张）乘以面值后成为 20 位小数表示，被 18 位范围校验拒收；BTC、ETH、SOL、XRP 等 22 个币的整份资本参数（永续与借币档位）及其后的参考费率因此一直未入库，盘口与资金费率不受影响。现在乘积先去掉末尾零再校验，`TestDiscoveryPerpRiskAcceptsStoredMultiplierScale` 修复前失败、修复后通过；重启后 `risk tier outside` 报错为零。原 binary 备份为 `collector.20261029-pre-okx-tier-fix`。另：OKX 参考费率规则在代码中固定人工复核有效期至 2026-10-15，过期后所有币的 `reference fee` 均按 `invalid public fee rule identity/time` 拒收（自 10-15 起），属于到期待复核而非本次修复范围，需重新核对费率页后再延长。
+
 2026-10-29 18:08:17（UTC+8）按用户要求停止 Deribit 期权盘口采集：同日细查（954 个分钟快照及 7 分钟逐秒回放，约 2.06 亿次组合比较）扣费后无一为正，而期权盘口约占每日增量 14.6 GB。collector 新增 `OPTIONS_KINDS`（默认 `option,future`），drop-in `96-options-futures-only.conf` 设为 `future`，自动目录只订阅 BTC/ETH/USDC 三族交割期货及其四个指数；10:11 UTC 起生效计划为 42 个期货。运行 binary 仍为 `var/storage/bootstrap-preparation/20261013/bin/collector`（由当前 main 重建），原 binary 备份为同目录 `collector.20261019-pre-futures-only`；删除该 drop-in 并重启即可恢复期权采集。历史期权数据保留。分析见[期权盘口复查](../research/2026-10-29-deribit-options/report.md)。
 
 2026-10-29 02:37:26（UTC+8）：按用户要求结束 Across Base↔Arbitrum 原生 USDC 路线采集，执行 `systemctl --user disable --now crypto-market-info-across.service`。进程约 8 秒正常退出（Result=success、退出码 0），02:37:33 写出最终运行断点；实际为 inactive/dead、MainPID=0、disabled，default.target 启动链接已移除，验证无循环诊断。依据为[四项目评估](../research/2026-10-19-four-project-evaluation/report.md)：近七天正原始价差约 19 USDC/日（未扣 LP 费、gas 与库存成本），低于目标所需 82.19/日，实时探测未确认任何可由我们成交的订单。停采前只读核查确认实时采集仍在推进（两链最新收据 capture 为 complete/committed/finalized，Arbitrum 已越过重启前锚点）；最终性核对频繁 `deadline_exceeded` 是每轮 20 秒网络预算对 24 个 capture 偏紧、共享限速与慢 MySQL 写入叠加所致，不是停采原因。历史数据库、运行状态、来源额度与证据目录全部保留，未删除。其他服务 PID 与重启计数前后一致，状态记录在 `var/storage/across-retirement/20261029/`。结论只针对当前路线，不代表所有 Across 策略都没有机会；Ubuntu 重启后应保持停用，不要依据下文旧记录重新启用。
@@ -551,6 +555,8 @@ var/lst/lst-data report --out var/lst-reports/latest
 
 
 ## JustLend keeper 独立研究采集（2026-10-03）
+
+2026-10-30 起已停用（disabled/inactive），下文为历史记录；不要依据下文旧记录重新启用。停用依据见本文开头 2026-10-30 记录。
 
 2026-10-08 22:58:37（北京时间）已部署本地状态写入优化，binary SHA256 `1ea617be1680aeda37c4b5fab5f51893f8df85d571746b23e36d12608d0c6a17`。v2 将常写进度和较大候选缓存分开压缩保存，跳过未变化状态；原请求预算、冷却、采集频率和冻结重试的同步持久化保持不变。旧单文件状态原位迁移，正常目录只保留主文件及其引用缓存，原响应归档仍不生成。备份须停服保存完整状态目录；旧 binary 不能直接读取 v2，回滚需先转换当前状态，不能用旧备份重置预算。修改和实测见[本轮记录](../research/2026-10-08-keeper-state-io/report.md)。
 

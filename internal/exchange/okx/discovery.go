@@ -376,8 +376,10 @@ func ParseDiscoveryRisk(response PublicResponse, i model.Instrument, borrow bool
 			return nil, err
 		}
 		if !borrow {
-			lower = lower.Mul(i.ContractMultiplier)
-			upper = upper.Mul(i.ContractMultiplier)
+			// Stored multipliers carry DECIMAL(38,18) scale; drop the trailing
+			// zeros the product inherits so exact values keep a valid exponent.
+			lower = decimal.RequireFromString(lower.Mul(i.ContractMultiplier).String())
+			upper = decimal.RequireFromString(upper.Mul(i.ContractMultiplier).String())
 		}
 		result = append(result, model.RiskTier{Minimum: lower, Maximum: upper, Initial: imr, Maintenance: mmr, MaximumLeverage: leverage})
 	}

@@ -2,6 +2,7 @@ package okx
 
 import (
 	"encoding/json"
+	"github.com/shopspring/decimal"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 	"strings"
 	"testing"
@@ -32,6 +33,23 @@ func TestDiscoveryBorrowRiskUsesCurrencyRequestAndNativeMaxSz(t *testing.T) {
 	} {
 		if _, err := ParseDiscoveryRisk(bad, i, true); err == nil {
 			t.Fatal("wrong risk scope accepted")
+		}
+	}
+}
+func TestDiscoveryPerpRiskAcceptsStoredMultiplierScale(t *testing.T) {
+	body := `[{"instFamily":"ETH-USDT","instId":"","minSz":"0","maxSz":"5000","imr":".01","mmr":".004","maxLever":"100"},` +
+		`{"instFamily":"ETH-USDT","instId":"","minSz":"5000.01","maxSz":"10000","imr":".015","mmr":".005","maxLever":"66.66"}]`
+	// Multipliers read back from DECIMAL(38,18) keep eighteen fractional digits.
+	i := model.Instrument{BaseAsset: "ETH", ContractMultiplier: decimal.RequireFromString("0.100000000000000000"), QuantityStepSize: decimal.RequireFromString("0.010000000000000000")}
+	tiers, err := ParseDiscoveryRisk(PublicResponse{Data: json.RawMessage(body)}, i, false)
+	if err != nil || tiers[1].Minimum.String() != "500.001" {
+		t.Fatal(tiers, err)
+	}
+	for _, x := range tiers {
+		for _, n := range []decimal.Decimal{x.Minimum, x.Maximum} {
+			if !model.ReferenceDecimal(n) {
+				t.Fatal("exact tier bound rejected", n, n.Exponent())
+			}
 		}
 	}
 }

@@ -8,9 +8,9 @@
 - OKX 可公开借贷的 USDT 现货/永续配对动态采集（开关默认关闭），完整范围及新挂牌衔接见[5档与配对实现](docs/okx-paired-five-level.md)；
 - OKX 下一期独立资金费预测、标记与币种指数、完整分钟成交量、公开费用与借币/抵押档位、耐久发布元数据（已完成隔离真实 SQL 验证，常驻部署待替换；[找币数据合同](docs/discovery-trading-contract.md)）；
 - Ethereum Uniswap v3＋Sky 协议兑换状态、56档闭环报价及日志/回执（默认关闭；[采集与判断说明](docs/dex-arbitrage-implementation.md)）；
-- Deribit BTC/ETH 币本位与 USDC 期权每秒10档、同到期交割期货每秒5档，以及元数据与指数（默认关闭；[使用说明](docs/arbitrage/strategies/arb-0009-options-live.md)）；
+- Deribit BTC/ETH 币本位与 USDC 期权每秒10档、同到期交割期货每秒5档，以及元数据与指数（默认关闭；[使用说明](docs/arbitrage/strategies/arb-0009-options-live.md)；生产自 2026-10-29 起以 `OPTIONS_KINDS=future` 只采期货与指数）；
 - Binance、OKX 和 Bybit 永续资金费率；
-- JustLend 能源租单清理 keeper 的事件、收据、只读模拟和资源／兑换成本，使用独立命令与六表研究库（[实现与运行说明](docs/justlend-keeper-data-implementation.md)）；
+- JustLend 能源租单清理 keeper 的事件、收据、只读模拟和资源／兑换成本，使用独立命令与六表研究库（[实现与运行说明](docs/justlend-keeper-data-implementation.md)；2026-10-30 已停止并取消开机自启，历史库保留）；
 - JustLend TRX 收益、TRON 原生质押，以及 SOL 第一、第二阶段收益（LST、原生质押、Kamino 和 Save）；
 - AVAX 第一阶段：OKX 公开出借 APR、Aave V3/V4 WAVAX 基础存款历史 APY；
 - AVAX 第二阶段：BENQI sAVAX、Ankr ankrAVAX 兑换率，以及 BENQI AVAX 基础借贷 APR、同块现金和退出规则（已部署；实际运行状态见运行说明）；
@@ -216,8 +216,8 @@ JustLend、TRON、SOL 和 AVAX 收益使用独立 Runner 与 ClickHouse writer�
 
 - [Ethereum DEX 采集与判断](docs/dex-arbitrage-implementation.md)：五表、固定路线、只读报告及成本情景。
 - [Reserve 拍卖与篮子申赎](docs/reserve-data-implementation.md)：当前DFX试验已于2026-10-19停止并取消开机自启；保留历史数据、查询及实现说明。
-- [Across 稳定币中继](docs/across-stablecoin-data-implementation.md)：Base／Arbitrum USDC、七表、实时 probe 与独立历史回补。
-- [JustLend keeper](docs/justlend-keeper-data-implementation.md)：TRON 租赁清理事件、收据、只读模拟与资源成本。
+- [Across 稳定币中继](docs/across-stablecoin-data-implementation.md)：Base／Arbitrum USDC、七表、实时 probe 与独立历史回补；2026-10-29 已停止并取消开机自启。
+- [JustLend keeper](docs/justlend-keeper-data-implementation.md)：TRON 租赁清理事件、收据、只读模拟与资源成本；2026-10-30 已停止并取消开机自启。
 - [LST 采集运行说明](docs/lst-redemption-data-implementation.md)：独立七表、常驻服务、限速、断线恢复、健康查询与当前来源限制。
 
 - [当前部署与运行说明](docs/runtime-operations.md)：实际运行服务、路径、配置、上游接口、只读检查和维护注意事项。
