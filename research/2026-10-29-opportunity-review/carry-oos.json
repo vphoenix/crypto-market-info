@@ -1,0 +1,1086 @@
+{
+ "generated_utc": "2026-10-28T18:44:48.700100+00:00",
+ "method": "Out-of-sample funding carry backtests. Selection uses only data before each block.\n\nTwo strategies, both on actual settled funding only (forecasts are never used):\n  spot_perp: long OKX spot + short OKX perp on the paired universe (no borrowing).\n  perp_perp: long the lower-funding venue, short the higher-funding venue (soak data).\nMissing settlements are never imputed: an asset-block whose observed settlement count\nis below the expected count for its modal interval is excluded, and exclusions are reported.\n",
+ "okx_spot_perp_window": [
+  "2026-10-08",
+  "2026-10-27"
+ ],
+ "okx_spot_perp_assets": 167,
+ "okx_spot_perp_grid": [
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 1,
+   "roundtrip_fee": "0.0027",
+   "blocks": 14,
+   "blocks_without_data": 4,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "14",
+   "net_return_sum": "-0.032382149414518100",
+   "net_simple_apr_on_notional": "-0.84424889544993617857142857142857142857142857142856",
+   "negative_blocks": 14,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 1,
+   "roundtrip_fee": "0.0033",
+   "blocks": 14,
+   "blocks_without_data": 4,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "14",
+   "net_return_sum": "-0.040182149414518100",
+   "net_simple_apr_on_notional": "-1.0476060383070790357142857142857142857142857142857",
+   "negative_blocks": 14,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 1,
+   "roundtrip_fee": "0.0023",
+   "blocks": 14,
+   "blocks_without_data": 4,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "14",
+   "net_return_sum": "-0.027182149414518100",
+   "net_simple_apr_on_notional": "-0.70867746687850760714285714285714285714285714285716",
+   "negative_blocks": 14,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 3,
+   "roundtrip_fee": "0.0027",
+   "blocks": 15,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 8,
+   "days_evaluated": "15",
+   "net_return_sum": "-0.033476184542580000000000000000000000000000000000000",
+   "net_simple_apr_on_notional": "-0.81458715720278000000000000000000000000000000000000",
+   "negative_blocks": 15,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 3,
+   "roundtrip_fee": "0.0033",
+   "blocks": 15,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 8,
+   "days_evaluated": "15",
+   "net_return_sum": "-0.040676184542579999999999999999999999999999999999999",
+   "net_simple_apr_on_notional": "-0.98978715720277999999999999999999999999999999999996",
+   "negative_blocks": 15,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 3,
+   "roundtrip_fee": "0.0023",
+   "blocks": 15,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 8,
+   "days_evaluated": "15",
+   "net_return_sum": "-0.028676184542580000000000000000000000000000000000000",
+   "net_simple_apr_on_notional": "-0.69778715720278000000000000000000000000000000000000",
+   "negative_blocks": 15,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 5,
+   "roundtrip_fee": "0.0027",
+   "blocks": 15,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 15,
+   "days_evaluated": "15",
+   "net_return_sum": "-0.031120345719839160",
+   "net_simple_apr_on_notional": "-0.757261745849419560",
+   "negative_blocks": 15,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 5,
+   "roundtrip_fee": "0.0033",
+   "blocks": 15,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 15,
+   "days_evaluated": "15",
+   "net_return_sum": "-0.038200345719839160",
+   "net_simple_apr_on_notional": "-0.929541745849419560",
+   "negative_blocks": 15,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 5,
+   "roundtrip_fee": "0.0023",
+   "blocks": 15,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 15,
+   "days_evaluated": "15",
+   "net_return_sum": "-0.026400345719839160",
+   "net_simple_apr_on_notional": "-0.64240841251608622666666666666666666666666666666665",
+   "negative_blocks": 15,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 10,
+   "roundtrip_fee": "0.0027",
+   "blocks": 16,
+   "blocks_without_data": 2,
+   "excluded_asset_blocks": 27,
+   "days_evaluated": "16",
+   "net_return_sum": "-0.031048556204901608333333333333333333333333333333334",
+   "net_simple_apr_on_notional": "-0.70829518842431794010416666666666666666666666666669",
+   "negative_blocks": 16,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 10,
+   "roundtrip_fee": "0.0033",
+   "blocks": 16,
+   "blocks_without_data": 2,
+   "excluded_asset_blocks": 27,
+   "days_evaluated": "16",
+   "net_return_sum": "-0.038258556204901608333333333333333333333333333333334",
+   "net_simple_apr_on_notional": "-0.87277331342431794010416666666666666666666666666669",
+   "negative_blocks": 16,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 10,
+   "roundtrip_fee": "0.0023",
+   "blocks": 16,
+   "blocks_without_data": 2,
+   "excluded_asset_blocks": 27,
+   "days_evaluated": "16",
+   "net_return_sum": "-0.026241889538234941666666666666666666666666666666666",
+   "net_simple_apr_on_notional": "-0.59864310509098460677083333333333333333333333333331",
+   "negative_blocks": 16,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 20,
+   "roundtrip_fee": "0.0027",
+   "blocks": 16,
+   "blocks_without_data": 2,
+   "excluded_asset_blocks": 56,
+   "days_evaluated": "16",
+   "net_return_sum": "-0.028178628740231075858585858585858585858585858585859",
+   "net_simple_apr_on_notional": "-0.64282496813652141802398989898989898989898989898991",
+   "negative_blocks": 16,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 20,
+   "roundtrip_fee": "0.0033",
+   "blocks": 16,
+   "blocks_without_data": 2,
+   "excluded_asset_blocks": 56,
+   "days_evaluated": "16",
+   "net_return_sum": "-0.034923325709928045555555555555555555555555555555556",
+   "net_simple_apr_on_notional": "-0.79668836775773353923611111111111111111111111111110",
+   "negative_blocks": 16,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 20,
+   "roundtrip_fee": "0.0023",
+   "blocks": 16,
+   "blocks_without_data": 2,
+   "excluded_asset_blocks": 56,
+   "days_evaluated": "16",
+   "net_return_sum": "-0.023682164093766429393939393939393939393939393939393",
+   "net_simple_apr_on_notional": "-0.54024936838904667054924242424242424242424242424242",
+   "negative_blocks": 16,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 1,
+   "roundtrip_fee": "0.0027",
+   "blocks": 2,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 2,
+   "days_evaluated": "6",
+   "net_return_sum": "-0.002985373055947300",
+   "net_simple_apr_on_notional": "-0.18161019423679408333333333333333333333333333333333",
+   "negative_blocks": 2,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 1,
+   "roundtrip_fee": "0.0033",
+   "blocks": 2,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 2,
+   "days_evaluated": "6",
+   "net_return_sum": "-0.003885373055947300",
+   "net_simple_apr_on_notional": "-0.23636019423679408333333333333333333333333333333333",
+   "negative_blocks": 2,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 1,
+   "roundtrip_fee": "0.0023",
+   "blocks": 2,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 2,
+   "days_evaluated": "6",
+   "net_return_sum": "-0.002385373055947300",
+   "net_simple_apr_on_notional": "-0.14511019423679408333333333333333333333333333333333",
+   "negative_blocks": 2,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 3,
+   "roundtrip_fee": "0.0027",
+   "blocks": 2,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 6,
+   "days_evaluated": "6",
+   "net_return_sum": "-0.0034014916331349833333333333333333333333333333333333",
+   "net_simple_apr_on_notional": "-0.20692407434904481944444444444444444444444444444444",
+   "negative_blocks": 2,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 3,
+   "roundtrip_fee": "0.0033",
+   "blocks": 2,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 6,
+   "days_evaluated": "6",
+   "net_return_sum": "-0.0043014916331349833333333333333333333333333333333333",
+   "net_simple_apr_on_notional": "-0.26167407434904481944444444444444444444444444444444",
+   "negative_blocks": 2,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 3,
+   "roundtrip_fee": "0.0023",
+   "blocks": 2,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 6,
+   "days_evaluated": "6",
+   "net_return_sum": "-0.0028014916331349833333333333333333333333333333333333",
+   "net_simple_apr_on_notional": "-0.17042407434904481944444444444444444444444444444444",
+   "negative_blocks": 2,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 5,
+   "roundtrip_fee": "0.0027",
+   "blocks": 2,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 10,
+   "days_evaluated": "6",
+   "net_return_sum": "-0.003387301887214930",
+   "net_simple_apr_on_notional": "-0.20606086480557490833333333333333333333333333333333",
+   "negative_blocks": 2,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 5,
+   "roundtrip_fee": "0.0033",
+   "blocks": 2,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 10,
+   "days_evaluated": "6",
+   "net_return_sum": "-0.004287301887214930",
+   "net_simple_apr_on_notional": "-0.26081086480557490833333333333333333333333333333333",
+   "negative_blocks": 2,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 5,
+   "roundtrip_fee": "0.0023",
+   "blocks": 2,
+   "blocks_without_data": 3,
+   "excluded_asset_blocks": 10,
+   "days_evaluated": "6",
+   "net_return_sum": "-0.002787301887214930",
+   "net_simple_apr_on_notional": "-0.16956086480557490833333333333333333333333333333333",
+   "negative_blocks": 2,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 10,
+   "roundtrip_fee": "0.0027",
+   "blocks": 3,
+   "blocks_without_data": 2,
+   "excluded_asset_blocks": 18,
+   "days_evaluated": "9",
+   "net_return_sum": "-0.006269332319399960",
+   "net_simple_apr_on_notional": "-0.25425625517566504444444444444444444444444444444444",
+   "negative_blocks": 3,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 10,
+   "roundtrip_fee": "0.0033",
+   "blocks": 3,
+   "blocks_without_data": 2,
+   "excluded_asset_blocks": 18,
+   "days_evaluated": "9",
+   "net_return_sum": "-0.007769332319399960",
+   "net_simple_apr_on_notional": "-0.31508958850899837777777777777777777777777777777778",
+   "negative_blocks": 3,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 10,
+   "roundtrip_fee": "0.0023",
+   "blocks": 3,
+   "blocks_without_data": 2,
+   "excluded_asset_blocks": 18,
+   "days_evaluated": "9",
+   "net_return_sum": "-0.005269332319399960",
+   "net_simple_apr_on_notional": "-0.21370069962010948888888888888888888888888888888889",
+   "negative_blocks": 3,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 20,
+   "roundtrip_fee": "0.0027",
+   "blocks": 3,
+   "blocks_without_data": 2,
+   "excluded_asset_blocks": 36,
+   "days_evaluated": "9",
+   "net_return_sum": "-0.004490419487445045",
+   "net_simple_apr_on_notional": "-0.182111456990826825",
+   "negative_blocks": 3,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 20,
+   "roundtrip_fee": "0.0033",
+   "blocks": 3,
+   "blocks_without_data": 2,
+   "excluded_asset_blocks": 36,
+   "days_evaluated": "9",
+   "net_return_sum": "-0.005705419487445045",
+   "net_simple_apr_on_notional": "-0.231386456990826825",
+   "negative_blocks": 3,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 20,
+   "roundtrip_fee": "0.0023",
+   "blocks": 3,
+   "blocks_without_data": 2,
+   "excluded_asset_blocks": 36,
+   "days_evaluated": "9",
+   "net_return_sum": "-0.003680419487445045",
+   "net_simple_apr_on_notional": "-0.149261456990826825",
+   "negative_blocks": 3,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 1,
+   "roundtrip_fee": "0.0027",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 1,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 1,
+   "roundtrip_fee": "0.0033",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 1,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 1,
+   "roundtrip_fee": "0.0023",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 1,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 3,
+   "roundtrip_fee": "0.0027",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 3,
+   "roundtrip_fee": "0.0033",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 3,
+   "roundtrip_fee": "0.0023",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 5,
+   "roundtrip_fee": "0.0027",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 5,
+   "roundtrip_fee": "0.0033",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 5,
+   "roundtrip_fee": "0.0023",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 10,
+   "roundtrip_fee": "0.0027",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 10,
+   "roundtrip_fee": "0.0033",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 10,
+   "roundtrip_fee": "0.0023",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "vip_maker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 20,
+   "roundtrip_fee": "0.0027",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "spot_taker_perp_maker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 20,
+   "roundtrip_fee": "0.0033",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "all_taker"
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 20,
+   "roundtrip_fee": "0.0023",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 3,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0,
+   "fee_scenario": "vip_maker"
+  }
+ ],
+ "okx_spot_perp_best_detail": {
+  "hold_days": 3,
+  "lookback_days": 3,
+  "top_k": 1,
+  "roundtrip_fee": "0.0027",
+  "blocks": 2,
+  "blocks_without_data": 3,
+  "excluded_asset_blocks": 2,
+  "days_evaluated": "6",
+  "net_return_sum": "-0.002985373055947300",
+  "net_simple_apr_on_notional": "-0.18161019423679408333333333333333333333333333333333",
+  "negative_blocks": 2,
+  "detail": [
+   {
+    "start": "2026-10-11 00:00:00",
+    "picked": [
+     "ONDO"
+    ],
+    "gross": "0.000399783807011700",
+    "fee": "0.00135",
+    "net": "-0.000950216192988300",
+    "trailing_scores": {
+     "ONDO": "0.000363330799374600"
+    }
+   },
+   {
+    "start": "2026-10-23 00:00:00",
+    "picked": [
+     "FOGO"
+    ],
+    "gross": "0.000664843137041000",
+    "fee": "0.00270",
+    "net": "-0.002035156862959000",
+    "trailing_scores": {
+     "FOGO": "0.000853112607101700"
+    }
+   }
+  ],
+  "fee_scenario": "spot_taker_perp_maker"
+ },
+ "btc_unconditional_short_perp_funding": {
+  "Binance": {
+   "first": "2026-08-21 08:00:00",
+   "last": "2026-10-28 16:00:00",
+   "settlements": 129,
+   "sum": "0.005696290000000000",
+   "simple_apr": "0.030426524634146341463414634146341463414634146341464",
+   "negative_settlement_share": "0.14728682170542635658914728682170542635658914728682"
+  },
+  "OKX": {
+   "first": "2026-08-21 08:00:00",
+   "last": "2026-10-27 16:00:00",
+   "settlements": 134,
+   "sum": "0.006798277650373900",
+   "simple_apr": "0.036852049639403071782178217821782178217821782178218",
+   "negative_settlement_share": "0.12686567164179104477611940298507462686567164179104"
+  },
+  "Bybit": {
+   "first": "2026-09-19 16:00:00",
+   "last": "2026-10-28 16:00:00",
+   "settlements": 117,
+   "sum": "0.004682640000000000",
+   "simple_apr": "0.043824707692307692307692307692307692307692307692307",
+   "negative_settlement_share": "0.16239316239316239316239316239316239316239316239316"
+  }
+ },
+ "soak_perp_perp_window": [
+  "2026-09-09 17:00:00",
+  "2026-09-28 12:00:00"
+ ],
+ "soak_perp_perp_pairs": 2296,
+ "soak_perp_perp_grid": [
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 1,
+   "roundtrip_fee": "0.0024",
+   "blocks": 6,
+   "blocks_without_data": 12,
+   "excluded_asset_blocks": 9,
+   "days_evaluated": "6",
+   "net_return_sum": "-0.0178160735532410",
+   "net_simple_apr_on_notional": "-1.0838111411554941666666666666666666666666666666667",
+   "negative_blocks": 4
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 3,
+   "roundtrip_fee": "0.0024",
+   "blocks": 9,
+   "blocks_without_data": 9,
+   "excluded_asset_blocks": 22,
+   "days_evaluated": "9",
+   "net_return_sum": "-0.014912816823494016666666666666666666666666666666666",
+   "net_simple_apr_on_notional": "-0.60479757117503512037037037037037037037037037037036",
+   "negative_blocks": 5
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 5,
+   "roundtrip_fee": "0.0024",
+   "blocks": 10,
+   "blocks_without_data": 8,
+   "excluded_asset_blocks": 36,
+   "days_evaluated": "10",
+   "net_return_sum": "-0.01127625496574835",
+   "net_simple_apr_on_notional": "-0.411583306249814775",
+   "negative_blocks": 5
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 10,
+   "roundtrip_fee": "0.0024",
+   "blocks": 12,
+   "blocks_without_data": 6,
+   "excluded_asset_blocks": 64,
+   "days_evaluated": "12",
+   "net_return_sum": "-0.016441648378179118293650793650793650793650793650794",
+   "net_simple_apr_on_notional": "-0.50010013816961484809854497354497354497354497354497",
+   "negative_blocks": 11
+  },
+  {
+   "hold_days": 1,
+   "lookback_days": 1,
+   "top_k": 20,
+   "roundtrip_fee": "0.0024",
+   "blocks": 12,
+   "blocks_without_data": 6,
+   "excluded_asset_blocks": 120,
+   "days_evaluated": "12",
+   "net_return_sum": "-0.014977957272068611530390833796406551824508480855230",
+   "net_simple_apr_on_notional": "-0.45557953369208693404938786130736595132879962601326",
+   "negative_blocks": 11
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 1,
+   "roundtrip_fee": "0.0024",
+   "blocks": 1,
+   "blocks_without_data": 4,
+   "excluded_asset_blocks": 2,
+   "days_evaluated": "3",
+   "net_return_sum": "-0.0162644204508839",
+   "net_simple_apr_on_notional": "-1.9788378215242078333333333333333333333333333333333",
+   "negative_blocks": 1
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 3,
+   "roundtrip_fee": "0.0024",
+   "blocks": 1,
+   "blocks_without_data": 4,
+   "excluded_asset_blocks": 8,
+   "days_evaluated": "3",
+   "net_return_sum": "-0.0162644204508839",
+   "net_simple_apr_on_notional": "-1.9788378215242078333333333333333333333333333333333",
+   "negative_blocks": 1
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 5,
+   "roundtrip_fee": "0.0024",
+   "blocks": 1,
+   "blocks_without_data": 4,
+   "excluded_asset_blocks": 12,
+   "days_evaluated": "3",
+   "net_return_sum": "-0.0162644204508839",
+   "net_simple_apr_on_notional": "-1.9788378215242078333333333333333333333333333333333",
+   "negative_blocks": 1
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 10,
+   "roundtrip_fee": "0.0024",
+   "blocks": 1,
+   "blocks_without_data": 4,
+   "excluded_asset_blocks": 22,
+   "days_evaluated": "3",
+   "net_return_sum": "-0.0162644204508839",
+   "net_simple_apr_on_notional": "-1.9788378215242078333333333333333333333333333333333",
+   "negative_blocks": 1
+  },
+  {
+   "hold_days": 3,
+   "lookback_days": 3,
+   "top_k": 20,
+   "roundtrip_fee": "0.0024",
+   "blocks": 1,
+   "blocks_without_data": 4,
+   "excluded_asset_blocks": 42,
+   "days_evaluated": "3",
+   "net_return_sum": "-0.0162644204508839",
+   "net_simple_apr_on_notional": "-1.9788378215242078333333333333333333333333333333333",
+   "negative_blocks": 1
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 1,
+   "roundtrip_fee": "0.0024",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 0,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 3,
+   "roundtrip_fee": "0.0024",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 0,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 5,
+   "roundtrip_fee": "0.0024",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 0,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 10,
+   "roundtrip_fee": "0.0024",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 0,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0
+  },
+  {
+   "hold_days": 7,
+   "lookback_days": 7,
+   "top_k": 20,
+   "roundtrip_fee": "0.0024",
+   "blocks": 0,
+   "blocks_without_data": 1,
+   "excluded_asset_blocks": 0,
+   "days_evaluated": "0",
+   "net_return_sum": "0",
+   "net_simple_apr_on_notional": null,
+   "negative_blocks": 0
+  }
+ ],
+ "soak_perp_perp_best_detail": {
+  "hold_days": 1,
+  "lookback_days": 1,
+  "top_k": 5,
+  "roundtrip_fee": "0.0024",
+  "blocks": 10,
+  "blocks_without_data": 8,
+  "excluded_asset_blocks": 36,
+  "days_evaluated": "10",
+  "net_return_sum": "-0.01127625496574835",
+  "net_simple_apr_on_notional": "-0.411583306249814775",
+  "negative_blocks": 5,
+  "detail": [
+   {
+    "start": "2026-09-11 00:00:00",
+    "picked": [
+     "SOPH:long-OKX:short-Binance"
+    ],
+    "gross": "0.0012329206106891",
+    "fee": "0.0012",
+    "net": "0.0000329206106891",
+    "trailing_scores": {
+     "SOPH:long-OKX:short-Binance": "0.0046075469019209"
+    }
+   },
+   {
+    "start": "2026-09-14 00:00:00",
+    "picked": [
+     "XIAOMI:long-Bybit:short-OKX"
+    ],
+    "gross": "0.0016595692001772",
+    "fee": "0.0012",
+    "net": "0.0004595692001772",
+    "trailing_scores": {
+     "XIAOMI:long-Bybit:short-OKX": "0.0014836017365981"
+    }
+   },
+   {
+    "start": "2026-09-15 00:00:00",
+    "picked": [
+     "ARK:long-Binance:short-Bybit",
+     "FLY:long-Bybit:short-OKX",
+     "POPMART:long-Bybit:short-OKX",
+     "XIAOMI:long-Bybit:short-OKX",
+     "ZHONGJI:long-Bybit:short-OKX"
+    ],
+    "gross": "0.00100430663206578",
+    "fee": "0.00096",
+    "net": "0.00004430663206578",
+    "trailing_scores": {
+     "XIAOMI:long-Bybit:short-OKX": "0.0016595692001772",
+     "ARK:long-Binance:short-Bybit": "0.00357373",
+     "ZHONGJI:long-Bybit:short-OKX": "0.0023778051035629",
+     "FLY:long-Bybit:short-OKX": "0.00123711",
+     "POPMART:long-Bybit:short-OKX": "0.0019152435626378"
+    }
+   },
+   {
+    "start": "2026-09-16 00:00:00",
+    "picked": [
+     "SKDD:long-OKX:short-Bybit",
+     "TSEM:long-OKX:short-Bybit",
+     "ZHONGJI:long-Bybit:short-OKX",
+     "ZIL:long-OKX:short-Bybit"
+    ],
+    "gross": "0.00098341382092695",
+    "fee": "0.001860",
+    "net": "-0.00087658617907305",
+    "trailing_scores": {
+     "TSEM:long-OKX:short-Bybit": "0.00242666",
+     "ZIL:long-OKX:short-Bybit": "0.0231087787983619",
+     "SKDD:long-OKX:short-Bybit": "0.0024371378486039",
+     "ZHONGJI:long-Bybit:short-OKX": "0.0027157730556236"
+    }
+   },
+   {
+    "start": "2026-09-17 00:00:00",
+    "picked": [
+     "CSOPSAMSUNG2L:long-OKX:short-Bybit",
+     "FLOW:long-Bybit:short-OKX",
+     "RAM:long-Bybit:short-OKX",
+     "ZIL:long-OKX:short-Bybit"
+    ],
+    "gross": "-0.0006140044864794",
+    "fee": "0.001800",
+    "net": "-0.0024140044864794",
+    "trailing_scores": {
+     "FLOW:long-Bybit:short-OKX": "0.0019517708722971",
+     "ZIL:long-OKX:short-Bybit": "0.0047272678036018",
+     "RAM:long-Bybit:short-OKX": "0.0027969252458159",
+     "CSOPSAMSUNG2L:long-OKX:short-Bybit": "0.001812058368447"
+    }
+   },
+   {
+    "start": "2026-09-18 00:00:00",
+    "picked": [
+     "CSOPSKHYNIX2L:long-Bybit:short-OKX",
+     "KSM:long-OKX:short-Bybit",
+     "SPCH:long-Bybit:short-OKX",
+     "ZHONGJI:long-Bybit:short-OKX",
+     "ZIL:long-Bybit:short-OKX"
+    ],
+    "gross": "0.0004434470226712",
+    "fee": "0.0024",
+    "net": "-0.0019565529773288",
+    "trailing_scores": {
+     "SPCH:long-Bybit:short-OKX": "0.00285112",
+     "ZHONGJI:long-Bybit:short-OKX": "0.0017719659092332",
+     "ZIL:long-Bybit:short-OKX": "0.0020839461889483",
+     "KSM:long-OKX:short-Bybit": "0.0021126797741840",
+     "CSOPSKHYNIX2L:long-Bybit:short-OKX": "0.0021064374237883"
+    }
+   },
+   {
+    "start": "2026-09-21 00:00:00",
+    "picked": [
+     "AKE:long-Binance:short-OKX",
+     "AKE:long-Bybit:short-Binance",
+     "AKE:long-Bybit:short-OKX",
+     "MARA:long-Bybit:short-OKX",
+     "RIVER:long-OKX:short-Bybit"
+    ],
+    "gross": "-0.00530956361601508",
+    "fee": "0.0012",
+    "net": "-0.00650956361601508",
+    "trailing_scores": {
+     "AKE:long-Bybit:short-OKX": "0.0191837977092601",
+     "MARA:long-Bybit:short-OKX": "0.00618825",
+     "AKE:long-Binance:short-OKX": "0.0064587677092601",
+     "AKE:long-Bybit:short-Binance": "0.01272503",
+     "RIVER:long-OKX:short-Bybit": "0.0018838640519367"
+    }
+   },
+   {
+    "start": "2026-09-22 00:00:00",
+    "picked": [
+     "AKE:long-OKX:short-Bybit",
+     "ESP:long-OKX:short-Bybit",
+     "SOON:long-OKX:short-Bybit",
+     "TRUST:long-OKX:short-Bybit"
+    ],
+    "gross": "0.0035104408246323",
+    "fee": "0.0024",
+    "net": "0.0011104408246323",
+    "trailing_scores": {
+     "ESP:long-OKX:short-Bybit": "0.00771335",
+     "AKE:long-OKX:short-Bybit": "0.0141743249785832",
+     "SOON:long-OKX:short-Bybit": "0.0088003328452034",
+     "TRUST:long-OKX:short-Bybit": "0.0090318418330945"
+    }
+   },
+   {
+    "start": "2026-09-25 00:00:00",
+    "picked": [
+     "1INCH:long-OKX:short-Bybit"
+    ],
+    "gross": "0.0000332150255836",
+    "fee": "0.0012",
+    "net": "-0.0011667849744164",
+    "trailing_scores": {
+     "1INCH:long-OKX:short-Bybit": "0.0004368212395670"
+    }
+   },
+   {
+    "start": "2026-09-26 00:00:00",
+    "picked": [
+     "1INCH:long-OKX:short-Bybit"
+    ],
+    "gross": "0.0000",
+    "fee": "0.0000",
+    "net": "0.0000",
+    "trailing_scores": {
+     "1INCH:long-OKX:short-Bybit": "0.0000332150255836"
+    }
+   }
+  ]
+ }
+}

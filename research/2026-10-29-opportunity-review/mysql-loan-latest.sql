@@ -1,0 +1,1 @@
+SELECT JSON_OBJECT('observation_id',`observation_id`,'observed_at',`observed_at`,'currencies',HEX(`currencies`),'daily_rates',HEX(`daily_rates`),'public_quotas',HEX(`public_quotas`)) FROM crypto_market_info.okx_public_loan_policy ORDER BY observed_at DESC LIMIT 1

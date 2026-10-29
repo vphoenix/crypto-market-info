@@ -1,0 +1,1 @@
+SELECT JSON_OBJECT('instrument_id',instrument_id,'hour_time',hour_time,'funding_time',funding_time,'rate',CAST(rate AS CHAR),'is_actual',is_actual) FROM crypto_market_info.funding_rate_hourly WHERE is_actual=1
