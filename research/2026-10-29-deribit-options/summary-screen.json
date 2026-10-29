@@ -1,0 +1,206 @@
+{
+ "gross": {
+  "bound_call_below_intrinsic": {
+   "observations": 1,
+   "distinct_leg_sets": 1,
+   "median_gross": "0.49877273038009297238173366147115121684440798468690",
+   "max_gross": "0.49877273038009297238173366147115121684440798468690",
+   "median_fees": "62.187584051134809953513809133169264424391577796008",
+   "max_gross_to_fee": "0.008020455175907276301665601293",
+   "zero_fee_bound_usd_each_leg_set_once": "0.006650303071734572965089782153",
+   "longest_consecutive_run": 1,
+   "run_unit_seconds": 60.0
+  },
+  "bound_put_below_intrinsic": {
+   "observations": 5,
+   "distinct_leg_sets": 5,
+   "median_gross": "0.25",
+   "max_gross": "0.25",
+   "median_fees": "1.955725",
+   "max_gross_to_fee": "0.1278298329264083651842667042",
+   "zero_fee_bound_usd_each_leg_set_once": "3.06625",
+   "longest_consecutive_run": 1,
+   "run_unit_seconds": 60.0
+  },
+  "call_butterfly": {
+   "observations": 189,
+   "distinct_leg_sets": 10,
+   "median_gross": "0.13333333333333333333333333333333333333333333333333",
+   "max_gross": "5",
+   "median_fees": "1.14959375",
+   "max_gross_to_fee": "0.4000000000000000000000000000",
+   "zero_fee_bound_usd_each_leg_set_once": "0.2041904761904761904761904762",
+   "longest_consecutive_run": 48,
+   "run_unit_seconds": 60.0
+  },
+  "cross_buy_inverse_sell_linear": {
+   "observations": 919,
+   "distinct_leg_sets": 86,
+   "median_gross": "0.2555",
+   "max_gross": "16.28875",
+   "median_fees": "1.497765",
+   "max_gross_to_fee": "0.8637076420427393691394427670",
+   "zero_fee_bound_usd_each_leg_set_once": "874.5032350",
+   "longest_consecutive_run": 55,
+   "run_unit_seconds": 60.0
+  },
+  "cross_sell_inverse_buy_linear": {
+   "observations": 1150,
+   "distinct_leg_sets": 74,
+   "median_gross": "0.1766125",
+   "max_gross": "16.4775",
+   "median_fees": "3.9895495",
+   "max_gross_to_fee": "0.7662733295613502376507205292",
+   "zero_fee_bound_usd_each_leg_set_once": "1219.7183425",
+   "longest_consecutive_run": 60,
+   "run_unit_seconds": 60.0
+  },
+  "parity_conversion": {
+   "observations": 1450,
+   "distinct_leg_sets": 42,
+   "median_gross": "0.5",
+   "max_gross": "17.5",
+   "median_fees": "2.6264375",
+   "max_gross_to_fee": "0.7672609742296220280625701324",
+   "zero_fee_bound_usd_each_leg_set_once": "177.4756093681937842086324123",
+   "longest_consecutive_run": 16,
+   "run_unit_seconds": 60.0
+  },
+  "parity_reversal": {
+   "observations": 160,
+   "distinct_leg_sets": 42,
+   "median_gross": "2.5",
+   "max_gross": "19.920694266245127229196721814665889069646091040241",
+   "median_fees": "88.31225",
+   "max_gross_to_fee": "0.3308069918420632904662606405",
+   "zero_fee_bound_usd_each_leg_set_once": "28.22928966186742998805502939",
+   "longest_consecutive_run": 7,
+   "run_unit_seconds": 60.0
+  },
+  "put_butterfly": {
+   "observations": 235,
+   "distinct_leg_sets": 3,
+   "median_gross": "2.5",
+   "max_gross": "5",
+   "median_fees": "13.4375",
+   "max_gross_to_fee": "0.3809523809523809523809523810",
+   "zero_fee_bound_usd_each_leg_set_once": "12.66499583333333333333333333",
+   "longest_consecutive_run": 54,
+   "run_unit_seconds": 60.0
+  }
+ },
+ "box": {
+  "BTC-inverse 30-90d": {
+   "lend_best": "-0.013868849568697258071204297856145229609717186599716",
+   "lend_median": "-0.030721905436415608444521548121040247751572914339722",
+   "borrow_best": "0.014271550864777968424254002019707396522559478669431",
+   "borrow_median": "0.034332174529071218071486687732982535731472602099862",
+   "borrow_capacity_median": "4",
+   "samples": 347
+  },
+  "BTC-inverse 7-30d": {
+   "lend_best": "-0.083272260103898201135823729839424130873111666541106",
+   "lend_median": "-0.3656410488748244203678749212",
+   "borrow_best": "0.094153428267512500379275340216420533147304359108764",
+   "borrow_median": "0.3598597720618219220954301860",
+   "borrow_capacity_median": "2.3",
+   "samples": 368
+  },
+  "BTC-inverse <7d": {
+   "lend_best": "-0.48817959420144754597693474593546292711321750360105",
+   "lend_median": "-4.5803388988828547860847947663393629943599483658688",
+   "borrow_best": "0.24432673219128847500431919355919066300569005643967",
+   "borrow_median": "3.131999253084164644581779170",
+   "borrow_capacity_median": "7.2",
+   "samples": 776
+  },
+  "BTC-inverse >90d": {
+   "lend_best": "-0.0054025804640752290960968998728727340923119006620110",
+   "lend_median": "-0.00878817567212993832395143223",
+   "borrow_best": "0.0038552579918894031004277439035017190654555844954111",
+   "borrow_median": "0.009352893367238395537393643405",
+   "borrow_capacity_median": "2",
+   "samples": 544
+  },
+  "BTC-linear 30-90d": {
+   "lend_best": "-0.0071427360404828411271359011729355866791851805207871",
+   "lend_median": "-0.02186158057108349929674230441",
+   "borrow_best": "0.0061781367892361214148491753229303995762656941735614",
+   "borrow_median": "0.02053865244247245794209279672",
+   "borrow_capacity_median": "10",
+   "samples": 352
+  },
+  "BTC-linear 7-30d": {
+   "lend_best": "-0.049425472148125213644951520370270813340276868434202",
+   "lend_median": "-0.37893220217903821048609689828731768029263454501936",
+   "borrow_best": "0.051941718834220285592550906322867068182403734066569",
+   "borrow_median": "0.35348071585162577814556929790925523571215718948148",
+   "borrow_capacity_median": "6",
+   "samples": 195
+  },
+  "BTC-linear <7d": {
+   "lend_best": "-0.58480742182636290846406007581684260025887425577308",
+   "lend_median": "-4.060796423358641883587680797",
+   "borrow_best": "0.25152157794470959183644195243171502929480773201642",
+   "borrow_median": "2.7251283276371798760806799121976565094670670216747",
+   "borrow_capacity_median": "10",
+   "samples": 803
+  },
+  "ETH-inverse 30-90d": {
+   "lend_best": "-0.011536606030763091491640539156500644184310837037260",
+   "lend_median": "-0.03559154527569339073520669220",
+   "borrow_best": "0.022456958965094972439658562141567489111932114417585",
+   "borrow_median": "0.04043936472115107903872644287",
+   "borrow_capacity_median": "18",
+   "samples": 332
+  },
+  "ETH-inverse 7-30d": {
+   "lend_best": "-0.077129034964709119722465840910866604059282858773931",
+   "lend_median": "-0.3187307668071699514080780919",
+   "borrow_best": "0.079930493190426787048991463159899925349826485668252",
+   "borrow_median": "0.2876571378794575481419683796",
+   "borrow_capacity_median": "18",
+   "samples": 352
+  },
+  "ETH-inverse <7d": {
+   "lend_best": "-0.44064608231825002968750217718664898981285023384941",
+   "lend_median": "-3.6545942619472350824763175934425633352087882757354",
+   "borrow_best": "0.22041499802781987425257148908430542138021399593291",
+   "borrow_median": "3.0521577032974342925673231488634402111891031190544",
+   "borrow_capacity_median": "18",
+   "samples": 761
+  },
+  "ETH-inverse >90d": {
+   "lend_best": "-0.0069460196723006736222215884710960811595399672977374",
+   "lend_median": "-0.012973800947454980082475980573776948429758621499346",
+   "borrow_best": "0.0080018316245386892654935248106536635497722257428371",
+   "borrow_median": "0.012923598921339954623267499638036948713730932165805",
+   "borrow_capacity_median": "18",
+   "samples": 517
+  },
+  "ETH-linear 30-90d": {
+   "lend_best": "-0.0047606457741763123344389734749879252539583282403375",
+   "lend_median": "-0.01883694506642689606136578125",
+   "borrow_best": "0.0035731805710588986779420208000043522702052745787702",
+   "borrow_median": "0.01845893265033250010668599272",
+   "borrow_capacity_median": "150",
+   "samples": 350
+  },
+  "ETH-linear 7-30d": {
+   "lend_best": "-0.019091699415036064256245885108110933076578926693268",
+   "lend_median": "-0.20413702513569947295665846750992534808164349954220",
+   "borrow_best": "0.026811129039616000757811757100565476202213702428860",
+   "borrow_median": "0.22659350600643342174921916251561020166005418690746",
+   "borrow_capacity_median": "150",
+   "samples": 193
+  },
+  "ETH-linear <7d": {
+   "lend_best": "-0.28320853564942261619776818078783254572240092862407",
+   "lend_median": "-2.8847693836777791930139934192417309744905263905598",
+   "borrow_best": "0.14631410519570868592603399217304676403039259113806",
+   "borrow_median": "2.189391363322414581336510424",
+   "borrow_capacity_median": "150",
+   "samples": 802
+  }
+ }
+}

@@ -67,7 +67,7 @@ func TestMemberProofAgeSchedulesBulkEvenWhenScopeClockIsNew(t *testing.T) {
 	s.scopeJobs = make(chan *catalogJob, 16)
 	expiry := now.Add(time.Hour)
 	e.item.Spec.Instrument.ExpiryTime = &expiry
-	for _, scope := range catalogScopes() {
+	for _, scope := range (Config{}).catalogScopes() {
 		s.scopes[scope.String()] = now
 	}
 	e.state.StateKind = 2
@@ -86,7 +86,7 @@ func TestFreshScopePendingSuppressesOnlyGenericSymbolRepair(t *testing.T) {
 		s.lifecycleReady = true
 		expiry := now.Add(time.Hour)
 		e.item.Spec.Instrument.ExpiryTime = &expiry
-		for _, scope := range catalogScopes() {
+		for _, scope := range (Config{}).catalogScopes() {
 			s.scopes[scope.String()] = now
 		}
 		e.state.Known = false
@@ -107,7 +107,7 @@ func TestConfirmedMemberDropsUncapturedRetryButKeepsPreparedEvidence(t *testing.
 		now := time.Now().UTC()
 		expiry := now.Add(time.Hour)
 		e.item.Spec.Instrument.ExpiryTime = &expiry
-		for _, scope := range catalogScopes() {
+		for _, scope := range (Config{}).catalogScopes() {
 			s.scopes[scope.String()] = now
 		}
 		e.state.Known, e.state.Epoch = true, s.epoch

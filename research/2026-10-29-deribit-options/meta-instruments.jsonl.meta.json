@@ -1,0 +1,8 @@
+{
+ "sql": "SELECT JSON_OBJECT('instrument_id',instrument_id,'exchange',CAST(exchange AS CHAR),'market_type',CAST(market_type AS CHAR),'exchange_symbol',CAST(exchange_symbol AS CHAR),'base_asset',CAST(base_asset AS CHAR),'quote_asset',CAST(quote_asset AS CHAR),'settle_asset',CAST(settle_asset AS CHAR),'contract_multiplier',CAST(contract_multiplier AS CHAR),'price_tick_size',CAST(price_tick_size AS CHAR),'quantity_step_size',CAST(quantity_step_size AS CHAR),'expiry_time',expiry_time) FROM crypto_market_info.instrument WHERE exchange='Deribit'",
+ "sha256_uncompressed": "fac963da1271fbc98b8d79d1d929926af02accb3fbaaf77f153b2aa44da754e4",
+ "rows": 9204,
+ "elapsed_s": 0.49,
+ "read_only": true,
+ "saved_utc": "2026-10-29T05:56:51.744587+00:00"
+}

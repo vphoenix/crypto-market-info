@@ -158,6 +158,11 @@ func Load() (Config, error) {
 		}
 	}
 	cfg.Options.EvidenceDir = value("OPTIONS_EVIDENCE_DIR", "var/options-evidence")
+	if raw := value("OPTIONS_KINDS", "option,future"); raw != "option,future" {
+		for _, k := range strings.Split(raw, ",") {
+			cfg.Options.Kinds = append(cfg.Options.Kinds, strings.TrimSpace(k))
+		}
+	}
 	for _, field := range []struct {
 		name     string
 		target   *int

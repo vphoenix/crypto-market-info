@@ -1,0 +1,59 @@
+{
+ "gross": {
+  "call_butterfly": {
+   "observations": 840,
+   "distinct_leg_sets": 7,
+   "median_gross": "0.1",
+   "max_gross": "0.4",
+   "median_fees": "0.3416666666666666666666666666",
+   "max_gross_to_fee": "0.4100671484955661489568916910",
+   "zero_fee_bound_usd_each_leg_set_once": "0.09085714285714285714285714286",
+   "longest_consecutive_run": 60,
+   "run_unit_seconds": 1.0
+  },
+  "cross_buy_inverse_sell_linear": {
+   "observations": 407,
+   "distinct_leg_sets": 8,
+   "median_gross": "0.373",
+   "max_gross": "24.4025",
+   "median_fees": "6.78101325",
+   "max_gross_to_fee": "0.8639528664484844596339870872",
+   "zero_fee_bound_usd_each_leg_set_once": "53.917200",
+   "longest_consecutive_run": 60,
+   "run_unit_seconds": 1.0
+  },
+  "cross_sell_inverse_buy_linear": {
+   "observations": 942,
+   "distinct_leg_sets": 19,
+   "median_gross": "0.13375",
+   "max_gross": "2.158",
+   "median_fees": "0.6233131",
+   "max_gross_to_fee": "0.2852353574605665325905452859",
+   "zero_fee_bound_usd_each_leg_set_once": "137.0120850",
+   "longest_consecutive_run": 60,
+   "run_unit_seconds": 1.0
+  },
+  "parity_conversion": {
+   "observations": 150,
+   "distinct_leg_sets": 11,
+   "median_gross": "0.5",
+   "max_gross": "1.75",
+   "median_fees": "2.60200",
+   "max_gross_to_fee": "0.6718752999443303322903269153",
+   "zero_fee_bound_usd_each_leg_set_once": "76.59805",
+   "longest_consecutive_run": 21,
+   "run_unit_seconds": 1.0
+  },
+  "parity_reversal": {
+   "observations": 317,
+   "distinct_leg_sets": 25,
+   "median_gross": "0.35",
+   "max_gross": "15",
+   "median_fees": "2.5109625",
+   "max_gross_to_fee": "0.3880551765954221615886008792",
+   "zero_fee_bound_usd_each_leg_set_once": "53.29955",
+   "longest_consecutive_run": 32,
+   "run_unit_seconds": 1.0
+  }
+ }
+}

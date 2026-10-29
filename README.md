@@ -98,6 +98,7 @@ Bybit BTC 显式模式已部署；后续全量扩容仍须按[共有永续设计
 | `DEX_EVIDENCE_DIR` | `var/dex-evidence` | 兼容旧配置；主 collector 已不保存或读取响应原文，所需事实与来源摘要直接入库 |
 | `OPTIONS_ENABLED` | `false` | 在现有collector内启用Deribit期权任务 |
 | `OPTIONS_SYMBOLS` | `auto` | 持续采集BTC/ETH币本位及USDC线性四族的全部未到期期权和交割期货；显式C/P及同到期期货清单仍最多32个 |
+| `OPTIONS_KINDS` | `option,future` | 自动采集的Deribit合约种类；`future` 只采交割期货与指数，不采期权盘口 |
 | `OPTIONS_EVIDENCE_DIR` | `var/options-evidence` | 兼容旧配置；目录、生命周期和锁定响应在内存校验，定类型事实与来源摘要直接入库 |
 | `OPTIONS_MAX_BOOKS` | `4096` | 自动采集合约数上限；超限成员保留pending原因 |
 | `OPTIONS_MAX_CONNECTIONS` | `20` | 期权任务物理WS总上限，含生命周期和共享指数连接；配置最多28 |

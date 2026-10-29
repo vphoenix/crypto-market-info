@@ -1,0 +1,8 @@
+{
+ "sql": "SELECT JSON_OBJECT('m',minute_time,'v',valid_bitmap & 1,'bp',HEX(SUBSTRING(bid_prices,1,29)),'ap',HEX(SUBSTRING(ask_prices,1,29))) FROM crypto_market_info.derivative_book_minute WHERE instrument_id=1263 AND minute_time >= '2026-10-14 07:00:00'",
+ "sha256_uncompressed": "df8e9a34bb82b886c43fe1b0edb7d719c56260aff889204712fafd07abb9761b",
+ "rows": 16874,
+ "elapsed_s": 19.07,
+ "read_only": true,
+ "saved_utc": "2026-10-29T05:58:20.103991+00:00"
+}

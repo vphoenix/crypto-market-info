@@ -1,0 +1,8 @@
+{
+ "sql": "SELECT JSON_OBJECT('instrument_id',instrument_id,'creation_time',creation_time,'source_instrument_type',CAST(source_instrument_type AS CHAR),'native_amount_kind',CAST(native_amount_kind AS CHAR),'native_amount_currency',CAST(native_amount_currency AS CHAR),'source_contract_size',CAST(source_contract_size AS CHAR),'index_id',CAST(index_id AS CHAR),'settlement_semantics_id',CAST(settlement_semantics_id AS CHAR),'option_type',CAST(option_type AS CHAR),'strike',CAST(strike AS CHAR),'strike_currency',CAST(strike_currency AS CHAR)) FROM crypto_market_info.derivative_contract_spec",
+ "sha256_uncompressed": "85c70ebb3bd5fa909023d9faeccd3227503db217b709d840981943313989e298",
+ "rows": 9086,
+ "elapsed_s": 1.46,
+ "read_only": true,
+ "saved_utc": "2026-10-29T05:56:53.265662+00:00"
+}

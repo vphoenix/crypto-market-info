@@ -23,6 +23,25 @@ type Config struct {
 	// no longer archived. Typed observations and source hashes are stored in DB.
 	EvidenceDir     string
 	FutureBookDepth int // Delivery futures; options always keep ten levels.
+	// Kinds limits automatic collection to these Deribit instrument kinds
+	// ("option", "future"); empty means both.
+	Kinds []string
+}
+
+func (c Config) kinds() []string {
+	if len(c.Kinds) == 0 {
+		return []string{"option", "future"}
+	}
+	return c.Kinds
+}
+func (c Config) catalogScopes() []deribit.Scope {
+	var ss []deribit.Scope
+	for _, currency := range []string{"BTC", "ETH", "USDC"} {
+		for _, kind := range c.kinds() {
+			ss = append(ss, deribit.Scope{Currency: currency, Kind: kind})
+		}
+	}
+	return ss
 }
 
 func (c Config) Validate() error {
@@ -43,13 +62,24 @@ func (c Config) Validate() error {
 	if (rest.Scheme != "http" && rest.Scheme != "https") || (ws.Scheme != "ws" && ws.Scheme != "wss") {
 		return fmt.Errorf("invalid Deribit URL scheme")
 	}
+	seenKinds := map[string]bool{}
+	for _, k := range c.Kinds {
+		if (k != "option" && k != "future") || seenKinds[k] {
+			return fmt.Errorf("invalid options kind %q", k)
+		}
+		seenKinds[k] = true
+	}
 	if len(c.Symbols) > options.MaxLiveBooks {
 		return fmt.Errorf("too many options symbols")
 	}
 	seen := map[string]bool{}
 	for _, s := range c.Symbols {
-		if _, e := symbolScope(s); e != nil {
+		scope, e := symbolScope(s)
+		if e != nil {
 			return e
+		}
+		if !slices.Contains(c.kinds(), scope.Kind) {
+			return fmt.Errorf("options symbol %s is outside configured kinds", s)
 		}
 		if seen[s] {
 			return fmt.Errorf("duplicate options symbol %s", s)
@@ -99,11 +129,8 @@ func Discover(ctx context.Context, c *deribit.Client, cfg Config) (Plan, error) 
 	}
 	wanted := map[string]deribit.Scope{}
 	if len(cfg.Symbols) == 0 {
-		for _, currency := range []string{"BTC", "ETH", "USDC"} {
-			for _, kind := range []string{"option", "future"} {
-				s := deribit.Scope{Currency: currency, Kind: kind}
-				wanted[s.String()] = s
-			}
+		for _, s := range cfg.catalogScopes() {
+			wanted[s.String()] = s
 		}
 	} else {
 		for _, symbol := range cfg.Symbols {

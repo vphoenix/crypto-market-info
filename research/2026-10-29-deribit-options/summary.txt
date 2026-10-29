@@ -1,0 +1,40 @@
+== checks
+bound_call_below_intrinsic       n= 1,170,021 gross+=     1 net+=   0  best gross/coin=0.0000060614 ['BTC', 'inverse'] 2026-10-21
+bound_inverse_call_above_one     n=   673,564 gross+=     0 net+=   0  best gross/coin=-0.2345 ['BTC', 'inverse'] 2026-12-25
+bound_put_below_intrinsic        n= 1,170,164 gross+=     5 net+=   0  best gross/coin=0.25 ['ETH', 'linear'] 2026-10-21
+calendar_inverse_call            n= 1,700,434 gross+=     0 net+=   0  best gross/coin=0 ['ETH', 'inverse'] 2026-10-17
+call_butterfly                   n=26,017,776 gross+=   189 net+=   0  best gross/coin=5 ['BTC', 'linear'] 2026-11-27
+cross_buy_inverse_sell_linear    n=   774,367 gross+=   919 net+=   0  best gross/coin=16.28875 ['BTC', 'linear'] 2026-10-29
+cross_sell_inverse_buy_linear    n=   789,379 gross+=  1150 net+=   0  best gross/coin=16.4775 ['BTC', 'linear'] 2026-12-25
+parity_conversion                n= 1,084,343 gross+=  1450 net+=   0  best gross/coin=17.5 ['BTC', 'linear'] 2026-11-27
+parity_reversal                  n= 1,057,354 gross+=   160 net+=   0  best gross/coin=17.5 ['BTC', 'linear'] 2026-10-22
+put_butterfly                    n=26,406,970 gross+=   235 net+=   0  best gross/coin=5 ['BTC', 'linear'] 2026-12-25
+vertical_call_monotonic          n=19,834,954 gross+=     0 net+=   0  best gross/coin=0 ['ETH', 'linear'] 2026-11-27
+vertical_call_overpay            n=22,815,297 gross+=     0 net+=   0  best gross/coin=-0.002011180 ['BTC', 'inverse'] 2026-10-28
+vertical_put_monotonic           n=20,529,609 gross+=     0 net+=   0  best gross/coin=0 ['BTC', 'linear'] 2026-10-22
+vertical_put_overpay             n=22,575,161 gross+=     0 net+=   0  best gross/coin=-0.001490034 ['BTC', 'inverse'] 2026-10-24
+== gross-positive observations (zero-fee view, USD(C) per coin of underlying)
+bound_call_below_intrinsic       obs=    1 legsets=   1 gross med=0.50 max=0.50 fees med=62.19 max gross/fee=0.01 zero-fee bound=$0.01 longest run=1min
+bound_put_below_intrinsic        obs=    5 legsets=   5 gross med=0.25 max=0.25 fees med=1.96 max gross/fee=0.13 zero-fee bound=$3.07 longest run=1min
+call_butterfly                   obs=  189 legsets=  10 gross med=0.13 max=5.00 fees med=1.15 max gross/fee=0.40 zero-fee bound=$0.20 longest run=48min
+cross_buy_inverse_sell_linear    obs=  919 legsets=  86 gross med=0.26 max=16.29 fees med=1.50 max gross/fee=0.86 zero-fee bound=$874.50 longest run=55min
+cross_sell_inverse_buy_linear    obs= 1150 legsets=  74 gross med=0.18 max=16.48 fees med=3.99 max gross/fee=0.77 zero-fee bound=$1,219.72 longest run=60min
+parity_conversion                obs= 1450 legsets=  42 gross med=0.50 max=17.50 fees med=2.63 max gross/fee=0.77 zero-fee bound=$177.48 longest run=16min
+parity_reversal                  obs=  160 legsets=  42 gross med=2.50 max=19.92 fees med=88.31 max gross/fee=0.33 zero-fee bound=$28.23 longest run=7min
+put_butterfly                    obs=  235 legsets=   3 gross med=2.50 max=5.00 fees med=13.44 max gross/fee=0.38 zero-fee bound=$12.66 longest run=54min
+== windows 16 minutes 954 mean valid books/min 2555.8 second0 invalid 0 crossed 0 dup conflicts 0
+== box: executable rates after entry fees, boxes meeting minimum size (simple annual)
+BTC-inverse  30-90d  lend best  -1.39% med  -3.07% | borrow best   1.43% med   3.43% cap med 4 n=347
+BTC-inverse  7-30d   lend best  -8.33% med -36.56% | borrow best   9.42% med  35.99% cap med 2.3 n=368
+BTC-inverse  <7d     lend best -48.82% med -458.03% | borrow best  24.43% med 313.20% cap med 7.2 n=776
+BTC-inverse  >90d    lend best  -0.54% med  -0.88% | borrow best   0.39% med   0.94% cap med 2 n=544
+BTC-linear   30-90d  lend best  -0.71% med  -2.19% | borrow best   0.62% med   2.05% cap med 10 n=352
+BTC-linear   7-30d   lend best  -4.94% med -37.89% | borrow best   5.19% med  35.35% cap med 6 n=195
+BTC-linear   <7d     lend best -58.48% med -406.08% | borrow best  25.15% med 272.51% cap med 10 n=803
+ETH-inverse  30-90d  lend best  -1.15% med  -3.56% | borrow best   2.25% med   4.04% cap med 18 n=332
+ETH-inverse  7-30d   lend best  -7.71% med -31.87% | borrow best   7.99% med  28.77% cap med 18 n=352
+ETH-inverse  <7d     lend best -44.06% med -365.46% | borrow best  22.04% med 305.22% cap med 18 n=761
+ETH-inverse  >90d    lend best  -0.69% med  -1.30% | borrow best   0.80% med   1.29% cap med 18 n=517
+ETH-linear   30-90d  lend best  -0.48% med  -1.88% | borrow best   0.36% med   1.85% cap med 150 n=350
+ETH-linear   7-30d   lend best  -1.91% med -20.41% | borrow best   2.68% med  22.66% cap med 150 n=193
+ETH-linear   <7d     lend best -28.32% med -288.48% | borrow best  14.63% med 218.94% cap med 150 n=802

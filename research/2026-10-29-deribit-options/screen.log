@@ -1,0 +1,45 @@
+20261016T08 {'rows': 165618, 'valid_books': 165618, 'expected_instruments': 2944, 'minutes': 60, 'mean_valid_books_per_minute': 2760.3} candidates so far 0
+20261017T00 {'rows': 167700, 'valid_books': 167700, 'expected_instruments': 2978, 'minutes': 60, 'mean_valid_books_per_minute': 2795.0} candidates so far 0
+20261018T23 {'rows': 161208, 'valid_books': 161208, 'expected_instruments': 2924, 'minutes': 60, 'mean_valid_books_per_minute': 2686.8} candidates so far 0
+20261019T05 {'rows': 161144, 'valid_books': 161144, 'expected_instruments': 2948, 'minutes': 60, 'mean_valid_books_per_minute': 2685.7} candidates so far 0
+20261020T15 {'rows': 56448, 'valid_books': 56448, 'expected_instruments': 2710, 'minutes': 56, 'mean_valid_books_per_minute': 1008.0} candidates so far 0
+20261020T21 {'rows': 160768, 'valid_books': 160768, 'expected_instruments': 2720, 'minutes': 60, 'mean_valid_books_per_minute': 2679.5} candidates so far 0
+20261021T17 {'rows': 164571, 'valid_books': 164571, 'expected_instruments': 2760, 'minutes': 60, 'mean_valid_books_per_minute': 2742.8} candidates so far 0
+20261022T00 {'rows': 166088, 'valid_books': 166088, 'expected_instruments': 2774, 'minutes': 60, 'mean_valid_books_per_minute': 2768.1} candidates so far 0
+20261023T23 {'rows': 164919, 'valid_books': 164919, 'expected_instruments': 2872, 'minutes': 60, 'mean_valid_books_per_minute': 2748.7} candidates so far 0
+20261024T05 {'rows': 167577, 'valid_books': 167577, 'expected_instruments': 2874, 'minutes': 60, 'mean_valid_books_per_minute': 2792.9} candidates so far 0
+20261025T17 {'rows': 156552, 'valid_books': 156552, 'expected_instruments': 2838, 'minutes': 60, 'mean_valid_books_per_minute': 2609.2} candidates so far 0
+20261026T13 {'rows': 130685, 'valid_books': 130685, 'expected_instruments': 2646, 'minutes': 59, 'mean_valid_books_per_minute': 2215.0} candidates so far 0
+20261026T18 {'rows': 154866, 'valid_books': 154866, 'expected_instruments': 2648, 'minutes': 60, 'mean_valid_books_per_minute': 2581.1} candidates so far 0
+20261027T21 {'rows': 152068, 'valid_books': 152068, 'expected_instruments': 2650, 'minutes': 59, 'mean_valid_books_per_minute': 2577.4} candidates so far 0
+20261028T01 {'rows': 158024, 'valid_books': 158024, 'expected_instruments': 2656, 'minutes': 60, 'mean_valid_books_per_minute': 2633.7} candidates so far 0
+20261029T01 {'rows': 156478, 'valid_books': 156478, 'expected_instruments': 2650, 'minutes': 60, 'mean_valid_books_per_minute': 2608.0} candidates so far 0
+{
+ "comparisons": {
+  "bound_call_below_intrinsic": 1170021,
+  "bound_inverse_call_above_one": 673564,
+  "bound_put_below_intrinsic": 1170164,
+  "parity_conversion": 1084343,
+  "parity_reversal": 1057354,
+  "vertical_call_monotonic": 19834954,
+  "vertical_call_overpay": 22815297,
+  "call_butterfly": 26017776,
+  "vertical_put_monotonic": 20529609,
+  "vertical_put_overpay": 22575161,
+  "put_butterfly": 26406970,
+  "calendar_inverse_call": 1700434,
+  "cross_buy_inverse_sell_linear": 774367,
+  "cross_sell_inverse_buy_linear": 789379
+ },
+ "gross_positive": {
+  "parity_conversion": 1450,
+  "cross_buy_inverse_sell_linear": 919,
+  "cross_sell_inverse_buy_linear": 1150,
+  "parity_reversal": 160,
+  "put_butterfly": 235,
+  "bound_call_below_intrinsic": 1,
+  "bound_put_below_intrinsic": 5,
+  "call_butterfly": 189
+ },
+ "net_positive_after_entry_fees": {}
+}

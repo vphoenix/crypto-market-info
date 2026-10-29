@@ -64,7 +64,7 @@ func TestCatalogTickRecoversUnknownAdmittedMember(t *testing.T) {
 	e.admitted, e.state.Known = true, false
 	e.state.StateKind, e.state.Epoch = 1, uuid.New()
 	s.lifecycleReady = true
-	for _, scope := range catalogScopes() {
+	for _, scope := range (Config{}).catalogScopes() {
 		s.scopes[scope.String()] = now
 	}
 	s.tick(now)
@@ -141,7 +141,7 @@ func TestCatalogDroppedUnknownOpenSchedulesIndependentConfirmation(t *testing.T)
 	o := options.LifecycleObservation{Kind: "state", Epoch: s.epoch, Sequence: 9, Symbol: name, State: "open"}
 	s.dropRetry(&catalogJob{life: &o})
 	s.lifecycleReady = true
-	for _, scope := range catalogScopes() {
+	for _, scope := range (Config{}).catalogScopes() {
 		s.scopes[scope.String()] = now
 	}
 	s.tick(now)
@@ -369,7 +369,7 @@ func TestCatalogTickReconfirmsLostLatestState(t *testing.T) {
 	e.state.StateKind, e.state.Known, e.appliedSequence = 2, false, 8
 	s.pendingStates[e.item.Spec.Instrument.ExchangeSymbol] = pendingState{s.epoch, 9}
 	s.lifecycleReady = true
-	for _, scope := range catalogScopes() {
+	for _, scope := range (Config{}).catalogScopes() {
 		s.scopes[scope.String()] = now
 	}
 	s.tick(now)
@@ -386,7 +386,7 @@ func TestCatalogTickConfirmsInactiveCreationWithoutOpenPush(t *testing.T) {
 	e.item.Spec.Instrument.ExpiryTime = &expiry
 	e.admitted, e.state.Open, e.marketState = false, false, "inactive"
 	s.lifecycleReady = true
-	for _, scope := range catalogScopes() {
+	for _, scope := range (Config{}).catalogScopes() {
 		s.scopes[scope.String()] = now
 	}
 	s.tick(now)

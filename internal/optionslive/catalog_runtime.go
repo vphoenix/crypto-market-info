@@ -140,15 +140,6 @@ type scheduledCatalogJob struct {
 	attempt int
 }
 
-func catalogScopes() []deribit.Scope {
-	var ss []deribit.Scope
-	for _, currency := range []string{"BTC", "ETH", "USDC"} {
-		for _, kind := range []string{"option", "future"} {
-			ss = append(ss, deribit.Scope{Currency: currency, Kind: kind})
-		}
-	}
-	return ss
-}
 func RunCatalog(ctx context.Context, cfg Config, sink CatalogSink, logger *slog.Logger) error {
 	cfg = cfg.catalogDefaults()
 	if err := cfg.Validate(); err != nil {
@@ -255,7 +246,7 @@ func (s *catalogSupervisor) invalidateSymbol(symbol string) {
 }
 func (s *catalogSupervisor) lifecycleLoop() {
 	channels := []string{"platform_state"}
-	for _, scope := range catalogScopes() {
+	for _, scope := range s.cfg.catalogScopes() {
 		channels = append(channels, "instrument.creation."+scope.Kind+"."+scope.Currency, "instrument.state."+scope.Kind+"."+scope.Currency)
 	}
 	for s.ctx.Err() == nil {
@@ -549,7 +540,7 @@ func (s *catalogSupervisor) source(f deribit.StreamEvent) {
 	if f.Kind == "ready" {
 		s.lifecycleReady = true
 		s.requestStatus()
-		for _, scope := range catalogScopes() {
+		for _, scope := range s.cfg.catalogScopes() {
 			s.requestScope(scope)
 		}
 		return
@@ -1084,7 +1075,7 @@ func (s *catalogSupervisor) tick(now time.Time) {
 	for _, w := range removed {
 		s.hub.removeWorker(w)
 	}
-	for _, scope := range catalogScopes() {
+	for _, scope := range s.cfg.catalogScopes() {
 		last := s.scopes[scope.String()]
 		// A later, partial refresh or creation may have updated the scope clock
 		// without renewing an individual member's referenced state/rule evidence.
