@@ -10,7 +10,7 @@
 | 标记价格 | public/mark-price，USDT/基础币 | 单独 ts，不用本地收包时间刷新旧价格 |
 | 抵押估值指数 | BASE-USD / USDT-USD，向上取18位，USDT/基础币 | 保留两个原生 ts，原始两个价格及单位；不假定 USDT=USD |
 | 上一完整分钟成交量 | market/candles，vol×原生合约面值/乘数，与volCcy交叉核对 | 上一UTC整分钟、confirm=1；数量为基础币，不拿更早分钟顶替 |
-| 公开费用 | 固定已核对官方费率公告 Regular 行，产品API核验group12/13/14和4/5 | 公告来源日期和生效日保留；本地复核截止2026-10-15，不自动续期 |
+| 公开费用 | 固定已核对官方费率公告 Regular 行，产品API核验group12/13/14和4/5 | 公告来源日期和生效日保留；本地复核截止2027-01-01，不自动续期（原截止2026-10-15，2026-10-30 重新复核后延长） |
 | 公开借币利率与额度 | public/interest-rate-loan-quota，daily rate与基础币额；Basic/Regular/override/config分项 | 无原生观察时间，明确标记请求观察；不冒充账户实际条款 |
 | 抵押与风险 | public/discount-rate-interest-free-quota及position-tiers | typed marginal discount/liqPenaltyRate/imr/mmr/maxLever；reference borrow lever5明确为假设，执行换成私人实际值 |
 

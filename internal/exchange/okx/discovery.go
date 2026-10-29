@@ -432,6 +432,16 @@ func (c *Client) DiscoveryCapital(ctx context.Context, i model.Instrument, model
 
 const ReferenceFeeURL = "https://www.okx.com/en-gb/help/advance-notice-spot-and-futures-trading-fee-adjustment"
 
+// The notice was published 2026-08-20 and took effect 2026-09-09 09:00 UTC.
+// Re-reviewed 2026-10-30: Regular rows unchanged, no later fee notice in the
+// trading-updates feed, BTC/SOL pairs still in groups 12 and 4. Review again
+// before the expiry instead of moving it forward unchecked.
+var (
+	referenceFeeSource        = time.Date(2026, 8, 20, 0, 0, 0, 0, time.UTC)
+	referenceFeeEffective     = time.Date(2026, 9, 9, 9, 0, 0, 0, time.UTC)
+	referenceFeeReviewedUntil = time.Date(2027, 1, 1, 0, 0, 0, 0, time.UTC)
+)
+
 // Group IDs use the official 2025-11-25 API mapping. The 2026-07-30
 // consolidation notice aligns Spot groups 1/2/3 and Futures groups 1/2.
 // Fiat, zero, stablecoin, special and RWA groups are outside this profile.
@@ -503,10 +513,10 @@ func (c *Client) DiscoveryReferenceFees(ctx context.Context, pair model.OKXPairM
 	if err != nil {
 		return model.ReferenceFee{}, err
 	}
-	source := time.Date(2026, 8, 20, 0, 0, 0, 0, time.UTC).UnixMilli()
-	effective := time.Date(2026, 9, 9, 9, 0, 0, 0, time.UTC).UnixMilli()
+	source := referenceFeeSource.UnixMilli()
+	effective := referenceFeeEffective.UnixMilli()
 	// Local review expiry: never refresh an old document's source timestamp.
-	until := time.Date(2026, 10, 15, 0, 0, 0, 0, time.UTC).UnixMilli()
+	until := referenceFeeReviewedUntil.UnixMilli()
 	observed := max(spotResponse.Source.ObservedMS, perpResponse.Source.ObservedMS)
 	doc := model.PublicSource{URL: ReferenceFeeURL, PayloadHash: payloadDigest(payload), TimeBasis: "reviewed_static_rule", SourceMS: source, ObservedMS: observed}
 	result := model.ReferenceFee{ID: uuid.NewString(), InstrumentID: pair.Perpetual.ID, ObservedMS: observed, SourceMS: source, EffectiveMS: effective, ValidUntilMS: until, PerpMaker: maker, PerpTaker: taker, SpotTaker: spot, BuyFeeCurrency: pair.Spot.BaseAsset, SellFeeCurrency: "USDT", SpotMaximum: sm, PerpMaximum: pm, PositionLimit: positionLimit, Profile: model.OKXReferenceProfile, InterestVersion: model.OKXInterestVersion, Sources: []model.PublicSource{doc, spotResponse.Source, perpResponse.Source}}

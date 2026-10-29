@@ -53,3 +53,14 @@ func TestDiscoveryPerpRiskAcceptsStoredMultiplierScale(t *testing.T) {
 		}
 	}
 }
+func TestReferenceFeePageRegularRows(t *testing.T) {
+	page := []byte(`<table><tr><td>Regular</td><td>&lt; 100,000 / &lt; 1,000,000</td><td>0.0800%</td><td>0.1000%</td></tr></table>` +
+		`<table><tr><td>Regular</td><td>&lt; 100,000 / &lt; 5,000,000</td><td>0.0200%</td><td>0.0500%</td></tr></table>`)
+	maker, taker, spot, err := ParseReferenceFeePage(page)
+	if err != nil || maker.String() != "0.0002" || taker.String() != "0.0005" || spot.String() != "0.001" {
+		t.Fatal(maker, taker, spot, err)
+	}
+	if !referenceFeeSource.Before(referenceFeeEffective) || !referenceFeeEffective.Before(referenceFeeReviewedUntil) {
+		t.Fatal("reference fee review window out of order")
+	}
+}
