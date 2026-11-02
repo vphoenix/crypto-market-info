@@ -236,7 +236,7 @@ def probe(base_url: str, database: str, backend: str = "clickhouse", storage_che
         )
         clickhouse_ok = True
     except Exception as exc:
-        errors.append(f"ClickHouse 盘口: {exc}")
+        errors.append(f"{'MySQL' if backend == 'mysql' else 'ClickHouse'} 盘口: {exc}")
 
     yield_age_seconds: int | None = None
     yield_ok = False
@@ -253,7 +253,7 @@ def probe(base_url: str, database: str, backend: str = "clickhouse", storage_che
             else:
                 errors.append("收益表在最近 8 小时内没有观测")
         except Exception as exc:
-            errors.append(f"ClickHouse 收益: {exc}")
+            errors.append(f"{'MySQL' if backend == 'mysql' else 'ClickHouse'} 收益: {exc}")
 
     state, summary = classify(
         collector_active,

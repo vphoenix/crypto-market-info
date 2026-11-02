@@ -74,7 +74,8 @@ func (c *Client) Inspect(ctx context.Context, countFacts bool) (Health, error) {
 		out.Tables = append(out.Tables, h)
 	}
 	var latest sql.NullTime
-	if e = c.db.QueryRowContext(ctx, "SELECT COUNT(*),MAX(committed_at) FROM cmi_storage.ingest_batch WHERE database_name=? AND committed_at>=UTC_TIMESTAMP()-INTERVAL 10 MINUTE", c.database).Scan(&out.RecentBatches, &latest); e != nil {
+	// committed_at has no index; bound by indexed logical_time so the check stays fast. Live commits lag their logical minute by minutes, so one hour covers them; old backlog replays are intentionally not counted as recent live commits.
+	if e = c.db.QueryRowContext(ctx, "SELECT COUNT(*),MAX(committed_at) FROM cmi_storage.ingest_batch WHERE database_name=? AND logical_time>=UTC_TIMESTAMP()-INTERVAL 1 HOUR AND committed_at>=UTC_TIMESTAMP()-INTERVAL 10 MINUTE", c.database).Scan(&out.RecentBatches, &latest); e != nil {
 		return out, e
 	}
 	if latest.Valid {

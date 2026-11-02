@@ -30,6 +30,7 @@ Environment=FUNDING_ENABLED=true
 Environment=JUSTLEND_YIELD_ENABLED=true
 Environment=TRON_STAKING_YIELD_ENABLED=true
 Environment=SOL_YIELD_ENABLED=true
+Environment=SOLANA_RPC_URL=https://solana-rpc.publicnode.com
 Environment=SOL_VALIDATOR_VOTE_ACCOUNTS=-
 Environment=AVAX_YIELD_ENABLED=true
 ExecStartPre=/usr/bin/curl --connect-timeout 2 --max-time 5 --fail --silent --show-error --output /dev/null http://127.0.0.1:8123/ping

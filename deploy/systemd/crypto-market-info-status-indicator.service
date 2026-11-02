@@ -5,7 +5,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /home/ubuntu/crypto-market-info/tools/desktop-status/crypto_market_status.py --interval 30
+ExecStart=/usr/bin/python3 /home/ubuntu/crypto-market-info/tools/desktop-status/crypto_market_status.py --interval 30 --backend mysql
 Restart=on-failure
 RestartSec=10
 TimeoutStopSec=5
