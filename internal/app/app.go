@@ -9,6 +9,7 @@ import (
 
 	"github.com/vphoenix/crypto-market-info/internal/config"
 	"github.com/vphoenix/crypto-market-info/internal/funding"
+	"github.com/vphoenix/crypto-market-info/internal/lendingmarket"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 	"github.com/vphoenix/crypto-market-info/internal/optionslive"
 	"github.com/vphoenix/crypto-market-info/internal/storage/backend"
@@ -171,6 +172,15 @@ func runMarketSources(ctx context.Context, cfg config.Config, logger *slog.Logge
 		collector := &justlend.Collector{Client: justlend.NewClient(cfg.JustLendBaseURL)}
 		runner := &marketyield.Runner{Source: "justlend", Collector: collector, Sink: store, Interval: time.Hour, RetryInterval: 10 * time.Minute, Logger: logger}
 		components = append(components, component{name: "JustLend yield", run: runner.Run})
+	}
+	if cfg.JustLendMarketsEnabled {
+		sink, ok := store.(lendingmarket.Sink)
+		if !ok {
+			return fmt.Errorf("JUSTLEND_MARKETS_ENABLED requires the MySQL storage backend")
+		}
+		collector := &justlend.MarketCollector{Client: justlend.NewClient(cfg.JustLendBaseURL)}
+		runner := &lendingmarket.Runner{Source: "justlend-markets", Collector: collector, Sink: sink, Interval: 5 * time.Minute, RetryInterval: time.Minute, Logger: logger}
+		components = append(components, component{name: "JustLend markets", run: runner.Run})
 	}
 	if cfg.TRONStakingYieldEnabled {
 		collector := &tron.Collector{Client: tron.NewClient(cfg.TRONHTTPURL)}

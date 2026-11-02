@@ -114,7 +114,7 @@ func run(ctx context.Context, args []string) error {
 		}
 		fmt.Printf("read-only snapshot: %d tables\n", len(tables))
 		return nil
-	case "init-schema", "init-all-schemas", "activate-producer", "provision-account", "extend-partitions", "install-receipt-index", "install-dex-indexes", "install-capital-versions", "install-quality-storage", "install-source-storage", "install-keeper-rental-state", "install-keeper-dynamic":
+	case "init-schema", "init-all-schemas", "activate-producer", "provision-account", "extend-partitions", "install-receipt-index", "install-dex-indexes", "install-capital-versions", "install-quality-storage", "install-source-storage", "install-keeper-rental-state", "install-keeper-dynamic", "install-justlend-markets":
 		f := flag.NewFlagSet(args[0], flag.ContinueOnError)
 		socket := f.String("socket", "", "private MySQL Unix socket")
 		user := f.String("user", "", "DDL account")
@@ -164,6 +164,11 @@ func run(ctx context.Context, args []string) error {
 				return fmt.Errorf("keeper rental-state requires explicit Keeper family and target")
 			}
 			return store.InstallKeeperRentalStateSchema(ctx, db, *target)
+		case "install-justlend-markets":
+			if *family != "crypto_market_info" || *target == "" {
+				return fmt.Errorf("JustLend markets require explicit main family and target")
+			}
+			return store.InstallJustLendMarketSchema(ctx, db, *target)
 		case "install-capital-versions":
 			if *family != "crypto_market_info" || *target == "" {
 				return fmt.Errorf("capital versions require explicit main family and target")

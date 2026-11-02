@@ -1,5 +1,28 @@
 # 当前部署与运行说明
 
+2026-11-02 21:07:08（UTC+8）：上线 JustLend 借贷市场状态采集（借款侧），表结构和规则见[数据字典 5.1](market-data-storage.md)。
+- **建表**：21:06:49 用 `cmi_ddl` 执行 `storage-migrate install-justlend-markets --family crypto_market_info --target crypto_market_info`，在主库新建 `justlend_market_observation`（InnoDB、8 KiB 压缩页），并登记进 `cmi_storage.schema_version`（version 1，DDL 哈希 `97F7D0F6…2248`）。
+- **二进制**：collector 与 storage-migrate 由当前 HEAD 加未提交的工作区构建，放在 `var/storage/justlend-markets/20261102/`，附 SHA256SUMS 和构建基准；工作区里包含另一会话对 `health.go` 的 storage-check 修复。原 collector 备份为 `collector.20261102-pre-justlend-markets`，新二进制原子替换。
+- **开关**：新增 drop-in `98-justlend-markets.conf`，设 `JUSTLEND_MARKETS_ENABLED=true`；仓库模板不改，删除该 drop-in 即停用。
+- **重启**：collector 新 PID 351083；MySQL、Redis、ClickHouse、writer、指示器的 PID 与重启计数均未变。
+- **核验**：
+  - 13:07:22 和 13:10:00 UTC 两批各 24 行，`batch_market_count`=24，哈希唯一。
+  - jUSDT、jTRX 的存借 APR 和 cash 与 TronGrid 链上读数逐位一致；total_borrows 只差读数之间的应计利息。
+  - 其余收益来源首轮全部写入。
+- **盘口缺口**：13:07 UTC 分钟全部实时盘口缺失；OKX 配对 332 路另缺 13:08，13:09 起 332/332 写入。
+- **数据**：上线时 jUSDT 已从午后的挤兑尖峰回落，利用率约 74%，存款 3.07%、借款 4.62%；jTRX 可借现金由 20.5 亿降到 15.5 亿 TRX，借款年化 5.09%。
+- **测试**：全仓库测试中，`internal/lst` 的 `TestRuntimeLostCommitRestoresFollowupAndPreserves31DayBoundary` 在 HEAD 干净副本上同样失败，是原有问题。across、lst 另两个失败单独重跑通过，属于高 IO 下的计时波动。MySQL 集成测试因没有隔离测试实例未运行。
+
+2026-11-02 17:43:40（UTC+8）：按用户要求停止 TRON 原生质押收益采集（127 个 SR，每 6 小时一次）。新增 drop-in `~/.config/systemd/user/crypto-market-info-collector.service.d/97-tron-staking-stopped.conf`，内容为 `TRON_STAKING_YIELD_ENABLED=false`；daemon-reload 后重启 collector，新 PID 273368，进程环境已确认为 false。仓库 unit 模板与安装主文件不改，仍为 true，做法与期权 drop-in 相同；删除该 drop-in 即可恢复。依据见[TRON/AVAX 收益复查](../research/2026-11-02-tron-avax-yield/report.md)：TRX 资金费长期为负（Binance 11 个月 −9.6%，OKX 近 30 天 −34.9%），质押加做空的资本年化为 −4.7% 至 −23.7%；不对冲时 sTRX（10 月 3.77%）也高于所有 SR（最高 3.33%），而 sTRX 由 JustLend 采集继续记录。核验结果：
+- **TRON**：SR 路线最后一次采集为 09:14:41 UTC，重启后没有新行。
+- **其他收益来源**：JustLend、AVAX、SOL 在 17:43:56–17:44:20 首轮均已写入。aave-v4-avax 首轮因 MySQL 锁等待（1205）失败，17:54:17 重试成功，写入 89 条路线。
+- **盘口**：09:43 UTC 分钟的全部实时盘口缺失。五路 BTC 盘口自 09:44 起恢复；OKX 配对 332 路另缺 09:44 和 09:45，09:46 起 332/332 写入。
+- **其他服务**：MySQL、Redis、ClickHouse、writer、指示器的 PID 与重启计数均未变。
+
+历史 SR 观测保留。AVAX 收益按复查结论保留，不再列为待停项。
+
+2026-11-02 16:10（UTC+8）：Ubuntu 于 02:55 重启后核查。MySQL、Redis、ClickHouse、collector、storage-writer 与桌面指示器均自动恢复为 active/running；writer 因 MySQL socket 尚未就绪重试 13 次后于 02:58:28 稳定，此后正常提交、无旧积压。across、across-history、lst、reserve、justlend-keeper、perp-soak 按此前用户要求保持 disabled。停机期间 UTC 18:49–18:58（11-01）约 9 分钟实时盘口无法补回。同时修复两项与重启无关的旧问题：（1）`storage-check` 的“最近 10 分钟提交批次”查询按无索引的 `ingest_batch.committed_at` 扫描约 100 万行，稳定超过 15 秒语句上限；现增加已索引的 `logical_time` 一小时下界（近一日实时提交相对逻辑分钟最大延迟 359 秒），整次检查约 0.6 秒，未新增索引；回放旧积压时这些提交不计为“最近实时提交”。已原子替换 `var/storage/bin/storage-check`，原文件备份为 `storage-check.20261102-pre-health-index`。（2）桌面指示器 unit 自 10-16 切换后一直未指定后端，实际在查已停写的 ClickHouse，长期误报“盘口数据已停止更新”；仓库模板与安装副本已加 `--backend mysql` 并重启，现显示“生产采集正常”。另：`api.mainnet.solana.com` 自 10-30 07:20 起对本机 IP 返回 403“Your IP or provider is blocked”，SOL 八条依赖该 RPC 的收益路线一直失败（Marinade Native 不受影响）。经用户批准，collector unit 模板与安装副本新增 `SOLANA_RPC_URL=https://solana-rpc.publicnode.com`（与以太坊同一公开只读提供方；实测 finalized 的 `getAccountInfo`/`getEpochInfo`/`getBlock` 正常），原安装 unit 备份为 `~/.config/systemd/user/.crypto-market-info-collector.service.20261102-pre-solana-rpc`，17:13:19 重启 collector，8 条 SOL 路线 17:13:36–39 全部首采写入；UTC 09:13 分钟全部实时盘口缺失，OKX 配对 332 流另缺 09:14，09:15 起恢复，五路 BTC 盘口 60/60。10-30 07:20 至今 SOL 收益缺口无法事后补成当时观测。
+
 2026-10-30 01:20:12（UTC+8）：重新复核 OKX 公开参考费率并延长本地复核有效期至 2027-01-01（UTC）。核对内容：原公告页（2026-08-20 发布、09-09 生效）Regular 行未变，现货吃单 0.10%、合约挂单 0.02%/吃单 0.05%，程序对实时页面解析结果一致；OKX 交易公告接口 2025-12 至今没有更新的现货/合约标准费率调整；BTC/SOL 现货与永续仍分别在费率组 12 和 4。来源时间与生效时间不变，到期前须再次人工复核，不得直接顺延。collector 重新部署，原 binary 备份为 `collector.20261030-pre-fee-review`。另注意 10-28 公告“Futures 模式将停止现货杠杆”，与参考口径的多币种保证金模式无直接关系，未改动。上线后 10 分钟内费率有效期与档位拒收均为零（剩余拒收全是 OKX 接口超时）；`cex_fee_schedule_rule` 自 10-14 23:00 UTC 后首次有新行，上线首小时写入 61 个合约，其余随重试补齐。
 
 2026-10-30 00:41:28（UTC+8）：按用户要求停止 JustLend keeper 采集，执行 `systemctl --user disable --now crypto-market-info-justlend-keeper.service`。进程约 1 秒正常退出，最后一批 index_page 为 complete；实际为 inactive、disabled，default.target 启动链接已移除，桌面状态指示器不监控该服务。依据：10-24 动态选择上线后约 6,700 次 `getRentInfo` 无一可清算，同期 62 次真实清算中我方离清算最近的一次检查仍早 8.8 分钟；10-23 至 10-29 全市场毛奖励约 483 TRX/日（约 160 USDT），两家地址拿走约 95%，并在可清算后秒级出手。要参与需自建低延迟节点、精确计时与私钥自动发单，超出本项目边界。研究库 `crypto_market_info_justlend_keeper`、状态目录、源码与命令全部保留；Ubuntu 重启后应保持停用，不要依据下文旧记录重新启用。
@@ -277,7 +300,7 @@ SOL 的九条固定路线及对应日志 `source`：
 | OKX | REST `https://www.okx.com`；WebSocket `wss://ws.okx.com:443/ws/v5/public`（2026-10-27 起 8443 端口被 OKX 以 64010 通知退役） |
 | Bybit | REST `https://api.bybit.com`；线性合约 WebSocket `wss://stream.bybit.com/v5/public/linear` |
 | JustLend / TRON | `https://openapi.just.network` / `https://api.trongrid.io` |
-| Solana RPC | `https://api.mainnet.solana.com`；用于链上池状态、身份和区块锚点校验 |
+| Solana RPC | `https://solana-rpc.publicnode.com`（2026-11-02 起；原默认 `https://api.mainnet.solana.com` 对本机 IP 返回 403）；用于链上池状态、身份和区块锚点校验 |
 | Jito | `https://kobe.mainnet.jito.network` |
 | Marinade | `https://apy.marinade.finance`；验证者接口 `https://validators-api.marinade.finance` 目前因白名单为空未调用 |
 | Kamino / Save | `https://api.kamino.finance` / `https://api.solend.fi` |

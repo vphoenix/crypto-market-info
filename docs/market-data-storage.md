@@ -233,6 +233,60 @@ MySQL 实时收益写入以 `collected_at`（UTC 毫秒）作为同一观测逻�
 
 两列都是同一路线、同一区块的观测属性，不增加第三张表。新版 `InitSchema` 同时包含建表定义及旧表的 `ADD COLUMN IF NOT EXISTS` 迁移；writer 使用显式列名，不依赖新旧表的物理列顺序。旧数据和旧 collector 默认 NULL，不回填，不改变逻辑键或分区。第二阶段读取固定 finalized block hash 的合约状态，`finality=finalized`，不是把无区块的页面/APY 或多个 latest 读数拼在同一锚点上。
 
+### 5.1 JustLend 借贷市场状态（2026-11-02）
+
+表名：`justlend_market_observation`（仅主库，MySQL 可选运行时表）
+
+**为什么单独建表**：借款利率是持仓成本，不是存款收益路线，不能写进 `yield_observation`；同一时刻的存、借两侧放在同一行，分析时再与资金费等数据按时间和资产身份组合。
+
+**来源与频率**：每 5 分钟请求一次 `GET https://openapi.just.network/lend/jtoken`，按 Unix 纪元对齐采样时点，把完整响应中的全部 jToken 市场写成一批，每个市场一行（2026-11-02 时为 24 个市场）。
+
+**时间与证据**：来源不提供时间戳和区块，`observation_time` 是本地收到完整响应的 UTC 毫秒时间，即采集时间。这是 API 聚合值，没有区块锚点，不能当作某个固定区块的链上状态。`payload_hash` 是整份原始响应体的 SHA-256（`BINARY(32)`，不带长度前缀），同批每行相同；原始响应只保留哈希。
+
+**主键与查询**：`(observation_time, market_address)`。时间放在前面，因此写入按主键顺序追加，一批在主键上连续；单个市场的历史按时间范围扫描（约 24 倍行数，31 天约 21 万行）。不加辅助索引。
+
+| 字段 | 物理类型 | 语义 |
+|---|---|---|
+| `market_address` | `VARBINARY(64)` | jToken 合约，TRON Base58Check（0x41 前缀并校验和） |
+| `observation_time` | `DATETIME(3)` | 采集时间，UTC 毫秒 |
+| `batch_market_count` | `SMALLINT UNSIGNED` | 本批市场数；读取时据此证明批次完整 |
+| `market_symbol`、`underlying_symbol` | `VARBINARY(64)` | 来源符号，1–32 个可打印 ASCII 字符 |
+| `underlying_address` | `VARBINARY(64)` | 底层资产合约；TRX 为零地址 `T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb` |
+| `underlying_decimals` | `TINYINT UNSIGNED` | 底层资产精度，0–36 |
+| `supply_rate_apr`、`borrow_rate_apr` | `DECIMAL(38,18)` | **单利 APR**：每区块利率 × 10,512,000（按 3 秒一个区块）。2026-11-02 在链上用 `supplyRatePerBlock()`、`borrowRatePerBlock()` 核对，与来源值逐位一致；不是 APY |
+| `cash`、`total_borrows`、`reserves` | `DECIMAL(38,18)` | 底层资产整单位：可借现金、未还借款、协议储备 |
+| `total_supply` | `DECIMAL(38,18)` | jToken 整单位总量 |
+| `exchange_rate` | `DECIMAL(38,18)` | 来源原值（底层/jToken，已按精度换算） |
+| `borrow_index` | `DECIMAL(38,18)` | 来源 1e18 定标整数 ÷ 1e18，换算精确 |
+| `collateral_factor`、`reserve_factor` | `DECIMAL(38,18)` | 0–1 |
+| `underlying_price_trx` | `DECIMAL(38,18)` | 来源报出的底层资产 TRX 价格，不作为成交价 |
+| `payload_hash` | `BINARY(32)` | 见上文 |
+
+**完整性与精度**：
+
+- 业务码必须为 0；`tokenList` 必须非空。
+- 每个市场的 16 个字段必须全部存在且类型正确：数值是 JSON 字符串，`underlyingDecimal` 是 JSON 整数；`null`、负数、指数形式或其他非普通十进制形式都会拒绝（来源的极小值也写成完整小数，如 `0.000000000092541702`）。
+- 市场地址不得重复；jTRX、jsTRX、jUSDT 三个市场必须出现且符号一致，否则视为不完整响应，不当作更短的市场列表写入。
+- 不做截断：小数超过 18 位、整数部分达到 `10^20`、或两个因子大于 1，都拒绝整批，不写入一个不同的数。
+- 来源额外新增的字段由 payload hash 覆盖，但不入库。
+- 任何一项失败，这一轮都不写，下一分钟重试，不沿用旧值。
+
+**写入与重试**：
+
+- 一批在一个事务内写入。重试复用同一批（采集时间和哈希都不变）；相同行是幂等的，同键不同值返回冲突，不覆盖。
+- 写入失败持续超过一个采样间隔时，丢弃这批，在下一个采样点重新采集，不把过期状态补写成"当前"。
+- Runner 启动后只检查表是否已安装，不执行 DDL；表缺失时记录错误并按间隔重试，不影响 collector 的其他组件。
+- `ReadJustLendMarketBatches(from,to)` 一次最多读 31 天；行数与 `batch_market_count` 不符或哈希不一致的批次报错，不返回残缺批次。
+
+**安装与启用**：
+
+- 管理员显式执行 `storage-migrate install-justlend-markets --family crypto_market_info --target <数据库> --socket <socket> --user <DDL 用户> --password-file <凭据文件>`，登记进 `cmi_storage.schema_version`；遇到未登记的同名表会拒绝。
+- collector 设 `JUSTLEND_MARKETS_ENABLED=true`（默认 false），仅支持 MySQL 后端。
+- 不改冻结的 125 表 `mapping.json`/`schema.sql`；ClickHouse 不实现。
+- 写入量约每天 6,912 行。
+
+**已知口径差异**：`/lend/jtoken` 的 `supplyRate` 是单利 APR。现有 `yield_observation` 的 jTRX、sTRX→jsTRX 路线沿用了 `rate_kind=apy`。该口径未在本次修改，引用旧行时应按 APR 理解；修正需要另行处理历史语义。
+
 ## 6. 盘口恢复关系
 
 查询某交易流在某分钟内第 `n` 秒（`0 ≤ n ≤ 59`）的盘口时：
