@@ -9,9 +9,11 @@ import (
 
 	"github.com/vphoenix/crypto-market-info/internal/config"
 	"github.com/vphoenix/crypto-market-info/internal/funding"
+	"github.com/vphoenix/crypto-market-info/internal/hyperliquid"
 	"github.com/vphoenix/crypto-market-info/internal/lendingmarket"
 	"github.com/vphoenix/crypto-market-info/internal/model"
 	"github.com/vphoenix/crypto-market-info/internal/optionslive"
+	"github.com/vphoenix/crypto-market-info/internal/perpcontext"
 	"github.com/vphoenix/crypto-market-info/internal/storage/backend"
 	marketyield "github.com/vphoenix/crypto-market-info/internal/yield"
 	"github.com/vphoenix/crypto-market-info/internal/yield/aave"
@@ -181,6 +183,26 @@ func runMarketSources(ctx context.Context, cfg config.Config, logger *slog.Logge
 		collector := &justlend.MarketCollector{Client: justlend.NewClient(cfg.JustLendBaseURL)}
 		runner := &lendingmarket.Runner{Source: "justlend-markets", Collector: collector, Sink: sink, Interval: 5 * time.Minute, RetryInterval: time.Minute, Logger: logger}
 		components = append(components, component{name: "JustLend markets", run: runner.Run})
+	}
+	if cfg.HyperliquidContextEnabled {
+		sink, ok := store.(perpcontext.Sink)
+		if !ok {
+			return fmt.Errorf("HYPERLIQUID_CONTEXT_ENABLED requires the MySQL storage backend")
+		}
+		client := hyperliquid.NewClient(cfg.HyperliquidInfoURL)
+		// The equity/commodity dex needs minute resolution to see oracle-versus-
+		// mark gaps; the default dex only supplements backfillable funding.
+		for _, dex := range []struct {
+			name     string
+			interval time.Duration
+		}{{"", 5 * time.Minute}, {"xyz", time.Minute}} {
+			source := "hyperliquid-context-" + dex.name
+			if dex.name == "" {
+				source = "hyperliquid-context-default"
+			}
+			runner := &perpcontext.Runner{Source: source, Collector: &hyperliquid.ContextCollector{Client: client, Dex: dex.name}, Sink: sink, Interval: dex.interval, RetryInterval: 20 * time.Second, Logger: logger}
+			components = append(components, component{name: "Hyperliquid context " + source, run: runner.Run})
+		}
 	}
 	if cfg.TRONStakingYieldEnabled {
 		collector := &tron.Collector{Client: tron.NewClient(cfg.TRONHTTPURL)}

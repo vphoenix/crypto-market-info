@@ -1,5 +1,13 @@
 # 当前部署与运行说明
 
+2026-11-03 11:40:55（UTC+8）：上线 Hyperliquid 永续资产上下文采集，表结构和规则见[数据字典 5.2](market-data-storage.md)；依据见 [10-30 研究](../research/2026-10-30-new-opportunity-search/report.md) 第 8 节。
+- **建表**：03:40:40 UTC 用 `cmi_ddl` 执行 `storage-migrate install-hyperliquid-context --family crypto_market_info --target crypto_market_info`，在主库新建 `hyperliquid_asset_context`（InnoDB、8 KiB 压缩页），登记进 `cmi_storage.schema_version`（version 1）。
+- **二进制**：collector 与 storage-migrate 由 HEAD `4c323b552` 加未提交工作区构建，放在 `var/storage/hyperliquid-context/20261103/`，附 SHA256SUMS 和构建基准。原 collector 备份为 `collector.20261103-pre-hyperliquid-context`，新二进制（SHA-256 `cfc63fd0…1faa`）原子替换。
+- **开关**：新增 drop-in `99-hyperliquid-context.conf`，设 `HYPERLIQUID_CONTEXT_ENABLED=true`；删除该 drop-in 即停用。默认 dex 每 5 分钟，`xyz` dex 每分钟。
+- **重启**：collector 新 PID 642226；MySQL、Redis、ClickHouse、writer、指示器的 PID 与重启计数均未变。
+- **核验**：03:41:45 至 03:49:00 UTC，默认 dex 2 批、每批 179 行（universe 235，56 个已下架未存），xyz 9 批、每批 120 行（universe 142），全部 `book_valid=1`，每批一个哈希，无 `perp context collection failed`。xyz:GOOGL、xyz:GOLD 的标记价、预言机价、资金费率、持仓量与同期公开接口读数一致（时间相差约 1 分钟）。同期唯一的 ERROR 是原有的 OKX `actual funding confirmation failed`。
+- **磁盘背景**：部署时根分区剩余 199 GB；新表预计每天约 22 万行。
+
 2026-11-02 21:07:08（UTC+8）：上线 JustLend 借贷市场状态采集（借款侧），表结构和规则见[数据字典 5.1](market-data-storage.md)。
 - **建表**：21:06:49 用 `cmi_ddl` 执行 `storage-migrate install-justlend-markets --family crypto_market_info --target crypto_market_info`，在主库新建 `justlend_market_observation`（InnoDB、8 KiB 压缩页），并登记进 `cmi_storage.schema_version`（version 1，DDL 哈希 `97F7D0F6…2248`）。
 - **二进制**：collector 与 storage-migrate 由当前 HEAD 加未提交的工作区构建，放在 `var/storage/justlend-markets/20261102/`，附 SHA256SUMS 和构建基准；工作区里包含另一会话对 `health.go` 的 storage-check 修复。原 collector 备份为 `collector.20261102-pre-justlend-markets`，新二进制原子替换。

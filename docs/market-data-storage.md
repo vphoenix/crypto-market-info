@@ -287,6 +287,39 @@ MySQL 实时收益写入以 `collected_at`（UTC 毫秒）作为同一观测逻�
 
 **已知口径差异**：`/lend/jtoken` 的 `supplyRate` 是单利 APR。现有 `yield_observation` 的 jTRX、sTRX→jsTRX 路线沿用了 `rate_kind=apy`。该口径未在本次修改，引用旧行时应按 APR 理解；修正需要另行处理历史语义。
 
+### 5.2 Hyperliquid 永续资产上下文（2026-11-03）
+
+**用途**：考核美股/商品永续资金费持有（见 [10-30 研究](../research/2026-10-30-new-opportunity-search/report.md) 第 8 节）。已结算资金费可以随时从 Hyperliquid 回补，不在这里存；这里存的是事后拿不到的：预言机价与标记价的偏离、溢价、持仓量和冲击价。这是低频观测，不是订单簿，不进入盘口差量链路。
+
+**来源**：`POST https://api.hyperliquid.xyz/info`，请求体 `{"type":"metaAndAssetCtxs","dex":<dex>}`。默认 dex（`""`，验证者运营的永续）每 5 分钟采一次，`xyz`（trade.xyz 的美股/商品永续）每 1 分钟采一次，都对齐 Unix 时间网格。来源不带时间戳和区块，`observation_time` 是完整响应收到时的本地 UTC 毫秒时间。
+
+**表 `hyperliquid_asset_context`**：主键 `(observation_time, dex, coin)`，InnoDB 8 KiB 压缩页，所有列 NOT NULL。
+
+| 列 | 类型 | 含义 |
+|---|---|---|
+| `dex` | VARBINARY(16) | `""` 为默认 dex；其他为部署者 dex 名（小写字母、数字） |
+| `coin` | VARBINARY(64) | 来源原样名称；部署者 dex 带前缀，如 `xyz:GOOGL` |
+| `observation_time` | DATETIME(3) | UTC，同批共享 |
+| `universe_count` / `batch_asset_count` | SMALLINT UNSIGNED | 来源全部资产数（含已下架）/ 本批入库行数 |
+| `max_leverage`、`sz_decimals`、`only_isolated` | 整数 | 来源 universe 字段 |
+| `mark_px`、`oracle_px`、`prev_day_px` | DECIMAL(38,18) | 抵押币（USDC）计价，每整币 |
+| `funding_rate_hourly` | DECIMAL(38,18)，可为负 | 来源当前每小时资金费率，**不是**已结算值；不得与收益率混用 |
+| `open_interest`、`day_base_vlm` | DECIMAL(38,18) | 整币 |
+| `day_ntl_vlm` | DECIMAL(38,18) | 抵押币 |
+| `book_valid` | TINYINT | 1 表示来源给出了中间价、溢价和冲击价；0 表示三者均为 null，下面四列存 0，0 表示“缺失”而不是价格 |
+| `mid_px`、`premium`（可为负）、`impact_bid_px`、`impact_ask_px` | DECIMAL(38,18) | 来源原值 |
+| `payload_hash` | BINARY(32) | 完整响应体 SHA-256，同批共享 |
+
+**完整性规则**：
+
+- 响应必须恰为 `[meta, contexts]` 两个元素，且 `universe` 与 `contexts` 等长；已下架资产只计入 `universe_count`，不入库。
+- 每个未下架资产的七个数值字段必须是字符串形式的普通十进制数（不接受指数、数字类型或空串）；`midPx`、`premium`、`impactPxs` 必须同时存在或同时为 null。
+- 标记价、预言机价必须为正；除资金费率和溢价外不得为负；小数超过 18 位或绝对值达到 `10^20` 时拒绝整批，不截断。
+- coin 不得重复；默认 dex 的 coin 不含 `:`，部署者 dex 的 coin 必须带本 dex 前缀。
+- 任何一项失败，这一轮都不写；写入、重试、过期丢弃和不执行 DDL 的规则与 5.1 相同。`ReadHyperliquidContextBatches(dex,from,to)` 一次最多读 7 天，行数或哈希不符的批次报错。
+
+**安装与启用**：管理员显式执行 `storage-migrate install-hyperliquid-context --family crypto_market_info --target <数据库> ...`；collector 设 `HYPERLIQUID_CONTEXT_ENABLED=true`（默认 false），仅支持 MySQL 后端；`HYPERLIQUID_INFO_URL` 默认 `https://api.hyperliquid.xyz/info`。不改冻结的 125 表目录；ClickHouse 不实现。写入量约每天 xyz 120×1,440 + 默认 dex 179×288 ≈ 22 万行（随上架数变化）。
+
 ## 6. 盘口恢复关系
 
 查询某交易流在某分钟内第 `n` 秒（`0 ≤ n ≤ 59`）的盘口时：

@@ -41,6 +41,8 @@ type Config struct {
 	FundingEnabled            bool
 	JustLendYieldEnabled      bool
 	JustLendMarketsEnabled    bool
+	HyperliquidContextEnabled bool
+	HyperliquidInfoURL        string
 	JustLendBaseURL           string
 	TRONStakingYieldEnabled   bool
 	TRONHTTPURL               string
@@ -85,6 +87,10 @@ func Load() (Config, error) {
 	if err != nil {
 		return Config{}, err
 	}
+	hyperliquidContext, err := boolean("HYPERLIQUID_CONTEXT_ENABLED", false)
+	if err != nil {
+		return Config{}, err
+	}
 	tronYield, err := boolean("TRON_STAKING_YIELD_ENABLED", false)
 	if err != nil {
 		return Config{}, err
@@ -119,6 +125,7 @@ func Load() (Config, error) {
 		OKXREST:         value("OKX_REST_URL", "https://www.okx.com"), OKXWS: value("OKX_WS_URL", "wss://ws.okx.com:443/ws/v5/public"),
 		BybitREST: value("BYBIT_REST_URL", "https://api.bybit.com"), BybitWS: value("BYBIT_WS_URL", "wss://stream.bybit.com/v5/public/linear"),
 		FundingEnabled: funding, JustLendYieldEnabled: justLendYield, JustLendMarketsEnabled: justLendMarkets, JustLendBaseURL: value("JUSTLEND_BASE_URL", "https://openapi.just.network"),
+		HyperliquidContextEnabled: hyperliquidContext, HyperliquidInfoURL: value("HYPERLIQUID_INFO_URL", "https://api.hyperliquid.xyz/info"),
 		TRONStakingYieldEnabled: tronYield, TRONHTTPURL: value("TRON_HTTP_URL", "https://api.trongrid.io"),
 		SOLYieldEnabled: solYield, SolanaRPCURL: value("SOLANA_RPC_URL", "https://api.mainnet.solana.com"), SOLValidatorVoteAccounts: voteAccounts,
 		AVAXYieldEnabled: avaxYield, AvalancheRPCURL: value("AVALANCHE_RPC_URL", "https://api.avax.network/ext/bc/C/rpc"),

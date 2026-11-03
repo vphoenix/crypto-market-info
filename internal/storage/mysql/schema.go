@@ -161,6 +161,15 @@ func Mapping(database, name string) (Table, error) {
 				return t, nil
 			}
 		}
+		contexts, err := hyperliquidContextMappings()
+		if err != nil {
+			return Table{}, err
+		}
+		for _, t := range contexts {
+			if t.Name == name {
+				return t, nil
+			}
+		}
 	}
 	return Table{}, fmt.Errorf("unmapped table %s.%s", database, name)
 }

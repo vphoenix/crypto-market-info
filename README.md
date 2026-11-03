@@ -109,6 +109,8 @@ Bybit BTC 显式模式已部署；后续全量扩容仍须按[共有永续设计
 | `MINUTE_QUEUE_CAPACITY` | 自动 `max(512, 2×采样源数)` | 排队及正在写入的 instrument 分钟批次数；不足两个完整分钟、队列满或 45 秒积压均明确失败 |
 | `JUSTLEND_YIELD_ENABLED` | `false` | 是否每小时采集四条 JustLend TRX 收益路线 |
 | `JUSTLEND_MARKETS_ENABLED` | `false` | 是否每 5 分钟采集 JustLend 全部 jToken 市场的存借利率、现金、借款与抵押率（仅 MySQL，需先执行 `storage-migrate install-justlend-markets`） |
+| `HYPERLIQUID_CONTEXT_ENABLED` | `false` | 是否采集 Hyperliquid 永续资产上下文：默认 dex 每 5 分钟、`xyz` dex 每分钟（仅 MySQL，需先执行 `storage-migrate install-hyperliquid-context`） |
+| `HYPERLIQUID_INFO_URL` | `https://api.hyperliquid.xyz/info` | Hyperliquid 公开 info 地址 |
 | `JUSTLEND_BASE_URL` | `https://openapi.just.network` | JustLend 公开 API 地址 |
 | `TRON_STAKING_YIELD_ENABLED` | `false` | 是否每 6 小时采集 TRON 前 127 名 SR 收益 |
 | `TRON_HTTP_URL` | `https://api.trongrid.io` | TRON 公开 HTTP 节点地址 |
